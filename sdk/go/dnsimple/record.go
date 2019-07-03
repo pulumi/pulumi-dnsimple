@@ -19,6 +19,9 @@ func NewRecord(ctx *pulumi.Context,
 	if args == nil || args.Domain == nil {
 		return nil, errors.New("missing required argument 'Domain'")
 	}
+	if args == nil || args.Name == nil {
+		return nil, errors.New("missing required argument 'Name'")
+	}
 	if args == nil || args.Type == nil {
 		return nil, errors.New("missing required argument 'Type'")
 	}

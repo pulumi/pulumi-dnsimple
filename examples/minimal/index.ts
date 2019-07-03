@@ -14,11 +14,11 @@
 
 import * as dnsimple from "@pulumi/dnsimple";
 
-let record = new dnsimple.Record("foobar", {
-  domain: "foo.example.com",
-  ttlt: "3600",
-  type: "A",
-  value: "192.168.0.11"
+let record = new dnsimple.Record("test", {
+  name: "test",
+  domain: "devflix.watch",
+  type: dnsimple.RecordTypes.CNAME,
+  value: "api.devflix.watch.herokudns.com"
 });
 
-export let record = record.domainId;
+export default record.urn;

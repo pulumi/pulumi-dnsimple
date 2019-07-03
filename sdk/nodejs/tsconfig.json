@@ -18,6 +18,7 @@
         "index.ts",
         "provider.ts",
         "record.ts",
+        "recordType.ts",
         "utilities.ts"
     ]
 }

@@ -4,6 +4,8 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+import {RecordType} from "./index";
+
 /**
  * Provides a DNSimple record resource.
  * 
@@ -16,6 +18,7 @@ import * as utilities from "./utilities";
  * // Add a record to the root domain
  * const foobar = new dnsimple.Record("foobar", {
  *     domain: var_dnsimple_domain,
+ *     name: "",
  *     ttl: "3600",
  *     type: "A",
  *     value: "192.168.0.11",
@@ -29,6 +32,7 @@ import * as utilities from "./utilities";
  * // Add a record to a sub-domain
  * const foobar = new dnsimple.Record("foobar", {
  *     domain: var_dnsimple_domain,
+ *     name: "terraform",
  *     ttl: "3600",
  *     type: "A",
  *     value: "192.168.0.11",
@@ -81,15 +85,15 @@ export class Record extends pulumi.CustomResource {
     /**
      * The priority of the record - only useful for some record types
      */
-    public readonly priority!: pulumi.Output<string>;
+    public readonly priority!: pulumi.Output<number>;
     /**
      * The TTL of the record
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    public readonly ttl!: pulumi.Output<number | undefined>;
     /**
      * The type of the record
      */
-    public readonly type!: pulumi.Output<string>;
+    public readonly type!: pulumi.Output<RecordType>;
     /**
      * The value of the record
      */
@@ -119,6 +123,9 @@ export class Record extends pulumi.CustomResource {
             const args = argsOrState as RecordArgs | undefined;
             if (!args || args.domain === undefined) {
                 throw new Error("Missing required property 'domain'");
+            }
+            if (!args || args.name === undefined) {
+                throw new Error("Missing required property 'name'");
             }
             if (!args || args.type === undefined) {
                 throw new Error("Missing required property 'type'");
@@ -162,15 +169,15 @@ export interface RecordState {
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<string>;
+    readonly priority?: pulumi.Input<number>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<string>;
+    readonly ttl?: pulumi.Input<number>;
     /**
      * The type of the record
      */
-    readonly type?: pulumi.Input<string>;
+    readonly type?: pulumi.Input<RecordType>;
     /**
      * The value of the record
      */
@@ -188,19 +195,19 @@ export interface RecordArgs {
     /**
      * The name of the record
      */
-    readonly name?: pulumi.Input<string>;
+    readonly name: pulumi.Input<string>;
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<string>;
+    readonly priority?: pulumi.Input<number>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<string>;
+    readonly ttl?: pulumi.Input<number>;
     /**
      * The type of the record
      */
-    readonly type: pulumi.Input<string>;
+    readonly type: pulumi.Input<RecordType>;
     /**
      * The value of the record
      */

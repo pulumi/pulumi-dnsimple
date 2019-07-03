@@ -72,8 +72,37 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:             "https://pulumi.io",
 		Repository:           "https://github.com/pulumi/pulumi-dnsimple",
 		PreConfigureCallback: preConfigureCallback,
+		Config: map[string]*tfbridge.SchemaInfo{
+			"token": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"DNSIMPLE_TOKEN"},
+				},
+			},
+			"account": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   "",
+					EnvVars: []string{"DNSIMPLE_ACCOUNT"},
+				},
+			},
+		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {Tok: makeResource(mainMod, "Record")},
+			"dnsimple_record": {Tok: makeResource(mainMod, "Record"),
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": {
+						Type: "string",
+					},
+					"ttl": {
+						Type: "number",
+					},
+					"priority": {
+						Type: "number",
+					},
+					"type": {
+						Type: makeType(mainMod, "RecordType"),
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
@@ -85,6 +114,11 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^8.0.25", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
+			Overlay: &tfbridge.OverlayInfo{
+				DestFiles: []string{
+					"recordType.ts",
+				},
+			},
 		},
 		Python: &tfbridge.PythonInfo{
 			// List any Python dependencies and their version ranges
@@ -92,23 +126,6 @@ func Provider() tfbridge.ProviderInfo {
 				"pulumi": ">=0.16.4,<0.17.0",
 			},
 		},
-	}
-
-	// For all resources with name properties, we will add an auto-name property.  Make sure to skip those that
-	// already have a name mapping entry, since those may have custom overrides set above (e.g., for length).
-	const nameProperty = "name"
-	for resname, res := range prov.Resources {
-		if schema := p.ResourcesMap[resname]; schema != nil {
-			// Only apply auto-name to input properties (Optional || Required) named `name`
-			if tfs, has := schema.Schema[nameProperty]; has && (tfs.Optional || tfs.Required) {
-				if _, hasfield := res.Fields[nameProperty]; !hasfield {
-					if res.Fields == nil {
-						res.Fields = make(map[string]*tfbridge.SchemaInfo)
-					}
-					res.Fields[nameProperty] = tfbridge.AutoName(nameProperty, 255)
-				}
-			}
-		}
 	}
 
 	return prov

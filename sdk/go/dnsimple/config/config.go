@@ -10,7 +10,14 @@ import (
 
 // The account for API operations.
 func GetAccount(ctx *pulumi.Context) string {
-	return config.Get(ctx, "dnsimple:account")
+	v, err := config.Try(ctx, "dnsimple:account")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "DNSIMPLE_ACCOUNT").(string); ok {
+		return dv
+	}
+	return v
 }
 
 // The DNSimple account email address.
@@ -20,5 +27,12 @@ func GetEmail(ctx *pulumi.Context) string {
 
 // The API v2 token for API operations.
 func GetToken(ctx *pulumi.Context) string {
-	return config.Get(ctx, "dnsimple:token")
+	v, err := config.Try(ctx, "dnsimple:token")
+	if err == nil {
+		return v
+	}
+	if dv, ok := getEnvOrDefault("", nil, "DNSIMPLE_TOKEN").(string); ok {
+		return dv
+	}
+	return v
 }

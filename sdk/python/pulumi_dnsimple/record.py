@@ -73,6 +73,8 @@ class Record(pulumi.CustomResource):
             raise TypeError("Missing required property 'domain'")
         __props__['domain'] = domain
 
+        if name is None:
+            raise TypeError("Missing required property 'name'")
         __props__['name'] = name
 
         __props__['priority'] = priority

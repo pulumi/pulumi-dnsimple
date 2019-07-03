@@ -35,13 +35,13 @@ class Provider(pulumi.ProviderResource):
         __props__ = dict()
 
         if account is None:
-            raise TypeError("Missing required property 'account'")
+            account = (utilities.get_env('DNSIMPLE_ACCOUNT') or '')
         __props__['account'] = account
 
         __props__['email'] = email
 
         if token is None:
-            raise TypeError("Missing required property 'token'")
+            token = (utilities.get_env('DNSIMPLE_TOKEN') or '')
         __props__['token'] = token
 
         super(Provider, __self__).__init__(

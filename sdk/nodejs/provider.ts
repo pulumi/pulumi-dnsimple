@@ -33,18 +33,12 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let inputs: pulumi.Inputs = {};
         {
-            if (!args || args.account === undefined) {
-                throw new Error("Missing required property 'account'");
-            }
-            if (!args || args.token === undefined) {
-                throw new Error("Missing required property 'token'");
-            }
-            inputs["account"] = args ? args.account : undefined;
+            inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("DNSIMPLE_ACCOUNT") || "");
             inputs["email"] = args ? args.email : undefined;
-            inputs["token"] = args ? args.token : undefined;
+            inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("DNSIMPLE_TOKEN") || "");
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }
@@ -57,7 +51,7 @@ export interface ProviderArgs {
     /**
      * The account for API operations.
      */
-    readonly account: pulumi.Input<string>;
+    readonly account?: pulumi.Input<string>;
     /**
      * The DNSimple account email address.
      */
@@ -65,5 +59,5 @@ export interface ProviderArgs {
     /**
      * The API v2 token for API operations.
      */
-    readonly token: pulumi.Input<string>;
+    readonly token?: pulumi.Input<string>;
 }
