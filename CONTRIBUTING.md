@@ -15,11 +15,4 @@ If a large number of seemingly-unrelated diffs are produced by `make` (for examp
 to comments unrelated to the change you are making), ensure that the latest dependencies for the
 provider are installed by running `make ensure` in the root of the repository.
 
-## Running Integration Tests
-
-The examples and integration tests in this repository will create and destroy real AWS
-cloud resources while running. Before running these tests, make sure that you have
-[configured Pulumi with AWS](https://pulumi.io/install/aws.html) successfully once before.
-
-_TODO: Add any steps you need to take to run integration tests here_
 
