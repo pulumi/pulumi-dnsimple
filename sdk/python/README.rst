@@ -52,10 +52,13 @@ Configuration
 
 The following configuration points are available:
 
--  ``dnsimple:token`` - (required) The address for the dnsimple server
-   connection.
--  ``dnsimple:account`` - (required) The port for the dnsimple server
-   connection. The default is 5432.
+-  ``dnsimple:token`` - (required) The DNSimple API v2 token. Please
+   note that this must be an API v2 token. You can use either an User or
+   Account token, but an Account token is recommended. Can be sourced
+   from ``DNSIMPLE_TOKEN`` environment variable.
+-  ``dnsimple:account`` - (required) The ID of the account associated
+   with the token. Can be sourced from ``DNSIMPLE_ACCOUNT`` environment
+   variable.
 
 Reference
 ---------
