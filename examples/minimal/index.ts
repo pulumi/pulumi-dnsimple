@@ -16,7 +16,7 @@ import * as dnsimple from "@pulumi/dnsimple";
 
 let record = new dnsimple.Record("test", {
   name: "test",
-  domain: "devflix.watch",
+  domain: "stack72.dev",
   type: dnsimple.RecordTypes.CNAME,
   value: "api.devflix.watch.herokudns.com"
 });
