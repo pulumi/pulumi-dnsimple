@@ -36,10 +36,7 @@ func TestExamples(t *testing.T) {
 		// List each test
 		baseJS.With(integration.ProgramTestOptions{
 			Dir: path.Join(cwd, "minimal"),
-			Config: map[string]string{
-				"dnsimple:token": "FOOBAR",
-				"dnsimple:account": "ACCOUNTID",
-			},
+			Config: map[string]string{},
 			Dependencies: []string{
 				"@pulumi/dnsimple",
 			},
