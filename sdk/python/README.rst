@@ -21,13 +21,13 @@ To use from JavaScript or TypeScript in Node.js, install using either
 
 ::
 
-   $ npm install @pulumi/dnsimple
+    $ npm install @pulumi/dnsimple
 
 or ``yarn``:
 
 ::
 
-   $ yarn add @pulumi/dnsimple
+    $ yarn add @pulumi/dnsimple
 
 Python
 ~~~~~~
@@ -36,7 +36,7 @@ To use from Python, install using ``pip``:
 
 ::
 
-   $ pip install pulumi_dnsimple
+    $ pip install pulumi_dnsimple
 
 Go
 ~~
@@ -45,7 +45,7 @@ To use from Go, use ``go get`` to grab the latest version of the library
 
 ::
 
-   $ go get github.com/pulumi/pulumi-dnsimple/sdk/go/...
+    $ go get github.com/pulumi/pulumi-dnsimple/sdk/go/...
 
 Configuration
 -------------
