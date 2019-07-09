@@ -53,6 +53,8 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] ttl: The TTL of the record
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
+
+        > This content is derived from https://github.com/terraform-providers/terraform-provider-dnsimple/blob/master/website/docs/r/record.html.markdown.
         """
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)

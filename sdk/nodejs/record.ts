@@ -6,39 +6,6 @@ import * as utilities from "./utilities";
 
 import {RecordType} from "./index";
 
-/**
- * Provides a DNSimple record resource.
- * 
- * ## Example Usage
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- * 
- * // Add a record to the root domain
- * const foobar = new dnsimple.Record("foobar", {
- *     domain: var_dnsimple_domain,
- *     name: "",
- *     ttl: "3600",
- *     type: "A",
- *     value: "192.168.0.11",
- * });
- * ```
- * 
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- * 
- * // Add a record to a sub-domain
- * const foobar = new dnsimple.Record("foobar", {
- *     domain: var_dnsimple_domain,
- *     name: "terraform",
- *     ttl: "3600",
- *     type: "A",
- *     value: "192.168.0.11",
- * });
- * ```
- */
 export class Record extends pulumi.CustomResource {
     /**
      * Get an existing Record resource's state with the given name, ID, and optional extra
