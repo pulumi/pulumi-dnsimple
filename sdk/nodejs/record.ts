@@ -6,6 +6,9 @@ import * as utilities from "./utilities";
 
 import {RecordType} from "./index";
 
+/**
+ * > This content is derived from https://github.com/terraform-providers/terraform-provider-dnsimple/blob/master/website/docs/r/record.html.markdown.
+ */
 export class Record extends pulumi.CustomResource {
     /**
      * Get an existing Record resource's state with the given name, ID, and optional extra
