@@ -8,7 +8,7 @@ import * as utilities from "./utilities";
  * The provider type for the dnsimple package. By default, resources use package-wide configuration
  * settings, however an explicit `Provider` instance may be created and passed during resource
  * construction to achieve fine-grained programmatic control over provider settings. See the
- * [documentation](https://pulumi.io/reference/programming-model.html#providers) for more information.
+ * [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
  *
  * > This content is derived from https://github.com/terraform-providers/terraform-provider-dnsimple/blob/master/website/docs/index.html.markdown.
  */
@@ -41,6 +41,13 @@ export class Provider extends pulumi.ProviderResource {
             inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("DNSIMPLE_ACCOUNT") || "");
             inputs["email"] = args ? args.email : undefined;
             inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("DNSIMPLE_TOKEN") || "");
+        }
+        if (!opts) {
+            opts = {}
+        }
+
+        if (!opts.version) {
+            opts.version = utilities.getVersion();
         }
         super(Provider.__pulumiType, name, inputs, opts);
     }

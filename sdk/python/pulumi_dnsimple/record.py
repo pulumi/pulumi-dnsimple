@@ -94,6 +94,10 @@ class Record(pulumi.CustomResource):
         __props__['domain_id'] = None
         __props__['hostname'] = None
 
+        if opts is None:
+            opts = pulumi.ResourceOptions()
+        if opts.version is None:
+            opts.version = utilities.get_version()
         super(Record, __self__).__init__(
             'dnsimple:index/record:Record',
             resource_name,
