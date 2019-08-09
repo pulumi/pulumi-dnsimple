@@ -32,7 +32,7 @@ require (
 	github.com/googleapis/gax-go/v2 v2.0.5 // indirect
 	github.com/gostaticanalysis/analysisutil v0.0.0-20190329151158-56bca42c7635 // indirect
 	github.com/grpc-ecosystem/grpc-gateway v1.9.1 // indirect
-	github.com/hashicorp/terraform v0.12.5
+	github.com/hashicorp/terraform v0.12.6
 	github.com/kisielk/errcheck v1.2.0 // indirect
 	github.com/klauspost/compress v1.7.0 // indirect
 	github.com/klauspost/cpuid v1.2.1 // indirect
@@ -48,7 +48,7 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/prometheus/client_golang v1.0.0 // indirect
 	github.com/pulumi/pulumi v0.17.28-0.20190731182900-6804d640fc7c
-	github.com/pulumi/pulumi-terraform v0.18.4-0.20190805204638-013b95b1c891
+	github.com/pulumi/pulumi-terraform v0.18.4-0.20190809001837-9db2fc93cdf5
 	github.com/rogpeppe/fastuuid v1.1.0 // indirect
 	github.com/russross/blackfriday v2.0.0+incompatible // indirect
 	github.com/shirou/gopsutil v2.18.12+incompatible // indirect
