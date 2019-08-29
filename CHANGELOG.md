@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade pulumi-terraform to 3f206601e7
+_(none)_
 
 ---
+
+## 0.18.6 (2019-08-29)
+* Upgrade pulumi-terraform to 3f206601e7
 
 ## 0.18.5 (2019-08-20)
 * Depend on latest pulumi package
@@ -20,4 +23,3 @@
 
 ## 0.18.0 (2019-07-06)
 * Initial release of `pulumi-dnsimple`, based on `v0.2.0` of the dnsimple Terraform provider.
-
