@@ -27,7 +27,6 @@ require (
 	github.com/sirupsen/logrus v1.4.2 // indirect
 	github.com/spf13/afero v1.2.2 // indirect
 	github.com/spf13/cobra v0.0.5 // indirect
-	github.com/stretchr/testify v1.3.1-0.20190311161405-34c6fa2dc709
 	github.com/terraform-providers/terraform-provider-dnsimple v0.2.0
 	go.opencensus.io v0.22.0 // indirect
 	golang.org/x/sys v0.0.0-20190616124812-15dcb6c0061f // indirect
