@@ -3,7 +3,6 @@ module github.com/pulumi/pulumi-dnsimple
 go 1.12
 
 replace (
-	git.apache.org/thrift.git => github.com/apache/thrift v0.12.0
 	github.com/Azure/azure-sdk-for-go => github.com/Azure/azure-sdk-for-go v31.1.0+incompatible
 	github.com/Azure/go-autorest => github.com/Azure/go-autorest v12.4.3+incompatible
 	github.com/Nvveen/Gotty => github.com/ijc25/Gotty v0.0.0-20170406111628-a8b993ba6abd
@@ -29,6 +28,7 @@ require (
 	github.com/spf13/cobra v0.0.5 // indirect
 	github.com/terraform-providers/terraform-provider-dnsimple v0.2.0
 	go.opencensus.io v0.22.0 // indirect
+	golang.org/x/xerrors v0.0.0-20190717185122-a985d3407aa7 // indirect
 	google.golang.org/appengine v1.6.1 // indirect
 	google.golang.org/genproto v0.0.0-20190611190212-a7e196e89fd3 // indirect
 )
