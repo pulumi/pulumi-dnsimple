@@ -3,7 +3,7 @@
 
 using System.Collections.Immutable;
 
-namespace Pulumi.Dnsimple.Config
+namespace Pulumi.Dnsimple
 {
     public static class Config
     {

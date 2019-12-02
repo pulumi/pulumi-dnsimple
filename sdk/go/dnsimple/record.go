@@ -78,53 +78,53 @@ func GetRecord(ctx *pulumi.Context,
 }
 
 // URN is this resource's unique name assigned by Pulumi.
-func (r *Record) URN() *pulumi.URNOutput {
+func (r *Record) URN() pulumi.URNOutput {
 	return r.s.URN()
 }
 
 // ID is this resource's unique identifier assigned by its provider.
-func (r *Record) ID() *pulumi.IDOutput {
+func (r *Record) ID() pulumi.IDOutput {
 	return r.s.ID()
 }
 
 // The domain to add the record to
-func (r *Record) Domain() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domain"])
+func (r *Record) Domain() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domain"])
 }
 
 // The domain ID of the record
-func (r *Record) DomainId() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["domainId"])
+func (r *Record) DomainId() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["domainId"])
 }
 
 // The FQDN of the record
-func (r *Record) Hostname() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["hostname"])
+func (r *Record) Hostname() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["hostname"])
 }
 
 // The name of the record
-func (r *Record) Name() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["name"])
+func (r *Record) Name() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["name"])
 }
 
 // The priority of the record - only useful for some record types
-func (r *Record) Priority() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["priority"])
+func (r *Record) Priority() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["priority"])
 }
 
 // The TTL of the record
-func (r *Record) Ttl() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["ttl"])
+func (r *Record) Ttl() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["ttl"])
 }
 
 // The type of the record
-func (r *Record) Type() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["type"])
+func (r *Record) Type() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["type"])
 }
 
 // The value of the record
-func (r *Record) Value() *pulumi.StringOutput {
-	return (*pulumi.StringOutput)(r.s.State["value"])
+func (r *Record) Value() pulumi.StringOutput {
+	return (pulumi.StringOutput)(r.s.State["value"])
 }
 
 // Input properties used for looking up and filtering Record resources.
