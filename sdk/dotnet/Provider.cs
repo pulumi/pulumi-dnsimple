@@ -5,7 +5,7 @@ using System.Collections.Immutable;
 using System.Threading.Tasks;
 using Pulumi.Serialization;
 
-namespace Pulumi.Dnsimple
+namespace Pulumi.DNSimple
 {
     /// <summary>
     /// The provider type for the dnsimple package. By default, resources use package-wide configuration
