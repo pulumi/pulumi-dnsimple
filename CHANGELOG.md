@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
-_(none)_
+* Namespace names in .NET SDK are adjusted to PascalCase
+([#19](https://github.com/pulumi/pulumi-dnsimple/pull/19)).
 
 ---
 
