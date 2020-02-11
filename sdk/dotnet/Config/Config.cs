@@ -15,11 +15,6 @@ namespace Pulumi.DNSimple
         public static string? Account { get; set; } = __config.Get("account") ?? Utilities.GetEnv("DNSIMPLE_ACCOUNT") ?? "";
 
         /// <summary>
-        /// The DNSimple account email address.
-        /// </summary>
-        public static string? Email { get; set; } = __config.Get("email");
-
-        /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("DNSIMPLE_TOKEN") ?? "";
