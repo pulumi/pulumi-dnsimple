@@ -1,9 +1,12 @@
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.2.0 (2020-02-12)
 * Namespace names in .NET SDK are adjusted to PascalCase
 ([#19](https://github.com/pulumi/pulumi-dnsimple/pull/19)).
 * Upgrade to v0.3.0 of the DNSimple Terraform Provider
-
----
 
 ## 1.1.0 (2019-12-04)
 * Upgrade to support go 1.13.x
