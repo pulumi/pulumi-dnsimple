@@ -39,7 +39,6 @@ export class Provider extends pulumi.ProviderResource {
         let inputs: pulumi.Inputs = {};
         {
             inputs["account"] = (args ? args.account : undefined) || (utilities.getEnv("DNSIMPLE_ACCOUNT") || "");
-            inputs["email"] = args ? args.email : undefined;
             inputs["token"] = (args ? args.token : undefined) || (utilities.getEnv("DNSIMPLE_TOKEN") || "");
         }
         if (!opts) {
@@ -61,10 +60,6 @@ export interface ProviderArgs {
      * The account for API operations.
      */
     readonly account?: pulumi.Input<string>;
-    /**
-     * The DNSimple account email address.
-     */
-    readonly email?: pulumi.Input<string>;
     /**
      * The API v2 token for API operations.
      */

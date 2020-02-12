@@ -10,7 +10,7 @@ from typing import Union
 from . import utilities, tables
 
 class Provider(pulumi.ProviderResource):
-    def __init__(__self__, resource_name, opts=None, account=None, email=None, token=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__, resource_name, opts=None, account=None, token=None, __props__=None, __name__=None, __opts__=None):
         """
         The provider type for the dnsimple package. By default, resources use package-wide configuration
         settings, however an explicit `Provider` instance may be created and passed during resource
@@ -42,7 +42,6 @@ class Provider(pulumi.ProviderResource):
             if account is None:
                 account = (utilities.get_env('DNSIMPLE_ACCOUNT') or '')
             __props__['account'] = account
-            __props__['email'] = email
             if token is None:
                 token = (utilities.get_env('DNSIMPLE_TOKEN') or '')
             __props__['token'] = token

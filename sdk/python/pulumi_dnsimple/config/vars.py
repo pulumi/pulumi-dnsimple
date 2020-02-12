@@ -16,11 +16,6 @@ account = __config__.get('account') or (utilities.get_env('DNSIMPLE_ACCOUNT') or
 The account for API operations.
 """
 
-email = __config__.get('email')
-"""
-The DNSimple account email address.
-"""
-
 token = __config__.get('token') or (utilities.get_env('DNSIMPLE_TOKEN') or '')
 """
 The API v2 token for API operations.

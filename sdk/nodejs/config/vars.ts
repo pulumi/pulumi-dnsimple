@@ -11,10 +11,6 @@ let __config = new pulumi.Config("dnsimple");
  */
 export let account: string | undefined = __config.get("account") || (utilities.getEnv("DNSIMPLE_ACCOUNT") || "");
 /**
- * The DNSimple account email address.
- */
-export let email: string | undefined = __config.get("email");
-/**
  * The API v2 token for API operations.
  */
 export let token: string | undefined = __config.get("token") || (utilities.getEnv("DNSIMPLE_TOKEN") || "");
