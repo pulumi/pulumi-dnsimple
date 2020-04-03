@@ -76,8 +76,10 @@ install:: tfgen provider
 	[ ! -e "$(PULUMI_NUGET)" ] || rm -rf "$(PULUMI_NUGET)/*"
 	find . -name '*.nupkg' -exec cp -p {} ${PULUMI_NUGET} \;
 
+test_fast::
+	cd examples && $(GO_TEST_FAST) .
 test_all::
-	PATH=$(PULUMI_BIN):$(PATH) go test -v -count=1 -cover -timeout 1h -parallel ${TESTPARALLELISM} ./examples
+	cd examples && $(GO_TEST) .
 
 .PHONY: publish_tgz
 publish_tgz:
