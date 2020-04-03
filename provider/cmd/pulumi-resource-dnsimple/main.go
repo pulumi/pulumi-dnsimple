@@ -19,8 +19,8 @@ package main
 import (
 	"github.com/pulumi/pulumi-terraform-bridge/pkg/tfbridge"
 
-	dnsimple "github.com/pulumi/pulumi-dnsimple"
-	"github.com/pulumi/pulumi-dnsimple/pkg/version"
+	dnsimple "github.com/pulumi/pulumi-dnsimple/provider"
+	"github.com/pulumi/pulumi-dnsimple/provider/pkg/version"
 )
 
 func main() {

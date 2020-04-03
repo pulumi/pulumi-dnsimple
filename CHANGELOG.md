@@ -1,5 +1,8 @@
 ## HEAD (Unreleased)
-_(none)_
+
+* Refactor layout to support Go modules
+* Upgrade to Pulumi v1.13.1
+* Upgrade to pulumi-terraform-bridge v1.8.r
 
 ---
 

@@ -150,4 +150,3 @@ type RecordArgs struct {
 func (RecordArgs) ElementType() reflect.Type {
 	return reflect.TypeOf((*recordArgs)(nil)).Elem()
 }
-
