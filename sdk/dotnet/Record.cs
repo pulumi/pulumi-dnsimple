@@ -12,6 +12,8 @@ namespace Pulumi.DNSimple
     /// <summary>
     /// Provides a DNSimple record resource.
     /// 
+    /// 
+    /// 
     /// &gt; This content is derived from https://github.com/terraform-providers/terraform-provider-dnsimple/blob/master/website/docs/r/record.html.markdown.
     /// </summary>
     public partial class Record : Pulumi.CustomResource
