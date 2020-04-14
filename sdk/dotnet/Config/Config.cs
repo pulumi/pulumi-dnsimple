@@ -8,7 +8,6 @@ namespace Pulumi.DNSimple
     public static class Config
     {
         private static readonly Pulumi.Config __config = new Pulumi.Config("dnsimple");
-
         /// <summary>
         /// The account for API operations.
         /// </summary>
@@ -19,8 +18,5 @@ namespace Pulumi.DNSimple
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("DNSIMPLE_TOKEN") ?? "";
 
-    }
-    namespace ConfigTypes
-    {
     }
 }

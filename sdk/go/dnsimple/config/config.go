@@ -4,8 +4,8 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi/sdk/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/go/pulumi/config"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v2/go/pulumi/config"
 )
 
 // The account for API operations.
@@ -14,15 +14,7 @@ func GetAccount(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "DNSIMPLE_ACCOUNT").(string); ok {
-		return dv
-	}
-	return v
-}
-
-// The DNSimple account email address.
-func GetEmail(ctx *pulumi.Context) string {
-	return config.Get(ctx, "dnsimple:email")
+	return getEnvOrDefault("", nil, "DNSIMPLE_ACCOUNT").(string)
 }
 
 // The API v2 token for API operations.
@@ -31,8 +23,5 @@ func GetToken(ctx *pulumi.Context) string {
 	if err == nil {
 		return v
 	}
-	if dv, ok := getEnvOrDefault("", nil, "DNSIMPLE_TOKEN").(string); ok {
-		return dv
-	}
-	return v
+	return getEnvOrDefault("", nil, "DNSIMPLE_TOKEN").(string)
 }
