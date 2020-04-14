@@ -1,10 +1,13 @@
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 1.4.0 (2020-04-14)
 
 * Refactor layout to support Go modules
 * Upgrade to Pulumi v1.13.1
 * Upgrade to pulumi-terraform-bridge v1.8.r
-
----
 
 ## 1.3.0 (2020-03-23)
 * Upgrade to Pulumi v1.12.1
