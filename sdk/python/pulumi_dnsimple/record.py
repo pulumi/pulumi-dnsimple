@@ -44,10 +44,7 @@ class Record(pulumi.CustomResource):
     """
     def __init__(__self__, resource_name, opts=None, domain=None, name=None, priority=None, ttl=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
         """
-        Provides a DNSimple record resource.
-
-
-
+        Create a Record resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to
