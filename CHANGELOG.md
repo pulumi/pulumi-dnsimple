@@ -1,5 +1,5 @@
 ## HEAD (Unreleased)
-_(none)_
+* Upgrade to v0.4.0 of the DNSimple Terraform Provider
 
 ---
 
