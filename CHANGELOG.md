@@ -1,5 +1,6 @@
 ## HEAD (Unreleased)
 * Upgrade to v0.4.0 of the DNSimple Terraform Provider
+* Upgrade to pulumi-terraform-bridge v2.3.3
 
 ---
 
