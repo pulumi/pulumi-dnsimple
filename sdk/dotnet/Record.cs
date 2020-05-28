@@ -9,9 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DNSimple
 {
-    /// <summary>
-    /// Provides a DNSimple record resource.
-    /// </summary>
     public partial class Record : Pulumi.CustomResource
     {
         /// <summary>
