@@ -3,6 +3,9 @@ _(none)_
 
 ---
 
+## 2.2.1 (2020-06-10)
+* Switch to GitHub actions for build
+
 ## 2.2.0 (2020-05-28)
 * Upgrade to Pulumi v2.3.0
 * Upgrade to v0.4.0 of the DNSimple Terraform Provider
