@@ -11,6 +11,58 @@ import (
 )
 
 // Provides a DNSimple record resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-dnsimple/sdk/v2/go/dnsimple"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
+// 			Domain: pulumi.Any(_var.Dnsimple_domain),
+// 			Name:   pulumi.String(""),
+// 			Ttl:    pulumi.Float64(3600),
+// 			Type:   pulumi.String("A"),
+// 			Value:  pulumi.String("192.168.0.11"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
+//
+// ```go
+// package main
+//
+// import (
+// 	"github.com/pulumi/pulumi-dnsimple/sdk/v2/go/dnsimple"
+// 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
+// )
+//
+// func main() {
+// 	pulumi.Run(func(ctx *pulumi.Context) error {
+// 		_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
+// 			Domain: pulumi.Any(_var.Dnsimple_domain),
+// 			Name:   pulumi.String("terraform"),
+// 			Ttl:    pulumi.Float64(3600),
+// 			Type:   pulumi.String("A"),
+// 			Value:  pulumi.String("192.168.0.11"),
+// 		})
+// 		if err != nil {
+// 			return err
+// 		}
+// 		return nil
+// 	})
+// }
+// ```
 type Record struct {
 	pulumi.CustomResourceState
 

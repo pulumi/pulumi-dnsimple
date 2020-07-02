@@ -9,6 +9,55 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DNSimple
 {
+    /// <summary>
+    /// Provides a DNSimple record resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a record to the root domain
+    ///         var foobar = new DNSimple.Record("foobar", new DNSimple.RecordArgs
+    ///         {
+    ///             Domain = @var.Dnsimple_domain,
+    ///             Name = "",
+    ///             Ttl = 3600,
+    ///             Type = "A",
+    ///             Value = "192.168.0.11",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// 
+    /// ```csharp
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// class MyStack : Stack
+    /// {
+    ///     public MyStack()
+    ///     {
+    ///         // Add a record to a sub-domain
+    ///         var foobar = new DNSimple.Record("foobar", new DNSimple.RecordArgs
+    ///         {
+    ///             Domain = @var.Dnsimple_domain,
+    ///             Name = "terraform",
+    ///             Ttl = 3600,
+    ///             Type = "A",
+    ///             Value = "192.168.0.11",
+    ///         });
+    ///     }
+    /// 
+    /// }
+    /// ```
+    /// </summary>
     public partial class Record : Pulumi.CustomResource
     {
         /// <summary>
