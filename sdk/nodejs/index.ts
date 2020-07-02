@@ -7,5 +7,5 @@ export * from "./record";
 export * from "./recordType";
 
 // Export sub-modules:
-import * as config from "./config/index";
+import * as config from "./config";
 export {config};
