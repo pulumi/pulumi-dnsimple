@@ -5,3 +5,8 @@
 # Export this package's modules as members:
 from .provider import *
 from .record import *
+
+# Make subpackages available:
+from . import (
+    config,
+)
