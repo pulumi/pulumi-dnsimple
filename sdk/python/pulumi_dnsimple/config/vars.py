@@ -5,17 +5,22 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from .. import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from .. import _utilities, _tables
+
+__all__ = [
+    'account',
+    'token',
+]
 
 __config__ = pulumi.Config('dnsimple')
 
-account = __config__.get('account') or (utilities.get_env('DNSIMPLE_ACCOUNT') or '')
+account = __config__.get('account') or (_utilities.get_env('DNSIMPLE_ACCOUNT') or '')
 """
 The account for API operations.
 """
 
-token = __config__.get('token') or (utilities.get_env('DNSIMPLE_TOKEN') or '')
+token = __config__.get('token') or (_utilities.get_env('DNSIMPLE_TOKEN') or '')
 """
 The API v2 token for API operations.
 """

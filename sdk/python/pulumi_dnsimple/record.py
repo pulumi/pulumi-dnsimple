@@ -5,44 +5,25 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Union
-from . import utilities, tables
+from typing import Any, Dict, List, Mapping, Optional, Tuple, Union
+from . import _utilities, _tables
+
+__all__ = ['Record']
 
 
 class Record(pulumi.CustomResource):
-    domain: pulumi.Output[str]
-    """
-    The domain to add the record to
-    """
-    domain_id: pulumi.Output[str]
-    """
-    The domain ID of the record
-    """
-    hostname: pulumi.Output[str]
-    """
-    The FQDN of the record
-    """
-    name: pulumi.Output[str]
-    """
-    The name of the record
-    """
-    priority: pulumi.Output[float]
-    """
-    The priority of the record - only useful for some record types
-    """
-    ttl: pulumi.Output[float]
-    """
-    The TTL of the record
-    """
-    type: pulumi.Output[str]
-    """
-    The type of the record
-    """
-    value: pulumi.Output[str]
-    """
-    The value of the record
-    """
-    def __init__(__self__, resource_name, opts=None, domain=None, name=None, priority=None, ttl=None, type=None, value=None, __props__=None, __name__=None, __opts__=None):
+    def __init__(__self__,
+                 resource_name,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         """
         Provides a DNSimple record resource.
 
@@ -94,7 +75,7 @@ class Record(pulumi.CustomResource):
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')
         if opts.version is None:
-            opts.version = utilities.get_version()
+            opts.version = _utilities.get_version()
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
@@ -123,13 +104,23 @@ class Record(pulumi.CustomResource):
             opts)
 
     @staticmethod
-    def get(resource_name, id, opts=None, domain=None, domain_id=None, hostname=None, name=None, priority=None, ttl=None, type=None, value=None):
+    def get(resource_name: str,
+            id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            domain: Optional[pulumi.Input[str]] = None,
+            domain_id: Optional[pulumi.Input[str]] = None,
+            hostname: Optional[pulumi.Input[str]] = None,
+            name: Optional[pulumi.Input[str]] = None,
+            priority: Optional[pulumi.Input[float]] = None,
+            ttl: Optional[pulumi.Input[float]] = None,
+            type: Optional[pulumi.Input[str]] = None,
+            value: Optional[pulumi.Input[str]] = None) -> 'Record':
         """
         Get an existing Record resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
-        :param str id: The unique provider ID of the resource to lookup.
+        :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to
         :param pulumi.Input[str] domain_id: The domain ID of the record
@@ -154,8 +145,73 @@ class Record(pulumi.CustomResource):
         __props__["value"] = value
         return Record(resource_name, opts=opts, __props__=__props__)
 
+    @property
+    @pulumi.getter
+    def domain(self) -> str:
+        """
+        The domain to add the record to
+        """
+        return pulumi.get(self, "domain")
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> str:
+        """
+        The domain ID of the record
+        """
+        return pulumi.get(self, "domain_id")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        The FQDN of the record
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the record
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def priority(self) -> float:
+        """
+        The priority of the record - only useful for some record types
+        """
+        return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[float]:
+        """
+        The TTL of the record
+        """
+        return pulumi.get(self, "ttl")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the record
+        """
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        The value of the record
+        """
+        return pulumi.get(self, "value")
+
     def translate_output_property(self, prop):
-        return tables._CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
+        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
 
     def translate_input_property(self, prop):
-        return tables._SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
+
