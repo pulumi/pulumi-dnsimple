@@ -13,7 +13,7 @@ __all__ = ['Record']
 
 class Record(pulumi.CustomResource):
     def __init__(__self__,
-                 resource_name,
+                 resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -147,7 +147,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def domain(self) -> str:
+    def domain(self) -> pulumi.Output[str]:
         """
         The domain to add the record to
         """
@@ -155,7 +155,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> str:
+    def domain_id(self) -> pulumi.Output[str]:
         """
         The domain ID of the record
         """
@@ -163,7 +163,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def hostname(self) -> str:
+    def hostname(self) -> pulumi.Output[str]:
         """
         The FQDN of the record
         """
@@ -171,7 +171,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def name(self) -> str:
+    def name(self) -> pulumi.Output[str]:
         """
         The name of the record
         """
@@ -179,7 +179,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> float:
+    def priority(self) -> pulumi.Output[float]:
         """
         The priority of the record - only useful for some record types
         """
@@ -187,7 +187,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[float]:
+    def ttl(self) -> pulumi.Output[Optional[float]]:
         """
         The TTL of the record
         """
@@ -195,7 +195,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def type(self) -> str:
+    def type(self) -> pulumi.Output[str]:
         """
         The type of the record
         """
@@ -203,7 +203,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def value(self) -> str:
+    def value(self) -> pulumi.Output[str]:
         """
         The value of the record
         """
