@@ -38,6 +38,16 @@ import {RecordType} from "./index";
  *     value: "192.168.0.11",
  * });
  * ```
+ *
+ * ## Import
+ *
+ * DNSimple resources can be imported using their domain name and numeric ID, e.g.
+ *
+ * ```sh
+ *  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+ * ```
+ *
+ *  The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
  */
 export class Record extends pulumi.CustomResource {
     /**
