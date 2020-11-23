@@ -55,6 +55,16 @@ class Record(pulumi.CustomResource):
             value="192.168.0.11")
         ```
 
+        ## Import
+
+        DNSimple resources can be imported using their domain name and numeric ID, e.g.
+
+        ```sh
+         $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+        ```
+
+         The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to
