@@ -48,7 +48,7 @@ setup(name='pulumi_dnsimple',
       packages=find_packages(),
       package_data={
           'pulumi_dnsimple': [
-              'py.typed'
+              'py.typed',
           ]
       },
       install_requires=[

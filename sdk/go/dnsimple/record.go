@@ -19,7 +19,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-dnsimple/sdk/v2/go/dnsimple"
+// 	"github.com/pulumi/pulumi-dnsimple/sdk/v2/go/dnsimple/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -44,7 +44,7 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-dnsimple/sdk/v2/go/dnsimple"
+// 	"github.com/pulumi/pulumi-dnsimple/sdk/v2/go/dnsimple/"
 // 	"github.com/pulumi/pulumi/sdk/v2/go/pulumi"
 // )
 //
@@ -219,15 +219,15 @@ type RecordInput interface {
 	ToRecordOutputWithContext(ctx context.Context) RecordOutput
 }
 
-func (Record) ElementType() reflect.Type {
-	return reflect.TypeOf((*Record)(nil)).Elem()
+func (*Record) ElementType() reflect.Type {
+	return reflect.TypeOf((*Record)(nil))
 }
 
-func (i Record) ToRecordOutput() RecordOutput {
+func (i *Record) ToRecordOutput() RecordOutput {
 	return i.ToRecordOutputWithContext(context.Background())
 }
 
-func (i Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
+func (i *Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(RecordOutput)
 }
 
@@ -236,7 +236,7 @@ type RecordOutput struct {
 }
 
 func (RecordOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*RecordOutput)(nil)).Elem()
+	return reflect.TypeOf((*Record)(nil))
 }
 
 func (o RecordOutput) ToRecordOutput() RecordOutput {
