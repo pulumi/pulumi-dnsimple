@@ -68,6 +68,7 @@ namespace Pulumi.DNSimple
     /// 
     ///  The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
     /// </summary>
+    [DNSimpleResourceType("dnsimple:index/record:Record")]
     public partial class Record : Pulumi.CustomResource
     {
         /// <summary>
