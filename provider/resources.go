@@ -76,20 +76,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:             "https://pulumi.io",
 		Repository:           "https://github.com/pulumi/pulumi-dnsimple",
 		PreConfigureCallback: preConfigureCallback,
-		Config: map[string]*tfbridge.SchemaInfo{
-			"token": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"DNSIMPLE_TOKEN"},
-				},
-			},
-			"account": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   "",
-					EnvVars: []string{"DNSIMPLE_ACCOUNT"},
-				},
-			},
-		},
+		Config:               map[string]*tfbridge.SchemaInfo{},
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"dnsimple_record": {Tok: makeResource(mainMod, "Record"),
 				Fields: map[string]*tfbridge.SchemaInfo{

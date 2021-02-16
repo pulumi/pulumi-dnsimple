@@ -9,8 +9,8 @@ let __config = new pulumi.Config("dnsimple");
 /**
  * The account for API operations.
  */
-export let account: string | undefined = __config.get("account") || (utilities.getEnv("DNSIMPLE_ACCOUNT") || "");
+export let account: string | undefined = __config.get("account");
 /**
  * The API v2 token for API operations.
  */
-export let token: string | undefined = __config.get("token") || (utilities.getEnv("DNSIMPLE_TOKEN") || "");
+export let token: string | undefined = __config.get("token");

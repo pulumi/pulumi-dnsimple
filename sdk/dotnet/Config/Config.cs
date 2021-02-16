@@ -11,12 +11,12 @@ namespace Pulumi.DNSimple
         /// <summary>
         /// The account for API operations.
         /// </summary>
-        public static string? Account { get; set; } = __config.Get("account") ?? Utilities.GetEnv("DNSIMPLE_ACCOUNT") ?? "";
+        public static string? Account { get; set; } = __config.Get("account");
 
         /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
-        public static string? Token { get; set; } = __config.Get("token") ?? Utilities.GetEnv("DNSIMPLE_TOKEN") ?? "";
+        public static string? Token { get; set; } = __config.Get("token");
 
     }
 }
