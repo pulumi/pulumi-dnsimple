@@ -25,7 +25,7 @@ namespace Pulumi.DNSimple
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
             : base("dnsimple", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -48,19 +48,17 @@ namespace Pulumi.DNSimple
         /// <summary>
         /// The account for API operations.
         /// </summary>
-        [Input("account")]
-        public Input<string>? Account { get; set; }
+        [Input("account", required: true)]
+        public Input<string> Account { get; set; } = null!;
 
         /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
-        [Input("token")]
-        public Input<string>? Token { get; set; }
+        [Input("token", required: true)]
+        public Input<string> Token { get; set; } = null!;
 
         public ProviderArgs()
         {
-            Account = Utilities.GetEnv("DNSIMPLE_ACCOUNT") ?? "";
-            Token = Utilities.GetEnv("DNSIMPLE_TOKEN") ?? "";
         }
     }
 }

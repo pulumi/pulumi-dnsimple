@@ -15,12 +15,12 @@ __all__ = [
 
 __config__ = pulumi.Config('dnsimple')
 
-account = __config__.get('account') or (_utilities.get_env('DNSIMPLE_ACCOUNT') or '')
+account = __config__.get('account')
 """
 The account for API operations.
 """
 
-token = __config__.get('token') or (_utilities.get_env('DNSIMPLE_TOKEN') or '')
+token = __config__.get('token')
 """
 The API v2 token for API operations.
 """
