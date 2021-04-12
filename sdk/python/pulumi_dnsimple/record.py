@@ -5,13 +5,113 @@
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities, _tables
 
-__all__ = ['Record']
+__all__ = ['RecordArgs', 'Record']
+
+@pulumi.input_type
+class RecordArgs:
+    def __init__(__self__, *,
+                 domain: pulumi.Input[str],
+                 name: pulumi.Input[str],
+                 type: pulumi.Input[str],
+                 value: pulumi.Input[str],
+                 priority: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None):
+        """
+        The set of arguments for constructing a Record resource.
+        :param pulumi.Input[str] domain: The domain to add the record to
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] value: The value of the record
+        :param pulumi.Input[float] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[float] ttl: The TTL of the record
+        """
+        pulumi.set(__self__, "domain", domain)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "type", type)
+        pulumi.set(__self__, "value", value)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> pulumi.Input[str]:
+        """
+        The domain to add the record to
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of the record
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of the record
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        The value of the record
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[float]]:
+        """
+        The priority of the record - only useful for some record types
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[float]]:
+        """
+        The TTL of the record
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "ttl", value)
 
 
 class Record(pulumi.CustomResource):
+    @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
@@ -74,6 +174,77 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         """
+        ...
+    @overload
+    def __init__(__self__,
+                 resource_name: str,
+                 args: RecordArgs,
+                 opts: Optional[pulumi.ResourceOptions] = None):
+        """
+        Provides a DNSimple record resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to the root domain
+        foobar = dnsimple.Record("foobar",
+            domain=var["dnsimple_domain"],
+            name="",
+            ttl=3600,
+            type="A",
+            value="192.168.0.11")
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to a sub-domain
+        foobar = dnsimple.Record("foobar",
+            domain=var["dnsimple_domain"],
+            name="terraform",
+            ttl=3600,
+            type="A",
+            value="192.168.0.11")
+        ```
+
+        ## Import
+
+        DNSimple resources can be imported using their domain name and numeric ID, e.g.
+
+        ```sh
+         $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+        ```
+
+         The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+
+        :param str resource_name: The name of the resource.
+        :param RecordArgs args: The arguments to use to populate this resource's properties.
+        :param pulumi.ResourceOptions opts: Options for the resource.
+        """
+        ...
+    def __init__(__self__, resource_name: str, *args, **kwargs):
+        resource_args, opts = _utilities.get_resource_args_opts(RecordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        if resource_args is not None:
+            __self__._internal_init(resource_name, opts, **resource_args.__dict__)
+        else:
+            __self__._internal_init(resource_name, *args, **kwargs)
+
+    def _internal_init(__self__,
+                 resource_name: str,
+                 opts: Optional[pulumi.ResourceOptions] = None,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None,
+                 __props__=None,
+                 __name__=None,
+                 __opts__=None):
         if __name__ is not None:
             warnings.warn("explicit use of __name__ is deprecated", DeprecationWarning)
             resource_name = __name__
