@@ -6,7 +6,7 @@ import warnings
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
-from . import _utilities, _tables
+from . import _utilities
 
 __all__ = ['RecordArgs', 'Record']
 
@@ -108,6 +108,142 @@ class RecordArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
+class _RecordState:
+    def __init__(__self__, *,
+                 domain: Optional[pulumi.Input[str]] = None,
+                 domain_id: Optional[pulumi.Input[str]] = None,
+                 hostname: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[float]] = None,
+                 ttl: Optional[pulumi.Input[float]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        Input properties used for looking up and filtering Record resources.
+        :param pulumi.Input[str] domain: The domain to add the record to
+        :param pulumi.Input[str] domain_id: The domain ID of the record
+        :param pulumi.Input[str] hostname: The FQDN of the record
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[float] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[float] ttl: The TTL of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] value: The value of the record
+        """
+        if domain is not None:
+            pulumi.set(__self__, "domain", domain)
+        if domain_id is not None:
+            pulumi.set(__self__, "domain_id", domain_id)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if priority is not None:
+            pulumi.set(__self__, "priority", priority)
+        if ttl is not None:
+            pulumi.set(__self__, "ttl", ttl)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add the record to
+        """
+        return pulumi.get(self, "domain")
+
+    @domain.setter
+    def domain(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain", value)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain ID of the record
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "domain_id", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FQDN of the record
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the record
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def priority(self) -> Optional[pulumi.Input[float]]:
+        """
+        The priority of the record - only useful for some record types
+        """
+        return pulumi.get(self, "priority")
+
+    @priority.setter
+    def priority(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter
+    def ttl(self) -> Optional[pulumi.Input[float]]:
+        """
+        The TTL of the record
+        """
+        return pulumi.get(self, "ttl")
+
+    @ttl.setter
+    def ttl(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "ttl", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the record
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the record
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 class Record(pulumi.CustomResource):
@@ -260,24 +396,24 @@ class Record(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = dict()
+            __props__ = RecordArgs.__new__(RecordArgs)
 
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
-            __props__['domain'] = domain
+            __props__.__dict__["domain"] = domain
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
-            __props__['name'] = name
-            __props__['priority'] = priority
-            __props__['ttl'] = ttl
+            __props__.__dict__["name"] = name
+            __props__.__dict__["priority"] = priority
+            __props__.__dict__["ttl"] = ttl
             if type is None and not opts.urn:
                 raise TypeError("Missing required property 'type'")
-            __props__['type'] = type
+            __props__.__dict__["type"] = type
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
-            __props__['value'] = value
-            __props__['domain_id'] = None
-            __props__['hostname'] = None
+            __props__.__dict__["value"] = value
+            __props__.__dict__["domain_id"] = None
+            __props__.__dict__["hostname"] = None
         super(Record, __self__).__init__(
             'dnsimple:index/record:Record',
             resource_name,
@@ -314,16 +450,16 @@ class Record(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = dict()
+        __props__ = _RecordState.__new__(_RecordState)
 
-        __props__["domain"] = domain
-        __props__["domain_id"] = domain_id
-        __props__["hostname"] = hostname
-        __props__["name"] = name
-        __props__["priority"] = priority
-        __props__["ttl"] = ttl
-        __props__["type"] = type
-        __props__["value"] = value
+        __props__.__dict__["domain"] = domain
+        __props__.__dict__["domain_id"] = domain_id
+        __props__.__dict__["hostname"] = hostname
+        __props__.__dict__["name"] = name
+        __props__.__dict__["priority"] = priority
+        __props__.__dict__["ttl"] = ttl
+        __props__.__dict__["type"] = type
+        __props__.__dict__["value"] = value
         return Record(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -389,10 +525,4 @@ class Record(pulumi.CustomResource):
         The value of the record
         """
         return pulumi.get(self, "value")
-
-    def translate_output_property(self, prop):
-        return _tables.CAMEL_TO_SNAKE_CASE_TABLE.get(prop) or prop
-
-    def translate_input_property(self, prop):
-        return _tables.SNAKE_TO_CAMEL_CASE_TABLE.get(prop) or prop
 
