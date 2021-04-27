@@ -15,6 +15,7 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "emailForward.ts",
         "index.ts",
         "provider.ts",
         "record.ts",

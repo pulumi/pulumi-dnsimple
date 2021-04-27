@@ -14,14 +14,18 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  account: pulumi.Input[str],
-                 token: pulumi.Input[str]):
+                 token: pulumi.Input[str],
+                 sandbox: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] account: The account for API operations.
         :param pulumi.Input[str] token: The API v2 token for API operations.
+        :param pulumi.Input[bool] sandbox: Flag to enable the sandbox API.
         """
         pulumi.set(__self__, "account", account)
         pulumi.set(__self__, "token", token)
+        if sandbox is not None:
+            pulumi.set(__self__, "sandbox", sandbox)
 
     @property
     @pulumi.getter
@@ -47,6 +51,18 @@ class ProviderArgs:
     def token(self, value: pulumi.Input[str]):
         pulumi.set(self, "token", value)
 
+    @property
+    @pulumi.getter
+    def sandbox(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Flag to enable the sandbox API.
+        """
+        return pulumi.get(self, "sandbox")
+
+    @sandbox.setter
+    def sandbox(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "sandbox", value)
+
 
 class Provider(pulumi.ProviderResource):
     @overload
@@ -54,6 +70,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[str]] = None,
+                 sandbox: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -65,6 +82,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] account: The account for API operations.
+        :param pulumi.Input[bool] sandbox: Flag to enable the sandbox API.
         :param pulumi.Input[str] token: The API v2 token for API operations.
         """
         ...
@@ -95,6 +113,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[str]] = None,
+                 sandbox: Optional[pulumi.Input[bool]] = None,
                  token: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         if opts is None:
@@ -111,6 +130,7 @@ class Provider(pulumi.ProviderResource):
             if account is None and not opts.urn:
                 raise TypeError("Missing required property 'account'")
             __props__.__dict__["account"] = account
+            __props__.__dict__["sandbox"] = pulumi.Output.from_input(sandbox).apply(pulumi.runtime.to_json) if sandbox is not None else None
             if token is None and not opts.urn:
                 raise TypeError("Missing required property 'token'")
             __props__.__dict__["token"] = token

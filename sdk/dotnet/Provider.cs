@@ -52,6 +52,12 @@ namespace Pulumi.DNSimple
         public Input<string> Account { get; set; } = null!;
 
         /// <summary>
+        /// Flag to enable the sandbox API.
+        /// </summary>
+        [Input("sandbox", json: true)]
+        public Input<bool>? Sandbox { get; set; }
+
+        /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
         [Input("token", required: true)]

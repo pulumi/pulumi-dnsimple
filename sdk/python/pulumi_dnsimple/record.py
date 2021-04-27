@@ -291,13 +291,19 @@ class Record(pulumi.CustomResource):
 
         ## Import
 
-        DNSimple resources can be imported using their domain name and numeric ID, e.g.
+        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
 
         ```sh
          $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
         ```
 
-         The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+         **Importing record www.example.com with record ID 1234**
+
+        ```sh
+         $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+        ```
+
+         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -347,13 +353,19 @@ class Record(pulumi.CustomResource):
 
         ## Import
 
-        DNSimple resources can be imported using their domain name and numeric ID, e.g.
+        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
 
         ```sh
          $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
         ```
 
-         The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+         **Importing record www.example.com with record ID 1234**
+
+        ```sh
+         $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+        ```
+
+         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param RecordArgs args: The arguments to use to populate this resource's properties.

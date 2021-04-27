@@ -5,6 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export * from "./emailForward";
 export * from "./provider";
 export * from "./record";
 export * from "./recordType";
@@ -17,12 +18,15 @@ export {
 };
 
 // Import resources to register:
+import { EmailForward } from "./emailForward";
 import { Record } from "./record";
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "dnsimple:index/emailForward:EmailForward":
+                return new EmailForward(name, <any>undefined, { urn })
             case "dnsimple:index/record:Record":
                 return new Record(name, <any>undefined, { urn })
             default:
@@ -30,6 +34,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("dnsimple", "index/emailForward", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/record", _module)
 
 import { Provider } from "./provider";

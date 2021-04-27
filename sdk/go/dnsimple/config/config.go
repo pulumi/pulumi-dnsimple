@@ -13,6 +13,11 @@ func GetAccount(ctx *pulumi.Context) string {
 	return config.Get(ctx, "dnsimple:account")
 }
 
+// Flag to enable the sandbox API.
+func GetSandbox(ctx *pulumi.Context) bool {
+	return config.GetBool(ctx, "dnsimple:sandbox")
+}
+
 // The API v2 token for API operations.
 func GetToken(ctx *pulumi.Context) string {
 	return config.Get(ctx, "dnsimple:token")
