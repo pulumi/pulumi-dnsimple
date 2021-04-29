@@ -1,11 +1,14 @@
 ## HEAD (Unreleased)
+_(none)_
+
+---
+
+## 3.1.0 (2021-04-29)
 * Upgrade to v0.5.1 of the DNSimple Terraform Provider
 * Changing the `dnsimple.Record` `ttl` and `priority` types to be string. These were originally set incorrectly as "int"
   which means that in some languages we received an error when reading from the DNSimple API which returns strings.  
   **PLEASE NOTE:**   
   This is a slight breaking change but is now the correct behaviour. This will not cause any replacements
-
----
 
 ## 3.0.0 (2021-04-19)
 * Depend on Pulumi 3.0, which includes improvements to Python resource arguments and key translation, Go SDK performance,
