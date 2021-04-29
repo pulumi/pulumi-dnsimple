@@ -1,5 +1,9 @@
 ## HEAD (Unreleased)
 * Upgrade to v0.5.1 of the DNSimple Terraform Provider
+* Changing the `dnsimple.Record` `ttl` and `priority` types to be string. These were originally set incorrectly as "int"
+  which means that in some languages we received an error when reading from the DNSimple API which returns strings.  
+  **PLEASE NOTE:**   
+  This is a slight breaking change but is now the correct behaviour. This will not cause any replacements
 
 ---
 

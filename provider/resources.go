@@ -73,12 +73,6 @@ func Provider() tfbridge.ProviderInfo {
 					"name": {
 						Type: "string",
 					},
-					"ttl": {
-						Type: "number",
-					},
-					"priority": {
-						Type: "number",
-					},
 					"type": {
 						Type: makeType(mainMod, "RecordType"),
 					},

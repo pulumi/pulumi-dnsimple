@@ -102,11 +102,11 @@ export class Record extends pulumi.CustomResource {
     /**
      * The priority of the record - only useful for some record types
      */
-    public readonly priority!: pulumi.Output<number>;
+    public readonly priority!: pulumi.Output<string>;
     /**
      * The TTL of the record
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    public readonly ttl!: pulumi.Output<string | undefined>;
     /**
      * The type of the record
      */
@@ -190,11 +190,11 @@ export interface RecordState {
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<number>;
+    readonly priority?: pulumi.Input<string>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<number>;
+    readonly ttl?: pulumi.Input<string>;
     /**
      * The type of the record
      */
@@ -220,11 +220,11 @@ export interface RecordArgs {
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<number>;
+    readonly priority?: pulumi.Input<string>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<number>;
+    readonly ttl?: pulumi.Input<string>;
     /**
      * The type of the record
      */
