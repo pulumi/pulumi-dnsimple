@@ -1,0 +1,3 @@
+name: dnsimple-record-csharp
+runtime: dotnet
+description: A dnsimple test

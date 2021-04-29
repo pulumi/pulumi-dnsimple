@@ -43,6 +43,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// The account for API operations.
 	Account string `pulumi:"account"`
+	// Flag to enable the sandbox API.
+	Sandbox *bool `pulumi:"sandbox"`
 	// The API v2 token for API operations.
 	Token string `pulumi:"token"`
 }
@@ -51,6 +53,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// The account for API operations.
 	Account pulumi.StringInput
+	// Flag to enable the sandbox API.
+	Sandbox pulumi.BoolPtrInput
 	// The API v2 token for API operations.
 	Token pulumi.StringInput
 }

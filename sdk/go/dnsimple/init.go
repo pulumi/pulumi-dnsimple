@@ -20,6 +20,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "dnsimple:index/emailForward:EmailForward":
+		r = &EmailForward{}
 	case "dnsimple:index/record:Record":
 		r = &Record{}
 	default:
@@ -53,6 +55,11 @@ func init() {
 	if err != nil {
 		fmt.Println("failed to determine package version. defaulting to v1: %v", err)
 	}
+	pulumi.RegisterResourceModule(
+		"dnsimple",
+		"index/emailForward",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"dnsimple",
 		"index/record",

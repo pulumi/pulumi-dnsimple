@@ -14,16 +14,17 @@
 package examples
 
 import (
-	"path"
+	"path/filepath"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
 )
 
-func TestAccMinimal(t *testing.T) {
+func TestAccRecordTs(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir: path.Join(getCwd(t), "minimal"),
+			RunUpdateTest: false,
+			Dir:           filepath.Join(getCwd(t), "record", "ts"),
 		})
 
 	integration.ProgramTest(t, &test)

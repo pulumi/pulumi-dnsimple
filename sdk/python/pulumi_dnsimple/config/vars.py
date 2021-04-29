@@ -10,6 +10,7 @@ from .. import _utilities
 
 __all__ = [
     'account',
+    'sandbox',
     'token',
 ]
 
@@ -18,6 +19,11 @@ __config__ = pulumi.Config('dnsimple')
 account = __config__.get('account')
 """
 The account for API operations.
+"""
+
+sandbox = __config__.get('sandbox')
+"""
+Flag to enable the sandbox API.
 """
 
 token = __config__.get('token')

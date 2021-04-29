@@ -44,6 +44,7 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'token'");
             }
             inputs["account"] = args ? args.account : undefined;
+            inputs["sandbox"] = pulumi.output(args ? args.sandbox : undefined).apply(JSON.stringify);
             inputs["token"] = args ? args.token : undefined;
         }
         if (!opts.version) {
@@ -61,6 +62,10 @@ export interface ProviderArgs {
      * The account for API operations.
      */
     readonly account: pulumi.Input<string>;
+    /**
+     * Flag to enable the sandbox API.
+     */
+    readonly sandbox?: pulumi.Input<boolean>;
     /**
      * The API v2 token for API operations.
      */

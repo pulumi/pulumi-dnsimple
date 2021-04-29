@@ -41,13 +41,19 @@ import {RecordType} from "./index";
  *
  * ## Import
  *
- * DNSimple resources can be imported using their domain name and numeric ID, e.g.
+ * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
  *
  * ```sh
  *  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
  * ```
  *
- *  The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+ *  **Importing record www.example.com with record ID 1234**
+ *
+ * ```sh
+ *  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+ * ```
+ *
+ *  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
  */
 export class Record extends pulumi.CustomResource {
     /**
@@ -96,11 +102,11 @@ export class Record extends pulumi.CustomResource {
     /**
      * The priority of the record - only useful for some record types
      */
-    public readonly priority!: pulumi.Output<number>;
+    public readonly priority!: pulumi.Output<string>;
     /**
      * The TTL of the record
      */
-    public readonly ttl!: pulumi.Output<number | undefined>;
+    public readonly ttl!: pulumi.Output<string | undefined>;
     /**
      * The type of the record
      */
@@ -184,11 +190,11 @@ export interface RecordState {
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<number>;
+    readonly priority?: pulumi.Input<string>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<number>;
+    readonly ttl?: pulumi.Input<string>;
     /**
      * The type of the record
      */
@@ -214,11 +220,11 @@ export interface RecordArgs {
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<number>;
+    readonly priority?: pulumi.Input<string>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<number>;
+    readonly ttl?: pulumi.Input<string>;
     /**
      * The type of the record
      */

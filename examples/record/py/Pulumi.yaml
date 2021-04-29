@@ -1,0 +1,3 @@
+name: dnsimple-record-py
+runtime: python
+description: A dnsimple test

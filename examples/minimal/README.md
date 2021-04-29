@@ -1,1 +1,0 @@
-# examples/dnsimple/minimal

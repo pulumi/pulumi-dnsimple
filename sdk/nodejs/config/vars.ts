@@ -11,6 +11,10 @@ let __config = new pulumi.Config("dnsimple");
  */
 export let account: string | undefined = __config.get("account");
 /**
+ * Flag to enable the sandbox API.
+ */
+export let sandbox: boolean | undefined = __config.getObject<boolean>("sandbox");
+/**
  * The API v2 token for API operations.
  */
 export let token: string | undefined = __config.get("token");

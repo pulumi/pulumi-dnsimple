@@ -17,16 +17,16 @@ class RecordArgs:
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  value: pulumi.Input[str],
-                 priority: Optional[pulumi.Input[float]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None):
+                 priority: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Record resource.
         :param pulumi.Input[str] domain: The domain to add the record to
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
-        :param pulumi.Input[float] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[float] ttl: The TTL of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] ttl: The TTL of the record
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "name", name)
@@ -87,26 +87,26 @@ class RecordArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[str]]:
         """
         The priority of the record - only useful for some record types
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[float]]:
+    def ttl(self) -> Optional[pulumi.Input[str]]:
         """
         The TTL of the record
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[float]]):
+    def ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -117,8 +117,8 @@ class _RecordState:
                  domain_id: Optional[pulumi.Input[str]] = None,
                  hostname: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None):
         """
@@ -127,8 +127,8 @@ class _RecordState:
         :param pulumi.Input[str] domain_id: The domain ID of the record
         :param pulumi.Input[str] hostname: The FQDN of the record
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[float] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[float] ttl: The TTL of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] ttl: The TTL of the record
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         """
@@ -199,26 +199,26 @@ class _RecordState:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[float]]:
+    def priority(self) -> Optional[pulumi.Input[str]]:
         """
         The priority of the record - only useful for some record types
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[float]]):
+    def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[float]]:
+    def ttl(self) -> Optional[pulumi.Input[str]]:
         """
         The TTL of the record
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[float]]):
+    def ttl(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ttl", value)
 
     @property
@@ -253,8 +253,8 @@ class Record(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -271,7 +271,7 @@ class Record(pulumi.CustomResource):
         foobar = dnsimple.Record("foobar",
             domain=var["dnsimple_domain"],
             name="",
-            ttl=3600,
+            ttl="3600",
             type="A",
             value="192.168.0.11")
         ```
@@ -284,27 +284,33 @@ class Record(pulumi.CustomResource):
         foobar = dnsimple.Record("foobar",
             domain=var["dnsimple_domain"],
             name="terraform",
-            ttl=3600,
+            ttl="3600",
             type="A",
             value="192.168.0.11")
         ```
 
         ## Import
 
-        DNSimple resources can be imported using their domain name and numeric ID, e.g.
+        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
 
         ```sh
          $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
         ```
 
-         The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+         **Importing record www.example.com with record ID 1234**
+
+        ```sh
+         $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+        ```
+
+         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] domain: The domain to add the record to
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[float] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[float] ttl: The TTL of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] ttl: The TTL of the record
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         """
@@ -327,7 +333,7 @@ class Record(pulumi.CustomResource):
         foobar = dnsimple.Record("foobar",
             domain=var["dnsimple_domain"],
             name="",
-            ttl=3600,
+            ttl="3600",
             type="A",
             value="192.168.0.11")
         ```
@@ -340,20 +346,26 @@ class Record(pulumi.CustomResource):
         foobar = dnsimple.Record("foobar",
             domain=var["dnsimple_domain"],
             name="terraform",
-            ttl=3600,
+            ttl="3600",
             type="A",
             value="192.168.0.11")
         ```
 
         ## Import
 
-        DNSimple resources can be imported using their domain name and numeric ID, e.g.
+        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
 
         ```sh
          $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
         ```
 
-         The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+         **Importing record www.example.com with record ID 1234**
+
+        ```sh
+         $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+        ```
+
+         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param RecordArgs args: The arguments to use to populate this resource's properties.
@@ -372,8 +384,8 @@ class Record(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[float]] = None,
-                 ttl: Optional[pulumi.Input[float]] = None,
+                 priority: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -418,8 +430,8 @@ class Record(pulumi.CustomResource):
             domain_id: Optional[pulumi.Input[str]] = None,
             hostname: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[float]] = None,
-            ttl: Optional[pulumi.Input[float]] = None,
+            priority: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None) -> 'Record':
         """
@@ -433,8 +445,8 @@ class Record(pulumi.CustomResource):
         :param pulumi.Input[str] domain_id: The domain ID of the record
         :param pulumi.Input[str] hostname: The FQDN of the record
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[float] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[float] ttl: The TTL of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] ttl: The TTL of the record
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         """
@@ -486,7 +498,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[float]:
+    def priority(self) -> pulumi.Output[str]:
         """
         The priority of the record - only useful for some record types
         """
@@ -494,7 +506,7 @@ class Record(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[Optional[float]]:
+    def ttl(self) -> pulumi.Output[Optional[str]]:
         """
         The TTL of the record
         """

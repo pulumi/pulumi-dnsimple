@@ -14,6 +14,11 @@ namespace Pulumi.DNSimple
         public static string? Account { get; set; } = __config.Get("account");
 
         /// <summary>
+        /// Flag to enable the sandbox API.
+        /// </summary>
+        public static bool? Sandbox { get; set; } = __config.GetBoolean("sandbox");
+
+        /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
         public static string? Token { get; set; } = __config.Get("token");

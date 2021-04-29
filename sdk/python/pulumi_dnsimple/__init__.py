@@ -3,6 +3,7 @@
 # *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 # Export this package's modules as members:
+from .email_forward import *
 from .provider import *
 from .record import *
 
@@ -23,13 +24,16 @@ def _register_module():
             return Module._version
 
         def construct(self, name: str, typ: str, urn: str) -> pulumi.Resource:
-            if typ == "dnsimple:index/record:Record":
+            if typ == "dnsimple:index/emailForward:EmailForward":
+                return EmailForward(name, pulumi.ResourceOptions(urn=urn))
+            elif typ == "dnsimple:index/record:Record":
                 return Record(name, pulumi.ResourceOptions(urn=urn))
             else:
                 raise Exception(f"unknown resource type {typ}")
 
 
     _module_instance = Module()
+    pulumi.runtime.register_resource_module("dnsimple", "index/emailForward", _module_instance)
     pulumi.runtime.register_resource_module("dnsimple", "index/record", _module_instance)
 
 

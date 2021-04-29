@@ -28,7 +28,7 @@ import (
 // 		_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
 // 			Domain: pulumi.Any(_var.Dnsimple_domain),
 // 			Name:   pulumi.String(""),
-// 			Ttl:    pulumi.Float64(3600),
+// 			Ttl:    pulumi.String("3600"),
 // 			Type:   pulumi.String("A"),
 // 			Value:  pulumi.String("192.168.0.11"),
 // 		})
@@ -53,7 +53,7 @@ import (
 // 		_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
 // 			Domain: pulumi.Any(_var.Dnsimple_domain),
 // 			Name:   pulumi.String("terraform"),
-// 			Ttl:    pulumi.Float64(3600),
+// 			Ttl:    pulumi.String("3600"),
 // 			Type:   pulumi.String("A"),
 // 			Value:  pulumi.String("192.168.0.11"),
 // 		})
@@ -67,13 +67,19 @@ import (
 //
 // ## Import
 //
-// DNSimple resources can be imported using their domain name and numeric ID, e.g.
+// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
 //
 // ```sh
 //  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
 // ```
 //
-//  The numeric ID can be found in the URL when editing a record on the dnsimple web dashboard.
+//  **Importing record www.example.com with record ID 1234**
+//
+// ```sh
+//  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+// ```
+//
+//  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 type Record struct {
 	pulumi.CustomResourceState
 
@@ -86,9 +92,9 @@ type Record struct {
 	// The name of the record
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The priority of the record - only useful for some record types
-	Priority pulumi.Float64Output `pulumi:"priority"`
+	Priority pulumi.StringOutput `pulumi:"priority"`
 	// The TTL of the record
-	Ttl pulumi.Float64PtrOutput `pulumi:"ttl"`
+	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
 	// The type of the record
 	Type pulumi.StringOutput `pulumi:"type"`
 	// The value of the record
@@ -145,9 +151,9 @@ type recordState struct {
 	// The name of the record
 	Name *string `pulumi:"name"`
 	// The priority of the record - only useful for some record types
-	Priority *float64 `pulumi:"priority"`
+	Priority *string `pulumi:"priority"`
 	// The TTL of the record
-	Ttl *float64 `pulumi:"ttl"`
+	Ttl *string `pulumi:"ttl"`
 	// The type of the record
 	Type *string `pulumi:"type"`
 	// The value of the record
@@ -164,9 +170,9 @@ type RecordState struct {
 	// The name of the record
 	Name pulumi.StringPtrInput
 	// The priority of the record - only useful for some record types
-	Priority pulumi.Float64PtrInput
+	Priority pulumi.StringPtrInput
 	// The TTL of the record
-	Ttl pulumi.Float64PtrInput
+	Ttl pulumi.StringPtrInput
 	// The type of the record
 	Type pulumi.StringPtrInput
 	// The value of the record
@@ -183,9 +189,9 @@ type recordArgs struct {
 	// The name of the record
 	Name string `pulumi:"name"`
 	// The priority of the record - only useful for some record types
-	Priority *float64 `pulumi:"priority"`
+	Priority *string `pulumi:"priority"`
 	// The TTL of the record
-	Ttl *float64 `pulumi:"ttl"`
+	Ttl *string `pulumi:"ttl"`
 	// The type of the record
 	Type string `pulumi:"type"`
 	// The value of the record
@@ -199,9 +205,9 @@ type RecordArgs struct {
 	// The name of the record
 	Name pulumi.StringInput
 	// The priority of the record - only useful for some record types
-	Priority pulumi.Float64PtrInput
+	Priority pulumi.StringPtrInput
 	// The TTL of the record
-	Ttl pulumi.Float64PtrInput
+	Ttl pulumi.StringPtrInput
 	// The type of the record
 	Type pulumi.StringInput
 	// The value of the record
