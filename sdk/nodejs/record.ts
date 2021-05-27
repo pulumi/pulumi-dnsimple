@@ -174,35 +174,35 @@ export interface RecordState {
     /**
      * The domain to add the record to
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
     /**
      * The domain ID of the record
      */
-    readonly domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string>;
     /**
      * The FQDN of the record
      */
-    readonly hostname?: pulumi.Input<string>;
+    hostname?: pulumi.Input<string>;
     /**
      * The name of the record
      */
-    readonly name?: pulumi.Input<string>;
+    name?: pulumi.Input<string>;
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string>;
     /**
      * The type of the record
      */
-    readonly type?: pulumi.Input<RecordType>;
+    type?: pulumi.Input<RecordType>;
     /**
      * The value of the record
      */
-    readonly value?: pulumi.Input<string>;
+    value?: pulumi.Input<string>;
 }
 
 /**
@@ -212,25 +212,25 @@ export interface RecordArgs {
     /**
      * The domain to add the record to
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
     /**
      * The name of the record
      */
-    readonly name: pulumi.Input<string>;
+    name: pulumi.Input<string>;
     /**
      * The priority of the record - only useful for some record types
      */
-    readonly priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<string>;
     /**
      * The TTL of the record
      */
-    readonly ttl?: pulumi.Input<string>;
+    ttl?: pulumi.Input<string>;
     /**
      * The type of the record
      */
-    readonly type: pulumi.Input<RecordType>;
+    type: pulumi.Input<RecordType>;
     /**
      * The value of the record
      */
-    readonly value: pulumi.Input<string>;
+    value: pulumi.Input<string>;
 }

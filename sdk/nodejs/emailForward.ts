@@ -107,15 +107,15 @@ export interface EmailForwardState {
     /**
      * The name part (the part before the @) of the source email address on the domain
      */
-    readonly aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string>;
     /**
      * The destination email address on another domain
      */
-    readonly destinationEmail?: pulumi.Input<string>;
+    destinationEmail?: pulumi.Input<string>;
     /**
      * The domain to add the email forwarding rule to
      */
-    readonly domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string>;
 }
 
 /**
@@ -125,13 +125,13 @@ export interface EmailForwardArgs {
     /**
      * The name part (the part before the @) of the source email address on the domain
      */
-    readonly aliasName: pulumi.Input<string>;
+    aliasName: pulumi.Input<string>;
     /**
      * The destination email address on another domain
      */
-    readonly destinationEmail: pulumi.Input<string>;
+    destinationEmail: pulumi.Input<string>;
     /**
      * The domain to add the email forwarding rule to
      */
-    readonly domain: pulumi.Input<string>;
+    domain: pulumi.Input<string>;
 }

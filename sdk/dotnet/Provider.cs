@@ -19,6 +19,19 @@ namespace Pulumi.DNSimple
     public partial class Provider : Pulumi.ProviderResource
     {
         /// <summary>
+        /// The account for API operations.
+        /// </summary>
+        [Output("account")]
+        public Output<string> Account { get; private set; } = null!;
+
+        /// <summary>
+        /// The API v2 token for API operations.
+        /// </summary>
+        [Output("token")]
+        public Output<string> Token { get; private set; } = null!;
+
+
+        /// <summary>
         /// Create a Provider resource with the given unique name, arguments, and options.
         /// </summary>
         ///
