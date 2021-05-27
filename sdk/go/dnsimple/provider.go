@@ -17,6 +17,11 @@ import (
 // [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
 type Provider struct {
 	pulumi.ProviderResourceState
+
+	// The account for API operations.
+	Account pulumi.StringOutput `pulumi:"account"`
+	// The API v2 token for API operations.
+	Token pulumi.StringOutput `pulumi:"token"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.

@@ -25,6 +25,14 @@ export class Provider extends pulumi.ProviderResource {
         return obj['__pulumiType'] === Provider.__pulumiType;
     }
 
+    /**
+     * The account for API operations.
+     */
+    public readonly account!: pulumi.Output<string>;
+    /**
+     * The API v2 token for API operations.
+     */
+    public readonly token!: pulumi.Output<string>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -61,13 +69,13 @@ export interface ProviderArgs {
     /**
      * The account for API operations.
      */
-    readonly account: pulumi.Input<string>;
+    account: pulumi.Input<string>;
     /**
      * Flag to enable the sandbox API.
      */
-    readonly sandbox?: pulumi.Input<boolean>;
+    sandbox?: pulumi.Input<boolean>;
     /**
      * The API v2 token for API operations.
      */
-    readonly token: pulumi.Input<string>;
+    token: pulumi.Input<string>;
 }

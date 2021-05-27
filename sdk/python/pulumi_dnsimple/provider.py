@@ -140,3 +140,19 @@ class Provider(pulumi.ProviderResource):
             __props__,
             opts)
 
+    @property
+    @pulumi.getter
+    def account(self) -> pulumi.Output[str]:
+        """
+        The account for API operations.
+        """
+        return pulumi.get(self, "account")
+
+    @property
+    @pulumi.getter
+    def token(self) -> pulumi.Output[str]:
+        """
+        The API v2 token for API operations.
+        """
+        return pulumi.get(self, "token")
+
