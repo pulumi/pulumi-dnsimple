@@ -1,7 +1,10 @@
 ## HEAD (Unreleased)
-* Upgrade to v3.2.1 of the pulumi-terraform-bridge
+_(none)_
 
 ---
+
+## 3.2.0 (2021-05-27)
+* Upgrade to v3.2.1 of the pulumi-terraform-bridge
 
 ## 3.1.0 (2021-04-29)
 * Upgrade to v0.5.1 of the DNSimple Terraform Provider
