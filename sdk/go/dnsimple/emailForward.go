@@ -192,7 +192,7 @@ type EmailForwardArrayInput interface {
 type EmailForwardArray []EmailForwardInput
 
 func (EmailForwardArray) ElementType() reflect.Type {
-	return reflect.TypeOf(([]*EmailForward)(nil))
+	return reflect.TypeOf((*[]*EmailForward)(nil)).Elem()
 }
 
 func (i EmailForwardArray) ToEmailForwardArrayOutput() EmailForwardArrayOutput {
@@ -217,7 +217,7 @@ type EmailForwardMapInput interface {
 type EmailForwardMap map[string]EmailForwardInput
 
 func (EmailForwardMap) ElementType() reflect.Type {
-	return reflect.TypeOf((map[string]*EmailForward)(nil))
+	return reflect.TypeOf((*map[string]*EmailForward)(nil)).Elem()
 }
 
 func (i EmailForwardMap) ToEmailForwardMapOutput() EmailForwardMapOutput {
@@ -228,9 +228,7 @@ func (i EmailForwardMap) ToEmailForwardMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardMapOutput)
 }
 
-type EmailForwardOutput struct {
-	*pulumi.OutputState
-}
+type EmailForwardOutput struct{ *pulumi.OutputState }
 
 func (EmailForwardOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((*EmailForward)(nil))
@@ -249,14 +247,12 @@ func (o EmailForwardOutput) ToEmailForwardPtrOutput() EmailForwardPtrOutput {
 }
 
 func (o EmailForwardOutput) ToEmailForwardPtrOutputWithContext(ctx context.Context) EmailForwardPtrOutput {
-	return o.ApplyT(func(v EmailForward) *EmailForward {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EmailForward) *EmailForward {
 		return &v
 	}).(EmailForwardPtrOutput)
 }
 
-type EmailForwardPtrOutput struct {
-	*pulumi.OutputState
-}
+type EmailForwardPtrOutput struct{ *pulumi.OutputState }
 
 func (EmailForwardPtrOutput) ElementType() reflect.Type {
 	return reflect.TypeOf((**EmailForward)(nil))
@@ -268,6 +264,16 @@ func (o EmailForwardPtrOutput) ToEmailForwardPtrOutput() EmailForwardPtrOutput {
 
 func (o EmailForwardPtrOutput) ToEmailForwardPtrOutputWithContext(ctx context.Context) EmailForwardPtrOutput {
 	return o
+}
+
+func (o EmailForwardPtrOutput) Elem() EmailForwardOutput {
+	return o.ApplyT(func(v *EmailForward) EmailForward {
+		if v != nil {
+			return *v
+		}
+		var ret EmailForward
+		return ret
+	}).(EmailForwardOutput)
 }
 
 type EmailForwardArrayOutput struct{ *pulumi.OutputState }
@@ -311,6 +317,10 @@ func (o EmailForwardMapOutput) MapIndex(k pulumi.StringInput) EmailForwardOutput
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailForwardInput)(nil)).Elem(), &EmailForward{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailForwardPtrInput)(nil)).Elem(), &EmailForward{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailForwardArrayInput)(nil)).Elem(), EmailForwardArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EmailForwardMapInput)(nil)).Elem(), EmailForwardMap{})
 	pulumi.RegisterOutputType(EmailForwardOutput{})
 	pulumi.RegisterOutputType(EmailForwardPtrOutput{})
 	pulumi.RegisterOutputType(EmailForwardArrayOutput{})
