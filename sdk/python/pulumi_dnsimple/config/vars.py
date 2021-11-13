@@ -8,26 +8,30 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
-__all__ = [
-    'account',
-    'sandbox',
-    'token',
-]
+import types
 
 __config__ = pulumi.Config('dnsimple')
 
-account = __config__.get('account')
-"""
-The account for API operations.
-"""
 
-sandbox = __config__.get('sandbox')
-"""
-Flag to enable the sandbox API.
-"""
+class _ExportableConfig(types.ModuleType):
+    @property
+    def account(self) -> Optional[str]:
+        """
+        The account for API operations.
+        """
+        return __config__.get('account')
 
-token = __config__.get('token')
-"""
-The API v2 token for API operations.
-"""
+    @property
+    def sandbox(self) -> Optional[bool]:
+        """
+        Flag to enable the sandbox API.
+        """
+        return __config__.get_bool('sandbox')
+
+    @property
+    def token(self) -> Optional[str]:
+        """
+        The API v2 token for API operations.
+        """
+        return __config__.get('token')
 

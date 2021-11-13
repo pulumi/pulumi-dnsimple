@@ -4,17 +4,39 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
-let __config = new pulumi.Config("dnsimple");
+declare var exports: any;
+const __config = new pulumi.Config("dnsimple");
 
 /**
  * The account for API operations.
  */
-export let account: string | undefined = __config.get("account");
+export declare const account: string | undefined;
+Object.defineProperty(exports, "account", {
+    get() {
+        return __config.get("account");
+    },
+    enumerable: true,
+});
+
 /**
  * Flag to enable the sandbox API.
  */
-export let sandbox: boolean | undefined = __config.getObject<boolean>("sandbox");
+export declare const sandbox: boolean | undefined;
+Object.defineProperty(exports, "sandbox", {
+    get() {
+        return __config.getObject<boolean>("sandbox");
+    },
+    enumerable: true,
+});
+
 /**
  * The API v2 token for API operations.
  */
-export let token: string | undefined = __config.get("token");
+export declare const token: string | undefined;
+Object.defineProperty(exports, "token", {
+    get() {
+        return __config.get("token");
+    },
+    enumerable: true,
+});
+
