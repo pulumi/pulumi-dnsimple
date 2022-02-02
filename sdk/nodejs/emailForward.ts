@@ -71,13 +71,13 @@ export class EmailForward extends pulumi.CustomResource {
      */
     constructor(name: string, args: EmailForwardArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: EmailForwardArgs | EmailForwardState, opts?: pulumi.CustomResourceOptions) {
-        let inputs: pulumi.Inputs = {};
+        let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailForwardState | undefined;
-            inputs["aliasName"] = state ? state.aliasName : undefined;
-            inputs["destinationEmail"] = state ? state.destinationEmail : undefined;
-            inputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["aliasName"] = state ? state.aliasName : undefined;
+            resourceInputs["destinationEmail"] = state ? state.destinationEmail : undefined;
+            resourceInputs["domain"] = state ? state.domain : undefined;
         } else {
             const args = argsOrState as EmailForwardArgs | undefined;
             if ((!args || args.aliasName === undefined) && !opts.urn) {
@@ -89,14 +89,12 @@ export class EmailForward extends pulumi.CustomResource {
             if ((!args || args.domain === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            inputs["aliasName"] = args ? args.aliasName : undefined;
-            inputs["destinationEmail"] = args ? args.destinationEmail : undefined;
-            inputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["aliasName"] = args ? args.aliasName : undefined;
+            resourceInputs["destinationEmail"] = args ? args.destinationEmail : undefined;
+            resourceInputs["domain"] = args ? args.domain : undefined;
         }
-        if (!opts.version) {
-            opts = pulumi.mergeOptions(opts, { version: utilities.getVersion()});
-        }
-        super(EmailForward.__pulumiType, name, inputs, opts);
+        opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        super(EmailForward.__pulumiType, name, resourceInputs, opts);
     }
 }
 
