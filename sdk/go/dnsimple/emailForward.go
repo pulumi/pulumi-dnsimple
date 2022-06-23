@@ -213,6 +213,21 @@ func (o EmailForwardOutput) ToEmailForwardOutputWithContext(ctx context.Context)
 	return o
 }
 
+// The name part (the part before the @) of the source email address on the domain
+func (o EmailForwardOutput) AliasName() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.AliasName }).(pulumi.StringOutput)
+}
+
+// The destination email address on another domain
+func (o EmailForwardOutput) DestinationEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.DestinationEmail }).(pulumi.StringOutput)
+}
+
+// The domain to add the email forwarding rule to
+func (o EmailForwardOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
 type EmailForwardArrayOutput struct{ *pulumi.OutputState }
 
 func (EmailForwardArrayOutput) ElementType() reflect.Type {

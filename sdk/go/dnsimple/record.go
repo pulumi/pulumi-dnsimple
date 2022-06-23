@@ -301,6 +301,46 @@ func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutpu
 	return o
 }
 
+// The domain to add the record to
+func (o RecordOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+// The domain ID of the record
+func (o RecordOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+// The FQDN of the record
+func (o RecordOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The name of the record
+func (o RecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// The priority of the record - only useful for some record types
+func (o RecordOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
+}
+
+// The TTL of the record
+func (o RecordOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+// The type of the record
+func (o RecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+// The value of the record
+func (o RecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
+}
+
 type RecordArrayOutput struct{ *pulumi.OutputState }
 
 func (RecordArrayOutput) ElementType() reflect.Type {
