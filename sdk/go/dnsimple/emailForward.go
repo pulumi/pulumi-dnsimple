@@ -19,23 +19,26 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dnsimple.NewEmailForward(ctx, "foobar", &dnsimple.EmailForwardArgs{
-// 			AliasName:        pulumi.String("sales"),
-// 			DestinationEmail: pulumi.String("jane.doe@example.com"),
-// 			Domain:           pulumi.Any(_var.Dnsimple_domain),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewEmailForward(ctx, "foobar", &dnsimple.EmailForwardArgs{
+//				AliasName:        pulumi.String("sales"),
+//				DestinationEmail: pulumi.String("jane.doe@example.com"),
+//				Domain:           pulumi.Any(_var.Dnsimple_domain),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 type EmailForward struct {
 	pulumi.CustomResourceState
@@ -152,7 +155,7 @@ func (i *EmailForward) ToEmailForwardOutputWithContext(ctx context.Context) Emai
 // EmailForwardArrayInput is an input type that accepts EmailForwardArray and EmailForwardArrayOutput values.
 // You can construct a concrete instance of `EmailForwardArrayInput` via:
 //
-//          EmailForwardArray{ EmailForwardArgs{...} }
+//	EmailForwardArray{ EmailForwardArgs{...} }
 type EmailForwardArrayInput interface {
 	pulumi.Input
 
@@ -177,7 +180,7 @@ func (i EmailForwardArray) ToEmailForwardArrayOutputWithContext(ctx context.Cont
 // EmailForwardMapInput is an input type that accepts EmailForwardMap and EmailForwardMapOutput values.
 // You can construct a concrete instance of `EmailForwardMapInput` via:
 //
-//          EmailForwardMap{ "key": EmailForwardArgs{...} }
+//	EmailForwardMap{ "key": EmailForwardArgs{...} }
 type EmailForwardMapInput interface {
 	pulumi.Input
 

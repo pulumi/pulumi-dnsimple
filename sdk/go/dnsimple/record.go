@@ -19,50 +19,56 @@ import (
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
-// 			Domain: pulumi.Any(_var.Dnsimple_domain),
-// 			Name:   pulumi.String(""),
-// 			Ttl:    pulumi.String("3600"),
-// 			Type:   pulumi.String("A"),
-// 			Value:  pulumi.String("192.168.0.11"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
+//				Domain: pulumi.Any(_var.Dnsimple_domain),
+//				Name:   pulumi.String(""),
+//				Ttl:    pulumi.String("3600"),
+//				Type:   pulumi.String("A"),
+//				Value:  pulumi.String("192.168.0.11"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ```go
 // package main
 //
 // import (
-// 	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
 // )
 //
-// func main() {
-// 	pulumi.Run(func(ctx *pulumi.Context) error {
-// 		_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
-// 			Domain: pulumi.Any(_var.Dnsimple_domain),
-// 			Name:   pulumi.String("terraform"),
-// 			Ttl:    pulumi.String("3600"),
-// 			Type:   pulumi.String("A"),
-// 			Value:  pulumi.String("192.168.0.11"),
-// 		})
-// 		if err != nil {
-// 			return err
-// 		}
-// 		return nil
-// 	})
-// }
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
+//				Domain: pulumi.Any(_var.Dnsimple_domain),
+//				Name:   pulumi.String("terraform"),
+//				Ttl:    pulumi.String("3600"),
+//				Type:   pulumi.String("A"),
+//				Value:  pulumi.String("192.168.0.11"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
 // ```
 //
 // ## Import
@@ -70,16 +76,20 @@ import (
 // DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
 //
 // ```sh
-//  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+//
+//	$ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+//
 // ```
 //
-//  **Importing record www.example.com with record ID 1234**
+//	**Importing record www.example.com with record ID 1234**
 //
 // ```sh
-//  $ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+//
+//	$ pulumi import dnsimple:index/record:Record resource_name example.com_1234
+//
 // ```
 //
-//  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+//	The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 type Record struct {
 	pulumi.CustomResourceState
 
@@ -240,7 +250,7 @@ func (i *Record) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 // RecordArrayInput is an input type that accepts RecordArray and RecordArrayOutput values.
 // You can construct a concrete instance of `RecordArrayInput` via:
 //
-//          RecordArray{ RecordArgs{...} }
+//	RecordArray{ RecordArgs{...} }
 type RecordArrayInput interface {
 	pulumi.Input
 
@@ -265,7 +275,7 @@ func (i RecordArray) ToRecordArrayOutputWithContext(ctx context.Context) RecordA
 // RecordMapInput is an input type that accepts RecordMap and RecordMapOutput values.
 // You can construct a concrete instance of `RecordMapInput` via:
 //
-//          RecordMap{ "key": RecordArgs{...} }
+//	RecordMap{ "key": RecordArgs{...} }
 type RecordMapInput interface {
 	pulumi.Input
 
