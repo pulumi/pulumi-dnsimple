@@ -13,53 +13,29 @@ import com.pulumi.dnsimple.inputs.EmailForwardState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-/**
- * Provides a DNSimple email forward resource.
- * 
- * ## Example Usage
- * 
- */
 @ResourceType(type="dnsimple:index/emailForward:EmailForward")
 public class EmailForward extends com.pulumi.resources.CustomResource {
-    /**
-     * The name part (the part before the @) of the source email address on the domain
-     * 
-     */
+    @Export(name="aliasEmail", type=String.class, parameters={})
+    private Output<String> aliasEmail;
+
+    public Output<String> aliasEmail() {
+        return this.aliasEmail;
+    }
     @Export(name="aliasName", type=String.class, parameters={})
     private Output<String> aliasName;
 
-    /**
-     * @return The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     public Output<String> aliasName() {
         return this.aliasName;
     }
-    /**
-     * The destination email address on another domain
-     * 
-     */
     @Export(name="destinationEmail", type=String.class, parameters={})
     private Output<String> destinationEmail;
 
-    /**
-     * @return The destination email address on another domain
-     * 
-     */
     public Output<String> destinationEmail() {
         return this.destinationEmail;
     }
-    /**
-     * The domain to add the email forwarding rule to
-     * 
-     */
     @Export(name="domain", type=String.class, parameters={})
     private Output<String> domain;
 
-    /**
-     * @return The domain to add the email forwarding rule to
-     * 
-     */
     public Output<String> domain() {
         return this.domain;
     }

@@ -33,6 +33,10 @@ export class Provider extends pulumi.ProviderResource {
      * The API v2 token for API operations.
      */
     public readonly token!: pulumi.Output<string>;
+    /**
+     * Custom string to append to the user agent used for sending HTTP requests to the API.
+     */
+    public readonly userAgent!: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -52,10 +56,14 @@ export class Provider extends pulumi.ProviderResource {
                 throw new Error("Missing required property 'token'");
             }
             resourceInputs["account"] = args ? args.account : undefined;
+            resourceInputs["prefetch"] = pulumi.output(args ? args.prefetch : undefined).apply(JSON.stringify);
             resourceInputs["sandbox"] = pulumi.output(args ? args.sandbox : undefined).apply(JSON.stringify);
-            resourceInputs["token"] = args ? args.token : undefined;
+            resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
+            resourceInputs["userAgent"] = args ? args.userAgent : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["token"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Provider.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -69,6 +77,10 @@ export interface ProviderArgs {
      */
     account: pulumi.Input<string>;
     /**
+     * Flag to enable the prefetch of zone records.
+     */
+    prefetch?: pulumi.Input<boolean>;
+    /**
      * Flag to enable the sandbox API.
      */
     sandbox?: pulumi.Input<boolean>;
@@ -76,4 +88,8 @@ export interface ProviderArgs {
      * The API v2 token for API operations.
      */
     token: pulumi.Input<string>;
+    /**
+     * Custom string to append to the user agent used for sending HTTP requests to the API.
+     */
+    userAgent?: pulumi.Input<string>;
 }

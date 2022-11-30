@@ -19,6 +19,17 @@ Object.defineProperty(exports, "account", {
 });
 
 /**
+ * Flag to enable the prefetch of zone records.
+ */
+export declare const prefetch: boolean | undefined;
+Object.defineProperty(exports, "prefetch", {
+    get() {
+        return __config.getObject<boolean>("prefetch");
+    },
+    enumerable: true,
+});
+
+/**
  * Flag to enable the sandbox API.
  */
 export declare const sandbox: boolean | undefined;
@@ -36,6 +47,17 @@ export declare const token: string | undefined;
 Object.defineProperty(exports, "token", {
     get() {
         return __config.get("token");
+    },
+    enumerable: true,
+});
+
+/**
+ * Custom string to append to the user agent used for sending HTTP requests to the API.
+ */
+export declare const userAgent: string | undefined;
+Object.defineProperty(exports, "userAgent", {
+    get() {
+        return __config.get("userAgent");
     },
     enumerable: true,
 });

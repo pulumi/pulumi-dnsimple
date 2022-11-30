@@ -19,6 +19,13 @@ public final class Config {
         return Codegen.stringProp("account").config(config).require();
     }
 /**
+ * Flag to enable the prefetch of zone records.
+ * 
+ */
+    public Optional<Boolean> prefetch() {
+        return Codegen.booleanProp("prefetch").config(config).get();
+    }
+/**
  * Flag to enable the sandbox API.
  * 
  */
@@ -31,5 +38,12 @@ public final class Config {
  */
     public String token() {
         return Codegen.stringProp("token").config(config).require();
+    }
+/**
+ * Custom string to append to the user agent used for sending HTTP requests to the API.
+ * 
+ */
+    public Optional<String> userAgent() {
+        return Codegen.stringProp("userAgent").config(config).get();
     }
 }

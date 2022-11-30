@@ -12,245 +12,6 @@
     "meta": {
         "moduleFormat": "(.*)(?:/[^/]*)"
     },
-    "config": {
-        "variables": {
-            "account": {
-                "type": "string",
-                "description": "The account for API operations.\n"
-            },
-            "sandbox": {
-                "type": "boolean",
-                "description": "Flag to enable the sandbox API.\n"
-            },
-            "token": {
-                "type": "string",
-                "description": "The API v2 token for API operations.\n"
-            }
-        },
-        "defaults": [
-            "account",
-            "token"
-        ]
-    },
-    "provider": {
-        "description": "The provider type for the dnsimple package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
-        "properties": {
-            "account": {
-                "type": "string",
-                "description": "The account for API operations.\n"
-            },
-            "sandbox": {
-                "type": "boolean",
-                "description": "Flag to enable the sandbox API.\n"
-            },
-            "token": {
-                "type": "string",
-                "description": "The API v2 token for API operations.\n"
-            }
-        },
-        "required": [
-            "account",
-            "token"
-        ],
-        "inputProperties": {
-            "account": {
-                "type": "string",
-                "description": "The account for API operations.\n"
-            },
-            "sandbox": {
-                "type": "boolean",
-                "description": "Flag to enable the sandbox API.\n"
-            },
-            "token": {
-                "type": "string",
-                "description": "The API v2 token for API operations.\n"
-            }
-        },
-        "requiredInputs": [
-            "account",
-            "token"
-        ]
-    },
-    "resources": {
-        "dnsimple:index/emailForward:EmailForward": {
-            "description": "Provides a DNSimple email forward resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add an email forwarding rule to the domain\nconst foobar = new dnsimple.EmailForward(\"foobar\", {\n    aliasName: \"sales\",\n    destinationEmail: \"jane.doe@example.com\",\n    domain: var_dnsimple_domain,\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add an email forwarding rule to the domain\nfoobar = dnsimple.EmailForward(\"foobar\",\n    alias_name=\"sales\",\n    destination_email=\"jane.doe@example.com\",\n    domain=var[\"dnsimple_domain\"])\n```\n```csharp\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add an email forwarding rule to the domain\n        var foobar = new DNSimple.EmailForward(\"foobar\", new DNSimple.EmailForwardArgs\n        {\n            AliasName = \"sales\",\n            DestinationEmail = \"jane.doe@example.com\",\n            Domain = @var.Dnsimple_domain,\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.NewEmailForward(ctx, \"foobar\", \u0026dnsimple.EmailForwardArgs{\n\t\t\tAliasName:        pulumi.String(\"sales\"),\n\t\t\tDestinationEmail: pulumi.String(\"jane.doe@example.com\"),\n\t\t\tDomain:           pulumi.Any(_var.Dnsimple_domain),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}",
-            "properties": {
-                "aliasName": {
-                    "type": "string",
-                    "description": "The name part (the part before the @) of the source email address on the domain\n"
-                },
-                "destinationEmail": {
-                    "type": "string",
-                    "description": "The destination email address on another domain\n"
-                },
-                "domain": {
-                    "type": "string",
-                    "description": "The domain to add the email forwarding rule to\n"
-                }
-            },
-            "required": [
-                "aliasName",
-                "destinationEmail",
-                "domain"
-            ],
-            "inputProperties": {
-                "aliasName": {
-                    "type": "string",
-                    "description": "The name part (the part before the @) of the source email address on the domain\n"
-                },
-                "destinationEmail": {
-                    "type": "string",
-                    "description": "The destination email address on another domain\n"
-                },
-                "domain": {
-                    "type": "string",
-                    "description": "The domain to add the email forwarding rule to\n"
-                }
-            },
-            "requiredInputs": [
-                "aliasName",
-                "destinationEmail",
-                "domain"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering EmailForward resources.\n",
-                "properties": {
-                    "aliasName": {
-                        "type": "string",
-                        "description": "The name part (the part before the @) of the source email address on the domain\n"
-                    },
-                    "destinationEmail": {
-                        "type": "string",
-                        "description": "The destination email address on another domain\n"
-                    },
-                    "domain": {
-                        "type": "string",
-                        "description": "The domain to add the email forwarding rule to\n"
-                    }
-                },
-                "type": "object"
-            }
-        },
-        "dnsimple:index/record:Record": {
-            "description": "Provides a DNSimple record resource.\n\n{{% examples %}}\n## Example Usage\n{{% example %}}\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add a record to the root domain\nconst foobar = new dnsimple.Record(\"foobar\", {\n    domain: var_dnsimple_domain,\n    name: \"\",\n    ttl: \"3600\",\n    type: \"A\",\n    value: \"192.168.0.11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add a record to the root domain\nfoobar = dnsimple.Record(\"foobar\",\n    domain=var[\"dnsimple_domain\"],\n    name=\"\",\n    ttl=\"3600\",\n    type=\"A\",\n    value=\"192.168.0.11\")\n```\n```csharp\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add a record to the root domain\n        var foobar = new DNSimple.Record(\"foobar\", new DNSimple.RecordArgs\n        {\n            Domain = @var.Dnsimple_domain,\n            Name = \"\",\n            Ttl = \"3600\",\n            Type = \"A\",\n            Value = \"192.168.0.11\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.NewRecord(ctx, \"foobar\", \u0026dnsimple.RecordArgs{\n\t\t\tDomain: pulumi.Any(_var.Dnsimple_domain),\n\t\t\tName:   pulumi.String(\"\"),\n\t\t\tTtl:    pulumi.String(\"3600\"),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tValue:  pulumi.String(\"192.168.0.11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add a record to a sub-domain\nconst foobar = new dnsimple.Record(\"foobar\", {\n    domain: var_dnsimple_domain,\n    name: \"terraform\",\n    ttl: \"3600\",\n    type: \"A\",\n    value: \"192.168.0.11\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add a record to a sub-domain\nfoobar = dnsimple.Record(\"foobar\",\n    domain=var[\"dnsimple_domain\"],\n    name=\"terraform\",\n    ttl=\"3600\",\n    type=\"A\",\n    value=\"192.168.0.11\")\n```\n```csharp\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nclass MyStack : Stack\n{\n    public MyStack()\n    {\n        // Add a record to a sub-domain\n        var foobar = new DNSimple.Record(\"foobar\", new DNSimple.RecordArgs\n        {\n            Domain = @var.Dnsimple_domain,\n            Name = \"terraform\",\n            Ttl = \"3600\",\n            Type = \"A\",\n            Value = \"192.168.0.11\",\n        });\n    }\n\n}\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.NewRecord(ctx, \"foobar\", \u0026dnsimple.RecordArgs{\n\t\t\tDomain: pulumi.Any(_var.Dnsimple_domain),\n\t\t\tName:   pulumi.String(\"terraform\"),\n\t\t\tTtl:    pulumi.String(\"3600\"),\n\t\t\tType:   pulumi.String(\"A\"),\n\t\t\tValue:  pulumi.String(\"192.168.0.11\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n{{% /example %}}\n{{% /examples %}}\n\n## Import\n\nDNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**\n\n```sh\n $ pulumi import dnsimple:index/record:Record resource_name example.com_1234\n```\n\n **Importing record www.example.com with record ID 1234**\n\n```sh\n $ pulumi import dnsimple:index/record:Record resource_name example.com_1234\n```\n\n The record ID can be found in the URL when editing a record on the DNSimple web dashboard. ",
-            "properties": {
-                "domain": {
-                    "type": "string",
-                    "description": "The domain to add the record to\n"
-                },
-                "domainId": {
-                    "type": "string",
-                    "description": "The domain ID of the record\n"
-                },
-                "hostname": {
-                    "type": "string",
-                    "description": "The FQDN of the record\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name of the record\n"
-                },
-                "priority": {
-                    "type": "string",
-                    "description": "The priority of the record - only useful for some record types\n"
-                },
-                "ttl": {
-                    "type": "string",
-                    "description": "The TTL of the record\n"
-                },
-                "type": {
-                    "type": "string",
-                    "$ref": "#/types/dnsimple:index:RecordType",
-                    "description": "The type of the record\n"
-                },
-                "value": {
-                    "type": "string",
-                    "description": "The value of the record\n"
-                }
-            },
-            "required": [
-                "domain",
-                "domainId",
-                "hostname",
-                "name",
-                "priority",
-                "type",
-                "value"
-            ],
-            "inputProperties": {
-                "domain": {
-                    "type": "string",
-                    "description": "The domain to add the record to\n"
-                },
-                "name": {
-                    "type": "string",
-                    "description": "The name of the record\n"
-                },
-                "priority": {
-                    "type": "string",
-                    "description": "The priority of the record - only useful for some record types\n"
-                },
-                "ttl": {
-                    "type": "string",
-                    "description": "The TTL of the record\n"
-                },
-                "type": {
-                    "type": "string",
-                    "$ref": "#/types/dnsimple:index:RecordType",
-                    "description": "The type of the record\n"
-                },
-                "value": {
-                    "type": "string",
-                    "description": "The value of the record\n"
-                }
-            },
-            "requiredInputs": [
-                "domain",
-                "name",
-                "type",
-                "value"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Record resources.\n",
-                "properties": {
-                    "domain": {
-                        "type": "string",
-                        "description": "The domain to add the record to\n"
-                    },
-                    "domainId": {
-                        "type": "string",
-                        "description": "The domain ID of the record\n"
-                    },
-                    "hostname": {
-                        "type": "string",
-                        "description": "The FQDN of the record\n"
-                    },
-                    "name": {
-                        "type": "string",
-                        "description": "The name of the record\n"
-                    },
-                    "priority": {
-                        "type": "string",
-                        "description": "The priority of the record - only useful for some record types\n"
-                    },
-                    "ttl": {
-                        "type": "string",
-                        "description": "The TTL of the record\n"
-                    },
-                    "type": {
-                        "type": "string",
-                        "$ref": "#/types/dnsimple:index:RecordType",
-                        "description": "The type of the record\n"
-                    },
-                    "value": {
-                        "type": "string",
-                        "description": "The value of the record\n"
-                    }
-                },
-                "type": "object"
-            }
-        }
-    },
     "language": {
         "csharp": {
             "compatibility": "tfbridge20",
@@ -278,14 +39,534 @@
             "disableUnionOutputTypes": true,
             "packageDescription": "A Pulumi package for creating and managing dnsimple cloud resources.",
             "packageName": "",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/dnsimple/terraform-provider-dnsimple)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-dnsimple` repo](https://github.com/pulumi/pulumi-dnsimple/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`dnsimple/terraform-provider-dnsimple` repo](https://github.com/dnsimple/terraform-provider-dnsimple/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/dnsimple/terraform-provider-dnsimple)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-dnsimple` repo](https://github.com/pulumi/pulumi-dnsimple/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-dnsimple` repo](https://github.com/dnsimple/terraform-provider-dnsimple/issues).",
             "typescriptVersion": ""
         },
         "python": {
             "compatibility": "tfbridge20",
-            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/dnsimple/terraform-provider-dnsimple)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi/pulumi-dnsimple` repo](https://github.com/pulumi/pulumi-dnsimple/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`dnsimple/terraform-provider-dnsimple` repo](https://github.com/dnsimple/terraform-provider-dnsimple/issues).",
+            "readme": "\u003e This provider is a derived work of the [Terraform Provider](https://github.com/dnsimple/terraform-provider-dnsimple)\n\u003e distributed under [MPL 2.0](https://www.mozilla.org/en-US/MPL/2.0/). If you encounter a bug or missing feature,\n\u003e first check the [`pulumi-dnsimple` repo](https://github.com/pulumi/pulumi-dnsimple/issues); however, if that doesn't turn up anything,\n\u003e please consult the source [`terraform-provider-dnsimple` repo](https://github.com/dnsimple/terraform-provider-dnsimple/issues).",
             "requires": {
                 "pulumi": "\u003e=3.0.0,\u003c4.0.0"
+            }
+        }
+    },
+    "config": {
+        "variables": {
+            "account": {
+                "type": "string",
+                "description": "The account for API operations.\n"
+            },
+            "prefetch": {
+                "type": "boolean",
+                "description": "Flag to enable the prefetch of zone records.\n"
+            },
+            "sandbox": {
+                "type": "boolean",
+                "description": "Flag to enable the sandbox API.\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "The API v2 token for API operations.\n",
+                "secret": true
+            },
+            "userAgent": {
+                "type": "string",
+                "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
+            }
+        },
+        "defaults": [
+            "account",
+            "token"
+        ]
+    },
+    "provider": {
+        "description": "The provider type for the dnsimple package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
+        "properties": {
+            "account": {
+                "type": "string",
+                "description": "The account for API operations.\n"
+            },
+            "prefetch": {
+                "type": "boolean",
+                "description": "Flag to enable the prefetch of zone records.\n"
+            },
+            "sandbox": {
+                "type": "boolean",
+                "description": "Flag to enable the sandbox API.\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "The API v2 token for API operations.\n",
+                "secret": true
+            },
+            "userAgent": {
+                "type": "string",
+                "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
+            }
+        },
+        "required": [
+            "account",
+            "token"
+        ],
+        "inputProperties": {
+            "account": {
+                "type": "string",
+                "description": "The account for API operations.\n"
+            },
+            "prefetch": {
+                "type": "boolean",
+                "description": "Flag to enable the prefetch of zone records.\n"
+            },
+            "sandbox": {
+                "type": "boolean",
+                "description": "Flag to enable the sandbox API.\n"
+            },
+            "token": {
+                "type": "string",
+                "description": "The API v2 token for API operations.\n",
+                "secret": true
+            },
+            "userAgent": {
+                "type": "string",
+                "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
+            }
+        },
+        "requiredInputs": [
+            "account",
+            "token"
+        ]
+    },
+    "resources": {
+        "dnsimple:index/domain:Domain": {
+            "properties": {
+                "accountId": {
+                    "type": "integer"
+                },
+                "autoRenew": {
+                    "type": "boolean"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "privateWhois": {
+                    "type": "boolean"
+                },
+                "registrantId": {
+                    "type": "integer"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "unicodeName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "accountId",
+                "autoRenew",
+                "name",
+                "privateWhois",
+                "registrantId",
+                "state",
+                "unicodeName"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Domain resources.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "integer"
+                    },
+                    "autoRenew": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "privateWhois": {
+                        "type": "boolean"
+                    },
+                    "registrantId": {
+                        "type": "integer"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "unicodeName": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dnsimple:index/emailForward:EmailForward": {
+            "properties": {
+                "aliasEmail": {
+                    "type": "string"
+                },
+                "aliasName": {
+                    "type": "string"
+                },
+                "destinationEmail": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "aliasEmail",
+                "aliasName",
+                "destinationEmail",
+                "domain"
+            ],
+            "inputProperties": {
+                "aliasName": {
+                    "type": "string"
+                },
+                "destinationEmail": {
+                    "type": "string"
+                },
+                "domain": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "aliasName",
+                "destinationEmail",
+                "domain"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering EmailForward resources.\n",
+                "properties": {
+                    "aliasEmail": {
+                        "type": "string"
+                    },
+                    "aliasName": {
+                        "type": "string"
+                    },
+                    "destinationEmail": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate": {
+            "properties": {
+                "authorityIdentifier": {
+                    "type": "string"
+                },
+                "autoRenew": {
+                    "type": "boolean"
+                },
+                "contactId": {
+                    "type": "integer",
+                    "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
+                },
+                "createdAt": {
+                    "type": "string"
+                },
+                "csr": {
+                    "type": "string"
+                },
+                "domainId": {
+                    "type": "string"
+                },
+                "expiresOn": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "updatedAt": {
+                    "type": "string"
+                },
+                "years": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "authorityIdentifier",
+                "autoRenew",
+                "createdAt",
+                "csr",
+                "expiresOn",
+                "name",
+                "state",
+                "updatedAt",
+                "years"
+            ],
+            "inputProperties": {
+                "autoRenew": {
+                    "type": "boolean"
+                },
+                "contactId": {
+                    "type": "integer",
+                    "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
+                },
+                "domainId": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "autoRenew",
+                "name"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering LetsEncryptCertificate resources.\n",
+                "properties": {
+                    "authorityIdentifier": {
+                        "type": "string"
+                    },
+                    "autoRenew": {
+                        "type": "boolean"
+                    },
+                    "contactId": {
+                        "type": "integer",
+                        "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
+                    },
+                    "createdAt": {
+                        "type": "string"
+                    },
+                    "csr": {
+                        "type": "string"
+                    },
+                    "domainId": {
+                        "type": "string"
+                    },
+                    "expiresOn": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "state": {
+                        "type": "string"
+                    },
+                    "updatedAt": {
+                        "type": "string"
+                    },
+                    "years": {
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dnsimple:index/record:Record": {
+            "properties": {
+                "domain": {
+                    "type": "string"
+                },
+                "domainId": {
+                    "type": "string"
+                },
+                "hostname": {
+                    "type": "string"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "ttl": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "$ref": "#/types/dnsimple:index:RecordType"
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "domain",
+                "domainId",
+                "hostname",
+                "name",
+                "priority",
+                "type",
+                "value"
+            ],
+            "inputProperties": {
+                "domain": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "name": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "ttl": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "$ref": "#/types/dnsimple:index:RecordType",
+                    "willReplaceOnChanges": true
+                },
+                "value": {
+                    "type": "string"
+                }
+            },
+            "requiredInputs": [
+                "domain",
+                "name",
+                "type",
+                "value"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering Record resources.\n",
+                "properties": {
+                    "domain": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "domainId": {
+                        "type": "string"
+                    },
+                    "hostname": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "priority": {
+                        "type": "string"
+                    },
+                    "ttl": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "$ref": "#/types/dnsimple:index:RecordType",
+                        "willReplaceOnChanges": true
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "dnsimple:index/zoneRecord:ZoneRecord": {
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "qualifiedName": {
+                    "type": "string"
+                },
+                "ttl": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                },
+                "zoneId": {
+                    "type": "string"
+                },
+                "zoneName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "priority",
+                "qualifiedName",
+                "type",
+                "value",
+                "zoneId",
+                "zoneName"
+            ],
+            "inputProperties": {
+                "name": {
+                    "type": "string"
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "ttl": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                },
+                "value": {
+                    "type": "string"
+                },
+                "zoneName": {
+                    "type": "string",
+                    "willReplaceOnChanges": true
+                }
+            },
+            "requiredInputs": [
+                "name",
+                "type",
+                "value",
+                "zoneName"
+            ],
+            "stateInputs": {
+                "description": "Input properties used for looking up and filtering ZoneRecord resources.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "priority": {
+                        "type": "string"
+                    },
+                    "qualifiedName": {
+                        "type": "string"
+                    },
+                    "ttl": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    },
+                    "value": {
+                        "type": "string"
+                    },
+                    "zoneId": {
+                        "type": "string"
+                    },
+                    "zoneName": {
+                        "type": "string",
+                        "willReplaceOnChanges": true
+                    }
+                },
+                "type": "object"
             }
         }
     }

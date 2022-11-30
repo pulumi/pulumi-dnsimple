@@ -30,7 +30,7 @@ namespace Pulumi.DNSimple
             }
         }
 
-        private static readonly Pulumi.Config __config = new Pulumi.Config("dnsimple");
+        private static readonly global::Pulumi.Config __config = new global::Pulumi.Config("dnsimple");
 
         private static readonly __Value<string?> _account = new __Value<string?>(() => __config.Get("account"));
         /// <summary>
@@ -40,6 +40,16 @@ namespace Pulumi.DNSimple
         {
             get => _account.Get();
             set => _account.Set(value);
+        }
+
+        private static readonly __Value<bool?> _prefetch = new __Value<bool?>(() => __config.GetBoolean("prefetch"));
+        /// <summary>
+        /// Flag to enable the prefetch of zone records.
+        /// </summary>
+        public static bool? Prefetch
+        {
+            get => _prefetch.Get();
+            set => _prefetch.Set(value);
         }
 
         private static readonly __Value<bool?> _sandbox = new __Value<bool?>(() => __config.GetBoolean("sandbox"));
@@ -60,6 +70,16 @@ namespace Pulumi.DNSimple
         {
             get => _token.Get();
             set => _token.Set(value);
+        }
+
+        private static readonly __Value<string?> _userAgent = new __Value<string?>(() => __config.Get("userAgent"));
+        /// <summary>
+        /// Custom string to append to the user agent used for sending HTTP requests to the API.
+        /// </summary>
+        public static string? UserAgent
+        {
+            get => _userAgent.Get();
+            set => _userAgent.Set(value);
         }
 
     }

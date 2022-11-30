@@ -22,6 +22,8 @@ type Provider struct {
 	Account pulumi.StringOutput `pulumi:"account"`
 	// The API v2 token for API operations.
 	Token pulumi.StringOutput `pulumi:"token"`
+	// Custom string to append to the user agent used for sending HTTP requests to the API.
+	UserAgent pulumi.StringPtrOutput `pulumi:"userAgent"`
 }
 
 // NewProvider registers a new resource with the given unique name, arguments, and options.
@@ -37,6 +39,13 @@ func NewProvider(ctx *pulumi.Context,
 	if args.Token == nil {
 		return nil, errors.New("invalid value for required argument 'Token'")
 	}
+	if args.Token != nil {
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringOutput)
+	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"token",
+	})
+	opts = append(opts, secrets)
 	var resource Provider
 	err := ctx.RegisterResource("pulumi:providers:dnsimple", name, args, &resource, opts...)
 	if err != nil {
@@ -48,20 +57,28 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// The account for API operations.
 	Account string `pulumi:"account"`
+	// Flag to enable the prefetch of zone records.
+	Prefetch *bool `pulumi:"prefetch"`
 	// Flag to enable the sandbox API.
 	Sandbox *bool `pulumi:"sandbox"`
 	// The API v2 token for API operations.
 	Token string `pulumi:"token"`
+	// Custom string to append to the user agent used for sending HTTP requests to the API.
+	UserAgent *string `pulumi:"userAgent"`
 }
 
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// The account for API operations.
 	Account pulumi.StringInput
+	// Flag to enable the prefetch of zone records.
+	Prefetch pulumi.BoolPtrInput
 	// Flag to enable the sandbox API.
 	Sandbox pulumi.BoolPtrInput
 	// The API v2 token for API operations.
 	Token pulumi.StringInput
+	// Custom string to append to the user agent used for sending HTTP requests to the API.
+	UserAgent pulumi.StringPtrInput
 }
 
 func (ProviderArgs) ElementType() reflect.Type {
@@ -99,6 +116,21 @@ func (o ProviderOutput) ToProviderOutput() ProviderOutput {
 
 func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) ProviderOutput {
 	return o
+}
+
+// The account for API operations.
+func (o ProviderOutput) Account() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Account }).(pulumi.StringOutput)
+}
+
+// The API v2 token for API operations.
+func (o ProviderOutput) Token() pulumi.StringOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+}
+
+// Custom string to append to the user agent used for sending HTTP requests to the API.
+func (o ProviderOutput) UserAgent() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.UserAgent }).(pulumi.StringPtrOutput)
 }
 
 func init() {

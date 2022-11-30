@@ -4,11 +4,9 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-import {RecordType} from "./index";
-
-export class Record extends pulumi.CustomResource {
+export class ZoneRecord extends pulumi.CustomResource {
     /**
-     * Get an existing Record resource's state with the given name, ID, and optional extra
+     * Get an existing ZoneRecord resource's state with the given name, ID, and optional extra
      * properties used to qualify the lookup.
      *
      * @param name The _unique_ name of the resulting resource.
@@ -16,59 +14,56 @@ export class Record extends pulumi.CustomResource {
      * @param state Any extra arguments used during the lookup.
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
-    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordState, opts?: pulumi.CustomResourceOptions): Record {
-        return new Record(name, <any>state, { ...opts, id: id });
+    public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: ZoneRecordState, opts?: pulumi.CustomResourceOptions): ZoneRecord {
+        return new ZoneRecord(name, <any>state, { ...opts, id: id });
     }
 
     /** @internal */
-    public static readonly __pulumiType = 'dnsimple:index/record:Record';
+    public static readonly __pulumiType = 'dnsimple:index/zoneRecord:ZoneRecord';
 
     /**
-     * Returns true if the given object is an instance of Record.  This is designed to work even
+     * Returns true if the given object is an instance of ZoneRecord.  This is designed to work even
      * when multiple copies of the Pulumi SDK have been loaded into the same process.
      */
-    public static isInstance(obj: any): obj is Record {
+    public static isInstance(obj: any): obj is ZoneRecord {
         if (obj === undefined || obj === null) {
             return false;
         }
-        return obj['__pulumiType'] === Record.__pulumiType;
+        return obj['__pulumiType'] === ZoneRecord.__pulumiType;
     }
 
-    public readonly domain!: pulumi.Output<string>;
-    public /*out*/ readonly domainId!: pulumi.Output<string>;
-    public /*out*/ readonly hostname!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
     public readonly priority!: pulumi.Output<string>;
+    public /*out*/ readonly qualifiedName!: pulumi.Output<string>;
     public readonly ttl!: pulumi.Output<string | undefined>;
-    public readonly type!: pulumi.Output<RecordType>;
+    public readonly type!: pulumi.Output<string>;
     public readonly value!: pulumi.Output<string>;
+    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    public readonly zoneName!: pulumi.Output<string>;
 
     /**
-     * Create a Record resource with the given unique name, arguments, and options.
+     * Create a ZoneRecord resource with the given unique name, arguments, and options.
      *
      * @param name The _unique_ name of the resource.
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: RecordArgs, opts?: pulumi.CustomResourceOptions)
-    constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
+    constructor(name: string, args: ZoneRecordArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, argsOrState?: ZoneRecordArgs | ZoneRecordState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {
-            const state = argsOrState as RecordState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["hostname"] = state ? state.hostname : undefined;
+            const state = argsOrState as ZoneRecordState | undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
+            resourceInputs["qualifiedName"] = state ? state.qualifiedName : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
+            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
-            const args = argsOrState as RecordArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'domain'");
-            }
+            const args = argsOrState as ZoneRecordArgs | undefined;
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
@@ -78,42 +73,45 @@ export class Record extends pulumi.CustomResource {
             if ((!args || args.value === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
+            if ((!args || args.zoneName === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'zoneName'");
+            }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["domainId"] = undefined /*out*/;
-            resourceInputs["hostname"] = undefined /*out*/;
+            resourceInputs["zoneName"] = args ? args.zoneName : undefined;
+            resourceInputs["qualifiedName"] = undefined /*out*/;
+            resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        super(Record.__pulumiType, name, resourceInputs, opts);
+        super(ZoneRecord.__pulumiType, name, resourceInputs, opts);
     }
 }
 
 /**
- * Input properties used for looking up and filtering Record resources.
+ * Input properties used for looking up and filtering ZoneRecord resources.
  */
-export interface RecordState {
-    domain?: pulumi.Input<string>;
-    domainId?: pulumi.Input<string>;
-    hostname?: pulumi.Input<string>;
+export interface ZoneRecordState {
     name?: pulumi.Input<string>;
     priority?: pulumi.Input<string>;
+    qualifiedName?: pulumi.Input<string>;
     ttl?: pulumi.Input<string>;
-    type?: pulumi.Input<RecordType>;
+    type?: pulumi.Input<string>;
     value?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string>;
 }
 
 /**
- * The set of arguments for constructing a Record resource.
+ * The set of arguments for constructing a ZoneRecord resource.
  */
-export interface RecordArgs {
-    domain: pulumi.Input<string>;
+export interface ZoneRecordArgs {
     name: pulumi.Input<string>;
     priority?: pulumi.Input<string>;
     ttl?: pulumi.Input<string>;
-    type: pulumi.Input<RecordType>;
+    type: pulumi.Input<string>;
     value: pulumi.Input<string>;
+    zoneName: pulumi.Input<string>;
 }

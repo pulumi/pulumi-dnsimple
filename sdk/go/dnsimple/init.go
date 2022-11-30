@@ -20,10 +20,16 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "dnsimple:index/domain:Domain":
+		r = &Domain{}
 	case "dnsimple:index/emailForward:EmailForward":
 		r = &EmailForward{}
+	case "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate":
+		r = &LetsEncryptCertificate{}
 	case "dnsimple:index/record:Record":
 		r = &Record{}
+	case "dnsimple:index/zoneRecord:ZoneRecord":
+		r = &ZoneRecord{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -54,12 +60,27 @@ func init() {
 	version, _ := PkgVersion()
 	pulumi.RegisterResourceModule(
 		"dnsimple",
+		"index/domain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"dnsimple",
 		"index/emailForward",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
 		"dnsimple",
+		"index/letsEncryptCertificate",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"dnsimple",
 		"index/record",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"dnsimple",
+		"index/zoneRecord",
 		&module{version},
 	)
 	pulumi.RegisterResourcePackage(

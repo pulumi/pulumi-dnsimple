@@ -19,12 +19,11 @@ import (
 	"path/filepath"
 	"unicode"
 
-	"github.com/dnsimple/terraform-provider-dnsimple/dnsimple"
-	"github.com/hashicorp/terraform-plugin-sdk/helper/schema"
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shimv1 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v1"
+	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
 )
 
 // all of the token components used below.
@@ -55,7 +54,8 @@ func makeResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	p := shimv1.NewProvider(dnsimple.Provider().(*schema.Provider))
+	dnsimpleProv := dnsimple.Provider()
+	p := shimv2.NewProvider(dnsimpleProv)
 
 	prov := tfbridge.ProviderInfo{
 		P:           p,
@@ -78,7 +78,10 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
-			"dnsimple_email_forward": {Tok: makeResource(mainMod, "EmailForward")},
+			"dnsimple_domain":                   {Tok: makeResource(mainMod, "Domain")},
+			"dnsimple_email_forward":            {Tok: makeResource(mainMod, "EmailForward")},
+			"dnsimple_lets_encrypt_certificate": {Tok: makeResource(mainMod, "LetsEncryptCertificate")},
+			"dnsimple_zone_record":              {Tok: makeResource(mainMod, "ZoneRecord")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
