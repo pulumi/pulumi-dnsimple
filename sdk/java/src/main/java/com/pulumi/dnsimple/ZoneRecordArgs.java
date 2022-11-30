@@ -11,16 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
+public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
 
-    public static final RecordArgs Empty = new RecordArgs();
-
-    @Import(name="domain", required=true)
-    private Output<String> domain;
-
-    public Output<String> domain() {
-        return this.domain;
-    }
+    public static final ZoneRecordArgs Empty = new ZoneRecordArgs();
 
     @Import(name="name", required=true)
     private Output<String> name;
@@ -57,42 +50,40 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
         return this.value;
     }
 
-    private RecordArgs() {}
+    @Import(name="zoneName", required=true)
+    private Output<String> zoneName;
 
-    private RecordArgs(RecordArgs $) {
-        this.domain = $.domain;
+    public Output<String> zoneName() {
+        return this.zoneName;
+    }
+
+    private ZoneRecordArgs() {}
+
+    private ZoneRecordArgs(ZoneRecordArgs $) {
         this.name = $.name;
         this.priority = $.priority;
         this.ttl = $.ttl;
         this.type = $.type;
         this.value = $.value;
+        this.zoneName = $.zoneName;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(RecordArgs defaults) {
+    public static Builder builder(ZoneRecordArgs defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private RecordArgs $;
+        private ZoneRecordArgs $;
 
         public Builder() {
-            $ = new RecordArgs();
+            $ = new ZoneRecordArgs();
         }
 
-        public Builder(RecordArgs defaults) {
-            $ = new RecordArgs(Objects.requireNonNull(defaults));
-        }
-
-        public Builder domain(Output<String> domain) {
-            $.domain = domain;
-            return this;
-        }
-
-        public Builder domain(String domain) {
-            return domain(Output.of(domain));
+        public Builder(ZoneRecordArgs defaults) {
+            $ = new ZoneRecordArgs(Objects.requireNonNull(defaults));
         }
 
         public Builder name(Output<String> name) {
@@ -140,11 +131,20 @@ public final class RecordArgs extends com.pulumi.resources.ResourceArgs {
             return value(Output.of(value));
         }
 
-        public RecordArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
+        public Builder zoneName(Output<String> zoneName) {
+            $.zoneName = zoneName;
+            return this;
+        }
+
+        public Builder zoneName(String zoneName) {
+            return zoneName(Output.of(zoneName));
+        }
+
+        public ZoneRecordArgs build() {
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
             $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            $.zoneName = Objects.requireNonNull($.zoneName, "expected parameter 'zoneName' to be non-null");
             return $;
         }
     }

@@ -15,11 +15,14 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "domain.ts",
         "emailForward.ts",
         "index.ts",
+        "letsEncryptCertificate.ts",
         "provider.ts",
         "record.ts",
         "recordType.ts",
-        "utilities.ts"
+        "utilities.ts",
+        "zoneRecord.ts"
     ]
 }

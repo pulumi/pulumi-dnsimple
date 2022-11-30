@@ -9,37 +9,28 @@ import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
-__all__ = ['RecordArgs', 'Record']
+__all__ = ['ZoneRecordArgs', 'ZoneRecord']
 
 @pulumi.input_type
-class RecordArgs:
+class ZoneRecordArgs:
     def __init__(__self__, *,
-                 domain: pulumi.Input[str],
                  name: pulumi.Input[str],
                  type: pulumi.Input[str],
                  value: pulumi.Input[str],
+                 zone_name: pulumi.Input[str],
                  priority: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None):
         """
-        The set of arguments for constructing a Record resource.
+        The set of arguments for constructing a ZoneRecord resource.
         """
-        pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
         pulumi.set(__self__, "value", value)
+        pulumi.set(__self__, "zone_name", zone_name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
-
-    @property
-    @pulumi.getter
-    def domain(self) -> pulumi.Input[str]:
-        return pulumi.get(self, "domain")
-
-    @domain.setter
-    def domain(self, value: pulumi.Input[str]):
-        pulumi.set(self, "domain", value)
 
     @property
     @pulumi.getter
@@ -69,6 +60,15 @@ class RecordArgs:
         pulumi.set(self, "value", value)
 
     @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "zone_name", value)
+
+    @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "priority")
@@ -88,62 +88,35 @@ class RecordArgs:
 
 
 @pulumi.input_type
-class _RecordState:
+class _ZoneRecordState:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[str]] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None,
-                 hostname: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
+                 qualified_name: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
-                 value: Optional[pulumi.Input[str]] = None):
+                 value: Optional[pulumi.Input[str]] = None,
+                 zone_id: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None):
         """
-        Input properties used for looking up and filtering Record resources.
+        Input properties used for looking up and filtering ZoneRecord resources.
         """
-        if domain is not None:
-            pulumi.set(__self__, "domain", domain)
-        if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
-        if hostname is not None:
-            pulumi.set(__self__, "hostname", hostname)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if priority is not None:
             pulumi.set(__self__, "priority", priority)
+        if qualified_name is not None:
+            pulumi.set(__self__, "qualified_name", qualified_name)
         if ttl is not None:
             pulumi.set(__self__, "ttl", ttl)
         if type is not None:
             pulumi.set(__self__, "type", type)
         if value is not None:
             pulumi.set(__self__, "value", value)
-
-    @property
-    @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "domain")
-
-    @domain.setter
-    def domain(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain", value)
-
-    @property
-    @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "domain_id")
-
-    @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain_id", value)
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "hostname")
-
-    @hostname.setter
-    def hostname(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "hostname", value)
+        if zone_id is not None:
+            pulumi.set(__self__, "zone_id", zone_id)
+        if zone_name is not None:
+            pulumi.set(__self__, "zone_name", zone_name)
 
     @property
     @pulumi.getter
@@ -162,6 +135,15 @@ class _RecordState:
     @priority.setter
     def priority(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "priority", value)
+
+    @property
+    @pulumi.getter(name="qualifiedName")
+    def qualified_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "qualified_name")
+
+    @qualified_name.setter
+    def qualified_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "qualified_name", value)
 
     @property
     @pulumi.getter
@@ -190,21 +172,39 @@ class _RecordState:
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
 
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_id")
 
-class Record(pulumi.CustomResource):
+    @zone_id.setter
+    def zone_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_id", value)
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone_name")
+
+    @zone_name.setter
+    def zone_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone_name", value)
+
+
+class ZoneRecord(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a Record resource with the given unique name, props, and options.
+        Create a ZoneRecord resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
@@ -212,17 +212,17 @@ class Record(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RecordArgs,
+                 args: ZoneRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a Record resource with the given unique name, props, and options.
+        Create a ZoneRecord resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
-        :param RecordArgs args: The arguments to use to populate this resource's properties.
+        :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RecordArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(ZoneRecordArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -231,12 +231,12 @@ class Record(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  priority: Optional[pulumi.Input[str]] = None,
                  ttl: Optional[pulumi.Input[str]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
+                 zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -244,11 +244,8 @@ class Record(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RecordArgs.__new__(RecordArgs)
+            __props__ = ZoneRecordArgs.__new__(ZoneRecordArgs)
 
-            if domain is None and not opts.urn:
-                raise TypeError("Missing required property 'domain'")
-            __props__.__dict__["domain"] = domain
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
@@ -260,10 +257,13 @@ class Record(pulumi.CustomResource):
             if value is None and not opts.urn:
                 raise TypeError("Missing required property 'value'")
             __props__.__dict__["value"] = value
-            __props__.__dict__["domain_id"] = None
-            __props__.__dict__["hostname"] = None
-        super(Record, __self__).__init__(
-            'dnsimple:index/record:Record',
+            if zone_name is None and not opts.urn:
+                raise TypeError("Missing required property 'zone_name'")
+            __props__.__dict__["zone_name"] = zone_name
+            __props__.__dict__["qualified_name"] = None
+            __props__.__dict__["zone_id"] = None
+        super(ZoneRecord, __self__).__init__(
+            'dnsimple:index/zoneRecord:ZoneRecord',
             resource_name,
             __props__,
             opts)
@@ -272,16 +272,16 @@ class Record(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain: Optional[pulumi.Input[str]] = None,
-            domain_id: Optional[pulumi.Input[str]] = None,
-            hostname: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             priority: Optional[pulumi.Input[str]] = None,
+            qualified_name: Optional[pulumi.Input[str]] = None,
             ttl: Optional[pulumi.Input[str]] = None,
             type: Optional[pulumi.Input[str]] = None,
-            value: Optional[pulumi.Input[str]] = None) -> 'Record':
+            value: Optional[pulumi.Input[str]] = None,
+            zone_id: Optional[pulumi.Input[str]] = None,
+            zone_name: Optional[pulumi.Input[str]] = None) -> 'ZoneRecord':
         """
-        Get an existing Record resource's state with the given name, id, and optional extra
+        Get an existing ZoneRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
 
         :param str resource_name: The unique name of the resulting resource.
@@ -290,32 +290,17 @@ class Record(pulumi.CustomResource):
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
-        __props__ = _RecordState.__new__(_RecordState)
+        __props__ = _ZoneRecordState.__new__(_ZoneRecordState)
 
-        __props__.__dict__["domain"] = domain
-        __props__.__dict__["domain_id"] = domain_id
-        __props__.__dict__["hostname"] = hostname
         __props__.__dict__["name"] = name
         __props__.__dict__["priority"] = priority
+        __props__.__dict__["qualified_name"] = qualified_name
         __props__.__dict__["ttl"] = ttl
         __props__.__dict__["type"] = type
         __props__.__dict__["value"] = value
-        return Record(resource_name, opts=opts, __props__=__props__)
-
-    @property
-    @pulumi.getter
-    def domain(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "domain")
-
-    @property
-    @pulumi.getter(name="domainId")
-    def domain_id(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "domain_id")
-
-    @property
-    @pulumi.getter
-    def hostname(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "hostname")
+        __props__.__dict__["zone_id"] = zone_id
+        __props__.__dict__["zone_name"] = zone_name
+        return ZoneRecord(resource_name, opts=opts, __props__=__props__)
 
     @property
     @pulumi.getter
@@ -326,6 +311,11 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[str]:
         return pulumi.get(self, "priority")
+
+    @property
+    @pulumi.getter(name="qualifiedName")
+    def qualified_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "qualified_name")
 
     @property
     @pulumi.getter
@@ -341,4 +331,14 @@ class Record(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
         return pulumi.get(self, "value")
+
+    @property
+    @pulumi.getter(name="zoneId")
+    def zone_id(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone_id")
+
+    @property
+    @pulumi.getter(name="zoneName")
+    def zone_name(self) -> pulumi.Output[str]:
+        return pulumi.get(self, "zone_name")
 

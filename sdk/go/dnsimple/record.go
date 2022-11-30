@@ -11,104 +11,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DNSimple record resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
-//				Domain: pulumi.Any(_var.Dnsimple_domain),
-//				Name:   pulumi.String(""),
-//				Ttl:    pulumi.String("3600"),
-//				Type:   pulumi.String("A"),
-//				Value:  pulumi.String("192.168.0.11"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewRecord(ctx, "foobar", &dnsimple.RecordArgs{
-//				Domain: pulumi.Any(_var.Dnsimple_domain),
-//				Name:   pulumi.String("terraform"),
-//				Ttl:    pulumi.String("3600"),
-//				Type:   pulumi.String("A"),
-//				Value:  pulumi.String("192.168.0.11"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234**
-//
-// ```sh
-//
-//	$ pulumi import dnsimple:index/record:Record resource_name example.com_1234
-//
-// ```
-//
-//	**Importing record www.example.com with record ID 1234**
-//
-// ```sh
-//
-//	$ pulumi import dnsimple:index/record:Record resource_name example.com_1234
-//
-// ```
-//
-//	The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 type Record struct {
 	pulumi.CustomResourceState
 
-	// The domain to add the record to
-	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The domain ID of the record
-	DomainId pulumi.StringOutput `pulumi:"domainId"`
-	// The FQDN of the record
-	Hostname pulumi.StringOutput `pulumi:"hostname"`
-	// The name of the record
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The priority of the record - only useful for some record types
-	Priority pulumi.StringOutput `pulumi:"priority"`
-	// The TTL of the record
-	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
-	// The type of the record
-	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the record
-	Value pulumi.StringOutput `pulumi:"value"`
+	Domain   pulumi.StringOutput    `pulumi:"domain"`
+	DomainId pulumi.StringOutput    `pulumi:"domainId"`
+	Hostname pulumi.StringOutput    `pulumi:"hostname"`
+	Name     pulumi.StringOutput    `pulumi:"name"`
+	Priority pulumi.StringOutput    `pulumi:"priority"`
+	Ttl      pulumi.StringPtrOutput `pulumi:"ttl"`
+	Type     pulumi.StringOutput    `pulumi:"type"`
+	Value    pulumi.StringOutput    `pulumi:"value"`
 }
 
 // NewRecord registers a new resource with the given unique name, arguments, and options.
@@ -152,41 +65,25 @@ func GetRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Record resources.
 type recordState struct {
-	// The domain to add the record to
-	Domain *string `pulumi:"domain"`
-	// The domain ID of the record
+	Domain   *string `pulumi:"domain"`
 	DomainId *string `pulumi:"domainId"`
-	// The FQDN of the record
 	Hostname *string `pulumi:"hostname"`
-	// The name of the record
-	Name *string `pulumi:"name"`
-	// The priority of the record - only useful for some record types
+	Name     *string `pulumi:"name"`
 	Priority *string `pulumi:"priority"`
-	// The TTL of the record
-	Ttl *string `pulumi:"ttl"`
-	// The type of the record
-	Type *string `pulumi:"type"`
-	// The value of the record
-	Value *string `pulumi:"value"`
+	Ttl      *string `pulumi:"ttl"`
+	Type     *string `pulumi:"type"`
+	Value    *string `pulumi:"value"`
 }
 
 type RecordState struct {
-	// The domain to add the record to
-	Domain pulumi.StringPtrInput
-	// The domain ID of the record
+	Domain   pulumi.StringPtrInput
 	DomainId pulumi.StringPtrInput
-	// The FQDN of the record
 	Hostname pulumi.StringPtrInput
-	// The name of the record
-	Name pulumi.StringPtrInput
-	// The priority of the record - only useful for some record types
+	Name     pulumi.StringPtrInput
 	Priority pulumi.StringPtrInput
-	// The TTL of the record
-	Ttl pulumi.StringPtrInput
-	// The type of the record
-	Type pulumi.StringPtrInput
-	// The value of the record
-	Value pulumi.StringPtrInput
+	Ttl      pulumi.StringPtrInput
+	Type     pulumi.StringPtrInput
+	Value    pulumi.StringPtrInput
 }
 
 func (RecordState) ElementType() reflect.Type {
@@ -194,34 +91,22 @@ func (RecordState) ElementType() reflect.Type {
 }
 
 type recordArgs struct {
-	// The domain to add the record to
-	Domain string `pulumi:"domain"`
-	// The name of the record
-	Name string `pulumi:"name"`
-	// The priority of the record - only useful for some record types
+	Domain   string  `pulumi:"domain"`
+	Name     string  `pulumi:"name"`
 	Priority *string `pulumi:"priority"`
-	// The TTL of the record
-	Ttl *string `pulumi:"ttl"`
-	// The type of the record
-	Type string `pulumi:"type"`
-	// The value of the record
-	Value string `pulumi:"value"`
+	Ttl      *string `pulumi:"ttl"`
+	Type     string  `pulumi:"type"`
+	Value    string  `pulumi:"value"`
 }
 
 // The set of arguments for constructing a Record resource.
 type RecordArgs struct {
-	// The domain to add the record to
-	Domain pulumi.StringInput
-	// The name of the record
-	Name pulumi.StringInput
-	// The priority of the record - only useful for some record types
+	Domain   pulumi.StringInput
+	Name     pulumi.StringInput
 	Priority pulumi.StringPtrInput
-	// The TTL of the record
-	Ttl pulumi.StringPtrInput
-	// The type of the record
-	Type pulumi.StringInput
-	// The value of the record
-	Value pulumi.StringInput
+	Ttl      pulumi.StringPtrInput
+	Type     pulumi.StringInput
+	Value    pulumi.StringInput
 }
 
 func (RecordArgs) ElementType() reflect.Type {
@@ -309,6 +194,38 @@ func (o RecordOutput) ToRecordOutput() RecordOutput {
 
 func (o RecordOutput) ToRecordOutputWithContext(ctx context.Context) RecordOutput {
 	return o
+}
+
+func (o RecordOutput) Domain() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
+}
+
+func (o RecordOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
+}
+
+func (o RecordOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Hostname }).(pulumi.StringOutput)
+}
+
+func (o RecordOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o RecordOutput) Priority() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
+}
+
+func (o RecordOutput) Ttl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringPtrOutput { return v.Ttl }).(pulumi.StringPtrOutput)
+}
+
+func (o RecordOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+}
+
+func (o RecordOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v *Record) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
 type RecordArrayOutput struct{ *pulumi.OutputState }

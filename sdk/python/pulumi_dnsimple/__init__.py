@@ -5,9 +5,12 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from .domain import *
 from .email_forward import *
+from .lets_encrypt_certificate import *
 from .provider import *
 from .record import *
+from .zone_record import *
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
@@ -21,6 +24,14 @@ _utilities.register(
 [
  {
   "pkg": "dnsimple",
+  "mod": "index/domain",
+  "fqn": "pulumi_dnsimple",
+  "classes": {
+   "dnsimple:index/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "dnsimple",
   "mod": "index/emailForward",
   "fqn": "pulumi_dnsimple",
   "classes": {
@@ -29,10 +40,26 @@ _utilities.register(
  },
  {
   "pkg": "dnsimple",
+  "mod": "index/letsEncryptCertificate",
+  "fqn": "pulumi_dnsimple",
+  "classes": {
+   "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate": "LetsEncryptCertificate"
+  }
+ },
+ {
+  "pkg": "dnsimple",
   "mod": "index/record",
   "fqn": "pulumi_dnsimple",
   "classes": {
    "dnsimple:index/record:Record": "Record"
+  }
+ },
+ {
+  "pkg": "dnsimple",
+  "mod": "index/zoneRecord",
+  "fqn": "pulumi_dnsimple",
+  "classes": {
+   "dnsimple:index/zoneRecord:ZoneRecord": "ZoneRecord"
   }
  }
 ]

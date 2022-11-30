@@ -74,7 +74,7 @@ namespace Pulumi.DNSimple
         }
     }
 
-    internal sealed class DNSimpleResourceTypeAttribute : Pulumi.ResourceTypeAttribute
+    internal sealed class DNSimpleResourceTypeAttribute : global::Pulumi.ResourceTypeAttribute
     {
         public DNSimpleResourceTypeAttribute(string type) : base(type, Utilities.Version)
         {

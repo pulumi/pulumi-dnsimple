@@ -32,6 +32,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Flag to enable the prefetch of zone records.
+     * 
+     */
+    @Import(name="prefetch", json=true)
+    private @Nullable Output<Boolean> prefetch;
+
+    /**
+     * @return Flag to enable the prefetch of zone records.
+     * 
+     */
+    public Optional<Output<Boolean>> prefetch() {
+        return Optional.ofNullable(this.prefetch);
+    }
+
+    /**
      * Flag to enable the sandbox API.
      * 
      */
@@ -61,12 +76,29 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return this.token;
     }
 
+    /**
+     * Custom string to append to the user agent used for sending HTTP requests to the API.
+     * 
+     */
+    @Import(name="userAgent")
+    private @Nullable Output<String> userAgent;
+
+    /**
+     * @return Custom string to append to the user agent used for sending HTTP requests to the API.
+     * 
+     */
+    public Optional<Output<String>> userAgent() {
+        return Optional.ofNullable(this.userAgent);
+    }
+
     private ProviderArgs() {}
 
     private ProviderArgs(ProviderArgs $) {
         this.account = $.account;
+        this.prefetch = $.prefetch;
         this.sandbox = $.sandbox;
         this.token = $.token;
+        this.userAgent = $.userAgent;
     }
 
     public static Builder builder() {
@@ -109,6 +141,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param prefetch Flag to enable the prefetch of zone records.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefetch(@Nullable Output<Boolean> prefetch) {
+            $.prefetch = prefetch;
+            return this;
+        }
+
+        /**
+         * @param prefetch Flag to enable the prefetch of zone records.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder prefetch(Boolean prefetch) {
+            return prefetch(Output.of(prefetch));
+        }
+
+        /**
          * @param sandbox Flag to enable the sandbox API.
          * 
          * @return builder
@@ -148,6 +201,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder token(String token) {
             return token(Output.of(token));
+        }
+
+        /**
+         * @param userAgent Custom string to append to the user agent used for sending HTTP requests to the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAgent(@Nullable Output<String> userAgent) {
+            $.userAgent = userAgent;
+            return this;
+        }
+
+        /**
+         * @param userAgent Custom string to append to the user agent used for sending HTTP requests to the API.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder userAgent(String userAgent) {
+            return userAgent(Output.of(userAgent));
         }
 
         public ProviderArgs build() {

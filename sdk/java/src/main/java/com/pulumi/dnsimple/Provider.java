@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.dnsimple.ProviderArgs;
 import com.pulumi.dnsimple.Utilities;
 import java.lang.String;
+import java.util.List;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
@@ -49,6 +51,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<String> token() {
         return this.token;
     }
+    /**
+     * Custom string to append to the user agent used for sending HTTP requests to the API.
+     * 
+     */
+    @Export(name="userAgent", type=String.class, parameters={})
+    private Output</* @Nullable */ String> userAgent;
+
+    /**
+     * @return Custom string to append to the user agent used for sending HTTP requests to the API.
+     * 
+     */
+    public Output<Optional<String>> userAgent() {
+        return Codegen.optional(this.userAgent);
+    }
 
     /**
      *
@@ -78,6 +94,9 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "token"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

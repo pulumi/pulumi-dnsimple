@@ -7,33 +7,15 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Export;
 import com.pulumi.core.annotations.ResourceType;
 import com.pulumi.core.internal.Codegen;
-import com.pulumi.dnsimple.RecordArgs;
 import com.pulumi.dnsimple.Utilities;
-import com.pulumi.dnsimple.inputs.RecordState;
+import com.pulumi.dnsimple.ZoneRecordArgs;
+import com.pulumi.dnsimple.inputs.ZoneRecordState;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-@ResourceType(type="dnsimple:index/record:Record")
-public class Record extends com.pulumi.resources.CustomResource {
-    @Export(name="domain", type=String.class, parameters={})
-    private Output<String> domain;
-
-    public Output<String> domain() {
-        return this.domain;
-    }
-    @Export(name="domainId", type=String.class, parameters={})
-    private Output<String> domainId;
-
-    public Output<String> domainId() {
-        return this.domainId;
-    }
-    @Export(name="hostname", type=String.class, parameters={})
-    private Output<String> hostname;
-
-    public Output<String> hostname() {
-        return this.hostname;
-    }
+@ResourceType(type="dnsimple:index/zoneRecord:ZoneRecord")
+public class ZoneRecord extends com.pulumi.resources.CustomResource {
     @Export(name="name", type=String.class, parameters={})
     private Output<String> name;
 
@@ -45,6 +27,12 @@ public class Record extends com.pulumi.resources.CustomResource {
 
     public Output<String> priority() {
         return this.priority;
+    }
+    @Export(name="qualifiedName", type=String.class, parameters={})
+    private Output<String> qualifiedName;
+
+    public Output<String> qualifiedName() {
+        return this.qualifiedName;
     }
     @Export(name="ttl", type=String.class, parameters={})
     private Output</* @Nullable */ String> ttl;
@@ -64,20 +52,32 @@ public class Record extends com.pulumi.resources.CustomResource {
     public Output<String> value() {
         return this.value;
     }
+    @Export(name="zoneId", type=String.class, parameters={})
+    private Output<String> zoneId;
+
+    public Output<String> zoneId() {
+        return this.zoneId;
+    }
+    @Export(name="zoneName", type=String.class, parameters={})
+    private Output<String> zoneName;
+
+    public Output<String> zoneName() {
+        return this.zoneName;
+    }
 
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public Record(String name) {
-        this(name, RecordArgs.Empty);
+    public ZoneRecord(String name) {
+        this(name, ZoneRecordArgs.Empty);
     }
     /**
      *
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Record(String name, RecordArgs args) {
+    public ZoneRecord(String name, ZoneRecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -86,12 +86,12 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Record(String name, RecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/record:Record", name, args == null ? RecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+    public ZoneRecord(String name, ZoneRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/zoneRecord:ZoneRecord", name, args == null ? ZoneRecordArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 
-    private Record(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/record:Record", name, state, makeResourceOptions(options, id));
+    private ZoneRecord(String name, Output<String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/zoneRecord:ZoneRecord", name, state, makeResourceOptions(options, id));
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
@@ -110,7 +110,7 @@ public class Record extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static Record get(String name, Output<String> id, @Nullable RecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        return new Record(name, id, state, options);
+    public static ZoneRecord get(String name, Output<String> id, @Nullable ZoneRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        return new ZoneRecord(name, id, state, options);
     }
 }

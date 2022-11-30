@@ -11,30 +11,9 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 
-public final class RecordState extends com.pulumi.resources.ResourceArgs {
+public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
 
-    public static final RecordState Empty = new RecordState();
-
-    @Import(name="domain")
-    private @Nullable Output<String> domain;
-
-    public Optional<Output<String>> domain() {
-        return Optional.ofNullable(this.domain);
-    }
-
-    @Import(name="domainId")
-    private @Nullable Output<String> domainId;
-
-    public Optional<Output<String>> domainId() {
-        return Optional.ofNullable(this.domainId);
-    }
-
-    @Import(name="hostname")
-    private @Nullable Output<String> hostname;
-
-    public Optional<Output<String>> hostname() {
-        return Optional.ofNullable(this.hostname);
-    }
+    public static final ZoneRecordState Empty = new ZoneRecordState();
 
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -48,6 +27,13 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> priority() {
         return Optional.ofNullable(this.priority);
+    }
+
+    @Import(name="qualifiedName")
+    private @Nullable Output<String> qualifiedName;
+
+    public Optional<Output<String>> qualifiedName() {
+        return Optional.ofNullable(this.qualifiedName);
     }
 
     @Import(name="ttl")
@@ -71,62 +57,49 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.value);
     }
 
-    private RecordState() {}
+    @Import(name="zoneId")
+    private @Nullable Output<String> zoneId;
 
-    private RecordState(RecordState $) {
-        this.domain = $.domain;
-        this.domainId = $.domainId;
-        this.hostname = $.hostname;
+    public Optional<Output<String>> zoneId() {
+        return Optional.ofNullable(this.zoneId);
+    }
+
+    @Import(name="zoneName")
+    private @Nullable Output<String> zoneName;
+
+    public Optional<Output<String>> zoneName() {
+        return Optional.ofNullable(this.zoneName);
+    }
+
+    private ZoneRecordState() {}
+
+    private ZoneRecordState(ZoneRecordState $) {
         this.name = $.name;
         this.priority = $.priority;
+        this.qualifiedName = $.qualifiedName;
         this.ttl = $.ttl;
         this.type = $.type;
         this.value = $.value;
+        this.zoneId = $.zoneId;
+        this.zoneName = $.zoneName;
     }
 
     public static Builder builder() {
         return new Builder();
     }
-    public static Builder builder(RecordState defaults) {
+    public static Builder builder(ZoneRecordState defaults) {
         return new Builder(defaults);
     }
 
     public static final class Builder {
-        private RecordState $;
+        private ZoneRecordState $;
 
         public Builder() {
-            $ = new RecordState();
+            $ = new ZoneRecordState();
         }
 
-        public Builder(RecordState defaults) {
-            $ = new RecordState(Objects.requireNonNull(defaults));
-        }
-
-        public Builder domain(@Nullable Output<String> domain) {
-            $.domain = domain;
-            return this;
-        }
-
-        public Builder domain(String domain) {
-            return domain(Output.of(domain));
-        }
-
-        public Builder domainId(@Nullable Output<String> domainId) {
-            $.domainId = domainId;
-            return this;
-        }
-
-        public Builder domainId(String domainId) {
-            return domainId(Output.of(domainId));
-        }
-
-        public Builder hostname(@Nullable Output<String> hostname) {
-            $.hostname = hostname;
-            return this;
-        }
-
-        public Builder hostname(String hostname) {
-            return hostname(Output.of(hostname));
+        public Builder(ZoneRecordState defaults) {
+            $ = new ZoneRecordState(Objects.requireNonNull(defaults));
         }
 
         public Builder name(@Nullable Output<String> name) {
@@ -145,6 +118,15 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
 
         public Builder priority(String priority) {
             return priority(Output.of(priority));
+        }
+
+        public Builder qualifiedName(@Nullable Output<String> qualifiedName) {
+            $.qualifiedName = qualifiedName;
+            return this;
+        }
+
+        public Builder qualifiedName(String qualifiedName) {
+            return qualifiedName(Output.of(qualifiedName));
         }
 
         public Builder ttl(@Nullable Output<String> ttl) {
@@ -174,7 +156,25 @@ public final class RecordState extends com.pulumi.resources.ResourceArgs {
             return value(Output.of(value));
         }
 
-        public RecordState build() {
+        public Builder zoneId(@Nullable Output<String> zoneId) {
+            $.zoneId = zoneId;
+            return this;
+        }
+
+        public Builder zoneId(String zoneId) {
+            return zoneId(Output.of(zoneId));
+        }
+
+        public Builder zoneName(@Nullable Output<String> zoneName) {
+            $.zoneName = zoneName;
+            return this;
+        }
+
+        public Builder zoneName(String zoneName) {
+            return zoneName(Output.of(zoneName));
+        }
+
+        public ZoneRecordState build() {
             return $;
         }
     }

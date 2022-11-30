@@ -16,7 +16,7 @@ namespace Pulumi.DNSimple
     /// [documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.
     /// </summary>
     [DNSimpleResourceType("pulumi:providers:dnsimple")]
-    public partial class Provider : Pulumi.ProviderResource
+    public partial class Provider : global::Pulumi.ProviderResource
     {
         /// <summary>
         /// The account for API operations.
@@ -29,6 +29,12 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Output("token")]
         public Output<string> Token { get; private set; } = null!;
+
+        /// <summary>
+        /// Custom string to append to the user agent used for sending HTTP requests to the API.
+        /// </summary>
+        [Output("userAgent")]
+        public Output<string?> UserAgent { get; private set; } = null!;
 
 
         /// <summary>
@@ -48,6 +54,10 @@ namespace Pulumi.DNSimple
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "token",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -56,7 +66,7 @@ namespace Pulumi.DNSimple
         }
     }
 
-    public sealed class ProviderArgs : Pulumi.ResourceArgs
+    public sealed class ProviderArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
         /// The account for API operations.
@@ -65,19 +75,42 @@ namespace Pulumi.DNSimple
         public Input<string> Account { get; set; } = null!;
 
         /// <summary>
+        /// Flag to enable the prefetch of zone records.
+        /// </summary>
+        [Input("prefetch", json: true)]
+        public Input<bool>? Prefetch { get; set; }
+
+        /// <summary>
         /// Flag to enable the sandbox API.
         /// </summary>
         [Input("sandbox", json: true)]
         public Input<bool>? Sandbox { get; set; }
 
+        [Input("token", required: true)]
+        private Input<string>? _token;
+
         /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
-        [Input("token", required: true)]
-        public Input<string> Token { get; set; } = null!;
+        public Input<string>? Token
+        {
+            get => _token;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _token = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
+
+        /// <summary>
+        /// Custom string to append to the user agent used for sending HTTP requests to the API.
+        /// </summary>
+        [Input("userAgent")]
+        public Input<string>? UserAgent { get; set; }
 
         public ProviderArgs()
         {
         }
+        public static new ProviderArgs Empty => new ProviderArgs();
     }
 }

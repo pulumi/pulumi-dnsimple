@@ -9,23 +9,17 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DNSimple
 {
-    [DNSimpleResourceType("dnsimple:index/record:Record")]
-    public partial class Record : global::Pulumi.CustomResource
+    [DNSimpleResourceType("dnsimple:index/zoneRecord:ZoneRecord")]
+    public partial class ZoneRecord : global::Pulumi.CustomResource
     {
-        [Output("domain")]
-        public Output<string> Domain { get; private set; } = null!;
-
-        [Output("domainId")]
-        public Output<string> DomainId { get; private set; } = null!;
-
-        [Output("hostname")]
-        public Output<string> Hostname { get; private set; } = null!;
-
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         [Output("priority")]
         public Output<string> Priority { get; private set; } = null!;
+
+        [Output("qualifiedName")]
+        public Output<string> QualifiedName { get; private set; } = null!;
 
         [Output("ttl")]
         public Output<string?> Ttl { get; private set; } = null!;
@@ -36,21 +30,27 @@ namespace Pulumi.DNSimple
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
+        [Output("zoneId")]
+        public Output<string> ZoneId { get; private set; } = null!;
+
+        [Output("zoneName")]
+        public Output<string> ZoneName { get; private set; } = null!;
+
 
         /// <summary>
-        /// Create a Record resource with the given unique name, arguments, and options.
+        /// Create a ZoneRecord resource with the given unique name, arguments, and options.
         /// </summary>
         ///
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Record(string name, RecordArgs args, CustomResourceOptions? options = null)
-            : base("dnsimple:index/record:Record", name, args ?? new RecordArgs(), MakeResourceOptions(options, ""))
+        public ZoneRecord(string name, ZoneRecordArgs args, CustomResourceOptions? options = null)
+            : base("dnsimple:index/zoneRecord:ZoneRecord", name, args ?? new ZoneRecordArgs(), MakeResourceOptions(options, ""))
         {
         }
 
-        private Record(string name, Input<string> id, RecordState? state = null, CustomResourceOptions? options = null)
-            : base("dnsimple:index/record:Record", name, state, MakeResourceOptions(options, id))
+        private ZoneRecord(string name, Input<string> id, ZoneRecordState? state = null, CustomResourceOptions? options = null)
+            : base("dnsimple:index/zoneRecord:ZoneRecord", name, state, MakeResourceOptions(options, id))
         {
         }
 
@@ -66,7 +66,7 @@ namespace Pulumi.DNSimple
             return merged;
         }
         /// <summary>
-        /// Get an existing Record resource's state with the given name, ID, and optional extra
+        /// Get an existing ZoneRecord resource's state with the given name, ID, and optional extra
         /// properties used to qualify the lookup.
         /// </summary>
         ///
@@ -74,17 +74,14 @@ namespace Pulumi.DNSimple
         /// <param name="id">The unique provider ID of the resource to lookup.</param>
         /// <param name="state">Any extra arguments used during the lookup.</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public static Record Get(string name, Input<string> id, RecordState? state = null, CustomResourceOptions? options = null)
+        public static ZoneRecord Get(string name, Input<string> id, ZoneRecordState? state = null, CustomResourceOptions? options = null)
         {
-            return new Record(name, id, state, options);
+            return new ZoneRecord(name, id, state, options);
         }
     }
 
-    public sealed class RecordArgs : global::Pulumi.ResourceArgs
+    public sealed class ZoneRecordArgs : global::Pulumi.ResourceArgs
     {
-        [Input("domain", required: true)]
-        public Input<string> Domain { get; set; } = null!;
-
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -100,28 +97,25 @@ namespace Pulumi.DNSimple
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
-        public RecordArgs()
+        [Input("zoneName", required: true)]
+        public Input<string> ZoneName { get; set; } = null!;
+
+        public ZoneRecordArgs()
         {
         }
-        public static new RecordArgs Empty => new RecordArgs();
+        public static new ZoneRecordArgs Empty => new ZoneRecordArgs();
     }
 
-    public sealed class RecordState : global::Pulumi.ResourceArgs
+    public sealed class ZoneRecordState : global::Pulumi.ResourceArgs
     {
-        [Input("domain")]
-        public Input<string>? Domain { get; set; }
-
-        [Input("domainId")]
-        public Input<string>? DomainId { get; set; }
-
-        [Input("hostname")]
-        public Input<string>? Hostname { get; set; }
-
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         [Input("priority")]
         public Input<string>? Priority { get; set; }
+
+        [Input("qualifiedName")]
+        public Input<string>? QualifiedName { get; set; }
 
         [Input("ttl")]
         public Input<string>? Ttl { get; set; }
@@ -132,9 +126,15 @@ namespace Pulumi.DNSimple
         [Input("value")]
         public Input<string>? Value { get; set; }
 
-        public RecordState()
+        [Input("zoneId")]
+        public Input<string>? ZoneId { get; set; }
+
+        [Input("zoneName")]
+        public Input<string>? ZoneName { get; set; }
+
+        public ZoneRecordState()
         {
         }
-        public static new RecordState Empty => new RecordState();
+        public static new ZoneRecordState Empty => new ZoneRecordState();
     }
 }

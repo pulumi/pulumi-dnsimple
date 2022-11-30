@@ -5,10 +5,37 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
-export * from "./emailForward";
-export * from "./provider";
-export * from "./record";
+export { DomainArgs, DomainState } from "./domain";
+export type Domain = import("./domain").Domain;
+export const Domain: typeof import("./domain").Domain = null as any;
+utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { EmailForwardArgs, EmailForwardState } from "./emailForward";
+export type EmailForward = import("./emailForward").EmailForward;
+export const EmailForward: typeof import("./emailForward").EmailForward = null as any;
+utilities.lazyLoad(exports, ["EmailForward"], () => require("./emailForward"));
+
+export { LetsEncryptCertificateArgs, LetsEncryptCertificateState } from "./letsEncryptCertificate";
+export type LetsEncryptCertificate = import("./letsEncryptCertificate").LetsEncryptCertificate;
+export const LetsEncryptCertificate: typeof import("./letsEncryptCertificate").LetsEncryptCertificate = null as any;
+utilities.lazyLoad(exports, ["LetsEncryptCertificate"], () => require("./letsEncryptCertificate"));
+
+export { ProviderArgs } from "./provider";
+export type Provider = import("./provider").Provider;
+export const Provider: typeof import("./provider").Provider = null as any;
+utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
+
+export { RecordArgs, RecordState } from "./record";
+export type Record = import("./record").Record;
+export const Record: typeof import("./record").Record = null as any;
+utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+
 export * from "./recordType";
+export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
+export type ZoneRecord = import("./zoneRecord").ZoneRecord;
+export const ZoneRecord: typeof import("./zoneRecord").ZoneRecord = null as any;
+utilities.lazyLoad(exports, ["ZoneRecord"], () => require("./zoneRecord"));
+
 
 // Export sub-modules:
 import * as config from "./config";
@@ -17,28 +44,30 @@ export {
     config,
 };
 
-// Import resources to register:
-import { EmailForward } from "./emailForward";
-import { Record } from "./record";
-
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "dnsimple:index/domain:Domain":
+                return new Domain(name, <any>undefined, { urn })
             case "dnsimple:index/emailForward:EmailForward":
                 return new EmailForward(name, <any>undefined, { urn })
+            case "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate":
+                return new LetsEncryptCertificate(name, <any>undefined, { urn })
             case "dnsimple:index/record:Record":
                 return new Record(name, <any>undefined, { urn })
+            case "dnsimple:index/zoneRecord:ZoneRecord":
+                return new ZoneRecord(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
+pulumi.runtime.registerResourceModule("dnsimple", "index/domain", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/emailForward", _module)
+pulumi.runtime.registerResourceModule("dnsimple", "index/letsEncryptCertificate", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/record", _module)
-
-import { Provider } from "./provider";
-
+pulumi.runtime.registerResourceModule("dnsimple", "index/zoneRecord", _module)
 pulumi.runtime.registerResourcePackage("dnsimple", {
     version: utilities.getVersion(),
     constructProvider: (name: string, type: string, urn: string): pulumi.ProviderResource => {
