@@ -3,7 +3,6 @@ module github.com/pulumi/pulumi-dnsimple/provider/v3
 go 1.19
 
 require (
-	github.com/hashicorp/terraform-plugin-sdk v1.7.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.33.0
 	github.com/pulumi/pulumi/sdk/v3 v3.44.2
 	github.com/terraform-providers/terraform-provider-dnsimple v0.15.0
@@ -33,7 +32,7 @@ require (
 	github.com/Azure/go-autorest/logger v0.2.1 // indirect
 	github.com/Azure/go-autorest/tracing v0.6.0 // indirect
 	github.com/AzureAD/microsoft-authentication-library-for-go v0.4.0 // indirect
-	github.com/Masterminds/goutils v1.1.0 // indirect
+	github.com/Masterminds/goutils v1.1.1 // indirect
 	github.com/Masterminds/semver v1.5.0 // indirect
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/Microsoft/go-winio v0.5.2 // indirect
@@ -199,7 +198,6 @@ require (
 	github.com/xeipuuv/gojsonreference v0.0.0-20180127040603-bd5ef7bd5415 // indirect
 	github.com/xeipuuv/gojsonschema v1.2.0 // indirect
 	github.com/zclconf/go-cty v1.12.1 // indirect
-	github.com/zclconf/go-cty-yaml v1.0.1 // indirect
 	go.opencensus.io v0.23.0 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	gocloud.dev v0.27.0 // indirect
