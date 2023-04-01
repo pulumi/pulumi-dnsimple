@@ -17,6 +17,8 @@
         "config/vars.ts",
         "domain.ts",
         "emailForward.ts",
+        "getCertificate.ts",
+        "getZone.ts",
         "index.ts",
         "letsEncryptCertificate.ts",
         "provider.ts",

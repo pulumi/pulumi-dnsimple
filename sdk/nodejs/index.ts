@@ -15,6 +15,16 @@ export type EmailForward = import("./emailForward").EmailForward;
 export const EmailForward: typeof import("./emailForward").EmailForward = null as any;
 utilities.lazyLoad(exports, ["EmailForward"], () => require("./emailForward"));
 
+export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } from "./getCertificate";
+export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
+export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
+utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+
+export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
+export const getZone: typeof import("./getZone").getZone = null as any;
+export const getZoneOutput: typeof import("./getZone").getZoneOutput = null as any;
+utilities.lazyLoad(exports, ["getZone","getZoneOutput"], () => require("./getZone"));
+
 export { LetsEncryptCertificateArgs, LetsEncryptCertificateState } from "./letsEncryptCertificate";
 export type LetsEncryptCertificate = import("./letsEncryptCertificate").LetsEncryptCertificate;
 export const LetsEncryptCertificate: typeof import("./letsEncryptCertificate").LetsEncryptCertificate = null as any;

@@ -7,6 +7,8 @@ import typing
 # Export this package's modules as members:
 from .domain import *
 from .email_forward import *
+from .get_certificate import *
+from .get_zone import *
 from .lets_encrypt_certificate import *
 from .provider import *
 from .record import *
