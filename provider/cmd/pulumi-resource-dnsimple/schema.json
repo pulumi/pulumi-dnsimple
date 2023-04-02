@@ -569,5 +569,103 @@
                 "type": "object"
             }
         }
+    },
+    "functions": {
+        "dnsimple:index/getCertificate:getCertificate": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getCertificate.\n",
+                "properties": {
+                    "certificateId": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "certificateId",
+                    "domain"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getCertificate.\n",
+                "properties": {
+                    "certificateChains": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "certificateId": {
+                        "type": "string"
+                    },
+                    "domain": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "string",
+                        "description": "The provider-assigned unique ID for this managed resource.\n"
+                    },
+                    "privateKey": {
+                        "type": "string"
+                    },
+                    "rootCertificate": {
+                        "type": "string"
+                    },
+                    "serverCertificate": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "certificateChains",
+                    "certificateId",
+                    "domain",
+                    "privateKey",
+                    "rootCertificate",
+                    "serverCertificate",
+                    "id"
+                ]
+            }
+        },
+        "dnsimple:index/getZone:getZone": {
+            "inputs": {
+                "description": "A collection of arguments for invoking getZone.\n",
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "name"
+                ]
+            },
+            "outputs": {
+                "description": "A collection of values returned by getZone.\n",
+                "properties": {
+                    "accountId": {
+                        "type": "integer"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "reverse": {
+                        "type": "boolean"
+                    }
+                },
+                "type": "object",
+                "required": [
+                    "accountId",
+                    "id",
+                    "name",
+                    "reverse"
+                ]
+            }
+        }
     }
 }
