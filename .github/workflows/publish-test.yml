@@ -10,6 +10,6 @@ jobs:
         uses: pulumi/pulumi-package-publisher@v0.0.4
         with:
           pypi-password: ${{ secrets.PYPI_PASSWORD }}
-          provider-repo: "pulumi/pulumi-dnsimple"
+          provider-repo: "pulumi-dnsimple"
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
