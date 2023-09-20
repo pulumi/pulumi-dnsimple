@@ -27,7 +27,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The account for API operations.
      * 
      */
-    @Export(name="account", type=String.class, parameters={})
+    @Export(name="account", refs={String.class}, tree="[0]")
     private Output<String> account;
 
     /**
@@ -41,7 +41,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * The API v2 token for API operations.
      * 
      */
-    @Export(name="token", type=String.class, parameters={})
+    @Export(name="token", refs={String.class}, tree="[0]")
     private Output<String> token;
 
     /**
@@ -55,7 +55,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * Custom string to append to the user agent used for sending HTTP requests to the API.
      * 
      */
-    @Export(name="userAgent", type=String.class, parameters={})
+    @Export(name="userAgent", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> userAgent;
 
     /**

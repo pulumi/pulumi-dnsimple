@@ -6,6 +6,10 @@ import * as utilities from "./utilities";
 
 import {RecordType} from "./index";
 
+/**
+ * @deprecated This resource is deprecated.
+It will be removed in the next major version.
+ */
 export class Record extends pulumi.CustomResource {
     /**
      * Get an existing Record resource's state with the given name, ID, and optional extra
@@ -17,6 +21,7 @@ export class Record extends pulumi.CustomResource {
      * @param opts Optional settings to control the behavior of the CustomResource.
      */
     public static get(name: string, id: pulumi.Input<pulumi.ID>, state?: RecordState, opts?: pulumi.CustomResourceOptions): Record {
+        pulumi.log.warn("Record is deprecated: This resource is deprecated.\nIt will be removed in the next major version.")
         return new Record(name, <any>state, { ...opts, id: id });
     }
 
@@ -50,8 +55,13 @@ export class Record extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
+    /** @deprecated This resource is deprecated.
+It will be removed in the next major version. */
     constructor(name: string, args: RecordArgs, opts?: pulumi.CustomResourceOptions)
+    /** @deprecated This resource is deprecated.
+It will be removed in the next major version. */
     constructor(name: string, argsOrState?: RecordArgs | RecordState, opts?: pulumi.CustomResourceOptions) {
+        pulumi.log.warn("Record is deprecated: This resource is deprecated.\nIt will be removed in the next major version.")
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         if (opts.id) {

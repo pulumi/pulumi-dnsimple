@@ -47,6 +47,9 @@ class GetCertificateResult:
     @property
     @pulumi.getter(name="certificateChains")
     def certificate_chains(self) -> Sequence[str]:
+        """
+        A list of certificates that make up the chain
+        """
         return pulumi.get(self, "certificate_chains")
 
     @property
@@ -70,16 +73,25 @@ class GetCertificateResult:
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> str:
+        """
+        The corresponding Private Key for the SSL Certificate
+        """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="rootCertificate")
     def root_certificate(self) -> str:
+        """
+        The Root Certificate of the issuing CA
+        """
         return pulumi.get(self, "root_certificate")
 
     @property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> str:
+        """
+        The SSL Certificate
+        """
         return pulumi.get(self, "server_certificate")
 
 
@@ -102,7 +114,21 @@ def get_certificate(certificate_id: Optional[str] = None,
                     domain: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Use this data source to access information about an existing resource.
+    Provides a DNSimple certificate data source.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
+        domain=var["dnsimple_domain"])
+    ```
+
+
+    :param str certificate_id: The ID of the SSL Certificate
+    :param str domain: The domain of the SSL Certificate
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -111,13 +137,13 @@ def get_certificate(certificate_id: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('dnsimple:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
     return AwaitableGetCertificateResult(
-        certificate_chains=__ret__.certificate_chains,
-        certificate_id=__ret__.certificate_id,
-        domain=__ret__.domain,
-        id=__ret__.id,
-        private_key=__ret__.private_key,
-        root_certificate=__ret__.root_certificate,
-        server_certificate=__ret__.server_certificate)
+        certificate_chains=pulumi.get(__ret__, 'certificate_chains'),
+        certificate_id=pulumi.get(__ret__, 'certificate_id'),
+        domain=pulumi.get(__ret__, 'domain'),
+        id=pulumi.get(__ret__, 'id'),
+        private_key=pulumi.get(__ret__, 'private_key'),
+        root_certificate=pulumi.get(__ret__, 'root_certificate'),
+        server_certificate=pulumi.get(__ret__, 'server_certificate'))
 
 
 @_utilities.lift_output_func(get_certificate)
@@ -125,6 +151,20 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
     """
-    Use this data source to access information about an existing resource.
+    Provides a DNSimple certificate data source.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
+        domain=var["dnsimple_domain"])
+    ```
+
+
+    :param str certificate_id: The ID of the SSL Certificate
+    :param str domain: The domain of the SSL Certificate
     """
     ...

@@ -191,7 +191,14 @@ class _RecordState:
         pulumi.set(self, "value", value)
 
 
+warnings.warn("""This resource is deprecated.
+It will be removed in the next major version.""", DeprecationWarning)
+
+
 class Record(pulumi.CustomResource):
+    warnings.warn("""This resource is deprecated.
+It will be removed in the next major version.""", DeprecationWarning)
+
     @overload
     def __init__(__self__,
                  resource_name: str,
@@ -238,6 +245,8 @@ class Record(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  __props__=None):
+        pulumi.log.warn("""Record is deprecated: This resource is deprecated.
+It will be removed in the next major version.""")
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
             raise TypeError('Expected resource options to be a ResourceOptions instance')

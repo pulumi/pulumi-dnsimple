@@ -13,16 +13,32 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetCertificateArgs Empty = new GetCertificateArgs();
 
+    /**
+     * The ID of the SSL Certificate
+     * 
+     */
     @Import(name="certificateId", required=true)
     private Output<String> certificateId;
 
+    /**
+     * @return The ID of the SSL Certificate
+     * 
+     */
     public Output<String> certificateId() {
         return this.certificateId;
     }
 
+    /**
+     * The domain of the SSL Certificate
+     * 
+     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
+    /**
+     * @return The domain of the SSL Certificate
+     * 
+     */
     public Output<String> domain() {
         return this.domain;
     }
@@ -52,20 +68,44 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetCertificateArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param certificateId The ID of the SSL Certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateId(Output<String> certificateId) {
             $.certificateId = certificateId;
             return this;
         }
 
+        /**
+         * @param certificateId The ID of the SSL Certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateId(String certificateId) {
             return certificateId(Output.of(certificateId));
         }
 
+        /**
+         * @param domain The domain of the SSL Certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
+        /**
+         * @param domain The domain of the SSL Certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

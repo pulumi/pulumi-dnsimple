@@ -9,6 +9,8 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DNSimple
 {
+    [Obsolete(@"This resource is deprecated.
+It will be removed in the next major version.")]
     [DNSimpleResourceType("dnsimple:index/record:Record")]
     public partial class Record : global::Pulumi.CustomResource
     {

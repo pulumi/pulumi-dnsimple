@@ -22,6 +22,12 @@ class ZoneRecordArgs:
                  ttl: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] value: The value of the record
+        :param pulumi.Input[str] zone_name: The domain to add the record to
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] ttl: The TTL of the record
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -35,6 +41,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
+        """
+        The name of the record
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -44,6 +53,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
+        """
+        The type of the record
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -53,6 +65,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def value(self) -> pulumi.Input[str]:
+        """
+        The value of the record
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -62,6 +77,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Input[str]:
+        """
+        The domain to add the record to
+        """
         return pulumi.get(self, "zone_name")
 
     @zone_name.setter
@@ -71,6 +89,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The priority of the record - only useful for some record types
+        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -80,6 +101,9 @@ class ZoneRecordArgs:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TTL of the record
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -100,6 +124,14 @@ class _ZoneRecordState:
                  zone_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ZoneRecord resources.
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] qualified_name: The FQDN of the record
+        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] value: The value of the record
+        :param pulumi.Input[str] zone_id: The domain ID of the record
+        :param pulumi.Input[str] zone_name: The domain to add the record to
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -121,6 +153,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the record
+        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -130,6 +165,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[str]]:
+        """
+        The priority of the record - only useful for some record types
+        """
         return pulumi.get(self, "priority")
 
     @priority.setter
@@ -139,6 +177,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter(name="qualifiedName")
     def qualified_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The FQDN of the record
+        """
         return pulumi.get(self, "qualified_name")
 
     @qualified_name.setter
@@ -148,6 +189,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[str]]:
+        """
+        The TTL of the record
+        """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
@@ -157,6 +201,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        The type of the record
+        """
         return pulumi.get(self, "type")
 
     @type.setter
@@ -166,6 +213,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The value of the record
+        """
         return pulumi.get(self, "value")
 
     @value.setter
@@ -175,6 +225,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain ID of the record
+        """
         return pulumi.get(self, "zone_id")
 
     @zone_id.setter
@@ -184,6 +237,9 @@ class _ZoneRecordState:
     @property
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add the record to
+        """
         return pulumi.get(self, "zone_name")
 
     @zone_name.setter
@@ -204,9 +260,65 @@ class ZoneRecord(pulumi.CustomResource):
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a ZoneRecord resource with the given unique name, props, and options.
+        Provides a DNSimple zone record resource.
+
+        ## Deprecation warning
+
+        You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
+        upcoming 1.0.0 release.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to the root domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to a sub-domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="terraform",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
+        ## Import
+
+        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+
+        __Importing record example.com with record ID 1234__
+
+        ```sh
+         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        ```
+         __Importing record www.example.com with record ID 1234__
+
+        ```sh
+         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        ```
+         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] value: The value of the record
+        :param pulumi.Input[str] zone_name: The domain to add the record to
         """
         ...
     @overload
@@ -215,7 +327,57 @@ class ZoneRecord(pulumi.CustomResource):
                  args: ZoneRecordArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a ZoneRecord resource with the given unique name, props, and options.
+        Provides a DNSimple zone record resource.
+
+        ## Deprecation warning
+
+        You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
+        upcoming 1.0.0 release.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to the root domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to a sub-domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="terraform",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
+        ## Import
+
+        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+
+        __Importing record example.com with record ID 1234__
+
+        ```sh
+         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        ```
+         __Importing record www.example.com with record ID 1234__
+
+        ```sh
+         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        ```
+         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+
         :param str resource_name: The name of the resource.
         :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -287,6 +449,14 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] name: The name of the record
+        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[str] qualified_name: The FQDN of the record
+        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[str] type: The type of the record
+        :param pulumi.Input[str] value: The value of the record
+        :param pulumi.Input[str] zone_id: The domain ID of the record
+        :param pulumi.Input[str] zone_name: The domain to add the record to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -305,40 +475,64 @@ class ZoneRecord(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
+        """
+        The name of the record
+        """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter
     def priority(self) -> pulumi.Output[str]:
+        """
+        The priority of the record - only useful for some record types
+        """
         return pulumi.get(self, "priority")
 
     @property
     @pulumi.getter(name="qualifiedName")
     def qualified_name(self) -> pulumi.Output[str]:
+        """
+        The FQDN of the record
+        """
         return pulumi.get(self, "qualified_name")
 
     @property
     @pulumi.getter
     def ttl(self) -> pulumi.Output[Optional[str]]:
+        """
+        The TTL of the record
+        """
         return pulumi.get(self, "ttl")
 
     @property
     @pulumi.getter
     def type(self) -> pulumi.Output[str]:
+        """
+        The type of the record
+        """
         return pulumi.get(self, "type")
 
     @property
     @pulumi.getter
     def value(self) -> pulumi.Output[str]:
+        """
+        The value of the record
+        """
         return pulumi.get(self, "value")
 
     @property
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[str]:
+        """
+        The domain ID of the record
+        """
         return pulumi.get(self, "zone_id")
 
     @property
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[str]:
+        """
+        The domain to add the record to
+        """
         return pulumi.get(self, "zone_name")
 

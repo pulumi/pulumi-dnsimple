@@ -71,7 +71,27 @@ class AwaitableGetZoneResult(GetZoneResult):
 def get_zone(name: Optional[str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a DNSimple zone.
+
+    Get zone:
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    foobar = dnsimple.get_zone(name="dnsimple.com")
+    ```
+
+    The following arguments are supported:
+
+    * `name` - (Required) The name of the zone
+
+    The following attributes are exported:
+
+    * `id` - The zone ID
+    * `account_id` - The account ID
+    * `name` - The name of the zone
+    * `reverse` - True for a reverse zone, false for a forward zone.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -79,16 +99,36 @@ def get_zone(name: Optional[str] = None,
     __ret__ = pulumi.runtime.invoke('dnsimple:index/getZone:getZone', __args__, opts=opts, typ=GetZoneResult).value
 
     return AwaitableGetZoneResult(
-        account_id=__ret__.account_id,
-        id=__ret__.id,
-        name=__ret__.name,
-        reverse=__ret__.reverse)
+        account_id=pulumi.get(__ret__, 'account_id'),
+        id=pulumi.get(__ret__, 'id'),
+        name=pulumi.get(__ret__, 'name'),
+        reverse=pulumi.get(__ret__, 'reverse'))
 
 
 @_utilities.lift_output_func(get_zone)
 def get_zone_output(name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
     """
-    Use this data source to access information about an existing resource.
+    Get information about a DNSimple zone.
+
+    Get zone:
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    foobar = dnsimple.get_zone(name="dnsimple.com")
+    ```
+
+    The following arguments are supported:
+
+    * `name` - (Required) The name of the zone
+
+    The following attributes are exported:
+
+    * `id` - The zone ID
+    * `account_id` - The account ID
+    * `name` - The name of the zone
+    * `reverse` - True for a reverse zone, false for a forward zone.
     """
     ...

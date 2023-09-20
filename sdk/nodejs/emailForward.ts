@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a DNSimple email forward resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * // Add an email forwarding rule to the domain
+ * const foobar = new dnsimple.EmailForward("foobar", {
+ *     aliasName: "sales",
+ *     destinationEmail: "jane.doe@example.com",
+ *     domain: _var.dnsimple_domain,
+ * });
+ * ```
+ */
 export class EmailForward extends pulumi.CustomResource {
     /**
      * Get an existing EmailForward resource's state with the given name, ID, and optional extra
@@ -32,9 +49,21 @@ export class EmailForward extends pulumi.CustomResource {
         return obj['__pulumiType'] === EmailForward.__pulumiType;
     }
 
+    /**
+     * The source email address on the domain
+     */
     public /*out*/ readonly aliasEmail!: pulumi.Output<string>;
+    /**
+     * The name part (the part before the @) of the source email address on the domain
+     */
     public readonly aliasName!: pulumi.Output<string>;
+    /**
+     * The destination email address on another domain
+     */
     public readonly destinationEmail!: pulumi.Output<string>;
+    /**
+     * The domain to add the email forwarding rule to
+     */
     public readonly domain!: pulumi.Output<string>;
 
     /**
@@ -79,9 +108,21 @@ export class EmailForward extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EmailForward resources.
  */
 export interface EmailForwardState {
+    /**
+     * The source email address on the domain
+     */
     aliasEmail?: pulumi.Input<string>;
+    /**
+     * The name part (the part before the @) of the source email address on the domain
+     */
     aliasName?: pulumi.Input<string>;
+    /**
+     * The destination email address on another domain
+     */
     destinationEmail?: pulumi.Input<string>;
+    /**
+     * The domain to add the email forwarding rule to
+     */
     domain?: pulumi.Input<string>;
 }
 
@@ -89,7 +130,16 @@ export interface EmailForwardState {
  * The set of arguments for constructing a EmailForward resource.
  */
 export interface EmailForwardArgs {
+    /**
+     * The name part (the part before the @) of the source email address on the domain
+     */
     aliasName: pulumi.Input<string>;
+    /**
+     * The destination email address on another domain
+     */
     destinationEmail: pulumi.Input<string>;
+    /**
+     * The domain to add the email forwarding rule to
+     */
     domain: pulumi.Input<string>;
 }

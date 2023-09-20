@@ -8,24 +8,64 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Provides a DNSimple Let's Encrypt certificate resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewLetsEncryptCertificate(ctx, "foobar", &dnsimple.LetsEncryptCertificateArgs{
+//				DomainId:  pulumi.Any(_var.Dnsimple.Domain_id),
+//				AutoRenew: pulumi.Bool(false),
+//				Name:      pulumi.String("www"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type LetsEncryptCertificate struct {
 	pulumi.CustomResourceState
 
+	// The identifying certification authority (CA)
 	AuthorityIdentifier pulumi.StringOutput `pulumi:"authorityIdentifier"`
-	AutoRenew           pulumi.BoolOutput   `pulumi:"autoRenew"`
+	// Set to true if the certificate will auto-renew
+	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
+	// The contact id for the certificate
+	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId pulumi.IntPtrOutput    `pulumi:"contactId"`
-	CreatedAt pulumi.StringOutput    `pulumi:"createdAt"`
-	Csr       pulumi.StringOutput    `pulumi:"csr"`
+	ContactId pulumi.IntPtrOutput `pulumi:"contactId"`
+	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
+	// The certificate signing request
+	Csr pulumi.StringOutput `pulumi:"csr"`
+	// The domain to be issued the certificate for
 	DomainId  pulumi.StringPtrOutput `pulumi:"domainId"`
 	ExpiresOn pulumi.StringOutput    `pulumi:"expiresOn"`
-	Name      pulumi.StringOutput    `pulumi:"name"`
-	State     pulumi.StringOutput    `pulumi:"state"`
-	UpdatedAt pulumi.StringOutput    `pulumi:"updatedAt"`
-	Years     pulumi.IntOutput       `pulumi:"years"`
+	// The certificate name
+	Name pulumi.StringOutput `pulumi:"name"`
+	// The state of the certificate
+	State     pulumi.StringOutput `pulumi:"state"`
+	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
+	// The years the certificate will last
+	Years pulumi.IntOutput `pulumi:"years"`
 }
 
 // NewLetsEncryptCertificate registers a new resource with the given unique name, arguments, and options.
@@ -41,6 +81,7 @@ func NewLetsEncryptCertificate(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource LetsEncryptCertificate
 	err := ctx.RegisterResource("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, args, &resource, opts...)
 	if err != nil {
@@ -63,33 +104,51 @@ func GetLetsEncryptCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LetsEncryptCertificate resources.
 type letsEncryptCertificateState struct {
+	// The identifying certification authority (CA)
 	AuthorityIdentifier *string `pulumi:"authorityIdentifier"`
-	AutoRenew           *bool   `pulumi:"autoRenew"`
+	// Set to true if the certificate will auto-renew
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The contact id for the certificate
+	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId *int    `pulumi:"contactId"`
 	CreatedAt *string `pulumi:"createdAt"`
-	Csr       *string `pulumi:"csr"`
+	// The certificate signing request
+	Csr *string `pulumi:"csr"`
+	// The domain to be issued the certificate for
 	DomainId  *string `pulumi:"domainId"`
 	ExpiresOn *string `pulumi:"expiresOn"`
-	Name      *string `pulumi:"name"`
+	// The certificate name
+	Name *string `pulumi:"name"`
+	// The state of the certificate
 	State     *string `pulumi:"state"`
 	UpdatedAt *string `pulumi:"updatedAt"`
-	Years     *int    `pulumi:"years"`
+	// The years the certificate will last
+	Years *int `pulumi:"years"`
 }
 
 type LetsEncryptCertificateState struct {
+	// The identifying certification authority (CA)
 	AuthorityIdentifier pulumi.StringPtrInput
-	AutoRenew           pulumi.BoolPtrInput
+	// Set to true if the certificate will auto-renew
+	AutoRenew pulumi.BoolPtrInput
+	// The contact id for the certificate
+	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId pulumi.IntPtrInput
 	CreatedAt pulumi.StringPtrInput
-	Csr       pulumi.StringPtrInput
+	// The certificate signing request
+	Csr pulumi.StringPtrInput
+	// The domain to be issued the certificate for
 	DomainId  pulumi.StringPtrInput
 	ExpiresOn pulumi.StringPtrInput
-	Name      pulumi.StringPtrInput
+	// The certificate name
+	Name pulumi.StringPtrInput
+	// The state of the certificate
 	State     pulumi.StringPtrInput
 	UpdatedAt pulumi.StringPtrInput
-	Years     pulumi.IntPtrInput
+	// The years the certificate will last
+	Years pulumi.IntPtrInput
 }
 
 func (LetsEncryptCertificateState) ElementType() reflect.Type {
@@ -97,20 +156,30 @@ func (LetsEncryptCertificateState) ElementType() reflect.Type {
 }
 
 type letsEncryptCertificateArgs struct {
+	// Set to true if the certificate will auto-renew
 	AutoRenew bool `pulumi:"autoRenew"`
+	// The contact id for the certificate
+	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId *int    `pulumi:"contactId"`
-	DomainId  *string `pulumi:"domainId"`
-	Name      string  `pulumi:"name"`
+	ContactId *int `pulumi:"contactId"`
+	// The domain to be issued the certificate for
+	DomainId *string `pulumi:"domainId"`
+	// The certificate name
+	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a LetsEncryptCertificate resource.
 type LetsEncryptCertificateArgs struct {
+	// Set to true if the certificate will auto-renew
 	AutoRenew pulumi.BoolInput
+	// The contact id for the certificate
+	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId pulumi.IntPtrInput
-	DomainId  pulumi.StringPtrInput
-	Name      pulumi.StringInput
+	// The domain to be issued the certificate for
+	DomainId pulumi.StringPtrInput
+	// The certificate name
+	Name pulumi.StringInput
 }
 
 func (LetsEncryptCertificateArgs) ElementType() reflect.Type {
@@ -134,6 +203,12 @@ func (i *LetsEncryptCertificate) ToLetsEncryptCertificateOutput() LetsEncryptCer
 
 func (i *LetsEncryptCertificate) ToLetsEncryptCertificateOutputWithContext(ctx context.Context) LetsEncryptCertificateOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LetsEncryptCertificateOutput)
+}
+
+func (i *LetsEncryptCertificate) ToOutput(ctx context.Context) pulumix.Output[*LetsEncryptCertificate] {
+	return pulumix.Output[*LetsEncryptCertificate]{
+		OutputState: i.ToLetsEncryptCertificateOutputWithContext(ctx).OutputState,
+	}
 }
 
 // LetsEncryptCertificateArrayInput is an input type that accepts LetsEncryptCertificateArray and LetsEncryptCertificateArrayOutput values.
@@ -161,6 +236,12 @@ func (i LetsEncryptCertificateArray) ToLetsEncryptCertificateArrayOutputWithCont
 	return pulumi.ToOutputWithContext(ctx, i).(LetsEncryptCertificateArrayOutput)
 }
 
+func (i LetsEncryptCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*LetsEncryptCertificate] {
+	return pulumix.Output[[]*LetsEncryptCertificate]{
+		OutputState: i.ToLetsEncryptCertificateArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // LetsEncryptCertificateMapInput is an input type that accepts LetsEncryptCertificateMap and LetsEncryptCertificateMapOutput values.
 // You can construct a concrete instance of `LetsEncryptCertificateMapInput` via:
 //
@@ -186,6 +267,12 @@ func (i LetsEncryptCertificateMap) ToLetsEncryptCertificateMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(LetsEncryptCertificateMapOutput)
 }
 
+func (i LetsEncryptCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LetsEncryptCertificate] {
+	return pulumix.Output[map[string]*LetsEncryptCertificate]{
+		OutputState: i.ToLetsEncryptCertificateMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type LetsEncryptCertificateOutput struct{ *pulumi.OutputState }
 
 func (LetsEncryptCertificateOutput) ElementType() reflect.Type {
@@ -200,14 +287,24 @@ func (o LetsEncryptCertificateOutput) ToLetsEncryptCertificateOutputWithContext(
 	return o
 }
 
+func (o LetsEncryptCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*LetsEncryptCertificate] {
+	return pulumix.Output[*LetsEncryptCertificate]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The identifying certification authority (CA)
 func (o LetsEncryptCertificateOutput) AuthorityIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.AuthorityIdentifier }).(pulumi.StringOutput)
 }
 
+// Set to true if the certificate will auto-renew
 func (o LetsEncryptCertificateOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
+// The contact id for the certificate
+//
 // Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 func (o LetsEncryptCertificateOutput) ContactId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.IntPtrOutput { return v.ContactId }).(pulumi.IntPtrOutput)
@@ -217,10 +314,12 @@ func (o LetsEncryptCertificateOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
+// The certificate signing request
 func (o LetsEncryptCertificateOutput) Csr() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.Csr }).(pulumi.StringOutput)
 }
 
+// The domain to be issued the certificate for
 func (o LetsEncryptCertificateOutput) DomainId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringPtrOutput { return v.DomainId }).(pulumi.StringPtrOutput)
 }
@@ -229,10 +328,12 @@ func (o LetsEncryptCertificateOutput) ExpiresOn() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
 }
 
+// The certificate name
 func (o LetsEncryptCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The state of the certificate
 func (o LetsEncryptCertificateOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
@@ -241,6 +342,7 @@ func (o LetsEncryptCertificateOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }
 
+// The years the certificate will last
 func (o LetsEncryptCertificateOutput) Years() pulumi.IntOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.IntOutput { return v.Years }).(pulumi.IntOutput)
 }
@@ -257,6 +359,12 @@ func (o LetsEncryptCertificateArrayOutput) ToLetsEncryptCertificateArrayOutput()
 
 func (o LetsEncryptCertificateArrayOutput) ToLetsEncryptCertificateArrayOutputWithContext(ctx context.Context) LetsEncryptCertificateArrayOutput {
 	return o
+}
+
+func (o LetsEncryptCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LetsEncryptCertificate] {
+	return pulumix.Output[[]*LetsEncryptCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LetsEncryptCertificateArrayOutput) Index(i pulumi.IntInput) LetsEncryptCertificateOutput {
@@ -277,6 +385,12 @@ func (o LetsEncryptCertificateMapOutput) ToLetsEncryptCertificateMapOutput() Let
 
 func (o LetsEncryptCertificateMapOutput) ToLetsEncryptCertificateMapOutputWithContext(ctx context.Context) LetsEncryptCertificateMapOutput {
 	return o
+}
+
+func (o LetsEncryptCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LetsEncryptCertificate] {
+	return pulumix.Output[map[string]*LetsEncryptCertificate]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o LetsEncryptCertificateMapOutput) MapIndex(k pulumi.StringInput) LetsEncryptCertificateOutput {
