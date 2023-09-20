@@ -16,15 +16,16 @@ package dnsimple
 
 import (
 	"fmt"
+	// embed is used to store bridge-metadata.json in the compiled binary
+	_ "embed"
 	"path/filepath"
 	"unicode"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/x"
+	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
 	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
 )
 
@@ -121,11 +122,15 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				mainPkg: "DNSimple",
 			},
-		},
+		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
 	}
 
-	defaults := x.TokensSingleModule("dnsimple_", mainMod, x.MakeStandardToken(mainPkg))
-	err := x.ComputeDefaults(&prov, defaults)
-	contract.AssertNoErrorf(err, "failed to compute auto token mapping defaults")
+	prov.MustComputeTokens(tfbridgetokens.SingleModule("dnsimple_", mainMod,
+		tfbridgetokens.MakeStandard(mainPkg)))
+	prov.MustApplyAutoAliases()
+
 	return prov
 }
+
+//go:embed cmd/pulumi-resource-dnsimple/bridge-metadata.json
+var metadata []byte
