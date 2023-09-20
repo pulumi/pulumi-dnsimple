@@ -69,7 +69,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-dnsimple",
 		Config:      map[string]*tfbridge.SchemaInfo{},
-		GitHubOrg:   "dnsimple",
+		GitHubOrg:   "terraform-providers",
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"dnsimple_record": {Tok: makeResource(mainMod, "Record"),
 				Fields: map[string]*tfbridge.SchemaInfo{
@@ -80,6 +80,10 @@ func Provider() tfbridge.ProviderInfo {
 						Type: makeType(mainMod, "RecordType"),
 					},
 				},
+				Docs: &tfbridge.DocInfo{
+					Markdown: []byte(" "),
+				},
+				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
 			},
 			"dnsimple_domain":                   {Tok: makeResource(mainMod, "Domain")},
 			"dnsimple_email_forward":            {Tok: makeResource(mainMod, "EmailForward")},
