@@ -9,18 +9,54 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DNSimple
 {
+    /// <summary>
+    /// Provides a DNSimple email forward resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add an email forwarding rule to the domain
+    ///     var foobar = new DNSimple.EmailForward("foobar", new()
+    ///     {
+    ///         AliasName = "sales",
+    ///         DestinationEmail = "jane.doe@example.com",
+    ///         Domain = @var.Dnsimple_domain,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// </summary>
     [DNSimpleResourceType("dnsimple:index/emailForward:EmailForward")]
     public partial class EmailForward : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The source email address on the domain
+        /// </summary>
         [Output("aliasEmail")]
         public Output<string> AliasEmail { get; private set; } = null!;
 
+        /// <summary>
+        /// The name part (the part before the @) of the source email address on the domain
+        /// </summary>
         [Output("aliasName")]
         public Output<string> AliasName { get; private set; } = null!;
 
+        /// <summary>
+        /// The destination email address on another domain
+        /// </summary>
         [Output("destinationEmail")]
         public Output<string> DestinationEmail { get; private set; } = null!;
 
+        /// <summary>
+        /// The domain to add the email forwarding rule to
+        /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
@@ -70,12 +106,21 @@ namespace Pulumi.DNSimple
 
     public sealed class EmailForwardArgs : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name part (the part before the @) of the source email address on the domain
+        /// </summary>
         [Input("aliasName", required: true)]
         public Input<string> AliasName { get; set; } = null!;
 
+        /// <summary>
+        /// The destination email address on another domain
+        /// </summary>
         [Input("destinationEmail", required: true)]
         public Input<string> DestinationEmail { get; set; } = null!;
 
+        /// <summary>
+        /// The domain to add the email forwarding rule to
+        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
@@ -87,15 +132,27 @@ namespace Pulumi.DNSimple
 
     public sealed class EmailForwardState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The source email address on the domain
+        /// </summary>
         [Input("aliasEmail")]
         public Input<string>? AliasEmail { get; set; }
 
+        /// <summary>
+        /// The name part (the part before the @) of the source email address on the domain
+        /// </summary>
         [Input("aliasName")]
         public Input<string>? AliasName { get; set; }
 
+        /// <summary>
+        /// The destination email address on another domain
+        /// </summary>
         [Input("destinationEmail")]
         public Input<string>? DestinationEmail { get; set; }
 
+        /// <summary>
+        /// The domain to add the email forwarding rule to
+        /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 

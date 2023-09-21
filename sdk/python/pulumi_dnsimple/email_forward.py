@@ -19,6 +19,9 @@ class EmailForwardArgs:
                  domain: pulumi.Input[str]):
         """
         The set of arguments for constructing a EmailForward resource.
+        :param pulumi.Input[str] alias_name: The name part (the part before the @) of the source email address on the domain
+        :param pulumi.Input[str] destination_email: The destination email address on another domain
+        :param pulumi.Input[str] domain: The domain to add the email forwarding rule to
         """
         pulumi.set(__self__, "alias_name", alias_name)
         pulumi.set(__self__, "destination_email", destination_email)
@@ -27,6 +30,9 @@ class EmailForwardArgs:
     @property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> pulumi.Input[str]:
+        """
+        The name part (the part before the @) of the source email address on the domain
+        """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
@@ -36,6 +42,9 @@ class EmailForwardArgs:
     @property
     @pulumi.getter(name="destinationEmail")
     def destination_email(self) -> pulumi.Input[str]:
+        """
+        The destination email address on another domain
+        """
         return pulumi.get(self, "destination_email")
 
     @destination_email.setter
@@ -45,6 +54,9 @@ class EmailForwardArgs:
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Input[str]:
+        """
+        The domain to add the email forwarding rule to
+        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -61,6 +73,10 @@ class _EmailForwardState:
                  domain: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering EmailForward resources.
+        :param pulumi.Input[str] alias_email: The source email address on the domain
+        :param pulumi.Input[str] alias_name: The name part (the part before the @) of the source email address on the domain
+        :param pulumi.Input[str] destination_email: The destination email address on another domain
+        :param pulumi.Input[str] domain: The domain to add the email forwarding rule to
         """
         if alias_email is not None:
             pulumi.set(__self__, "alias_email", alias_email)
@@ -74,6 +90,9 @@ class _EmailForwardState:
     @property
     @pulumi.getter(name="aliasEmail")
     def alias_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The source email address on the domain
+        """
         return pulumi.get(self, "alias_email")
 
     @alias_email.setter
@@ -83,6 +102,9 @@ class _EmailForwardState:
     @property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name part (the part before the @) of the source email address on the domain
+        """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
@@ -92,6 +114,9 @@ class _EmailForwardState:
     @property
     @pulumi.getter(name="destinationEmail")
     def destination_email(self) -> Optional[pulumi.Input[str]]:
+        """
+        The destination email address on another domain
+        """
         return pulumi.get(self, "destination_email")
 
     @destination_email.setter
@@ -101,6 +126,9 @@ class _EmailForwardState:
     @property
     @pulumi.getter
     def domain(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain to add the email forwarding rule to
+        """
         return pulumi.get(self, "domain")
 
     @domain.setter
@@ -118,9 +146,26 @@ class EmailForward(pulumi.CustomResource):
                  domain: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Create a EmailForward resource with the given unique name, props, and options.
+        Provides a DNSimple email forward resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add an email forwarding rule to the domain
+        foobar = dnsimple.EmailForward("foobar",
+            alias_name="sales",
+            destination_email="jane.doe@example.com",
+            domain=var["dnsimple_domain"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] alias_name: The name part (the part before the @) of the source email address on the domain
+        :param pulumi.Input[str] destination_email: The destination email address on another domain
+        :param pulumi.Input[str] domain: The domain to add the email forwarding rule to
         """
         ...
     @overload
@@ -129,7 +174,21 @@ class EmailForward(pulumi.CustomResource):
                  args: EmailForwardArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Create a EmailForward resource with the given unique name, props, and options.
+        Provides a DNSimple email forward resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add an email forwarding rule to the domain
+        foobar = dnsimple.EmailForward("foobar",
+            alias_name="sales",
+            destination_email="jane.doe@example.com",
+            domain=var["dnsimple_domain"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param EmailForwardArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -188,6 +247,10 @@ class EmailForward(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] alias_email: The source email address on the domain
+        :param pulumi.Input[str] alias_name: The name part (the part before the @) of the source email address on the domain
+        :param pulumi.Input[str] destination_email: The destination email address on another domain
+        :param pulumi.Input[str] domain: The domain to add the email forwarding rule to
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -202,20 +265,32 @@ class EmailForward(pulumi.CustomResource):
     @property
     @pulumi.getter(name="aliasEmail")
     def alias_email(self) -> pulumi.Output[str]:
+        """
+        The source email address on the domain
+        """
         return pulumi.get(self, "alias_email")
 
     @property
     @pulumi.getter(name="aliasName")
     def alias_name(self) -> pulumi.Output[str]:
+        """
+        The name part (the part before the @) of the source email address on the domain
+        """
         return pulumi.get(self, "alias_name")
 
     @property
     @pulumi.getter(name="destinationEmail")
     def destination_email(self) -> pulumi.Output[str]:
+        """
+        The destination email address on another domain
+        """
         return pulumi.get(self, "destination_email")
 
     @property
     @pulumi.getter
     def domain(self) -> pulumi.Output[str]:
+        """
+        The domain to add the email forwarding rule to
+        """
         return pulumi.get(self, "domain")
 

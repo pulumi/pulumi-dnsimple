@@ -8,16 +8,51 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Provides a DNSimple email forward resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewEmailForward(ctx, "foobar", &dnsimple.EmailForwardArgs{
+//				AliasName:        pulumi.String("sales"),
+//				DestinationEmail: pulumi.String("jane.doe@example.com"),
+//				Domain:           pulumi.Any(_var.Dnsimple_domain),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type EmailForward struct {
 	pulumi.CustomResourceState
 
-	AliasEmail       pulumi.StringOutput `pulumi:"aliasEmail"`
-	AliasName        pulumi.StringOutput `pulumi:"aliasName"`
+	// The source email address on the domain
+	AliasEmail pulumi.StringOutput `pulumi:"aliasEmail"`
+	// The name part (the part before the @) of the source email address on the domain
+	AliasName pulumi.StringOutput `pulumi:"aliasName"`
+	// The destination email address on another domain
 	DestinationEmail pulumi.StringOutput `pulumi:"destinationEmail"`
-	Domain           pulumi.StringOutput `pulumi:"domain"`
+	// The domain to add the email forwarding rule to
+	Domain pulumi.StringOutput `pulumi:"domain"`
 }
 
 // NewEmailForward registers a new resource with the given unique name, arguments, and options.
@@ -36,6 +71,7 @@ func NewEmailForward(ctx *pulumi.Context,
 	if args.Domain == nil {
 		return nil, errors.New("invalid value for required argument 'Domain'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource EmailForward
 	err := ctx.RegisterResource("dnsimple:index/emailForward:EmailForward", name, args, &resource, opts...)
 	if err != nil {
@@ -58,17 +94,25 @@ func GetEmailForward(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering EmailForward resources.
 type emailForwardState struct {
-	AliasEmail       *string `pulumi:"aliasEmail"`
-	AliasName        *string `pulumi:"aliasName"`
+	// The source email address on the domain
+	AliasEmail *string `pulumi:"aliasEmail"`
+	// The name part (the part before the @) of the source email address on the domain
+	AliasName *string `pulumi:"aliasName"`
+	// The destination email address on another domain
 	DestinationEmail *string `pulumi:"destinationEmail"`
-	Domain           *string `pulumi:"domain"`
+	// The domain to add the email forwarding rule to
+	Domain *string `pulumi:"domain"`
 }
 
 type EmailForwardState struct {
-	AliasEmail       pulumi.StringPtrInput
-	AliasName        pulumi.StringPtrInput
+	// The source email address on the domain
+	AliasEmail pulumi.StringPtrInput
+	// The name part (the part before the @) of the source email address on the domain
+	AliasName pulumi.StringPtrInput
+	// The destination email address on another domain
 	DestinationEmail pulumi.StringPtrInput
-	Domain           pulumi.StringPtrInput
+	// The domain to add the email forwarding rule to
+	Domain pulumi.StringPtrInput
 }
 
 func (EmailForwardState) ElementType() reflect.Type {
@@ -76,16 +120,22 @@ func (EmailForwardState) ElementType() reflect.Type {
 }
 
 type emailForwardArgs struct {
-	AliasName        string `pulumi:"aliasName"`
+	// The name part (the part before the @) of the source email address on the domain
+	AliasName string `pulumi:"aliasName"`
+	// The destination email address on another domain
 	DestinationEmail string `pulumi:"destinationEmail"`
-	Domain           string `pulumi:"domain"`
+	// The domain to add the email forwarding rule to
+	Domain string `pulumi:"domain"`
 }
 
 // The set of arguments for constructing a EmailForward resource.
 type EmailForwardArgs struct {
-	AliasName        pulumi.StringInput
+	// The name part (the part before the @) of the source email address on the domain
+	AliasName pulumi.StringInput
+	// The destination email address on another domain
 	DestinationEmail pulumi.StringInput
-	Domain           pulumi.StringInput
+	// The domain to add the email forwarding rule to
+	Domain pulumi.StringInput
 }
 
 func (EmailForwardArgs) ElementType() reflect.Type {
@@ -109,6 +159,12 @@ func (i *EmailForward) ToEmailForwardOutput() EmailForwardOutput {
 
 func (i *EmailForward) ToEmailForwardOutputWithContext(ctx context.Context) EmailForwardOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardOutput)
+}
+
+func (i *EmailForward) ToOutput(ctx context.Context) pulumix.Output[*EmailForward] {
+	return pulumix.Output[*EmailForward]{
+		OutputState: i.ToEmailForwardOutputWithContext(ctx).OutputState,
+	}
 }
 
 // EmailForwardArrayInput is an input type that accepts EmailForwardArray and EmailForwardArrayOutput values.
@@ -136,6 +192,12 @@ func (i EmailForwardArray) ToEmailForwardArrayOutputWithContext(ctx context.Cont
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardArrayOutput)
 }
 
+func (i EmailForwardArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailForward] {
+	return pulumix.Output[[]*EmailForward]{
+		OutputState: i.ToEmailForwardArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // EmailForwardMapInput is an input type that accepts EmailForwardMap and EmailForwardMapOutput values.
 // You can construct a concrete instance of `EmailForwardMapInput` via:
 //
@@ -161,6 +223,12 @@ func (i EmailForwardMap) ToEmailForwardMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardMapOutput)
 }
 
+func (i EmailForwardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailForward] {
+	return pulumix.Output[map[string]*EmailForward]{
+		OutputState: i.ToEmailForwardMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type EmailForwardOutput struct{ *pulumi.OutputState }
 
 func (EmailForwardOutput) ElementType() reflect.Type {
@@ -175,18 +243,28 @@ func (o EmailForwardOutput) ToEmailForwardOutputWithContext(ctx context.Context)
 	return o
 }
 
+func (o EmailForwardOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailForward] {
+	return pulumix.Output[*EmailForward]{
+		OutputState: o.OutputState,
+	}
+}
+
+// The source email address on the domain
 func (o EmailForwardOutput) AliasEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.AliasEmail }).(pulumi.StringOutput)
 }
 
+// The name part (the part before the @) of the source email address on the domain
 func (o EmailForwardOutput) AliasName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.AliasName }).(pulumi.StringOutput)
 }
 
+// The destination email address on another domain
 func (o EmailForwardOutput) DestinationEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.DestinationEmail }).(pulumi.StringOutput)
 }
 
+// The domain to add the email forwarding rule to
 func (o EmailForwardOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
@@ -203,6 +281,12 @@ func (o EmailForwardArrayOutput) ToEmailForwardArrayOutput() EmailForwardArrayOu
 
 func (o EmailForwardArrayOutput) ToEmailForwardArrayOutputWithContext(ctx context.Context) EmailForwardArrayOutput {
 	return o
+}
+
+func (o EmailForwardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailForward] {
+	return pulumix.Output[[]*EmailForward]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmailForwardArrayOutput) Index(i pulumi.IntInput) EmailForwardOutput {
@@ -223,6 +307,12 @@ func (o EmailForwardMapOutput) ToEmailForwardMapOutput() EmailForwardMapOutput {
 
 func (o EmailForwardMapOutput) ToEmailForwardMapOutputWithContext(ctx context.Context) EmailForwardMapOutput {
 	return o
+}
+
+func (o EmailForwardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailForward] {
+	return pulumix.Output[map[string]*EmailForward]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o EmailForwardMapOutput) MapIndex(k pulumi.StringInput) EmailForwardOutput {

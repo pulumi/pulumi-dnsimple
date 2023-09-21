@@ -15,58 +15,122 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
 
     public static final ZoneRecordState Empty = new ZoneRecordState();
 
+    /**
+     * The name of the record
+     * 
+     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
+    /**
+     * @return The name of the record
+     * 
+     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
+    /**
+     * The priority of the record - only useful for some record types
+     * 
+     */
     @Import(name="priority")
     private @Nullable Output<String> priority;
 
+    /**
+     * @return The priority of the record - only useful for some record types
+     * 
+     */
     public Optional<Output<String>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
+    /**
+     * The FQDN of the record
+     * 
+     */
     @Import(name="qualifiedName")
     private @Nullable Output<String> qualifiedName;
 
+    /**
+     * @return The FQDN of the record
+     * 
+     */
     public Optional<Output<String>> qualifiedName() {
         return Optional.ofNullable(this.qualifiedName);
     }
 
+    /**
+     * The TTL of the record
+     * 
+     */
     @Import(name="ttl")
     private @Nullable Output<String> ttl;
 
+    /**
+     * @return The TTL of the record
+     * 
+     */
     public Optional<Output<String>> ttl() {
         return Optional.ofNullable(this.ttl);
     }
 
+    /**
+     * The type of the record
+     * 
+     */
     @Import(name="type")
     private @Nullable Output<String> type;
 
+    /**
+     * @return The type of the record
+     * 
+     */
     public Optional<Output<String>> type() {
         return Optional.ofNullable(this.type);
     }
 
+    /**
+     * The value of the record
+     * 
+     */
     @Import(name="value")
     private @Nullable Output<String> value;
 
+    /**
+     * @return The value of the record
+     * 
+     */
     public Optional<Output<String>> value() {
         return Optional.ofNullable(this.value);
     }
 
+    /**
+     * The domain ID of the record
+     * 
+     */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
+    /**
+     * @return The domain ID of the record
+     * 
+     */
     public Optional<Output<String>> zoneId() {
         return Optional.ofNullable(this.zoneId);
     }
 
+    /**
+     * The domain to add the record to
+     * 
+     */
     @Import(name="zoneName")
     private @Nullable Output<String> zoneName;
 
+    /**
+     * @return The domain to add the record to
+     * 
+     */
     public Optional<Output<String>> zoneName() {
         return Optional.ofNullable(this.zoneName);
     }
@@ -102,74 +166,170 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
             $ = new ZoneRecordState(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
+        /**
+         * @param name The name of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             return name(Output.of(name));
         }
 
+        /**
+         * @param priority The priority of the record - only useful for some record types
+         * 
+         * @return builder
+         * 
+         */
         public Builder priority(@Nullable Output<String> priority) {
             $.priority = priority;
             return this;
         }
 
+        /**
+         * @param priority The priority of the record - only useful for some record types
+         * 
+         * @return builder
+         * 
+         */
         public Builder priority(String priority) {
             return priority(Output.of(priority));
         }
 
+        /**
+         * @param qualifiedName The FQDN of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder qualifiedName(@Nullable Output<String> qualifiedName) {
             $.qualifiedName = qualifiedName;
             return this;
         }
 
+        /**
+         * @param qualifiedName The FQDN of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder qualifiedName(String qualifiedName) {
             return qualifiedName(Output.of(qualifiedName));
         }
 
+        /**
+         * @param ttl The TTL of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder ttl(@Nullable Output<String> ttl) {
             $.ttl = ttl;
             return this;
         }
 
+        /**
+         * @param ttl The TTL of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder ttl(String ttl) {
             return ttl(Output.of(ttl));
         }
 
+        /**
+         * @param type The type of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(@Nullable Output<String> type) {
             $.type = type;
             return this;
         }
 
+        /**
+         * @param type The type of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder type(String type) {
             return type(Output.of(type));
         }
 
+        /**
+         * @param value The value of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(@Nullable Output<String> value) {
             $.value = value;
             return this;
         }
 
+        /**
+         * @param value The value of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder value(String value) {
             return value(Output.of(value));
         }
 
+        /**
+         * @param zoneId The domain ID of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(@Nullable Output<String> zoneId) {
             $.zoneId = zoneId;
             return this;
         }
 
+        /**
+         * @param zoneId The domain ID of the record
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneId(String zoneId) {
             return zoneId(Output.of(zoneId));
         }
 
+        /**
+         * @param zoneName The domain to add the record to
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneName(@Nullable Output<String> zoneName) {
             $.zoneName = zoneName;
             return this;
         }
 
+        /**
+         * @param zoneName The domain to add the record to
+         * 
+         * @return builder
+         * 
+         */
         public Builder zoneName(String zoneName) {
             return zoneName(Output.of(zoneName));
         }

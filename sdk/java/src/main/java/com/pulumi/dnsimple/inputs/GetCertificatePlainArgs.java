@@ -12,16 +12,32 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
 
     public static final GetCertificatePlainArgs Empty = new GetCertificatePlainArgs();
 
+    /**
+     * The ID of the SSL Certificate
+     * 
+     */
     @Import(name="certificateId", required=true)
     private String certificateId;
 
+    /**
+     * @return The ID of the SSL Certificate
+     * 
+     */
     public String certificateId() {
         return this.certificateId;
     }
 
+    /**
+     * The domain of the SSL Certificate
+     * 
+     */
     @Import(name="domain", required=true)
     private String domain;
 
+    /**
+     * @return The domain of the SSL Certificate
+     * 
+     */
     public String domain() {
         return this.domain;
     }
@@ -51,11 +67,23 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
             $ = new GetCertificatePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param certificateId The ID of the SSL Certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder certificateId(String certificateId) {
             $.certificateId = certificateId;
             return this;
         }
 
+        /**
+         * @param domain The domain of the SSL Certificate
+         * 
+         * @return builder
+         * 
+         */
         public Builder domain(String domain) {
             $.domain = domain;
             return this;

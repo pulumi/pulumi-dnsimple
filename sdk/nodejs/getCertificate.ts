@@ -4,6 +4,21 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a DNSimple certificate data source.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const foobar = dnsimple.getCertificate({
+ *     certificateId: _var.dnsimple_certificate_id,
+ *     domain: _var.dnsimple_domain,
+ * });
+ * ```
+ */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
 
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -17,7 +32,13 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
  * A collection of arguments for invoking getCertificate.
  */
 export interface GetCertificateArgs {
+    /**
+     * The ID of the SSL Certificate
+     */
     certificateId: string;
+    /**
+     * The domain of the SSL Certificate
+     */
     domain: string;
 }
 
@@ -25,6 +46,9 @@ export interface GetCertificateArgs {
  * A collection of values returned by getCertificate.
  */
 export interface GetCertificateResult {
+    /**
+     * A list of certificates that make up the chain
+     */
     readonly certificateChains: string[];
     readonly certificateId: string;
     readonly domain: string;
@@ -32,10 +56,34 @@ export interface GetCertificateResult {
      * The provider-assigned unique ID for this managed resource.
      */
     readonly id: string;
+    /**
+     * The corresponding Private Key for the SSL Certificate
+     */
     readonly privateKey: string;
+    /**
+     * The Root Certificate of the issuing CA
+     */
     readonly rootCertificate: string;
+    /**
+     * The SSL Certificate
+     */
     readonly serverCertificate: string;
 }
+/**
+ * Provides a DNSimple certificate data source.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const foobar = dnsimple.getCertificate({
+ *     certificateId: _var.dnsimple_certificate_id,
+ *     domain: _var.dnsimple_domain,
+ * });
+ * ```
+ */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
     return pulumi.output(args).apply((a: any) => getCertificate(a, opts))
 }
@@ -44,6 +92,12 @@ export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulu
  * A collection of arguments for invoking getCertificate.
  */
 export interface GetCertificateOutputArgs {
+    /**
+     * The ID of the SSL Certificate
+     */
     certificateId: pulumi.Input<string>;
+    /**
+     * The domain of the SSL Certificate
+     */
     domain: pulumi.Input<string>;
 }

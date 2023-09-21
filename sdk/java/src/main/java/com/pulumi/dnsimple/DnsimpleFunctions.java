@@ -17,27 +17,347 @@ import com.pulumi.dnsimple.outputs.GetZoneResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class DnsimpleFunctions {
+    /**
+     * Provides a DNSimple certificate data source.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .certificateId(var_.dnsimple_certificate_id())
+     *             .domain(var_.dnsimple_domain())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args) {
         return getCertificate(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides a DNSimple certificate data source.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .certificateId(var_.dnsimple_certificate_id())
+     *             .domain(var_.dnsimple_domain())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args) {
         return getCertificatePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Provides a DNSimple certificate data source.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .certificateId(var_.dnsimple_certificate_id())
+     *             .domain(var_.dnsimple_domain())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("dnsimple:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Provides a DNSimple certificate data source.
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .certificateId(var_.dnsimple_certificate_id())
+     *             .domain(var_.dnsimple_domain())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("dnsimple:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Get information about a DNSimple zone.
+     * 
+     * Get zone:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name(&#34;dnsimple.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `name` - (Required) The name of the zone
+     * 
+     * The following attributes are exported:
+     * 
+     * * `id` - The zone ID
+     * * `account_id` - The account ID
+     * * `name` - The name of the zone
+     * * `reverse` - True for a reverse zone, false for a forward zone.
+     * 
+     */
     public static Output<GetZoneResult> getZone(GetZoneArgs args) {
         return getZone(args, InvokeOptions.Empty);
     }
+    /**
+     * Get information about a DNSimple zone.
+     * 
+     * Get zone:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name(&#34;dnsimple.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `name` - (Required) The name of the zone
+     * 
+     * The following attributes are exported:
+     * 
+     * * `id` - The zone ID
+     * * `account_id` - The account ID
+     * * `name` - The name of the zone
+     * * `reverse` - True for a reverse zone, false for a forward zone.
+     * 
+     */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
         return getZonePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Get information about a DNSimple zone.
+     * 
+     * Get zone:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name(&#34;dnsimple.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `name` - (Required) The name of the zone
+     * 
+     * The following attributes are exported:
+     * 
+     * * `id` - The zone ID
+     * * `account_id` - The account ID
+     * * `name` - The name of the zone
+     * * `reverse` - True for a reverse zone, false for a forward zone.
+     * 
+     */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Get information about a DNSimple zone.
+     * 
+     * Get zone:
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name(&#34;dnsimple.com&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     * The following arguments are supported:
+     * 
+     * * `name` - (Required) The name of the zone
+     * 
+     * The following attributes are exported:
+     * 
+     * * `id` - The zone ID
+     * * `account_id` - The account ID
+     * * `name` - The name of the zone
+     * * `reverse` - True for a reverse zone, false for a forward zone.
+     * 
+     */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }

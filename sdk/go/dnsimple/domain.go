@@ -8,14 +8,100 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
+// Provides a DNSimple domain resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewDomain(ctx, "foobar", &dnsimple.DomainArgs{
+//				Name: pulumi.Any(_var.Dnsimple.Domain),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## Import
+//
+// DNSimple domains can be imported using their numeric record ID.
+//
+// ```sh
+//
+//	$ pulumi import dnsimple:index/domain:Domain resource_name 5678
+//
+// ```
+//
+//	The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
+//
+//	"data"[
+//
+//	{
+//
+//	"id"5678,
+//
+//	"account_id"1234,
+//
+//	"registrant_id"null,
+//
+//	"name""example.com",
+//
+//	"unicode_name""example.com",
+//
+//	"state""hosted",
+//
+//	"auto_renew"false,
+//
+//	"private_whois"false,
+//
+//	"expires_on"null,
+//
+//	"expires_at"null,
+//
+//	"created_at""2021-10-01T00:00:00Z",
+//
+//	"updated_at""2021-10-01T00:00:00Z"
+//
+//	}
+//
+//	],
+//
+//	"pagination"{
+//
+//	"current_page"1,
+//
+//	"per_page"30,
+//
+//	"total_entries"1,
+//
+//	"total_pages"1
+//
+//	} }
 type Domain struct {
 	pulumi.CustomResourceState
 
-	AccountId    pulumi.IntOutput    `pulumi:"accountId"`
-	AutoRenew    pulumi.BoolOutput   `pulumi:"autoRenew"`
+	AccountId pulumi.IntOutput  `pulumi:"accountId"`
+	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
+	// The domain name to be created
 	Name         pulumi.StringOutput `pulumi:"name"`
 	PrivateWhois pulumi.BoolOutput   `pulumi:"privateWhois"`
 	RegistrantId pulumi.IntOutput    `pulumi:"registrantId"`
@@ -33,6 +119,7 @@ func NewDomain(ctx *pulumi.Context,
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
 	}
+	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Domain
 	err := ctx.RegisterResource("dnsimple:index/domain:Domain", name, args, &resource, opts...)
 	if err != nil {
@@ -55,8 +142,9 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	AccountId    *int    `pulumi:"accountId"`
-	AutoRenew    *bool   `pulumi:"autoRenew"`
+	AccountId *int  `pulumi:"accountId"`
+	AutoRenew *bool `pulumi:"autoRenew"`
+	// The domain name to be created
 	Name         *string `pulumi:"name"`
 	PrivateWhois *bool   `pulumi:"privateWhois"`
 	RegistrantId *int    `pulumi:"registrantId"`
@@ -65,8 +153,9 @@ type domainState struct {
 }
 
 type DomainState struct {
-	AccountId    pulumi.IntPtrInput
-	AutoRenew    pulumi.BoolPtrInput
+	AccountId pulumi.IntPtrInput
+	AutoRenew pulumi.BoolPtrInput
+	// The domain name to be created
 	Name         pulumi.StringPtrInput
 	PrivateWhois pulumi.BoolPtrInput
 	RegistrantId pulumi.IntPtrInput
@@ -79,11 +168,13 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
+	// The domain name to be created
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
+	// The domain name to be created
 	Name pulumi.StringInput
 }
 
@@ -108,6 +199,12 @@ func (i *Domain) ToDomainOutput() DomainOutput {
 
 func (i *Domain) ToDomainOutputWithContext(ctx context.Context) DomainOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(DomainOutput)
+}
+
+func (i *Domain) ToOutput(ctx context.Context) pulumix.Output[*Domain] {
+	return pulumix.Output[*Domain]{
+		OutputState: i.ToDomainOutputWithContext(ctx).OutputState,
+	}
 }
 
 // DomainArrayInput is an input type that accepts DomainArray and DomainArrayOutput values.
@@ -135,6 +232,12 @@ func (i DomainArray) ToDomainArrayOutputWithContext(ctx context.Context) DomainA
 	return pulumi.ToOutputWithContext(ctx, i).(DomainArrayOutput)
 }
 
+func (i DomainArray) ToOutput(ctx context.Context) pulumix.Output[[]*Domain] {
+	return pulumix.Output[[]*Domain]{
+		OutputState: i.ToDomainArrayOutputWithContext(ctx).OutputState,
+	}
+}
+
 // DomainMapInput is an input type that accepts DomainMap and DomainMapOutput values.
 // You can construct a concrete instance of `DomainMapInput` via:
 //
@@ -160,6 +263,12 @@ func (i DomainMap) ToDomainMapOutputWithContext(ctx context.Context) DomainMapOu
 	return pulumi.ToOutputWithContext(ctx, i).(DomainMapOutput)
 }
 
+func (i DomainMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*Domain] {
+	return pulumix.Output[map[string]*Domain]{
+		OutputState: i.ToDomainMapOutputWithContext(ctx).OutputState,
+	}
+}
+
 type DomainOutput struct{ *pulumi.OutputState }
 
 func (DomainOutput) ElementType() reflect.Type {
@@ -174,6 +283,12 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+func (o DomainOutput) ToOutput(ctx context.Context) pulumix.Output[*Domain] {
+	return pulumix.Output[*Domain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainOutput) AccountId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Domain) pulumi.IntOutput { return v.AccountId }).(pulumi.IntOutput)
 }
@@ -182,6 +297,7 @@ func (o DomainOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
+// The domain name to be created
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -216,6 +332,12 @@ func (o DomainArrayOutput) ToDomainArrayOutputWithContext(ctx context.Context) D
 	return o
 }
 
+func (o DomainArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*Domain] {
+	return pulumix.Output[[]*Domain]{
+		OutputState: o.OutputState,
+	}
+}
+
 func (o DomainArrayOutput) Index(i pulumi.IntInput) DomainOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *Domain {
 		return vs[0].([]*Domain)[vs[1].(int)]
@@ -234,6 +356,12 @@ func (o DomainMapOutput) ToDomainMapOutput() DomainMapOutput {
 
 func (o DomainMapOutput) ToDomainMapOutputWithContext(ctx context.Context) DomainMapOutput {
 	return o
+}
+
+func (o DomainMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*Domain] {
+	return pulumix.Output[map[string]*Domain]{
+		OutputState: o.OutputState,
+	}
 }
 
 func (o DomainMapOutput) MapIndex(k pulumi.StringInput) DomainOutput {

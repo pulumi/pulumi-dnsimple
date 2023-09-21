@@ -15,45 +15,141 @@ import java.lang.Integer;
 import java.lang.String;
 import javax.annotation.Nullable;
 
+/**
+ * Provides a DNSimple domain resource.
+ * 
+ * ## Example Usage
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.dnsimple.Domain;
+ * import com.pulumi.dnsimple.DomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var foobar = new Domain(&#34;foobar&#34;, DomainArgs.builder()        
+ *             .name(var_.dnsimple().domain())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * 
+ * ## Import
+ * 
+ * DNSimple domains can be imported using their numeric record ID.
+ * 
+ * ```sh
+ *  $ pulumi import dnsimple:index/domain:Domain resource_name 5678
+ * ```
+ * 
+ *  The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
+ * 
+ *  &#34;data&#34;[
+ * 
+ *  {
+ * 
+ *  &#34;id&#34;5678,
+ * 
+ *  &#34;account_id&#34;1234,
+ * 
+ *  &#34;registrant_id&#34;null,
+ * 
+ *  &#34;name&#34;&#34;example.com&#34;,
+ * 
+ *  &#34;unicode_name&#34;&#34;example.com&#34;,
+ * 
+ *  &#34;state&#34;&#34;hosted&#34;,
+ * 
+ *  &#34;auto_renew&#34;false,
+ * 
+ *  &#34;private_whois&#34;false,
+ * 
+ *  &#34;expires_on&#34;null,
+ * 
+ *  &#34;expires_at&#34;null,
+ * 
+ *  &#34;created_at&#34;&#34;2021-10-01T00:00:00Z&#34;,
+ * 
+ *  &#34;updated_at&#34;&#34;2021-10-01T00:00:00Z&#34;
+ * 
+ *  }
+ * 
+ *  ],
+ * 
+ *  &#34;pagination&#34;{
+ * 
+ *  &#34;current_page&#34;1,
+ * 
+ *  &#34;per_page&#34;30,
+ * 
+ *  &#34;total_entries&#34;1,
+ * 
+ *  &#34;total_pages&#34;1
+ * 
+ *  } }
+ * 
+ */
 @ResourceType(type="dnsimple:index/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
-    @Export(name="accountId", type=Integer.class, parameters={})
+    @Export(name="accountId", refs={Integer.class}, tree="[0]")
     private Output<Integer> accountId;
 
     public Output<Integer> accountId() {
         return this.accountId;
     }
-    @Export(name="autoRenew", type=Boolean.class, parameters={})
+    @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
-    @Export(name="name", type=String.class, parameters={})
+    /**
+     * The domain name to be created
+     * 
+     */
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
+    /**
+     * @return The domain name to be created
+     * 
+     */
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="privateWhois", type=Boolean.class, parameters={})
+    @Export(name="privateWhois", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privateWhois;
 
     public Output<Boolean> privateWhois() {
         return this.privateWhois;
     }
-    @Export(name="registrantId", type=Integer.class, parameters={})
+    @Export(name="registrantId", refs={Integer.class}, tree="[0]")
     private Output<Integer> registrantId;
 
     public Output<Integer> registrantId() {
         return this.registrantId;
     }
-    @Export(name="state", type=String.class, parameters={})
+    @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     public Output<String> state() {
         return this.state;
     }
-    @Export(name="unicodeName", type=String.class, parameters={})
+    @Export(name="unicodeName", refs={String.class}, tree="[0]")
     private Output<String> unicodeName;
 
     public Output<String> unicodeName() {

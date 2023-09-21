@@ -4,6 +4,22 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * Provides a DNSimple Let's Encrypt certificate resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const foobar = new dnsimple.LetsEncryptCertificate("foobar", {
+ *     domainId: _var.dnsimple.domain_id,
+ *     autoRenew: false,
+ *     name: "www",
+ * });
+ * ```
+ */
 export class LetsEncryptCertificate extends pulumi.CustomResource {
     /**
      * Get an existing LetsEncryptCertificate resource's state with the given name, ID, and optional extra
@@ -32,19 +48,42 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === LetsEncryptCertificate.__pulumiType;
     }
 
+    /**
+     * The identifying certification authority (CA)
+     */
     public /*out*/ readonly authorityIdentifier!: pulumi.Output<string>;
+    /**
+     * Set to true if the certificate will auto-renew
+     */
     public readonly autoRenew!: pulumi.Output<boolean>;
     /**
+     * The contact id for the certificate
+     *
      * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
      */
     public readonly contactId!: pulumi.Output<number | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    /**
+     * The certificate signing request
+     */
     public /*out*/ readonly csr!: pulumi.Output<string>;
+    /**
+     * The domain to be issued the certificate for
+     */
     public readonly domainId!: pulumi.Output<string | undefined>;
     public /*out*/ readonly expiresOn!: pulumi.Output<string>;
+    /**
+     * The certificate name
+     */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * The state of the certificate
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    /**
+     * The years the certificate will last
+     */
     public /*out*/ readonly years!: pulumi.Output<number>;
 
     /**
@@ -100,19 +139,42 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LetsEncryptCertificate resources.
  */
 export interface LetsEncryptCertificateState {
+    /**
+     * The identifying certification authority (CA)
+     */
     authorityIdentifier?: pulumi.Input<string>;
+    /**
+     * Set to true if the certificate will auto-renew
+     */
     autoRenew?: pulumi.Input<boolean>;
     /**
+     * The contact id for the certificate
+     *
      * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
      */
     contactId?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
+    /**
+     * The certificate signing request
+     */
     csr?: pulumi.Input<string>;
+    /**
+     * The domain to be issued the certificate for
+     */
     domainId?: pulumi.Input<string>;
     expiresOn?: pulumi.Input<string>;
+    /**
+     * The certificate name
+     */
     name?: pulumi.Input<string>;
+    /**
+     * The state of the certificate
+     */
     state?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
+    /**
+     * The years the certificate will last
+     */
     years?: pulumi.Input<number>;
 }
 
@@ -120,11 +182,22 @@ export interface LetsEncryptCertificateState {
  * The set of arguments for constructing a LetsEncryptCertificate resource.
  */
 export interface LetsEncryptCertificateArgs {
+    /**
+     * Set to true if the certificate will auto-renew
+     */
     autoRenew: pulumi.Input<boolean>;
     /**
+     * The contact id for the certificate
+     *
      * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
      */
     contactId?: pulumi.Input<number>;
+    /**
+     * The domain to be issued the certificate for
+     */
     domainId?: pulumi.Input<string>;
+    /**
+     * The certificate name
+     */
     name: pulumi.Input<string>;
 }

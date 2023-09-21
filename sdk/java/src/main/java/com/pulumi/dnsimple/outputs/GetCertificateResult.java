@@ -10,6 +10,10 @@ import java.util.Objects;
 
 @CustomType
 public final class GetCertificateResult {
+    /**
+     * @return A list of certificates that make up the chain
+     * 
+     */
     private List<String> certificateChains;
     private String certificateId;
     private String domain;
@@ -18,11 +22,27 @@ public final class GetCertificateResult {
      * 
      */
     private String id;
+    /**
+     * @return The corresponding Private Key for the SSL Certificate
+     * 
+     */
     private String privateKey;
+    /**
+     * @return The Root Certificate of the issuing CA
+     * 
+     */
     private String rootCertificate;
+    /**
+     * @return The SSL Certificate
+     * 
+     */
     private String serverCertificate;
 
     private GetCertificateResult() {}
+    /**
+     * @return A list of certificates that make up the chain
+     * 
+     */
     public List<String> certificateChains() {
         return this.certificateChains;
     }
@@ -39,12 +59,24 @@ public final class GetCertificateResult {
     public String id() {
         return this.id;
     }
+    /**
+     * @return The corresponding Private Key for the SSL Certificate
+     * 
+     */
     public String privateKey() {
         return this.privateKey;
     }
+    /**
+     * @return The Root Certificate of the issuing CA
+     * 
+     */
     public String rootCertificate() {
         return this.rootCertificate;
     }
+    /**
+     * @return The SSL Certificate
+     * 
+     */
     public String serverCertificate() {
         return this.serverCertificate;
     }

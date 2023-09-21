@@ -14,51 +14,59 @@ import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
+/**
+ * @deprecated
+ * This resource is deprecated.
+ * It will be removed in the next major version.
+ * 
+ */
+@Deprecated /* This resource is deprecated.
+It will be removed in the next major version. */
 @ResourceType(type="dnsimple:index/record:Record")
 public class Record extends com.pulumi.resources.CustomResource {
-    @Export(name="domain", type=String.class, parameters={})
+    @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     public Output<String> domain() {
         return this.domain;
     }
-    @Export(name="domainId", type=String.class, parameters={})
+    @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
 
     public Output<String> domainId() {
         return this.domainId;
     }
-    @Export(name="hostname", type=String.class, parameters={})
+    @Export(name="hostname", refs={String.class}, tree="[0]")
     private Output<String> hostname;
 
     public Output<String> hostname() {
         return this.hostname;
     }
-    @Export(name="name", type=String.class, parameters={})
+    @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     public Output<String> name() {
         return this.name;
     }
-    @Export(name="priority", type=String.class, parameters={})
+    @Export(name="priority", refs={String.class}, tree="[0]")
     private Output<String> priority;
 
     public Output<String> priority() {
         return this.priority;
     }
-    @Export(name="ttl", type=String.class, parameters={})
+    @Export(name="ttl", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> ttl;
 
     public Output<Optional<String>> ttl() {
         return Codegen.optional(this.ttl);
     }
-    @Export(name="type", type=String.class, parameters={})
+    @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     public Output<String> type() {
         return this.type;
     }
-    @Export(name="value", type=String.class, parameters={})
+    @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     public Output<String> value() {
