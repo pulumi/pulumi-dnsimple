@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['DomainArgs', 'Domain']
@@ -19,7 +19,16 @@ class DomainArgs:
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] name: The domain name to be created
         """
-        pulumi.set(__self__, "name", name)
+        DomainArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            name=name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             name: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("name", name)
 
     @property
     @pulumi.getter
@@ -48,20 +57,41 @@ class _DomainState:
         Input properties used for looking up and filtering Domain resources.
         :param pulumi.Input[str] name: The domain name to be created
         """
+        _DomainState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account_id=account_id,
+            auto_renew=auto_renew,
+            name=name,
+            private_whois=private_whois,
+            registrant_id=registrant_id,
+            state=state,
+            unicode_name=unicode_name,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account_id: Optional[pulumi.Input[int]] = None,
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             private_whois: Optional[pulumi.Input[bool]] = None,
+             registrant_id: Optional[pulumi.Input[int]] = None,
+             state: Optional[pulumi.Input[str]] = None,
+             unicode_name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if account_id is not None:
-            pulumi.set(__self__, "account_id", account_id)
+            _setter("account_id", account_id)
         if auto_renew is not None:
-            pulumi.set(__self__, "auto_renew", auto_renew)
+            _setter("auto_renew", auto_renew)
         if name is not None:
-            pulumi.set(__self__, "name", name)
+            _setter("name", name)
         if private_whois is not None:
-            pulumi.set(__self__, "private_whois", private_whois)
+            _setter("private_whois", private_whois)
         if registrant_id is not None:
-            pulumi.set(__self__, "registrant_id", registrant_id)
+            _setter("registrant_id", registrant_id)
         if state is not None:
-            pulumi.set(__self__, "state", state)
+            _setter("state", state)
         if unicode_name is not None:
-            pulumi.set(__self__, "unicode_name", unicode_name)
+            _setter("unicode_name", unicode_name)
 
     @property
     @pulumi.getter(name="accountId")
@@ -291,6 +321,10 @@ class Domain(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            DomainArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,

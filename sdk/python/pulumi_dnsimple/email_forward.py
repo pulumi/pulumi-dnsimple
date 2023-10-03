@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['EmailForwardArgs', 'EmailForward']
@@ -23,9 +23,22 @@ class EmailForwardArgs:
         :param pulumi.Input[str] destination_email: The destination email address on another domain
         :param pulumi.Input[str] domain: The domain to add the email forwarding rule to
         """
-        pulumi.set(__self__, "alias_name", alias_name)
-        pulumi.set(__self__, "destination_email", destination_email)
-        pulumi.set(__self__, "domain", domain)
+        EmailForwardArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias_name=alias_name,
+            destination_email=destination_email,
+            domain=domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias_name: pulumi.Input[str],
+             destination_email: pulumi.Input[str],
+             domain: pulumi.Input[str],
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("alias_name", alias_name)
+        _setter("destination_email", destination_email)
+        _setter("domain", domain)
 
     @property
     @pulumi.getter(name="aliasName")
@@ -78,14 +91,29 @@ class _EmailForwardState:
         :param pulumi.Input[str] destination_email: The destination email address on another domain
         :param pulumi.Input[str] domain: The domain to add the email forwarding rule to
         """
+        _EmailForwardState._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            alias_email=alias_email,
+            alias_name=alias_name,
+            destination_email=destination_email,
+            domain=domain,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             alias_email: Optional[pulumi.Input[str]] = None,
+             alias_name: Optional[pulumi.Input[str]] = None,
+             destination_email: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
         if alias_email is not None:
-            pulumi.set(__self__, "alias_email", alias_email)
+            _setter("alias_email", alias_email)
         if alias_name is not None:
-            pulumi.set(__self__, "alias_name", alias_name)
+            _setter("alias_name", alias_name)
         if destination_email is not None:
-            pulumi.set(__self__, "destination_email", destination_email)
+            _setter("destination_email", destination_email)
         if domain is not None:
-            pulumi.set(__self__, "domain", domain)
+            _setter("domain", domain)
 
     @property
     @pulumi.getter(name="aliasEmail")
@@ -199,6 +227,10 @@ class EmailForward(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            EmailForwardArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
