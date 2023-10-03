@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['ProviderArgs', 'Provider']
@@ -27,14 +27,31 @@ class ProviderArgs:
         :param pulumi.Input[bool] sandbox: Flag to enable the sandbox API.
         :param pulumi.Input[str] user_agent: Custom string to append to the user agent used for sending HTTP requests to the API.
         """
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "token", token)
+        ProviderArgs._configure(
+            lambda key, value: pulumi.set(__self__, key, value),
+            account=account,
+            token=token,
+            prefetch=prefetch,
+            sandbox=sandbox,
+            user_agent=user_agent,
+        )
+    @staticmethod
+    def _configure(
+             _setter: Callable[[Any, Any], None],
+             account: pulumi.Input[str],
+             token: pulumi.Input[str],
+             prefetch: Optional[pulumi.Input[bool]] = None,
+             sandbox: Optional[pulumi.Input[bool]] = None,
+             user_agent: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions]=None):
+        _setter("account", account)
+        _setter("token", token)
         if prefetch is not None:
-            pulumi.set(__self__, "prefetch", prefetch)
+            _setter("prefetch", prefetch)
         if sandbox is not None:
-            pulumi.set(__self__, "sandbox", sandbox)
+            _setter("sandbox", sandbox)
         if user_agent is not None:
-            pulumi.set(__self__, "user_agent", user_agent)
+            _setter("user_agent", user_agent)
 
     @property
     @pulumi.getter
@@ -144,6 +161,10 @@ class Provider(pulumi.ProviderResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
+            kwargs = kwargs or {}
+            def _setter(key, value):
+                kwargs[key] = value
+            ProviderArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
