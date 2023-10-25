@@ -41,13 +41,25 @@ class ZoneRecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value: pulumi.Input[str],
-             zone_name: pulumi.Input[str],
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
+             zone_name: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+        if zone_name is None and 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+        if zone_name is None:
+            raise TypeError("Missing 'zone_name' argument")
+
         _setter("name", name)
         _setter("type", type)
         _setter("value", value)
@@ -174,7 +186,15 @@ class _ZoneRecordState:
              value: Optional[pulumi.Input[str]] = None,
              zone_id: Optional[pulumi.Input[str]] = None,
              zone_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if qualified_name is None and 'qualifiedName' in kwargs:
+            qualified_name = kwargs['qualifiedName']
+        if zone_id is None and 'zoneId' in kwargs:
+            zone_id = kwargs['zoneId']
+        if zone_name is None and 'zoneName' in kwargs:
+            zone_name = kwargs['zoneName']
+
         if name is not None:
             _setter("name", name)
         if priority is not None:
@@ -309,34 +329,6 @@ class ZoneRecord(pulumi.CustomResource):
         You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
         upcoming 1.0.0 release.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add a record to the root domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            name="",
-            ttl="3600",
-            type="A",
-            value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add a record to a sub-domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            name="terraform",
-            ttl="3600",
-            type="A",
-            value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
-        ```
-
         ## Import
 
         DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
@@ -375,34 +367,6 @@ class ZoneRecord(pulumi.CustomResource):
 
         You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
         upcoming 1.0.0 release.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add a record to the root domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            name="",
-            ttl="3600",
-            type="A",
-            value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add a record to a sub-domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            name="terraform",
-            ttl="3600",
-            type="A",
-            value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
-        ```
 
         ## Import
 

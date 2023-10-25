@@ -11,27 +11,6 @@ namespace Pulumi.DNSimple
 {
     /// <summary>
     /// Provides a DNSimple email forward resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DNSimple = Pulumi.DNSimple;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Add an email forwarding rule to the domain
-    ///     var foobar = new DNSimple.EmailForward("foobar", new()
-    ///     {
-    ///         AliasName = "sales",
-    ///         DestinationEmail = "jane.doe@example.com",
-    ///         Domain = @var.Dnsimple_domain,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/emailForward:EmailForward")]
     public partial class EmailForward : global::Pulumi.CustomResource

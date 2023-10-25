@@ -6,19 +6,6 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DNSimple Let's Encrypt certificate resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * const foobar = new dnsimple.LetsEncryptCertificate("foobar", {
- *     domainId: _var.dnsimple.domain_id,
- *     autoRenew: false,
- *     name: "www",
- * });
- * ```
  */
 export class LetsEncryptCertificate extends pulumi.CustomResource {
     /**

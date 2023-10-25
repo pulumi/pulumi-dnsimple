@@ -35,13 +35,23 @@ class RecordArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             domain: pulumi.Input[str],
-             name: pulumi.Input[str],
-             type: pulumi.Input[str],
-             value: pulumi.Input[str],
+             domain: Optional[pulumi.Input[str]] = None,
+             name: Optional[pulumi.Input[str]] = None,
+             type: Optional[pulumi.Input[str]] = None,
+             value: Optional[pulumi.Input[str]] = None,
              priority: Optional[pulumi.Input[str]] = None,
              ttl: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if type is None:
+            raise TypeError("Missing 'type' argument")
+        if value is None:
+            raise TypeError("Missing 'value' argument")
+
         _setter("domain", domain)
         _setter("name", name)
         _setter("type", type)
@@ -142,7 +152,11 @@ class _RecordState:
              ttl: Optional[pulumi.Input[str]] = None,
              type: Optional[pulumi.Input[str]] = None,
              value: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+
         if domain is not None:
             _setter("domain", domain)
         if domain_id is not None:
