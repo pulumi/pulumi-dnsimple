@@ -35,11 +35,23 @@ class LetsEncryptCertificateArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             auto_renew: pulumi.Input[bool],
-             name: pulumi.Input[str],
+             auto_renew: Optional[pulumi.Input[bool]] = None,
+             name: Optional[pulumi.Input[str]] = None,
              contact_id: Optional[pulumi.Input[int]] = None,
              domain_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if auto_renew is None:
+            raise TypeError("Missing 'auto_renew' argument")
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+        if contact_id is None and 'contactId' in kwargs:
+            contact_id = kwargs['contactId']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+
         _setter("auto_renew", auto_renew)
         _setter("name", name)
         if contact_id is not None:
@@ -155,7 +167,23 @@ class _LetsEncryptCertificateState:
              state: Optional[pulumi.Input[str]] = None,
              updated_at: Optional[pulumi.Input[str]] = None,
              years: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if authority_identifier is None and 'authorityIdentifier' in kwargs:
+            authority_identifier = kwargs['authorityIdentifier']
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if contact_id is None and 'contactId' in kwargs:
+            contact_id = kwargs['contactId']
+        if created_at is None and 'createdAt' in kwargs:
+            created_at = kwargs['createdAt']
+        if domain_id is None and 'domainId' in kwargs:
+            domain_id = kwargs['domainId']
+        if expires_on is None and 'expiresOn' in kwargs:
+            expires_on = kwargs['expiresOn']
+        if updated_at is None and 'updatedAt' in kwargs:
+            updated_at = kwargs['updatedAt']
+
         if authority_identifier is not None:
             _setter("authority_identifier", authority_identifier)
         if auto_renew is not None:
@@ -322,18 +350,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         """
         Provides a DNSimple Let's Encrypt certificate resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        foobar = dnsimple.LetsEncryptCertificate("foobar",
-            domain_id=var["dnsimple"]["domain_id"],
-            auto_renew=False,
-            name="www")
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
@@ -349,18 +365,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple Let's Encrypt certificate resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        foobar = dnsimple.LetsEncryptCertificate("foobar",
-            domain_id=var["dnsimple"]["domain_id"],
-            auto_renew=False,
-            name="www")
-        ```
 
         :param str resource_name: The name of the resource.
         :param LetsEncryptCertificateArgs args: The arguments to use to populate this resource's properties.

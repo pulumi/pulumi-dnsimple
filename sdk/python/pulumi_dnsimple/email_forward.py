@@ -32,10 +32,22 @@ class EmailForwardArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             alias_name: pulumi.Input[str],
-             destination_email: pulumi.Input[str],
-             domain: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             alias_name: Optional[pulumi.Input[str]] = None,
+             destination_email: Optional[pulumi.Input[str]] = None,
+             domain: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alias_name is None and 'aliasName' in kwargs:
+            alias_name = kwargs['aliasName']
+        if alias_name is None:
+            raise TypeError("Missing 'alias_name' argument")
+        if destination_email is None and 'destinationEmail' in kwargs:
+            destination_email = kwargs['destinationEmail']
+        if destination_email is None:
+            raise TypeError("Missing 'destination_email' argument")
+        if domain is None:
+            raise TypeError("Missing 'domain' argument")
+
         _setter("alias_name", alias_name)
         _setter("destination_email", destination_email)
         _setter("domain", domain)
@@ -105,7 +117,15 @@ class _EmailForwardState:
              alias_name: Optional[pulumi.Input[str]] = None,
              destination_email: Optional[pulumi.Input[str]] = None,
              domain: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if alias_email is None and 'aliasEmail' in kwargs:
+            alias_email = kwargs['aliasEmail']
+        if alias_name is None and 'aliasName' in kwargs:
+            alias_name = kwargs['aliasName']
+        if destination_email is None and 'destinationEmail' in kwargs:
+            destination_email = kwargs['destinationEmail']
+
         if alias_email is not None:
             _setter("alias_email", alias_email)
         if alias_name is not None:
@@ -176,19 +196,6 @@ class EmailForward(pulumi.CustomResource):
         """
         Provides a DNSimple email forward resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add an email forwarding rule to the domain
-        foobar = dnsimple.EmailForward("foobar",
-            alias_name="sales",
-            destination_email="jane.doe@example.com",
-            domain=var["dnsimple_domain"])
-        ```
-
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: The name part (the part before the @) of the source email address on the domain
@@ -203,19 +210,6 @@ class EmailForward(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple email forward resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add an email forwarding rule to the domain
-        foobar = dnsimple.EmailForward("foobar",
-            alias_name="sales",
-            destination_email="jane.doe@example.com",
-            domain=var["dnsimple_domain"])
-        ```
 
         :param str resource_name: The name of the resource.
         :param EmailForwardArgs args: The arguments to use to populate this resource's properties.

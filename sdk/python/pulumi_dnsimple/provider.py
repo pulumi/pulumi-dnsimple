@@ -38,12 +38,20 @@ class ProviderArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             account: pulumi.Input[str],
-             token: pulumi.Input[str],
+             account: Optional[pulumi.Input[str]] = None,
+             token: Optional[pulumi.Input[str]] = None,
              prefetch: Optional[pulumi.Input[bool]] = None,
              sandbox: Optional[pulumi.Input[bool]] = None,
              user_agent: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account is None:
+            raise TypeError("Missing 'account' argument")
+        if token is None:
+            raise TypeError("Missing 'token' argument")
+        if user_agent is None and 'userAgent' in kwargs:
+            user_agent = kwargs['userAgent']
+
         _setter("account", account)
         _setter("token", token)
         if prefetch is not None:

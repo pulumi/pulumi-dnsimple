@@ -9,15 +9,6 @@ import * as utilities from "./utilities";
  *
  * Get zone:
  *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * const foobar = dnsimple.getZone({
- *     name: "dnsimple.com",
- * });
- * ```
- *
  * The following arguments are supported:
  *
  * * `name` - (Required) The name of the zone
@@ -57,15 +48,6 @@ export interface GetZoneResult {
  * Get information about a DNSimple zone.
  *
  * Get zone:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * const foobar = dnsimple.getZone({
- *     name: "dnsimple.com",
- * });
- * ```
  *
  * The following arguments are supported:
  *

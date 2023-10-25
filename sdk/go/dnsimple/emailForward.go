@@ -14,34 +14,6 @@ import (
 )
 
 // Provides a DNSimple email forward resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewEmailForward(ctx, "foobar", &dnsimple.EmailForwardArgs{
-//				AliasName:        pulumi.String("sales"),
-//				DestinationEmail: pulumi.String("jane.doe@example.com"),
-//				Domain:           pulumi.Any(_var.Dnsimple_domain),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
 type EmailForward struct {
 	pulumi.CustomResourceState
 

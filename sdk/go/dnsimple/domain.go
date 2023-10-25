@@ -15,32 +15,6 @@ import (
 
 // Provides a DNSimple domain resource.
 //
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewDomain(ctx, "foobar", &dnsimple.DomainArgs{
-//				Name: pulumi.Any(_var.Dnsimple.Domain),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
 // ## Import
 //
 // DNSimple domains can be imported using their numeric record ID.

@@ -75,13 +75,6 @@ def get_zone(name: Optional[str] = None,
 
     Get zone:
 
-    ```python
-    import pulumi
-    import pulumi_dnsimple as dnsimple
-
-    foobar = dnsimple.get_zone(name="dnsimple.com")
-    ```
-
     The following arguments are supported:
 
     * `name` - (Required) The name of the zone
@@ -112,13 +105,6 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
     Get information about a DNSimple zone.
 
     Get zone:
-
-    ```python
-    import pulumi
-    import pulumi_dnsimple as dnsimple
-
-    foobar = dnsimple.get_zone(name="dnsimple.com")
-    ```
 
     The following arguments are supported:
 

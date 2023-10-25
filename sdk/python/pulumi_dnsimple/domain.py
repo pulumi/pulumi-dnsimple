@@ -26,8 +26,12 @@ class DomainArgs:
     @staticmethod
     def _configure(
              _setter: Callable[[Any, Any], None],
-             name: pulumi.Input[str],
-             opts: Optional[pulumi.ResourceOptions]=None):
+             name: Optional[pulumi.Input[str]] = None,
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if name is None:
+            raise TypeError("Missing 'name' argument")
+
         _setter("name", name)
 
     @property
@@ -77,7 +81,19 @@ class _DomainState:
              registrant_id: Optional[pulumi.Input[int]] = None,
              state: Optional[pulumi.Input[str]] = None,
              unicode_name: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions]=None):
+             opts: Optional[pulumi.ResourceOptions] = None,
+             **kwargs):
+        if account_id is None and 'accountId' in kwargs:
+            account_id = kwargs['accountId']
+        if auto_renew is None and 'autoRenew' in kwargs:
+            auto_renew = kwargs['autoRenew']
+        if private_whois is None and 'privateWhois' in kwargs:
+            private_whois = kwargs['privateWhois']
+        if registrant_id is None and 'registrantId' in kwargs:
+            registrant_id = kwargs['registrantId']
+        if unicode_name is None and 'unicodeName' in kwargs:
+            unicode_name = kwargs['unicodeName']
+
         if account_id is not None:
             _setter("account_id", account_id)
         if auto_renew is not None:
@@ -170,16 +186,6 @@ class Domain(pulumi.CustomResource):
         """
         Provides a DNSimple domain resource.
 
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Create a domain
-        foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
-        ```
-
         ## Import
 
         DNSimple domains can be imported using their numeric record ID.
@@ -246,16 +252,6 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple domain resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Create a domain
-        foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
-        ```
 
         ## Import
 
