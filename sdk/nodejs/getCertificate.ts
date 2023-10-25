@@ -6,6 +6,18 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DNSimple certificate data source.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const foobar = dnsimple.getCertificate({
+ *     certificateId: _var.dnsimple_certificate_id,
+ *     domain: _var.dnsimple_domain,
+ * });
+ * ```
  */
 export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOptions): Promise<GetCertificateResult> {
 
@@ -59,6 +71,18 @@ export interface GetCertificateResult {
 }
 /**
  * Provides a DNSimple certificate data source.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const foobar = dnsimple.getCertificate({
+ *     certificateId: _var.dnsimple_certificate_id,
+ *     domain: _var.dnsimple_domain,
+ * });
+ * ```
  */
 export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateResult> {
     return pulumi.output(args).apply((a: any) => getCertificate(a, opts))

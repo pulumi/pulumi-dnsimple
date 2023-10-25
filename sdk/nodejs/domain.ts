@@ -7,6 +7,16 @@ import * as utilities from "./utilities";
 /**
  * Provides a DNSimple domain resource.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * // Create a domain
+ * const foobar = new dnsimple.Domain("foobar", {name: _var.dnsimple.domain});
+ * ```
+ *
  * ## Import
  *
  * DNSimple domains can be imported using their numeric record ID.

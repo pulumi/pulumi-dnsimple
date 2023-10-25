@@ -20,6 +20,64 @@ import (
 // You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
 // upcoming 1.0.0 release.
 //
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
+//				Name:     pulumi.String(""),
+//				Ttl:      pulumi.String("3600"),
+//				Type:     pulumi.String("A"),
+//				Value:    pulumi.String("192.168.0.11"),
+//				ZoneName: pulumi.Any(_var.Dnsimple_domain),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
+//				Name:     pulumi.String("terraform"),
+//				Ttl:      pulumi.String("3600"),
+//				Type:     pulumi.String("A"),
+//				Value:    pulumi.String("192.168.0.11"),
+//				ZoneName: pulumi.Any(_var.Dnsimple_domain),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.

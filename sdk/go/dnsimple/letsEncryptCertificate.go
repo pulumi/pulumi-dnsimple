@@ -14,6 +14,34 @@ import (
 )
 
 // Provides a DNSimple Let's Encrypt certificate resource.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewLetsEncryptCertificate(ctx, "foobar", &dnsimple.LetsEncryptCertificateArgs{
+//				DomainId:  pulumi.Any(_var.Dnsimple.Domain_id),
+//				AutoRenew: pulumi.Bool(false),
+//				Name:      pulumi.String("www"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 type LetsEncryptCertificate struct {
 	pulumi.CustomResourceState
 

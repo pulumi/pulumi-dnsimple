@@ -11,6 +11,26 @@ namespace Pulumi.DNSimple
 {
     /// <summary>
     /// Provides a DNSimple Let's Encrypt certificate resource.
+    /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var foobar = new DNSimple.LetsEncryptCertificate("foobar", new()
+    ///     {
+    ///         DomainId = @var.Dnsimple.Domain_id,
+    ///         AutoRenew = false,
+    ///         Name = "www",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")]
     public partial class LetsEncryptCertificate : global::Pulumi.CustomResource

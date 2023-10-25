@@ -17,6 +17,50 @@ namespace Pulumi.DNSimple
     /// You can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the
     /// upcoming 1.0.0 release.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a record to the root domain
+    ///     var foobar = new DNSimple.ZoneRecord("foobar", new()
+    ///     {
+    ///         Name = "",
+    ///         Ttl = "3600",
+    ///         Type = "A",
+    ///         Value = "192.168.0.11",
+    ///         ZoneName = @var.Dnsimple_domain,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Add a record to a sub-domain
+    ///     var foobar = new DNSimple.ZoneRecord("foobar", new()
+    ///     {
+    ///         Name = "terraform",
+    ///         Ttl = "3600",
+    ///         Type = "A",
+    ///         Value = "192.168.0.11",
+    ///         ZoneName = @var.Dnsimple_domain,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.

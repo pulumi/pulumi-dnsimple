@@ -350,6 +350,18 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         """
         Provides a DNSimple Let's Encrypt certificate resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        foobar = dnsimple.LetsEncryptCertificate("foobar",
+            domain_id=var["dnsimple"]["domain_id"],
+            auto_renew=False,
+            name="www")
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
@@ -365,6 +377,18 @@ class LetsEncryptCertificate(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple Let's Encrypt certificate resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        foobar = dnsimple.LetsEncryptCertificate("foobar",
+            domain_id=var["dnsimple"]["domain_id"],
+            auto_renew=False,
+            name="www")
+        ```
 
         :param str resource_name: The name of the resource.
         :param LetsEncryptCertificateArgs args: The arguments to use to populate this resource's properties.

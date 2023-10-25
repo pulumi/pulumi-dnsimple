@@ -12,6 +12,25 @@ namespace Pulumi.DNSimple
     /// <summary>
     /// Provides a DNSimple domain resource.
     /// 
+    /// ## Example Usage
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Create a domain
+    ///     var foobar = new DNSimple.Domain("foobar", new()
+    ///     {
+    ///         Name = @var.Dnsimple.Domain,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNSimple domains can be imported using their numeric record ID.
