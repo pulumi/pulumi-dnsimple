@@ -196,6 +196,19 @@ class EmailForward(pulumi.CustomResource):
         """
         Provides a DNSimple email forward resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add an email forwarding rule to the domain
+        foobar = dnsimple.EmailForward("foobar",
+            alias_name="sales",
+            destination_email="jane.doe@example.com",
+            domain=var["dnsimple_domain"])
+        ```
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] alias_name: The name part (the part before the @) of the source email address on the domain
@@ -210,6 +223,19 @@ class EmailForward(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple email forward resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add an email forwarding rule to the domain
+        foobar = dnsimple.EmailForward("foobar",
+            alias_name="sales",
+            destination_email="jane.doe@example.com",
+            domain=var["dnsimple_domain"])
+        ```
 
         :param str resource_name: The name of the resource.
         :param EmailForwardArgs args: The arguments to use to populate this resource's properties.

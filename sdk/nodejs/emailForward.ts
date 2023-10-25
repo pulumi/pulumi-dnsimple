@@ -6,6 +6,20 @@ import * as utilities from "./utilities";
 
 /**
  * Provides a DNSimple email forward resource.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * // Add an email forwarding rule to the domain
+ * const foobar = new dnsimple.EmailForward("foobar", {
+ *     aliasName: "sales",
+ *     destinationEmail: "jane.doe@example.com",
+ *     domain: _var.dnsimple_domain,
+ * });
+ * ```
  */
 export class EmailForward extends pulumi.CustomResource {
     /**

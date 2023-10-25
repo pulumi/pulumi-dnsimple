@@ -12,6 +12,36 @@ import * as utilities from "./utilities";
  * You can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the
  * upcoming 1.0.0 release.
  *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * // Add a record to the root domain
+ * const foobar = new dnsimple.ZoneRecord("foobar", {
+ *     name: "",
+ *     ttl: "3600",
+ *     type: "A",
+ *     value: "192.168.0.11",
+ *     zoneName: _var.dnsimple_domain,
+ * });
+ * ```
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * // Add a record to a sub-domain
+ * const foobar = new dnsimple.ZoneRecord("foobar", {
+ *     name: "terraform",
+ *     ttl: "3600",
+ *     type: "A",
+ *     value: "192.168.0.11",
+ *     zoneName: _var.dnsimple_domain,
+ * });
+ * ```
+ *
  * ## Import
  *
  * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.

@@ -186,6 +186,16 @@ class Domain(pulumi.CustomResource):
         """
         Provides a DNSimple domain resource.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Create a domain
+        foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
+        ```
+
         ## Import
 
         DNSimple domains can be imported using their numeric record ID.
@@ -252,6 +262,16 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple domain resource.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Create a domain
+        foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
+        ```
 
         ## Import
 

@@ -16,6 +16,21 @@ namespace Pulumi.DNSimple
         /// 
         /// Get zone:
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foobar = DNSimple.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "dnsimple.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// 
         /// The following arguments are supported:
         /// 
@@ -36,6 +51,21 @@ namespace Pulumi.DNSimple
         /// 
         /// Get zone:
         /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foobar = DNSimple.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "dnsimple.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
         /// 
         /// The following arguments are supported:
         /// 

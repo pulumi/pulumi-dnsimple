@@ -329,6 +329,34 @@ class ZoneRecord(pulumi.CustomResource):
         You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
         upcoming 1.0.0 release.
 
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to the root domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to a sub-domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="terraform",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
         ## Import
 
         DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
@@ -367,6 +395,34 @@ class ZoneRecord(pulumi.CustomResource):
 
         You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
         upcoming 1.0.0 release.
+
+        ## Example Usage
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to the root domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        # Add a record to a sub-domain
+        foobar = dnsimple.ZoneRecord("foobar",
+            name="terraform",
+            ttl="3600",
+            type="A",
+            value="192.168.0.11",
+            zone_name=var["dnsimple_domain"])
+        ```
 
         ## Import
 

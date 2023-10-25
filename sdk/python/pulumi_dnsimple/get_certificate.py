@@ -116,6 +116,16 @@ def get_certificate(certificate_id: Optional[str] = None,
     """
     Provides a DNSimple certificate data source.
 
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
+        domain=var["dnsimple_domain"])
+    ```
+
 
     :param str certificate_id: The ID of the SSL Certificate
     :param str domain: The domain of the SSL Certificate
@@ -142,6 +152,16 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Provides a DNSimple certificate data source.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
+        domain=var["dnsimple_domain"])
+    ```
 
 
     :param str certificate_id: The ID of the SSL Certificate
