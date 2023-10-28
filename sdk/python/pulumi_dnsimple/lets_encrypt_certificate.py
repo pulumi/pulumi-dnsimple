@@ -6,7 +6,7 @@ import copy
 import warnings
 import pulumi
 import pulumi.runtime
-from typing import Any, Callable, Mapping, Optional, Sequence, Union, overload
+from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
 
 __all__ = ['LetsEncryptCertificateArgs', 'LetsEncryptCertificate']
@@ -25,42 +25,15 @@ class LetsEncryptCertificateArgs:
         :param pulumi.Input[int] contact_id: The contact id for the certificate
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
         """
-        LetsEncryptCertificateArgs._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            auto_renew=auto_renew,
-            name=name,
-            contact_id=contact_id,
-            domain_id=domain_id,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             contact_id: Optional[pulumi.Input[int]] = None,
-             domain_id: Optional[pulumi.Input[str]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if auto_renew is None:
-            raise TypeError("Missing 'auto_renew' argument")
-        if name is None:
-            raise TypeError("Missing 'name' argument")
-        if contact_id is None and 'contactId' in kwargs:
-            contact_id = kwargs['contactId']
-        if domain_id is None and 'domainId' in kwargs:
-            domain_id = kwargs['domainId']
-
-        _setter("auto_renew", auto_renew)
-        _setter("name", name)
+        pulumi.set(__self__, "auto_renew", auto_renew)
+        pulumi.set(__self__, "name", name)
         if contact_id is not None:
             warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
             pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
         if contact_id is not None:
-            _setter("contact_id", contact_id)
+            pulumi.set(__self__, "contact_id", contact_id)
         if domain_id is not None:
-            _setter("domain_id", domain_id)
+            pulumi.set(__self__, "domain_id", domain_id)
 
     @property
     @pulumi.getter(name="autoRenew")
@@ -139,76 +112,31 @@ class _LetsEncryptCertificateState:
         :param pulumi.Input[str] state: The state of the certificate
         :param pulumi.Input[int] years: The years the certificate will last
         """
-        _LetsEncryptCertificateState._configure(
-            lambda key, value: pulumi.set(__self__, key, value),
-            authority_identifier=authority_identifier,
-            auto_renew=auto_renew,
-            contact_id=contact_id,
-            created_at=created_at,
-            csr=csr,
-            domain_id=domain_id,
-            expires_on=expires_on,
-            name=name,
-            state=state,
-            updated_at=updated_at,
-            years=years,
-        )
-    @staticmethod
-    def _configure(
-             _setter: Callable[[Any, Any], None],
-             authority_identifier: Optional[pulumi.Input[str]] = None,
-             auto_renew: Optional[pulumi.Input[bool]] = None,
-             contact_id: Optional[pulumi.Input[int]] = None,
-             created_at: Optional[pulumi.Input[str]] = None,
-             csr: Optional[pulumi.Input[str]] = None,
-             domain_id: Optional[pulumi.Input[str]] = None,
-             expires_on: Optional[pulumi.Input[str]] = None,
-             name: Optional[pulumi.Input[str]] = None,
-             state: Optional[pulumi.Input[str]] = None,
-             updated_at: Optional[pulumi.Input[str]] = None,
-             years: Optional[pulumi.Input[int]] = None,
-             opts: Optional[pulumi.ResourceOptions] = None,
-             **kwargs):
-        if authority_identifier is None and 'authorityIdentifier' in kwargs:
-            authority_identifier = kwargs['authorityIdentifier']
-        if auto_renew is None and 'autoRenew' in kwargs:
-            auto_renew = kwargs['autoRenew']
-        if contact_id is None and 'contactId' in kwargs:
-            contact_id = kwargs['contactId']
-        if created_at is None and 'createdAt' in kwargs:
-            created_at = kwargs['createdAt']
-        if domain_id is None and 'domainId' in kwargs:
-            domain_id = kwargs['domainId']
-        if expires_on is None and 'expiresOn' in kwargs:
-            expires_on = kwargs['expiresOn']
-        if updated_at is None and 'updatedAt' in kwargs:
-            updated_at = kwargs['updatedAt']
-
         if authority_identifier is not None:
-            _setter("authority_identifier", authority_identifier)
+            pulumi.set(__self__, "authority_identifier", authority_identifier)
         if auto_renew is not None:
-            _setter("auto_renew", auto_renew)
+            pulumi.set(__self__, "auto_renew", auto_renew)
         if contact_id is not None:
             warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
             pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
         if contact_id is not None:
-            _setter("contact_id", contact_id)
+            pulumi.set(__self__, "contact_id", contact_id)
         if created_at is not None:
-            _setter("created_at", created_at)
+            pulumi.set(__self__, "created_at", created_at)
         if csr is not None:
-            _setter("csr", csr)
+            pulumi.set(__self__, "csr", csr)
         if domain_id is not None:
-            _setter("domain_id", domain_id)
+            pulumi.set(__self__, "domain_id", domain_id)
         if expires_on is not None:
-            _setter("expires_on", expires_on)
+            pulumi.set(__self__, "expires_on", expires_on)
         if name is not None:
-            _setter("name", name)
+            pulumi.set(__self__, "name", name)
         if state is not None:
-            _setter("state", state)
+            pulumi.set(__self__, "state", state)
         if updated_at is not None:
-            _setter("updated_at", updated_at)
+            pulumi.set(__self__, "updated_at", updated_at)
         if years is not None:
-            _setter("years", years)
+            pulumi.set(__self__, "years", years)
 
     @property
     @pulumi.getter(name="authorityIdentifier")
@@ -400,10 +328,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
-            kwargs = kwargs or {}
-            def _setter(key, value):
-                kwargs[key] = value
-            LetsEncryptCertificateArgs._configure(_setter, **kwargs)
             __self__._internal_init(resource_name, *args, **kwargs)
 
     def _internal_init(__self__,
