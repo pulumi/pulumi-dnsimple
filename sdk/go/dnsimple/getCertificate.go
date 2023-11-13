@@ -9,7 +9,6 @@ import (
 
 	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DNSimple certificate data source.
@@ -112,12 +111,6 @@ func (o GetCertificateResultOutput) ToGetCertificateResultOutput() GetCertificat
 
 func (o GetCertificateResultOutput) ToGetCertificateResultOutputWithContext(ctx context.Context) GetCertificateResultOutput {
 	return o
-}
-
-func (o GetCertificateResultOutput) ToOutput(ctx context.Context) pulumix.Output[GetCertificateResult] {
-	return pulumix.Output[GetCertificateResult]{
-		OutputState: o.OutputState,
-	}
 }
 
 // A list of certificates that make up the chain

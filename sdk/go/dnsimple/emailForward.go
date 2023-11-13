@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DNSimple email forward resource.
@@ -161,12 +160,6 @@ func (i *EmailForward) ToEmailForwardOutputWithContext(ctx context.Context) Emai
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardOutput)
 }
 
-func (i *EmailForward) ToOutput(ctx context.Context) pulumix.Output[*EmailForward] {
-	return pulumix.Output[*EmailForward]{
-		OutputState: i.ToEmailForwardOutputWithContext(ctx).OutputState,
-	}
-}
-
 // EmailForwardArrayInput is an input type that accepts EmailForwardArray and EmailForwardArrayOutput values.
 // You can construct a concrete instance of `EmailForwardArrayInput` via:
 //
@@ -190,12 +183,6 @@ func (i EmailForwardArray) ToEmailForwardArrayOutput() EmailForwardArrayOutput {
 
 func (i EmailForwardArray) ToEmailForwardArrayOutputWithContext(ctx context.Context) EmailForwardArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardArrayOutput)
-}
-
-func (i EmailForwardArray) ToOutput(ctx context.Context) pulumix.Output[[]*EmailForward] {
-	return pulumix.Output[[]*EmailForward]{
-		OutputState: i.ToEmailForwardArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // EmailForwardMapInput is an input type that accepts EmailForwardMap and EmailForwardMapOutput values.
@@ -223,12 +210,6 @@ func (i EmailForwardMap) ToEmailForwardMapOutputWithContext(ctx context.Context)
 	return pulumi.ToOutputWithContext(ctx, i).(EmailForwardMapOutput)
 }
 
-func (i EmailForwardMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailForward] {
-	return pulumix.Output[map[string]*EmailForward]{
-		OutputState: i.ToEmailForwardMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type EmailForwardOutput struct{ *pulumi.OutputState }
 
 func (EmailForwardOutput) ElementType() reflect.Type {
@@ -241,12 +222,6 @@ func (o EmailForwardOutput) ToEmailForwardOutput() EmailForwardOutput {
 
 func (o EmailForwardOutput) ToEmailForwardOutputWithContext(ctx context.Context) EmailForwardOutput {
 	return o
-}
-
-func (o EmailForwardOutput) ToOutput(ctx context.Context) pulumix.Output[*EmailForward] {
-	return pulumix.Output[*EmailForward]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The source email address on the domain
@@ -283,12 +258,6 @@ func (o EmailForwardArrayOutput) ToEmailForwardArrayOutputWithContext(ctx contex
 	return o
 }
 
-func (o EmailForwardArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*EmailForward] {
-	return pulumix.Output[[]*EmailForward]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o EmailForwardArrayOutput) Index(i pulumi.IntInput) EmailForwardOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *EmailForward {
 		return vs[0].([]*EmailForward)[vs[1].(int)]
@@ -307,12 +276,6 @@ func (o EmailForwardMapOutput) ToEmailForwardMapOutput() EmailForwardMapOutput {
 
 func (o EmailForwardMapOutput) ToEmailForwardMapOutputWithContext(ctx context.Context) EmailForwardMapOutput {
 	return o
-}
-
-func (o EmailForwardMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*EmailForward] {
-	return pulumix.Output[map[string]*EmailForward]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o EmailForwardMapOutput) MapIndex(k pulumi.StringInput) EmailForwardOutput {
