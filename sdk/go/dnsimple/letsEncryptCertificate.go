@@ -10,7 +10,6 @@ import (
 	"errors"
 	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/pulumi/pulumi/sdk/v3/go/pulumix"
 )
 
 // Provides a DNSimple Let's Encrypt certificate resource.
@@ -205,12 +204,6 @@ func (i *LetsEncryptCertificate) ToLetsEncryptCertificateOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(LetsEncryptCertificateOutput)
 }
 
-func (i *LetsEncryptCertificate) ToOutput(ctx context.Context) pulumix.Output[*LetsEncryptCertificate] {
-	return pulumix.Output[*LetsEncryptCertificate]{
-		OutputState: i.ToLetsEncryptCertificateOutputWithContext(ctx).OutputState,
-	}
-}
-
 // LetsEncryptCertificateArrayInput is an input type that accepts LetsEncryptCertificateArray and LetsEncryptCertificateArrayOutput values.
 // You can construct a concrete instance of `LetsEncryptCertificateArrayInput` via:
 //
@@ -234,12 +227,6 @@ func (i LetsEncryptCertificateArray) ToLetsEncryptCertificateArrayOutput() LetsE
 
 func (i LetsEncryptCertificateArray) ToLetsEncryptCertificateArrayOutputWithContext(ctx context.Context) LetsEncryptCertificateArrayOutput {
 	return pulumi.ToOutputWithContext(ctx, i).(LetsEncryptCertificateArrayOutput)
-}
-
-func (i LetsEncryptCertificateArray) ToOutput(ctx context.Context) pulumix.Output[[]*LetsEncryptCertificate] {
-	return pulumix.Output[[]*LetsEncryptCertificate]{
-		OutputState: i.ToLetsEncryptCertificateArrayOutputWithContext(ctx).OutputState,
-	}
 }
 
 // LetsEncryptCertificateMapInput is an input type that accepts LetsEncryptCertificateMap and LetsEncryptCertificateMapOutput values.
@@ -267,12 +254,6 @@ func (i LetsEncryptCertificateMap) ToLetsEncryptCertificateMapOutputWithContext(
 	return pulumi.ToOutputWithContext(ctx, i).(LetsEncryptCertificateMapOutput)
 }
 
-func (i LetsEncryptCertificateMap) ToOutput(ctx context.Context) pulumix.Output[map[string]*LetsEncryptCertificate] {
-	return pulumix.Output[map[string]*LetsEncryptCertificate]{
-		OutputState: i.ToLetsEncryptCertificateMapOutputWithContext(ctx).OutputState,
-	}
-}
-
 type LetsEncryptCertificateOutput struct{ *pulumi.OutputState }
 
 func (LetsEncryptCertificateOutput) ElementType() reflect.Type {
@@ -285,12 +266,6 @@ func (o LetsEncryptCertificateOutput) ToLetsEncryptCertificateOutput() LetsEncry
 
 func (o LetsEncryptCertificateOutput) ToLetsEncryptCertificateOutputWithContext(ctx context.Context) LetsEncryptCertificateOutput {
 	return o
-}
-
-func (o LetsEncryptCertificateOutput) ToOutput(ctx context.Context) pulumix.Output[*LetsEncryptCertificate] {
-	return pulumix.Output[*LetsEncryptCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 // The identifying certification authority (CA)
@@ -361,12 +336,6 @@ func (o LetsEncryptCertificateArrayOutput) ToLetsEncryptCertificateArrayOutputWi
 	return o
 }
 
-func (o LetsEncryptCertificateArrayOutput) ToOutput(ctx context.Context) pulumix.Output[[]*LetsEncryptCertificate] {
-	return pulumix.Output[[]*LetsEncryptCertificate]{
-		OutputState: o.OutputState,
-	}
-}
-
 func (o LetsEncryptCertificateArrayOutput) Index(i pulumi.IntInput) LetsEncryptCertificateOutput {
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) *LetsEncryptCertificate {
 		return vs[0].([]*LetsEncryptCertificate)[vs[1].(int)]
@@ -385,12 +354,6 @@ func (o LetsEncryptCertificateMapOutput) ToLetsEncryptCertificateMapOutput() Let
 
 func (o LetsEncryptCertificateMapOutput) ToLetsEncryptCertificateMapOutputWithContext(ctx context.Context) LetsEncryptCertificateMapOutput {
 	return o
-}
-
-func (o LetsEncryptCertificateMapOutput) ToOutput(ctx context.Context) pulumix.Output[map[string]*LetsEncryptCertificate] {
-	return pulumix.Output[map[string]*LetsEncryptCertificate]{
-		OutputState: o.OutputState,
-	}
 }
 
 func (o LetsEncryptCertificateMapOutput) MapIndex(k pulumi.StringInput) LetsEncryptCertificateOutput {
