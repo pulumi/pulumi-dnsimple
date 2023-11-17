@@ -3,8 +3,8 @@ module github.com/pulumi/pulumi-dnsimple/provider/v3
 go 1.21
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.0
-	github.com/pulumi/pulumi/sdk/v3 v3.93.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.65.1-0.20231116191113-fdc251f0376b
+	github.com/pulumi/pulumi/sdk/v3 v3.94.0
 	github.com/terraform-providers/terraform-provider-dnsimple v0.15.0
 )
 
@@ -175,7 +175,7 @@ require (
 	github.com/pulumi/esc v0.5.7-0.20231030195049-f71961c0d5fa // indirect
 	github.com/pulumi/pulumi-java/pkg v0.9.8 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.4 // indirect
-	github.com/pulumi/pulumi-yaml v1.4.0 // indirect
+	github.com/pulumi/pulumi-yaml v1.4.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.93.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
@@ -243,3 +243,7 @@ replace (
 	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
 	github.com/terraform-providers/terraform-provider-dnsimple => github.com/dnsimple/terraform-provider-dnsimple v0.15.0
 )
+
+replace github.com/pulumi/pulumi/pkg/v3 => github.com/pulumi/pulumi/pkg/v3 v3.78.2-0.20231116221104-a6a5df256d3c
+
+replace github.com/pulumi/pulumi/sdk/v3 => github.com/pulumi/pulumi/sdk/v3 v3.94.1-0.20231116221104-a6a5df256d3c
