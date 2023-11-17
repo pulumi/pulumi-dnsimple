@@ -48,7 +48,7 @@ type LetsEncryptCertificate struct {
 	AuthorityIdentifier pulumi.StringOutput `pulumi:"authorityIdentifier"`
 	// Set to true if the certificate will auto-renew
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// The contact id for the certificate
+	// (Deprecated) The contact id for the certificate
 	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId pulumi.IntPtrOutput `pulumi:"contactId"`
@@ -107,7 +107,7 @@ type letsEncryptCertificateState struct {
 	AuthorityIdentifier *string `pulumi:"authorityIdentifier"`
 	// Set to true if the certificate will auto-renew
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The contact id for the certificate
+	// (Deprecated) The contact id for the certificate
 	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId *int    `pulumi:"contactId"`
@@ -131,7 +131,7 @@ type LetsEncryptCertificateState struct {
 	AuthorityIdentifier pulumi.StringPtrInput
 	// Set to true if the certificate will auto-renew
 	AutoRenew pulumi.BoolPtrInput
-	// The contact id for the certificate
+	// (Deprecated) The contact id for the certificate
 	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId pulumi.IntPtrInput
@@ -157,7 +157,7 @@ func (LetsEncryptCertificateState) ElementType() reflect.Type {
 type letsEncryptCertificateArgs struct {
 	// Set to true if the certificate will auto-renew
 	AutoRenew bool `pulumi:"autoRenew"`
-	// The contact id for the certificate
+	// (Deprecated) The contact id for the certificate
 	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId *int `pulumi:"contactId"`
@@ -171,7 +171,7 @@ type letsEncryptCertificateArgs struct {
 type LetsEncryptCertificateArgs struct {
 	// Set to true if the certificate will auto-renew
 	AutoRenew pulumi.BoolInput
-	// The contact id for the certificate
+	// (Deprecated) The contact id for the certificate
 	//
 	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 	ContactId pulumi.IntPtrInput
@@ -278,7 +278,7 @@ func (o LetsEncryptCertificateOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
-// The contact id for the certificate
+// (Deprecated) The contact id for the certificate
 //
 // Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
 func (o LetsEncryptCertificateOutput) ContactId() pulumi.IntPtrOutput {

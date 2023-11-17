@@ -48,7 +48,7 @@ namespace Pulumi.DNSimple
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The contact id for the certificate
+        /// (Deprecated) The contact id for the certificate
         /// </summary>
         [Output("contactId")]
         public Output<int?> ContactId { get; private set; } = null!;
@@ -145,7 +145,7 @@ namespace Pulumi.DNSimple
         public Input<bool> AutoRenew { get; set; } = null!;
 
         /// <summary>
-        /// The contact id for the certificate
+        /// (Deprecated) The contact id for the certificate
         /// </summary>
         [Input("contactId")]
         public Input<int>? ContactId { get; set; }
@@ -183,7 +183,7 @@ namespace Pulumi.DNSimple
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The contact id for the certificate
+        /// (Deprecated) The contact id for the certificate
         /// </summary>
         [Input("contactId")]
         public Input<int>? ContactId { get; set; }

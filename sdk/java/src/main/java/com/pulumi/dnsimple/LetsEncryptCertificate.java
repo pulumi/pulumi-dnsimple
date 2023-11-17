@@ -83,7 +83,7 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
         return this.autoRenew;
     }
     /**
-     * The contact id for the certificate
+     * (Deprecated) The contact id for the certificate
      * 
      * @deprecated
      * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
@@ -94,7 +94,7 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
     private Output</* @Nullable */ Integer> contactId;
 
     /**
-     * @return The contact id for the certificate
+     * @return (Deprecated) The contact id for the certificate
      * 
      */
     public Output<Optional<Integer>> contactId() {

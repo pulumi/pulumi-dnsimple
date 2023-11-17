@@ -57,7 +57,7 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
      */
     public readonly autoRenew!: pulumi.Output<boolean>;
     /**
-     * The contact id for the certificate
+     * (Deprecated) The contact id for the certificate
      *
      * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
      */
@@ -148,7 +148,7 @@ export interface LetsEncryptCertificateState {
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * The contact id for the certificate
+     * (Deprecated) The contact id for the certificate
      *
      * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
      */
@@ -187,7 +187,7 @@ export interface LetsEncryptCertificateArgs {
      */
     autoRenew: pulumi.Input<boolean>;
     /**
-     * The contact id for the certificate
+     * (Deprecated) The contact id for the certificate
      *
      * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
      */

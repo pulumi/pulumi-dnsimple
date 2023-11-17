@@ -22,7 +22,7 @@ class LetsEncryptCertificateArgs:
         The set of arguments for constructing a LetsEncryptCertificate resource.
         :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
         :param pulumi.Input[str] name: The certificate name
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[int] contact_id: (Deprecated) The contact id for the certificate
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
         """
         pulumi.set(__self__, "auto_renew", auto_renew)
@@ -63,7 +63,7 @@ class LetsEncryptCertificateArgs:
     @pulumi.getter(name="contactId")
     def contact_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The contact id for the certificate
+        (Deprecated) The contact id for the certificate
         """
         warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
         pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
@@ -105,7 +105,7 @@ class _LetsEncryptCertificateState:
         Input properties used for looking up and filtering LetsEncryptCertificate resources.
         :param pulumi.Input[str] authority_identifier: The identifying certification authority (CA)
         :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[int] contact_id: (Deprecated) The contact id for the certificate
         :param pulumi.Input[str] csr: The certificate signing request
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
         :param pulumi.Input[str] name: The certificate name
@@ -166,7 +166,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="contactId")
     def contact_id(self) -> Optional[pulumi.Input[int]]:
         """
-        The contact id for the certificate
+        (Deprecated) The contact id for the certificate
         """
         warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
         pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
@@ -293,7 +293,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[int] contact_id: (Deprecated) The contact id for the certificate
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
         :param pulumi.Input[str] name: The certificate name
         """
@@ -391,7 +391,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authority_identifier: The identifying certification authority (CA)
         :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[int] contact_id: (Deprecated) The contact id for the certificate
         :param pulumi.Input[str] csr: The certificate signing request
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
         :param pulumi.Input[str] name: The certificate name
@@ -435,7 +435,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="contactId")
     def contact_id(self) -> pulumi.Output[Optional[int]]:
         """
-        The contact id for the certificate
+        (Deprecated) The contact id for the certificate
         """
         warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
         pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
