@@ -294,7 +294,7 @@
                 },
                 "contactId": {
                     "type": "integer",
-                    "description": "The contact id for the certificate\n",
+                    "description": "(Deprecated) The contact id for the certificate\n",
                     "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
                 },
                 "createdAt": {
@@ -345,7 +345,7 @@
                 },
                 "contactId": {
                     "type": "integer",
-                    "description": "The contact id for the certificate\n",
+                    "description": "(Deprecated) The contact id for the certificate\n",
                     "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
                 },
                 "domainId": {
@@ -374,7 +374,7 @@
                     },
                     "contactId": {
                         "type": "integer",
-                        "description": "The contact id for the certificate\n",
+                        "description": "(Deprecated) The contact id for the certificate\n",
                         "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
                     },
                     "createdAt": {
