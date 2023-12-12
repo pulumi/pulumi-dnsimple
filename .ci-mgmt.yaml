@@ -5,4 +5,3 @@ env:
   DNSIMPLE_ACCOUNT: ${{ secrets.DNSIMPLE_ACCOUNT }}
 makeTemplate: bridged
 team: ecosystem
-javaGenVersion: "v0.9.7"

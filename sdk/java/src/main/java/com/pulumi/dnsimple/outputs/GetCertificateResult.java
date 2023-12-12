@@ -148,15 +148,15 @@ public final class GetCertificateResult {
             return this;
         }
         public GetCertificateResult build() {
-            final var o = new GetCertificateResult();
-            o.certificateChains = certificateChains;
-            o.certificateId = certificateId;
-            o.domain = domain;
-            o.id = id;
-            o.privateKey = privateKey;
-            o.rootCertificate = rootCertificate;
-            o.serverCertificate = serverCertificate;
-            return o;
+            final var _resultValue = new GetCertificateResult();
+            _resultValue.certificateChains = certificateChains;
+            _resultValue.certificateId = certificateId;
+            _resultValue.domain = domain;
+            _resultValue.id = id;
+            _resultValue.privateKey = privateKey;
+            _resultValue.rootCertificate = rootCertificate;
+            _resultValue.serverCertificate = serverCertificate;
+            return _resultValue;
         }
     }
 }
