@@ -16,6 +16,9 @@ package dnsimple
 
 import (
 	"fmt"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
+	"github.com/terraform-providers/terraform-provider-dnsimple/shim"
+
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 	"path/filepath"
@@ -24,9 +27,7 @@ import (
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
 )
 
 // all of the token components used below.
@@ -57,11 +58,8 @@ func makeResource(mod string, res string) tokens.Type {
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	dnsimpleProv := dnsimple.Provider()
-	p := shimv2.NewProvider(dnsimpleProv)
-
 	prov := tfbridge.ProviderInfo{
-		P:           p,
+		P:           pf.ShimProvider(shim.NewProvider()),
 		Name:        "dnsimple",
 		Description: "A Pulumi package for creating and managing dnsimple cloud resources.",
 		Keywords:    []string{"pulumi", "dnsimple"},
@@ -69,22 +67,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-dnsimple",
 		Config:      map[string]*tfbridge.SchemaInfo{},
-		GitHubOrg:   "terraform-providers",
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {Tok: makeResource(mainMod, "Record"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {
-						Type: "string",
-					},
-					"type": {
-						Type: makeType(mainMod, "RecordType"),
-					},
-				},
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
-				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
-			},
 			"dnsimple_domain":                   {Tok: makeResource(mainMod, "Domain")},
 			"dnsimple_email_forward":            {Tok: makeResource(mainMod, "EmailForward")},
 			"dnsimple_lets_encrypt_certificate": {Tok: makeResource(mainMod, "LetsEncryptCertificate")},
