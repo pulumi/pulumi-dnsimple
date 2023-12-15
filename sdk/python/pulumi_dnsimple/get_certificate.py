@@ -25,8 +25,8 @@ class GetCertificateResult:
         if certificate_chains and not isinstance(certificate_chains, list):
             raise TypeError("Expected argument 'certificate_chains' to be a list")
         pulumi.set(__self__, "certificate_chains", certificate_chains)
-        if certificate_id and not isinstance(certificate_id, str):
-            raise TypeError("Expected argument 'certificate_id' to be a str")
+        if certificate_id and not isinstance(certificate_id, int):
+            raise TypeError("Expected argument 'certificate_id' to be a int")
         pulumi.set(__self__, "certificate_id", certificate_id)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
@@ -54,7 +54,7 @@ class GetCertificateResult:
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> str:
+    def certificate_id(self) -> int:
         return pulumi.get(self, "certificate_id")
 
     @property
@@ -65,9 +65,6 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
@@ -110,7 +107,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             server_certificate=self.server_certificate)
 
 
-def get_certificate(certificate_id: Optional[str] = None,
+def get_certificate(certificate_id: Optional[int] = None,
                     domain: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
@@ -127,7 +124,7 @@ def get_certificate(certificate_id: Optional[str] = None,
     ```
 
 
-    :param str certificate_id: The ID of the SSL Certificate
+    :param int certificate_id: The ID of the SSL Certificate
     :param str domain: The domain of the SSL Certificate
     """
     __args__ = dict()
@@ -147,7 +144,7 @@ def get_certificate(certificate_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_certificate)
-def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
+def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
     """
@@ -164,7 +161,7 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
     ```
 
 
-    :param str certificate_id: The ID of the SSL Certificate
+    :param int certificate_id: The ID of the SSL Certificate
     :param str domain: The domain of the SSL Certificate
     """
     ...

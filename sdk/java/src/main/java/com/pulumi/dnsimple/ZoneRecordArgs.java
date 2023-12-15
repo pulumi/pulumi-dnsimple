@@ -5,7 +5,9 @@ package com.pulumi.dnsimple;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -35,28 +37,43 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
      * 
      */
     @Import(name="priority")
-    private @Nullable Output<String> priority;
+    private @Nullable Output<Integer> priority;
 
     /**
      * @return The priority of the record - only useful for some record types
      * 
      */
-    public Optional<Output<String>> priority() {
+    public Optional<Output<Integer>> priority() {
         return Optional.ofNullable(this.priority);
     }
 
     /**
-     * The TTL of the record
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     * 
+     */
+    @Import(name="regions")
+    private @Nullable Output<List<String>> regions;
+
+    /**
+     * @return A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     * 
+     */
+    public Optional<Output<List<String>>> regions() {
+        return Optional.ofNullable(this.regions);
+    }
+
+    /**
+     * The TTL of the record - defaults to 3600
      * 
      */
     @Import(name="ttl")
-    private @Nullable Output<String> ttl;
+    private @Nullable Output<Integer> ttl;
 
     /**
-     * @return The TTL of the record
+     * @return The TTL of the record - defaults to 3600
      * 
      */
-    public Optional<Output<String>> ttl() {
+    public Optional<Output<Integer>> ttl() {
         return Optional.ofNullable(this.ttl);
     }
 
@@ -91,14 +108,14 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      * 
      */
     @Import(name="zoneName", required=true)
     private Output<String> zoneName;
 
     /**
-     * @return The domain to add the record to
+     * @return The zone name to add the record to
      * 
      */
     public Output<String> zoneName() {
@@ -110,6 +127,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
     private ZoneRecordArgs(ZoneRecordArgs $) {
         this.name = $.name;
         this.priority = $.priority;
+        this.regions = $.regions;
         this.ttl = $.ttl;
         this.type = $.type;
         this.value = $.value;
@@ -161,7 +179,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder priority(@Nullable Output<String> priority) {
+        public Builder priority(@Nullable Output<Integer> priority) {
             $.priority = priority;
             return this;
         }
@@ -172,28 +190,59 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder priority(String priority) {
+        public Builder priority(Integer priority) {
             return priority(Output.of(priority));
         }
 
         /**
-         * @param ttl The TTL of the record
+         * @param regions A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
          * 
          * @return builder
          * 
          */
-        public Builder ttl(@Nullable Output<String> ttl) {
+        public Builder regions(@Nullable Output<List<String>> regions) {
+            $.regions = regions;
+            return this;
+        }
+
+        /**
+         * @param regions A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(List<String> regions) {
+            return regions(Output.of(regions));
+        }
+
+        /**
+         * @param regions A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(String... regions) {
+            return regions(List.of(regions));
+        }
+
+        /**
+         * @param ttl The TTL of the record - defaults to 3600
+         * 
+         * @return builder
+         * 
+         */
+        public Builder ttl(@Nullable Output<Integer> ttl) {
             $.ttl = ttl;
             return this;
         }
 
         /**
-         * @param ttl The TTL of the record
+         * @param ttl The TTL of the record - defaults to 3600
          * 
          * @return builder
          * 
          */
-        public Builder ttl(String ttl) {
+        public Builder ttl(Integer ttl) {
             return ttl(Output.of(ttl));
         }
 
@@ -240,7 +289,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The domain to add the record to
+         * @param zoneName The zone name to add the record to
          * 
          * @return builder
          * 
@@ -251,7 +300,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The domain to add the record to
+         * @param zoneName The zone name to add the record to
          * 
          * @return builder
          * 

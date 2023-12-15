@@ -29,14 +29,14 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination email address on another domain
+     * The destination email address
      * 
      */
     @Import(name="destinationEmail", required=true)
     private Output<String> destinationEmail;
 
     /**
-     * @return The destination email address on another domain
+     * @return The destination email address
      * 
      */
     public Output<String> destinationEmail() {
@@ -44,14 +44,14 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain to add the email forwarding rule to
+     * The domain name to add the email forwarding rule to
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return The domain to add the email forwarding rule to
+     * @return The domain name to add the email forwarding rule to
      * 
      */
     public Output<String> domain() {
@@ -106,7 +106,7 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationEmail The destination email address on another domain
+         * @param destinationEmail The destination email address
          * 
          * @return builder
          * 
@@ -117,7 +117,7 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationEmail The destination email address on another domain
+         * @param destinationEmail The destination email address
          * 
          * @return builder
          * 
@@ -127,7 +127,7 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The domain to add the email forwarding rule to
+         * @param domain The domain name to add the email forwarding rule to
          * 
          * @return builder
          * 
@@ -138,7 +138,7 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The domain to add the email forwarding rule to
+         * @param domain The domain name to add the email forwarding rule to
          * 
          * @return builder
          * 

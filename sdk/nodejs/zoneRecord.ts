@@ -7,11 +7,6 @@ import * as utilities from "./utilities";
 /**
  * Provides a DNSimple zone record resource.
  *
- * ## Deprecation warning
- *
- * You can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the
- * upcoming 1.0.0 release.
- *
  * ## Example Usage
  *
  * ```typescript
@@ -21,7 +16,7 @@ import * as utilities from "./utilities";
  * // Add a record to the root domain
  * const foobar = new dnsimple.ZoneRecord("foobar", {
  *     name: "",
- *     ttl: "3600",
+ *     ttl: 3600,
  *     type: "A",
  *     value: "192.168.0.11",
  *     zoneName: _var.dnsimple_domain,
@@ -35,7 +30,7 @@ import * as utilities from "./utilities";
  * // Add a record to a sub-domain
  * const foobar = new dnsimple.ZoneRecord("foobar", {
  *     name: "terraform",
- *     ttl: "3600",
+ *     ttl: 3600,
  *     type: "A",
  *     value: "192.168.0.11",
  *     zoneName: _var.dnsimple_domain,
@@ -44,18 +39,18 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
- *
- * __Importing record example.com with record ID 1234__
+ * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID. **Importing record example.com with record ID 1234** bash
  *
  * ```sh
  *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
- *  __Importing record www.example.com with record ID 1234__
+ *
+ *  **Importing record www.example.com with record ID 1234** bash
  *
  * ```sh
  *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
+ *
  *  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
  */
 export class ZoneRecord extends pulumi.CustomResource {
@@ -93,15 +88,19 @@ export class ZoneRecord extends pulumi.CustomResource {
     /**
      * The priority of the record - only useful for some record types
      */
-    public readonly priority!: pulumi.Output<string>;
+    public readonly priority!: pulumi.Output<number>;
     /**
      * The FQDN of the record
      */
     public /*out*/ readonly qualifiedName!: pulumi.Output<string>;
     /**
-     * The TTL of the record
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
      */
-    public readonly ttl!: pulumi.Output<string | undefined>;
+    public readonly regions!: pulumi.Output<string[] | undefined>;
+    /**
+     * The TTL of the record - defaults to 3600
+     */
+    public readonly ttl!: pulumi.Output<number>;
     /**
      * The type of the record
      */
@@ -111,11 +110,15 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The domain ID of the record
+     * The normalized value of the record
+     */
+    public /*out*/ readonly valueNormalized!: pulumi.Output<string>;
+    /**
+     * The zone ID of the record
      */
     public /*out*/ readonly zoneId!: pulumi.Output<string>;
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      */
     public readonly zoneName!: pulumi.Output<string>;
 
@@ -135,9 +138,11 @@ export class ZoneRecord extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["qualifiedName"] = state ? state.qualifiedName : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["valueNormalized"] = state ? state.valueNormalized : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
             resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
@@ -156,11 +161,13 @@ export class ZoneRecord extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneName"] = args ? args.zoneName : undefined;
             resourceInputs["qualifiedName"] = undefined /*out*/;
+            resourceInputs["valueNormalized"] = undefined /*out*/;
             resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -179,15 +186,19 @@ export interface ZoneRecordState {
     /**
      * The priority of the record - only useful for some record types
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
     /**
      * The FQDN of the record
      */
     qualifiedName?: pulumi.Input<string>;
     /**
-     * The TTL of the record
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
      */
-    ttl?: pulumi.Input<string>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The TTL of the record - defaults to 3600
+     */
+    ttl?: pulumi.Input<number>;
     /**
      * The type of the record
      */
@@ -197,11 +208,15 @@ export interface ZoneRecordState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The domain ID of the record
+     * The normalized value of the record
+     */
+    valueNormalized?: pulumi.Input<string>;
+    /**
+     * The zone ID of the record
      */
     zoneId?: pulumi.Input<string>;
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -217,11 +232,15 @@ export interface ZoneRecordArgs {
     /**
      * The priority of the record - only useful for some record types
      */
-    priority?: pulumi.Input<string>;
+    priority?: pulumi.Input<number>;
     /**
-     * The TTL of the record
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
      */
-    ttl?: pulumi.Input<string>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * The TTL of the record - defaults to 3600
+     */
+    ttl?: pulumi.Input<number>;
     /**
      * The type of the record
      */
@@ -231,7 +250,7 @@ export interface ZoneRecordArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      */
     zoneName: pulumi.Input<string>;
 }

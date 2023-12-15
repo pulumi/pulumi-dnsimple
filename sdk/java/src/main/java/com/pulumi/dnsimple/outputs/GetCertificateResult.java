@@ -4,6 +4,7 @@
 package com.pulumi.dnsimple.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -15,12 +16,8 @@ public final class GetCertificateResult {
      * 
      */
     private List<String> certificateChains;
-    private String certificateId;
+    private Integer certificateId;
     private String domain;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
     /**
      * @return The corresponding Private Key for the SSL Certificate
@@ -46,16 +43,12 @@ public final class GetCertificateResult {
     public List<String> certificateChains() {
         return this.certificateChains;
     }
-    public String certificateId() {
+    public Integer certificateId() {
         return this.certificateId;
     }
     public String domain() {
         return this.domain;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
@@ -91,7 +84,7 @@ public final class GetCertificateResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> certificateChains;
-        private String certificateId;
+        private Integer certificateId;
         private String domain;
         private String id;
         private String privateKey;
@@ -118,7 +111,7 @@ public final class GetCertificateResult {
             return certificateChains(List.of(certificateChains));
         }
         @CustomType.Setter
-        public Builder certificateId(String certificateId) {
+        public Builder certificateId(Integer certificateId) {
             this.certificateId = Objects.requireNonNull(certificateId);
             return this;
         }

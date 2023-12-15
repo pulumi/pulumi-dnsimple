@@ -18,6 +18,8 @@ class DomainArgs:
         """
         The set of arguments for constructing a Domain resource.
         :param pulumi.Input[str] name: The domain name to be created
+               
+               # Attributes Reference
         """
         pulumi.set(__self__, "name", name)
 
@@ -26,6 +28,8 @@ class DomainArgs:
     def name(self) -> pulumi.Input[str]:
         """
         The domain name to be created
+
+        # Attributes Reference
         """
         return pulumi.get(self, "name")
 
@@ -46,7 +50,15 @@ class _DomainState:
                  unicode_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+        :param pulumi.Input[int] account_id: The account ID for the domain.
+        :param pulumi.Input[bool] auto_renew: Whether the domain is set to auto-renew.
         :param pulumi.Input[str] name: The domain name to be created
+               
+               # Attributes Reference
+        :param pulumi.Input[bool] private_whois: Whether the domain has WhoIs privacy enabled.
+        :param pulumi.Input[int] registrant_id: The ID of the registrant (contact) for the domain.
+        :param pulumi.Input[str] state: The state of the domain.
+        :param pulumi.Input[str] unicode_name: The domain name in Unicode format.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -66,6 +78,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The account ID for the domain.
+        """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
@@ -75,6 +90,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the domain is set to auto-renew.
+        """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
@@ -86,6 +104,8 @@ class _DomainState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The domain name to be created
+
+        # Attributes Reference
         """
         return pulumi.get(self, "name")
 
@@ -96,6 +116,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="privateWhois")
     def private_whois(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether the domain has WhoIs privacy enabled.
+        """
         return pulumi.get(self, "private_whois")
 
     @private_whois.setter
@@ -105,6 +128,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="registrantId")
     def registrant_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The ID of the registrant (contact) for the domain.
+        """
         return pulumi.get(self, "registrant_id")
 
     @registrant_id.setter
@@ -114,6 +140,9 @@ class _DomainState:
     @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        The state of the domain.
+        """
         return pulumi.get(self, "state")
 
     @state.setter
@@ -123,6 +152,9 @@ class _DomainState:
     @property
     @pulumi.getter(name="unicodeName")
     def unicode_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The domain name in Unicode format.
+        """
         return pulumi.get(self, "unicode_name")
 
     @unicode_name.setter
@@ -152,13 +184,13 @@ class Domain(pulumi.CustomResource):
 
         ## Import
 
-        DNSimple domains can be imported using their numeric record ID.
+        DNSimple domains can be imported using their numeric record ID. bash
 
         ```sh
          $ pulumi import dnsimple:index/domain:Domain resource_name 5678
         ```
 
-         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
+         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. bash curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
 
          "data"[
 
@@ -207,6 +239,8 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The domain name to be created
+               
+               # Attributes Reference
         """
         ...
     @overload
@@ -229,13 +263,13 @@ class Domain(pulumi.CustomResource):
 
         ## Import
 
-        DNSimple domains can be imported using their numeric record ID.
+        DNSimple domains can be imported using their numeric record ID. bash
 
         ```sh
          $ pulumi import dnsimple:index/domain:Domain resource_name 5678
         ```
 
-         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
+         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. bash curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
 
          "data"[
 
@@ -339,7 +373,15 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[int] account_id: The account ID for the domain.
+        :param pulumi.Input[bool] auto_renew: Whether the domain is set to auto-renew.
         :param pulumi.Input[str] name: The domain name to be created
+               
+               # Attributes Reference
+        :param pulumi.Input[bool] private_whois: Whether the domain has WhoIs privacy enabled.
+        :param pulumi.Input[int] registrant_id: The ID of the registrant (contact) for the domain.
+        :param pulumi.Input[str] state: The state of the domain.
+        :param pulumi.Input[str] unicode_name: The domain name in Unicode format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -357,11 +399,17 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[int]:
+        """
+        The account ID for the domain.
+        """
         return pulumi.get(self, "account_id")
 
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[bool]:
+        """
+        Whether the domain is set to auto-renew.
+        """
         return pulumi.get(self, "auto_renew")
 
     @property
@@ -369,26 +417,40 @@ class Domain(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The domain name to be created
+
+        # Attributes Reference
         """
         return pulumi.get(self, "name")
 
     @property
     @pulumi.getter(name="privateWhois")
     def private_whois(self) -> pulumi.Output[bool]:
+        """
+        Whether the domain has WhoIs privacy enabled.
+        """
         return pulumi.get(self, "private_whois")
 
     @property
     @pulumi.getter(name="registrantId")
     def registrant_id(self) -> pulumi.Output[int]:
+        """
+        The ID of the registrant (contact) for the domain.
+        """
         return pulumi.get(self, "registrant_id")
 
     @property
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
+        """
+        The state of the domain.
+        """
         return pulumi.get(self, "state")
 
     @property
     @pulumi.getter(name="unicodeName")
     def unicode_name(self) -> pulumi.Output[str]:
+        """
+        The domain name in Unicode format.
+        """
         return pulumi.get(self, "unicode_name")
 

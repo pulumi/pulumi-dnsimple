@@ -42,7 +42,7 @@ import (
 //
 // ## Import
 //
-// DNSimple domains can be imported using their numeric record ID.
+// DNSimple domains can be imported using their numeric record ID. bash
 //
 // ```sh
 //
@@ -50,7 +50,7 @@ import (
 //
 // ```
 //
-//	The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
+//	The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. bash curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
 //
 //	"data"[
 //
@@ -98,14 +98,22 @@ import (
 type Domain struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.IntOutput  `pulumi:"accountId"`
+	// The account ID for the domain.
+	AccountId pulumi.IntOutput `pulumi:"accountId"`
+	// Whether the domain is set to auto-renew.
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
 	// The domain name to be created
-	Name         pulumi.StringOutput `pulumi:"name"`
-	PrivateWhois pulumi.BoolOutput   `pulumi:"privateWhois"`
-	RegistrantId pulumi.IntOutput    `pulumi:"registrantId"`
-	State        pulumi.StringOutput `pulumi:"state"`
-	UnicodeName  pulumi.StringOutput `pulumi:"unicodeName"`
+	//
+	// # Attributes Reference
+	Name pulumi.StringOutput `pulumi:"name"`
+	// Whether the domain has WhoIs privacy enabled.
+	PrivateWhois pulumi.BoolOutput `pulumi:"privateWhois"`
+	// The ID of the registrant (contact) for the domain.
+	RegistrantId pulumi.IntOutput `pulumi:"registrantId"`
+	// The state of the domain.
+	State pulumi.StringOutput `pulumi:"state"`
+	// The domain name in Unicode format.
+	UnicodeName pulumi.StringOutput `pulumi:"unicodeName"`
 }
 
 // NewDomain registers a new resource with the given unique name, arguments, and options.
@@ -141,25 +149,41 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	AccountId *int  `pulumi:"accountId"`
+	// The account ID for the domain.
+	AccountId *int `pulumi:"accountId"`
+	// Whether the domain is set to auto-renew.
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The domain name to be created
-	Name         *string `pulumi:"name"`
-	PrivateWhois *bool   `pulumi:"privateWhois"`
-	RegistrantId *int    `pulumi:"registrantId"`
-	State        *string `pulumi:"state"`
-	UnicodeName  *string `pulumi:"unicodeName"`
+	//
+	// # Attributes Reference
+	Name *string `pulumi:"name"`
+	// Whether the domain has WhoIs privacy enabled.
+	PrivateWhois *bool `pulumi:"privateWhois"`
+	// The ID of the registrant (contact) for the domain.
+	RegistrantId *int `pulumi:"registrantId"`
+	// The state of the domain.
+	State *string `pulumi:"state"`
+	// The domain name in Unicode format.
+	UnicodeName *string `pulumi:"unicodeName"`
 }
 
 type DomainState struct {
+	// The account ID for the domain.
 	AccountId pulumi.IntPtrInput
+	// Whether the domain is set to auto-renew.
 	AutoRenew pulumi.BoolPtrInput
 	// The domain name to be created
-	Name         pulumi.StringPtrInput
+	//
+	// # Attributes Reference
+	Name pulumi.StringPtrInput
+	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois pulumi.BoolPtrInput
+	// The ID of the registrant (contact) for the domain.
 	RegistrantId pulumi.IntPtrInput
-	State        pulumi.StringPtrInput
-	UnicodeName  pulumi.StringPtrInput
+	// The state of the domain.
+	State pulumi.StringPtrInput
+	// The domain name in Unicode format.
+	UnicodeName pulumi.StringPtrInput
 }
 
 func (DomainState) ElementType() reflect.Type {
@@ -168,12 +192,16 @@ func (DomainState) ElementType() reflect.Type {
 
 type domainArgs struct {
 	// The domain name to be created
+	//
+	// # Attributes Reference
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
 	// The domain name to be created
+	//
+	// # Attributes Reference
 	Name pulumi.StringInput
 }
 
@@ -264,31 +292,39 @@ func (o DomainOutput) ToDomainOutputWithContext(ctx context.Context) DomainOutpu
 	return o
 }
 
+// The account ID for the domain.
 func (o DomainOutput) AccountId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Domain) pulumi.IntOutput { return v.AccountId }).(pulumi.IntOutput)
 }
 
+// Whether the domain is set to auto-renew.
 func (o DomainOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
 // The domain name to be created
+//
+// # Attributes Reference
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Whether the domain has WhoIs privacy enabled.
 func (o DomainOutput) PrivateWhois() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.PrivateWhois }).(pulumi.BoolOutput)
 }
 
+// The ID of the registrant (contact) for the domain.
 func (o DomainOutput) RegistrantId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Domain) pulumi.IntOutput { return v.RegistrantId }).(pulumi.IntOutput)
 }
 
+// The state of the domain.
 func (o DomainOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// The domain name in Unicode format.
 func (o DomainOutput) UnicodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.UnicodeName }).(pulumi.StringOutput)
 }

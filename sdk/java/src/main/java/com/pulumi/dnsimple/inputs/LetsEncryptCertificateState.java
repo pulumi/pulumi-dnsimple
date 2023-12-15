@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class LetsEncryptCertificateState extends com.pulumi.resources.ResourceArgs {
 
     public static final LetsEncryptCertificateState Empty = new LetsEncryptCertificateState();
+
+    /**
+     * The certificate alternate names
+     * 
+     */
+    @Import(name="alternateNames")
+    private @Nullable Output<List<String>> alternateNames;
+
+    /**
+     * @return The certificate alternate names
+     * 
+     */
+    public Optional<Output<List<String>>> alternateNames() {
+        return Optional.ofNullable(this.alternateNames);
+    }
 
     /**
      * The identifying certification authority (CA)
@@ -33,14 +49,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * Set to true if the certificate will auto-renew
+     * True if the certificate should auto-renew
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return Set to true if the certificate will auto-renew
+     * @return True if the certificate should auto-renew
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -48,31 +64,16 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
+     * The datetime the certificate was created
      * 
      */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    @Import(name="contactId")
-    private @Nullable Output<Integer> contactId;
-
-    /**
-     * @return The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     * 
-     */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    public Optional<Output<Integer>> contactId() {
-        return Optional.ofNullable(this.contactId);
-    }
-
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
+    /**
+     * @return The datetime the certificate was created
+     * 
+     */
     public Optional<Output<String>> createdAt() {
         return Optional.ofNullable(this.createdAt);
     }
@@ -107,11 +108,19 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.domainId);
     }
 
-    @Import(name="expiresOn")
-    private @Nullable Output<String> expiresOn;
+    /**
+     * The datetime the certificate will expire
+     * 
+     */
+    @Import(name="expiresAt")
+    private @Nullable Output<String> expiresAt;
 
-    public Optional<Output<String>> expiresOn() {
-        return Optional.ofNullable(this.expiresOn);
+    /**
+     * @return The datetime the certificate will expire
+     * 
+     */
+    public Optional<Output<String>> expiresAt() {
+        return Optional.ofNullable(this.expiresAt);
     }
 
     /**
@@ -130,6 +139,21 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
+     * The signature algorithm to use for the certificate
+     * 
+     */
+    @Import(name="signatureAlgorithm")
+    private @Nullable Output<String> signatureAlgorithm;
+
+    /**
+     * @return The signature algorithm to use for the certificate
+     * 
+     */
+    public Optional<Output<String>> signatureAlgorithm() {
+        return Optional.ofNullable(this.signatureAlgorithm);
+    }
+
+    /**
      * The state of the certificate
      * 
      */
@@ -144,9 +168,17 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * The datetime the certificate was last updated
+     * 
+     */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
+    /**
+     * @return The datetime the certificate was last updated
+     * 
+     */
     public Optional<Output<String>> updatedAt() {
         return Optional.ofNullable(this.updatedAt);
     }
@@ -169,14 +201,15 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     private LetsEncryptCertificateState() {}
 
     private LetsEncryptCertificateState(LetsEncryptCertificateState $) {
+        this.alternateNames = $.alternateNames;
         this.authorityIdentifier = $.authorityIdentifier;
         this.autoRenew = $.autoRenew;
-        this.contactId = $.contactId;
         this.createdAt = $.createdAt;
         this.csr = $.csr;
         this.domainId = $.domainId;
-        this.expiresOn = $.expiresOn;
+        this.expiresAt = $.expiresAt;
         this.name = $.name;
+        this.signatureAlgorithm = $.signatureAlgorithm;
         this.state = $.state;
         this.updatedAt = $.updatedAt;
         this.years = $.years;
@@ -201,6 +234,37 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(@Nullable Output<List<String>> alternateNames) {
+            $.alternateNames = alternateNames;
+            return this;
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(List<String> alternateNames) {
+            return alternateNames(Output.of(alternateNames));
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(String... alternateNames) {
+            return alternateNames(List.of(alternateNames));
+        }
+
+        /**
          * @param authorityIdentifier The identifying certification authority (CA)
          * 
          * @return builder
@@ -222,7 +286,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRenew Set to true if the certificate will auto-renew
+         * @param autoRenew True if the certificate should auto-renew
          * 
          * @return builder
          * 
@@ -233,7 +297,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRenew Set to true if the certificate will auto-renew
+         * @param autoRenew True if the certificate should auto-renew
          * 
          * @return builder
          * 
@@ -243,39 +307,22 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param contactId The contact id for the certificate
+         * @param createdAt The datetime the certificate was created
          * 
          * @return builder
          * 
-         * @deprecated
-         * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-         * 
          */
-        @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-        public Builder contactId(@Nullable Output<Integer> contactId) {
-            $.contactId = contactId;
-            return this;
-        }
-
-        /**
-         * @param contactId The contact id for the certificate
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-         * 
-         */
-        @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-        public Builder contactId(Integer contactId) {
-            return contactId(Output.of(contactId));
-        }
-
         public Builder createdAt(@Nullable Output<String> createdAt) {
             $.createdAt = createdAt;
             return this;
         }
 
+        /**
+         * @param createdAt The datetime the certificate was created
+         * 
+         * @return builder
+         * 
+         */
         public Builder createdAt(String createdAt) {
             return createdAt(Output.of(createdAt));
         }
@@ -322,13 +369,25 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
             return domainId(Output.of(domainId));
         }
 
-        public Builder expiresOn(@Nullable Output<String> expiresOn) {
-            $.expiresOn = expiresOn;
+        /**
+         * @param expiresAt The datetime the certificate will expire
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(@Nullable Output<String> expiresAt) {
+            $.expiresAt = expiresAt;
             return this;
         }
 
-        public Builder expiresOn(String expiresOn) {
-            return expiresOn(Output.of(expiresOn));
+        /**
+         * @param expiresAt The datetime the certificate will expire
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiresAt(String expiresAt) {
+            return expiresAt(Output.of(expiresAt));
         }
 
         /**
@@ -353,6 +412,27 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
+         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signatureAlgorithm(@Nullable Output<String> signatureAlgorithm) {
+            $.signatureAlgorithm = signatureAlgorithm;
+            return this;
+        }
+
+        /**
+         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signatureAlgorithm(String signatureAlgorithm) {
+            return signatureAlgorithm(Output.of(signatureAlgorithm));
+        }
+
+        /**
          * @param state The state of the certificate
          * 
          * @return builder
@@ -373,11 +453,23 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
             return state(Output.of(state));
         }
 
+        /**
+         * @param updatedAt The datetime the certificate was last updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(@Nullable Output<String> updatedAt) {
             $.updatedAt = updatedAt;
             return this;
         }
 
+        /**
+         * @param updatedAt The datetime the certificate was last updated
+         * 
+         * @return builder
+         * 
+         */
         public Builder updatedAt(String updatedAt) {
             return updatedAt(Output.of(updatedAt));
         }

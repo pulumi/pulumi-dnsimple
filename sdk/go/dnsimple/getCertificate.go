@@ -52,7 +52,7 @@ func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulum
 // A collection of arguments for invoking getCertificate.
 type GetCertificateArgs struct {
 	// The ID of the SSL Certificate
-	CertificateId string `pulumi:"certificateId"`
+	CertificateId int `pulumi:"certificateId"`
 	// The domain of the SSL Certificate
 	Domain string `pulumi:"domain"`
 }
@@ -61,10 +61,9 @@ type GetCertificateArgs struct {
 type GetCertificateResult struct {
 	// A list of certificates that make up the chain
 	CertificateChains []string `pulumi:"certificateChains"`
-	CertificateId     string   `pulumi:"certificateId"`
+	CertificateId     int      `pulumi:"certificateId"`
 	Domain            string   `pulumi:"domain"`
-	// The provider-assigned unique ID for this managed resource.
-	Id string `pulumi:"id"`
+	Id                string   `pulumi:"id"`
 	// The corresponding Private Key for the SSL Certificate
 	PrivateKey string `pulumi:"privateKey"`
 	// The Root Certificate of the issuing CA
@@ -89,7 +88,7 @@ func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, op
 // A collection of arguments for invoking getCertificate.
 type GetCertificateOutputArgs struct {
 	// The ID of the SSL Certificate
-	CertificateId pulumi.StringInput `pulumi:"certificateId"`
+	CertificateId pulumi.IntInput `pulumi:"certificateId"`
 	// The domain of the SSL Certificate
 	Domain pulumi.StringInput `pulumi:"domain"`
 }
@@ -118,15 +117,14 @@ func (o GetCertificateResultOutput) CertificateChains() pulumi.StringArrayOutput
 	return o.ApplyT(func(v GetCertificateResult) []string { return v.CertificateChains }).(pulumi.StringArrayOutput)
 }
 
-func (o GetCertificateResultOutput) CertificateId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetCertificateResult) string { return v.CertificateId }).(pulumi.StringOutput)
+func (o GetCertificateResultOutput) CertificateId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetCertificateResult) int { return v.CertificateId }).(pulumi.IntOutput)
 }
 
 func (o GetCertificateResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The provider-assigned unique ID for this managed resource.
 func (o GetCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }

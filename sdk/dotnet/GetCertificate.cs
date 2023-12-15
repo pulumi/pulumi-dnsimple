@@ -77,7 +77,7 @@ namespace Pulumi.DNSimple
         /// The ID of the SSL Certificate
         /// </summary>
         [Input("certificateId", required: true)]
-        public string CertificateId { get; set; } = null!;
+        public int CertificateId { get; set; }
 
         /// <summary>
         /// The domain of the SSL Certificate
@@ -97,7 +97,7 @@ namespace Pulumi.DNSimple
         /// The ID of the SSL Certificate
         /// </summary>
         [Input("certificateId", required: true)]
-        public Input<string> CertificateId { get; set; } = null!;
+        public Input<int> CertificateId { get; set; } = null!;
 
         /// <summary>
         /// The domain of the SSL Certificate
@@ -119,11 +119,8 @@ namespace Pulumi.DNSimple
         /// A list of certificates that make up the chain
         /// </summary>
         public readonly ImmutableArray<string> CertificateChains;
-        public readonly string CertificateId;
+        public readonly int CertificateId;
         public readonly string Domain;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
         /// <summary>
         /// The corresponding Private Key for the SSL Certificate
@@ -142,7 +139,7 @@ namespace Pulumi.DNSimple
         private GetCertificateResult(
             ImmutableArray<string> certificateChains,
 
-            string certificateId,
+            int certificateId,
 
             string domain,
 

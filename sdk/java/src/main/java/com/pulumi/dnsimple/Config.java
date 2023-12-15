@@ -15,8 +15,8 @@ public final class Config {
  * The account for API operations.
  * 
  */
-    public String account() {
-        return Codegen.stringProp("account").config(config).require();
+    public Optional<String> account() {
+        return Codegen.stringProp("account").config(config).get();
     }
 /**
  * Flag to enable the prefetch of zone records.
@@ -36,8 +36,8 @@ public final class Config {
  * The API v2 token for API operations.
  * 
  */
-    public String token() {
-        return Codegen.stringProp("token").config(config).require();
+    public Optional<String> token() {
+        return Codegen.stringProp("token").config(config).get();
     }
 /**
  * Custom string to append to the user agent used for sending HTTP requests to the API.

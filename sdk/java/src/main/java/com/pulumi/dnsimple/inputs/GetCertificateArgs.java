@@ -5,6 +5,7 @@ package com.pulumi.dnsimple.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 
@@ -18,13 +19,13 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
      * 
      */
     @Import(name="certificateId", required=true)
-    private Output<String> certificateId;
+    private Output<Integer> certificateId;
 
     /**
      * @return The ID of the SSL Certificate
      * 
      */
-    public Output<String> certificateId() {
+    public Output<Integer> certificateId() {
         return this.certificateId;
     }
 
@@ -74,7 +75,7 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder certificateId(Output<String> certificateId) {
+        public Builder certificateId(Output<Integer> certificateId) {
             $.certificateId = certificateId;
             return this;
         }
@@ -85,7 +86,7 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
          * @return builder
          * 
          */
-        public Builder certificateId(String certificateId) {
+        public Builder certificateId(Integer certificateId) {
             return certificateId(Output.of(certificateId));
         }
 

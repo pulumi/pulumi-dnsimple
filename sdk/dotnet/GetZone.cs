@@ -36,11 +36,10 @@ namespace Pulumi.DNSimple
         /// 
         /// * `name` - (Required) The name of the zone
         /// 
-        /// The following attributes are exported:
+        /// The following additional attributes are exported:
         /// 
         /// * `id` - The zone ID
         /// * `account_id` - The account ID
-        /// * `name` - The name of the zone
         /// * `reverse` - True for a reverse zone, false for a forward zone.
         /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs args, InvokeOptions? options = null)
@@ -71,11 +70,10 @@ namespace Pulumi.DNSimple
         /// 
         /// * `name` - (Required) The name of the zone
         /// 
-        /// The following attributes are exported:
+        /// The following additional attributes are exported:
         /// 
         /// * `id` - The zone ID
         /// * `account_id` - The account ID
-        /// * `name` - The name of the zone
         /// * `reverse` - True for a reverse zone, false for a forward zone.
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOptions? options = null)
