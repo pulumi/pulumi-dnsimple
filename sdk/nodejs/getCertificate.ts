@@ -35,7 +35,7 @@ export interface GetCertificateArgs {
     /**
      * The ID of the SSL Certificate
      */
-    certificateId: string;
+    certificateId: number;
     /**
      * The domain of the SSL Certificate
      */
@@ -50,11 +50,8 @@ export interface GetCertificateResult {
      * A list of certificates that make up the chain
      */
     readonly certificateChains: string[];
-    readonly certificateId: string;
+    readonly certificateId: number;
     readonly domain: string;
-    /**
-     * The provider-assigned unique ID for this managed resource.
-     */
     readonly id: string;
     /**
      * The corresponding Private Key for the SSL Certificate
@@ -95,7 +92,7 @@ export interface GetCertificateOutputArgs {
     /**
      * The ID of the SSL Certificate
      */
-    certificateId: pulumi.Input<string>;
+    certificateId: pulumi.Input<number>;
     /**
      * The domain of the SSL Certificate
      */

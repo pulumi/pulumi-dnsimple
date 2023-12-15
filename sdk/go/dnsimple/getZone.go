@@ -43,11 +43,10 @@ import (
 //
 // * `name` - (Required) The name of the zone
 //
-// The following attributes are exported:
+// The following additional attributes are exported:
 //
 // * `id` - The zone ID
 // * `accountId` - The account ID
-// * `name` - The name of the zone
 // * `reverse` - True for a reverse zone, false for a forward zone.
 func GetZone(ctx *pulumi.Context, args *GetZoneArgs, opts ...pulumi.InvokeOption) (*GetZoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)

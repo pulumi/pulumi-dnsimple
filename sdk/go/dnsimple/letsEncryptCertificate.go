@@ -32,6 +32,10 @@ import (
 //				DomainId:  pulumi.Any(_var.Dnsimple.Domain_id),
 //				AutoRenew: pulumi.Bool(false),
 //				Name:      pulumi.String("www"),
+//				AlternateNames: pulumi.StringArray{
+//					pulumi.String("docs.example.com"),
+//					pulumi.String("status.example.com"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -44,24 +48,27 @@ import (
 type LetsEncryptCertificate struct {
 	pulumi.CustomResourceState
 
+	// The certificate alternate names
+	AlternateNames pulumi.StringArrayOutput `pulumi:"alternateNames"`
 	// The identifying certification authority (CA)
 	AuthorityIdentifier pulumi.StringOutput `pulumi:"authorityIdentifier"`
-	// Set to true if the certificate will auto-renew
+	// True if the certificate should auto-renew
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// The contact id for the certificate
-	//
-	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId pulumi.IntPtrOutput `pulumi:"contactId"`
+	// The datetime the certificate was created
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
 	// The certificate signing request
 	Csr pulumi.StringOutput `pulumi:"csr"`
 	// The domain to be issued the certificate for
-	DomainId  pulumi.StringPtrOutput `pulumi:"domainId"`
-	ExpiresOn pulumi.StringOutput    `pulumi:"expiresOn"`
+	DomainId pulumi.StringOutput `pulumi:"domainId"`
+	// The datetime the certificate will expire
+	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
 	// The certificate name
 	Name pulumi.StringOutput `pulumi:"name"`
+	// The signature algorithm to use for the certificate
+	SignatureAlgorithm pulumi.StringPtrOutput `pulumi:"signatureAlgorithm"`
 	// The state of the certificate
-	State     pulumi.StringOutput `pulumi:"state"`
+	State pulumi.StringOutput `pulumi:"state"`
+	// The datetime the certificate was last updated
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 	// The years the certificate will last
 	Years pulumi.IntOutput `pulumi:"years"`
@@ -76,6 +83,9 @@ func NewLetsEncryptCertificate(ctx *pulumi.Context,
 
 	if args.AutoRenew == nil {
 		return nil, errors.New("invalid value for required argument 'AutoRenew'")
+	}
+	if args.DomainId == nil {
+		return nil, errors.New("invalid value for required argument 'DomainId'")
 	}
 	if args.Name == nil {
 		return nil, errors.New("invalid value for required argument 'Name'")
@@ -103,48 +113,54 @@ func GetLetsEncryptCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LetsEncryptCertificate resources.
 type letsEncryptCertificateState struct {
+	// The certificate alternate names
+	AlternateNames []string `pulumi:"alternateNames"`
 	// The identifying certification authority (CA)
 	AuthorityIdentifier *string `pulumi:"authorityIdentifier"`
-	// Set to true if the certificate will auto-renew
+	// True if the certificate should auto-renew
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The contact id for the certificate
-	//
-	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId *int    `pulumi:"contactId"`
+	// The datetime the certificate was created
 	CreatedAt *string `pulumi:"createdAt"`
 	// The certificate signing request
 	Csr *string `pulumi:"csr"`
 	// The domain to be issued the certificate for
-	DomainId  *string `pulumi:"domainId"`
-	ExpiresOn *string `pulumi:"expiresOn"`
+	DomainId *string `pulumi:"domainId"`
+	// The datetime the certificate will expire
+	ExpiresAt *string `pulumi:"expiresAt"`
 	// The certificate name
 	Name *string `pulumi:"name"`
+	// The signature algorithm to use for the certificate
+	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 	// The state of the certificate
-	State     *string `pulumi:"state"`
+	State *string `pulumi:"state"`
+	// The datetime the certificate was last updated
 	UpdatedAt *string `pulumi:"updatedAt"`
 	// The years the certificate will last
 	Years *int `pulumi:"years"`
 }
 
 type LetsEncryptCertificateState struct {
+	// The certificate alternate names
+	AlternateNames pulumi.StringArrayInput
 	// The identifying certification authority (CA)
 	AuthorityIdentifier pulumi.StringPtrInput
-	// Set to true if the certificate will auto-renew
+	// True if the certificate should auto-renew
 	AutoRenew pulumi.BoolPtrInput
-	// The contact id for the certificate
-	//
-	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId pulumi.IntPtrInput
+	// The datetime the certificate was created
 	CreatedAt pulumi.StringPtrInput
 	// The certificate signing request
 	Csr pulumi.StringPtrInput
 	// The domain to be issued the certificate for
-	DomainId  pulumi.StringPtrInput
-	ExpiresOn pulumi.StringPtrInput
+	DomainId pulumi.StringPtrInput
+	// The datetime the certificate will expire
+	ExpiresAt pulumi.StringPtrInput
 	// The certificate name
 	Name pulumi.StringPtrInput
+	// The signature algorithm to use for the certificate
+	SignatureAlgorithm pulumi.StringPtrInput
 	// The state of the certificate
-	State     pulumi.StringPtrInput
+	State pulumi.StringPtrInput
+	// The datetime the certificate was last updated
 	UpdatedAt pulumi.StringPtrInput
 	// The years the certificate will last
 	Years pulumi.IntPtrInput
@@ -155,30 +171,30 @@ func (LetsEncryptCertificateState) ElementType() reflect.Type {
 }
 
 type letsEncryptCertificateArgs struct {
-	// Set to true if the certificate will auto-renew
+	// The certificate alternate names
+	AlternateNames []string `pulumi:"alternateNames"`
+	// True if the certificate should auto-renew
 	AutoRenew bool `pulumi:"autoRenew"`
-	// The contact id for the certificate
-	//
-	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId *int `pulumi:"contactId"`
 	// The domain to be issued the certificate for
-	DomainId *string `pulumi:"domainId"`
+	DomainId string `pulumi:"domainId"`
 	// The certificate name
 	Name string `pulumi:"name"`
+	// The signature algorithm to use for the certificate
+	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
 }
 
 // The set of arguments for constructing a LetsEncryptCertificate resource.
 type LetsEncryptCertificateArgs struct {
-	// Set to true if the certificate will auto-renew
+	// The certificate alternate names
+	AlternateNames pulumi.StringArrayInput
+	// True if the certificate should auto-renew
 	AutoRenew pulumi.BoolInput
-	// The contact id for the certificate
-	//
-	// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-	ContactId pulumi.IntPtrInput
 	// The domain to be issued the certificate for
-	DomainId pulumi.StringPtrInput
+	DomainId pulumi.StringInput
 	// The certificate name
 	Name pulumi.StringInput
+	// The signature algorithm to use for the certificate
+	SignatureAlgorithm pulumi.StringPtrInput
 }
 
 func (LetsEncryptCertificateArgs) ElementType() reflect.Type {
@@ -268,23 +284,22 @@ func (o LetsEncryptCertificateOutput) ToLetsEncryptCertificateOutputWithContext(
 	return o
 }
 
+// The certificate alternate names
+func (o LetsEncryptCertificateOutput) AlternateNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringArrayOutput { return v.AlternateNames }).(pulumi.StringArrayOutput)
+}
+
 // The identifying certification authority (CA)
 func (o LetsEncryptCertificateOutput) AuthorityIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.AuthorityIdentifier }).(pulumi.StringOutput)
 }
 
-// Set to true if the certificate will auto-renew
+// True if the certificate should auto-renew
 func (o LetsEncryptCertificateOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
-// The contact id for the certificate
-//
-// Deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-func (o LetsEncryptCertificateOutput) ContactId() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.IntPtrOutput { return v.ContactId }).(pulumi.IntPtrOutput)
-}
-
+// The datetime the certificate was created
 func (o LetsEncryptCertificateOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
@@ -295,12 +310,13 @@ func (o LetsEncryptCertificateOutput) Csr() pulumi.StringOutput {
 }
 
 // The domain to be issued the certificate for
-func (o LetsEncryptCertificateOutput) DomainId() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringPtrOutput { return v.DomainId }).(pulumi.StringPtrOutput)
+func (o LetsEncryptCertificateOutput) DomainId() pulumi.StringOutput {
+	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.DomainId }).(pulumi.StringOutput)
 }
 
-func (o LetsEncryptCertificateOutput) ExpiresOn() pulumi.StringOutput {
-	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.ExpiresOn }).(pulumi.StringOutput)
+// The datetime the certificate will expire
+func (o LetsEncryptCertificateOutput) ExpiresAt() pulumi.StringOutput {
+	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
 // The certificate name
@@ -308,11 +324,17 @@ func (o LetsEncryptCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// The signature algorithm to use for the certificate
+func (o LetsEncryptCertificateOutput) SignatureAlgorithm() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringPtrOutput { return v.SignatureAlgorithm }).(pulumi.StringPtrOutput)
+}
+
 // The state of the certificate
 func (o LetsEncryptCertificateOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// The datetime the certificate was last updated
 func (o LetsEncryptCertificateOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

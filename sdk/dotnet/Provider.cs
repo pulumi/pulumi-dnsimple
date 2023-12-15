@@ -22,13 +22,13 @@ namespace Pulumi.DNSimple
         /// The account for API operations.
         /// </summary>
         [Output("account")]
-        public Output<string> Account { get; private set; } = null!;
+        public Output<string?> Account { get; private set; } = null!;
 
         /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
         [Output("token")]
-        public Output<string> Token { get; private set; } = null!;
+        public Output<string?> Token { get; private set; } = null!;
 
         /// <summary>
         /// Custom string to append to the user agent used for sending HTTP requests to the API.
@@ -44,7 +44,7 @@ namespace Pulumi.DNSimple
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Provider(string name, ProviderArgs args, CustomResourceOptions? options = null)
+        public Provider(string name, ProviderArgs? args = null, CustomResourceOptions? options = null)
             : base("dnsimple", name, args ?? new ProviderArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -71,8 +71,8 @@ namespace Pulumi.DNSimple
         /// <summary>
         /// The account for API operations.
         /// </summary>
-        [Input("account", required: true)]
-        public Input<string> Account { get; set; } = null!;
+        [Input("account")]
+        public Input<string>? Account { get; set; }
 
         /// <summary>
         /// Flag to enable the prefetch of zone records.
@@ -86,7 +86,7 @@ namespace Pulumi.DNSimple
         [Input("sandbox", json: true)]
         public Input<bool>? Sandbox { get; set; }
 
-        [Input("token", required: true)]
+        [Input("token")]
         private Input<string>? _token;
 
         /// <summary>

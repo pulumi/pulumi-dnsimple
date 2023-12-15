@@ -86,11 +86,10 @@ def get_zone(name: Optional[str] = None,
 
     * `name` - (Required) The name of the zone
 
-    The following attributes are exported:
+    The following additional attributes are exported:
 
     * `id` - The zone ID
     * `account_id` - The account ID
-    * `name` - The name of the zone
     * `reverse` - True for a reverse zone, false for a forward zone.
     """
     __args__ = dict()
@@ -124,11 +123,10 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
 
     * `name` - (Required) The name of the zone
 
-    The following attributes are exported:
+    The following additional attributes are exported:
 
     * `id` - The zone ID
     * `account_id` - The account ID
-    * `name` - The name of the zone
     * `reverse` - True for a reverse zone, false for a forward zone.
     """
     ...

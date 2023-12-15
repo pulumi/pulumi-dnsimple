@@ -16,14 +16,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     public static final EmailForwardState Empty = new EmailForwardState();
 
     /**
-     * The source email address on the domain
+     * The source email address on the domain, in full form. This is a computed attribute.
      * 
      */
     @Import(name="aliasEmail")
     private @Nullable Output<String> aliasEmail;
 
     /**
-     * @return The source email address on the domain
+     * @return The source email address on the domain, in full form. This is a computed attribute.
      * 
      */
     public Optional<Output<String>> aliasEmail() {
@@ -46,14 +46,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination email address on another domain
+     * The destination email address
      * 
      */
     @Import(name="destinationEmail")
     private @Nullable Output<String> destinationEmail;
 
     /**
-     * @return The destination email address on another domain
+     * @return The destination email address
      * 
      */
     public Optional<Output<String>> destinationEmail() {
@@ -61,14 +61,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain to add the email forwarding rule to
+     * The domain name to add the email forwarding rule to
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The domain to add the email forwarding rule to
+     * @return The domain name to add the email forwarding rule to
      * 
      */
     public Optional<Output<String>> domain() {
@@ -103,7 +103,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasEmail The source email address on the domain
+         * @param aliasEmail The source email address on the domain, in full form. This is a computed attribute.
          * 
          * @return builder
          * 
@@ -114,7 +114,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasEmail The source email address on the domain
+         * @param aliasEmail The source email address on the domain, in full form. This is a computed attribute.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationEmail The destination email address on another domain
+         * @param destinationEmail The destination email address
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationEmail The destination email address on another domain
+         * @param destinationEmail The destination email address
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The domain to add the email forwarding rule to
+         * @param domain The domain name to add the email forwarding rule to
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The domain to add the email forwarding rule to
+         * @param domain The domain name to add the email forwarding rule to
          * 
          * @return builder
          * 

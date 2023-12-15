@@ -6,8 +6,8 @@ package com.pulumi.dnsimple;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,14 +18,29 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     public static final LetsEncryptCertificateArgs Empty = new LetsEncryptCertificateArgs();
 
     /**
-     * Set to true if the certificate will auto-renew
+     * The certificate alternate names
+     * 
+     */
+    @Import(name="alternateNames")
+    private @Nullable Output<List<String>> alternateNames;
+
+    /**
+     * @return The certificate alternate names
+     * 
+     */
+    public Optional<Output<List<String>>> alternateNames() {
+        return Optional.ofNullable(this.alternateNames);
+    }
+
+    /**
+     * True if the certificate should auto-renew
      * 
      */
     @Import(name="autoRenew", required=true)
     private Output<Boolean> autoRenew;
 
     /**
-     * @return Set to true if the certificate will auto-renew
+     * @return True if the certificate should auto-renew
      * 
      */
     public Output<Boolean> autoRenew() {
@@ -33,41 +48,18 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     * 
-     */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    @Import(name="contactId")
-    private @Nullable Output<Integer> contactId;
-
-    /**
-     * @return The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     * 
-     */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    public Optional<Output<Integer>> contactId() {
-        return Optional.ofNullable(this.contactId);
-    }
-
-    /**
      * The domain to be issued the certificate for
      * 
      */
-    @Import(name="domainId")
-    private @Nullable Output<String> domainId;
+    @Import(name="domainId", required=true)
+    private Output<String> domainId;
 
     /**
      * @return The domain to be issued the certificate for
      * 
      */
-    public Optional<Output<String>> domainId() {
-        return Optional.ofNullable(this.domainId);
+    public Output<String> domainId() {
+        return this.domainId;
     }
 
     /**
@@ -85,13 +77,29 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         return this.name;
     }
 
+    /**
+     * The signature algorithm to use for the certificate
+     * 
+     */
+    @Import(name="signatureAlgorithm")
+    private @Nullable Output<String> signatureAlgorithm;
+
+    /**
+     * @return The signature algorithm to use for the certificate
+     * 
+     */
+    public Optional<Output<String>> signatureAlgorithm() {
+        return Optional.ofNullable(this.signatureAlgorithm);
+    }
+
     private LetsEncryptCertificateArgs() {}
 
     private LetsEncryptCertificateArgs(LetsEncryptCertificateArgs $) {
+        this.alternateNames = $.alternateNames;
         this.autoRenew = $.autoRenew;
-        this.contactId = $.contactId;
         this.domainId = $.domainId;
         this.name = $.name;
+        this.signatureAlgorithm = $.signatureAlgorithm;
     }
 
     public static Builder builder() {
@@ -113,7 +121,38 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param autoRenew Set to true if the certificate will auto-renew
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(@Nullable Output<List<String>> alternateNames) {
+            $.alternateNames = alternateNames;
+            return this;
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(List<String> alternateNames) {
+            return alternateNames(Output.of(alternateNames));
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(String... alternateNames) {
+            return alternateNames(List.of(alternateNames));
+        }
+
+        /**
+         * @param autoRenew True if the certificate should auto-renew
          * 
          * @return builder
          * 
@@ -124,7 +163,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param autoRenew Set to true if the certificate will auto-renew
+         * @param autoRenew True if the certificate should auto-renew
          * 
          * @return builder
          * 
@@ -134,41 +173,12 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param contactId The contact id for the certificate
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-         * 
-         */
-        @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-        public Builder contactId(@Nullable Output<Integer> contactId) {
-            $.contactId = contactId;
-            return this;
-        }
-
-        /**
-         * @param contactId The contact id for the certificate
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-         * 
-         */
-        @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-        public Builder contactId(Integer contactId) {
-            return contactId(Output.of(contactId));
-        }
-
-        /**
          * @param domainId The domain to be issued the certificate for
          * 
          * @return builder
          * 
          */
-        public Builder domainId(@Nullable Output<String> domainId) {
+        public Builder domainId(Output<String> domainId) {
             $.domainId = domainId;
             return this;
         }
@@ -204,8 +214,30 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
             return name(Output.of(name));
         }
 
+        /**
+         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signatureAlgorithm(@Nullable Output<String> signatureAlgorithm) {
+            $.signatureAlgorithm = signatureAlgorithm;
+            return this;
+        }
+
+        /**
+         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * 
+         * @return builder
+         * 
+         */
+        public Builder signatureAlgorithm(String signatureAlgorithm) {
+            return signatureAlgorithm(Output.of(signatureAlgorithm));
+        }
+
         public LetsEncryptCertificateArgs build() {
             $.autoRenew = Objects.requireNonNull($.autoRenew, "expected parameter 'autoRenew' to be non-null");
+            $.domainId = Objects.requireNonNull($.domainId, "expected parameter 'domainId' to be non-null");
             $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
             return $;
         }

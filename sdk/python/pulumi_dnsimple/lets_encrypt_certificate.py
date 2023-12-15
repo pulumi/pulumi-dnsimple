@@ -15,37 +15,49 @@ __all__ = ['LetsEncryptCertificateArgs', 'LetsEncryptCertificate']
 class LetsEncryptCertificateArgs:
     def __init__(__self__, *,
                  auto_renew: pulumi.Input[bool],
+                 domain_id: pulumi.Input[str],
                  name: pulumi.Input[str],
-                 contact_id: Optional[pulumi.Input[int]] = None,
-                 domain_id: Optional[pulumi.Input[str]] = None):
+                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 signature_algorithm: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a LetsEncryptCertificate resource.
-        :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[str] name: The certificate name
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[bool] auto_renew: True if the certificate should auto-renew
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
+        :param pulumi.Input[str] name: The certificate name
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternate_names: The certificate alternate names
+        :param pulumi.Input[str] signature_algorithm: The signature algorithm to use for the certificate
         """
         pulumi.set(__self__, "auto_renew", auto_renew)
+        pulumi.set(__self__, "domain_id", domain_id)
         pulumi.set(__self__, "name", name)
-        if contact_id is not None:
-            warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-            pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-        if contact_id is not None:
-            pulumi.set(__self__, "contact_id", contact_id)
-        if domain_id is not None:
-            pulumi.set(__self__, "domain_id", domain_id)
+        if alternate_names is not None:
+            pulumi.set(__self__, "alternate_names", alternate_names)
+        if signature_algorithm is not None:
+            pulumi.set(__self__, "signature_algorithm", signature_algorithm)
 
     @property
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[bool]:
         """
-        Set to true if the certificate will auto-renew
+        True if the certificate should auto-renew
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
     def auto_renew(self, value: pulumi.Input[bool]):
         pulumi.set(self, "auto_renew", value)
+
+    @property
+    @pulumi.getter(name="domainId")
+    def domain_id(self) -> pulumi.Input[str]:
+        """
+        The domain to be issued the certificate for
+        """
+        return pulumi.get(self, "domain_id")
+
+    @domain_id.setter
+    def domain_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "domain_id", value)
 
     @property
     @pulumi.getter
@@ -60,83 +72,96 @@ class LetsEncryptCertificateArgs:
         pulumi.set(self, "name", value)
 
     @property
-    @pulumi.getter(name="contactId")
-    def contact_id(self) -> Optional[pulumi.Input[int]]:
+    @pulumi.getter(name="alternateNames")
+    def alternate_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        The contact id for the certificate
+        The certificate alternate names
         """
-        warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-        pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
+        return pulumi.get(self, "alternate_names")
 
-        return pulumi.get(self, "contact_id")
-
-    @contact_id.setter
-    def contact_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "contact_id", value)
+    @alternate_names.setter
+    def alternate_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alternate_names", value)
 
     @property
-    @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[str]]:
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> Optional[pulumi.Input[str]]:
         """
-        The domain to be issued the certificate for
+        The signature algorithm to use for the certificate
         """
-        return pulumi.get(self, "domain_id")
+        return pulumi.get(self, "signature_algorithm")
 
-    @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "domain_id", value)
+    @signature_algorithm.setter
+    def signature_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature_algorithm", value)
 
 
 @pulumi.input_type
 class _LetsEncryptCertificateState:
     def __init__(__self__, *,
+                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  authority_identifier: Optional[pulumi.Input[str]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 contact_id: Optional[pulumi.Input[int]] = None,
                  created_at: Optional[pulumi.Input[str]] = None,
                  csr: Optional[pulumi.Input[str]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
-                 expires_on: Optional[pulumi.Input[str]] = None,
+                 expires_at: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 signature_algorithm: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  updated_at: Optional[pulumi.Input[str]] = None,
                  years: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering LetsEncryptCertificate resources.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternate_names: The certificate alternate names
         :param pulumi.Input[str] authority_identifier: The identifying certification authority (CA)
-        :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[bool] auto_renew: True if the certificate should auto-renew
+        :param pulumi.Input[str] created_at: The datetime the certificate was created
         :param pulumi.Input[str] csr: The certificate signing request
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
+        :param pulumi.Input[str] expires_at: The datetime the certificate will expire
         :param pulumi.Input[str] name: The certificate name
+        :param pulumi.Input[str] signature_algorithm: The signature algorithm to use for the certificate
         :param pulumi.Input[str] state: The state of the certificate
+        :param pulumi.Input[str] updated_at: The datetime the certificate was last updated
         :param pulumi.Input[int] years: The years the certificate will last
         """
+        if alternate_names is not None:
+            pulumi.set(__self__, "alternate_names", alternate_names)
         if authority_identifier is not None:
             pulumi.set(__self__, "authority_identifier", authority_identifier)
         if auto_renew is not None:
             pulumi.set(__self__, "auto_renew", auto_renew)
-        if contact_id is not None:
-            warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-            pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-        if contact_id is not None:
-            pulumi.set(__self__, "contact_id", contact_id)
         if created_at is not None:
             pulumi.set(__self__, "created_at", created_at)
         if csr is not None:
             pulumi.set(__self__, "csr", csr)
         if domain_id is not None:
             pulumi.set(__self__, "domain_id", domain_id)
-        if expires_on is not None:
-            pulumi.set(__self__, "expires_on", expires_on)
+        if expires_at is not None:
+            pulumi.set(__self__, "expires_at", expires_at)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if signature_algorithm is not None:
+            pulumi.set(__self__, "signature_algorithm", signature_algorithm)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if updated_at is not None:
             pulumi.set(__self__, "updated_at", updated_at)
         if years is not None:
             pulumi.set(__self__, "years", years)
+
+    @property
+    @pulumi.getter(name="alternateNames")
+    def alternate_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The certificate alternate names
+        """
+        return pulumi.get(self, "alternate_names")
+
+    @alternate_names.setter
+    def alternate_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "alternate_names", value)
 
     @property
     @pulumi.getter(name="authorityIdentifier")
@@ -154,7 +179,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[bool]]:
         """
-        Set to true if the certificate will auto-renew
+        True if the certificate should auto-renew
         """
         return pulumi.get(self, "auto_renew")
 
@@ -163,23 +188,11 @@ class _LetsEncryptCertificateState:
         pulumi.set(self, "auto_renew", value)
 
     @property
-    @pulumi.getter(name="contactId")
-    def contact_id(self) -> Optional[pulumi.Input[int]]:
-        """
-        The contact id for the certificate
-        """
-        warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-        pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-
-        return pulumi.get(self, "contact_id")
-
-    @contact_id.setter
-    def contact_id(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "contact_id", value)
-
-    @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datetime the certificate was created
+        """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
@@ -211,13 +224,16 @@ class _LetsEncryptCertificateState:
         pulumi.set(self, "domain_id", value)
 
     @property
-    @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> Optional[pulumi.Input[str]]:
-        return pulumi.get(self, "expires_on")
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datetime the certificate will expire
+        """
+        return pulumi.get(self, "expires_at")
 
-    @expires_on.setter
-    def expires_on(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "expires_on", value)
+    @expires_at.setter
+    def expires_at(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expires_at", value)
 
     @property
     @pulumi.getter
@@ -230,6 +246,18 @@ class _LetsEncryptCertificateState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> Optional[pulumi.Input[str]]:
+        """
+        The signature algorithm to use for the certificate
+        """
+        return pulumi.get(self, "signature_algorithm")
+
+    @signature_algorithm.setter
+    def signature_algorithm(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "signature_algorithm", value)
 
     @property
     @pulumi.getter
@@ -246,6 +274,9 @@ class _LetsEncryptCertificateState:
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[str]]:
+        """
+        The datetime the certificate was last updated
+        """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
@@ -270,10 +301,11 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 contact_id: Optional[pulumi.Input[int]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 signature_algorithm: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a DNSimple Let's Encrypt certificate resource.
@@ -287,15 +319,20 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         foobar = dnsimple.LetsEncryptCertificate("foobar",
             domain_id=var["dnsimple"]["domain_id"],
             auto_renew=False,
-            name="www")
+            name="www",
+            alternate_names=[
+                "docs.example.com",
+                "status.example.com",
+            ])
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternate_names: The certificate alternate names
+        :param pulumi.Input[bool] auto_renew: True if the certificate should auto-renew
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
         :param pulumi.Input[str] name: The certificate name
+        :param pulumi.Input[str] signature_algorithm: The signature algorithm to use for the certificate
         """
         ...
     @overload
@@ -315,7 +352,11 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         foobar = dnsimple.LetsEncryptCertificate("foobar",
             domain_id=var["dnsimple"]["domain_id"],
             auto_renew=False,
-            name="www")
+            name="www",
+            alternate_names=[
+                "docs.example.com",
+                "status.example.com",
+            ])
         ```
 
         :param str resource_name: The name of the resource.
@@ -333,10 +374,11 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  auto_renew: Optional[pulumi.Input[bool]] = None,
-                 contact_id: Optional[pulumi.Input[int]] = None,
                  domain_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 signature_algorithm: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -346,18 +388,21 @@ class LetsEncryptCertificate(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = LetsEncryptCertificateArgs.__new__(LetsEncryptCertificateArgs)
 
+            __props__.__dict__["alternate_names"] = alternate_names
             if auto_renew is None and not opts.urn:
                 raise TypeError("Missing required property 'auto_renew'")
             __props__.__dict__["auto_renew"] = auto_renew
-            __props__.__dict__["contact_id"] = contact_id
+            if domain_id is None and not opts.urn:
+                raise TypeError("Missing required property 'domain_id'")
             __props__.__dict__["domain_id"] = domain_id
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["signature_algorithm"] = signature_algorithm
             __props__.__dict__["authority_identifier"] = None
             __props__.__dict__["created_at"] = None
             __props__.__dict__["csr"] = None
-            __props__.__dict__["expires_on"] = None
+            __props__.__dict__["expires_at"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["updated_at"] = None
             __props__.__dict__["years"] = None
@@ -371,14 +416,15 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             authority_identifier: Optional[pulumi.Input[str]] = None,
             auto_renew: Optional[pulumi.Input[bool]] = None,
-            contact_id: Optional[pulumi.Input[int]] = None,
             created_at: Optional[pulumi.Input[str]] = None,
             csr: Optional[pulumi.Input[str]] = None,
             domain_id: Optional[pulumi.Input[str]] = None,
-            expires_on: Optional[pulumi.Input[str]] = None,
+            expires_at: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            signature_algorithm: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             updated_at: Optional[pulumi.Input[str]] = None,
             years: Optional[pulumi.Input[int]] = None) -> 'LetsEncryptCertificate':
@@ -389,31 +435,44 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] alternate_names: The certificate alternate names
         :param pulumi.Input[str] authority_identifier: The identifying certification authority (CA)
-        :param pulumi.Input[bool] auto_renew: Set to true if the certificate will auto-renew
-        :param pulumi.Input[int] contact_id: The contact id for the certificate
+        :param pulumi.Input[bool] auto_renew: True if the certificate should auto-renew
+        :param pulumi.Input[str] created_at: The datetime the certificate was created
         :param pulumi.Input[str] csr: The certificate signing request
         :param pulumi.Input[str] domain_id: The domain to be issued the certificate for
+        :param pulumi.Input[str] expires_at: The datetime the certificate will expire
         :param pulumi.Input[str] name: The certificate name
+        :param pulumi.Input[str] signature_algorithm: The signature algorithm to use for the certificate
         :param pulumi.Input[str] state: The state of the certificate
+        :param pulumi.Input[str] updated_at: The datetime the certificate was last updated
         :param pulumi.Input[int] years: The years the certificate will last
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
         __props__ = _LetsEncryptCertificateState.__new__(_LetsEncryptCertificateState)
 
+        __props__.__dict__["alternate_names"] = alternate_names
         __props__.__dict__["authority_identifier"] = authority_identifier
         __props__.__dict__["auto_renew"] = auto_renew
-        __props__.__dict__["contact_id"] = contact_id
         __props__.__dict__["created_at"] = created_at
         __props__.__dict__["csr"] = csr
         __props__.__dict__["domain_id"] = domain_id
-        __props__.__dict__["expires_on"] = expires_on
+        __props__.__dict__["expires_at"] = expires_at
         __props__.__dict__["name"] = name
+        __props__.__dict__["signature_algorithm"] = signature_algorithm
         __props__.__dict__["state"] = state
         __props__.__dict__["updated_at"] = updated_at
         __props__.__dict__["years"] = years
         return LetsEncryptCertificate(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="alternateNames")
+    def alternate_names(self) -> pulumi.Output[Optional[Sequence[str]]]:
+        """
+        The certificate alternate names
+        """
+        return pulumi.get(self, "alternate_names")
 
     @property
     @pulumi.getter(name="authorityIdentifier")
@@ -427,24 +486,16 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[bool]:
         """
-        Set to true if the certificate will auto-renew
+        True if the certificate should auto-renew
         """
         return pulumi.get(self, "auto_renew")
 
     @property
-    @pulumi.getter(name="contactId")
-    def contact_id(self) -> pulumi.Output[Optional[int]]:
-        """
-        The contact id for the certificate
-        """
-        warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-        pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-
-        return pulumi.get(self, "contact_id")
-
-    @property
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[str]:
+        """
+        The datetime the certificate was created
+        """
         return pulumi.get(self, "created_at")
 
     @property
@@ -457,16 +508,19 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> pulumi.Output[Optional[str]]:
+    def domain_id(self) -> pulumi.Output[str]:
         """
         The domain to be issued the certificate for
         """
         return pulumi.get(self, "domain_id")
 
     @property
-    @pulumi.getter(name="expiresOn")
-    def expires_on(self) -> pulumi.Output[str]:
-        return pulumi.get(self, "expires_on")
+    @pulumi.getter(name="expiresAt")
+    def expires_at(self) -> pulumi.Output[str]:
+        """
+        The datetime the certificate will expire
+        """
+        return pulumi.get(self, "expires_at")
 
     @property
     @pulumi.getter
@@ -475,6 +529,14 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         The certificate name
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="signatureAlgorithm")
+    def signature_algorithm(self) -> pulumi.Output[Optional[str]]:
+        """
+        The signature algorithm to use for the certificate
+        """
+        return pulumi.get(self, "signature_algorithm")
 
     @property
     @pulumi.getter
@@ -487,6 +549,9 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @property
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[str]:
+        """
+        The datetime the certificate was last updated
+        """
         return pulumi.get(self, "updated_at")
 
     @property

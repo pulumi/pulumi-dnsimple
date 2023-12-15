@@ -16,12 +16,16 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The domain name to be created
      * 
+     * # Attributes Reference
+     * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
      * @return The domain name to be created
+     * 
+     * # Attributes Reference
      * 
      */
     public Output<String> name() {
@@ -55,6 +59,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name The domain name to be created
          * 
+         * # Attributes Reference
+         * 
          * @return builder
          * 
          */
@@ -65,6 +71,8 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param name The domain name to be created
+         * 
+         * # Attributes Reference
          * 
          * @return builder
          * 
