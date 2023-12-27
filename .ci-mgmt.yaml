@@ -1,7 +1,10 @@
 provider: dnsimple
-major-version: 3
+major-version: 4
 env:
   DNSIMPLE_TOKEN: ${{ secrets.DNSIMPLE_TOKEN }}
   DNSIMPLE_ACCOUNT: ${{ secrets.DNSIMPLE_ACCOUNT }}
 makeTemplate: bridged
 team: ecosystem
+license:
+  ignore:
+    - github.com/oracle/terraform-provider-dnsimple/shim

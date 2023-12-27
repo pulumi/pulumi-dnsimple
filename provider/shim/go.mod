@@ -4,7 +4,7 @@ go 1.21
 
 require (
 	github.com/hashicorp/terraform-plugin-framework v1.4.1
-	github.com/pulumi/pulumi-dnsimple/provider/v3 v3.0.0-20231214211554-e874471cd07c
+	github.com/pulumi/pulumi-dnsimple/provider/v4 v4.0.0
 	github.com/terraform-providers/terraform-provider-dnsimple v0.15.0
 )
 
@@ -37,4 +37,7 @@ require (
 	google.golang.org/protobuf v1.31.0 // indirect
 )
 
-replace github.com/terraform-providers/terraform-provider-dnsimple => github.com/dnsimple/terraform-provider-dnsimple v1.3.1
+replace (
+	github.com/pulumi/pulumi-dnsimple/provider/v4 => ../
+	github.com/terraform-providers/terraform-provider-dnsimple => github.com/dnsimple/terraform-provider-dnsimple v1.3.1
+)

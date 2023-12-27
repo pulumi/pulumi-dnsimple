@@ -15,19 +15,18 @@
 package dnsimple
 
 import (
-	"fmt"
-	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
-	"github.com/terraform-providers/terraform-provider-dnsimple/shim"
-
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
+	"fmt"
 	"path/filepath"
 	"unicode"
 
-	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
+	pf "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"github.com/terraform-providers/terraform-provider-dnsimple/shim"
 )
 
 // all of the token components used below.
@@ -61,18 +60,13 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:           pf.ShimProvider(shim.NewProvider()),
 		Name:        "dnsimple",
+		Version:     version.Version,
 		Description: "A Pulumi package for creating and managing dnsimple cloud resources.",
 		Keywords:    []string{"pulumi", "dnsimple"},
 		License:     "Apache-2.0",
 		Homepage:    "https://pulumi.io",
 		Repository:  "https://github.com/pulumi/pulumi-dnsimple",
 		Config:      map[string]*tfbridge.SchemaInfo{},
-		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_domain":                   {Tok: makeResource(mainMod, "Domain")},
-			"dnsimple_email_forward":            {Tok: makeResource(mainMod, "EmailForward")},
-			"dnsimple_lets_encrypt_certificate": {Tok: makeResource(mainMod, "LetsEncryptCertificate")},
-			"dnsimple_zone_record":              {Tok: makeResource(mainMod, "ZoneRecord")},
-		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
@@ -92,7 +86,8 @@ func Provider() tfbridge.ProviderInfo {
 			i := &tfbridge.PythonInfo{
 				Requires: map[string]string{
 					"pulumi": ">=3.0.0,<4.0.0",
-				}}
+				},
+			}
 			i.PyProject.Enabled = true
 			return i
 		})(),

@@ -2,7 +2,7 @@ package shim
 
 import (
 	"github.com/hashicorp/terraform-plugin-framework/provider"
-	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
 	dnsimpleProvider "github.com/terraform-providers/terraform-provider-dnsimple/internal/framework/provider"
 )
 
