@@ -5,6 +5,7 @@ package com.pulumi.dnsimple;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -225,8 +226,12 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            $.account = Objects.requireNonNull($.account, "expected parameter 'account' to be non-null");
-            $.token = Objects.requireNonNull($.token, "expected parameter 'token' to be non-null");
+            if ($.account == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "account");
+            }
+            if ($.token == null) {
+                throw new MissingRequiredPropertyException("ProviderArgs", "token");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.dnsimple;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -205,8 +206,12 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         public LetsEncryptCertificateArgs build() {
-            $.autoRenew = Objects.requireNonNull($.autoRenew, "expected parameter 'autoRenew' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.autoRenew == null) {
+                throw new MissingRequiredPropertyException("LetsEncryptCertificateArgs", "autoRenew");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("LetsEncryptCertificateArgs", "name");
+            }
             return $;
         }
     }
