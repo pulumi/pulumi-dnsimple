@@ -4,6 +4,7 @@
 package com.pulumi.dnsimple.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -111,7 +112,10 @@ public final class GetCertificateResult {
 
         @CustomType.Setter
         public Builder certificateChains(List<String> certificateChains) {
-            this.certificateChains = Objects.requireNonNull(certificateChains);
+            if (certificateChains == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "certificateChains");
+            }
+            this.certificateChains = certificateChains;
             return this;
         }
         public Builder certificateChains(String... certificateChains) {
@@ -119,32 +123,50 @@ public final class GetCertificateResult {
         }
         @CustomType.Setter
         public Builder certificateId(String certificateId) {
-            this.certificateId = Objects.requireNonNull(certificateId);
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "certificateId");
+            }
+            this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(String privateKey) {
-            this.privateKey = Objects.requireNonNull(privateKey);
+            if (privateKey == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "privateKey");
+            }
+            this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder rootCertificate(String rootCertificate) {
-            this.rootCertificate = Objects.requireNonNull(rootCertificate);
+            if (rootCertificate == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "rootCertificate");
+            }
+            this.rootCertificate = rootCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertificate(String serverCertificate) {
-            this.serverCertificate = Objects.requireNonNull(serverCertificate);
+            if (serverCertificate == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "serverCertificate");
+            }
+            this.serverCertificate = serverCertificate;
             return this;
         }
         public GetCertificateResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.dnsimple;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EmailForwardArgs build() {
-            $.aliasName = Objects.requireNonNull($.aliasName, "expected parameter 'aliasName' to be non-null");
-            $.destinationEmail = Objects.requireNonNull($.destinationEmail, "expected parameter 'destinationEmail' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
+            if ($.aliasName == null) {
+                throw new MissingRequiredPropertyException("EmailForwardArgs", "aliasName");
+            }
+            if ($.destinationEmail == null) {
+                throw new MissingRequiredPropertyException("EmailForwardArgs", "destinationEmail");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("EmailForwardArgs", "domain");
+            }
             return $;
         }
     }
