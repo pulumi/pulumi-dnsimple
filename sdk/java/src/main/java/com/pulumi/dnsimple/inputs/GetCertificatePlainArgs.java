@@ -4,6 +4,7 @@
 package com.pulumi.dnsimple.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetCertificatePlainArgs build() {
-            $.certificateId = Objects.requireNonNull($.certificateId, "expected parameter 'certificateId' to be non-null");
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
+            if ($.certificateId == null) {
+                throw new MissingRequiredPropertyException("GetCertificatePlainArgs", "certificateId");
+            }
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("GetCertificatePlainArgs", "domain");
+            }
             return $;
         }
     }
