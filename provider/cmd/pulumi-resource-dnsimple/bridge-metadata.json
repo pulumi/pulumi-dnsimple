@@ -1,20 +1,44 @@
 {
     "auto-aliasing": {
         "resources": {
+            "dnsimple_contact": {
+                "current": "dnsimple:index/contact:Contact"
+            },
             "dnsimple_domain": {
                 "current": "dnsimple:index/domain:Domain"
+            },
+            "dnsimple_domain_delegation": {
+                "current": "dnsimple:index/domainDelegation:DomainDelegation",
+                "fields": {
+                    "name_servers": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "dnsimple_ds_record": {
+                "current": "dnsimple:index/dsRecord:DsRecord"
             },
             "dnsimple_email_forward": {
                 "current": "dnsimple:index/emailForward:EmailForward"
             },
             "dnsimple_lets_encrypt_certificate": {
-                "current": "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate"
+                "current": "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate",
+                "fields": {
+                    "alternate_names": {
+                        "maxItemsOne": false
+                    }
+                }
             },
-            "dnsimple_record": {
-                "current": "dnsimple:index/record:Record"
+            "dnsimple_registered_domain": {
+                "current": "dnsimple:index/registeredDomain:RegisteredDomain"
             },
             "dnsimple_zone_record": {
-                "current": "dnsimple:index/zoneRecord:ZoneRecord"
+                "current": "dnsimple:index/zoneRecord:ZoneRecord",
+                "fields": {
+                    "regions": {
+                        "maxItemsOne": false
+                    }
+                }
             }
         },
         "datasources": {
@@ -26,6 +50,21 @@
                     }
                 }
             },
+            "dnsimple_registrant_change_check": {
+                "current": "dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck",
+                "fields": {
+                    "extended_attributes": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "options": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "dnsimple_zone": {
                 "current": "dnsimple:index/getZone:getZone"
             }
@@ -34,23 +73,57 @@
     "auto-settings": {},
     "renames": {
         "resources": {
+            "dnsimple:index/contact:Contact": "dnsimple_contact",
             "dnsimple:index/domain:Domain": "dnsimple_domain",
+            "dnsimple:index/domainDelegation:DomainDelegation": "dnsimple_domain_delegation",
+            "dnsimple:index/dsRecord:DsRecord": "dnsimple_ds_record",
             "dnsimple:index/emailForward:EmailForward": "dnsimple_email_forward",
             "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate": "dnsimple_lets_encrypt_certificate",
-            "dnsimple:index/record:Record": "dnsimple_record",
+            "dnsimple:index/registeredDomain:RegisteredDomain": "dnsimple_registered_domain",
             "dnsimple:index/zoneRecord:ZoneRecord": "dnsimple_zone_record"
         },
         "functions": {
             "dnsimple:index/getCertificate:getCertificate": "dnsimple_certificate",
+            "dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck": "dnsimple_registrant_change_check",
             "dnsimple:index/getZone:getZone": "dnsimple_zone"
         },
         "renamedProperties": {
+            "dnsimple:index/RegisteredDomainRegistrantChange:RegisteredDomainRegistrantChange": {
+                "accountId": "account_id",
+                "contactId": "contact_id",
+                "domainId": "domain_id",
+                "extendedAttributes": "extended_attributes",
+                "irtLockLiftedBy": "irt_lock_lifted_by",
+                "registryOwnerChange": "registry_owner_change"
+            },
+            "dnsimple:index/contact:Contact": {
+                "accountId": "account_id",
+                "createdAt": "created_at",
+                "faxNormalized": "fax_normalized",
+                "firstName": "first_name",
+                "jobTitle": "job_title",
+                "lastName": "last_name",
+                "organizationName": "organization_name",
+                "phoneNormalized": "phone_normalized",
+                "postalCode": "postal_code",
+                "stateProvince": "state_province",
+                "updatedAt": "updated_at"
+            },
             "dnsimple:index/domain:Domain": {
                 "accountId": "account_id",
                 "autoRenew": "auto_renew",
                 "privateWhois": "private_whois",
                 "registrantId": "registrant_id",
                 "unicodeName": "unicode_name"
+            },
+            "dnsimple:index/domainDelegation:DomainDelegation": {
+                "nameServers": "name_servers"
+            },
+            "dnsimple:index/dsRecord:DsRecord": {
+                "createdAt": "created_at",
+                "digestType": "digest_type",
+                "publicKey": "public_key",
+                "updatedAt": "updated_at"
             },
             "dnsimple:index/emailForward:EmailForward": {
                 "aliasEmail": "alias_email",
@@ -64,23 +137,42 @@
                 "rootCertificate": "root_certificate",
                 "serverCertificate": "server_certificate"
             },
+            "dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck": {
+                "contactId": "contact_id",
+                "domainId": "domain_id",
+                "extendedAttributes": "extended_attributes",
+                "registryOwnerChange": "registry_owner_change"
+            },
             "dnsimple:index/getZone:getZone": {
                 "accountId": "account_id"
             },
             "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate": {
+                "alternateNames": "alternate_names",
                 "authorityIdentifier": "authority_identifier",
                 "autoRenew": "auto_renew",
-                "contactId": "contact_id",
                 "createdAt": "created_at",
                 "domainId": "domain_id",
-                "expiresOn": "expires_on",
+                "expiresAt": "expires_at",
+                "signatureAlgorithm": "signature_algorithm",
                 "updatedAt": "updated_at"
             },
-            "dnsimple:index/record:Record": {
-                "domainId": "domain_id"
+            "dnsimple:index/registeredDomain:RegisteredDomain": {
+                "accountId": "account_id",
+                "autoRenewEnabled": "auto_renew_enabled",
+                "contactId": "contact_id",
+                "dnssecEnabled": "dnssec_enabled",
+                "domainRegistration": "domain_registration",
+                "expiresAt": "expires_at",
+                "extendedAttributes": "extended_attributes",
+                "premiumPrice": "premium_price",
+                "registrantChange": "registrant_change",
+                "transferLockEnabled": "transfer_lock_enabled",
+                "unicodeName": "unicode_name",
+                "whoisPrivacyEnabled": "whois_privacy_enabled"
             },
             "dnsimple:index/zoneRecord:ZoneRecord": {
                 "qualifiedName": "qualified_name",
+                "valueNormalized": "value_normalized",
                 "zoneId": "zone_id",
                 "zoneName": "zone_name"
             },
@@ -90,6 +182,13 @@
         },
         "renamedConfigProperties": {
             "userAgent": "user_agent"
+        }
+    },
+    "set record types": {
+        "resources": {
+            "dnsimple_zone_record": [
+                "type"
+            ]
         }
     }
 }

@@ -15,16 +15,16 @@
 package dnsimple
 
 import (
+	_ "embed" // embed stores bridge-metadata.json in the compiled binary
 	"fmt"
-	// embed is used to store bridge-metadata.json in the compiled binary
-	_ "embed"
 	"path"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -41,28 +41,17 @@ const (
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	recordTypeName := string(tfbridge.MakeResource(mainPkg, mainMod, "RecordType"))
-
 	prov := tfbridge.ProviderInfo{
-		P:            pfbridge.ShimProvider(dnsimple.New(version.Version)),
-		Name:         "dnsimple",
-		Description:  "A Pulumi package for creating and managing dnsimple cloud resources.",
-		Keywords:     []string{"pulumi", "dnsimple"},
-		License:      "Apache-2.0",
-		Homepage:     "https://pulumi.io",
-		Repository:   "https://github.com/pulumi/pulumi-dnsimple",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		GitHubOrg:    "dnsimple",
-		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {Type: "string"},
-					"type": {Type: tokens.Type(recordTypeName)},
-				},
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
-			},
-		},
+		P:                pfbridge.ShimProvider(dnsimple.New(version.Version)),
+		Name:             "dnsimple",
+		Description:      "A Pulumi package for creating and managing dnsimple cloud resources.",
+		Keywords:         []string{"pulumi", "dnsimple"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-dnsimple",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		GitHubOrg:        "dnsimple",
+		UpstreamRepoPath: "../upstream",
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
 			recordTypeName: recordType(),
 		},
@@ -105,11 +94,27 @@ func Provider() tfbridge.ProviderInfo {
 		tfbridgetokens.MakeStandard(mainPkg)))
 	prov.MustApplyAutoAliases()
 
+	prov.MustTraverseProperties("set record types", setRecordTypes)
+
 	return prov
 }
 
 //go:embed cmd/pulumi-resource-dnsimple/bridge-metadata.json
 var metadata []byte
+
+func setRecordTypes(info tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+	s := info.ShimSchema()
+	path := info.SchemaPath()
+	result := tfbridge.PropertyVisitResult{}
+	if name, ok := path[len(path)-1].(walk.GetAttrStep); ok && s.Type() == shim.TypeString && name.Name == "type" {
+		info.SchemaInfo().Type = tokens.Type(recordTypeName)
+		result.HasEffect = true
+	}
+	return result, nil
+
+}
+
+var recordTypeName = string(tfbridge.MakeResource(mainPkg, mainMod, "RecordType"))
 
 func recordType() schema.ComplexTypeSpec {
 	return schema.ComplexTypeSpec{
