@@ -18,13 +18,13 @@ import (
 	"fmt"
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
-	"path/filepath"
-	"unicode"
+	"path"
 
-	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
 )
@@ -37,60 +37,36 @@ const (
 	mainMod = "index"
 )
 
-// makeMember manufactures a type token for the package and the given module and type.
-func makeMember(mod string, mem string) tokens.ModuleMember {
-	return tokens.ModuleMember(mainPkg + ":" + mod + ":" + mem)
-}
-
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod string, typ string) tokens.Type {
-	return tokens.Type(makeMember(mod, typ))
-}
-
-// makeResource manufactures a standard resource token given a module and resource name.  It
-// automatically uses the main package and names the file by simply lower casing the resource's
-// first character.
-func makeResource(mod string, res string) tokens.Type {
-	fn := string(unicode.ToLower(rune(res[0]))) + res[1:]
-	return makeType(mod+"/"+fn, res)
-}
-
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
 	dnsimpleProv := dnsimple.Provider()
 	p := shimv2.NewProvider(dnsimpleProv)
 
+	recordTypeName := string(tfbridge.MakeResource(mainPkg, mainMod, "RecordType"))
+
 	prov := tfbridge.ProviderInfo{
-		P:           p,
-		Name:        "dnsimple",
-		Description: "A Pulumi package for creating and managing dnsimple cloud resources.",
-		Keywords:    []string{"pulumi", "dnsimple"},
-		License:     "Apache-2.0",
-		Homepage:    "https://pulumi.io",
-		Repository:  "https://github.com/pulumi/pulumi-dnsimple",
-		Config:      map[string]*tfbridge.SchemaInfo{},
-		GitHubOrg:   "terraform-providers",
+		P:            p,
+		Name:         "dnsimple",
+		Description:  "A Pulumi package for creating and managing dnsimple cloud resources.",
+		Keywords:     []string{"pulumi", "dnsimple"},
+		License:      "Apache-2.0",
+		Homepage:     "https://pulumi.io",
+		Repository:   "https://github.com/pulumi/pulumi-dnsimple",
+		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		GitHubOrg:    "terraform-providers",
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {Tok: makeResource(mainMod, "Record"),
+			"dnsimple_record": {
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {
-						Type: "string",
-					},
-					"type": {
-						Type: makeType(mainMod, "RecordType"),
-					},
+					"name": {Type: "string"},
+					"type": {Type: tokens.Type(recordTypeName)},
 				},
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Docs:               &tfbridge.DocInfo{AllowMissing: true},
 				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
 			},
-			"dnsimple_domain":                   {Tok: makeResource(mainMod, "Domain")},
-			"dnsimple_email_forward":            {Tok: makeResource(mainMod, "EmailForward")},
-			"dnsimple_lets_encrypt_certificate": {Tok: makeResource(mainMod, "LetsEncryptCertificate")},
-			"dnsimple_zone_record":              {Tok: makeResource(mainMod, "ZoneRecord")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
+		ExtraTypes: map[string]schema.ComplexTypeSpec{
+			recordTypeName: recordType(),
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -99,23 +75,16 @@ func Provider() tfbridge.ProviderInfo {
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
 			},
-			Overlay: &tfbridge.OverlayInfo{
-				DestFiles: []string{
-					"recordType.ts",
-				},
-			},
 		},
-		Python: (func() *tfbridge.PythonInfo {
-			i := &tfbridge.PythonInfo{
-				Requires: map[string]string{
-					"pulumi": ">=3.0.0,<4.0.0",
-				}}
-			i.PyProject.Enabled = true
-			return i
-		})(),
+		Python: &tfbridge.PythonInfo{
+			Requires: map[string]string{
+				"pulumi": ">=3.0.0,<4.0.0",
+			},
+			PyProject: struct{ Enabled bool }{true},
+		},
 
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", mainPkg),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
@@ -130,7 +99,7 @@ func Provider() tfbridge.ProviderInfo {
 			Namespaces: map[string]string{
 				mainPkg: "DNSimple",
 			},
-		}, MetadataInfo: tfbridge.NewProviderMetadata(metadata),
+		},
 	}
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("dnsimple_", mainMod,
@@ -142,3 +111,30 @@ func Provider() tfbridge.ProviderInfo {
 
 //go:embed cmd/pulumi-resource-dnsimple/bridge-metadata.json
 var metadata []byte
+
+func recordType() schema.ComplexTypeSpec {
+	return schema.ComplexTypeSpec{
+		ObjectTypeSpec: schema.ObjectTypeSpec{
+			Type:        "string",
+			Description: "A DNS Record Type",
+		},
+		Enum: []schema.EnumValueSpec{
+			{Value: "A", Name: "A"},
+			{Value: "AAAA", Name: "AAAA"},
+			{Value: "ALIAS", Name: "ALIAS"},
+			{Value: "CAA", Name: "CAA"},
+			{Value: "CNAME", Name: "CNAME"},
+			{Value: "HINFO", Name: "HINFO"},
+			{Value: "MX", Name: "MX"},
+			{Value: "NAPTR", Name: "NAPTR"},
+			{Value: "NS", Name: "NS"},
+			{Value: "POOL", Name: "POOL"},
+			{Value: "PTR", Name: "PTR"},
+			{Value: "SPF", Name: "SPF"},
+			{Value: "SRV", Name: "SRV"},
+			{Value: "SSHFP", Name: "SSHFP"},
+			{Value: "TXT", Name: "TXT"},
+			{Value: "URL", Name: "URL"},
+		},
+	}
+}

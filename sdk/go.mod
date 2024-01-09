@@ -1,4 +1,4 @@
-module github.com/pulumi/pulumi-dnsimple/sdk/v3
+module github.com/pulumi/pulumi-dnsimple/sdk/v4
 
 go 1.21
 
