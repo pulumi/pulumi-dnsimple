@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )

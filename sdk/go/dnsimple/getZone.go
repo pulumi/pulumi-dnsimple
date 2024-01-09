@@ -7,48 +7,10 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get information about a DNSimple zone.
-//
-// Get zone:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.GetZone(ctx, &dnsimple.GetZoneArgs{
-//				Name: "dnsimple.com",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// The following arguments are supported:
-//
-// * `name` - (Required) The name of the zone
-//
-// The following attributes are exported:
-//
-// * `id` - The zone ID
-// * `accountId` - The account ID
-// * `name` - The name of the zone
-// * `reverse` - True for a reverse zone, false for a forward zone.
 func GetZone(ctx *pulumi.Context, args *GetZoneArgs, opts ...pulumi.InvokeOption) (*GetZoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetZoneResult

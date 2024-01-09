@@ -15,62 +15,30 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
 
     public static final EmailForwardState Empty = new EmailForwardState();
 
-    /**
-     * The source email address on the domain
-     * 
-     */
     @Import(name="aliasEmail")
     private @Nullable Output<String> aliasEmail;
 
-    /**
-     * @return The source email address on the domain
-     * 
-     */
     public Optional<Output<String>> aliasEmail() {
         return Optional.ofNullable(this.aliasEmail);
     }
 
-    /**
-     * The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     @Import(name="aliasName")
     private @Nullable Output<String> aliasName;
 
-    /**
-     * @return The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     public Optional<Output<String>> aliasName() {
         return Optional.ofNullable(this.aliasName);
     }
 
-    /**
-     * The destination email address on another domain
-     * 
-     */
     @Import(name="destinationEmail")
     private @Nullable Output<String> destinationEmail;
 
-    /**
-     * @return The destination email address on another domain
-     * 
-     */
     public Optional<Output<String>> destinationEmail() {
         return Optional.ofNullable(this.destinationEmail);
     }
 
-    /**
-     * The domain to add the email forwarding rule to
-     * 
-     */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
-    /**
-     * @return The domain to add the email forwarding rule to
-     * 
-     */
     public Optional<Output<String>> domain() {
         return Optional.ofNullable(this.domain);
     }
@@ -102,86 +70,38 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
             $ = new EmailForwardState(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aliasEmail The source email address on the domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder aliasEmail(@Nullable Output<String> aliasEmail) {
             $.aliasEmail = aliasEmail;
             return this;
         }
 
-        /**
-         * @param aliasEmail The source email address on the domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder aliasEmail(String aliasEmail) {
             return aliasEmail(Output.of(aliasEmail));
         }
 
-        /**
-         * @param aliasName The name part (the part before the @) of the source email address on the domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder aliasName(@Nullable Output<String> aliasName) {
             $.aliasName = aliasName;
             return this;
         }
 
-        /**
-         * @param aliasName The name part (the part before the @) of the source email address on the domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder aliasName(String aliasName) {
             return aliasName(Output.of(aliasName));
         }
 
-        /**
-         * @param destinationEmail The destination email address on another domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationEmail(@Nullable Output<String> destinationEmail) {
             $.destinationEmail = destinationEmail;
             return this;
         }
 
-        /**
-         * @param destinationEmail The destination email address on another domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationEmail(String destinationEmail) {
             return destinationEmail(Output.of(destinationEmail));
         }
 
-        /**
-         * @param domain The domain to add the email forwarding rule to
-         * 
-         * @return builder
-         * 
-         */
         public Builder domain(@Nullable Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
-        /**
-         * @param domain The domain to add the email forwarding rule to
-         * 
-         * @return builder
-         * 
-         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

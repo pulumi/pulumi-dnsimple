@@ -2,62 +2,11 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
-/**
- * Provides a DNSimple zone record resource.
- *
- * ## Deprecation warning
- *
- * You can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the
- * upcoming 1.0.0 release.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * // Add a record to the root domain
- * const foobar = new dnsimple.ZoneRecord("foobar", {
- *     name: "",
- *     ttl: "3600",
- *     type: "A",
- *     value: "192.168.0.11",
- *     zoneName: _var.dnsimple_domain,
- * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * // Add a record to a sub-domain
- * const foobar = new dnsimple.ZoneRecord("foobar", {
- *     name: "terraform",
- *     ttl: "3600",
- *     type: "A",
- *     value: "192.168.0.11",
- *     zoneName: _var.dnsimple_domain,
- * });
- * ```
- *
- * ## Import
- *
- * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
- *
- * __Importing record example.com with record ID 1234__
- *
- * ```sh
- *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
- * ```
- *  __Importing record www.example.com with record ID 1234__
- *
- * ```sh
- *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
- * ```
- *  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
- */
 export class ZoneRecord extends pulumi.CustomResource {
     /**
      * Get an existing ZoneRecord resource's state with the given name, ID, and optional extra
@@ -86,37 +35,15 @@ export class ZoneRecord extends pulumi.CustomResource {
         return obj['__pulumiType'] === ZoneRecord.__pulumiType;
     }
 
-    /**
-     * The name of the record
-     */
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The priority of the record - only useful for some record types
-     */
-    public readonly priority!: pulumi.Output<string>;
-    /**
-     * The FQDN of the record
-     */
+    public readonly priority!: pulumi.Output<number>;
     public /*out*/ readonly qualifiedName!: pulumi.Output<string>;
-    /**
-     * The TTL of the record
-     */
-    public readonly ttl!: pulumi.Output<string | undefined>;
-    /**
-     * The type of the record
-     */
-    public readonly type!: pulumi.Output<string>;
-    /**
-     * The value of the record
-     */
+    public readonly regions!: pulumi.Output<string[] | undefined>;
+    public readonly ttl!: pulumi.Output<number>;
+    public readonly type!: pulumi.Output<enums.RecordType>;
     public readonly value!: pulumi.Output<string>;
-    /**
-     * The domain ID of the record
-     */
+    public /*out*/ readonly valueNormalized!: pulumi.Output<string>;
     public /*out*/ readonly zoneId!: pulumi.Output<string>;
-    /**
-     * The domain to add the record to
-     */
     public readonly zoneName!: pulumi.Output<string>;
 
     /**
@@ -135,9 +62,11 @@ export class ZoneRecord extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["qualifiedName"] = state ? state.qualifiedName : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["valueNormalized"] = state ? state.valueNormalized : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
             resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
@@ -156,11 +85,13 @@ export class ZoneRecord extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneName"] = args ? args.zoneName : undefined;
             resourceInputs["qualifiedName"] = undefined /*out*/;
+            resourceInputs["valueNormalized"] = undefined /*out*/;
             resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -172,37 +103,15 @@ export class ZoneRecord extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ZoneRecord resources.
  */
 export interface ZoneRecordState {
-    /**
-     * The name of the record
-     */
     name?: pulumi.Input<string>;
-    /**
-     * The priority of the record - only useful for some record types
-     */
-    priority?: pulumi.Input<string>;
-    /**
-     * The FQDN of the record
-     */
+    priority?: pulumi.Input<number>;
     qualifiedName?: pulumi.Input<string>;
-    /**
-     * The TTL of the record
-     */
-    ttl?: pulumi.Input<string>;
-    /**
-     * The type of the record
-     */
-    type?: pulumi.Input<string>;
-    /**
-     * The value of the record
-     */
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    ttl?: pulumi.Input<number>;
+    type?: pulumi.Input<enums.RecordType>;
     value?: pulumi.Input<string>;
-    /**
-     * The domain ID of the record
-     */
+    valueNormalized?: pulumi.Input<string>;
     zoneId?: pulumi.Input<string>;
-    /**
-     * The domain to add the record to
-     */
     zoneName?: pulumi.Input<string>;
 }
 
@@ -210,28 +119,11 @@ export interface ZoneRecordState {
  * The set of arguments for constructing a ZoneRecord resource.
  */
 export interface ZoneRecordArgs {
-    /**
-     * The name of the record
-     */
     name: pulumi.Input<string>;
-    /**
-     * The priority of the record - only useful for some record types
-     */
-    priority?: pulumi.Input<string>;
-    /**
-     * The TTL of the record
-     */
-    ttl?: pulumi.Input<string>;
-    /**
-     * The type of the record
-     */
-    type: pulumi.Input<string>;
-    /**
-     * The value of the record
-     */
+    priority?: pulumi.Input<number>;
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    ttl?: pulumi.Input<number>;
+    type: pulumi.Input<enums.RecordType>;
     value: pulumi.Input<string>;
-    /**
-     * The domain to add the record to
-     */
     zoneName: pulumi.Input<string>;
 }

@@ -7,8 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,9 +19,9 @@ type Provider struct {
 	pulumi.ProviderResourceState
 
 	// The account for API operations.
-	Account pulumi.StringOutput `pulumi:"account"`
+	Account pulumi.StringPtrOutput `pulumi:"account"`
 	// The API v2 token for API operations.
-	Token pulumi.StringOutput `pulumi:"token"`
+	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// Custom string to append to the user agent used for sending HTTP requests to the API.
 	UserAgent pulumi.StringPtrOutput `pulumi:"userAgent"`
 }
@@ -31,17 +30,11 @@ type Provider struct {
 func NewProvider(ctx *pulumi.Context,
 	name string, args *ProviderArgs, opts ...pulumi.ResourceOption) (*Provider, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProviderArgs{}
 	}
 
-	if args.Account == nil {
-		return nil, errors.New("invalid value for required argument 'Account'")
-	}
-	if args.Token == nil {
-		return nil, errors.New("invalid value for required argument 'Token'")
-	}
 	if args.Token != nil {
-		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringInput)
+		args.Token = pulumi.ToSecret(args.Token).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"token",
@@ -58,13 +51,13 @@ func NewProvider(ctx *pulumi.Context,
 
 type providerArgs struct {
 	// The account for API operations.
-	Account string `pulumi:"account"`
+	Account *string `pulumi:"account"`
 	// Flag to enable the prefetch of zone records.
 	Prefetch *bool `pulumi:"prefetch"`
 	// Flag to enable the sandbox API.
 	Sandbox *bool `pulumi:"sandbox"`
 	// The API v2 token for API operations.
-	Token string `pulumi:"token"`
+	Token *string `pulumi:"token"`
 	// Custom string to append to the user agent used for sending HTTP requests to the API.
 	UserAgent *string `pulumi:"userAgent"`
 }
@@ -72,13 +65,13 @@ type providerArgs struct {
 // The set of arguments for constructing a Provider resource.
 type ProviderArgs struct {
 	// The account for API operations.
-	Account pulumi.StringInput
+	Account pulumi.StringPtrInput
 	// Flag to enable the prefetch of zone records.
 	Prefetch pulumi.BoolPtrInput
 	// Flag to enable the sandbox API.
 	Sandbox pulumi.BoolPtrInput
 	// The API v2 token for API operations.
-	Token pulumi.StringInput
+	Token pulumi.StringPtrInput
 	// Custom string to append to the user agent used for sending HTTP requests to the API.
 	UserAgent pulumi.StringPtrInput
 }
@@ -121,13 +114,13 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 }
 
 // The account for API operations.
-func (o ProviderOutput) Account() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Account }).(pulumi.StringOutput)
+func (o ProviderOutput) Account() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Account }).(pulumi.StringPtrOutput)
 }
 
 // The API v2 token for API operations.
-func (o ProviderOutput) Token() pulumi.StringOutput {
-	return o.ApplyT(func(v *Provider) pulumi.StringOutput { return v.Token }).(pulumi.StringOutput)
+func (o ProviderOutput) Token() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Token }).(pulumi.StringPtrOutput)
 }
 
 // Custom string to append to the user agent used for sending HTTP requests to the API.

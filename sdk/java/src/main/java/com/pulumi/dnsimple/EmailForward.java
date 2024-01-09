@@ -13,97 +13,29 @@ import com.pulumi.dnsimple.inputs.EmailForwardState;
 import java.lang.String;
 import javax.annotation.Nullable;
 
-/**
- * Provides a DNSimple email forward resource.
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.dnsimple.EmailForward;
- * import com.pulumi.dnsimple.EmailForwardArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foobar = new EmailForward(&#34;foobar&#34;, EmailForwardArgs.builder()        
- *             .aliasName(&#34;sales&#34;)
- *             .destinationEmail(&#34;jane.doe@example.com&#34;)
- *             .domain(var_.dnsimple_domain())
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- */
 @ResourceType(type="dnsimple:index/emailForward:EmailForward")
 public class EmailForward extends com.pulumi.resources.CustomResource {
-    /**
-     * The source email address on the domain
-     * 
-     */
     @Export(name="aliasEmail", refs={String.class}, tree="[0]")
     private Output<String> aliasEmail;
 
-    /**
-     * @return The source email address on the domain
-     * 
-     */
     public Output<String> aliasEmail() {
         return this.aliasEmail;
     }
-    /**
-     * The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     @Export(name="aliasName", refs={String.class}, tree="[0]")
     private Output<String> aliasName;
 
-    /**
-     * @return The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     public Output<String> aliasName() {
         return this.aliasName;
     }
-    /**
-     * The destination email address on another domain
-     * 
-     */
     @Export(name="destinationEmail", refs={String.class}, tree="[0]")
     private Output<String> destinationEmail;
 
-    /**
-     * @return The destination email address on another domain
-     * 
-     */
     public Output<String> destinationEmail() {
         return this.destinationEmail;
     }
-    /**
-     * The domain to add the email forwarding rule to
-     * 
-     */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
-    /**
-     * @return The domain to add the email forwarding rule to
-     * 
-     */
     public Output<String> domain() {
         return this.domain;
     }

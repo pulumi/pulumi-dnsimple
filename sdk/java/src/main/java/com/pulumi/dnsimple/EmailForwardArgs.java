@@ -14,47 +14,23 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EmailForwardArgs Empty = new EmailForwardArgs();
 
-    /**
-     * The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     @Import(name="aliasName", required=true)
     private Output<String> aliasName;
 
-    /**
-     * @return The name part (the part before the @) of the source email address on the domain
-     * 
-     */
     public Output<String> aliasName() {
         return this.aliasName;
     }
 
-    /**
-     * The destination email address on another domain
-     * 
-     */
     @Import(name="destinationEmail", required=true)
     private Output<String> destinationEmail;
 
-    /**
-     * @return The destination email address on another domain
-     * 
-     */
     public Output<String> destinationEmail() {
         return this.destinationEmail;
     }
 
-    /**
-     * The domain to add the email forwarding rule to
-     * 
-     */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
-    /**
-     * @return The domain to add the email forwarding rule to
-     * 
-     */
     public Output<String> domain() {
         return this.domain;
     }
@@ -85,65 +61,29 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
             $ = new EmailForwardArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param aliasName The name part (the part before the @) of the source email address on the domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder aliasName(Output<String> aliasName) {
             $.aliasName = aliasName;
             return this;
         }
 
-        /**
-         * @param aliasName The name part (the part before the @) of the source email address on the domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder aliasName(String aliasName) {
             return aliasName(Output.of(aliasName));
         }
 
-        /**
-         * @param destinationEmail The destination email address on another domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationEmail(Output<String> destinationEmail) {
             $.destinationEmail = destinationEmail;
             return this;
         }
 
-        /**
-         * @param destinationEmail The destination email address on another domain
-         * 
-         * @return builder
-         * 
-         */
         public Builder destinationEmail(String destinationEmail) {
             return destinationEmail(Output.of(destinationEmail));
         }
 
-        /**
-         * @param domain The domain to add the email forwarding rule to
-         * 
-         * @return builder
-         * 
-         */
         public Builder domain(Output<String> domain) {
             $.domain = domain;
             return this;
         }
 
-        /**
-         * @param domain The domain to add the email forwarding rule to
-         * 
-         * @return builder
-         * 
-         */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
         }

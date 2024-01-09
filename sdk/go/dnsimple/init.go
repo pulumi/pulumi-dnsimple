@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/blang/semver"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,14 +21,20 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "dnsimple:index/contact:Contact":
+		r = &Contact{}
 	case "dnsimple:index/domain:Domain":
 		r = &Domain{}
+	case "dnsimple:index/domainDelegation:DomainDelegation":
+		r = &DomainDelegation{}
+	case "dnsimple:index/dsRecord:DsRecord":
+		r = &DsRecord{}
 	case "dnsimple:index/emailForward:EmailForward":
 		r = &EmailForward{}
 	case "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate":
 		r = &LetsEncryptCertificate{}
-	case "dnsimple:index/record:Record":
-		r = &Record{}
+	case "dnsimple:index/registeredDomain:RegisteredDomain":
+		r = &RegisteredDomain{}
 	case "dnsimple:index/zoneRecord:ZoneRecord":
 		r = &ZoneRecord{}
 	default:
@@ -64,7 +70,22 @@ func init() {
 	}
 	pulumi.RegisterResourceModule(
 		"dnsimple",
+		"index/contact",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"dnsimple",
 		"index/domain",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"dnsimple",
+		"index/domainDelegation",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"dnsimple",
+		"index/dsRecord",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(
@@ -79,7 +100,7 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"dnsimple",
-		"index/record",
+		"index/registeredDomain",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

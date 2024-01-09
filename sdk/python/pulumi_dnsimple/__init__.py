@@ -5,14 +5,21 @@
 from . import _utilities
 import typing
 # Export this package's modules as members:
+from ._enums import *
+from .contact import *
 from .domain import *
+from .domain_delegation import *
+from .ds_record import *
 from .email_forward import *
 from .get_certificate import *
+from .get_registrant_change_check import *
 from .get_zone import *
 from .lets_encrypt_certificate import *
 from .provider import *
-from .record import *
+from .registered_domain import *
 from .zone_record import *
+from ._inputs import *
+from . import outputs
 
 # Make subpackages available:
 if typing.TYPE_CHECKING:
@@ -26,10 +33,34 @@ _utilities.register(
 [
  {
   "pkg": "dnsimple",
+  "mod": "index/contact",
+  "fqn": "pulumi_dnsimple",
+  "classes": {
+   "dnsimple:index/contact:Contact": "Contact"
+  }
+ },
+ {
+  "pkg": "dnsimple",
   "mod": "index/domain",
   "fqn": "pulumi_dnsimple",
   "classes": {
    "dnsimple:index/domain:Domain": "Domain"
+  }
+ },
+ {
+  "pkg": "dnsimple",
+  "mod": "index/domainDelegation",
+  "fqn": "pulumi_dnsimple",
+  "classes": {
+   "dnsimple:index/domainDelegation:DomainDelegation": "DomainDelegation"
+  }
+ },
+ {
+  "pkg": "dnsimple",
+  "mod": "index/dsRecord",
+  "fqn": "pulumi_dnsimple",
+  "classes": {
+   "dnsimple:index/dsRecord:DsRecord": "DsRecord"
   }
  },
  {
@@ -50,10 +81,10 @@ _utilities.register(
  },
  {
   "pkg": "dnsimple",
-  "mod": "index/record",
+  "mod": "index/registeredDomain",
   "fqn": "pulumi_dnsimple",
   "classes": {
-   "dnsimple:index/record:Record": "Record"
+   "dnsimple:index/registeredDomain:RegisteredDomain": "RegisteredDomain"
   }
  },
  {

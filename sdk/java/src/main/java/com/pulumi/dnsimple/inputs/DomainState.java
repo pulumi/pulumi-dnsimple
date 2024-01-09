@@ -31,17 +31,9 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.autoRenew);
     }
 
-    /**
-     * The domain name to be created
-     * 
-     */
     @Import(name="name")
     private @Nullable Output<String> name;
 
-    /**
-     * @return The domain name to be created
-     * 
-     */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
@@ -122,23 +114,11 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
             return autoRenew(Output.of(autoRenew));
         }
 
-        /**
-         * @param name The domain name to be created
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(@Nullable Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The domain name to be created
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
         }

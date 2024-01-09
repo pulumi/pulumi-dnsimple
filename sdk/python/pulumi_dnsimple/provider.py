@@ -14,51 +14,41 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account: pulumi.Input[str],
-                 token: pulumi.Input[str],
+                 account: Optional[pulumi.Input[str]] = None,
                  prefetch: Optional[pulumi.Input[bool]] = None,
                  sandbox: Optional[pulumi.Input[bool]] = None,
+                 token: Optional[pulumi.Input[str]] = None,
                  user_agent: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[str] account: The account for API operations.
-        :param pulumi.Input[str] token: The API v2 token for API operations.
         :param pulumi.Input[bool] prefetch: Flag to enable the prefetch of zone records.
         :param pulumi.Input[bool] sandbox: Flag to enable the sandbox API.
+        :param pulumi.Input[str] token: The API v2 token for API operations.
         :param pulumi.Input[str] user_agent: Custom string to append to the user agent used for sending HTTP requests to the API.
         """
-        pulumi.set(__self__, "account", account)
-        pulumi.set(__self__, "token", token)
+        if account is not None:
+            pulumi.set(__self__, "account", account)
         if prefetch is not None:
             pulumi.set(__self__, "prefetch", prefetch)
         if sandbox is not None:
             pulumi.set(__self__, "sandbox", sandbox)
+        if token is not None:
+            pulumi.set(__self__, "token", token)
         if user_agent is not None:
             pulumi.set(__self__, "user_agent", user_agent)
 
     @property
     @pulumi.getter
-    def account(self) -> pulumi.Input[str]:
+    def account(self) -> Optional[pulumi.Input[str]]:
         """
         The account for API operations.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: pulumi.Input[str]):
+    def account(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account", value)
-
-    @property
-    @pulumi.getter
-    def token(self) -> pulumi.Input[str]:
-        """
-        The API v2 token for API operations.
-        """
-        return pulumi.get(self, "token")
-
-    @token.setter
-    def token(self, value: pulumi.Input[str]):
-        pulumi.set(self, "token", value)
 
     @property
     @pulumi.getter
@@ -83,6 +73,18 @@ class ProviderArgs:
     @sandbox.setter
     def sandbox(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "sandbox", value)
+
+    @property
+    @pulumi.getter
+    def token(self) -> Optional[pulumi.Input[str]]:
+        """
+        The API v2 token for API operations.
+        """
+        return pulumi.get(self, "token")
+
+    @token.setter
+    def token(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "token", value)
 
     @property
     @pulumi.getter(name="userAgent")
@@ -126,7 +128,7 @@ class Provider(pulumi.ProviderResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProviderArgs,
+                 args: Optional[ProviderArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         The provider type for the dnsimple package. By default, resources use package-wide configuration
@@ -163,13 +165,9 @@ class Provider(pulumi.ProviderResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
-            if account is None and not opts.urn:
-                raise TypeError("Missing required property 'account'")
             __props__.__dict__["account"] = account
             __props__.__dict__["prefetch"] = pulumi.Output.from_input(prefetch).apply(pulumi.runtime.to_json) if prefetch is not None else None
             __props__.__dict__["sandbox"] = pulumi.Output.from_input(sandbox).apply(pulumi.runtime.to_json) if sandbox is not None else None
-            if token is None and not opts.urn:
-                raise TypeError("Missing required property 'token'")
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
             __props__.__dict__["user_agent"] = user_agent
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["token"])
@@ -182,7 +180,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def account(self) -> pulumi.Output[str]:
+    def account(self) -> pulumi.Output[Optional[str]]:
         """
         The account for API operations.
         """
@@ -190,7 +188,7 @@ class Provider(pulumi.ProviderResource):
 
     @property
     @pulumi.getter
-    def token(self) -> pulumi.Output[str]:
+    def token(self) -> pulumi.Output[Optional[str]]:
         """
         The API v2 token for API operations.
         """

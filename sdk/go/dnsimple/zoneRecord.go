@@ -8,115 +8,23 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DNSimple zone record resource.
-//
-// ## Deprecation warning
-//
-// You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
-// upcoming 1.0.0 release.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
-//				Name:     pulumi.String(""),
-//				Ttl:      pulumi.String("3600"),
-//				Type:     pulumi.String("A"),
-//				Value:    pulumi.String("192.168.0.11"),
-//				ZoneName: pulumi.Any(_var.Dnsimple_domain),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
-//				Name:     pulumi.String("terraform"),
-//				Ttl:      pulumi.String("3600"),
-//				Type:     pulumi.String("A"),
-//				Value:    pulumi.String("192.168.0.11"),
-//				ZoneName: pulumi.Any(_var.Dnsimple_domain),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
-//
-// __Importing record example.com with record ID 1234__
-//
-// ```sh
-//
-//	$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-//
-// ```
-//
-//	__Importing record www.example.com with record ID 1234__
-//
-// ```sh
-//
-//	$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-//
-// ```
-//
-//	The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 
-	// The name of the record
-	Name pulumi.StringOutput `pulumi:"name"`
-	// The priority of the record - only useful for some record types
-	Priority pulumi.StringOutput `pulumi:"priority"`
-	// The FQDN of the record
-	QualifiedName pulumi.StringOutput `pulumi:"qualifiedName"`
-	// The TTL of the record
-	Ttl pulumi.StringPtrOutput `pulumi:"ttl"`
-	// The type of the record
-	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the record
-	Value pulumi.StringOutput `pulumi:"value"`
-	// The domain ID of the record
-	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
-	// The domain to add the record to
-	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
+	Name            pulumi.StringOutput      `pulumi:"name"`
+	Priority        pulumi.IntOutput         `pulumi:"priority"`
+	QualifiedName   pulumi.StringOutput      `pulumi:"qualifiedName"`
+	Regions         pulumi.StringArrayOutput `pulumi:"regions"`
+	Ttl             pulumi.IntOutput         `pulumi:"ttl"`
+	Type            RecordTypeOutput         `pulumi:"type"`
+	Value           pulumi.StringOutput      `pulumi:"value"`
+	ValueNormalized pulumi.StringOutput      `pulumi:"valueNormalized"`
+	ZoneId          pulumi.StringOutput      `pulumi:"zoneId"`
+	ZoneName        pulumi.StringOutput      `pulumi:"zoneName"`
 }
 
 // NewZoneRecord registers a new resource with the given unique name, arguments, and options.
@@ -161,41 +69,29 @@ func GetZoneRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneRecord resources.
 type zoneRecordState struct {
-	// The name of the record
-	Name *string `pulumi:"name"`
-	// The priority of the record - only useful for some record types
-	Priority *string `pulumi:"priority"`
-	// The FQDN of the record
-	QualifiedName *string `pulumi:"qualifiedName"`
-	// The TTL of the record
-	Ttl *string `pulumi:"ttl"`
-	// The type of the record
-	Type *string `pulumi:"type"`
-	// The value of the record
-	Value *string `pulumi:"value"`
-	// The domain ID of the record
-	ZoneId *string `pulumi:"zoneId"`
-	// The domain to add the record to
-	ZoneName *string `pulumi:"zoneName"`
+	Name            *string     `pulumi:"name"`
+	Priority        *int        `pulumi:"priority"`
+	QualifiedName   *string     `pulumi:"qualifiedName"`
+	Regions         []string    `pulumi:"regions"`
+	Ttl             *int        `pulumi:"ttl"`
+	Type            *RecordType `pulumi:"type"`
+	Value           *string     `pulumi:"value"`
+	ValueNormalized *string     `pulumi:"valueNormalized"`
+	ZoneId          *string     `pulumi:"zoneId"`
+	ZoneName        *string     `pulumi:"zoneName"`
 }
 
 type ZoneRecordState struct {
-	// The name of the record
-	Name pulumi.StringPtrInput
-	// The priority of the record - only useful for some record types
-	Priority pulumi.StringPtrInput
-	// The FQDN of the record
-	QualifiedName pulumi.StringPtrInput
-	// The TTL of the record
-	Ttl pulumi.StringPtrInput
-	// The type of the record
-	Type pulumi.StringPtrInput
-	// The value of the record
-	Value pulumi.StringPtrInput
-	// The domain ID of the record
-	ZoneId pulumi.StringPtrInput
-	// The domain to add the record to
-	ZoneName pulumi.StringPtrInput
+	Name            pulumi.StringPtrInput
+	Priority        pulumi.IntPtrInput
+	QualifiedName   pulumi.StringPtrInput
+	Regions         pulumi.StringArrayInput
+	Ttl             pulumi.IntPtrInput
+	Type            RecordTypePtrInput
+	Value           pulumi.StringPtrInput
+	ValueNormalized pulumi.StringPtrInput
+	ZoneId          pulumi.StringPtrInput
+	ZoneName        pulumi.StringPtrInput
 }
 
 func (ZoneRecordState) ElementType() reflect.Type {
@@ -203,33 +99,23 @@ func (ZoneRecordState) ElementType() reflect.Type {
 }
 
 type zoneRecordArgs struct {
-	// The name of the record
-	Name string `pulumi:"name"`
-	// The priority of the record - only useful for some record types
-	Priority *string `pulumi:"priority"`
-	// The TTL of the record
-	Ttl *string `pulumi:"ttl"`
-	// The type of the record
-	Type string `pulumi:"type"`
-	// The value of the record
-	Value string `pulumi:"value"`
-	// The domain to add the record to
-	ZoneName string `pulumi:"zoneName"`
+	Name     string     `pulumi:"name"`
+	Priority *int       `pulumi:"priority"`
+	Regions  []string   `pulumi:"regions"`
+	Ttl      *int       `pulumi:"ttl"`
+	Type     RecordType `pulumi:"type"`
+	Value    string     `pulumi:"value"`
+	ZoneName string     `pulumi:"zoneName"`
 }
 
 // The set of arguments for constructing a ZoneRecord resource.
 type ZoneRecordArgs struct {
-	// The name of the record
-	Name pulumi.StringInput
-	// The priority of the record - only useful for some record types
-	Priority pulumi.StringPtrInput
-	// The TTL of the record
-	Ttl pulumi.StringPtrInput
-	// The type of the record
-	Type pulumi.StringInput
-	// The value of the record
-	Value pulumi.StringInput
-	// The domain to add the record to
+	Name     pulumi.StringInput
+	Priority pulumi.IntPtrInput
+	Regions  pulumi.StringArrayInput
+	Ttl      pulumi.IntPtrInput
+	Type     RecordTypeInput
+	Value    pulumi.StringInput
 	ZoneName pulumi.StringInput
 }
 
@@ -320,42 +206,42 @@ func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
-// The name of the record
 func (o ZoneRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The priority of the record - only useful for some record types
-func (o ZoneRecordOutput) Priority() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Priority }).(pulumi.StringOutput)
+func (o ZoneRecordOutput) Priority() pulumi.IntOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The FQDN of the record
 func (o ZoneRecordOutput) QualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.QualifiedName }).(pulumi.StringOutput)
 }
 
-// The TTL of the record
-func (o ZoneRecordOutput) Ttl() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *ZoneRecord) pulumi.StringPtrOutput { return v.Ttl }).(pulumi.StringPtrOutput)
+func (o ZoneRecordOutput) Regions() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
-// The type of the record
-func (o ZoneRecordOutput) Type() pulumi.StringOutput {
-	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
+func (o ZoneRecordOutput) Ttl() pulumi.IntOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
 }
 
-// The value of the record
+func (o ZoneRecordOutput) Type() RecordTypeOutput {
+	return o.ApplyT(func(v *ZoneRecord) RecordTypeOutput { return v.Type }).(RecordTypeOutput)
+}
+
 func (o ZoneRecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The domain ID of the record
+func (o ZoneRecordOutput) ValueNormalized() pulumi.StringOutput {
+	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ValueNormalized }).(pulumi.StringOutput)
+}
+
 func (o ZoneRecordOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// The domain to add the record to
 func (o ZoneRecordOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }

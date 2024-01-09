@@ -8,99 +8,15 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DNSimple domain resource.
-//
-// ## Example Usage
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewDomain(ctx, "foobar", &dnsimple.DomainArgs{
-//				Name: pulumi.Any(_var.Dnsimple.Domain),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ## Import
-//
-// DNSimple domains can be imported using their numeric record ID.
-//
-// ```sh
-//
-//	$ pulumi import dnsimple:index/domain:Domain resource_name 5678
-//
-// ```
-//
-//	The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
-//
-//	"data"[
-//
-//	{
-//
-//	"id"5678,
-//
-//	"account_id"1234,
-//
-//	"registrant_id"null,
-//
-//	"name""example.com",
-//
-//	"unicode_name""example.com",
-//
-//	"state""hosted",
-//
-//	"auto_renew"false,
-//
-//	"private_whois"false,
-//
-//	"expires_on"null,
-//
-//	"expires_at"null,
-//
-//	"created_at""2021-10-01T00:00:00Z",
-//
-//	"updated_at""2021-10-01T00:00:00Z"
-//
-//	}
-//
-//	],
-//
-//	"pagination"{
-//
-//	"current_page"1,
-//
-//	"per_page"30,
-//
-//	"total_entries"1,
-//
-//	"total_pages"1
-//
-//	} }
 type Domain struct {
 	pulumi.CustomResourceState
 
-	AccountId pulumi.IntOutput  `pulumi:"accountId"`
-	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// The domain name to be created
+	AccountId    pulumi.IntOutput    `pulumi:"accountId"`
+	AutoRenew    pulumi.BoolOutput   `pulumi:"autoRenew"`
 	Name         pulumi.StringOutput `pulumi:"name"`
 	PrivateWhois pulumi.BoolOutput   `pulumi:"privateWhois"`
 	RegistrantId pulumi.IntOutput    `pulumi:"registrantId"`
@@ -141,9 +57,8 @@ func GetDomain(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Domain resources.
 type domainState struct {
-	AccountId *int  `pulumi:"accountId"`
-	AutoRenew *bool `pulumi:"autoRenew"`
-	// The domain name to be created
+	AccountId    *int    `pulumi:"accountId"`
+	AutoRenew    *bool   `pulumi:"autoRenew"`
 	Name         *string `pulumi:"name"`
 	PrivateWhois *bool   `pulumi:"privateWhois"`
 	RegistrantId *int    `pulumi:"registrantId"`
@@ -152,9 +67,8 @@ type domainState struct {
 }
 
 type DomainState struct {
-	AccountId pulumi.IntPtrInput
-	AutoRenew pulumi.BoolPtrInput
-	// The domain name to be created
+	AccountId    pulumi.IntPtrInput
+	AutoRenew    pulumi.BoolPtrInput
 	Name         pulumi.StringPtrInput
 	PrivateWhois pulumi.BoolPtrInput
 	RegistrantId pulumi.IntPtrInput
@@ -167,13 +81,11 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The domain name to be created
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The domain name to be created
 	Name pulumi.StringInput
 }
 
@@ -272,7 +184,6 @@ func (o DomainOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
-// The domain name to be created
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

@@ -25,8 +25,8 @@ class GetCertificateResult:
         if certificate_chains and not isinstance(certificate_chains, list):
             raise TypeError("Expected argument 'certificate_chains' to be a list")
         pulumi.set(__self__, "certificate_chains", certificate_chains)
-        if certificate_id and not isinstance(certificate_id, str):
-            raise TypeError("Expected argument 'certificate_id' to be a str")
+        if certificate_id and not isinstance(certificate_id, int):
+            raise TypeError("Expected argument 'certificate_id' to be a int")
         pulumi.set(__self__, "certificate_id", certificate_id)
         if domain and not isinstance(domain, str):
             raise TypeError("Expected argument 'domain' to be a str")
@@ -47,14 +47,11 @@ class GetCertificateResult:
     @property
     @pulumi.getter(name="certificateChains")
     def certificate_chains(self) -> Sequence[str]:
-        """
-        A list of certificates that make up the chain
-        """
         return pulumi.get(self, "certificate_chains")
 
     @property
     @pulumi.getter(name="certificateId")
-    def certificate_id(self) -> str:
+    def certificate_id(self) -> int:
         return pulumi.get(self, "certificate_id")
 
     @property
@@ -65,33 +62,21 @@ class GetCertificateResult:
     @property
     @pulumi.getter
     def id(self) -> str:
-        """
-        The provider-assigned unique ID for this managed resource.
-        """
         return pulumi.get(self, "id")
 
     @property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> str:
-        """
-        The corresponding Private Key for the SSL Certificate
-        """
         return pulumi.get(self, "private_key")
 
     @property
     @pulumi.getter(name="rootCertificate")
     def root_certificate(self) -> str:
-        """
-        The Root Certificate of the issuing CA
-        """
         return pulumi.get(self, "root_certificate")
 
     @property
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> str:
-        """
-        The SSL Certificate
-        """
         return pulumi.get(self, "server_certificate")
 
 
@@ -110,25 +95,11 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             server_certificate=self.server_certificate)
 
 
-def get_certificate(certificate_id: Optional[str] = None,
+def get_certificate(certificate_id: Optional[int] = None,
                     domain: Optional[str] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Provides a DNSimple certificate data source.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_dnsimple as dnsimple
-
-    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
-        domain=var["dnsimple_domain"])
-    ```
-
-
-    :param str certificate_id: The ID of the SSL Certificate
-    :param str domain: The domain of the SSL Certificate
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -147,24 +118,10 @@ def get_certificate(certificate_id: Optional[str] = None,
 
 
 @_utilities.lift_output_func(get_certificate)
-def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
+def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
     """
-    Provides a DNSimple certificate data source.
-
-    ## Example Usage
-
-    ```python
-    import pulumi
-    import pulumi_dnsimple as dnsimple
-
-    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
-        domain=var["dnsimple_domain"])
-    ```
-
-
-    :param str certificate_id: The ID of the SSL Certificate
-    :param str domain: The domain of the SSL Certificate
+    Use this data source to access information about an existing resource.
     """
     ...

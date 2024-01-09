@@ -4,73 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a DNSimple domain resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * // Create a domain
- * const foobar = new dnsimple.Domain("foobar", {name: _var.dnsimple.domain});
- * ```
- *
- * ## Import
- *
- * DNSimple domains can be imported using their numeric record ID.
- *
- * ```sh
- *  $ pulumi import dnsimple:index/domain:Domain resource_name 5678
- * ```
- *
- *  The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
- *
- *  "data"[
- *
- *  {
- *
- *  "id"5678,
- *
- *  "account_id"1234,
- *
- *  "registrant_id"null,
- *
- *  "name""example.com",
- *
- *  "unicode_name""example.com",
- *
- *  "state""hosted",
- *
- *  "auto_renew"false,
- *
- *  "private_whois"false,
- *
- *  "expires_on"null,
- *
- *  "expires_at"null,
- *
- *  "created_at""2021-10-01T00:00:00Z",
- *
- *  "updated_at""2021-10-01T00:00:00Z"
- *
- *  }
- *
- *  ],
- *
- *  "pagination"{
- *
- *  "current_page"1,
- *
- *  "per_page"30,
- *
- *  "total_entries"1,
- *
- *  "total_pages"1
- *
- *  } }
- */
 export class Domain extends pulumi.CustomResource {
     /**
      * Get an existing Domain resource's state with the given name, ID, and optional extra
@@ -101,9 +34,6 @@ export class Domain extends pulumi.CustomResource {
 
     public /*out*/ readonly accountId!: pulumi.Output<number>;
     public /*out*/ readonly autoRenew!: pulumi.Output<boolean>;
-    /**
-     * The domain name to be created
-     */
     public readonly name!: pulumi.Output<string>;
     public /*out*/ readonly privateWhois!: pulumi.Output<boolean>;
     public /*out*/ readonly registrantId!: pulumi.Output<number>;
@@ -154,9 +84,6 @@ export class Domain extends pulumi.CustomResource {
 export interface DomainState {
     accountId?: pulumi.Input<number>;
     autoRenew?: pulumi.Input<boolean>;
-    /**
-     * The domain name to be created
-     */
     name?: pulumi.Input<string>;
     privateWhois?: pulumi.Input<boolean>;
     registrantId?: pulumi.Input<number>;
@@ -168,8 +95,5 @@ export interface DomainState {
  * The set of arguments for constructing a Domain resource.
  */
 export interface DomainArgs {
-    /**
-     * The domain name to be created
-     */
     name: pulumi.Input<string>;
 }

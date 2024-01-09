@@ -9,82 +9,6 @@ using Pulumi.Serialization;
 
 namespace Pulumi.DNSimple
 {
-    /// <summary>
-    /// Provides a DNSimple domain resource.
-    /// 
-    /// ## Example Usage
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DNSimple = Pulumi.DNSimple;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Create a domain
-    ///     var foobar = new DNSimple.Domain("foobar", new()
-    ///     {
-    ///         Name = @var.Dnsimple.Domain,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// ## Import
-    /// 
-    /// DNSimple domains can be imported using their numeric record ID.
-    /// 
-    /// ```sh
-    ///  $ pulumi import dnsimple:index/domain:Domain resource_name 5678
-    /// ```
-    /// 
-    ///  The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
-    /// 
-    ///  "data"[
-    /// 
-    ///  {
-    /// 
-    ///  "id"5678,
-    /// 
-    ///  "account_id"1234,
-    /// 
-    ///  "registrant_id"null,
-    /// 
-    ///  "name""example.com",
-    /// 
-    ///  "unicode_name""example.com",
-    /// 
-    ///  "state""hosted",
-    /// 
-    ///  "auto_renew"false,
-    /// 
-    ///  "private_whois"false,
-    /// 
-    ///  "expires_on"null,
-    /// 
-    ///  "expires_at"null,
-    /// 
-    ///  "created_at""2021-10-01T00:00:00Z",
-    /// 
-    ///  "updated_at""2021-10-01T00:00:00Z"
-    /// 
-    ///  }
-    /// 
-    ///  ],
-    /// 
-    ///  "pagination"{
-    /// 
-    ///  "current_page"1,
-    /// 
-    ///  "per_page"30,
-    /// 
-    ///  "total_entries"1,
-    /// 
-    ///  "total_pages"1
-    /// 
-    ///  } }
-    /// </summary>
     [DNSimpleResourceType("dnsimple:index/domain:Domain")]
     public partial class Domain : global::Pulumi.CustomResource
     {
@@ -94,9 +18,6 @@ namespace Pulumi.DNSimple
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
-        /// <summary>
-        /// The domain name to be created
-        /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
@@ -158,9 +79,6 @@ namespace Pulumi.DNSimple
 
     public sealed class DomainArgs : global::Pulumi.ResourceArgs
     {
-        /// <summary>
-        /// The domain name to be created
-        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -178,9 +96,6 @@ namespace Pulumi.DNSimple
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
-        /// <summary>
-        /// The domain name to be created
-        /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 

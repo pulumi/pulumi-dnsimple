@@ -28,28 +28,28 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * 
      */
     @Export(name="account", refs={String.class}, tree="[0]")
-    private Output<String> account;
+    private Output</* @Nullable */ String> account;
 
     /**
      * @return The account for API operations.
      * 
      */
-    public Output<String> account() {
-        return this.account;
+    public Output<Optional<String>> account() {
+        return Codegen.optional(this.account);
     }
     /**
      * The API v2 token for API operations.
      * 
      */
     @Export(name="token", refs={String.class}, tree="[0]")
-    private Output<String> token;
+    private Output</* @Nullable */ String> token;
 
     /**
      * @return The API v2 token for API operations.
      * 
      */
-    public Output<String> token() {
-        return this.token;
+    public Output<Optional<String>> token() {
+        return Codegen.optional(this.token);
     }
     /**
      * Custom string to append to the user agent used for sending HTTP requests to the API.
@@ -78,7 +78,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Provider(String name, ProviderArgs args) {
+    public Provider(String name, @Nullable ProviderArgs args) {
         this(name, args, null);
     }
     /**
@@ -87,7 +87,7 @@ public class Provider extends com.pulumi.resources.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Provider(String name, ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Provider(String name, @Nullable ProviderArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("dnsimple", name, args == null ? ProviderArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

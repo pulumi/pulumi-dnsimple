@@ -5,79 +5,40 @@ package com.pulumi.dnsimple.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 
 @CustomType
 public final class GetCertificateResult {
-    /**
-     * @return A list of certificates that make up the chain
-     * 
-     */
     private List<String> certificateChains;
-    private String certificateId;
+    private Integer certificateId;
     private String domain;
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     private String id;
-    /**
-     * @return The corresponding Private Key for the SSL Certificate
-     * 
-     */
     private String privateKey;
-    /**
-     * @return The Root Certificate of the issuing CA
-     * 
-     */
     private String rootCertificate;
-    /**
-     * @return The SSL Certificate
-     * 
-     */
     private String serverCertificate;
 
     private GetCertificateResult() {}
-    /**
-     * @return A list of certificates that make up the chain
-     * 
-     */
     public List<String> certificateChains() {
         return this.certificateChains;
     }
-    public String certificateId() {
+    public Integer certificateId() {
         return this.certificateId;
     }
     public String domain() {
         return this.domain;
     }
-    /**
-     * @return The provider-assigned unique ID for this managed resource.
-     * 
-     */
     public String id() {
         return this.id;
     }
-    /**
-     * @return The corresponding Private Key for the SSL Certificate
-     * 
-     */
     public String privateKey() {
         return this.privateKey;
     }
-    /**
-     * @return The Root Certificate of the issuing CA
-     * 
-     */
     public String rootCertificate() {
         return this.rootCertificate;
     }
-    /**
-     * @return The SSL Certificate
-     * 
-     */
     public String serverCertificate() {
         return this.serverCertificate;
     }
@@ -92,7 +53,7 @@ public final class GetCertificateResult {
     @CustomType.Builder
     public static final class Builder {
         private List<String> certificateChains;
-        private String certificateId;
+        private Integer certificateId;
         private String domain;
         private String id;
         private String privateKey;
@@ -122,7 +83,7 @@ public final class GetCertificateResult {
             return certificateChains(List.of(certificateChains));
         }
         @CustomType.Setter
-        public Builder certificateId(String certificateId) {
+        public Builder certificateId(Integer certificateId) {
             if (certificateId == null) {
               throw new MissingRequiredPropertyException("GetCertificateResult", "certificateId");
             }

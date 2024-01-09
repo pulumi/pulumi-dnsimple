@@ -17,16 +17,12 @@ class DomainArgs:
                  name: pulumi.Input[str]):
         """
         The set of arguments for constructing a Domain resource.
-        :param pulumi.Input[str] name: The domain name to be created
         """
         pulumi.set(__self__, "name", name)
 
     @property
     @pulumi.getter
     def name(self) -> pulumi.Input[str]:
-        """
-        The domain name to be created
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -46,7 +42,6 @@ class _DomainState:
                  unicode_name: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
-        :param pulumi.Input[str] name: The domain name to be created
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -84,9 +79,6 @@ class _DomainState:
     @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
-        """
-        The domain name to be created
-        """
         return pulumi.get(self, "name")
 
     @name.setter
@@ -138,75 +130,9 @@ class Domain(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Provides a DNSimple domain resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Create a domain
-        foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
-        ```
-
-        ## Import
-
-        DNSimple domains can be imported using their numeric record ID.
-
-        ```sh
-         $ pulumi import dnsimple:index/domain:Domain resource_name 5678
-        ```
-
-         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
-
-         "data"[
-
-         {
-
-         "id"5678,
-
-         "account_id"1234,
-
-         "registrant_id"null,
-
-         "name""example.com",
-
-         "unicode_name""example.com",
-
-         "state""hosted",
-
-         "auto_renew"false,
-
-         "private_whois"false,
-
-         "expires_on"null,
-
-         "expires_at"null,
-
-         "created_at""2021-10-01T00:00:00Z",
-
-         "updated_at""2021-10-01T00:00:00Z"
-
-         }
-
-         ],
-
-         "pagination"{
-
-         "current_page"1,
-
-         "per_page"30,
-
-         "total_entries"1,
-
-         "total_pages"1
-
-         } }
-
+        Create a Domain resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The domain name to be created
         """
         ...
     @overload
@@ -215,72 +141,7 @@ class Domain(pulumi.CustomResource):
                  args: DomainArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Provides a DNSimple domain resource.
-
-        ## Example Usage
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Create a domain
-        foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
-        ```
-
-        ## Import
-
-        DNSimple domains can be imported using their numeric record ID.
-
-        ```sh
-         $ pulumi import dnsimple:index/domain:Domain resource_name 5678
-        ```
-
-         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options. $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq {
-
-         "data"[
-
-         {
-
-         "id"5678,
-
-         "account_id"1234,
-
-         "registrant_id"null,
-
-         "name""example.com",
-
-         "unicode_name""example.com",
-
-         "state""hosted",
-
-         "auto_renew"false,
-
-         "private_whois"false,
-
-         "expires_on"null,
-
-         "expires_at"null,
-
-         "created_at""2021-10-01T00:00:00Z",
-
-         "updated_at""2021-10-01T00:00:00Z"
-
-         }
-
-         ],
-
-         "pagination"{
-
-         "current_page"1,
-
-         "per_page"30,
-
-         "total_entries"1,
-
-         "total_pages"1
-
-         } }
-
+        Create a Domain resource with the given unique name, props, and options.
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -339,7 +200,6 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] name: The domain name to be created
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -367,9 +227,6 @@ class Domain(pulumi.CustomResource):
     @property
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
-        """
-        The domain name to be created
-        """
         return pulumi.get(self, "name")
 
     @property

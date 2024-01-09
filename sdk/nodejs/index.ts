@@ -5,10 +5,25 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 // Export members:
+export { ContactArgs, ContactState } from "./contact";
+export type Contact = import("./contact").Contact;
+export const Contact: typeof import("./contact").Contact = null as any;
+utilities.lazyLoad(exports, ["Contact"], () => require("./contact"));
+
 export { DomainArgs, DomainState } from "./domain";
 export type Domain = import("./domain").Domain;
 export const Domain: typeof import("./domain").Domain = null as any;
 utilities.lazyLoad(exports, ["Domain"], () => require("./domain"));
+
+export { DomainDelegationArgs, DomainDelegationState } from "./domainDelegation";
+export type DomainDelegation = import("./domainDelegation").DomainDelegation;
+export const DomainDelegation: typeof import("./domainDelegation").DomainDelegation = null as any;
+utilities.lazyLoad(exports, ["DomainDelegation"], () => require("./domainDelegation"));
+
+export { DsRecordArgs, DsRecordState } from "./dsRecord";
+export type DsRecord = import("./dsRecord").DsRecord;
+export const DsRecord: typeof import("./dsRecord").DsRecord = null as any;
+utilities.lazyLoad(exports, ["DsRecord"], () => require("./dsRecord"));
 
 export { EmailForwardArgs, EmailForwardState } from "./emailForward";
 export type EmailForward = import("./emailForward").EmailForward;
@@ -19,6 +34,11 @@ export { GetCertificateArgs, GetCertificateResult, GetCertificateOutputArgs } fr
 export const getCertificate: typeof import("./getCertificate").getCertificate = null as any;
 export const getCertificateOutput: typeof import("./getCertificate").getCertificateOutput = null as any;
 utilities.lazyLoad(exports, ["getCertificate","getCertificateOutput"], () => require("./getCertificate"));
+
+export { GetRegistrantChangeCheckArgs, GetRegistrantChangeCheckResult, GetRegistrantChangeCheckOutputArgs } from "./getRegistrantChangeCheck";
+export const getRegistrantChangeCheck: typeof import("./getRegistrantChangeCheck").getRegistrantChangeCheck = null as any;
+export const getRegistrantChangeCheckOutput: typeof import("./getRegistrantChangeCheck").getRegistrantChangeCheckOutput = null as any;
+utilities.lazyLoad(exports, ["getRegistrantChangeCheck","getRegistrantChangeCheckOutput"], () => require("./getRegistrantChangeCheck"));
 
 export { GetZoneArgs, GetZoneResult, GetZoneOutputArgs } from "./getZone";
 export const getZone: typeof import("./getZone").getZone = null as any;
@@ -35,37 +55,47 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { RecordArgs, RecordState } from "./record";
-export type Record = import("./record").Record;
-export const Record: typeof import("./record").Record = null as any;
-utilities.lazyLoad(exports, ["Record"], () => require("./record"));
+export { RegisteredDomainArgs, RegisteredDomainState } from "./registeredDomain";
+export type RegisteredDomain = import("./registeredDomain").RegisteredDomain;
+export const RegisteredDomain: typeof import("./registeredDomain").RegisteredDomain = null as any;
+utilities.lazyLoad(exports, ["RegisteredDomain"], () => require("./registeredDomain"));
 
-export * from "./recordType";
 export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
 export type ZoneRecord = import("./zoneRecord").ZoneRecord;
 export const ZoneRecord: typeof import("./zoneRecord").ZoneRecord = null as any;
 utilities.lazyLoad(exports, ["ZoneRecord"], () => require("./zoneRecord"));
 
 
+// Export enums:
+export * from "./types/enums";
+
 // Export sub-modules:
 import * as config from "./config";
+import * as types from "./types";
 
 export {
     config,
+    types,
 };
 
 const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "dnsimple:index/contact:Contact":
+                return new Contact(name, <any>undefined, { urn })
             case "dnsimple:index/domain:Domain":
                 return new Domain(name, <any>undefined, { urn })
+            case "dnsimple:index/domainDelegation:DomainDelegation":
+                return new DomainDelegation(name, <any>undefined, { urn })
+            case "dnsimple:index/dsRecord:DsRecord":
+                return new DsRecord(name, <any>undefined, { urn })
             case "dnsimple:index/emailForward:EmailForward":
                 return new EmailForward(name, <any>undefined, { urn })
             case "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate":
                 return new LetsEncryptCertificate(name, <any>undefined, { urn })
-            case "dnsimple:index/record:Record":
-                return new Record(name, <any>undefined, { urn })
+            case "dnsimple:index/registeredDomain:RegisteredDomain":
+                return new RegisteredDomain(name, <any>undefined, { urn })
             case "dnsimple:index/zoneRecord:ZoneRecord":
                 return new ZoneRecord(name, <any>undefined, { urn })
             default:
@@ -73,10 +103,13 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("dnsimple", "index/contact", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/domain", _module)
+pulumi.runtime.registerResourceModule("dnsimple", "index/domainDelegation", _module)
+pulumi.runtime.registerResourceModule("dnsimple", "index/dsRecord", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/emailForward", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/letsEncryptCertificate", _module)
-pulumi.runtime.registerResourceModule("dnsimple", "index/record", _module)
+pulumi.runtime.registerResourceModule("dnsimple", "index/registeredDomain", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/zoneRecord", _module)
 pulumi.runtime.registerResourcePackage("dnsimple", {
     version: utilities.getVersion(),

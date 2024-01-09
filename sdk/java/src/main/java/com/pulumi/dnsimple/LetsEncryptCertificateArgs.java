@@ -7,8 +7,8 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -18,81 +18,49 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
 
     public static final LetsEncryptCertificateArgs Empty = new LetsEncryptCertificateArgs();
 
-    /**
-     * Set to true if the certificate will auto-renew
-     * 
-     */
+    @Import(name="alternateNames")
+    private @Nullable Output<List<String>> alternateNames;
+
+    public Optional<Output<List<String>>> alternateNames() {
+        return Optional.ofNullable(this.alternateNames);
+    }
+
     @Import(name="autoRenew", required=true)
     private Output<Boolean> autoRenew;
 
-    /**
-     * @return Set to true if the certificate will auto-renew
-     * 
-     */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
 
-    /**
-     * The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     * 
-     */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    @Import(name="contactId")
-    private @Nullable Output<Integer> contactId;
+    @Import(name="domainId", required=true)
+    private Output<String> domainId;
 
-    /**
-     * @return The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     * 
-     */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    public Optional<Output<Integer>> contactId() {
-        return Optional.ofNullable(this.contactId);
+    public Output<String> domainId() {
+        return this.domainId;
     }
 
-    /**
-     * The domain to be issued the certificate for
-     * 
-     */
-    @Import(name="domainId")
-    private @Nullable Output<String> domainId;
-
-    /**
-     * @return The domain to be issued the certificate for
-     * 
-     */
-    public Optional<Output<String>> domainId() {
-        return Optional.ofNullable(this.domainId);
-    }
-
-    /**
-     * The certificate name
-     * 
-     */
     @Import(name="name", required=true)
     private Output<String> name;
 
-    /**
-     * @return The certificate name
-     * 
-     */
     public Output<String> name() {
         return this.name;
+    }
+
+    @Import(name="signatureAlgorithm")
+    private @Nullable Output<String> signatureAlgorithm;
+
+    public Optional<Output<String>> signatureAlgorithm() {
+        return Optional.ofNullable(this.signatureAlgorithm);
     }
 
     private LetsEncryptCertificateArgs() {}
 
     private LetsEncryptCertificateArgs(LetsEncryptCertificateArgs $) {
+        this.alternateNames = $.alternateNames;
         this.autoRenew = $.autoRenew;
-        this.contactId = $.contactId;
         this.domainId = $.domainId;
         this.name = $.name;
+        this.signatureAlgorithm = $.signatureAlgorithm;
     }
 
     public static Builder builder() {
@@ -113,101 +81,61 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
             $ = new LetsEncryptCertificateArgs(Objects.requireNonNull(defaults));
         }
 
-        /**
-         * @param autoRenew Set to true if the certificate will auto-renew
-         * 
-         * @return builder
-         * 
-         */
+        public Builder alternateNames(@Nullable Output<List<String>> alternateNames) {
+            $.alternateNames = alternateNames;
+            return this;
+        }
+
+        public Builder alternateNames(List<String> alternateNames) {
+            return alternateNames(Output.of(alternateNames));
+        }
+
+        public Builder alternateNames(String... alternateNames) {
+            return alternateNames(List.of(alternateNames));
+        }
+
         public Builder autoRenew(Output<Boolean> autoRenew) {
             $.autoRenew = autoRenew;
             return this;
         }
 
-        /**
-         * @param autoRenew Set to true if the certificate will auto-renew
-         * 
-         * @return builder
-         * 
-         */
         public Builder autoRenew(Boolean autoRenew) {
             return autoRenew(Output.of(autoRenew));
         }
 
-        /**
-         * @param contactId The contact id for the certificate
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-         * 
-         */
-        @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-        public Builder contactId(@Nullable Output<Integer> contactId) {
-            $.contactId = contactId;
-            return this;
-        }
-
-        /**
-         * @param contactId The contact id for the certificate
-         * 
-         * @return builder
-         * 
-         * @deprecated
-         * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-         * 
-         */
-        @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-        public Builder contactId(Integer contactId) {
-            return contactId(Output.of(contactId));
-        }
-
-        /**
-         * @param domainId The domain to be issued the certificate for
-         * 
-         * @return builder
-         * 
-         */
-        public Builder domainId(@Nullable Output<String> domainId) {
+        public Builder domainId(Output<String> domainId) {
             $.domainId = domainId;
             return this;
         }
 
-        /**
-         * @param domainId The domain to be issued the certificate for
-         * 
-         * @return builder
-         * 
-         */
         public Builder domainId(String domainId) {
             return domainId(Output.of(domainId));
         }
 
-        /**
-         * @param name The certificate name
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(Output<String> name) {
             $.name = name;
             return this;
         }
 
-        /**
-         * @param name The certificate name
-         * 
-         * @return builder
-         * 
-         */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        public Builder signatureAlgorithm(@Nullable Output<String> signatureAlgorithm) {
+            $.signatureAlgorithm = signatureAlgorithm;
+            return this;
+        }
+
+        public Builder signatureAlgorithm(String signatureAlgorithm) {
+            return signatureAlgorithm(Output.of(signatureAlgorithm));
         }
 
         public LetsEncryptCertificateArgs build() {
             if ($.autoRenew == null) {
                 throw new MissingRequiredPropertyException("LetsEncryptCertificateArgs", "autoRenew");
+            }
+            if ($.domainId == null) {
+                throw new MissingRequiredPropertyException("LetsEncryptCertificateArgs", "domainId");
             }
             if ($.name == null) {
                 throw new MissingRequiredPropertyException("LetsEncryptCertificateArgs", "name");

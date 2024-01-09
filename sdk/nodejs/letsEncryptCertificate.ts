@@ -4,22 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Provides a DNSimple Let's Encrypt certificate resource.
- *
- * ## Example Usage
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * const foobar = new dnsimple.LetsEncryptCertificate("foobar", {
- *     domainId: _var.dnsimple.domain_id,
- *     autoRenew: false,
- *     name: "www",
- * });
- * ```
- */
 export class LetsEncryptCertificate extends pulumi.CustomResource {
     /**
      * Get an existing LetsEncryptCertificate resource's state with the given name, ID, and optional extra
@@ -48,42 +32,17 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
         return obj['__pulumiType'] === LetsEncryptCertificate.__pulumiType;
     }
 
-    /**
-     * The identifying certification authority (CA)
-     */
+    public readonly alternateNames!: pulumi.Output<string[] | undefined>;
     public /*out*/ readonly authorityIdentifier!: pulumi.Output<string>;
-    /**
-     * Set to true if the certificate will auto-renew
-     */
     public readonly autoRenew!: pulumi.Output<boolean>;
-    /**
-     * The contact id for the certificate
-     *
-     * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     */
-    public readonly contactId!: pulumi.Output<number | undefined>;
     public /*out*/ readonly createdAt!: pulumi.Output<string>;
-    /**
-     * The certificate signing request
-     */
     public /*out*/ readonly csr!: pulumi.Output<string>;
-    /**
-     * The domain to be issued the certificate for
-     */
-    public readonly domainId!: pulumi.Output<string | undefined>;
-    public /*out*/ readonly expiresOn!: pulumi.Output<string>;
-    /**
-     * The certificate name
-     */
+    public readonly domainId!: pulumi.Output<string>;
+    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
     public readonly name!: pulumi.Output<string>;
-    /**
-     * The state of the certificate
-     */
+    public readonly signatureAlgorithm!: pulumi.Output<string | undefined>;
     public /*out*/ readonly state!: pulumi.Output<string>;
     public /*out*/ readonly updatedAt!: pulumi.Output<string>;
-    /**
-     * The years the certificate will last
-     */
     public /*out*/ readonly years!: pulumi.Output<number>;
 
     /**
@@ -99,14 +58,15 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LetsEncryptCertificateState | undefined;
+            resourceInputs["alternateNames"] = state ? state.alternateNames : undefined;
             resourceInputs["authorityIdentifier"] = state ? state.authorityIdentifier : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["contactId"] = state ? state.contactId : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
             resourceInputs["csr"] = state ? state.csr : undefined;
             resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["expiresOn"] = state ? state.expiresOn : undefined;
+            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["signatureAlgorithm"] = state ? state.signatureAlgorithm : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
             resourceInputs["years"] = state ? state.years : undefined;
@@ -115,17 +75,21 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
             if ((!args || args.autoRenew === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'autoRenew'");
             }
+            if ((!args || args.domainId === undefined) && !opts.urn) {
+                throw new Error("Missing required property 'domainId'");
+            }
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            resourceInputs["alternateNames"] = args ? args.alternateNames : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["contactId"] = args ? args.contactId : undefined;
             resourceInputs["domainId"] = args ? args.domainId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["signatureAlgorithm"] = args ? args.signatureAlgorithm : undefined;
             resourceInputs["authorityIdentifier"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["csr"] = undefined /*out*/;
-            resourceInputs["expiresOn"] = undefined /*out*/;
+            resourceInputs["expiresAt"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
             resourceInputs["years"] = undefined /*out*/;
@@ -139,42 +103,17 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LetsEncryptCertificate resources.
  */
 export interface LetsEncryptCertificateState {
-    /**
-     * The identifying certification authority (CA)
-     */
+    alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
     authorityIdentifier?: pulumi.Input<string>;
-    /**
-     * Set to true if the certificate will auto-renew
-     */
     autoRenew?: pulumi.Input<boolean>;
-    /**
-     * The contact id for the certificate
-     *
-     * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     */
-    contactId?: pulumi.Input<number>;
     createdAt?: pulumi.Input<string>;
-    /**
-     * The certificate signing request
-     */
     csr?: pulumi.Input<string>;
-    /**
-     * The domain to be issued the certificate for
-     */
     domainId?: pulumi.Input<string>;
-    expiresOn?: pulumi.Input<string>;
-    /**
-     * The certificate name
-     */
+    expiresAt?: pulumi.Input<string>;
     name?: pulumi.Input<string>;
-    /**
-     * The state of the certificate
-     */
+    signatureAlgorithm?: pulumi.Input<string>;
     state?: pulumi.Input<string>;
     updatedAt?: pulumi.Input<string>;
-    /**
-     * The years the certificate will last
-     */
     years?: pulumi.Input<number>;
 }
 
@@ -182,22 +121,9 @@ export interface LetsEncryptCertificateState {
  * The set of arguments for constructing a LetsEncryptCertificate resource.
  */
 export interface LetsEncryptCertificateArgs {
-    /**
-     * Set to true if the certificate will auto-renew
-     */
+    alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
     autoRenew: pulumi.Input<boolean>;
-    /**
-     * The contact id for the certificate
-     *
-     * @deprecated contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     */
-    contactId?: pulumi.Input<number>;
-    /**
-     * The domain to be issued the certificate for
-     */
-    domainId?: pulumi.Input<string>;
-    /**
-     * The certificate name
-     */
+    domainId: pulumi.Input<string>;
     name: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string>;
 }

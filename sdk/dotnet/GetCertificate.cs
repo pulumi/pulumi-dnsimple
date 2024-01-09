@@ -11,61 +11,9 @@ namespace Pulumi.DNSimple
 {
     public static class GetCertificate
     {
-        /// <summary>
-        /// Provides a DNSimple certificate data source.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DNSimple = Pulumi.DNSimple;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foobar = DNSimple.GetCertificate.Invoke(new()
-        ///     {
-        ///         CertificateId = @var.Dnsimple_certificate_id,
-        ///         Domain = @var.Dnsimple_domain,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Task<GetCertificateResult> InvokeAsync(GetCertificateArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("dnsimple:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
 
-        /// <summary>
-        /// Provides a DNSimple certificate data source.
-        /// 
-        /// {{% examples %}}
-        /// ## Example Usage
-        /// {{% example %}}
-        /// 
-        /// ```csharp
-        /// using System.Collections.Generic;
-        /// using System.Linq;
-        /// using Pulumi;
-        /// using DNSimple = Pulumi.DNSimple;
-        /// 
-        /// return await Deployment.RunAsync(() =&gt; 
-        /// {
-        ///     var foobar = DNSimple.GetCertificate.Invoke(new()
-        ///     {
-        ///         CertificateId = @var.Dnsimple_certificate_id,
-        ///         Domain = @var.Dnsimple_domain,
-        ///     });
-        /// 
-        /// });
-        /// ```
-        /// {{% /example %}}
-        /// {{% /examples %}}
-        /// </summary>
         public static Output<GetCertificateResult> Invoke(GetCertificateInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("dnsimple:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
     }
@@ -73,15 +21,9 @@ namespace Pulumi.DNSimple
 
     public sealed class GetCertificateArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the SSL Certificate
-        /// </summary>
         [Input("certificateId", required: true)]
-        public string CertificateId { get; set; } = null!;
+        public int CertificateId { get; set; }
 
-        /// <summary>
-        /// The domain of the SSL Certificate
-        /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
@@ -93,15 +35,9 @@ namespace Pulumi.DNSimple
 
     public sealed class GetCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
-        /// <summary>
-        /// The ID of the SSL Certificate
-        /// </summary>
         [Input("certificateId", required: true)]
-        public Input<string> CertificateId { get; set; } = null!;
+        public Input<int> CertificateId { get; set; } = null!;
 
-        /// <summary>
-        /// The domain of the SSL Certificate
-        /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
@@ -115,34 +51,19 @@ namespace Pulumi.DNSimple
     [OutputType]
     public sealed class GetCertificateResult
     {
-        /// <summary>
-        /// A list of certificates that make up the chain
-        /// </summary>
         public readonly ImmutableArray<string> CertificateChains;
-        public readonly string CertificateId;
+        public readonly int CertificateId;
         public readonly string Domain;
-        /// <summary>
-        /// The provider-assigned unique ID for this managed resource.
-        /// </summary>
         public readonly string Id;
-        /// <summary>
-        /// The corresponding Private Key for the SSL Certificate
-        /// </summary>
         public readonly string PrivateKey;
-        /// <summary>
-        /// The Root Certificate of the issuing CA
-        /// </summary>
         public readonly string RootCertificate;
-        /// <summary>
-        /// The SSL Certificate
-        /// </summary>
         public readonly string ServerCertificate;
 
         [OutputConstructor]
         private GetCertificateResult(
             ImmutableArray<string> certificateChains,
 
-            string certificateId,
+            int certificateId,
 
             string domain,
 

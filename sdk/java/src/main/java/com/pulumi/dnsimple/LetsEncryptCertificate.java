@@ -13,92 +13,29 @@ import com.pulumi.dnsimple.inputs.LetsEncryptCertificateState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
-/**
- * Provides a DNSimple Let&#39;s Encrypt certificate resource.
- * 
- * ## Example Usage
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.dnsimple.LetsEncryptCertificate;
- * import com.pulumi.dnsimple.LetsEncryptCertificateArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var foobar = new LetsEncryptCertificate(&#34;foobar&#34;, LetsEncryptCertificateArgs.builder()        
- *             .domainId(var_.dnsimple().domain_id())
- *             .autoRenew(false)
- *             .name(&#34;www&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * 
- */
 @ResourceType(type="dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")
 public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource {
-    /**
-     * The identifying certification authority (CA)
-     * 
-     */
+    @Export(name="alternateNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> alternateNames;
+
+    public Output<Optional<List<String>>> alternateNames() {
+        return Codegen.optional(this.alternateNames);
+    }
     @Export(name="authorityIdentifier", refs={String.class}, tree="[0]")
     private Output<String> authorityIdentifier;
 
-    /**
-     * @return The identifying certification authority (CA)
-     * 
-     */
     public Output<String> authorityIdentifier() {
         return this.authorityIdentifier;
     }
-    /**
-     * Set to true if the certificate will auto-renew
-     * 
-     */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
-    /**
-     * @return Set to true if the certificate will auto-renew
-     * 
-     */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
-    }
-    /**
-     * The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
-     * 
-     */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    @Export(name="contactId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> contactId;
-
-    /**
-     * @return The contact id for the certificate
-     * 
-     */
-    public Output<Optional<Integer>> contactId() {
-        return Codegen.optional(this.contactId);
     }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
@@ -106,65 +43,39 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
     public Output<String> createdAt() {
         return this.createdAt;
     }
-    /**
-     * The certificate signing request
-     * 
-     */
     @Export(name="csr", refs={String.class}, tree="[0]")
     private Output<String> csr;
 
-    /**
-     * @return The certificate signing request
-     * 
-     */
     public Output<String> csr() {
         return this.csr;
     }
-    /**
-     * The domain to be issued the certificate for
-     * 
-     */
     @Export(name="domainId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> domainId;
+    private Output<String> domainId;
 
-    /**
-     * @return The domain to be issued the certificate for
-     * 
-     */
-    public Output<Optional<String>> domainId() {
-        return Codegen.optional(this.domainId);
+    public Output<String> domainId() {
+        return this.domainId;
     }
-    @Export(name="expiresOn", refs={String.class}, tree="[0]")
-    private Output<String> expiresOn;
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    private Output<String> expiresAt;
 
-    public Output<String> expiresOn() {
-        return this.expiresOn;
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
-    /**
-     * The certificate name
-     * 
-     */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
-    /**
-     * @return The certificate name
-     * 
-     */
     public Output<String> name() {
         return this.name;
     }
-    /**
-     * The state of the certificate
-     * 
-     */
+    @Export(name="signatureAlgorithm", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signatureAlgorithm;
+
+    public Output<Optional<String>> signatureAlgorithm() {
+        return Codegen.optional(this.signatureAlgorithm);
+    }
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
-    /**
-     * @return The state of the certificate
-     * 
-     */
     public Output<String> state() {
         return this.state;
     }
@@ -174,17 +85,9 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
-    /**
-     * The years the certificate will last
-     * 
-     */
     @Export(name="years", refs={Integer.class}, tree="[0]")
     private Output<Integer> years;
 
-    /**
-     * @return The years the certificate will last
-     * 
-     */
     public Output<Integer> years() {
         return this.years;
     }
