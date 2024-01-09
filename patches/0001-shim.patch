@@ -1,0 +1,17 @@
+diff --git a/shim/shim.go b/shim/shim.go
+new file mode 100644
+index 0000000..f5734a2
+--- /dev/null
++++ b/shim/shim.go
+@@ -0,0 +1,11 @@
++package shim
++
++import (
++	"github.com/hashicorp/terraform-plugin-framework/provider"
++
++	framework "github.com/terraform-providers/terraform-provider-dnsimple/internal/framework/provider"
++)
++
++func New(version string) provider.Provider {
++	return framework.New(version)()
++}

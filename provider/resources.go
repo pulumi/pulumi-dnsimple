@@ -21,12 +21,14 @@ import (
 	"path"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
-	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
+
+	dnsimple "github.com/terraform-providers/terraform-provider-dnsimple/shim"
 )
 
 // all of the token components used below.
@@ -39,13 +41,10 @@ const (
 
 // Provider returns additional overlaid schema and metadata associated with the provider..
 func Provider() tfbridge.ProviderInfo {
-	dnsimpleProv := dnsimple.Provider()
-	p := shimv2.NewProvider(dnsimpleProv)
-
 	recordTypeName := string(tfbridge.MakeResource(mainPkg, mainMod, "RecordType"))
 
 	prov := tfbridge.ProviderInfo{
-		P:            p,
+		P:            pfbridge.ShimProvider(dnsimple.New(version.Version)),
 		Name:         "dnsimple",
 		Description:  "A Pulumi package for creating and managing dnsimple cloud resources.",
 		Keywords:     []string{"pulumi", "dnsimple"},
@@ -53,7 +52,7 @@ func Provider() tfbridge.ProviderInfo {
 		Homepage:     "https://pulumi.io",
 		Repository:   "https://github.com/pulumi/pulumi-dnsimple",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		GitHubOrg:    "terraform-providers",
+		GitHubOrg:    "dnsimple",
 		Resources: map[string]*tfbridge.ResourceInfo{
 			"dnsimple_record": {
 				Fields: map[string]*tfbridge.SchemaInfo{
