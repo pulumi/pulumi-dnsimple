@@ -46,6 +46,7 @@ func Provider() tfbridge.ProviderInfo {
 		Name:             "dnsimple",
 		Description:      "A Pulumi package for creating and managing dnsimple cloud resources.",
 		Keywords:         []string{"pulumi", "dnsimple"},
+		Version:          version.Version,
 		License:          "Apache-2.0",
 		Homepage:         "https://pulumi.io",
 		Repository:       "https://github.com/pulumi/pulumi-dnsimple",

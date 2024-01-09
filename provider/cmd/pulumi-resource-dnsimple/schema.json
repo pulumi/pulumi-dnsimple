@@ -23,7 +23,7 @@
             "compatibility": "tfbridge20"
         },
         "go": {
-            "importBasePath": "github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple",
+            "importBasePath": "github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple",
             "generateResourceContainerTypes": true,
             "generateExtraInputTypes": true
         },
