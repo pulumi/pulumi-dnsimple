@@ -33,6 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a record to the root domain
 //			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
 //				Name:     pulumi.String(""),
 //				Ttl:      pulumi.String("3600"),
@@ -61,6 +62,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add a record to a sub-domain
 //			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
 //				Name:     pulumi.String("terraform"),
 //				Ttl:      pulumi.String("3600"),

@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Create a domain
 //			_, err := dnsimple.NewDomain(ctx, "foobar", &dnsimple.DomainArgs{
 //				Name: pulumi.Any(_var.Dnsimple.Domain),
 //			})
