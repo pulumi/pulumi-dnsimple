@@ -28,6 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Add an email forwarding rule to the domain
 //			_, err := dnsimple.NewEmailForward(ctx, "foobar", &dnsimple.EmailForwardArgs{
 //				AliasName:        pulumi.String("sales"),
 //				DestinationEmail: pulumi.String("jane.doe@example.com"),
