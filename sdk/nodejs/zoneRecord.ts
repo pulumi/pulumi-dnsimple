@@ -14,6 +14,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -27,7 +28,9 @@ import * as utilities from "./utilities";
  *     zoneName: _var.dnsimple_domain,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -41,6 +44,7 @@ import * as utilities from "./utilities";
  *     zoneName: _var.dnsimple_domain,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -49,14 +53,14 @@ import * as utilities from "./utilities";
  * __Importing record example.com with record ID 1234__
  *
  * ```sh
- *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+ * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
- *  __Importing record www.example.com with record ID 1234__
+ * __Importing record www.example.com with record ID 1234__
  *
  * ```sh
- *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+ * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
- *  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+ * The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
  */
 export class ZoneRecord extends pulumi.CustomResource {
     /**

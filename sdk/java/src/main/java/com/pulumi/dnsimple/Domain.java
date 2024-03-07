@@ -19,6 +19,8 @@ import javax.annotation.Nullable;
  * Provides a DNSimple domain resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -47,6 +49,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -56,57 +59,57 @@ import javax.annotation.Nullable;
  * $ pulumi import dnsimple:index/domain:Domain resource_name 5678
  * ```
  * 
- *  The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+ * The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
- *  $ curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+ * $ curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
  * 
- *  {
+ * {
  * 
- *  &#34;data&#34;: [
+ *   &#34;data&#34;: [
  * 
- *  {
+ *     {
+ *     
+ *       &#34;id&#34;: 5678,
+ *     
+ *       &#34;account_id&#34;: 1234,
+ *     
+ *       &#34;registrant_id&#34;: null,
+ *     
+ *       &#34;name&#34;: &#34;example.com&#34;,
+ *     
+ *       &#34;unicode_name&#34;: &#34;example.com&#34;,
+ *     
+ *       &#34;state&#34;: &#34;hosted&#34;,
+ *     
+ *       &#34;auto_renew&#34;: false,
+ *     
+ *       &#34;private_whois&#34;: false,
+ *     
+ *       &#34;expires_on&#34;: null,
+ *     
+ *       &#34;expires_at&#34;: null,
+ *     
+ *       &#34;created_at&#34;: &#34;2021-10-01T00:00:00Z&#34;,
+ *     
+ *       &#34;updated_at&#34;: &#34;2021-10-01T00:00:00Z&#34;
+ *     
+ *     }
  * 
- *  &#34;id&#34;: 5678,
+ *   ],
  * 
- *  &#34;account_id&#34;: 1234,
+ *   &#34;pagination&#34;: {
  * 
- *  &#34;registrant_id&#34;: null,
+ *     &#34;current_page&#34;: 1,
+ *     
+ *     &#34;per_page&#34;: 30,
+ *     
+ *     &#34;total_entries&#34;: 1,
+ *     
+ *     &#34;total_pages&#34;: 1
  * 
- *  &#34;name&#34;: &#34;example.com&#34;,
+ *   }
  * 
- *  &#34;unicode_name&#34;: &#34;example.com&#34;,
- * 
- *  &#34;state&#34;: &#34;hosted&#34;,
- * 
- *  &#34;auto_renew&#34;: false,
- * 
- *  &#34;private_whois&#34;: false,
- * 
- *  &#34;expires_on&#34;: null,
- * 
- *  &#34;expires_at&#34;: null,
- * 
- *  &#34;created_at&#34;: &#34;2021-10-01T00:00:00Z&#34;,
- * 
- *  &#34;updated_at&#34;: &#34;2021-10-01T00:00:00Z&#34;
- * 
- *  }
- * 
- *  ],
- * 
- *  &#34;pagination&#34;: {
- * 
- *  &#34;current_page&#34;: 1,
- * 
- *  &#34;per_page&#34;: 30,
- * 
- *  &#34;total_entries&#34;: 1,
- * 
- *  &#34;total_pages&#34;: 1
- * 
- *  }
- * 
- *  }
+ * }
  * 
  */
 @ResourceType(type="dnsimple:index/domain:Domain")

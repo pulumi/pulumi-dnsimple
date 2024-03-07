@@ -150,6 +150,7 @@ class EmailForward(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -160,6 +161,7 @@ class EmailForward(pulumi.CustomResource):
             destination_email="jane.doe@example.com",
             domain=var["dnsimple_domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -178,6 +180,7 @@ class EmailForward(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -188,6 +191,7 @@ class EmailForward(pulumi.CustomResource):
             destination_email="jane.doe@example.com",
             domain=var["dnsimple_domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param EmailForwardArgs args: The arguments to use to populate this resource's properties.
