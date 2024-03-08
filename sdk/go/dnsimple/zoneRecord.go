@@ -21,6 +21,7 @@ import (
 //
 // ## Example Usage
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -49,7 +50,9 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -78,6 +81,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // ## Import
 //
@@ -86,20 +90,14 @@ import (
 // __Importing record example.com with record ID 1234__
 //
 // ```sh
-//
-//	$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-//
+// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
 // ```
-//
-//	__Importing record www.example.com with record ID 1234__
+// __Importing record www.example.com with record ID 1234__
 //
 // ```sh
-//
-//	$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-//
+// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
 // ```
-//
-//	The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+// The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 

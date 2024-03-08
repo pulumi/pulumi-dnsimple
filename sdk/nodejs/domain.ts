@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -16,6 +17,7 @@ import * as utilities from "./utilities";
  * // Create a domain
  * const foobar = new dnsimple.Domain("foobar", {name: _var.dnsimple.domain});
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
@@ -25,57 +27,57 @@ import * as utilities from "./utilities";
  * $ pulumi import dnsimple:index/domain:Domain resource_name 5678
  * ```
  *
- *  The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+ * The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  *
- *  $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+ * $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
  *
- *  {
+ * {
  *
- *  "data": [
+ *   "data": [
  *
- *  {
+ *     {
+ *     
+ *       "id": 5678,
+ *     
+ *       "account_id": 1234,
+ *     
+ *       "registrant_id": null,
+ *     
+ *       "name": "example.com",
+ *     
+ *       "unicode_name": "example.com",
+ *     
+ *       "state": "hosted",
+ *     
+ *       "auto_renew": false,
+ *     
+ *       "private_whois": false,
+ *     
+ *       "expires_on": null,
+ *     
+ *       "expires_at": null,
+ *     
+ *       "created_at": "2021-10-01T00:00:00Z",
+ *     
+ *       "updated_at": "2021-10-01T00:00:00Z"
+ *     
+ *     }
  *
- *  "id": 5678,
+ *   ],
  *
- *  "account_id": 1234,
+ *   "pagination": {
  *
- *  "registrant_id": null,
+ *     "current_page": 1,
+ *     
+ *     "per_page": 30,
+ *     
+ *     "total_entries": 1,
+ *     
+ *     "total_pages": 1
  *
- *  "name": "example.com",
+ *   }
  *
- *  "unicode_name": "example.com",
- *
- *  "state": "hosted",
- *
- *  "auto_renew": false,
- *
- *  "private_whois": false,
- *
- *  "expires_on": null,
- *
- *  "expires_at": null,
- *
- *  "created_at": "2021-10-01T00:00:00Z",
- *
- *  "updated_at": "2021-10-01T00:00:00Z"
- *
- *  }
- *
- *  ],
- *
- *  "pagination": {
- *
- *  "current_page": 1,
- *
- *  "per_page": 30,
- *
- *  "total_entries": 1,
- *
- *  "total_pages": 1
- *
- *  }
- *
- *  }
+ * }
  */
 export class Domain extends pulumi.CustomResource {
     /**

@@ -21,6 +21,8 @@ public final class DnsimpleFunctions {
      * Provides a DNSimple certificate data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -50,6 +52,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args) {
@@ -59,6 +62,8 @@ public final class DnsimpleFunctions {
      * Provides a DNSimple certificate data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -88,6 +93,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args) {
@@ -97,6 +103,8 @@ public final class DnsimpleFunctions {
      * Provides a DNSimple certificate data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -126,6 +134,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static Output<GetCertificateResult> getCertificate(GetCertificateArgs args, InvokeOptions options) {
@@ -135,6 +144,8 @@ public final class DnsimpleFunctions {
      * Provides a DNSimple certificate data source.
      * 
      * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -164,6 +175,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
     public static CompletableFuture<GetCertificateResult> getCertificatePlain(GetCertificatePlainArgs args, InvokeOptions options) {
@@ -173,6 +185,8 @@ public final class DnsimpleFunctions {
      * Get information about a DNSimple zone.
      * 
      * Get zone:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -201,6 +215,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -221,6 +236,8 @@ public final class DnsimpleFunctions {
      * Get information about a DNSimple zone.
      * 
      * Get zone:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -249,6 +266,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -269,6 +287,8 @@ public final class DnsimpleFunctions {
      * Get information about a DNSimple zone.
      * 
      * Get zone:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -297,6 +317,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 
@@ -317,6 +338,8 @@ public final class DnsimpleFunctions {
      * Get information about a DNSimple zone.
      * 
      * Get zone:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
      * ```java
      * package generated_program;
      * 
@@ -345,6 +368,7 @@ public final class DnsimpleFunctions {
      *     }
      * }
      * ```
+     * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
      * 

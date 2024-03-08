@@ -15,6 +15,7 @@ import (
 //
 // Get zone:
 //
+// <!--Start PulumiCodeChooser -->
 // ```go
 // package main
 //
@@ -38,6 +39,7 @@ import (
 //	}
 //
 // ```
+// <!--End PulumiCodeChooser -->
 //
 // The following arguments are supported:
 //
