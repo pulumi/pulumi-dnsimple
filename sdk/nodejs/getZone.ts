@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * Get zone:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -17,6 +18,7 @@ import * as utilities from "./utilities";
  *     name: "dnsimple.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * The following arguments are supported:
  *
@@ -58,6 +60,7 @@ export interface GetZoneResult {
  *
  * Get zone:
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -66,6 +69,7 @@ export interface GetZoneResult {
  *     name: "dnsimple.com",
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  *
  * The following arguments are supported:
  *

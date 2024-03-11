@@ -142,6 +142,7 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -149,6 +150,7 @@ class Domain(pulumi.CustomResource):
         # Create a domain
         foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -158,57 +160,57 @@ class Domain(pulumi.CustomResource):
         $ pulumi import dnsimple:index/domain:Domain resource_name 5678
         ```
 
-         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+        The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
-         $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+        $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
 
-         {
+        {
 
-         "data": [
+          "data": [
 
-         {
+            {
+            
+              "id": 5678,
+            
+              "account_id": 1234,
+            
+              "registrant_id": null,
+            
+              "name": "example.com",
+            
+              "unicode_name": "example.com",
+            
+              "state": "hosted",
+            
+              "auto_renew": false,
+            
+              "private_whois": false,
+            
+              "expires_on": null,
+            
+              "expires_at": null,
+            
+              "created_at": "2021-10-01T00:00:00Z",
+            
+              "updated_at": "2021-10-01T00:00:00Z"
+            
+            }
 
-         "id": 5678,
+          ],
 
-         "account_id": 1234,
+          "pagination": {
 
-         "registrant_id": null,
+            "current_page": 1,
+            
+            "per_page": 30,
+            
+            "total_entries": 1,
+            
+            "total_pages": 1
 
-         "name": "example.com",
+          }
 
-         "unicode_name": "example.com",
-
-         "state": "hosted",
-
-         "auto_renew": false,
-
-         "private_whois": false,
-
-         "expires_on": null,
-
-         "expires_at": null,
-
-         "created_at": "2021-10-01T00:00:00Z",
-
-         "updated_at": "2021-10-01T00:00:00Z"
-
-         }
-
-         ],
-
-         "pagination": {
-
-         "current_page": 1,
-
-         "per_page": 30,
-
-         "total_entries": 1,
-
-         "total_pages": 1
-
-         }
-
-         }
+        }
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -225,6 +227,7 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -232,6 +235,7 @@ class Domain(pulumi.CustomResource):
         # Create a domain
         foobar = dnsimple.Domain("foobar", name=var["dnsimple"]["domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -241,57 +245,57 @@ class Domain(pulumi.CustomResource):
         $ pulumi import dnsimple:index/domain:Domain resource_name 5678
         ```
 
-         The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+        The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
-         $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+        $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
 
-         {
+        {
 
-         "data": [
+          "data": [
 
-         {
+            {
+            
+              "id": 5678,
+            
+              "account_id": 1234,
+            
+              "registrant_id": null,
+            
+              "name": "example.com",
+            
+              "unicode_name": "example.com",
+            
+              "state": "hosted",
+            
+              "auto_renew": false,
+            
+              "private_whois": false,
+            
+              "expires_on": null,
+            
+              "expires_at": null,
+            
+              "created_at": "2021-10-01T00:00:00Z",
+            
+              "updated_at": "2021-10-01T00:00:00Z"
+            
+            }
 
-         "id": 5678,
+          ],
 
-         "account_id": 1234,
+          "pagination": {
 
-         "registrant_id": null,
+            "current_page": 1,
+            
+            "per_page": 30,
+            
+            "total_entries": 1,
+            
+            "total_pages": 1
 
-         "name": "example.com",
+          }
 
-         "unicode_name": "example.com",
-
-         "state": "hosted",
-
-         "auto_renew": false,
-
-         "private_whois": false,
-
-         "expires_on": null,
-
-         "expires_at": null,
-
-         "created_at": "2021-10-01T00:00:00Z",
-
-         "updated_at": "2021-10-01T00:00:00Z"
-
-         }
-
-         ],
-
-         "pagination": {
-
-         "current_page": 1,
-
-         "per_page": 30,
-
-         "total_entries": 1,
-
-         "total_pages": 1
-
-         }
-
-         }
+        }
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

@@ -20,6 +20,8 @@ import javax.annotation.Nullable;
  * Provides a DNSimple Let&#39;s Encrypt certificate resource.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -50,6 +52,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
 @ResourceType(type="dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")

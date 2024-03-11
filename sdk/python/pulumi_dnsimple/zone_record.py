@@ -269,6 +269,7 @@ class ZoneRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -281,7 +282,9 @@ class ZoneRecord(pulumi.CustomResource):
             value="192.168.0.11",
             zone_name=var["dnsimple_domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -294,6 +297,7 @@ class ZoneRecord(pulumi.CustomResource):
             value="192.168.0.11",
             zone_name=var["dnsimple_domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -302,14 +306,14 @@ class ZoneRecord(pulumi.CustomResource):
         __Importing record example.com with record ID 1234__
 
         ```sh
-         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
-         __Importing record www.example.com with record ID 1234__
+        __Importing record www.example.com with record ID 1234__
 
         ```sh
-         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
-         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+        The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -336,6 +340,7 @@ class ZoneRecord(pulumi.CustomResource):
 
         ## Example Usage
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -348,7 +353,9 @@ class ZoneRecord(pulumi.CustomResource):
             value="192.168.0.11",
             zone_name=var["dnsimple_domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
+        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -361,6 +368,7 @@ class ZoneRecord(pulumi.CustomResource):
             value="192.168.0.11",
             zone_name=var["dnsimple_domain"])
         ```
+        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -369,14 +377,14 @@ class ZoneRecord(pulumi.CustomResource):
         __Importing record example.com with record ID 1234__
 
         ```sh
-         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
-         __Importing record www.example.com with record ID 1234__
+        __Importing record www.example.com with record ID 1234__
 
         ```sh
-         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
-         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+        The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.

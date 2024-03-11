@@ -23,6 +23,8 @@ import javax.annotation.Nullable;
  * upcoming 1.0.0 release.
  * 
  * ## Example Usage
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -55,6 +57,9 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
  * ```java
  * package generated_program;
  * 
@@ -87,6 +92,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -95,14 +101,14 @@ import javax.annotation.Nullable;
  * __Importing record example.com with record ID 1234__
  * 
  * ```sh
- *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+ * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
- *  __Importing record www.example.com with record ID 1234__
+ * __Importing record www.example.com with record ID 1234__
  * 
  * ```sh
- *  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+ * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
- *  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+ * The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
  * 
  */
 @ResourceType(type="dnsimple:index/zoneRecord:ZoneRecord")
