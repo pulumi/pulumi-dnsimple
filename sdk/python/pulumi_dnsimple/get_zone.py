@@ -75,12 +75,14 @@ def get_zone(name: Optional[str] = None,
 
     Get zone:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_dnsimple as dnsimple
 
     foobar = dnsimple.get_zone(name="dnsimple.com")
     ```
+    <!--End PulumiCodeChooser -->
 
     The following arguments are supported:
 
@@ -113,12 +115,14 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
 
     Get zone:
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_dnsimple as dnsimple
 
     foobar = dnsimple.get_zone(name="dnsimple.com")
     ```
+    <!--End PulumiCodeChooser -->
 
     The following arguments are supported:
 

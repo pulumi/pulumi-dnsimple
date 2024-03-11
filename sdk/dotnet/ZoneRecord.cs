@@ -19,6 +19,7 @@ namespace Pulumi.DNSimple
     /// 
     /// ## Example Usage
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -39,7 +40,9 @@ namespace Pulumi.DNSimple
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
+    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -60,6 +63,7 @@ namespace Pulumi.DNSimple
     /// 
     /// });
     /// ```
+    /// &lt;!--End PulumiCodeChooser --&gt;
     /// 
     /// ## Import
     /// 
@@ -68,14 +72,14 @@ namespace Pulumi.DNSimple
     /// __Importing record example.com with record ID 1234__
     /// 
     /// ```sh
-    ///  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+    /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
     /// ```
-    ///  __Importing record www.example.com with record ID 1234__
+    /// __Importing record www.example.com with record ID 1234__
     /// 
     /// ```sh
-    ///  $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+    /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
     /// ```
-    ///  The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+    /// The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/zoneRecord:ZoneRecord")]
     public partial class ZoneRecord : global::Pulumi.CustomResource

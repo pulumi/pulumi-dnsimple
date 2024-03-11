@@ -16,6 +16,7 @@ namespace Pulumi.DNSimple
         /// 
         /// Get zone:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -31,6 +32,7 @@ namespace Pulumi.DNSimple
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The following arguments are supported:
         /// 
@@ -51,6 +53,7 @@ namespace Pulumi.DNSimple
         /// 
         /// Get zone:
         /// 
+        /// &lt;!--Start PulumiCodeChooser --&gt;
         /// ```csharp
         /// using System.Collections.Generic;
         /// using System.Linq;
@@ -66,6 +69,7 @@ namespace Pulumi.DNSimple
         /// 
         /// });
         /// ```
+        /// &lt;!--End PulumiCodeChooser --&gt;
         /// 
         /// The following arguments are supported:
         /// 

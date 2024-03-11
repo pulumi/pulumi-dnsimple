@@ -118,6 +118,7 @@ def get_certificate(certificate_id: Optional[str] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_dnsimple as dnsimple
@@ -125,6 +126,7 @@ def get_certificate(certificate_id: Optional[str] = None,
     foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
         domain=var["dnsimple_domain"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str certificate_id: The ID of the SSL Certificate
@@ -155,6 +157,7 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
 
     ## Example Usage
 
+    <!--Start PulumiCodeChooser -->
     ```python
     import pulumi
     import pulumi_dnsimple as dnsimple
@@ -162,6 +165,7 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
     foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
         domain=var["dnsimple_domain"])
     ```
+    <!--End PulumiCodeChooser -->
 
 
     :param str certificate_id: The ID of the SSL Certificate

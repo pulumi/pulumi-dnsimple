@@ -9,6 +9,7 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -20,6 +21,7 @@ import * as utilities from "./utilities";
  *     domain: _var.dnsimple_domain,
  * });
  * ```
+ * <!--End PulumiCodeChooser -->
  */
 export class EmailForward extends pulumi.CustomResource {
     /**
