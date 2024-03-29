@@ -46,6 +46,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a record to the root domain
  *         var foobar = new ZoneRecord(&#34;foobar&#34;, ZoneRecordArgs.builder()        
  *             .name(&#34;&#34;)
  *             .ttl(3600)
@@ -81,6 +82,7 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
+ *         // Add a record to a sub-domain
  *         var foobar = new ZoneRecord(&#34;foobar&#34;, ZoneRecordArgs.builder()        
  *             .name(&#34;terraform&#34;)
  *             .ttl(3600)
