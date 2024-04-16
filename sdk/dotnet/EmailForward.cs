@@ -26,9 +26,9 @@ namespace Pulumi.DNSimple
     ///     // Add an email forwarding rule to the domain
     ///     var foobar = new DNSimple.EmailForward("foobar", new()
     ///     {
+    ///         Domain = dnsimpleDomain,
     ///         AliasName = "sales",
     ///         DestinationEmail = "jane.doe@example.com",
-    ///         Domain = @var.Dnsimple_domain,
     ///     });
     /// 
     /// });

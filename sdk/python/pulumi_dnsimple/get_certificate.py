@@ -123,8 +123,8 @@ def get_certificate(certificate_id: Optional[str] = None,
     import pulumi
     import pulumi_dnsimple as dnsimple
 
-    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
-        domain=var["dnsimple_domain"])
+    foobar = dnsimple.get_certificate(domain=dnsimple_domain,
+        certificate_id=dnsimple_certificate_id)
     ```
     <!--End PulumiCodeChooser -->
 
@@ -162,8 +162,8 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[str]] = None,
     import pulumi
     import pulumi_dnsimple as dnsimple
 
-    foobar = dnsimple.get_certificate(certificate_id=var["dnsimple_certificate_id"],
-        domain=var["dnsimple_domain"])
+    foobar = dnsimple.get_certificate(domain=dnsimple_domain,
+        certificate_id=dnsimple_certificate_id)
     ```
     <!--End PulumiCodeChooser -->
 

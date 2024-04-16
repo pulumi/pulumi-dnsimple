@@ -26,7 +26,7 @@ namespace Pulumi.DNSimple
     ///     // Create a domain
     ///     var foobar = new DNSimple.Domain("foobar", new()
     ///     {
-    ///         Name = @var.Dnsimple.Domain,
+    ///         Name = dnsimple.Domain,
     ///     });
     /// 
     /// });

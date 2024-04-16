@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * const foobar = new dnsimple.LetsEncryptCertificate("foobar", {
- *     domainId: _var.dnsimple.domain_id,
+ *     domainId: dnsimple.domainId,
  *     autoRenew: false,
  *     name: "www",
  * });

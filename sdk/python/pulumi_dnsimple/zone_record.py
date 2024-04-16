@@ -276,11 +276,11 @@ class ZoneRecord(pulumi.CustomResource):
 
         # Add a record to the root domain
         foobar = dnsimple.ZoneRecord("foobar",
+            zone_name=dnsimple_domain,
             name="",
-            ttl="3600",
-            type="A",
             value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
+            type="A",
+            ttl="3600")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -291,11 +291,11 @@ class ZoneRecord(pulumi.CustomResource):
 
         # Add a record to a sub-domain
         foobar = dnsimple.ZoneRecord("foobar",
+            zone_name=dnsimple_domain,
             name="terraform",
-            ttl="3600",
-            type="A",
             value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
+            type="A",
+            ttl="3600")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -347,11 +347,11 @@ class ZoneRecord(pulumi.CustomResource):
 
         # Add a record to the root domain
         foobar = dnsimple.ZoneRecord("foobar",
+            zone_name=dnsimple_domain,
             name="",
-            ttl="3600",
-            type="A",
             value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
+            type="A",
+            ttl="3600")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -362,11 +362,11 @@ class ZoneRecord(pulumi.CustomResource):
 
         # Add a record to a sub-domain
         foobar = dnsimple.ZoneRecord("foobar",
+            zone_name=dnsimple_domain,
             name="terraform",
-            ttl="3600",
-            type="A",
             value="192.168.0.11",
-            zone_name=var["dnsimple_domain"])
+            type="A",
+            ttl="3600")
         ```
         <!--End PulumiCodeChooser -->
 

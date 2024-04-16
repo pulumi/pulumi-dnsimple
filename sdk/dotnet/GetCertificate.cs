@@ -27,8 +27,8 @@ namespace Pulumi.DNSimple
         /// {
         ///     var foobar = DNSimple.GetCertificate.Invoke(new()
         ///     {
-        ///         CertificateId = @var.Dnsimple_certificate_id,
-        ///         Domain = @var.Dnsimple_domain,
+        ///         Domain = dnsimpleDomain,
+        ///         CertificateId = dnsimpleCertificateId,
         ///     });
         /// 
         /// });
@@ -54,8 +54,8 @@ namespace Pulumi.DNSimple
         /// {
         ///     var foobar = DNSimple.GetCertificate.Invoke(new()
         ///     {
-        ///         CertificateId = @var.Dnsimple_certificate_id,
-        ///         Domain = @var.Dnsimple_domain,
+        ///         Domain = dnsimpleDomain,
+        ///         CertificateId = dnsimpleCertificateId,
         ///     });
         /// 
         /// });
