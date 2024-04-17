@@ -45,8 +45,8 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .certificateId(var_.dnsimple_certificate_id())
-     *             .domain(var_.dnsimple_domain())
+     *             .domain(dnsimpleDomain)
+     *             .certificateId(dnsimpleCertificateId)
      *             .build());
      * 
      *     }
@@ -86,8 +86,8 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .certificateId(var_.dnsimple_certificate_id())
-     *             .domain(var_.dnsimple_domain())
+     *             .domain(dnsimpleDomain)
+     *             .certificateId(dnsimpleCertificateId)
      *             .build());
      * 
      *     }
@@ -127,8 +127,8 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .certificateId(var_.dnsimple_certificate_id())
-     *             .domain(var_.dnsimple_domain())
+     *             .domain(dnsimpleDomain)
+     *             .certificateId(dnsimpleCertificateId)
      *             .build());
      * 
      *     }
@@ -168,8 +168,8 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .certificateId(var_.dnsimple_certificate_id())
-     *             .domain(var_.dnsimple_domain())
+     *             .domain(dnsimpleDomain)
+     *             .certificateId(dnsimpleCertificateId)
      *             .build());
      * 
      *     }

@@ -29,8 +29,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dnsimple.GetCertificate(ctx, &dnsimple.GetCertificateArgs{
-//				CertificateId: _var.Dnsimple_certificate_id,
-//				Domain:        _var.Dnsimple_domain,
+//				Domain:        dnsimpleDomain,
+//				CertificateId: dnsimpleCertificateId,
 //			}, nil)
 //			if err != nil {
 //				return err

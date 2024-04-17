@@ -25,7 +25,7 @@ namespace Pulumi.DNSimple
     /// {
     ///     var foobar = new DNSimple.LetsEncryptCertificate("foobar", new()
     ///     {
-    ///         DomainId = @var.Dnsimple.Domain_id,
+    ///         DomainId = dnsimple.DomainId,
     ///         AutoRenew = false,
     ///         Name = "www",
     ///     });

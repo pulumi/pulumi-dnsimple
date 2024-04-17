@@ -36,11 +36,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a record to the root domain
 //			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
+//				ZoneName: pulumi.Any(dnsimpleDomain),
 //				Name:     pulumi.String(""),
-//				Ttl:      pulumi.String("3600"),
-//				Type:     pulumi.String("A"),
 //				Value:    pulumi.String("192.168.0.11"),
-//				ZoneName: pulumi.Any(_var.Dnsimple_domain),
+//				Type:     pulumi.String("A"),
+//				Ttl:      pulumi.String("3600"),
 //			})
 //			if err != nil {
 //				return err
@@ -67,11 +67,11 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a record to a sub-domain
 //			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
+//				ZoneName: pulumi.Any(dnsimpleDomain),
 //				Name:     pulumi.String("terraform"),
-//				Ttl:      pulumi.String("3600"),
-//				Type:     pulumi.String("A"),
 //				Value:    pulumi.String("192.168.0.11"),
-//				ZoneName: pulumi.Any(_var.Dnsimple_domain),
+//				Type:     pulumi.String("A"),
+//				Ttl:      pulumi.String("3600"),
 //			})
 //			if err != nil {
 //				return err

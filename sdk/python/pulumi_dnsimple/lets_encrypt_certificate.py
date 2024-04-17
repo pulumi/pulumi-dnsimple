@@ -286,7 +286,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         import pulumi_dnsimple as dnsimple
 
         foobar = dnsimple.LetsEncryptCertificate("foobar",
-            domain_id=var["dnsimple"]["domain_id"],
+            domain_id=dnsimple["domainId"],
             auto_renew=False,
             name="www")
         ```
@@ -316,7 +316,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         import pulumi_dnsimple as dnsimple
 
         foobar = dnsimple.LetsEncryptCertificate("foobar",
-            domain_id=var["dnsimple"]["domain_id"],
+            domain_id=dnsimple["domainId"],
             auto_renew=False,
             name="www")
         ```

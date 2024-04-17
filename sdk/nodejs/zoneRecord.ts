@@ -21,11 +21,11 @@ import * as utilities from "./utilities";
  *
  * // Add a record to the root domain
  * const foobar = new dnsimple.ZoneRecord("foobar", {
+ *     zoneName: dnsimpleDomain,
  *     name: "",
- *     ttl: "3600",
- *     type: "A",
  *     value: "192.168.0.11",
- *     zoneName: _var.dnsimple_domain,
+ *     type: "A",
+ *     ttl: "3600",
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -37,11 +37,11 @@ import * as utilities from "./utilities";
  *
  * // Add a record to a sub-domain
  * const foobar = new dnsimple.ZoneRecord("foobar", {
+ *     zoneName: dnsimpleDomain,
  *     name: "terraform",
- *     ttl: "3600",
- *     type: "A",
  *     value: "192.168.0.11",
- *     zoneName: _var.dnsimple_domain,
+ *     type: "A",
+ *     ttl: "3600",
  * });
  * ```
  * <!--End PulumiCodeChooser -->

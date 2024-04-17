@@ -31,11 +31,11 @@ namespace Pulumi.DNSimple
     ///     // Add a record to the root domain
     ///     var foobar = new DNSimple.ZoneRecord("foobar", new()
     ///     {
+    ///         ZoneName = dnsimpleDomain,
     ///         Name = "",
-    ///         Ttl = "3600",
-    ///         Type = "A",
     ///         Value = "192.168.0.11",
-    ///         ZoneName = @var.Dnsimple_domain,
+    ///         Type = "A",
+    ///         Ttl = "3600",
     ///     });
     /// 
     /// });
@@ -54,11 +54,11 @@ namespace Pulumi.DNSimple
     ///     // Add a record to a sub-domain
     ///     var foobar = new DNSimple.ZoneRecord("foobar", new()
     ///     {
+    ///         ZoneName = dnsimpleDomain,
     ///         Name = "terraform",
-    ///         Ttl = "3600",
-    ///         Type = "A",
     ///         Value = "192.168.0.11",
-    ///         ZoneName = @var.Dnsimple_domain,
+    ///         Type = "A",
+    ///         Ttl = "3600",
     ///     });
     /// 
     /// });

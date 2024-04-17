@@ -157,9 +157,9 @@ class EmailForward(pulumi.CustomResource):
 
         # Add an email forwarding rule to the domain
         foobar = dnsimple.EmailForward("foobar",
+            domain=dnsimple_domain,
             alias_name="sales",
-            destination_email="jane.doe@example.com",
-            domain=var["dnsimple_domain"])
+            destination_email="jane.doe@example.com")
         ```
         <!--End PulumiCodeChooser -->
 
@@ -187,9 +187,9 @@ class EmailForward(pulumi.CustomResource):
 
         # Add an email forwarding rule to the domain
         foobar = dnsimple.EmailForward("foobar",
+            domain=dnsimple_domain,
             alias_name="sales",
-            destination_email="jane.doe@example.com",
-            domain=var["dnsimple_domain"])
+            destination_email="jane.doe@example.com")
         ```
         <!--End PulumiCodeChooser -->
 

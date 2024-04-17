@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var foobar = new LetsEncryptCertificate(&#34;foobar&#34;, LetsEncryptCertificateArgs.builder()        
- *             .domainId(var_.dnsimple().domain_id())
+ *             .domainId(dnsimple.domainId())
  *             .autoRenew(false)
  *             .name(&#34;www&#34;)
  *             .build());

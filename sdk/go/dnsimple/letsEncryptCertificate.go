@@ -30,7 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dnsimple.NewLetsEncryptCertificate(ctx, "foobar", &dnsimple.LetsEncryptCertificateArgs{
-//				DomainId:  pulumi.Any(_var.Dnsimple.Domain_id),
+//				DomainId:  pulumi.Any(dnsimple.DomainId),
 //				AutoRenew: pulumi.Bool(false),
 //				Name:      pulumi.String("www"),
 //			})

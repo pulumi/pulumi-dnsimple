@@ -15,8 +15,8 @@ import * as utilities from "./utilities";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * const foobar = dnsimple.getCertificate({
- *     certificateId: _var.dnsimple_certificate_id,
- *     domain: _var.dnsimple_domain,
+ *     domain: dnsimpleDomain,
+ *     certificateId: dnsimpleCertificateId,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
@@ -82,8 +82,8 @@ export interface GetCertificateResult {
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * const foobar = dnsimple.getCertificate({
- *     certificateId: _var.dnsimple_certificate_id,
- *     domain: _var.dnsimple_domain,
+ *     domain: dnsimpleDomain,
+ *     certificateId: dnsimpleCertificateId,
  * });
  * ```
  * <!--End PulumiCodeChooser -->

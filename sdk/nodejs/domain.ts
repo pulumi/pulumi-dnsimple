@@ -15,7 +15,7 @@ import * as utilities from "./utilities";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * // Create a domain
- * const foobar = new dnsimple.Domain("foobar", {name: _var.dnsimple.domain});
+ * const foobar = new dnsimple.Domain("foobar", {name: dnsimple.domain});
  * ```
  * <!--End PulumiCodeChooser -->
  *

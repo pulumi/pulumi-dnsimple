@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  *
  * // Add an email forwarding rule to the domain
  * const foobar = new dnsimple.EmailForward("foobar", {
+ *     domain: dnsimpleDomain,
  *     aliasName: "sales",
  *     destinationEmail: "jane.doe@example.com",
- *     domain: _var.dnsimple_domain,
  * });
  * ```
  * <!--End PulumiCodeChooser -->
