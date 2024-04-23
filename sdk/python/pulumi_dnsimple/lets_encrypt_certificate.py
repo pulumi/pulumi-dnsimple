@@ -280,7 +280,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -290,7 +289,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
             auto_renew=False,
             name="www")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -310,7 +308,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -320,7 +317,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
             auto_renew=False,
             name="www")
         ```
-        <!--End PulumiCodeChooser -->
 
         :param str resource_name: The name of the resource.
         :param LetsEncryptCertificateArgs args: The arguments to use to populate this resource's properties.

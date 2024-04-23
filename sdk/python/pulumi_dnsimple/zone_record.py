@@ -269,7 +269,6 @@ class ZoneRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -282,9 +281,7 @@ class ZoneRecord(pulumi.CustomResource):
             type="A",
             ttl="3600")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -297,7 +294,6 @@ class ZoneRecord(pulumi.CustomResource):
             type="A",
             ttl="3600")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -340,7 +336,6 @@ class ZoneRecord(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -353,9 +348,7 @@ class ZoneRecord(pulumi.CustomResource):
             type="A",
             ttl="3600")
         ```
-        <!--End PulumiCodeChooser -->
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -368,7 +361,6 @@ class ZoneRecord(pulumi.CustomResource):
             type="A",
             ttl="3600")
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
