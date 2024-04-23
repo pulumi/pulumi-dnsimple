@@ -142,7 +142,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -150,7 +149,6 @@ class Domain(pulumi.CustomResource):
         # Create a domain
         foobar = dnsimple.Domain("foobar", name=dnsimple["domain"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 
@@ -227,7 +225,6 @@ class Domain(pulumi.CustomResource):
 
         ## Example Usage
 
-        <!--Start PulumiCodeChooser -->
         ```python
         import pulumi
         import pulumi_dnsimple as dnsimple
@@ -235,7 +232,6 @@ class Domain(pulumi.CustomResource):
         # Create a domain
         foobar = dnsimple.Domain("foobar", name=dnsimple["domain"])
         ```
-        <!--End PulumiCodeChooser -->
 
         ## Import
 

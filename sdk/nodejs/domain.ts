@@ -9,7 +9,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -17,7 +16,6 @@ import * as utilities from "./utilities";
  * // Create a domain
  * const foobar = new dnsimple.Domain("foobar", {name: dnsimple.domain});
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *

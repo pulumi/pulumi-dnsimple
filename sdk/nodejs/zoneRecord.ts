@@ -14,7 +14,6 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -28,9 +27,7 @@ import * as utilities from "./utilities";
  *     ttl: "3600",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
- * <!--Start PulumiCodeChooser -->
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
@@ -44,7 +41,6 @@ import * as utilities from "./utilities";
  *     ttl: "3600",
  * });
  * ```
- * <!--End PulumiCodeChooser -->
  *
  * ## Import
  *
