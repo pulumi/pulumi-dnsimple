@@ -14,7 +14,6 @@ namespace Pulumi.DNSimple
     /// 
     /// ## Example Usage
     /// 
-    /// &lt;!--Start PulumiCodeChooser --&gt;
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -33,7 +32,6 @@ namespace Pulumi.DNSimple
     /// 
     /// });
     /// ```
-    /// &lt;!--End PulumiCodeChooser --&gt;
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/emailForward:EmailForward")]
     public partial class EmailForward : global::Pulumi.CustomResource
