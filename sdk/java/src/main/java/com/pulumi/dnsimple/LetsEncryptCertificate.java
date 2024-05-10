@@ -22,7 +22,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -43,15 +44,16 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new LetsEncryptCertificate(&#34;foobar&#34;, LetsEncryptCertificateArgs.builder()        
+ *         var foobar = new LetsEncryptCertificate("foobar", LetsEncryptCertificateArgs.builder()        
  *             .domainId(dnsimple.domainId())
  *             .autoRenew(false)
- *             .name(&#34;www&#34;)
+ *             .name("www")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */

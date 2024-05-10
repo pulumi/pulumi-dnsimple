@@ -23,7 +23,8 @@ public final class DnsimpleFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -51,7 +52,8 @@ public final class DnsimpleFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -64,7 +66,8 @@ public final class DnsimpleFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -92,7 +95,8 @@ public final class DnsimpleFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -105,7 +109,8 @@ public final class DnsimpleFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -133,7 +138,8 @@ public final class DnsimpleFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -146,7 +152,8 @@ public final class DnsimpleFunctions {
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -174,7 +181,8 @@ public final class DnsimpleFunctions {
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
@@ -187,7 +195,8 @@ public final class DnsimpleFunctions {
      * Get zone:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -209,12 +218,13 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;dnsimple.com&#34;)
+     *             .name("dnsimple.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -238,7 +248,8 @@ public final class DnsimpleFunctions {
      * Get zone:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -260,12 +271,13 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;dnsimple.com&#34;)
+     *             .name("dnsimple.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -289,7 +301,8 @@ public final class DnsimpleFunctions {
      * Get zone:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -311,12 +324,13 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;dnsimple.com&#34;)
+     *             .name("dnsimple.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
@@ -340,7 +354,8 @@ public final class DnsimpleFunctions {
      * Get zone:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
-     * ```java
+     * <pre>
+     * {@code
      * package generated_program;
      * 
      * import com.pulumi.Context;
@@ -362,12 +377,13 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()
-     *             .name(&#34;dnsimple.com&#34;)
+     *             .name("dnsimple.com")
      *             .build());
      * 
      *     }
      * }
-     * ```
+     * }
+     * </pre>
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * The following arguments are supported:
