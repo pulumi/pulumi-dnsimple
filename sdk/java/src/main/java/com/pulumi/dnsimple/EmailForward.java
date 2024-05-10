@@ -19,7 +19,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -41,15 +42,16 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add an email forwarding rule to the domain
- *         var foobar = new EmailForward(&#34;foobar&#34;, EmailForwardArgs.builder()        
+ *         var foobar = new EmailForward("foobar", EmailForwardArgs.builder()        
  *             .domain(dnsimpleDomain)
- *             .aliasName(&#34;sales&#34;)
- *             .destinationEmail(&#34;jane.doe@example.com&#34;)
+ *             .aliasName("sales")
+ *             .destinationEmail("jane.doe{@literal @}example.com")
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  */
@@ -70,14 +72,14 @@ public class EmailForward extends com.pulumi.resources.CustomResource {
         return this.aliasEmail;
     }
     /**
-     * The name part (the part before the @) of the source email address on the domain
+     * The name part (the part before the{@literal @}) of the source email address on the domain
      * 
      */
     @Export(name="aliasName", refs={String.class}, tree="[0]")
     private Output<String> aliasName;
 
     /**
-     * @return The name part (the part before the @) of the source email address on the domain
+     * @return The name part (the part before the{@literal @}) of the source email address on the domain
      * 
      */
     public Output<String> aliasName() {

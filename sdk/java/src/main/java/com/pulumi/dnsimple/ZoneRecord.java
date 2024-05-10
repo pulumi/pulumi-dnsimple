@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
  * ## Example Usage
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -47,21 +48,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a record to the root domain
- *         var foobar = new ZoneRecord(&#34;foobar&#34;, ZoneRecordArgs.builder()        
+ *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()        
  *             .zoneName(dnsimpleDomain)
- *             .name(&#34;&#34;)
- *             .value(&#34;192.168.0.11&#34;)
- *             .type(&#34;A&#34;)
+ *             .name("")
+ *             .value("192.168.0.11")
+ *             .type("A")
  *             .ttl(3600)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
- * ```java
+ * <pre>
+ * {@code
  * package generated_program;
  * 
  * import com.pulumi.Context;
@@ -83,17 +86,18 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a record to a sub-domain
- *         var foobar = new ZoneRecord(&#34;foobar&#34;, ZoneRecordArgs.builder()        
+ *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()        
  *             .zoneName(dnsimpleDomain)
- *             .name(&#34;terraform&#34;)
- *             .value(&#34;192.168.0.11&#34;)
- *             .type(&#34;A&#34;)
+ *             .name("terraform")
+ *             .value("192.168.0.11")
+ *             .type("A")
  *             .ttl(3600)
  *             .build());
  * 
  *     }
  * }
- * ```
+ * }
+ * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import

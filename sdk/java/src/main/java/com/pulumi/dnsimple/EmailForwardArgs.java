@@ -15,14 +15,14 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
     public static final EmailForwardArgs Empty = new EmailForwardArgs();
 
     /**
-     * The name part (the part before the @) of the source email address on the domain
+     * The name part (the part before the{@literal @}) of the source email address on the domain
      * 
      */
     @Import(name="aliasName", required=true)
     private Output<String> aliasName;
 
     /**
-     * @return The name part (the part before the @) of the source email address on the domain
+     * @return The name part (the part before the{@literal @}) of the source email address on the domain
      * 
      */
     public Output<String> aliasName() {
@@ -86,7 +86,7 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasName The name part (the part before the @) of the source email address on the domain
+         * @param aliasName The name part (the part before the{@literal @}) of the source email address on the domain
          * 
          * @return builder
          * 
@@ -97,7 +97,7 @@ public final class EmailForwardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasName The name part (the part before the @) of the source email address on the domain
+         * @param aliasName The name part (the part before the{@literal @}) of the source email address on the domain
          * 
          * @return builder
          * 
