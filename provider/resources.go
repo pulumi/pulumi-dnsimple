@@ -74,7 +74,8 @@ func Provider() tfbridge.ProviderInfo {
 		Config:      map[string]*tfbridge.SchemaInfo{},
 		GitHubOrg:   "terraform-providers",
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {Tok: makeResource(mainMod, "Record"),
+			"dnsimple_record": {
+				Tok: makeResource(mainMod, "Record"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"name": {
 						Type: "string",
@@ -107,12 +108,15 @@ func Provider() tfbridge.ProviderInfo {
 					"recordType.ts",
 				},
 			},
+			RespectSchemaVersion: true,
 		},
 		Python: (func() *tfbridge.PythonInfo {
 			i := &tfbridge.PythonInfo{
+				RespectSchemaVersion: true,
 				Requires: map[string]string{
 					"pulumi": ">=3.0.0,<4.0.0",
-				}}
+				},
+			}
 			i.PyProject.Enabled = true
 			return i
 		})(),
@@ -125,8 +129,10 @@ func Provider() tfbridge.ProviderInfo {
 				mainPkg,
 			),
 			GenerateResourceContainerTypes: true,
+			RespectSchemaVersion:           true,
 		},
 		CSharp: &tfbridge.CSharpInfo{
+			RespectSchemaVersion: true,
 			PackageReferences: map[string]string{
 				"Pulumi": "3.*",
 			},
