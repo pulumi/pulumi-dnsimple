@@ -42,7 +42,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add an email forwarding rule to the domain
- *         var foobar = new EmailForward("foobar", EmailForwardArgs.builder()        
+ *         var foobar = new EmailForward("foobar", EmailForwardArgs.builder()
  *             .domain(dnsimpleDomain)
  *             .aliasName("sales")
  *             .destinationEmail("jane.doe{@literal @}example.com")

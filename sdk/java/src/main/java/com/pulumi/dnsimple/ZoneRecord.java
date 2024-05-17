@@ -48,7 +48,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a record to the root domain
- *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()        
+ *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()
  *             .zoneName(dnsimpleDomain)
  *             .name("")
  *             .value("192.168.0.11")
@@ -86,7 +86,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a record to a sub-domain
- *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()        
+ *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()
  *             .zoneName(dnsimpleDomain)
  *             .name("terraform")
  *             .value("192.168.0.11")

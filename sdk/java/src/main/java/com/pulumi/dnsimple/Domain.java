@@ -44,7 +44,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Create a domain
- *         var foobar = new Domain("foobar", DomainArgs.builder()        
+ *         var foobar = new Domain("foobar", DomainArgs.builder()
  *             .name(dnsimple.domain())
  *             .build());
  * 
