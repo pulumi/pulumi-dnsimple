@@ -61,13 +61,11 @@ class LetsEncryptCertificateArgs:
 
     @property
     @pulumi.getter(name="contactId")
+    @_utilities.deprecated("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
     def contact_id(self) -> Optional[pulumi.Input[int]]:
         """
         The contact id for the certificate
         """
-        warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-        pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-
         return pulumi.get(self, "contact_id")
 
     @contact_id.setter
@@ -164,13 +162,11 @@ class _LetsEncryptCertificateState:
 
     @property
     @pulumi.getter(name="contactId")
+    @_utilities.deprecated("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
     def contact_id(self) -> Optional[pulumi.Input[int]]:
         """
         The contact id for the certificate
         """
-        warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-        pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-
         return pulumi.get(self, "contact_id")
 
     @contact_id.setter
@@ -433,13 +429,11 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="contactId")
+    @_utilities.deprecated("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
     def contact_id(self) -> pulumi.Output[Optional[int]]:
         """
         The contact id for the certificate
         """
-        warnings.warn("""contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""", DeprecationWarning)
-        pulumi.log.warn("""contact_id is deprecated: contact_id is deprecated and has no effect. The attribute will be removed in the next major version.""")
-
         return pulumi.get(self, "contact_id")
 
     @property
