@@ -21,12 +21,11 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
+	dnsimple "github.com/terraform-providers/terraform-provider-dnsimple/shim"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 )
@@ -39,36 +38,22 @@ const (
 	mainMod = "index"
 )
 
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod tokens.ModuleName, typ tokens.TypeName) tokens.Type {
-	return tokens.NewTypeToken(tokens.NewModuleToken(mainPkg, mod), typ)
-}
-
 //go:embed cmd/pulumi-resource-dnsimple/bridge-metadata.json
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
-		P:            shimv2.NewProvider(dnsimple.Provider()),
-		Name:         "dnsimple",
-		Description:  "A Pulumi package for creating and managing dnsimple cloud resources.",
-		Keywords:     []string{"pulumi", "dnsimple"},
-		License:      "Apache-2.0",
-		Homepage:     "https://pulumi.io",
-		Repository:   "https://github.com/pulumi/pulumi-dnsimple",
-		GitHubOrg:    "terraform-providers",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {Type: "string"},
-					"type": {Type: makeType(mainMod, "RecordType")},
-				},
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
-			},
-		},
+		P:                pfbridge.ShimProvider(dnsimple.Provider(version.Version)),
+		Name:             "dnsimple",
+		Description:      "A Pulumi package for creating and managing dnsimple cloud resources.",
+		Keywords:         []string{"pulumi", "dnsimple"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-dnsimple",
+		GitHubOrg:        "terraform-providers",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Version:          version.Version,
 		UpstreamRepoPath: "./upstream",
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{

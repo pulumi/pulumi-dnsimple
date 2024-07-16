@@ -15,12 +15,11 @@
 package main
 
 import (
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfgen"
 
 	dnsimple "github.com/pulumi/pulumi-dnsimple/provider/v3"
-	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 )
 
 func main() {
-	tfgen.Main("dnsimple", version.Version, dnsimple.Provider())
+	tfgen.Main("dnsimple", dnsimple.Provider())
 }

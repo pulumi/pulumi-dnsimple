@@ -3,8 +3,8 @@ module github.com/pulumi/pulumi-dnsimple/provider/v3
 go 1.21.12
 
 require (
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0
-	github.com/pulumi/pulumi/sdk/v3 v3.124.0
 	github.com/terraform-providers/terraform-provider-dnsimple v0.0.0
 )
 
@@ -69,7 +69,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/deckarep/golang-set/v2 v2.5.0 // indirect
 	github.com/djherbis/times v1.5.0 // indirect
-	github.com/dnsimple/dnsimple-go v1.0.0 // indirect
+	github.com/dnsimple/dnsimple-go v1.2.0 // indirect
 	github.com/edsrzf/mmap-go v1.1.0 // indirect
 	github.com/emirpasic/gods v1.18.1 // indirect
 	github.com/ettle/strcase v0.1.1 // indirect
@@ -87,7 +87,6 @@ require (
 	github.com/golang/glog v1.2.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/protobuf v1.5.4 // indirect
-	github.com/google/go-cmp v0.6.0 // indirect
 	github.com/google/go-querystring v1.1.0 // indirect
 	github.com/google/s2a-go v0.1.7 // indirect
 	github.com/google/shlex v0.0.0-20191202100458-e7afc7fbc510 // indirect
@@ -98,7 +97,6 @@ require (
 	github.com/gorilla/mux v1.8.0 // indirect
 	github.com/grpc-ecosystem/grpc-opentracing v0.0.0-20180507213350-8e809c8a8645 // indirect
 	github.com/hashicorp/errwrap v1.1.0 // indirect
-	github.com/hashicorp/go-checkpoint v0.5.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-cty v1.4.1-0.20200414143053-d3edf31b6320 // indirect
 	github.com/hashicorp/go-getter v1.7.5 // indirect
@@ -117,12 +115,11 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.19.1 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
-	github.com/hashicorp/logutils v1.0.0 // indirect
 	github.com/hashicorp/terraform-exec v0.20.0 // indirect
 	github.com/hashicorp/terraform-json v0.21.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.6.0 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
-	github.com/hashicorp/terraform-plugin-sdk/v2 v2.33.0 // indirect
 	github.com/hashicorp/terraform-registry-address v0.2.3 // indirect
 	github.com/hashicorp/terraform-svchost v0.1.1 // indirect
 	github.com/hashicorp/vault/api v1.12.0 // indirect
@@ -176,8 +173,8 @@ require (
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.9.1 // indirect
 	github.com/pulumi/pulumi/pkg/v3 v3.124.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.124.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
-	github.com/pulumi/terraform-diff-reader v0.0.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
 	github.com/russross/blackfriday/v2 v2.1.0 // indirect
@@ -199,7 +196,6 @@ require (
 	github.com/uber/jaeger-client-go v2.30.0+incompatible // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/ulikunitz/xz v0.5.11 // indirect
-	github.com/vmihailenco/msgpack v4.0.4+incompatible // indirect
 	github.com/vmihailenco/msgpack/v5 v5.4.1 // indirect
 	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xanzy/ssh-agent v0.3.3 // indirect
