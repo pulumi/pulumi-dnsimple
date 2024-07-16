@@ -77,16 +77,10 @@ func Provider() tfbridge.ProviderInfo {
 			"dnsimple_record": {
 				Tok: makeResource(mainMod, "Record"),
 				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {
-						Type: "string",
-					},
-					"type": {
-						Type: makeType(mainMod, "RecordType"),
-					},
+					"name": {Type: "string"},
+					"type": {Type: makeType(mainMod, "RecordType")},
 				},
-				Docs: &tfbridge.DocInfo{
-					Markdown: []byte(" "),
-				},
+				Docs:               &tfbridge.DocInfo{AllowMissing: true},
 				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
 			},
 			"dnsimple_domain":                   {Tok: makeResource(mainMod, "Domain")},
@@ -94,7 +88,7 @@ func Provider() tfbridge.ProviderInfo {
 			"dnsimple_lets_encrypt_certificate": {Tok: makeResource(mainMod, "LetsEncryptCertificate")},
 			"dnsimple_zone_record":              {Tok: makeResource(mainMod, "ZoneRecord")},
 		},
-		DataSources: map[string]*tfbridge.DataSourceInfo{},
+		UpstreamRepoPath: "./upstream",
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
