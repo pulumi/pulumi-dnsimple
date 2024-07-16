@@ -21,13 +21,17 @@ import * as utilities from "./utilities";
  *
  * DNSimple domains can be imported using their numeric record ID.
  *
+ * bash
+ *
  * ```sh
  * $ pulumi import dnsimple:index/domain:Domain resource_name 5678
  * ```
  *
  * The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  *
- * $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+ * bash
+ *
+ * curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
  *
  * {
  *
@@ -105,15 +109,35 @@ export class Domain extends pulumi.CustomResource {
         return obj['__pulumiType'] === Domain.__pulumiType;
     }
 
+    /**
+     * The account ID for the domain.
+     */
     public /*out*/ readonly accountId!: pulumi.Output<number>;
+    /**
+     * Whether the domain is set to auto-renew.
+     */
     public /*out*/ readonly autoRenew!: pulumi.Output<boolean>;
     /**
      * The domain name to be created
+     *
+     * # Attributes Reference
      */
     public readonly name!: pulumi.Output<string>;
+    /**
+     * Whether the domain has WhoIs privacy enabled.
+     */
     public /*out*/ readonly privateWhois!: pulumi.Output<boolean>;
+    /**
+     * The ID of the registrant (contact) for the domain.
+     */
     public /*out*/ readonly registrantId!: pulumi.Output<number>;
+    /**
+     * The state of the domain.
+     */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * The domain name in Unicode format.
+     */
     public /*out*/ readonly unicodeName!: pulumi.Output<string>;
 
     /**
@@ -158,15 +182,35 @@ export class Domain extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Domain resources.
  */
 export interface DomainState {
+    /**
+     * The account ID for the domain.
+     */
     accountId?: pulumi.Input<number>;
+    /**
+     * Whether the domain is set to auto-renew.
+     */
     autoRenew?: pulumi.Input<boolean>;
     /**
      * The domain name to be created
+     *
+     * # Attributes Reference
      */
     name?: pulumi.Input<string>;
+    /**
+     * Whether the domain has WhoIs privacy enabled.
+     */
     privateWhois?: pulumi.Input<boolean>;
+    /**
+     * The ID of the registrant (contact) for the domain.
+     */
     registrantId?: pulumi.Input<number>;
+    /**
+     * The state of the domain.
+     */
     state?: pulumi.Input<string>;
+    /**
+     * The domain name in Unicode format.
+     */
     unicodeName?: pulumi.Input<string>;
 }
 
@@ -176,6 +220,8 @@ export interface DomainState {
 export interface DomainArgs {
     /**
      * The domain name to be created
+     *
+     * # Attributes Reference
      */
     name: pulumi.Input<string>;
 }

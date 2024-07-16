@@ -22,7 +22,6 @@
         "index.ts",
         "letsEncryptCertificate.ts",
         "provider.ts",
-        "record.ts",
         "recordType.ts",
         "utilities.ts",
         "zoneRecord.ts"

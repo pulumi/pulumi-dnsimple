@@ -28,11 +28,11 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The account for API operations.
      */
-    public readonly account!: pulumi.Output<string>;
+    public readonly account!: pulumi.Output<string | undefined>;
     /**
      * The API v2 token for API operations.
      */
-    public readonly token!: pulumi.Output<string>;
+    public readonly token!: pulumi.Output<string | undefined>;
     /**
      * Custom string to append to the user agent used for sending HTTP requests to the API.
      */
@@ -45,16 +45,10 @@ export class Provider extends pulumi.ProviderResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProviderArgs, opts?: pulumi.ResourceOptions) {
+    constructor(name: string, args?: ProviderArgs, opts?: pulumi.ResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            if ((!args || args.account === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'account'");
-            }
-            if ((!args || args.token === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'token'");
-            }
             resourceInputs["account"] = args ? args.account : undefined;
             resourceInputs["prefetch"] = pulumi.output(args ? args.prefetch : undefined).apply(JSON.stringify);
             resourceInputs["sandbox"] = pulumi.output(args ? args.sandbox : undefined).apply(JSON.stringify);
@@ -75,7 +69,7 @@ export interface ProviderArgs {
     /**
      * The account for API operations.
      */
-    account: pulumi.Input<string>;
+    account?: pulumi.Input<string>;
     /**
      * Flag to enable the prefetch of zone records.
      */
@@ -87,7 +81,7 @@ export interface ProviderArgs {
     /**
      * The API v2 token for API operations.
      */
-    token: pulumi.Input<string>;
+    token?: pulumi.Input<string>;
     /**
      * Custom string to append to the user agent used for sending HTTP requests to the API.
      */

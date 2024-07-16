@@ -11,7 +11,6 @@ from .get_certificate import *
 from .get_zone import *
 from .lets_encrypt_certificate import *
 from .provider import *
-from .record import *
 from .zone_record import *
 
 # Make subpackages available:
@@ -46,14 +45,6 @@ _utilities.register(
   "fqn": "pulumi_dnsimple",
   "classes": {
    "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate": "LetsEncryptCertificate"
-  }
- },
- {
-  "pkg": "dnsimple",
-  "mod": "index/record",
-  "fqn": "pulumi_dnsimple",
-  "classes": {
-   "dnsimple:index/record:Record": "Record"
   }
  },
  {

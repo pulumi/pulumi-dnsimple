@@ -10,17 +10,12 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.dnsimple.Utilities;
 import com.pulumi.dnsimple.ZoneRecordArgs;
 import com.pulumi.dnsimple.inputs.ZoneRecordState;
+import java.lang.Integer;
 import java.lang.String;
-import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
  * Provides a DNSimple zone record resource.
- * 
- * ## Deprecation warning
- * 
- * You can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the
- * upcoming 1.0.0 release.
  * 
  * ## Example Usage
  * 
@@ -104,16 +99,22 @@ import javax.annotation.Nullable;
  * 
  * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
  * 
- * __Importing record example.com with record ID 1234__
+ * **Importing record example.com with record ID 1234**
+ * 
+ * bash
  * 
  * ```sh
  * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
- * __Importing record www.example.com with record ID 1234__
+ * 
+ * **Importing record www.example.com with record ID 1234**
+ * 
+ * bash
  * 
  * ```sh
  * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
  * ```
+ * 
  * The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
  * 
  */
@@ -137,14 +138,14 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
      * The priority of the record - only useful for some record types
      * 
      */
-    @Export(name="priority", refs={String.class}, tree="[0]")
-    private Output<String> priority;
+    @Export(name="priority", refs={Integer.class}, tree="[0]")
+    private Output<Integer> priority;
 
     /**
      * @return The priority of the record - only useful for some record types
      * 
      */
-    public Output<String> priority() {
+    public Output<Integer> priority() {
         return this.priority;
     }
     /**
@@ -162,18 +163,18 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
         return this.qualifiedName;
     }
     /**
-     * The TTL of the record
+     * The TTL of the record - defaults to 3600
      * 
      */
-    @Export(name="ttl", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> ttl;
+    @Export(name="ttl", refs={Integer.class}, tree="[0]")
+    private Output<Integer> ttl;
 
     /**
-     * @return The TTL of the record
+     * @return The TTL of the record - defaults to 3600
      * 
      */
-    public Output<Optional<String>> ttl() {
-        return Codegen.optional(this.ttl);
+    public Output<Integer> ttl() {
+        return this.ttl;
     }
     /**
      * The type of the record

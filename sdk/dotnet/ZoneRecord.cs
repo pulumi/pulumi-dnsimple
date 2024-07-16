@@ -12,11 +12,6 @@ namespace Pulumi.DNSimple
     /// <summary>
     /// Provides a DNSimple zone record resource.
     /// 
-    /// ## Deprecation warning
-    /// 
-    /// You can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the
-    /// upcoming 1.0.0 release.
-    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -34,7 +29,7 @@ namespace Pulumi.DNSimple
     ///         Name = "",
     ///         Value = "192.168.0.11",
     ///         Type = "A",
-    ///         Ttl = "3600",
+    ///         Ttl = 3600,
     ///     });
     /// 
     /// });
@@ -55,7 +50,7 @@ namespace Pulumi.DNSimple
     ///         Name = "terraform",
     ///         Value = "192.168.0.11",
     ///         Type = "A",
-    ///         Ttl = "3600",
+    ///         Ttl = 3600,
     ///     });
     /// 
     /// });
@@ -65,16 +60,22 @@ namespace Pulumi.DNSimple
     /// 
     /// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
     /// 
-    /// __Importing record example.com with record ID 1234__
+    /// **Importing record example.com with record ID 1234**
+    /// 
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
     /// ```
-    /// __Importing record www.example.com with record ID 1234__
+    /// 
+    /// **Importing record www.example.com with record ID 1234**
+    /// 
+    /// bash
     /// 
     /// ```sh
     /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
     /// ```
+    /// 
     /// The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/zoneRecord:ZoneRecord")]
@@ -90,7 +91,7 @@ namespace Pulumi.DNSimple
         /// The priority of the record - only useful for some record types
         /// </summary>
         [Output("priority")]
-        public Output<string> Priority { get; private set; } = null!;
+        public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
         /// The FQDN of the record
@@ -99,10 +100,10 @@ namespace Pulumi.DNSimple
         public Output<string> QualifiedName { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL of the record
+        /// The TTL of the record - defaults to 3600
         /// </summary>
         [Output("ttl")]
-        public Output<string?> Ttl { get; private set; } = null!;
+        public Output<int> Ttl { get; private set; } = null!;
 
         /// <summary>
         /// The type of the record
@@ -184,13 +185,13 @@ namespace Pulumi.DNSimple
         /// The priority of the record - only useful for some record types
         /// </summary>
         [Input("priority")]
-        public Input<string>? Priority { get; set; }
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The TTL of the record
+        /// The TTL of the record - defaults to 3600
         /// </summary>
         [Input("ttl")]
-        public Input<string>? Ttl { get; set; }
+        public Input<int>? Ttl { get; set; }
 
         /// <summary>
         /// The type of the record
@@ -228,7 +229,7 @@ namespace Pulumi.DNSimple
         /// The priority of the record - only useful for some record types
         /// </summary>
         [Input("priority")]
-        public Input<string>? Priority { get; set; }
+        public Input<int>? Priority { get; set; }
 
         /// <summary>
         /// The FQDN of the record
@@ -237,10 +238,10 @@ namespace Pulumi.DNSimple
         public Input<string>? QualifiedName { get; set; }
 
         /// <summary>
-        /// The TTL of the record
+        /// The TTL of the record - defaults to 3600
         /// </summary>
         [Input("ttl")]
-        public Input<string>? Ttl { get; set; }
+        public Input<int>? Ttl { get; set; }
 
         /// <summary>
         /// The type of the record

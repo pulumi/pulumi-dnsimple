@@ -42,17 +42,14 @@ namespace Pulumi.DNSimple
         public Output<string> AuthorityIdentifier { get; private set; } = null!;
 
         /// <summary>
-        /// Set to true if the certificate will auto-renew
+        /// True if the certificate should auto-renew
         /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
-        /// The contact id for the certificate
+        /// The datetime the certificate was created
         /// </summary>
-        [Output("contactId")]
-        public Output<int?> ContactId { get; private set; } = null!;
-
         [Output("createdAt")]
         public Output<string> CreatedAt { get; private set; } = null!;
 
@@ -66,10 +63,13 @@ namespace Pulumi.DNSimple
         /// The domain to be issued the certificate for
         /// </summary>
         [Output("domainId")]
-        public Output<string?> DomainId { get; private set; } = null!;
+        public Output<string> DomainId { get; private set; } = null!;
 
-        [Output("expiresOn")]
-        public Output<string> ExpiresOn { get; private set; } = null!;
+        /// <summary>
+        /// The datetime the certificate will expire
+        /// </summary>
+        [Output("expiresAt")]
+        public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
         /// The certificate name
@@ -78,11 +78,20 @@ namespace Pulumi.DNSimple
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// The signature algorithm to use for the certificate
+        /// </summary>
+        [Output("signatureAlgorithm")]
+        public Output<string?> SignatureAlgorithm { get; private set; } = null!;
+
+        /// <summary>
         /// The state of the certificate
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The datetime the certificate was last updated
+        /// </summary>
         [Output("updatedAt")]
         public Output<string> UpdatedAt { get; private set; } = null!;
 
@@ -139,28 +148,28 @@ namespace Pulumi.DNSimple
     public sealed class LetsEncryptCertificateArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Set to true if the certificate will auto-renew
+        /// True if the certificate should auto-renew
         /// </summary>
         [Input("autoRenew", required: true)]
         public Input<bool> AutoRenew { get; set; } = null!;
 
         /// <summary>
-        /// The contact id for the certificate
-        /// </summary>
-        [Input("contactId")]
-        public Input<int>? ContactId { get; set; }
-
-        /// <summary>
         /// The domain to be issued the certificate for
         /// </summary>
-        [Input("domainId")]
-        public Input<string>? DomainId { get; set; }
+        [Input("domainId", required: true)]
+        public Input<string> DomainId { get; set; } = null!;
 
         /// <summary>
         /// The certificate name
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// The signature algorithm to use for the certificate
+        /// </summary>
+        [Input("signatureAlgorithm")]
+        public Input<string>? SignatureAlgorithm { get; set; }
 
         public LetsEncryptCertificateArgs()
         {
@@ -177,17 +186,14 @@ namespace Pulumi.DNSimple
         public Input<string>? AuthorityIdentifier { get; set; }
 
         /// <summary>
-        /// Set to true if the certificate will auto-renew
+        /// True if the certificate should auto-renew
         /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
-        /// The contact id for the certificate
+        /// The datetime the certificate was created
         /// </summary>
-        [Input("contactId")]
-        public Input<int>? ContactId { get; set; }
-
         [Input("createdAt")]
         public Input<string>? CreatedAt { get; set; }
 
@@ -203,8 +209,11 @@ namespace Pulumi.DNSimple
         [Input("domainId")]
         public Input<string>? DomainId { get; set; }
 
-        [Input("expiresOn")]
-        public Input<string>? ExpiresOn { get; set; }
+        /// <summary>
+        /// The datetime the certificate will expire
+        /// </summary>
+        [Input("expiresAt")]
+        public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
         /// The certificate name
@@ -213,11 +222,20 @@ namespace Pulumi.DNSimple
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// The signature algorithm to use for the certificate
+        /// </summary>
+        [Input("signatureAlgorithm")]
+        public Input<string>? SignatureAlgorithm { get; set; }
+
+        /// <summary>
         /// The state of the certificate
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// The datetime the certificate was last updated
+        /// </summary>
         [Input("updatedAt")]
         public Input<string>? UpdatedAt { get; set; }
 

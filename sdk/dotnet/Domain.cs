@@ -35,13 +35,17 @@ namespace Pulumi.DNSimple
     /// 
     /// DNSimple domains can be imported using their numeric record ID.
     /// 
+    /// bash
+    /// 
     /// ```sh
     /// $ pulumi import dnsimple:index/domain:Domain resource_name 5678
     /// ```
     /// 
     /// The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
     /// 
-    /// $ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+    /// bash
+    /// 
+    /// curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
     /// 
     /// {
     /// 
@@ -94,27 +98,47 @@ namespace Pulumi.DNSimple
     [DNSimpleResourceType("dnsimple:index/domain:Domain")]
     public partial class Domain : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The account ID for the domain.
+        /// </summary>
         [Output("accountId")]
         public Output<int> AccountId { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the domain is set to auto-renew.
+        /// </summary>
         [Output("autoRenew")]
         public Output<bool> AutoRenew { get; private set; } = null!;
 
         /// <summary>
         /// The domain name to be created
+        /// 
+        /// # Attributes Reference
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the domain has WhoIs privacy enabled.
+        /// </summary>
         [Output("privateWhois")]
         public Output<bool> PrivateWhois { get; private set; } = null!;
 
+        /// <summary>
+        /// The ID of the registrant (contact) for the domain.
+        /// </summary>
         [Output("registrantId")]
         public Output<int> RegistrantId { get; private set; } = null!;
 
+        /// <summary>
+        /// The state of the domain.
+        /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// The domain name in Unicode format.
+        /// </summary>
         [Output("unicodeName")]
         public Output<string> UnicodeName { get; private set; } = null!;
 
@@ -166,6 +190,8 @@ namespace Pulumi.DNSimple
     {
         /// <summary>
         /// The domain name to be created
+        /// 
+        /// # Attributes Reference
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -178,27 +204,47 @@ namespace Pulumi.DNSimple
 
     public sealed class DomainState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The account ID for the domain.
+        /// </summary>
         [Input("accountId")]
         public Input<int>? AccountId { get; set; }
 
+        /// <summary>
+        /// Whether the domain is set to auto-renew.
+        /// </summary>
         [Input("autoRenew")]
         public Input<bool>? AutoRenew { get; set; }
 
         /// <summary>
         /// The domain name to be created
+        /// 
+        /// # Attributes Reference
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        /// <summary>
+        /// Whether the domain has WhoIs privacy enabled.
+        /// </summary>
         [Input("privateWhois")]
         public Input<bool>? PrivateWhois { get; set; }
 
+        /// <summary>
+        /// The ID of the registrant (contact) for the domain.
+        /// </summary>
         [Input("registrantId")]
         public Input<int>? RegistrantId { get; set; }
 
+        /// <summary>
+        /// The state of the domain.
+        /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// The domain name in Unicode format.
+        /// </summary>
         [Input("unicodeName")]
         public Input<string>? UnicodeName { get; set; }
 
