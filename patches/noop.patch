@@ -1,0 +1,2 @@
+The only issue with upstream is that they use an invalid module name, so we just need to
+vendor, not apply any changes.

@@ -5,8 +5,10 @@ go 1.21
 require (
 	github.com/pulumi/pulumi-terraform-bridge/v3 v3.86.0
 	github.com/pulumi/pulumi/sdk/v3 v3.121.0
-	github.com/terraform-providers/terraform-provider-dnsimple v0.15.0
+	github.com/terraform-providers/terraform-provider-dnsimple v0.0.0
 )
+
+replace github.com/terraform-providers/terraform-provider-dnsimple => ../upstream
 
 require (
 	cloud.google.com/go v0.112.1 // indirect
@@ -241,5 +243,4 @@ require (
 replace (
 	github.com/hashicorp/terraform-plugin-sdk/v2 => github.com/pulumi/terraform-plugin-sdk/v2 v2.0.0-20240520223432-0c0bf0d65f10
 	github.com/hashicorp/terraform-plugin-test => github.com/hashicorp/terraform-plugin-test v1.3.0
-	github.com/terraform-providers/terraform-provider-dnsimple => github.com/dnsimple/terraform-provider-dnsimple v0.15.0
 )
