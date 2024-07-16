@@ -26,6 +26,7 @@ import (
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 )
@@ -100,6 +101,18 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("dnsimple_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
+
+	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
+		if value.Schema().Get("id").Type() != shim.TypeString {
+			r := prov.Resources[key]
+			if r.Fields == nil {
+				r.Fields = make(map[string]*tfbridge.SchemaInfo, 1)
+			}
+			r.Fields["id"] = &tfbridge.SchemaInfo{Type: "string"}
+		}
+		return true
+	})
+
 	prov.MustApplyAutoAliases()
 
 	return prov

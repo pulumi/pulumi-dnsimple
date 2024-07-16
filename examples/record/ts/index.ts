@@ -14,11 +14,11 @@
 
 import * as dnsimple from "@pulumi/dnsimple";
 
-let record = new dnsimple.Record("test", {
+let record = new dnsimple.ZoneRecord("test", {
+  zoneName: "stack72.dev",
   name: "test-ts",
-  domain: "stack72.dev",
+  value: "api.devflix.watch.herokudns.com",
   type: dnsimple.RecordTypes.CNAME,
-  value: "api.devflix.watch.herokudns.com"
 });
 
 export default record.urn;
