@@ -35,18 +35,22 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export * from "./recordType";
 export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
 export type ZoneRecord = import("./zoneRecord").ZoneRecord;
 export const ZoneRecord: typeof import("./zoneRecord").ZoneRecord = null as any;
 utilities.lazyLoad(exports, ["ZoneRecord"], () => require("./zoneRecord"));
 
 
+// Export enums:
+export * from "./types/enums";
+
 // Export sub-modules:
 import * as config from "./config";
+import * as types from "./types";
 
 export {
     config,
+    types,
 };
 
 const _module = {

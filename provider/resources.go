@@ -27,6 +27,7 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 )
@@ -56,6 +57,31 @@ func Provider() tfbridge.ProviderInfo {
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
 		Version:          version.Version,
 		UpstreamRepoPath: "./upstream",
+		ExtraTypes: map[string]schema.ComplexTypeSpec{
+			mainPkg + ":" + mainMod + ":RecordTypes": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Description: "DNS Record types.",
+					Type:        "string",
+				},
+				Enum: []schema.EnumValueSpec{
+					{Value: "A"},
+					{Value: "AAAA"},
+					{Value: "ALIAS"},
+					{Value: "CAA"},
+					{Value: "CNAME"},
+					{Value: "HINFO"},
+					{Value: "MX"},
+					{Value: "NAPTR"},
+					{Value: "NS"},
+					{Value: "POOL"},
+					{Value: "PTR"},
+					{Value: "SPF"},
+					{Value: "SRV"},
+					{Value: "SSHFP"},
+					{Value: "TXT"},
+					{Value: "URL"},
+				}},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -63,11 +89,6 @@ func Provider() tfbridge.ProviderInfo {
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
-			},
-			Overlay: &tfbridge.OverlayInfo{
-				DestFiles: []string{
-					"recordType.ts",
-				},
 			},
 			RespectSchemaVersion: true,
 		},

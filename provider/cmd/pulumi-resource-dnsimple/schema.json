@@ -80,6 +80,62 @@
             }
         }
     },
+    "types": {
+        "dnsimple:index:RecordTypes": {
+            "description": "DNS Record types.",
+            "type": "string",
+            "enum": [
+                {
+                    "value": "A"
+                },
+                {
+                    "value": "AAAA"
+                },
+                {
+                    "value": "ALIAS"
+                },
+                {
+                    "value": "CAA"
+                },
+                {
+                    "value": "CNAME"
+                },
+                {
+                    "value": "HINFO"
+                },
+                {
+                    "value": "MX"
+                },
+                {
+                    "value": "NAPTR"
+                },
+                {
+                    "value": "NS"
+                },
+                {
+                    "value": "POOL"
+                },
+                {
+                    "value": "PTR"
+                },
+                {
+                    "value": "SPF"
+                },
+                {
+                    "value": "SRV"
+                },
+                {
+                    "value": "SSHFP"
+                },
+                {
+                    "value": "TXT"
+                },
+                {
+                    "value": "URL"
+                }
+            ]
+        }
+    },
     "provider": {
         "description": "The provider type for the dnsimple package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
         "properties": {
