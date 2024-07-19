@@ -10,9 +10,12 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.dnsimple.Utilities;
 import com.pulumi.dnsimple.inputs.GetCertificateArgs;
 import com.pulumi.dnsimple.inputs.GetCertificatePlainArgs;
+import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
+import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckPlainArgs;
 import com.pulumi.dnsimple.inputs.GetZoneArgs;
 import com.pulumi.dnsimple.inputs.GetZonePlainArgs;
 import com.pulumi.dnsimple.outputs.GetCertificateResult;
+import com.pulumi.dnsimple.outputs.GetRegistrantChangeCheckResult;
 import com.pulumi.dnsimple.outputs.GetZoneResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -190,7 +193,245 @@ public final class DnsimpleFunctions {
         return Deployment.getInstance().invokeAsync("dnsimple:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information on the requirements of a registrant change.
+     * 
+     * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
+     * 
+     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
+     *             .domainId("dnsimple.com")
+     *             .contactId("1234")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following arguments are supported:
+     * 
+     * * `domain_id` - (Required) The name or ID of the domain.
+     * * `contact_id` - (Required) The ID of the contact you are planning to change to.
+     * 
+     * The following additional attributes are exported:
+     * 
+     * * `contact_id` - The ID of the contact you are planning to change to.
+     * * `domain_id` - The name or ID of the domain.
+     * * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     * * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     * 
+     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
+     * 
+     */
+    public static Output<GetRegistrantChangeCheckResult> getRegistrantChangeCheck(GetRegistrantChangeCheckArgs args) {
+        return getRegistrantChangeCheck(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on the requirements of a registrant change.
+     * 
+     * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
+     * 
+     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
+     *             .domainId("dnsimple.com")
+     *             .contactId("1234")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following arguments are supported:
+     * 
+     * * `domain_id` - (Required) The name or ID of the domain.
+     * * `contact_id` - (Required) The ID of the contact you are planning to change to.
+     * 
+     * The following additional attributes are exported:
+     * 
+     * * `contact_id` - The ID of the contact you are planning to change to.
+     * * `domain_id` - The name or ID of the domain.
+     * * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     * * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     * 
+     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegistrantChangeCheckResult> getRegistrantChangeCheckPlain(GetRegistrantChangeCheckPlainArgs args) {
+        return getRegistrantChangeCheckPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information on the requirements of a registrant change.
+     * 
+     * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
+     * 
+     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
+     *             .domainId("dnsimple.com")
+     *             .contactId("1234")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following arguments are supported:
+     * 
+     * * `domain_id` - (Required) The name or ID of the domain.
+     * * `contact_id` - (Required) The ID of the contact you are planning to change to.
+     * 
+     * The following additional attributes are exported:
+     * 
+     * * `contact_id` - The ID of the contact you are planning to change to.
+     * * `domain_id` - The name or ID of the domain.
+     * * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     * * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     * 
+     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
+     * 
+     */
+    public static Output<GetRegistrantChangeCheckResult> getRegistrantChangeCheck(GetRegistrantChangeCheckArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", TypeShape.of(GetRegistrantChangeCheckResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information on the requirements of a registrant change.
+     * 
+     * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
+     * 
+     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
+     *             .domainId("dnsimple.com")
+     *             .contactId("1234")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * The following arguments are supported:
+     * 
+     * * `domain_id` - (Required) The name or ID of the domain.
+     * * `contact_id` - (Required) The ID of the contact you are planning to change to.
+     * 
+     * The following additional attributes are exported:
+     * 
+     * * `contact_id` - The ID of the contact you are planning to change to.
+     * * `domain_id` - The name or ID of the domain.
+     * * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     * * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     * 
+     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
+     * 
+     */
+    public static CompletableFuture<GetRegistrantChangeCheckResult> getRegistrantChangeCheckPlain(GetRegistrantChangeCheckPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", TypeShape.of(GetRegistrantChangeCheckResult.class), args, Utilities.withVersion(options));
+    }
+    /**
      * Get information about a DNSimple zone.
+     * 
+     * !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
      * 
      * Get zone:
      * 
@@ -244,6 +485,8 @@ public final class DnsimpleFunctions {
     /**
      * Get information about a DNSimple zone.
      * 
+     * !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
+     * 
      * Get zone:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -296,6 +539,8 @@ public final class DnsimpleFunctions {
     /**
      * Get information about a DNSimple zone.
      * 
+     * !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
+     * 
      * Get zone:
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -347,6 +592,8 @@ public final class DnsimpleFunctions {
     }
     /**
      * Get information about a DNSimple zone.
+     * 
+     * !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
      * 
      * Get zone:
      * 

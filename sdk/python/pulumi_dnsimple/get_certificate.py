@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from . import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = [
     'GetCertificateResult',
@@ -21,7 +23,7 @@ class GetCertificateResult:
     """
     A collection of values returned by getCertificate.
     """
-    def __init__(__self__, certificate_chains=None, certificate_id=None, domain=None, id=None, private_key=None, root_certificate=None, server_certificate=None):
+    def __init__(__self__, certificate_chains=None, certificate_id=None, domain=None, id=None, private_key=None, root_certificate=None, server_certificate=None, timeouts=None):
         if certificate_chains and not isinstance(certificate_chains, list):
             raise TypeError("Expected argument 'certificate_chains' to be a list")
         pulumi.set(__self__, "certificate_chains", certificate_chains)
@@ -43,6 +45,9 @@ class GetCertificateResult:
         if server_certificate and not isinstance(server_certificate, str):
             raise TypeError("Expected argument 'server_certificate' to be a str")
         pulumi.set(__self__, "server_certificate", server_certificate)
+        if timeouts and not isinstance(timeouts, dict):
+            raise TypeError("Expected argument 'timeouts' to be a dict")
+        pulumi.set(__self__, "timeouts", timeouts)
 
     @property
     @pulumi.getter(name="certificateChains")
@@ -91,6 +96,11 @@ class GetCertificateResult:
         """
         return pulumi.get(self, "server_certificate")
 
+    @property
+    @pulumi.getter
+    def timeouts(self) -> Optional['outputs.GetCertificateTimeoutsResult']:
+        return pulumi.get(self, "timeouts")
+
 
 class AwaitableGetCertificateResult(GetCertificateResult):
     # pylint: disable=using-constant-test
@@ -104,11 +114,13 @@ class AwaitableGetCertificateResult(GetCertificateResult):
             id=self.id,
             private_key=self.private_key,
             root_certificate=self.root_certificate,
-            server_certificate=self.server_certificate)
+            server_certificate=self.server_certificate,
+            timeouts=self.timeouts)
 
 
 def get_certificate(certificate_id: Optional[int] = None,
                     domain: Optional[str] = None,
+                    timeouts: Optional[pulumi.InputType['GetCertificateTimeoutsArgs']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Provides a DNSimple certificate data source.
@@ -130,6 +142,7 @@ def get_certificate(certificate_id: Optional[int] = None,
     __args__ = dict()
     __args__['certificateId'] = certificate_id
     __args__['domain'] = domain
+    __args__['timeouts'] = timeouts
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('dnsimple:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult).value
 
@@ -140,12 +153,14 @@ def get_certificate(certificate_id: Optional[int] = None,
         id=pulumi.get(__ret__, 'id'),
         private_key=pulumi.get(__ret__, 'private_key'),
         root_certificate=pulumi.get(__ret__, 'root_certificate'),
-        server_certificate=pulumi.get(__ret__, 'server_certificate'))
+        server_certificate=pulumi.get(__ret__, 'server_certificate'),
+        timeouts=pulumi.get(__ret__, 'timeouts'))
 
 
 @_utilities.lift_output_func(get_certificate)
 def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
+                           timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetCertificateTimeoutsArgs']]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Provides a DNSimple certificate data source.

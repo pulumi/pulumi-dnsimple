@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -32,6 +32,10 @@ import (
 //				DomainId:  pulumi.Any(dnsimple.DomainId),
 //				AutoRenew: pulumi.Bool(false),
 //				Name:      pulumi.String("www"),
+//				AlternateNames: pulumi.StringArray{
+//					pulumi.String("docs.example.com"),
+//					pulumi.String("status.example.com"),
+//				},
 //			})
 //			if err != nil {
 //				return err
@@ -44,6 +48,8 @@ import (
 type LetsEncryptCertificate struct {
 	pulumi.CustomResourceState
 
+	// The certificate alternate names
+	AlternateNames pulumi.StringArrayOutput `pulumi:"alternateNames"`
 	// The identifying certification authority (CA)
 	AuthorityIdentifier pulumi.StringOutput `pulumi:"authorityIdentifier"`
 	// True if the certificate should auto-renew
@@ -56,7 +62,7 @@ type LetsEncryptCertificate struct {
 	DomainId pulumi.StringOutput `pulumi:"domainId"`
 	// The datetime the certificate will expire
 	ExpiresAt pulumi.StringOutput `pulumi:"expiresAt"`
-	// The certificate name
+	// The certificate name; use `""` for the root domain. Wildcard names are supported.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The signature algorithm to use for the certificate
 	SignatureAlgorithm pulumi.StringPtrOutput `pulumi:"signatureAlgorithm"`
@@ -107,6 +113,8 @@ func GetLetsEncryptCertificate(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering LetsEncryptCertificate resources.
 type letsEncryptCertificateState struct {
+	// The certificate alternate names
+	AlternateNames []string `pulumi:"alternateNames"`
 	// The identifying certification authority (CA)
 	AuthorityIdentifier *string `pulumi:"authorityIdentifier"`
 	// True if the certificate should auto-renew
@@ -119,7 +127,7 @@ type letsEncryptCertificateState struct {
 	DomainId *string `pulumi:"domainId"`
 	// The datetime the certificate will expire
 	ExpiresAt *string `pulumi:"expiresAt"`
-	// The certificate name
+	// The certificate name; use `""` for the root domain. Wildcard names are supported.
 	Name *string `pulumi:"name"`
 	// The signature algorithm to use for the certificate
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
@@ -132,6 +140,8 @@ type letsEncryptCertificateState struct {
 }
 
 type LetsEncryptCertificateState struct {
+	// The certificate alternate names
+	AlternateNames pulumi.StringArrayInput
 	// The identifying certification authority (CA)
 	AuthorityIdentifier pulumi.StringPtrInput
 	// True if the certificate should auto-renew
@@ -144,7 +154,7 @@ type LetsEncryptCertificateState struct {
 	DomainId pulumi.StringPtrInput
 	// The datetime the certificate will expire
 	ExpiresAt pulumi.StringPtrInput
-	// The certificate name
+	// The certificate name; use `""` for the root domain. Wildcard names are supported.
 	Name pulumi.StringPtrInput
 	// The signature algorithm to use for the certificate
 	SignatureAlgorithm pulumi.StringPtrInput
@@ -161,11 +171,13 @@ func (LetsEncryptCertificateState) ElementType() reflect.Type {
 }
 
 type letsEncryptCertificateArgs struct {
+	// The certificate alternate names
+	AlternateNames []string `pulumi:"alternateNames"`
 	// True if the certificate should auto-renew
 	AutoRenew bool `pulumi:"autoRenew"`
 	// The domain to be issued the certificate for
 	DomainId string `pulumi:"domainId"`
-	// The certificate name
+	// The certificate name; use `""` for the root domain. Wildcard names are supported.
 	Name string `pulumi:"name"`
 	// The signature algorithm to use for the certificate
 	SignatureAlgorithm *string `pulumi:"signatureAlgorithm"`
@@ -173,11 +185,13 @@ type letsEncryptCertificateArgs struct {
 
 // The set of arguments for constructing a LetsEncryptCertificate resource.
 type LetsEncryptCertificateArgs struct {
+	// The certificate alternate names
+	AlternateNames pulumi.StringArrayInput
 	// True if the certificate should auto-renew
 	AutoRenew pulumi.BoolInput
 	// The domain to be issued the certificate for
 	DomainId pulumi.StringInput
-	// The certificate name
+	// The certificate name; use `""` for the root domain. Wildcard names are supported.
 	Name pulumi.StringInput
 	// The signature algorithm to use for the certificate
 	SignatureAlgorithm pulumi.StringPtrInput
@@ -270,6 +284,11 @@ func (o LetsEncryptCertificateOutput) ToLetsEncryptCertificateOutputWithContext(
 	return o
 }
 
+// The certificate alternate names
+func (o LetsEncryptCertificateOutput) AlternateNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringArrayOutput { return v.AlternateNames }).(pulumi.StringArrayOutput)
+}
+
 // The identifying certification authority (CA)
 func (o LetsEncryptCertificateOutput) AuthorityIdentifier() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.AuthorityIdentifier }).(pulumi.StringOutput)
@@ -300,7 +319,7 @@ func (o LetsEncryptCertificateOutput) ExpiresAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.ExpiresAt }).(pulumi.StringOutput)
 }
 
-// The certificate name
+// The certificate name; use `""` for the root domain. Wildcard names are supported.
 func (o LetsEncryptCertificateOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *LetsEncryptCertificate) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

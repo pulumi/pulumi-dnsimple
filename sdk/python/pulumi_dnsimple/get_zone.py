@@ -73,6 +73,8 @@ def get_zone(name: Optional[str] = None,
     """
     Get information about a DNSimple zone.
 
+    !> Data source is getting deprecated in favor of `dnsimple\\_zone` resource.
+
     Get zone:
 
     ```python
@@ -109,6 +111,8 @@ def get_zone_output(name: Optional[pulumi.Input[str]] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneResult]:
     """
     Get information about a DNSimple zone.
+
+    !> Data source is getting deprecated in favor of `dnsimple\\_zone` resource.
 
     Get zone:
 

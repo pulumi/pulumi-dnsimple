@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -29,6 +30,13 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    @Import(name="nameNormalized")
+    private @Nullable Output<String> nameNormalized;
+
+    public Optional<Output<String>> nameNormalized() {
+        return Optional.ofNullable(this.nameNormalized);
     }
 
     /**
@@ -59,6 +67,21 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> qualifiedName() {
         return Optional.ofNullable(this.qualifiedName);
+    }
+
+    /**
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     * 
+     */
+    @Import(name="regions")
+    private @Nullable Output<List<String>> regions;
+
+    /**
+     * @return A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     * 
+     */
+    public Optional<Output<List<String>>> regions() {
+        return Optional.ofNullable(this.regions);
     }
 
     /**
@@ -107,14 +130,29 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain ID of the record
+     * The normalized value of the record
+     * 
+     */
+    @Import(name="valueNormalized")
+    private @Nullable Output<String> valueNormalized;
+
+    /**
+     * @return The normalized value of the record
+     * 
+     */
+    public Optional<Output<String>> valueNormalized() {
+        return Optional.ofNullable(this.valueNormalized);
+    }
+
+    /**
+     * The zone ID of the record
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The domain ID of the record
+     * @return The zone ID of the record
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -122,14 +160,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      * 
      */
     @Import(name="zoneName")
     private @Nullable Output<String> zoneName;
 
     /**
-     * @return The domain to add the record to
+     * @return The zone name to add the record to
      * 
      */
     public Optional<Output<String>> zoneName() {
@@ -140,11 +178,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
 
     private ZoneRecordState(ZoneRecordState $) {
         this.name = $.name;
+        this.nameNormalized = $.nameNormalized;
         this.priority = $.priority;
         this.qualifiedName = $.qualifiedName;
+        this.regions = $.regions;
         this.ttl = $.ttl;
         this.type = $.type;
         this.value = $.value;
+        this.valueNormalized = $.valueNormalized;
         this.zoneId = $.zoneId;
         this.zoneName = $.zoneName;
     }
@@ -188,6 +229,15 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
             return name(Output.of(name));
         }
 
+        public Builder nameNormalized(@Nullable Output<String> nameNormalized) {
+            $.nameNormalized = nameNormalized;
+            return this;
+        }
+
+        public Builder nameNormalized(String nameNormalized) {
+            return nameNormalized(Output.of(nameNormalized));
+        }
+
         /**
          * @param priority The priority of the record - only useful for some record types
          * 
@@ -228,6 +278,37 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder qualifiedName(String qualifiedName) {
             return qualifiedName(Output.of(qualifiedName));
+        }
+
+        /**
+         * @param regions A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(@Nullable Output<List<String>> regions) {
+            $.regions = regions;
+            return this;
+        }
+
+        /**
+         * @param regions A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(List<String> regions) {
+            return regions(Output.of(regions));
+        }
+
+        /**
+         * @param regions A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder regions(String... regions) {
+            return regions(List.of(regions));
         }
 
         /**
@@ -294,7 +375,28 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The domain ID of the record
+         * @param valueNormalized The normalized value of the record
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueNormalized(@Nullable Output<String> valueNormalized) {
+            $.valueNormalized = valueNormalized;
+            return this;
+        }
+
+        /**
+         * @param valueNormalized The normalized value of the record
+         * 
+         * @return builder
+         * 
+         */
+        public Builder valueNormalized(String valueNormalized) {
+            return valueNormalized(Output.of(valueNormalized));
+        }
+
+        /**
+         * @param zoneId The zone ID of the record
          * 
          * @return builder
          * 
@@ -305,7 +407,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The domain ID of the record
+         * @param zoneId The zone ID of the record
          * 
          * @return builder
          * 
@@ -315,7 +417,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The domain to add the record to
+         * @param zoneName The zone name to add the record to
          * 
          * @return builder
          * 
@@ -326,7 +428,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The domain to add the record to
+         * @param zoneName The zone name to add the record to
          * 
          * @return builder
          * 

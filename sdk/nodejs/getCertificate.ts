@@ -2,6 +2,9 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "./types/input";
+import * as outputs from "./types/output";
+import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
@@ -25,6 +28,7 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
     return pulumi.runtime.invoke("dnsimple:index/getCertificate:getCertificate", {
         "certificateId": args.certificateId,
         "domain": args.domain,
+        "timeouts": args.timeouts,
     }, opts);
 }
 
@@ -40,6 +44,7 @@ export interface GetCertificateArgs {
      * The domain of the SSL Certificate
      */
     domain: string;
+    timeouts?: inputs.GetCertificateTimeouts;
 }
 
 /**
@@ -65,6 +70,7 @@ export interface GetCertificateResult {
      * The SSL Certificate
      */
     readonly serverCertificate: string;
+    readonly timeouts?: outputs.GetCertificateTimeouts;
 }
 /**
  * Provides a DNSimple certificate data source.
@@ -97,4 +103,5 @@ export interface GetCertificateOutputArgs {
      * The domain of the SSL Certificate
      */
     domain: pulumi.Input<string>;
+    timeouts?: pulumi.Input<inputs.GetCertificateTimeoutsArgs>;
 }

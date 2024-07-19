@@ -13,7 +13,6 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * // Add an email forwarding rule to the domain
  * const foobar = new dnsimple.EmailForward("foobar", {
  *     domain: dnsimpleDomain.name,
  *     aliasName: "sales",
