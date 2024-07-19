@@ -102,6 +102,11 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("dnsimple_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
 
+	// Some resource's have non-string IDs. Pulumi requires string ID fields, so we
+	// use a type override on these resources to tell Pulumi to present to users a
+	// string, even though the underlying TF provider will see an integer.
+	//
+	// Related to https://github.com/pulumi/pulumi-terraform-bridge/issues/1198
 	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
 		if value.Schema().Get("id").Type() != shim.TypeString {
 			r := prov.Resources[key]
