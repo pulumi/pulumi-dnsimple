@@ -7,6 +7,8 @@ import * as utilities from "./utilities";
 /**
  * Get information about a DNSimple zone.
  *
+ * !> Data source is getting deprecated in favor of `dnsimple\_zone` resource.
+ *
  * Get zone:
  *
  * ```typescript
@@ -54,6 +56,8 @@ export interface GetZoneResult {
 }
 /**
  * Get information about a DNSimple zone.
+ *
+ * !> Data source is getting deprecated in favor of `dnsimple\_zone` resource.
  *
  * Get zone:
  *

@@ -27,6 +27,11 @@ namespace Pulumi.DNSimple
     ///         DomainId = dnsimple.DomainId,
     ///         AutoRenew = false,
     ///         Name = "www",
+    ///         AlternateNames = new[]
+    ///         {
+    ///             "docs.example.com",
+    ///             "status.example.com",
+    ///         },
     ///     });
     /// 
     /// });
@@ -35,6 +40,12 @@ namespace Pulumi.DNSimple
     [DNSimpleResourceType("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")]
     public partial class LetsEncryptCertificate : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// The certificate alternate names
+        /// </summary>
+        [Output("alternateNames")]
+        public Output<ImmutableArray<string>> AlternateNames { get; private set; } = null!;
+
         /// <summary>
         /// The identifying certification authority (CA)
         /// </summary>
@@ -72,7 +83,7 @@ namespace Pulumi.DNSimple
         public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// The certificate name
+        /// The certificate name; use `""` for the root domain. Wildcard names are supported.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -147,6 +158,18 @@ namespace Pulumi.DNSimple
 
     public sealed class LetsEncryptCertificateArgs : global::Pulumi.ResourceArgs
     {
+        [Input("alternateNames")]
+        private InputList<string>? _alternateNames;
+
+        /// <summary>
+        /// The certificate alternate names
+        /// </summary>
+        public InputList<string> AlternateNames
+        {
+            get => _alternateNames ?? (_alternateNames = new InputList<string>());
+            set => _alternateNames = value;
+        }
+
         /// <summary>
         /// True if the certificate should auto-renew
         /// </summary>
@@ -160,7 +183,7 @@ namespace Pulumi.DNSimple
         public Input<string> DomainId { get; set; } = null!;
 
         /// <summary>
-        /// The certificate name
+        /// The certificate name; use `""` for the root domain. Wildcard names are supported.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -179,6 +202,18 @@ namespace Pulumi.DNSimple
 
     public sealed class LetsEncryptCertificateState : global::Pulumi.ResourceArgs
     {
+        [Input("alternateNames")]
+        private InputList<string>? _alternateNames;
+
+        /// <summary>
+        /// The certificate alternate names
+        /// </summary>
+        public InputList<string> AlternateNames
+        {
+            get => _alternateNames ?? (_alternateNames = new InputList<string>());
+            set => _alternateNames = value;
+        }
+
         /// <summary>
         /// The identifying certification authority (CA)
         /// </summary>
@@ -216,7 +251,7 @@ namespace Pulumi.DNSimple
         public Input<string>? ExpiresAt { get; set; }
 
         /// <summary>
-        /// The certificate name
+        /// The certificate name; use `""` for the root domain. Wildcard names are supported.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

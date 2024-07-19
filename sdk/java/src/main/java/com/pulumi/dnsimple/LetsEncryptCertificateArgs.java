@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class LetsEncryptCertificateArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final LetsEncryptCertificateArgs Empty = new LetsEncryptCertificateArgs();
+
+    /**
+     * The certificate alternate names
+     * 
+     */
+    @Import(name="alternateNames")
+    private @Nullable Output<List<String>> alternateNames;
+
+    /**
+     * @return The certificate alternate names
+     * 
+     */
+    public Optional<Output<List<String>>> alternateNames() {
+        return Optional.ofNullable(this.alternateNames);
+    }
 
     /**
      * True if the certificate should auto-renew
@@ -48,14 +64,14 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The certificate name
+     * The certificate name; use `&#34;&#34;` for the root domain. Wildcard names are supported.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The certificate name
+     * @return The certificate name; use `&#34;&#34;` for the root domain. Wildcard names are supported.
      * 
      */
     public Output<String> name() {
@@ -80,6 +96,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     private LetsEncryptCertificateArgs() {}
 
     private LetsEncryptCertificateArgs(LetsEncryptCertificateArgs $) {
+        this.alternateNames = $.alternateNames;
         this.autoRenew = $.autoRenew;
         this.domainId = $.domainId;
         this.name = $.name;
@@ -102,6 +119,37 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
 
         public Builder(LetsEncryptCertificateArgs defaults) {
             $ = new LetsEncryptCertificateArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(@Nullable Output<List<String>> alternateNames) {
+            $.alternateNames = alternateNames;
+            return this;
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(List<String> alternateNames) {
+            return alternateNames(Output.of(alternateNames));
+        }
+
+        /**
+         * @param alternateNames The certificate alternate names
+         * 
+         * @return builder
+         * 
+         */
+        public Builder alternateNames(String... alternateNames) {
+            return alternateNames(List.of(alternateNames));
         }
 
         /**
@@ -147,7 +195,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The certificate name
+         * @param name The certificate name; use `&#34;&#34;` for the root domain. Wildcard names are supported.
          * 
          * @return builder
          * 
@@ -158,7 +206,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param name The certificate name
+         * @param name The certificate name; use `&#34;&#34;` for the root domain. Wildcard names are supported.
          * 
          * @return builder
          * 

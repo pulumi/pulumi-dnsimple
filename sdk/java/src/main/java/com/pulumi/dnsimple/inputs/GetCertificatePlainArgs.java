@@ -4,10 +4,13 @@
 package com.pulumi.dnsimple.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.dnsimple.inputs.GetCertificateTimeouts;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeArgs {
@@ -44,11 +47,19 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
         return this.domain;
     }
 
+    @Import(name="timeouts")
+    private @Nullable GetCertificateTimeouts timeouts;
+
+    public Optional<GetCertificateTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetCertificatePlainArgs() {}
 
     private GetCertificatePlainArgs(GetCertificatePlainArgs $) {
         this.certificateId = $.certificateId;
         this.domain = $.domain;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -88,6 +99,11 @@ public final class GetCertificatePlainArgs extends com.pulumi.resources.InvokeAr
          */
         public Builder domain(String domain) {
             $.domain = domain;
+            return this;
+        }
+
+        public Builder timeouts(@Nullable GetCertificateTimeouts timeouts) {
+            $.timeouts = timeouts;
             return this;
         }
 

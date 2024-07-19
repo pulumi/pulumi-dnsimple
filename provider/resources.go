@@ -29,7 +29,7 @@ import (
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
-	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
+	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
 )
 
 // all of the token components used below.

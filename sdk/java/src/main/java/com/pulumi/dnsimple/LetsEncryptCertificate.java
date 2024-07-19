@@ -13,6 +13,7 @@ import com.pulumi.dnsimple.inputs.LetsEncryptCertificateState;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
+import java.util.List;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -48,6 +49,9 @@ import javax.annotation.Nullable;
  *             .domainId(dnsimple.domainId())
  *             .autoRenew(false)
  *             .name("www")
+ *             .alternateNames(            
+ *                 "docs.example.com",
+ *                 "status.example.com")
  *             .build());
  * 
  *     }
@@ -59,6 +63,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")
 public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource {
+    /**
+     * The certificate alternate names
+     * 
+     */
+    @Export(name="alternateNames", refs={List.class,String.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<String>> alternateNames;
+
+    /**
+     * @return The certificate alternate names
+     * 
+     */
+    public Output<Optional<List<String>>> alternateNames() {
+        return Codegen.optional(this.alternateNames);
+    }
     /**
      * The identifying certification authority (CA)
      * 
@@ -144,14 +162,14 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
         return this.expiresAt;
     }
     /**
-     * The certificate name
+     * The certificate name; use `&#34;&#34;` for the root domain. Wildcard names are supported.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The certificate name
+     * @return The certificate name; use `&#34;&#34;` for the root domain. Wildcard names are supported.
      * 
      */
     public Output<String> name() {

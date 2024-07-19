@@ -77,6 +77,9 @@ namespace Pulumi.DNSimple
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
+        [Input("timeouts")]
+        public Inputs.GetCertificateTimeoutsArgs? Timeouts { get; set; }
+
         public GetCertificateArgs()
         {
         }
@@ -96,6 +99,9 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
+
+        [Input("timeouts")]
+        public Input<Inputs.GetCertificateTimeoutsInputArgs>? Timeouts { get; set; }
 
         public GetCertificateInvokeArgs()
         {
@@ -126,6 +132,7 @@ namespace Pulumi.DNSimple
         /// The SSL Certificate
         /// </summary>
         public readonly string ServerCertificate;
+        public readonly Outputs.GetCertificateTimeoutsResult? Timeouts;
 
         [OutputConstructor]
         private GetCertificateResult(
@@ -141,7 +148,9 @@ namespace Pulumi.DNSimple
 
             string rootCertificate,
 
-            string serverCertificate)
+            string serverCertificate,
+
+            Outputs.GetCertificateTimeoutsResult? timeouts)
         {
             CertificateChains = certificateChains;
             CertificateId = certificateId;
@@ -150,6 +159,7 @@ namespace Pulumi.DNSimple
             PrivateKey = privateKey;
             RootCertificate = rootCertificate;
             ServerCertificate = serverCertificate;
+            Timeouts = timeouts;
         }
     }
 }

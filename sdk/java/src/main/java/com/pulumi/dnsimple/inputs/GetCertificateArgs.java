@@ -5,10 +5,13 @@ package com.pulumi.dnsimple.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.dnsimple.inputs.GetCertificateTimeoutsArgs;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
@@ -45,11 +48,19 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
         return this.domain;
     }
 
+    @Import(name="timeouts")
+    private @Nullable Output<GetCertificateTimeoutsArgs> timeouts;
+
+    public Optional<Output<GetCertificateTimeoutsArgs>> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
+
     private GetCertificateArgs() {}
 
     private GetCertificateArgs(GetCertificateArgs $) {
         this.certificateId = $.certificateId;
         this.domain = $.domain;
+        this.timeouts = $.timeouts;
     }
 
     public static Builder builder() {
@@ -110,6 +121,15 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder domain(String domain) {
             return domain(Output.of(domain));
+        }
+
+        public Builder timeouts(@Nullable Output<GetCertificateTimeoutsArgs> timeouts) {
+            $.timeouts = timeouts;
+            return this;
+        }
+
+        public Builder timeouts(GetCertificateTimeoutsArgs timeouts) {
+            return timeouts(Output.of(timeouts));
         }
 
         public GetCertificateArgs build() {

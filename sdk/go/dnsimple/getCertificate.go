@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -54,7 +54,8 @@ type GetCertificateArgs struct {
 	// The ID of the SSL Certificate
 	CertificateId int `pulumi:"certificateId"`
 	// The domain of the SSL Certificate
-	Domain string `pulumi:"domain"`
+	Domain   string                  `pulumi:"domain"`
+	Timeouts *GetCertificateTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getCertificate.
@@ -69,7 +70,8 @@ type GetCertificateResult struct {
 	// The Root Certificate of the issuing CA
 	RootCertificate string `pulumi:"rootCertificate"`
 	// The SSL Certificate
-	ServerCertificate string `pulumi:"serverCertificate"`
+	ServerCertificate string                  `pulumi:"serverCertificate"`
+	Timeouts          *GetCertificateTimeouts `pulumi:"timeouts"`
 }
 
 func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, opts ...pulumi.InvokeOption) GetCertificateResultOutput {
@@ -90,7 +92,8 @@ type GetCertificateOutputArgs struct {
 	// The ID of the SSL Certificate
 	CertificateId pulumi.IntInput `pulumi:"certificateId"`
 	// The domain of the SSL Certificate
-	Domain pulumi.StringInput `pulumi:"domain"`
+	Domain   pulumi.StringInput             `pulumi:"domain"`
+	Timeouts GetCertificateTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
 func (GetCertificateOutputArgs) ElementType() reflect.Type {
@@ -142,6 +145,10 @@ func (o GetCertificateResultOutput) RootCertificate() pulumi.StringOutput {
 // The SSL Certificate
 func (o GetCertificateResultOutput) ServerCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.ServerCertificate }).(pulumi.StringOutput)
+}
+
+func (o GetCertificateResultOutput) Timeouts() GetCertificateTimeoutsPtrOutput {
+	return o.ApplyT(func(v GetCertificateResult) *GetCertificateTimeouts { return v.Timeouts }).(GetCertificateTimeoutsPtrOutput)
 }
 
 func init() {

@@ -15,18 +15,24 @@
     "files": [
         "config/index.ts",
         "config/vars.ts",
+        "contact.ts",
         "domain.ts",
+        "domainDelegation.ts",
+        "dsRecord.ts",
         "emailForward.ts",
         "getCertificate.ts",
+        "getRegistrantChangeCheck.ts",
         "getZone.ts",
         "index.ts",
         "letsEncryptCertificate.ts",
         "provider.ts",
+        "registeredDomain.ts",
         "types/enums/index.ts",
         "types/index.ts",
         "types/input.ts",
         "types/output.ts",
         "utilities.ts",
+        "zone.ts",
         "zoneRecord.ts"
     ]
 }

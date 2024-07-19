@@ -87,6 +87,9 @@ namespace Pulumi.DNSimple
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
+        [Output("nameNormalized")]
+        public Output<string> NameNormalized { get; private set; } = null!;
+
         /// <summary>
         /// The priority of the record - only useful for some record types
         /// </summary>
@@ -98,6 +101,12 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Output("qualifiedName")]
         public Output<string> QualifiedName { get; private set; } = null!;
+
+        /// <summary>
+        /// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+        /// </summary>
+        [Output("regions")]
+        public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
         /// The TTL of the record - defaults to 3600
@@ -118,13 +127,19 @@ namespace Pulumi.DNSimple
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The domain ID of the record
+        /// The normalized value of the record
+        /// </summary>
+        [Output("valueNormalized")]
+        public Output<string> ValueNormalized { get; private set; } = null!;
+
+        /// <summary>
+        /// The zone ID of the record
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The domain to add the record to
+        /// The zone name to add the record to
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -187,6 +202,18 @@ namespace Pulumi.DNSimple
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
+        [Input("regions")]
+        private InputList<string>? _regions;
+
+        /// <summary>
+        /// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+        /// </summary>
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
+
         /// <summary>
         /// The TTL of the record - defaults to 3600
         /// </summary>
@@ -206,7 +233,7 @@ namespace Pulumi.DNSimple
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The domain to add the record to
+        /// The zone name to add the record to
         /// </summary>
         [Input("zoneName", required: true)]
         public Input<string> ZoneName { get; set; } = null!;
@@ -225,6 +252,9 @@ namespace Pulumi.DNSimple
         [Input("name")]
         public Input<string>? Name { get; set; }
 
+        [Input("nameNormalized")]
+        public Input<string>? NameNormalized { get; set; }
+
         /// <summary>
         /// The priority of the record - only useful for some record types
         /// </summary>
@@ -236,6 +266,18 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Input("qualifiedName")]
         public Input<string>? QualifiedName { get; set; }
+
+        [Input("regions")]
+        private InputList<string>? _regions;
+
+        /// <summary>
+        /// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+        /// </summary>
+        public InputList<string> Regions
+        {
+            get => _regions ?? (_regions = new InputList<string>());
+            set => _regions = value;
+        }
 
         /// <summary>
         /// The TTL of the record - defaults to 3600
@@ -256,13 +298,19 @@ namespace Pulumi.DNSimple
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The domain ID of the record
+        /// The normalized value of the record
+        /// </summary>
+        [Input("valueNormalized")]
+        public Input<string>? ValueNormalized { get; set; }
+
+        /// <summary>
+        /// The zone ID of the record
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         /// <summary>
-        /// The domain to add the record to
+        /// The zone name to add the record to
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

@@ -17,6 +17,10 @@ import * as utilities from "./utilities";
  *     domainId: dnsimple.domainId,
  *     autoRenew: false,
  *     name: "www",
+ *     alternateNames: [
+ *         "docs.example.com",
+ *         "status.example.com",
+ *     ],
  * });
  * ```
  */
@@ -49,6 +53,10 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
     }
 
     /**
+     * The certificate alternate names
+     */
+    public readonly alternateNames!: pulumi.Output<string[] | undefined>;
+    /**
      * The identifying certification authority (CA)
      */
     public /*out*/ readonly authorityIdentifier!: pulumi.Output<string>;
@@ -73,7 +81,7 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
      */
     public /*out*/ readonly expiresAt!: pulumi.Output<string>;
     /**
-     * The certificate name
+     * The certificate name; use `""` for the root domain. Wildcard names are supported.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -106,6 +114,7 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LetsEncryptCertificateState | undefined;
+            resourceInputs["alternateNames"] = state ? state.alternateNames : undefined;
             resourceInputs["authorityIdentifier"] = state ? state.authorityIdentifier : undefined;
             resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
             resourceInputs["createdAt"] = state ? state.createdAt : undefined;
@@ -128,6 +137,7 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
             if ((!args || args.name === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
+            resourceInputs["alternateNames"] = args ? args.alternateNames : undefined;
             resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
             resourceInputs["domainId"] = args ? args.domainId : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -149,6 +159,10 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
  * Input properties used for looking up and filtering LetsEncryptCertificate resources.
  */
 export interface LetsEncryptCertificateState {
+    /**
+     * The certificate alternate names
+     */
+    alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The identifying certification authority (CA)
      */
@@ -174,7 +188,7 @@ export interface LetsEncryptCertificateState {
      */
     expiresAt?: pulumi.Input<string>;
     /**
-     * The certificate name
+     * The certificate name; use `""` for the root domain. Wildcard names are supported.
      */
     name?: pulumi.Input<string>;
     /**
@@ -200,6 +214,10 @@ export interface LetsEncryptCertificateState {
  */
 export interface LetsEncryptCertificateArgs {
     /**
+     * The certificate alternate names
+     */
+    alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * True if the certificate should auto-renew
      */
     autoRenew: pulumi.Input<boolean>;
@@ -208,7 +226,7 @@ export interface LetsEncryptCertificateArgs {
      */
     domainId: pulumi.Input<string>;
     /**
-     * The certificate name
+     * The certificate name; use `""` for the root domain. Wildcard names are supported.
      */
     name: pulumi.Input<string>;
     /**

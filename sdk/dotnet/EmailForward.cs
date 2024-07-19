@@ -22,7 +22,6 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Add an email forwarding rule to the domain
     ///     var foobar = new DNSimple.EmailForward("foobar", new()
     ///     {
     ///         Domain = dnsimpleDomain.Name,

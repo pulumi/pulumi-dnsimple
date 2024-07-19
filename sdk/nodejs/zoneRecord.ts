@@ -91,6 +91,7 @@ export class ZoneRecord extends pulumi.CustomResource {
      * The name of the record
      */
     public readonly name!: pulumi.Output<string>;
+    public /*out*/ readonly nameNormalized!: pulumi.Output<string>;
     /**
      * The priority of the record - only useful for some record types
      */
@@ -99,6 +100,10 @@ export class ZoneRecord extends pulumi.CustomResource {
      * The FQDN of the record
      */
     public /*out*/ readonly qualifiedName!: pulumi.Output<string>;
+    /**
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     */
+    public readonly regions!: pulumi.Output<string[] | undefined>;
     /**
      * The TTL of the record - defaults to 3600
      */
@@ -112,11 +117,15 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     public readonly value!: pulumi.Output<string>;
     /**
-     * The domain ID of the record
+     * The normalized value of the record
+     */
+    public /*out*/ readonly valueNormalized!: pulumi.Output<string>;
+    /**
+     * The zone ID of the record
      */
     public /*out*/ readonly zoneId!: pulumi.Output<string>;
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      */
     public readonly zoneName!: pulumi.Output<string>;
 
@@ -134,11 +143,14 @@ export class ZoneRecord extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as ZoneRecordState | undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["nameNormalized"] = state ? state.nameNormalized : undefined;
             resourceInputs["priority"] = state ? state.priority : undefined;
             resourceInputs["qualifiedName"] = state ? state.qualifiedName : undefined;
+            resourceInputs["regions"] = state ? state.regions : undefined;
             resourceInputs["ttl"] = state ? state.ttl : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["value"] = state ? state.value : undefined;
+            resourceInputs["valueNormalized"] = state ? state.valueNormalized : undefined;
             resourceInputs["zoneId"] = state ? state.zoneId : undefined;
             resourceInputs["zoneName"] = state ? state.zoneName : undefined;
         } else {
@@ -157,11 +169,14 @@ export class ZoneRecord extends pulumi.CustomResource {
             }
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["priority"] = args ? args.priority : undefined;
+            resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["ttl"] = args ? args.ttl : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["value"] = args ? args.value : undefined;
             resourceInputs["zoneName"] = args ? args.zoneName : undefined;
+            resourceInputs["nameNormalized"] = undefined /*out*/;
             resourceInputs["qualifiedName"] = undefined /*out*/;
+            resourceInputs["valueNormalized"] = undefined /*out*/;
             resourceInputs["zoneId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -177,6 +192,7 @@ export interface ZoneRecordState {
      * The name of the record
      */
     name?: pulumi.Input<string>;
+    nameNormalized?: pulumi.Input<string>;
     /**
      * The priority of the record - only useful for some record types
      */
@@ -185,6 +201,10 @@ export interface ZoneRecordState {
      * The FQDN of the record
      */
     qualifiedName?: pulumi.Input<string>;
+    /**
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     */
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The TTL of the record - defaults to 3600
      */
@@ -198,11 +218,15 @@ export interface ZoneRecordState {
      */
     value?: pulumi.Input<string>;
     /**
-     * The domain ID of the record
+     * The normalized value of the record
+     */
+    valueNormalized?: pulumi.Input<string>;
+    /**
+     * The zone ID of the record
      */
     zoneId?: pulumi.Input<string>;
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -220,6 +244,10 @@ export interface ZoneRecordArgs {
      */
     priority?: pulumi.Input<number>;
     /**
+     * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
+     */
+    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
      * The TTL of the record - defaults to 3600
      */
     ttl?: pulumi.Input<number>;
@@ -232,7 +260,7 @@ export interface ZoneRecordArgs {
      */
     value: pulumi.Input<string>;
     /**
-     * The domain to add the record to
+     * The zone name to add the record to
      */
     zoneName: pulumi.Input<string>;
 }

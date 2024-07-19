@@ -14,6 +14,8 @@ namespace Pulumi.DNSimple
         /// <summary>
         /// Get information about a DNSimple zone.
         /// 
+        /// !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
+        /// 
         /// Get zone:
         /// 
         /// ```csharp
@@ -47,6 +49,8 @@ namespace Pulumi.DNSimple
 
         /// <summary>
         /// Get information about a DNSimple zone.
+        /// 
+        /// !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
         /// 
         /// Get zone:
         /// 

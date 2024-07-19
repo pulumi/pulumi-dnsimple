@@ -4,11 +4,14 @@
 package com.pulumi.dnsimple.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.dnsimple.outputs.GetCertificateTimeouts;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class GetCertificateResult {
@@ -35,6 +38,7 @@ public final class GetCertificateResult {
      * 
      */
     private String serverCertificate;
+    private @Nullable GetCertificateTimeouts timeouts;
 
     private GetCertificateResult() {}
     /**
@@ -74,6 +78,9 @@ public final class GetCertificateResult {
     public String serverCertificate() {
         return this.serverCertificate;
     }
+    public Optional<GetCertificateTimeouts> timeouts() {
+        return Optional.ofNullable(this.timeouts);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -91,6 +98,7 @@ public final class GetCertificateResult {
         private String privateKey;
         private String rootCertificate;
         private String serverCertificate;
+        private @Nullable GetCertificateTimeouts timeouts;
         public Builder() {}
         public Builder(GetCertificateResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -101,6 +109,7 @@ public final class GetCertificateResult {
     	      this.privateKey = defaults.privateKey;
     	      this.rootCertificate = defaults.rootCertificate;
     	      this.serverCertificate = defaults.serverCertificate;
+    	      this.timeouts = defaults.timeouts;
         }
 
         @CustomType.Setter
@@ -162,6 +171,12 @@ public final class GetCertificateResult {
             this.serverCertificate = serverCertificate;
             return this;
         }
+        @CustomType.Setter
+        public Builder timeouts(@Nullable GetCertificateTimeouts timeouts) {
+
+            this.timeouts = timeouts;
+            return this;
+        }
         public GetCertificateResult build() {
             final var _resultValue = new GetCertificateResult();
             _resultValue.certificateChains = certificateChains;
@@ -171,6 +186,7 @@ public final class GetCertificateResult {
             _resultValue.privateKey = privateKey;
             _resultValue.rootCertificate = rootCertificate;
             _resultValue.serverCertificate = serverCertificate;
+            _resultValue.timeouts = timeouts;
             return _resultValue;
         }
     }

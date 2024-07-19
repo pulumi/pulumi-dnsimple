@@ -23,7 +23,7 @@ import (
 
 	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 
-	dnsimple "github.com/pulumi/pulumi-dnsimple/provider/v3"
+	dnsimple "github.com/pulumi/pulumi-dnsimple/provider/v4"
 )
 
 //go:embed schema-embed.json
