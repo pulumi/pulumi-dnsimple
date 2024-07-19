@@ -1,5 +1,5 @@
 provider: dnsimple
-major-version: 3
+major-version: 4
 upstreamProviderOrg: dnsimple
 env:
   DNSIMPLE_TOKEN: ${{ secrets.DNSIMPLE_TOKEN }}
