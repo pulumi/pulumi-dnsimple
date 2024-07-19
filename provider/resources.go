@@ -21,12 +21,13 @@ import (
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
 
-	"github.com/terraform-providers/terraform-provider-dnsimple/dnsimple"
+	dnsimple "github.com/terraform-providers/terraform-provider-dnsimple/shim"
 
+	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
-	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
 	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 )
@@ -39,37 +40,48 @@ const (
 	mainMod = "index"
 )
 
-// makeType manufactures a type token for the package and the given module and type.
-func makeType(mod tokens.ModuleName, typ tokens.TypeName) tokens.Type {
-	return tokens.NewTypeToken(tokens.NewModuleToken(mainPkg, mod), typ)
-}
-
 //go:embed cmd/pulumi-resource-dnsimple/bridge-metadata.json
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
 func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
-		P:            shimv2.NewProvider(dnsimple.Provider()),
-		Name:         "dnsimple",
-		Description:  "A Pulumi package for creating and managing dnsimple cloud resources.",
-		Keywords:     []string{"pulumi", "dnsimple"},
-		License:      "Apache-2.0",
-		Homepage:     "https://pulumi.io",
-		Repository:   "https://github.com/pulumi/pulumi-dnsimple",
-		GitHubOrg:    "terraform-providers",
-		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Resources: map[string]*tfbridge.ResourceInfo{
-			"dnsimple_record": {
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": {Type: "string"},
-					"type": {Type: makeType(mainMod, "RecordType")},
-				},
-				Docs:               &tfbridge.DocInfo{AllowMissing: true},
-				DeprecationMessage: "This resource is deprecated.\nIt will be removed in the next major version.",
-			},
-		},
+		P:                pfbridge.ShimProvider(dnsimple.Provider(version.Version)),
+		Name:             "dnsimple",
+		Description:      "A Pulumi package for creating and managing dnsimple cloud resources.",
+		Keywords:         []string{"pulumi", "dnsimple"},
+		License:          "Apache-2.0",
+		Homepage:         "https://pulumi.io",
+		Repository:       "https://github.com/pulumi/pulumi-dnsimple",
+		GitHubOrg:        "terraform-providers",
+		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		Version:          version.Version,
 		UpstreamRepoPath: "./upstream",
+		ExtraTypes: map[string]schema.ComplexTypeSpec{
+			mainPkg + ":" + mainMod + ":RecordTypes": {
+				ObjectTypeSpec: schema.ObjectTypeSpec{
+					Description: "DNS Record types.",
+					Type:        "string",
+				},
+				Enum: []schema.EnumValueSpec{
+					{Value: "A"},
+					{Value: "AAAA"},
+					{Value: "ALIAS"},
+					{Value: "CAA"},
+					{Value: "CNAME"},
+					{Value: "HINFO"},
+					{Value: "MX"},
+					{Value: "NAPTR"},
+					{Value: "NS"},
+					{Value: "POOL"},
+					{Value: "PTR"},
+					{Value: "SPF"},
+					{Value: "SRV"},
+					{Value: "SSHFP"},
+					{Value: "TXT"},
+					{Value: "URL"},
+				}},
+		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
 				"@pulumi/pulumi": "^3.0.0",
@@ -77,11 +89,6 @@ func Provider() tfbridge.ProviderInfo {
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
-			},
-			Overlay: &tfbridge.OverlayInfo{
-				DestFiles: []string{
-					"recordType.ts",
-				},
 			},
 			RespectSchemaVersion: true,
 		},
@@ -115,6 +122,23 @@ func Provider() tfbridge.ProviderInfo {
 
 	prov.MustComputeTokens(tfbridgetokens.SingleModule("dnsimple_", mainMod,
 		tfbridgetokens.MakeStandard(mainPkg)))
+
+	// Some resource's have non-string IDs. Pulumi requires string ID fields, so we
+	// use a type override on these resources to tell Pulumi to present to users a
+	// string, even though the underlying TF provider will see an integer.
+	//
+	// Related to https://github.com/pulumi/pulumi-terraform-bridge/issues/1198
+	prov.P.ResourcesMap().Range(func(key string, value shim.Resource) bool {
+		if value.Schema().Get("id").Type() != shim.TypeString {
+			r := prov.Resources[key]
+			if r.Fields == nil {
+				r.Fields = make(map[string]*tfbridge.SchemaInfo, 1)
+			}
+			r.Fields["id"] = &tfbridge.SchemaInfo{Type: "string"}
+		}
+		return true
+	})
+
 	prov.MustApplyAutoAliases()
 
 	return prov

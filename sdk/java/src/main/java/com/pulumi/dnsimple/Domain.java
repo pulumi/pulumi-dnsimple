@@ -58,13 +58,17 @@ import javax.annotation.Nullable;
  * 
  * DNSimple domains can be imported using their numeric record ID.
  * 
+ * bash
+ * 
  * ```sh
  * $ pulumi import dnsimple:index/domain:Domain resource_name 5678
  * ```
  * 
  * The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
- * $ curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
+ * bash
+ * 
+ * curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
  * 
  * {
  * 
@@ -117,20 +121,38 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="dnsimple:index/domain:Domain")
 public class Domain extends com.pulumi.resources.CustomResource {
+    /**
+     * The account ID for the domain.
+     * 
+     */
     @Export(name="accountId", refs={Integer.class}, tree="[0]")
     private Output<Integer> accountId;
 
+    /**
+     * @return The account ID for the domain.
+     * 
+     */
     public Output<Integer> accountId() {
         return this.accountId;
     }
+    /**
+     * Whether the domain is set to auto-renew.
+     * 
+     */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
+    /**
+     * @return Whether the domain is set to auto-renew.
+     * 
+     */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
     /**
      * The domain name to be created
+     * 
+     * # Attributes Reference
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
@@ -139,31 +161,65 @@ public class Domain extends com.pulumi.resources.CustomResource {
     /**
      * @return The domain name to be created
      * 
+     * # Attributes Reference
+     * 
      */
     public Output<String> name() {
         return this.name;
     }
+    /**
+     * Whether the domain has WhoIs privacy enabled.
+     * 
+     */
     @Export(name="privateWhois", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> privateWhois;
 
+    /**
+     * @return Whether the domain has WhoIs privacy enabled.
+     * 
+     */
     public Output<Boolean> privateWhois() {
         return this.privateWhois;
     }
+    /**
+     * The ID of the registrant (contact) for the domain.
+     * 
+     */
     @Export(name="registrantId", refs={Integer.class}, tree="[0]")
     private Output<Integer> registrantId;
 
+    /**
+     * @return The ID of the registrant (contact) for the domain.
+     * 
+     */
     public Output<Integer> registrantId() {
         return this.registrantId;
     }
+    /**
+     * The state of the domain.
+     * 
+     */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
+    /**
+     * @return The state of the domain.
+     * 
+     */
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * The domain name in Unicode format.
+     * 
+     */
     @Export(name="unicodeName", refs={String.class}, tree="[0]")
     private Output<String> unicodeName;
 
+    /**
+     * @return The domain name in Unicode format.
+     * 
+     */
     public Output<String> unicodeName() {
         return this.unicodeName;
     }

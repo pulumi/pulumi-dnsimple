@@ -22,8 +22,10 @@
         "index.ts",
         "letsEncryptCertificate.ts",
         "provider.ts",
-        "record.ts",
-        "recordType.ts",
+        "types/enums/index.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
         "utilities.ts",
         "zoneRecord.ts"
     ]

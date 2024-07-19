@@ -27,8 +27,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &EmailForward{}
 	case "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate":
 		r = &LetsEncryptCertificate{}
-	case "dnsimple:index/record:Record":
-		r = &Record{}
 	case "dnsimple:index/zoneRecord:ZoneRecord":
 		r = &ZoneRecord{}
 	default:
@@ -75,11 +73,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"dnsimple",
 		"index/letsEncryptCertificate",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"dnsimple",
-		"index/record",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -17,12 +17,13 @@
 package main
 
 import (
+	"context"
+
 	_ "embed"
 
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 
 	dnsimple "github.com/pulumi/pulumi-dnsimple/provider/v3"
-	"github.com/pulumi/pulumi-dnsimple/provider/v3/pkg/version"
 )
 
 //go:embed schema-embed.json
@@ -30,5 +31,7 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("dnsimple", version.Version, dnsimple.Provider(), pulumiSchema)
+	tfbridge.Main(context.Background(), "dnsimple", dnsimple.Provider(), tfbridge.ProviderMetadata{
+		PackageSchema: pulumiSchema,
+	})
 }

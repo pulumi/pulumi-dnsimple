@@ -2,24 +2,26 @@
     "auto-aliasing": {
         "resources": {
             "dnsimple_domain": {
-                "current": "dnsimple:index/domain:Domain"
+                "current": "dnsimple:index/domain:Domain",
+                "majorVersion": 3
             },
             "dnsimple_email_forward": {
-                "current": "dnsimple:index/emailForward:EmailForward"
+                "current": "dnsimple:index/emailForward:EmailForward",
+                "majorVersion": 3
             },
             "dnsimple_lets_encrypt_certificate": {
-                "current": "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate"
-            },
-            "dnsimple_record": {
-                "current": "dnsimple:index/record:Record"
+                "current": "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate",
+                "majorVersion": 3
             },
             "dnsimple_zone_record": {
-                "current": "dnsimple:index/zoneRecord:ZoneRecord"
+                "current": "dnsimple:index/zoneRecord:ZoneRecord",
+                "majorVersion": 3
             }
         },
         "datasources": {
             "dnsimple_certificate": {
                 "current": "dnsimple:index/getCertificate:getCertificate",
+                "majorVersion": 3,
                 "fields": {
                     "certificate_chain": {
                         "maxItemsOne": false
@@ -27,7 +29,8 @@
                 }
             },
             "dnsimple_zone": {
-                "current": "dnsimple:index/getZone:getZone"
+                "current": "dnsimple:index/getZone:getZone",
+                "majorVersion": 3
             }
         }
     },

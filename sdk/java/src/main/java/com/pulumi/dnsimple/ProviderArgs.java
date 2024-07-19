@@ -5,7 +5,6 @@ package com.pulumi.dnsimple;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -21,15 +20,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The account for API operations.
      * 
      */
-    @Import(name="account", required=true)
-    private Output<String> account;
+    @Import(name="account")
+    private @Nullable Output<String> account;
 
     /**
      * @return The account for API operations.
      * 
      */
-    public Output<String> account() {
-        return this.account;
+    public Optional<Output<String>> account() {
+        return Optional.ofNullable(this.account);
     }
 
     /**
@@ -66,15 +65,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
      * The API v2 token for API operations.
      * 
      */
-    @Import(name="token", required=true)
-    private Output<String> token;
+    @Import(name="token")
+    private @Nullable Output<String> token;
 
     /**
      * @return The API v2 token for API operations.
      * 
      */
-    public Output<String> token() {
-        return this.token;
+    public Optional<Output<String>> token() {
+        return Optional.ofNullable(this.token);
     }
 
     /**
@@ -126,7 +125,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder account(Output<String> account) {
+        public Builder account(@Nullable Output<String> account) {
             $.account = account;
             return this;
         }
@@ -189,7 +188,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder token(Output<String> token) {
+        public Builder token(@Nullable Output<String> token) {
             $.token = token;
             return this;
         }
@@ -226,12 +225,6 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProviderArgs build() {
-            if ($.account == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "account");
-            }
-            if ($.token == null) {
-                throw new MissingRequiredPropertyException("ProviderArgs", "token");
-            }
             return $;
         }
     }

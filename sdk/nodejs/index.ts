@@ -35,23 +35,22 @@ export type Provider = import("./provider").Provider;
 export const Provider: typeof import("./provider").Provider = null as any;
 utilities.lazyLoad(exports, ["Provider"], () => require("./provider"));
 
-export { RecordArgs, RecordState } from "./record";
-export type Record = import("./record").Record;
-export const Record: typeof import("./record").Record = null as any;
-utilities.lazyLoad(exports, ["Record"], () => require("./record"));
-
-export * from "./recordType";
 export { ZoneRecordArgs, ZoneRecordState } from "./zoneRecord";
 export type ZoneRecord = import("./zoneRecord").ZoneRecord;
 export const ZoneRecord: typeof import("./zoneRecord").ZoneRecord = null as any;
 utilities.lazyLoad(exports, ["ZoneRecord"], () => require("./zoneRecord"));
 
 
+// Export enums:
+export * from "./types/enums";
+
 // Export sub-modules:
 import * as config from "./config";
+import * as types from "./types";
 
 export {
     config,
+    types,
 };
 
 const _module = {
@@ -64,8 +63,6 @@ const _module = {
                 return new EmailForward(name, <any>undefined, { urn })
             case "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate":
                 return new LetsEncryptCertificate(name, <any>undefined, { urn })
-            case "dnsimple:index/record:Record":
-                return new Record(name, <any>undefined, { urn })
             case "dnsimple:index/zoneRecord:ZoneRecord":
                 return new ZoneRecord(name, <any>undefined, { urn })
             default:
@@ -76,7 +73,6 @@ const _module = {
 pulumi.runtime.registerResourceModule("dnsimple", "index/domain", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/emailForward", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/letsEncryptCertificate", _module)
-pulumi.runtime.registerResourceModule("dnsimple", "index/record", _module)
 pulumi.runtime.registerResourceModule("dnsimple", "index/zoneRecord", _module)
 pulumi.runtime.registerResourcePackage("dnsimple", {
     version: utilities.getVersion(),

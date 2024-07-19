@@ -18,16 +18,16 @@ class ZoneRecordArgs:
                  type: pulumi.Input[str],
                  value: pulumi.Input[str],
                  zone_name: pulumi.Input[str],
-                 priority: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[str]] = None):
+                 priority: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
         :param pulumi.Input[str] name: The name of the record
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         :param pulumi.Input[str] zone_name: The domain to add the record to
-        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[int] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[int] ttl: The TTL of the record - defaults to 3600
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -88,26 +88,26 @@ class ZoneRecordArgs:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[str]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority of the record - only useful for some record types
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[str]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[str]]:
+    def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The TTL of the record
+        The TTL of the record - defaults to 3600
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[str]]):
+    def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
 
@@ -115,9 +115,9 @@ class ZoneRecordArgs:
 class _ZoneRecordState:
     def __init__(__self__, *,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
                  qualified_name: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[str]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_id: Optional[pulumi.Input[str]] = None,
@@ -125,9 +125,9 @@ class _ZoneRecordState:
         """
         Input properties used for looking up and filtering ZoneRecord resources.
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[int] priority: The priority of the record - only useful for some record types
         :param pulumi.Input[str] qualified_name: The FQDN of the record
-        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[int] ttl: The TTL of the record - defaults to 3600
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         :param pulumi.Input[str] zone_id: The domain ID of the record
@@ -164,14 +164,14 @@ class _ZoneRecordState:
 
     @property
     @pulumi.getter
-    def priority(self) -> Optional[pulumi.Input[str]]:
+    def priority(self) -> Optional[pulumi.Input[int]]:
         """
         The priority of the record - only useful for some record types
         """
         return pulumi.get(self, "priority")
 
     @priority.setter
-    def priority(self, value: Optional[pulumi.Input[str]]):
+    def priority(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "priority", value)
 
     @property
@@ -188,14 +188,14 @@ class _ZoneRecordState:
 
     @property
     @pulumi.getter
-    def ttl(self) -> Optional[pulumi.Input[str]]:
+    def ttl(self) -> Optional[pulumi.Input[int]]:
         """
-        The TTL of the record
+        The TTL of the record - defaults to 3600
         """
         return pulumi.get(self, "ttl")
 
     @ttl.setter
-    def ttl(self, value: Optional[pulumi.Input[str]]):
+    def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
 
     @property
@@ -253,19 +253,14 @@ class ZoneRecord(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Provides a DNSimple zone record resource.
-
-        ## Deprecation warning
-
-        You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
-        upcoming 1.0.0 release.
 
         ## Example Usage
 
@@ -279,7 +274,7 @@ class ZoneRecord(pulumi.CustomResource):
             name="",
             value="192.168.0.11",
             type="A",
-            ttl="3600")
+            ttl=3600)
         ```
 
         ```python
@@ -292,30 +287,36 @@ class ZoneRecord(pulumi.CustomResource):
             name="terraform",
             value="192.168.0.11",
             type="A",
-            ttl="3600")
+            ttl=3600)
         ```
 
         ## Import
 
         DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
 
-        __Importing record example.com with record ID 1234__
+        **Importing record example.com with record ID 1234**
+
+        bash
 
         ```sh
         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
-        __Importing record www.example.com with record ID 1234__
+
+        **Importing record www.example.com with record ID 1234**
+
+        bash
 
         ```sh
         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
+
         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[int] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[int] ttl: The TTL of the record - defaults to 3600
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         :param pulumi.Input[str] zone_name: The domain to add the record to
@@ -329,11 +330,6 @@ class ZoneRecord(pulumi.CustomResource):
         """
         Provides a DNSimple zone record resource.
 
-        ## Deprecation warning
-
-        You can still use the _deprecated_ `Record` configuration, but be aware that it will be removed in the
-        upcoming 1.0.0 release.
-
         ## Example Usage
 
         ```python
@@ -346,7 +342,7 @@ class ZoneRecord(pulumi.CustomResource):
             name="",
             value="192.168.0.11",
             type="A",
-            ttl="3600")
+            ttl=3600)
         ```
 
         ```python
@@ -359,23 +355,29 @@ class ZoneRecord(pulumi.CustomResource):
             name="terraform",
             value="192.168.0.11",
             type="A",
-            ttl="3600")
+            ttl=3600)
         ```
 
         ## Import
 
         DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
 
-        __Importing record example.com with record ID 1234__
+        **Importing record example.com with record ID 1234**
+
+        bash
 
         ```sh
         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
-        __Importing record www.example.com with record ID 1234__
+
+        **Importing record www.example.com with record ID 1234**
+
+        bash
 
         ```sh
         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
+
         The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
 
         :param str resource_name: The name of the resource.
@@ -394,8 +396,8 @@ class ZoneRecord(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 priority: Optional[pulumi.Input[str]] = None,
-                 ttl: Optional[pulumi.Input[str]] = None,
+                 priority: Optional[pulumi.Input[int]] = None,
+                 ttl: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  value: Optional[pulumi.Input[str]] = None,
                  zone_name: Optional[pulumi.Input[str]] = None,
@@ -435,9 +437,9 @@ class ZoneRecord(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             name: Optional[pulumi.Input[str]] = None,
-            priority: Optional[pulumi.Input[str]] = None,
+            priority: Optional[pulumi.Input[int]] = None,
             qualified_name: Optional[pulumi.Input[str]] = None,
-            ttl: Optional[pulumi.Input[str]] = None,
+            ttl: Optional[pulumi.Input[int]] = None,
             type: Optional[pulumi.Input[str]] = None,
             value: Optional[pulumi.Input[str]] = None,
             zone_id: Optional[pulumi.Input[str]] = None,
@@ -450,9 +452,9 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] name: The name of the record
-        :param pulumi.Input[str] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[int] priority: The priority of the record - only useful for some record types
         :param pulumi.Input[str] qualified_name: The FQDN of the record
-        :param pulumi.Input[str] ttl: The TTL of the record
+        :param pulumi.Input[int] ttl: The TTL of the record - defaults to 3600
         :param pulumi.Input[str] type: The type of the record
         :param pulumi.Input[str] value: The value of the record
         :param pulumi.Input[str] zone_id: The domain ID of the record
@@ -482,7 +484,7 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def priority(self) -> pulumi.Output[str]:
+    def priority(self) -> pulumi.Output[int]:
         """
         The priority of the record - only useful for some record types
         """
@@ -498,9 +500,9 @@ class ZoneRecord(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def ttl(self) -> pulumi.Output[Optional[str]]:
+    def ttl(self) -> pulumi.Output[int]:
         """
-        The TTL of the record
+        The TTL of the record - defaults to 3600
         """
         return pulumi.get(self, "ttl")
 

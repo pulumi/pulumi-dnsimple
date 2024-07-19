@@ -78,11 +78,63 @@
                 "type": "string",
                 "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
             }
-        },
-        "defaults": [
-            "account",
-            "token"
-        ]
+        }
+    },
+    "types": {
+        "dnsimple:index:RecordTypes": {
+            "description": "DNS Record types.",
+            "type": "string",
+            "enum": [
+                {
+                    "value": "A"
+                },
+                {
+                    "value": "AAAA"
+                },
+                {
+                    "value": "ALIAS"
+                },
+                {
+                    "value": "CAA"
+                },
+                {
+                    "value": "CNAME"
+                },
+                {
+                    "value": "HINFO"
+                },
+                {
+                    "value": "MX"
+                },
+                {
+                    "value": "NAPTR"
+                },
+                {
+                    "value": "NS"
+                },
+                {
+                    "value": "POOL"
+                },
+                {
+                    "value": "PTR"
+                },
+                {
+                    "value": "SPF"
+                },
+                {
+                    "value": "SRV"
+                },
+                {
+                    "value": "SSHFP"
+                },
+                {
+                    "value": "TXT"
+                },
+                {
+                    "value": "URL"
+                }
+            ]
+        }
     },
     "provider": {
         "description": "The provider type for the dnsimple package. By default, resources use package-wide configuration\nsettings, however an explicit `Provider` instance may be created and passed during resource\nconstruction to achieve fine-grained programmatic control over provider settings. See the\n[documentation](https://www.pulumi.com/docs/reference/programming-model/#providers) for more information.\n",
@@ -109,10 +161,6 @@
                 "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
             }
         },
-        "required": [
-            "account",
-            "token"
-        ],
         "inputProperties": {
             "account": {
                 "type": "string",
@@ -135,37 +183,39 @@
                 "type": "string",
                 "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
             }
-        },
-        "requiredInputs": [
-            "account",
-            "token"
-        ]
+        }
     },
     "resources": {
         "dnsimple:index/domain:Domain": {
-            "description": "Provides a DNSimple domain resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Create a domain\nconst foobar = new dnsimple.Domain(\"foobar\", {name: dnsimple.domain});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Create a domain\nfoobar = dnsimple.Domain(\"foobar\", name=dnsimple[\"domain\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a domain\n    var foobar = new DNSimple.Domain(\"foobar\", new()\n    {\n        Name = dnsimple.Domain,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a domain\n\t\t_, err := dnsimple.NewDomain(ctx, \"foobar\", \u0026dnsimple.DomainArgs{\n\t\t\tName: pulumi.Any(dnsimple.Domain),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.Domain;\nimport com.pulumi.dnsimple.DomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a domain\n        var foobar = new Domain(\"foobar\", DomainArgs.builder()\n            .name(dnsimple.domain())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a domain\n  foobar:\n    type: dnsimple:Domain\n    properties:\n      name: ${dnsimple.domain}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple domains can be imported using their numeric record ID.\n\n```sh\n$ pulumi import dnsimple:index/domain:Domain resource_name 5678\n```\n\nThe record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.\n\n$ curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq\n\n{\n\n  \"data\": [\n\n    {\n\n      \"id\": 5678,\n\n      \"account_id\": 1234,\n\n      \"registrant_id\": null,\n\n      \"name\": \"example.com\",\n\n      \"unicode_name\": \"example.com\",\n\n      \"state\": \"hosted\",\n\n      \"auto_renew\": false,\n\n      \"private_whois\": false,\n\n      \"expires_on\": null,\n\n      \"expires_at\": null,\n\n      \"created_at\": \"2021-10-01T00:00:00Z\",\n\n      \"updated_at\": \"2021-10-01T00:00:00Z\"\n\n    }\n\n  ],\n\n  \"pagination\": {\n\n    \"current_page\": 1,\n\n    \"per_page\": 30,\n\n    \"total_entries\": 1,\n\n    \"total_pages\": 1\n\n  }\n\n}\n\n",
+            "description": "Provides a DNSimple domain resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Create a domain\nconst foobar = new dnsimple.Domain(\"foobar\", {name: dnsimple.domain});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Create a domain\nfoobar = dnsimple.Domain(\"foobar\", name=dnsimple[\"domain\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a domain\n    var foobar = new DNSimple.Domain(\"foobar\", new()\n    {\n        Name = dnsimple.Domain,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a domain\n\t\t_, err := dnsimple.NewDomain(ctx, \"foobar\", \u0026dnsimple.DomainArgs{\n\t\t\tName: pulumi.Any(dnsimple.Domain),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.Domain;\nimport com.pulumi.dnsimple.DomainArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a domain\n        var foobar = new Domain(\"foobar\", DomainArgs.builder()\n            .name(dnsimple.domain())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a domain\n  foobar:\n    type: dnsimple:Domain\n    properties:\n      name: ${dnsimple.domain}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple domains can be imported using their numeric record ID.\n\nbash\n\n```sh\n$ pulumi import dnsimple:index/domain:Domain resource_name 5678\n```\n\nThe record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.\n\nbash\n\ncurl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq\n\n{\n\n  \"data\": [\n\n    {\n\n      \"id\": 5678,\n\n      \"account_id\": 1234,\n\n      \"registrant_id\": null,\n\n      \"name\": \"example.com\",\n\n      \"unicode_name\": \"example.com\",\n\n      \"state\": \"hosted\",\n\n      \"auto_renew\": false,\n\n      \"private_whois\": false,\n\n      \"expires_on\": null,\n\n      \"expires_at\": null,\n\n      \"created_at\": \"2021-10-01T00:00:00Z\",\n\n      \"updated_at\": \"2021-10-01T00:00:00Z\"\n\n    }\n\n  ],\n\n  \"pagination\": {\n\n    \"current_page\": 1,\n\n    \"per_page\": 30,\n\n    \"total_entries\": 1,\n\n    \"total_pages\": 1\n\n  }\n\n}\n\n",
             "properties": {
                 "accountId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The account ID for the domain.\n"
                 },
                 "autoRenew": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the domain is set to auto-renew.\n"
                 },
                 "name": {
                     "type": "string",
-                    "description": "The domain name to be created\n"
+                    "description": "The domain name to be created\n\n# Attributes Reference\n"
                 },
                 "privateWhois": {
-                    "type": "boolean"
+                    "type": "boolean",
+                    "description": "Whether the domain has WhoIs privacy enabled.\n"
                 },
                 "registrantId": {
-                    "type": "integer"
+                    "type": "integer",
+                    "description": "The ID of the registrant (contact) for the domain.\n"
                 },
                 "state": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The state of the domain.\n"
                 },
                 "unicodeName": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The domain name in Unicode format.\n"
                 }
             },
             "required": [
@@ -180,8 +230,7 @@
             "inputProperties": {
                 "name": {
                     "type": "string",
-                    "description": "The domain name to be created\n",
-                    "willReplaceOnChanges": true
+                    "description": "The domain name to be created\n\n# Attributes Reference\n"
                 }
             },
             "requiredInputs": [
@@ -191,38 +240,43 @@
                 "description": "Input properties used for looking up and filtering Domain resources.\n",
                 "properties": {
                     "accountId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The account ID for the domain.\n"
                     },
                     "autoRenew": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the domain is set to auto-renew.\n"
                     },
                     "name": {
                         "type": "string",
-                        "description": "The domain name to be created\n",
-                        "willReplaceOnChanges": true
+                        "description": "The domain name to be created\n\n# Attributes Reference\n"
                     },
                     "privateWhois": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "Whether the domain has WhoIs privacy enabled.\n"
                     },
                     "registrantId": {
-                        "type": "integer"
+                        "type": "integer",
+                        "description": "The ID of the registrant (contact) for the domain.\n"
                     },
                     "state": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The state of the domain.\n"
                     },
                     "unicodeName": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The domain name in Unicode format.\n"
                     }
                 },
                 "type": "object"
             }
         },
         "dnsimple:index/emailForward:EmailForward": {
-            "description": "Provides a DNSimple email forward resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add an email forwarding rule to the domain\nconst foobar = new dnsimple.EmailForward(\"foobar\", {\n    domain: dnsimpleDomain,\n    aliasName: \"sales\",\n    destinationEmail: \"jane.doe@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add an email forwarding rule to the domain\nfoobar = dnsimple.EmailForward(\"foobar\",\n    domain=dnsimple_domain,\n    alias_name=\"sales\",\n    destination_email=\"jane.doe@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add an email forwarding rule to the domain\n    var foobar = new DNSimple.EmailForward(\"foobar\", new()\n    {\n        Domain = dnsimpleDomain,\n        AliasName = \"sales\",\n        DestinationEmail = \"jane.doe@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add an email forwarding rule to the domain\n\t\t_, err := dnsimple.NewEmailForward(ctx, \"foobar\", \u0026dnsimple.EmailForwardArgs{\n\t\t\tDomain:           pulumi.Any(dnsimpleDomain),\n\t\t\tAliasName:        pulumi.String(\"sales\"),\n\t\t\tDestinationEmail: pulumi.String(\"jane.doe@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.EmailForward;\nimport com.pulumi.dnsimple.EmailForwardArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add an email forwarding rule to the domain\n        var foobar = new EmailForward(\"foobar\", EmailForwardArgs.builder()\n            .domain(dnsimpleDomain)\n            .aliasName(\"sales\")\n            .destinationEmail(\"jane.doe@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add an email forwarding rule to the domain\n  foobar:\n    type: dnsimple:EmailForward\n    properties:\n      domain: ${dnsimpleDomain}\n      aliasName: sales\n      destinationEmail: jane.doe@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n",
+            "description": "Provides a DNSimple email forward resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add an email forwarding rule to the domain\nconst foobar = new dnsimple.EmailForward(\"foobar\", {\n    domain: dnsimpleDomain.name,\n    aliasName: \"sales\",\n    destinationEmail: \"alice.appleseed@example.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add an email forwarding rule to the domain\nfoobar = dnsimple.EmailForward(\"foobar\",\n    domain=dnsimple_domain[\"name\"],\n    alias_name=\"sales\",\n    destination_email=\"alice.appleseed@example.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add an email forwarding rule to the domain\n    var foobar = new DNSimple.EmailForward(\"foobar\", new()\n    {\n        Domain = dnsimpleDomain.Name,\n        AliasName = \"sales\",\n        DestinationEmail = \"alice.appleseed@example.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add an email forwarding rule to the domain\n\t\t_, err := dnsimple.NewEmailForward(ctx, \"foobar\", \u0026dnsimple.EmailForwardArgs{\n\t\t\tDomain:           pulumi.Any(dnsimpleDomain.Name),\n\t\t\tAliasName:        pulumi.String(\"sales\"),\n\t\t\tDestinationEmail: pulumi.String(\"alice.appleseed@example.com\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.EmailForward;\nimport com.pulumi.dnsimple.EmailForwardArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add an email forwarding rule to the domain\n        var foobar = new EmailForward(\"foobar\", EmailForwardArgs.builder()\n            .domain(dnsimpleDomain.name())\n            .aliasName(\"sales\")\n            .destinationEmail(\"alice.appleseed@example.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add an email forwarding rule to the domain\n  foobar:\n    type: dnsimple:EmailForward\n    properties:\n      domain: ${dnsimpleDomain.name}\n      aliasName: sales\n      destinationEmail: alice.appleseed@example.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple resources can be imported using the domain name and numeric email forward ID.\n\n**Importing email forward for example.com with email forward ID 1234**\n\nbash\n\n```sh\n$ pulumi import dnsimple:index/emailForward:EmailForward resource_name example.com_1234\n```\n\n",
             "properties": {
                 "aliasEmail": {
                     "type": "string",
-                    "description": "The source email address on the domain\n"
+                    "description": "The source email address on the domain, in full form. This is a computed attribute.\n"
                 },
                 "aliasName": {
                     "type": "string",
@@ -230,11 +284,11 @@
                 },
                 "destinationEmail": {
                     "type": "string",
-                    "description": "The destination email address on another domain\n"
+                    "description": "The destination email address\n"
                 },
                 "domain": {
                     "type": "string",
-                    "description": "The domain to add the email forwarding rule to\n"
+                    "description": "The domain name to add the email forwarding rule to\n"
                 }
             },
             "required": [
@@ -250,11 +304,11 @@
                 },
                 "destinationEmail": {
                     "type": "string",
-                    "description": "The destination email address on another domain\n"
+                    "description": "The destination email address\n"
                 },
                 "domain": {
                     "type": "string",
-                    "description": "The domain to add the email forwarding rule to\n"
+                    "description": "The domain name to add the email forwarding rule to\n"
                 }
             },
             "requiredInputs": [
@@ -267,7 +321,7 @@
                 "properties": {
                     "aliasEmail": {
                         "type": "string",
-                        "description": "The source email address on the domain\n"
+                        "description": "The source email address on the domain, in full form. This is a computed attribute.\n"
                     },
                     "aliasName": {
                         "type": "string",
@@ -275,11 +329,11 @@
                     },
                     "destinationEmail": {
                         "type": "string",
-                        "description": "The destination email address on another domain\n"
+                        "description": "The destination email address\n"
                     },
                     "domain": {
                         "type": "string",
-                        "description": "The domain to add the email forwarding rule to\n"
+                        "description": "The domain name to add the email forwarding rule to\n"
                     }
                 },
                 "type": "object"
@@ -294,15 +348,11 @@
                 },
                 "autoRenew": {
                     "type": "boolean",
-                    "description": "Set to true if the certificate will auto-renew\n"
-                },
-                "contactId": {
-                    "type": "integer",
-                    "description": "The contact id for the certificate\n",
-                    "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
+                    "description": "True if the certificate should auto-renew\n"
                 },
                 "createdAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The datetime the certificate was created\n"
                 },
                 "csr": {
                     "type": "string",
@@ -312,19 +362,25 @@
                     "type": "string",
                     "description": "The domain to be issued the certificate for\n"
                 },
-                "expiresOn": {
-                    "type": "string"
+                "expiresAt": {
+                    "type": "string",
+                    "description": "The datetime the certificate will expire\n"
                 },
                 "name": {
                     "type": "string",
                     "description": "The certificate name\n"
+                },
+                "signatureAlgorithm": {
+                    "type": "string",
+                    "description": "The signature algorithm to use for the certificate\n"
                 },
                 "state": {
                     "type": "string",
                     "description": "The state of the certificate\n"
                 },
                 "updatedAt": {
-                    "type": "string"
+                    "type": "string",
+                    "description": "The datetime the certificate was last updated\n"
                 },
                 "years": {
                     "type": "integer",
@@ -336,7 +392,8 @@
                 "autoRenew",
                 "createdAt",
                 "csr",
-                "expiresOn",
+                "domainId",
+                "expiresAt",
                 "name",
                 "state",
                 "updatedAt",
@@ -345,12 +402,7 @@
             "inputProperties": {
                 "autoRenew": {
                     "type": "boolean",
-                    "description": "Set to true if the certificate will auto-renew\n"
-                },
-                "contactId": {
-                    "type": "integer",
-                    "description": "The contact id for the certificate\n",
-                    "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
+                    "description": "True if the certificate should auto-renew\n"
                 },
                 "domainId": {
                     "type": "string",
@@ -359,10 +411,15 @@
                 "name": {
                     "type": "string",
                     "description": "The certificate name\n"
+                },
+                "signatureAlgorithm": {
+                    "type": "string",
+                    "description": "The signature algorithm to use for the certificate\n"
                 }
             },
             "requiredInputs": [
                 "autoRenew",
+                "domainId",
                 "name"
             ],
             "stateInputs": {
@@ -374,15 +431,11 @@
                     },
                     "autoRenew": {
                         "type": "boolean",
-                        "description": "Set to true if the certificate will auto-renew\n"
-                    },
-                    "contactId": {
-                        "type": "integer",
-                        "description": "The contact id for the certificate\n",
-                        "deprecationMessage": "contact_id is deprecated and has no effect. The attribute will be removed in the next major version."
+                        "description": "True if the certificate should auto-renew\n"
                     },
                     "createdAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The datetime the certificate was created\n"
                     },
                     "csr": {
                         "type": "string",
@@ -392,19 +445,25 @@
                         "type": "string",
                         "description": "The domain to be issued the certificate for\n"
                     },
-                    "expiresOn": {
-                        "type": "string"
+                    "expiresAt": {
+                        "type": "string",
+                        "description": "The datetime the certificate will expire\n"
                     },
                     "name": {
                         "type": "string",
                         "description": "The certificate name\n"
+                    },
+                    "signatureAlgorithm": {
+                        "type": "string",
+                        "description": "The signature algorithm to use for the certificate\n"
                     },
                     "state": {
                         "type": "string",
                         "description": "The state of the certificate\n"
                     },
                     "updatedAt": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "The datetime the certificate was last updated\n"
                     },
                     "years": {
                         "type": "integer",
@@ -414,116 +473,15 @@
                 "type": "object"
             }
         },
-        "dnsimple:index/record:Record": {
-            "properties": {
-                "domain": {
-                    "type": "string"
-                },
-                "domainId": {
-                    "type": "string"
-                },
-                "hostname": {
-                    "type": "string"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "priority": {
-                    "type": "string"
-                },
-                "ttl": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string",
-                    "$ref": "#/types/dnsimple:index:RecordType"
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "required": [
-                "domain",
-                "domainId",
-                "hostname",
-                "name",
-                "priority",
-                "type",
-                "value"
-            ],
-            "inputProperties": {
-                "domain": {
-                    "type": "string",
-                    "willReplaceOnChanges": true
-                },
-                "name": {
-                    "type": "string"
-                },
-                "priority": {
-                    "type": "string"
-                },
-                "ttl": {
-                    "type": "string"
-                },
-                "type": {
-                    "type": "string",
-                    "$ref": "#/types/dnsimple:index:RecordType",
-                    "willReplaceOnChanges": true
-                },
-                "value": {
-                    "type": "string"
-                }
-            },
-            "requiredInputs": [
-                "domain",
-                "name",
-                "type",
-                "value"
-            ],
-            "stateInputs": {
-                "description": "Input properties used for looking up and filtering Record resources.\n",
-                "properties": {
-                    "domain": {
-                        "type": "string",
-                        "willReplaceOnChanges": true
-                    },
-                    "domainId": {
-                        "type": "string"
-                    },
-                    "hostname": {
-                        "type": "string"
-                    },
-                    "name": {
-                        "type": "string"
-                    },
-                    "priority": {
-                        "type": "string"
-                    },
-                    "ttl": {
-                        "type": "string"
-                    },
-                    "type": {
-                        "type": "string",
-                        "$ref": "#/types/dnsimple:index:RecordType",
-                        "willReplaceOnChanges": true
-                    },
-                    "value": {
-                        "type": "string"
-                    }
-                },
-                "type": "object"
-            },
-            "deprecationMessage": "This resource is deprecated.\nIt will be removed in the next major version."
-        },
         "dnsimple:index/zoneRecord:ZoneRecord": {
-            "description": "Provides a DNSimple zone record resource.\n\n## Deprecation warning\n\nYou can still use the _deprecated_ `dnsimple.Record` configuration, but be aware that it will be removed in the\nupcoming 1.0.0 release.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add a record to the root domain\nconst foobar = new dnsimple.ZoneRecord(\"foobar\", {\n    zoneName: dnsimpleDomain,\n    name: \"\",\n    value: \"192.168.0.11\",\n    type: \"A\",\n    ttl: \"3600\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add a record to the root domain\nfoobar = dnsimple.ZoneRecord(\"foobar\",\n    zone_name=dnsimple_domain,\n    name=\"\",\n    value=\"192.168.0.11\",\n    type=\"A\",\n    ttl=\"3600\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to the root domain\n    var foobar = new DNSimple.ZoneRecord(\"foobar\", new()\n    {\n        ZoneName = dnsimpleDomain,\n        Name = \"\",\n        Value = \"192.168.0.11\",\n        Type = \"A\",\n        Ttl = \"3600\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to the root domain\n\t\t_, err := dnsimple.NewZoneRecord(ctx, \"foobar\", \u0026dnsimple.ZoneRecordArgs{\n\t\t\tZoneName: pulumi.Any(dnsimpleDomain),\n\t\t\tName:     pulumi.String(\"\"),\n\t\t\tValue:    pulumi.String(\"192.168.0.11\"),\n\t\t\tType:     pulumi.String(\"A\"),\n\t\t\tTtl:      pulumi.String(\"3600\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.ZoneRecord;\nimport com.pulumi.dnsimple.ZoneRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to the root domain\n        var foobar = new ZoneRecord(\"foobar\", ZoneRecordArgs.builder()\n            .zoneName(dnsimpleDomain)\n            .name(\"\")\n            .value(\"192.168.0.11\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to the root domain\n  foobar:\n    type: dnsimple:ZoneRecord\n    properties:\n      zoneName: ${dnsimpleDomain}\n      name:\n      value: 192.168.0.11\n      type: A\n      ttl: 3600\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add a record to a sub-domain\nconst foobar = new dnsimple.ZoneRecord(\"foobar\", {\n    zoneName: dnsimpleDomain,\n    name: \"terraform\",\n    value: \"192.168.0.11\",\n    type: \"A\",\n    ttl: \"3600\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add a record to a sub-domain\nfoobar = dnsimple.ZoneRecord(\"foobar\",\n    zone_name=dnsimple_domain,\n    name=\"terraform\",\n    value=\"192.168.0.11\",\n    type=\"A\",\n    ttl=\"3600\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to a sub-domain\n    var foobar = new DNSimple.ZoneRecord(\"foobar\", new()\n    {\n        ZoneName = dnsimpleDomain,\n        Name = \"terraform\",\n        Value = \"192.168.0.11\",\n        Type = \"A\",\n        Ttl = \"3600\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to a sub-domain\n\t\t_, err := dnsimple.NewZoneRecord(ctx, \"foobar\", \u0026dnsimple.ZoneRecordArgs{\n\t\t\tZoneName: pulumi.Any(dnsimpleDomain),\n\t\t\tName:     pulumi.String(\"terraform\"),\n\t\t\tValue:    pulumi.String(\"192.168.0.11\"),\n\t\t\tType:     pulumi.String(\"A\"),\n\t\t\tTtl:      pulumi.String(\"3600\"),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.ZoneRecord;\nimport com.pulumi.dnsimple.ZoneRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to a sub-domain\n        var foobar = new ZoneRecord(\"foobar\", ZoneRecordArgs.builder()\n            .zoneName(dnsimpleDomain)\n            .name(\"terraform\")\n            .value(\"192.168.0.11\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to a sub-domain\n  foobar:\n    type: dnsimple:ZoneRecord\n    properties:\n      zoneName: ${dnsimpleDomain}\n      name: terraform\n      value: 192.168.0.11\n      type: A\n      ttl: 3600\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.\n\n__Importing record example.com with record ID 1234__\n\n```sh\n$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234\n```\n__Importing record www.example.com with record ID 1234__\n\n```sh\n$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234\n```\nThe record ID can be found in the URL when editing a record on the DNSimple web dashboard.\n\n",
+            "description": "Provides a DNSimple zone record resource.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add a record to the root domain\nconst foobar = new dnsimple.ZoneRecord(\"foobar\", {\n    zoneName: dnsimpleDomain,\n    name: \"\",\n    value: \"192.168.0.11\",\n    type: \"A\",\n    ttl: 3600,\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add a record to the root domain\nfoobar = dnsimple.ZoneRecord(\"foobar\",\n    zone_name=dnsimple_domain,\n    name=\"\",\n    value=\"192.168.0.11\",\n    type=\"A\",\n    ttl=3600)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to the root domain\n    var foobar = new DNSimple.ZoneRecord(\"foobar\", new()\n    {\n        ZoneName = dnsimpleDomain,\n        Name = \"\",\n        Value = \"192.168.0.11\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to the root domain\n\t\t_, err := dnsimple.NewZoneRecord(ctx, \"foobar\", \u0026dnsimple.ZoneRecordArgs{\n\t\t\tZoneName: pulumi.Any(dnsimpleDomain),\n\t\t\tName:     pulumi.String(\"\"),\n\t\t\tValue:    pulumi.String(\"192.168.0.11\"),\n\t\t\tType:     pulumi.String(\"A\"),\n\t\t\tTtl:      pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.ZoneRecord;\nimport com.pulumi.dnsimple.ZoneRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to the root domain\n        var foobar = new ZoneRecord(\"foobar\", ZoneRecordArgs.builder()\n            .zoneName(dnsimpleDomain)\n            .name(\"\")\n            .value(\"192.168.0.11\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to the root domain\n  foobar:\n    type: dnsimple:ZoneRecord\n    properties:\n      zoneName: ${dnsimpleDomain}\n      name:\n      value: 192.168.0.11\n      type: A\n      ttl: 3600\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Add a record to a sub-domain\nconst foobar = new dnsimple.ZoneRecord(\"foobar\", {\n    zoneName: dnsimpleDomain,\n    name: \"terraform\",\n    value: \"192.168.0.11\",\n    type: \"A\",\n    ttl: 3600,\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Add a record to a sub-domain\nfoobar = dnsimple.ZoneRecord(\"foobar\",\n    zone_name=dnsimple_domain,\n    name=\"terraform\",\n    value=\"192.168.0.11\",\n    type=\"A\",\n    ttl=3600)\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Add a record to a sub-domain\n    var foobar = new DNSimple.ZoneRecord(\"foobar\", new()\n    {\n        ZoneName = dnsimpleDomain,\n        Name = \"terraform\",\n        Value = \"192.168.0.11\",\n        Type = \"A\",\n        Ttl = 3600,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Add a record to a sub-domain\n\t\t_, err := dnsimple.NewZoneRecord(ctx, \"foobar\", \u0026dnsimple.ZoneRecordArgs{\n\t\t\tZoneName: pulumi.Any(dnsimpleDomain),\n\t\t\tName:     pulumi.String(\"terraform\"),\n\t\t\tValue:    pulumi.String(\"192.168.0.11\"),\n\t\t\tType:     pulumi.String(\"A\"),\n\t\t\tTtl:      pulumi.Int(3600),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.ZoneRecord;\nimport com.pulumi.dnsimple.ZoneRecordArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Add a record to a sub-domain\n        var foobar = new ZoneRecord(\"foobar\", ZoneRecordArgs.builder()\n            .zoneName(dnsimpleDomain)\n            .name(\"terraform\")\n            .value(\"192.168.0.11\")\n            .type(\"A\")\n            .ttl(3600)\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Add a record to a sub-domain\n  foobar:\n    type: dnsimple:ZoneRecord\n    properties:\n      zoneName: ${dnsimpleDomain}\n      name: terraform\n      value: 192.168.0.11\n      type: A\n      ttl: 3600\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.\n\n**Importing record example.com with record ID 1234**\n\nbash\n\n```sh\n$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234\n```\n\n**Importing record www.example.com with record ID 1234**\n\nbash\n\n```sh\n$ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234\n```\n\nThe record ID can be found in the URL when editing a record on the DNSimple web dashboard.\n\n",
             "properties": {
                 "name": {
                     "type": "string",
                     "description": "The name of the record\n"
                 },
                 "priority": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The priority of the record - only useful for some record types\n"
                 },
                 "qualifiedName": {
@@ -531,8 +489,8 @@
                     "description": "The FQDN of the record\n"
                 },
                 "ttl": {
-                    "type": "string",
-                    "description": "The TTL of the record\n"
+                    "type": "integer",
+                    "description": "The TTL of the record - defaults to 3600\n"
                 },
                 "type": {
                     "type": "string",
@@ -555,6 +513,7 @@
                 "name",
                 "priority",
                 "qualifiedName",
+                "ttl",
                 "type",
                 "value",
                 "zoneId",
@@ -566,17 +525,16 @@
                     "description": "The name of the record\n"
                 },
                 "priority": {
-                    "type": "string",
+                    "type": "integer",
                     "description": "The priority of the record - only useful for some record types\n"
                 },
                 "ttl": {
-                    "type": "string",
-                    "description": "The TTL of the record\n"
+                    "type": "integer",
+                    "description": "The TTL of the record - defaults to 3600\n"
                 },
                 "type": {
                     "type": "string",
-                    "description": "The type of the record\n",
-                    "willReplaceOnChanges": true
+                    "description": "The type of the record\n"
                 },
                 "value": {
                     "type": "string",
@@ -584,8 +542,7 @@
                 },
                 "zoneName": {
                     "type": "string",
-                    "description": "The domain to add the record to\n",
-                    "willReplaceOnChanges": true
+                    "description": "The domain to add the record to\n"
                 }
             },
             "requiredInputs": [
@@ -602,7 +559,7 @@
                         "description": "The name of the record\n"
                     },
                     "priority": {
-                        "type": "string",
+                        "type": "integer",
                         "description": "The priority of the record - only useful for some record types\n"
                     },
                     "qualifiedName": {
@@ -610,13 +567,12 @@
                         "description": "The FQDN of the record\n"
                     },
                     "ttl": {
-                        "type": "string",
-                        "description": "The TTL of the record\n"
+                        "type": "integer",
+                        "description": "The TTL of the record - defaults to 3600\n"
                     },
                     "type": {
                         "type": "string",
-                        "description": "The type of the record\n",
-                        "willReplaceOnChanges": true
+                        "description": "The type of the record\n"
                     },
                     "value": {
                         "type": "string",
@@ -628,8 +584,7 @@
                     },
                     "zoneName": {
                         "type": "string",
-                        "description": "The domain to add the record to\n",
-                        "willReplaceOnChanges": true
+                        "description": "The domain to add the record to\n"
                     }
                 },
                 "type": "object"
@@ -643,7 +598,7 @@
                 "description": "A collection of arguments for invoking getCertificate.\n",
                 "properties": {
                     "certificateId": {
-                        "type": "string",
+                        "type": "integer",
                         "description": "The ID of the SSL Certificate\n"
                     },
                     "domain": {
@@ -668,13 +623,12 @@
                         "type": "array"
                     },
                     "certificateId": {
-                        "type": "string"
+                        "type": "integer"
                     },
                     "domain": {
                         "type": "string"
                     },
                     "id": {
-                        "description": "The provider-assigned unique ID for this managed resource.\n",
                         "type": "string"
                     },
                     "privateKey": {
@@ -694,16 +648,16 @@
                     "certificateChains",
                     "certificateId",
                     "domain",
+                    "id",
                     "privateKey",
                     "rootCertificate",
-                    "serverCertificate",
-                    "id"
+                    "serverCertificate"
                 ],
                 "type": "object"
             }
         },
         "dnsimple:index/getZone:getZone": {
-            "description": "Get information about a DNSimple zone.\n\nGet zone:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\nconst foobar = dnsimple.getZone({\n    name: \"dnsimple.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\nfoobar = dnsimple.get_zone(name=\"dnsimple.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = DNSimple.GetZone.Invoke(new()\n    {\n        Name = \"dnsimple.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.GetZone(ctx, \u0026dnsimple.GetZoneArgs{\n\t\t\tName: \"dnsimple.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.DnsimpleFunctions;\nimport com.pulumi.dnsimple.inputs.GetZoneArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()\n            .name(\"dnsimple.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foobar:\n    fn::invoke:\n      Function: dnsimple:getZone\n      Arguments:\n        name: dnsimple.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following arguments are supported:\n\n* `name` - (Required) The name of the zone\n\nThe following attributes are exported:\n\n* `id` - The zone ID\n* `account_id` - The account ID\n* `name` - The name of the zone\n* `reverse` - True for a reverse zone, false for a forward zone.\n",
+            "description": "Get information about a DNSimple zone.\n\nGet zone:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\nconst foobar = dnsimple.getZone({\n    name: \"dnsimple.com\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\nfoobar = dnsimple.get_zone(name=\"dnsimple.com\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var foobar = DNSimple.GetZone.Invoke(new()\n    {\n        Name = \"dnsimple.com\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v3/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.GetZone(ctx, \u0026dnsimple.GetZoneArgs{\n\t\t\tName: \"dnsimple.com\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.DnsimpleFunctions;\nimport com.pulumi.dnsimple.inputs.GetZoneArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var foobar = DnsimpleFunctions.getZone(GetZoneArgs.builder()\n            .name(\"dnsimple.com\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  foobar:\n    fn::invoke:\n      Function: dnsimple:getZone\n      Arguments:\n        name: dnsimple.com\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following arguments are supported:\n\n* `name` - (Required) The name of the zone\n\nThe following additional attributes are exported:\n\n* `id` - The zone ID\n* `account_id` - The account ID\n* `reverse` - True for a reverse zone, false for a forward zone.\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getZone.\n",
                 "properties": {

@@ -74,40 +74,30 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
         return this.authorityIdentifier;
     }
     /**
-     * Set to true if the certificate will auto-renew
+     * True if the certificate should auto-renew
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     /**
-     * @return Set to true if the certificate will auto-renew
+     * @return True if the certificate should auto-renew
      * 
      */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
     /**
-     * The contact id for the certificate
-     * 
-     * @deprecated
-     * contact_id is deprecated and has no effect. The attribute will be removed in the next major version.
+     * The datetime the certificate was created
      * 
      */
-    @Deprecated /* contact_id is deprecated and has no effect. The attribute will be removed in the next major version. */
-    @Export(name="contactId", refs={Integer.class}, tree="[0]")
-    private Output</* @Nullable */ Integer> contactId;
-
-    /**
-     * @return The contact id for the certificate
-     * 
-     */
-    public Output<Optional<Integer>> contactId() {
-        return Codegen.optional(this.contactId);
-    }
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
+    /**
+     * @return The datetime the certificate was created
+     * 
+     */
     public Output<String> createdAt() {
         return this.createdAt;
     }
@@ -130,20 +120,28 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
      * 
      */
     @Export(name="domainId", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> domainId;
+    private Output<String> domainId;
 
     /**
      * @return The domain to be issued the certificate for
      * 
      */
-    public Output<Optional<String>> domainId() {
-        return Codegen.optional(this.domainId);
+    public Output<String> domainId() {
+        return this.domainId;
     }
-    @Export(name="expiresOn", refs={String.class}, tree="[0]")
-    private Output<String> expiresOn;
+    /**
+     * The datetime the certificate will expire
+     * 
+     */
+    @Export(name="expiresAt", refs={String.class}, tree="[0]")
+    private Output<String> expiresAt;
 
-    public Output<String> expiresOn() {
-        return this.expiresOn;
+    /**
+     * @return The datetime the certificate will expire
+     * 
+     */
+    public Output<String> expiresAt() {
+        return this.expiresAt;
     }
     /**
      * The certificate name
@@ -160,6 +158,20 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
+     * The signature algorithm to use for the certificate
+     * 
+     */
+    @Export(name="signatureAlgorithm", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> signatureAlgorithm;
+
+    /**
+     * @return The signature algorithm to use for the certificate
+     * 
+     */
+    public Output<Optional<String>> signatureAlgorithm() {
+        return Codegen.optional(this.signatureAlgorithm);
+    }
+    /**
      * The state of the certificate
      * 
      */
@@ -173,9 +185,17 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * The datetime the certificate was last updated
+     * 
+     */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
+    /**
+     * @return The datetime the certificate was last updated
+     * 
+     */
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
