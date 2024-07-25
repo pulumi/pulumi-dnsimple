@@ -3,9 +3,9 @@ module github.com/pulumi/pulumi-dnsimple/provider/v4
 go 1.21.12
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/pf v0.40.0
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.87.0
-	github.com/pulumi/pulumi/pkg/v3 v3.124.0
+	github.com/pulumi/pulumi-terraform-bridge/pf v0.41.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.88.0
+	github.com/pulumi/pulumi/pkg/v3 v3.126.0
 	github.com/terraform-providers/terraform-provider-dnsimple v0.0.0
 )
 
@@ -114,7 +114,7 @@ require (
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/hashicorp/hcl/v2 v2.20.1 // indirect
 	github.com/hashicorp/hil v0.0.0-20190212132231-97b3a9cdfa93 // indirect
-	github.com/hashicorp/terraform-plugin-framework v1.8.0 // indirect
+	github.com/hashicorp/terraform-plugin-framework v1.10.0 // indirect
 	github.com/hashicorp/terraform-plugin-framework-timeouts v0.4.1 // indirect
 	github.com/hashicorp/terraform-plugin-go v0.23.0 // indirect
 	github.com/hashicorp/terraform-plugin-log v0.9.0 // indirect
@@ -170,7 +170,7 @@ require (
 	github.com/pulumi/pulumi-java/pkg v0.11.0 // indirect
 	github.com/pulumi/pulumi-terraform-bridge/x/muxer v0.0.8 // indirect
 	github.com/pulumi/pulumi-yaml v1.9.1 // indirect
-	github.com/pulumi/pulumi/sdk/v3 v3.124.0 // indirect
+	github.com/pulumi/pulumi/sdk/v3 v3.126.0 // indirect
 	github.com/pulumi/schema-tools v0.1.2 // indirect
 	github.com/rivo/uniseg v0.4.4 // indirect
 	github.com/rogpeppe/go-internal v1.12.0 // indirect
