@@ -254,11 +254,18 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
      * @param options A bag of options that control this resource's behavior.
      */
     public LetsEncryptCertificate(String name, LetsEncryptCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, args == null ? LetsEncryptCertificateArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private LetsEncryptCertificate(String name, Output<String> id, @Nullable LetsEncryptCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, state, makeResourceOptions(options, id));
+    }
+
+    private static LetsEncryptCertificateArgs makeArgs(LetsEncryptCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? LetsEncryptCertificateArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
