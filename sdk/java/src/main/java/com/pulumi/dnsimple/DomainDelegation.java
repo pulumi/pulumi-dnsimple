@@ -124,11 +124,18 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public DomainDelegation(String name, DomainDelegationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/domainDelegation:DomainDelegation", name, args == null ? DomainDelegationArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("dnsimple:index/domainDelegation:DomainDelegation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private DomainDelegation(String name, Output<String> id, @Nullable DomainDelegationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("dnsimple:index/domainDelegation:DomainDelegation", name, state, makeResourceOptions(options, id));
+    }
+
+    private static DomainDelegationArgs makeArgs(DomainDelegationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? DomainDelegationArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {

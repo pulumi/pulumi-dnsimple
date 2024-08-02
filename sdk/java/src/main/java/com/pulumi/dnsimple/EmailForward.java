@@ -147,11 +147,18 @@ public class EmailForward extends com.pulumi.resources.CustomResource {
      * @param options A bag of options that control this resource's behavior.
      */
     public EmailForward(String name, EmailForwardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/emailForward:EmailForward", name, args == null ? EmailForwardArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
+        super("dnsimple:index/emailForward:EmailForward", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
     }
 
     private EmailForward(String name, Output<String> id, @Nullable EmailForwardState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("dnsimple:index/emailForward:EmailForward", name, state, makeResourceOptions(options, id));
+    }
+
+    private static EmailForwardArgs makeArgs(EmailForwardArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        if (options != null && options.getUrn().isPresent()) {
+            return null;
+        }
+        return args == null ? EmailForwardArgs.Empty : args;
     }
 
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
