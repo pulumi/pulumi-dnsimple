@@ -238,7 +238,7 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DsRecord(String name) {
+    public DsRecord(java.lang.String name) {
         this(name, DsRecordArgs.Empty);
     }
     /**
@@ -246,7 +246,7 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DsRecord(String name, DsRecordArgs args) {
+    public DsRecord(java.lang.String name, DsRecordArgs args) {
         this(name, args, null);
     }
     /**
@@ -255,12 +255,12 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DsRecord(String name, DsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/dsRecord:DsRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DsRecord(java.lang.String name, DsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/dsRecord:DsRecord", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DsRecord(String name, Output<String> id, @Nullable DsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/dsRecord:DsRecord", name, state, makeResourceOptions(options, id));
+    private DsRecord(java.lang.String name, Output<java.lang.String> id, @Nullable DsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/dsRecord:DsRecord", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DsRecordArgs makeArgs(DsRecordArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -270,7 +270,7 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
         return args == null ? DsRecordArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -286,7 +286,7 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DsRecord get(String name, Output<String> id, @Nullable DsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DsRecord get(java.lang.String name, Output<java.lang.String> id, @Nullable DsRecordState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DsRecord(name, id, state, options);
     }
 }
