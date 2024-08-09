@@ -120,7 +120,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
 
 def get_certificate(certificate_id: Optional[int] = None,
                     domain: Optional[str] = None,
-                    timeouts: Optional[pulumi.InputType['GetCertificateTimeoutsArgs']] = None,
+                    timeouts: Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Provides a DNSimple certificate data source.
@@ -160,7 +160,7 @@ def get_certificate(certificate_id: Optional[int] = None,
 @_utilities.lift_output_func(get_certificate)
 def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
-                           timeouts: Optional[pulumi.Input[Optional[pulumi.InputType['GetCertificateTimeoutsArgs']]]] = None,
+                           timeouts: Optional[pulumi.Input[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Provides a DNSimple certificate data source.

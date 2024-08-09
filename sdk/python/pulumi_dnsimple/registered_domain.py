@@ -426,7 +426,7 @@ class RegisteredDomain(pulumi.CustomResource):
                  extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  premium_price: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['RegisteredDomainTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
                  transfer_lock_enabled: Optional[pulumi.Input[bool]] = None,
                  whois_privacy_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -494,7 +494,7 @@ class RegisteredDomain(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extended_attributes: A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
         :param pulumi.Input[str] name: The domain name to be registered
         :param pulumi.Input[str] premium_price: The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
-        :param pulumi.Input[pulumi.InputType['RegisteredDomainTimeoutsArgs']] timeouts: (see below for nested schema)
+        :param pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']] timeouts: (see below for nested schema)
                
                # Attributes Reference
         :param pulumi.Input[bool] transfer_lock_enabled: Whether the domain transfer lock protection is enabled (default: `true`)
@@ -583,7 +583,7 @@ class RegisteredDomain(pulumi.CustomResource):
                  extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  premium_price: Optional[pulumi.Input[str]] = None,
-                 timeouts: Optional[pulumi.Input[pulumi.InputType['RegisteredDomainTimeoutsArgs']]] = None,
+                 timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
                  transfer_lock_enabled: Optional[pulumi.Input[bool]] = None,
                  whois_privacy_enabled: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
@@ -628,14 +628,14 @@ class RegisteredDomain(pulumi.CustomResource):
             auto_renew_enabled: Optional[pulumi.Input[bool]] = None,
             contact_id: Optional[pulumi.Input[int]] = None,
             dnssec_enabled: Optional[pulumi.Input[bool]] = None,
-            domain_registration: Optional[pulumi.Input[pulumi.InputType['RegisteredDomainDomainRegistrationArgs']]] = None,
+            domain_registration: Optional[pulumi.Input[Union['RegisteredDomainDomainRegistrationArgs', 'RegisteredDomainDomainRegistrationArgsDict']]] = None,
             expires_at: Optional[pulumi.Input[str]] = None,
             extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             premium_price: Optional[pulumi.Input[str]] = None,
-            registrant_change: Optional[pulumi.Input[pulumi.InputType['RegisteredDomainRegistrantChangeArgs']]] = None,
+            registrant_change: Optional[pulumi.Input[Union['RegisteredDomainRegistrantChangeArgs', 'RegisteredDomainRegistrantChangeArgsDict']]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            timeouts: Optional[pulumi.Input[pulumi.InputType['RegisteredDomainTimeoutsArgs']]] = None,
+            timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
             transfer_lock_enabled: Optional[pulumi.Input[bool]] = None,
             unicode_name: Optional[pulumi.Input[str]] = None,
             whois_privacy_enabled: Optional[pulumi.Input[bool]] = None) -> 'RegisteredDomain':
@@ -649,15 +649,15 @@ class RegisteredDomain(pulumi.CustomResource):
         :param pulumi.Input[bool] auto_renew_enabled: Whether the domain should be set to auto-renew (default: `false`)
         :param pulumi.Input[int] contact_id: The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         :param pulumi.Input[bool] dnssec_enabled: Whether the domain should have DNSSEC enabled (default: `false`)
-        :param pulumi.Input[pulumi.InputType['RegisteredDomainDomainRegistrationArgs']] domain_registration: The domain registration details. (see below for nested schema)
+        :param pulumi.Input[Union['RegisteredDomainDomainRegistrationArgs', 'RegisteredDomainDomainRegistrationArgsDict']] domain_registration: The domain registration details. (see below for nested schema)
                
                <a id="nestedblock--timeouts"></a>
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] extended_attributes: A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
         :param pulumi.Input[str] name: The domain name to be registered
         :param pulumi.Input[str] premium_price: The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
-        :param pulumi.Input[pulumi.InputType['RegisteredDomainRegistrantChangeArgs']] registrant_change: The registrant change details.
+        :param pulumi.Input[Union['RegisteredDomainRegistrantChangeArgs', 'RegisteredDomainRegistrantChangeArgsDict']] registrant_change: The registrant change details.
         :param pulumi.Input[str] state: The state of the domain.
-        :param pulumi.Input[pulumi.InputType['RegisteredDomainTimeoutsArgs']] timeouts: (see below for nested schema)
+        :param pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']] timeouts: (see below for nested schema)
                
                # Attributes Reference
         :param pulumi.Input[bool] transfer_lock_enabled: Whether the domain transfer lock protection is enabled (default: `true`)

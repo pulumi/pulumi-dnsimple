@@ -236,7 +236,7 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public LetsEncryptCertificate(String name) {
+    public LetsEncryptCertificate(java.lang.String name) {
         this(name, LetsEncryptCertificateArgs.Empty);
     }
     /**
@@ -244,7 +244,7 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public LetsEncryptCertificate(String name, LetsEncryptCertificateArgs args) {
+    public LetsEncryptCertificate(java.lang.String name, LetsEncryptCertificateArgs args) {
         this(name, args, null);
     }
     /**
@@ -253,12 +253,12 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public LetsEncryptCertificate(String name, LetsEncryptCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public LetsEncryptCertificate(java.lang.String name, LetsEncryptCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private LetsEncryptCertificate(String name, Output<String> id, @Nullable LetsEncryptCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, state, makeResourceOptions(options, id));
+    private LetsEncryptCertificate(java.lang.String name, Output<java.lang.String> id, @Nullable LetsEncryptCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", name, state, makeResourceOptions(options, id), false);
     }
 
     private static LetsEncryptCertificateArgs makeArgs(LetsEncryptCertificateArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -268,7 +268,7 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
         return args == null ? LetsEncryptCertificateArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -284,7 +284,7 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static LetsEncryptCertificate get(String name, Output<String> id, @Nullable LetsEncryptCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static LetsEncryptCertificate get(java.lang.String name, Output<java.lang.String> id, @Nullable LetsEncryptCertificateState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new LetsEncryptCertificate(name, id, state, options);
     }
 }

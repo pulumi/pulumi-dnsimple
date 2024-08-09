@@ -31,14 +31,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name part (the part before the{@literal @}) of the source email address on the domain
+     * The name part (the part before the {@literal @}) of the source email address on the domain
      * 
      */
     @Import(name="aliasName")
     private @Nullable Output<String> aliasName;
 
     /**
-     * @return The name part (the part before the{@literal @}) of the source email address on the domain
+     * @return The name part (the part before the {@literal @}) of the source email address on the domain
      * 
      */
     public Optional<Output<String>> aliasName() {
@@ -124,7 +124,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasName The name part (the part before the{@literal @}) of the source email address on the domain
+         * @param aliasName The name part (the part before the {@literal @}) of the source email address on the domain
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasName The name part (the part before the{@literal @}) of the source email address on the domain
+         * @param aliasName The name part (the part before the {@literal @}) of the source email address on the domain
          * 
          * @return builder
          * 
