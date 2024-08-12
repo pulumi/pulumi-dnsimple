@@ -106,7 +106,7 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
      *
      * @param name The _unique_ name of the resulting resource.
      */
-    public DomainDelegation(String name) {
+    public DomainDelegation(java.lang.String name) {
         this(name, DomainDelegationArgs.Empty);
     }
     /**
@@ -114,7 +114,7 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public DomainDelegation(String name, DomainDelegationArgs args) {
+    public DomainDelegation(java.lang.String name, DomainDelegationArgs args) {
         this(name, args, null);
     }
     /**
@@ -123,12 +123,12 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public DomainDelegation(String name, DomainDelegationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/domainDelegation:DomainDelegation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()));
+    public DomainDelegation(java.lang.String name, DomainDelegationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/domainDelegation:DomainDelegation", name, makeArgs(args, options), makeResourceOptions(options, Codegen.empty()), false);
     }
 
-    private DomainDelegation(String name, Output<String> id, @Nullable DomainDelegationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
-        super("dnsimple:index/domainDelegation:DomainDelegation", name, state, makeResourceOptions(options, id));
+    private DomainDelegation(java.lang.String name, Output<java.lang.String> id, @Nullable DomainDelegationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+        super("dnsimple:index/domainDelegation:DomainDelegation", name, state, makeResourceOptions(options, id), false);
     }
 
     private static DomainDelegationArgs makeArgs(DomainDelegationArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
@@ -138,7 +138,7 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
         return args == null ? DomainDelegationArgs.Empty : args;
     }
 
-    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
+    private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<java.lang.String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
             .build();
@@ -154,7 +154,7 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
      * @param state
      * @param options Optional settings to control the behavior of the CustomResource.
      */
-    public static DomainDelegation get(String name, Output<String> id, @Nullable DomainDelegationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public static DomainDelegation get(java.lang.String name, Output<java.lang.String> id, @Nullable DomainDelegationState state, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         return new DomainDelegation(name, id, state, options);
     }
 }
