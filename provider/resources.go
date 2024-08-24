@@ -17,6 +17,7 @@ package dnsimple
 import (
 	"fmt"
 	"path"
+	"regexp"
 
 	// embed is used to store bridge-metadata.json in the compiled binary
 	_ "embed"
@@ -26,6 +27,7 @@ import (
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
@@ -55,6 +57,7 @@ func Provider() tfbridge.ProviderInfo {
 		Repository:       "https://github.com/pulumi/pulumi-dnsimple",
 		GitHubOrg:        "terraform-providers",
 		MetadataInfo:     tfbridge.NewProviderMetadata(metadata),
+		DocRules:         &tfbridge.DocRuleInfo{EditRules: docEditRules},
 		Version:          version.Version,
 		UpstreamRepoPath: "./upstream",
 		ExtraTypes: map[string]schema.ComplexTypeSpec{
@@ -142,4 +145,35 @@ func Provider() tfbridge.ProviderInfo {
 	prov.MustApplyAutoAliases()
 
 	return prov
+}
+
+func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
+	return append(
+		defaults,
+		skipHelpfulLinksSection,
+		stripVideo,
+	)
+}
+
+// Removes links not helpful for Pulumi users
+var skipHelpfulLinksSection = tfbridge.DocsEdit{
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+			return headerText == "Helpful Links"
+		})
+	},
+}
+
+// Removes a video link
+var videoRegexp = regexp.MustCompile(`\[!\[IMAGE_ALT\]\(http.*`)
+
+// Helper func to remove a content byte from a file
+var stripVideo = tfbridge.DocsEdit{
+
+	Path: "index.md",
+	Edit: func(_ string, content []byte) ([]byte, error) {
+		content = videoRegexp.ReplaceAll(content, nil)
+		return content, nil
+	},
 }
