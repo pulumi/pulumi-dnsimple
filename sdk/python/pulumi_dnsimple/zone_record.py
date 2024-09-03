@@ -363,7 +363,7 @@ class ZoneRecord(pulumi.CustomResource):
         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
 
-        **Importing record www.example.com with record ID 1234**
+        **Importing record <http://www.example.com> with record ID 1234**
 
         bash
 
@@ -432,7 +432,7 @@ class ZoneRecord(pulumi.CustomResource):
         $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
         ```
 
-        **Importing record www.example.com with record ID 1234**
+        **Importing record <http://www.example.com> with record ID 1234**
 
         bash
 
