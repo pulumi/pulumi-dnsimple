@@ -39,7 +39,6 @@ import * as utilities from "./utilities";
  * <a id="nestedblock--extended_attributes"></a>
  */
 export function getRegistrantChangeCheck(args: GetRegistrantChangeCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrantChangeCheckResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", {
         "contactId": args.contactId,
@@ -97,7 +96,11 @@ export interface GetRegistrantChangeCheckResult {
  * <a id="nestedblock--extended_attributes"></a>
  */
 export function getRegistrantChangeCheckOutput(args: GetRegistrantChangeCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrantChangeCheckResult> {
-    return pulumi.output(args).apply((a: any) => getRegistrantChangeCheck(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", {
+        "contactId": args.contactId,
+        "domainId": args.domainId,
+    }, opts);
 }
 
 /**

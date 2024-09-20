@@ -31,7 +31,6 @@ import * as utilities from "./utilities";
  * * `reverse` - True for a reverse zone, false for a forward zone.
  */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
-
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dnsimple:index/getZone:getZone", {
         "name": args.name,
@@ -81,7 +80,10 @@ export interface GetZoneResult {
  * * `reverse` - True for a reverse zone, false for a forward zone.
  */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
-    return pulumi.output(args).apply((a: any) => getZone(a, opts))
+    opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
+    return pulumi.runtime.invokeOutput("dnsimple:index/getZone:getZone", {
+        "name": args.name,
+    }, opts);
 }
 
 /**
