@@ -83,12 +83,10 @@ func Provider() tfbridge.ProviderInfo {
 					{Value: "SSHFP"},
 					{Value: "TXT"},
 					{Value: "URL"},
-				}},
+				},
+			},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
-			Dependencies: map[string]string{
-				"@pulumi/pulumi": "^3.0.0",
-			},
 			DevDependencies: map[string]string{
 				"@types/node": "^10.0.0", // so we can access strongly typed node definitions.
 				"@types/mime": "^2.0.0",
@@ -97,9 +95,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Python: &tfbridge.PythonInfo{
 			RespectSchemaVersion: true,
-			Requires: map[string]string{
-				"pulumi": ">=3.0.0,<4.0.0",
-			},
+
 			PyProject: struct{ Enabled bool }{true},
 		},
 		Golang: &tfbridge.GolangInfo{
@@ -170,7 +166,6 @@ var videoRegexp = regexp.MustCompile(`\[!\[IMAGE_ALT\]\(http.*`)
 
 // Helper func to remove a content byte from a file
 var stripVideo = tfbridge.DocsEdit{
-
 	Path: "index.md",
 	Edit: func(_ string, content []byte) ([]byte, error) {
 		content = videoRegexp.ReplaceAll(content, nil)
