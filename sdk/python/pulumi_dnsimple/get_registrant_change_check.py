@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 
@@ -122,9 +127,6 @@ def get_registrant_change_check(contact_id: Optional[str] = None,
         extended_attributes=pulumi.get(__ret__, 'extended_attributes'),
         id=pulumi.get(__ret__, 'id'),
         registry_owner_change=pulumi.get(__ret__, 'registry_owner_change'))
-
-
-@_utilities.lift_output_func(get_registrant_change_check)
 def get_registrant_change_check_output(contact_id: Optional[pulumi.Input[str]] = None,
                                        domain_id: Optional[pulumi.Input[str]] = None,
                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistrantChangeCheckResult]:
@@ -157,4 +159,14 @@ def get_registrant_change_check_output(contact_id: Optional[pulumi.Input[str]] =
 
     <a id="nestedblock--extended_attributes"></a>
     """
-    ...
+    __args__ = dict()
+    __args__['contactId'] = contact_id
+    __args__['domainId'] = domain_id
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck', __args__, opts=opts, typ=GetRegistrantChangeCheckResult)
+    return __ret__.apply(lambda __response__: GetRegistrantChangeCheckResult(
+        contact_id=pulumi.get(__response__, 'contact_id'),
+        domain_id=pulumi.get(__response__, 'domain_id'),
+        extended_attributes=pulumi.get(__response__, 'extended_attributes'),
+        id=pulumi.get(__response__, 'id'),
+        registry_owner_change=pulumi.get(__response__, 'registry_owner_change')))

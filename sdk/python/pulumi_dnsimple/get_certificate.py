@@ -4,9 +4,14 @@
 
 import copy
 import warnings
+import sys
 import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
+if sys.version_info >= (3, 11):
+    from typing import NotRequired, TypedDict, TypeAlias
+else:
+    from typing_extensions import NotRequired, TypedDict, TypeAlias
 from . import _utilities
 from . import outputs
 from ._inputs import *
@@ -155,9 +160,6 @@ def get_certificate(certificate_id: Optional[int] = None,
         root_certificate=pulumi.get(__ret__, 'root_certificate'),
         server_certificate=pulumi.get(__ret__, 'server_certificate'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-
-
-@_utilities.lift_output_func(get_certificate)
 def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
                            timeouts: Optional[pulumi.Input[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
@@ -179,4 +181,18 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
     :param int certificate_id: The ID of the SSL Certificate
     :param str domain: The domain of the SSL Certificate
     """
-    ...
+    __args__ = dict()
+    __args__['certificateId'] = certificate_id
+    __args__['domain'] = domain
+    __args__['timeouts'] = timeouts
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    __ret__ = pulumi.runtime.invoke_output('dnsimple:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
+    return __ret__.apply(lambda __response__: GetCertificateResult(
+        certificate_chains=pulumi.get(__response__, 'certificate_chains'),
+        certificate_id=pulumi.get(__response__, 'certificate_id'),
+        domain=pulumi.get(__response__, 'domain'),
+        id=pulumi.get(__response__, 'id'),
+        private_key=pulumi.get(__response__, 'private_key'),
+        root_certificate=pulumi.get(__response__, 'root_certificate'),
+        server_certificate=pulumi.get(__response__, 'server_certificate'),
+        timeouts=pulumi.get(__response__, 'timeouts')))
