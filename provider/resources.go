@@ -26,6 +26,7 @@ import (
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
@@ -159,6 +160,7 @@ var skipHelpfulLinksSection = tfbridge.DocsEdit{
 			return headerText == "Helpful Links"
 		})
 	},
+	Phase: info.PostCodeTranslation,
 }
 
 // Removes a video link
