@@ -12,6 +12,7 @@ The dnsimple provider is available as a package in all Pulumi languages:
 * Go: [`github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple`](https://github.com/pulumi/pulumi-dnsimple)
 * .NET: [`Pulumi.Dnsimple`](https://www.nuget.org/packages/Pulumi.Dnsimple)
 * Java: [`com.pulumi/dnsimple`](https://central.sonatype.com/artifact/com.pulumi/dnsimple)
+## Overview
 
 The DNSimple provider is used to interact with the resources supported by DNSimple. The provider needs to be configured
 with the proper credentials before it can be used.
