@@ -6,7 +6,7 @@ layout: package
 ---
 ## Installation
 
-The dnsimple provider is available as a package in all Pulumi languages:
+The Dnsimple provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/dnsimple`](https://www.npmjs.com/package/@pulumi/dnsimple)
 * Python: [`pulumi-dnsimple`](https://pypi.org/project/pulumi-dnsimple/)
