@@ -95,7 +95,7 @@ export interface GetRegistrantChangeCheckResult {
  *
  * <a id="nestedblock--extended_attributes"></a>
  */
-export function getRegistrantChangeCheckOutput(args: GetRegistrantChangeCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistrantChangeCheckResult> {
+export function getRegistrantChangeCheckOutput(args: GetRegistrantChangeCheckOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrantChangeCheckResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", {
         "contactId": args.contactId,
