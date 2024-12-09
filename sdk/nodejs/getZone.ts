@@ -79,7 +79,7 @@ export interface GetZoneResult {
  * * `accountId` - The account ID
  * * `reverse` - True for a reverse zone, false for a forward zone.
  */
-export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneResult> {
+export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("dnsimple:index/getZone:getZone", {
         "name": args.name,
