@@ -163,7 +163,7 @@ def get_certificate(certificate_id: Optional[int] = None,
 def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
                            domain: Optional[pulumi.Input[str]] = None,
                            timeouts: Optional[pulumi.Input[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Provides a DNSimple certificate data source.
 
@@ -185,7 +185,7 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[int]] = None,
     __args__['certificateId'] = certificate_id
     __args__['domain'] = domain
     __args__['timeouts'] = timeouts
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('dnsimple:index/getCertificate:getCertificate', __args__, opts=opts, typ=GetCertificateResult)
     return __ret__.apply(lambda __response__: GetCertificateResult(
         certificate_chains=pulumi.get(__response__, 'certificate_chains'),
