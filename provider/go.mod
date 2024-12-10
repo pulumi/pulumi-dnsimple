@@ -5,7 +5,7 @@ go 1.23
 toolchain go1.23.2
 
 require (
-	github.com/pulumi/pulumi-terraform-bridge/v3 v3.97.0
+	github.com/pulumi/pulumi-terraform-bridge/v3 v3.97.1-0.20241210133859-dc9754666f03
 	github.com/pulumi/pulumi/pkg/v3 v3.142.0
 	github.com/terraform-providers/terraform-provider-dnsimple v0.0.0
 )
