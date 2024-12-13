@@ -82,6 +82,42 @@ namespace Pulumi.DNSimple
         /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a DNSimple zone.
+        /// 
+        /// !&gt; Data source is getting deprecated in favor of `dnsimple\_zone` resource.
+        /// 
+        /// Get zone:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foobar = DNSimple.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "dnsimple.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The following arguments are supported:
+        /// 
+        /// * `name` - (Required) The name of the zone
+        /// 
+        /// The following additional attributes are exported:
+        /// 
+        /// * `id` - The zone ID
+        /// * `account_id` - The account ID
+        /// * `reverse` - True for a reverse zone, false for a forward zone.
+        /// </summary>
+        public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
     }
 
 
