@@ -92,6 +92,47 @@ namespace Pulumi.DNSimple
         /// </summary>
         public static Output<GetRegistrantChangeCheckResult> Invoke(GetRegistrantChangeCheckInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistrantChangeCheckResult>("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args ?? new GetRegistrantChangeCheckInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information on the requirements of a registrant change.
+        /// 
+        /// &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
+        /// 
+        /// Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
+        ///     {
+        ///         DomainId = "dnsimple.com",
+        ///         ContactId = "1234",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The following arguments are supported:
+        /// 
+        /// * `domain_id` - (Required) The name or ID of the domain.
+        /// * `contact_id` - (Required) The ID of the contact you are planning to change to.
+        /// 
+        /// The following additional attributes are exported:
+        /// 
+        /// * `contact_id` - The ID of the contact you are planning to change to.
+        /// * `domain_id` - The name or ID of the domain.
+        /// * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+        /// * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+        /// 
+        /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
+        /// </summary>
+        public static Output<GetRegistrantChangeCheckResult> Invoke(GetRegistrantChangeCheckInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistrantChangeCheckResult>("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args ?? new GetRegistrantChangeCheckInvokeArgs(), options.WithDefaults());
     }
 
 

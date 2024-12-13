@@ -81,21 +81,11 @@ type GetRegistrantChangeCheckResult struct {
 }
 
 func GetRegistrantChangeCheckOutput(ctx *pulumi.Context, args GetRegistrantChangeCheckOutputArgs, opts ...pulumi.InvokeOption) GetRegistrantChangeCheckResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegistrantChangeCheckResultOutput, error) {
 			args := v.(GetRegistrantChangeCheckArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRegistrantChangeCheckResult
-			secret, err := ctx.InvokePackageRaw("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args, &rv, "", opts...)
-			if err != nil {
-				return GetRegistrantChangeCheckResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRegistrantChangeCheckResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRegistrantChangeCheckResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args, GetRegistrantChangeCheckResultOutput{}, options).(GetRegistrantChangeCheckResultOutput), nil
 		}).(GetRegistrantChangeCheckResultOutput)
 }
 
