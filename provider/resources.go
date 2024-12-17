@@ -51,6 +51,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                pfbridge.ShimProvider(dnsimple.Provider(version.Version)),
 		Name:             "dnsimple",
+		DisplayName:      "DNSimple",
 		Description:      "A Pulumi package for creating and managing dnsimple cloud resources.",
 		Keywords:         []string{"pulumi", "dnsimple"},
 		License:          "Apache-2.0",
