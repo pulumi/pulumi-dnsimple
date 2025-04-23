@@ -314,6 +314,9 @@ class _ZoneRecordState:
 
 
 class ZoneRecord(pulumi.CustomResource):
+
+    pulumi_type = "dnsimple:index/zoneRecord:ZoneRecord"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
