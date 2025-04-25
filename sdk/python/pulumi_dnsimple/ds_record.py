@@ -264,6 +264,9 @@ class _DsRecordState:
 
 
 class DsRecord(pulumi.CustomResource):
+
+    pulumi_type = "dnsimple:index/dsRecord:DsRecord"
+
     @overload
     def __init__(__self__,
                  resource_name: str,
