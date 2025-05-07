@@ -168,10 +168,8 @@ class _DomainState:
         pulumi.set(self, "unicode_name", value)
 
 
+@pulumi.type_token("dnsimple:index/domain:Domain")
 class Domain(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/domain:Domain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

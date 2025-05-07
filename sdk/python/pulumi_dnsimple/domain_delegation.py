@@ -103,10 +103,8 @@ class _DomainDelegationState:
         pulumi.set(self, "name_servers", value)
 
 
+@pulumi.type_token("dnsimple:index/domainDelegation:DomainDelegation")
 class DomainDelegation(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/domainDelegation:DomainDelegation"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

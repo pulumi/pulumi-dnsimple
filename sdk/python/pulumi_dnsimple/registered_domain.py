@@ -421,10 +421,8 @@ class _RegisteredDomainState:
         pulumi.set(self, "whois_privacy_enabled", value)
 
 
+@pulumi.type_token("dnsimple:index/registeredDomain:RegisteredDomain")
 class RegisteredDomain(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/registeredDomain:RegisteredDomain"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

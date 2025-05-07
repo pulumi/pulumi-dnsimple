@@ -142,10 +142,8 @@ class _EmailForwardState:
         pulumi.set(self, "domain", value)
 
 
+@pulumi.type_token("dnsimple:index/emailForward:EmailForward")
 class EmailForward(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/emailForward:EmailForward"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

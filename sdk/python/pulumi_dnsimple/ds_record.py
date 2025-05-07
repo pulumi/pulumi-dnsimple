@@ -263,10 +263,8 @@ class _DsRecordState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("dnsimple:index/dsRecord:DsRecord")
 class DsRecord(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/dsRecord:DsRecord"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

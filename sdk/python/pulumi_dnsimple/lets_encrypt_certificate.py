@@ -302,10 +302,8 @@ class _LetsEncryptCertificateState:
         pulumi.set(self, "years", value)
 
 
+@pulumi.type_token("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")
 class LetsEncryptCertificate(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
