@@ -339,6 +339,9 @@
                 "type": "string",
                 "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
             }
+        },
+        "methods": {
+            "terraformConfig": "pulumi:providers:dnsimple/terraformConfig"
         }
     },
     "resources": {
@@ -1651,6 +1654,35 @@
                     "id",
                     "name",
                     "reverse"
+                ],
+                "type": "object"
+            }
+        },
+        "pulumi:providers:dnsimple/terraformConfig": {
+            "description": "This function returns a Terraform config object with terraform-namecased keys,to be used with the Terraform Module Provider.",
+            "inputs": {
+                "properties": {
+                    "__self__": {
+                        "type": "ref",
+                        "$ref": "#/resources/pulumi:providers:dnsimple"
+                    }
+                },
+                "type": "pulumi:providers:dnsimple/terraformConfig",
+                "required": [
+                    "__self__"
+                ]
+            },
+            "outputs": {
+                "properties": {
+                    "result": {
+                        "additionalProperties": {
+                            "$ref": "pulumi.json#/Any"
+                        },
+                        "type": "object"
+                    }
+                },
+                "required": [
+                    "result"
                 ],
                 "type": "object"
             }
