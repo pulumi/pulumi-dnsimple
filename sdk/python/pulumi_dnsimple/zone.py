@@ -168,10 +168,8 @@ class _ZoneState:
         pulumi.set(self, "secondary", value)
 
 
+@pulumi.type_token("dnsimple:index/zone:Zone")
 class Zone(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/zone:Zone"
-
     @overload
     def __init__(__self__,
                  resource_name: str,

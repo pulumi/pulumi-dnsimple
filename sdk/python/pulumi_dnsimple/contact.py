@@ -560,10 +560,8 @@ class _ContactState:
         pulumi.set(self, "updated_at", value)
 
 
+@pulumi.type_token("dnsimple:index/contact:Contact")
 class Contact(pulumi.CustomResource):
-
-    pulumi_type = "dnsimple:index/contact:Contact"
-
     @overload
     def __init__(__self__,
                  resource_name: str,
