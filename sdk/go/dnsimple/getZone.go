@@ -11,45 +11,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Get information about a DNSimple zone.
-//
-// !> Data source is getting deprecated in favor of `dnsimple\_zone` resource.
-//
-// Get zone:
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.LookupZone(ctx, &dnsimple.LookupZoneArgs{
-//				Name: "dnsimple.com",
-//			}, nil)
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// The following arguments are supported:
-//
-// * `name` - (Required) The name of the zone
-//
-// The following additional attributes are exported:
-//
-// * `id` - The zone ID
-// * `accountId` - The account ID
-// * `reverse` - True for a reverse zone, false for a forward zone.
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneResult
