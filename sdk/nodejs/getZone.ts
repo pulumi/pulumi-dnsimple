@@ -4,32 +4,6 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
-/**
- * Get information about a DNSimple zone.
- *
- * !> Data source is getting deprecated in favor of `dnsimple\_zone` resource.
- *
- * Get zone:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * const foobar = dnsimple.getZone({
- *     name: "dnsimple.com",
- * });
- * ```
- *
- * The following arguments are supported:
- *
- * * `name` - (Required) The name of the zone
- *
- * The following additional attributes are exported:
- *
- * * `id` - The zone ID
- * * `accountId` - The account ID
- * * `reverse` - True for a reverse zone, false for a forward zone.
- */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dnsimple:index/getZone:getZone", {
@@ -53,32 +27,6 @@ export interface GetZoneResult {
     readonly name: string;
     readonly reverse: boolean;
 }
-/**
- * Get information about a DNSimple zone.
- *
- * !> Data source is getting deprecated in favor of `dnsimple\_zone` resource.
- *
- * Get zone:
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * const foobar = dnsimple.getZone({
- *     name: "dnsimple.com",
- * });
- * ```
- *
- * The following arguments are supported:
- *
- * * `name` - (Required) The name of the zone
- *
- * The following additional attributes are exported:
- *
- * * `id` - The zone ID
- * * `accountId` - The account ID
- * * `reverse` - True for a reverse zone, false for a forward zone.
- */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("dnsimple:index/getZone:getZone", {

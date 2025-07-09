@@ -77,28 +77,7 @@ class AwaitableGetZoneResult(GetZoneResult):
 def get_zone(name: Optional[builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
-    Get information about a DNSimple zone.
-
-    !> Data source is getting deprecated in favor of `dnsimple\\_zone` resource.
-
-    Get zone:
-
-    ```python
-    import pulumi
-    import pulumi_dnsimple as dnsimple
-
-    foobar = dnsimple.get_zone(name="dnsimple.com")
-    ```
-
-    The following arguments are supported:
-
-    * `name` - (Required) The name of the zone
-
-    The following additional attributes are exported:
-
-    * `id` - The zone ID
-    * `account_id` - The account ID
-    * `reverse` - True for a reverse zone, false for a forward zone.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -113,28 +92,7 @@ def get_zone(name: Optional[builtins.str] = None,
 def get_zone_output(name: Optional[pulumi.Input[builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
-    Get information about a DNSimple zone.
-
-    !> Data source is getting deprecated in favor of `dnsimple\\_zone` resource.
-
-    Get zone:
-
-    ```python
-    import pulumi
-    import pulumi_dnsimple as dnsimple
-
-    foobar = dnsimple.get_zone(name="dnsimple.com")
-    ```
-
-    The following arguments are supported:
-
-    * `name` - (Required) The name of the zone
-
-    The following additional attributes are exported:
-
-    * `id` - The zone ID
-    * `account_id` - The account ID
-    * `reverse` - True for a reverse zone, false for a forward zone.
+    Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['name'] = name
