@@ -1663,7 +1663,7 @@
                 "properties": {
                     "__self__": {
                         "type": "ref",
-                        "$ref": "#/resources/pulumi:providers:dnsimple"
+                        "$ref": "#/provider"
                     }
                 },
                 "type": "pulumi:providers:dnsimple/terraformConfig",
