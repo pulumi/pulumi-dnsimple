@@ -64,13 +64,13 @@ export class DomainDelegation extends pulumi.CustomResource {
     /**
      * The domain name.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * The list of name servers to delegate to.
      *
      * # Attributes Reference
      */
-    public readonly nameServers!: pulumi.Output<string[]>;
+    declare public readonly nameServers: pulumi.Output<string[]>;
 
     /**
      * Create a DomainDelegation resource with the given unique name, arguments, and options.
@@ -85,18 +85,18 @@ export class DomainDelegation extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainDelegationState | undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["nameServers"] = state ? state.nameServers : undefined;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["nameServers"] = state?.nameServers;
         } else {
             const args = argsOrState as DomainDelegationArgs | undefined;
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            if ((!args || args.nameServers === undefined) && !opts.urn) {
+            if (args?.nameServers === undefined && !opts.urn) {
                 throw new Error("Missing required property 'nameServers'");
             }
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["nameServers"] = args ? args.nameServers : undefined;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["nameServers"] = args?.nameServers;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(DomainDelegation.__pulumiType, name, resourceInputs, opts);

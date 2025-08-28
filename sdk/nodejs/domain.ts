@@ -112,33 +112,33 @@ export class Domain extends pulumi.CustomResource {
     /**
      * The account ID for the domain.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<number>;
+    declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
      * Whether the domain is set to auto-renew.
      */
-    public /*out*/ readonly autoRenew!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly autoRenew: pulumi.Output<boolean>;
     /**
      * The domain name to be created
      *
      * # Attributes Reference
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether the domain has WhoIs privacy enabled.
      */
-    public /*out*/ readonly privateWhois!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly privateWhois: pulumi.Output<boolean>;
     /**
      * The ID of the registrant (contact) for the domain.
      */
-    public /*out*/ readonly registrantId!: pulumi.Output<number>;
+    declare public /*out*/ readonly registrantId: pulumi.Output<number>;
     /**
      * The state of the domain.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The domain name in Unicode format.
      */
-    public /*out*/ readonly unicodeName!: pulumi.Output<string>;
+    declare public /*out*/ readonly unicodeName: pulumi.Output<string>;
 
     /**
      * Create a Domain resource with the given unique name, arguments, and options.
@@ -153,19 +153,19 @@ export class Domain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["privateWhois"] = state ? state.privateWhois : undefined;
-            resourceInputs["registrantId"] = state ? state.registrantId : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["unicodeName"] = state ? state.unicodeName : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["privateWhois"] = state?.privateWhois;
+            resourceInputs["registrantId"] = state?.registrantId;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["unicodeName"] = state?.unicodeName;
         } else {
             const args = argsOrState as DomainArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["name"] = args?.name;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["autoRenew"] = undefined /*out*/;
             resourceInputs["privateWhois"] = undefined /*out*/;

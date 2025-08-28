@@ -90,44 +90,44 @@ export class ZoneRecord extends pulumi.CustomResource {
     /**
      * The name of the record
      */
-    public readonly name!: pulumi.Output<string>;
-    public /*out*/ readonly nameNormalized!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
+    declare public /*out*/ readonly nameNormalized: pulumi.Output<string>;
     /**
      * The priority of the record - only useful for some record types
      */
-    public readonly priority!: pulumi.Output<number>;
+    declare public readonly priority: pulumi.Output<number>;
     /**
      * The FQDN of the record
      */
-    public /*out*/ readonly qualifiedName!: pulumi.Output<string>;
+    declare public /*out*/ readonly qualifiedName: pulumi.Output<string>;
     /**
      * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
      */
-    public readonly regions!: pulumi.Output<string[] | undefined>;
+    declare public readonly regions: pulumi.Output<string[] | undefined>;
     /**
      * The TTL of the record - defaults to 3600
      */
-    public readonly ttl!: pulumi.Output<number>;
+    declare public readonly ttl: pulumi.Output<number>;
     /**
      * The type of the record
      */
-    public readonly type!: pulumi.Output<string>;
+    declare public readonly type: pulumi.Output<string>;
     /**
      * The value of the record
      */
-    public readonly value!: pulumi.Output<string>;
+    declare public readonly value: pulumi.Output<string>;
     /**
      * The normalized value of the record
      */
-    public /*out*/ readonly valueNormalized!: pulumi.Output<string>;
+    declare public /*out*/ readonly valueNormalized: pulumi.Output<string>;
     /**
      * The zone ID of the record
      */
-    public /*out*/ readonly zoneId!: pulumi.Output<string>;
+    declare public /*out*/ readonly zoneId: pulumi.Output<string>;
     /**
      * The zone name to add the record to
      */
-    public readonly zoneName!: pulumi.Output<string>;
+    declare public readonly zoneName: pulumi.Output<string>;
 
     /**
      * Create a ZoneRecord resource with the given unique name, arguments, and options.
@@ -142,38 +142,38 @@ export class ZoneRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneRecordState | undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["nameNormalized"] = state ? state.nameNormalized : undefined;
-            resourceInputs["priority"] = state ? state.priority : undefined;
-            resourceInputs["qualifiedName"] = state ? state.qualifiedName : undefined;
-            resourceInputs["regions"] = state ? state.regions : undefined;
-            resourceInputs["ttl"] = state ? state.ttl : undefined;
-            resourceInputs["type"] = state ? state.type : undefined;
-            resourceInputs["value"] = state ? state.value : undefined;
-            resourceInputs["valueNormalized"] = state ? state.valueNormalized : undefined;
-            resourceInputs["zoneId"] = state ? state.zoneId : undefined;
-            resourceInputs["zoneName"] = state ? state.zoneName : undefined;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["nameNormalized"] = state?.nameNormalized;
+            resourceInputs["priority"] = state?.priority;
+            resourceInputs["qualifiedName"] = state?.qualifiedName;
+            resourceInputs["regions"] = state?.regions;
+            resourceInputs["ttl"] = state?.ttl;
+            resourceInputs["type"] = state?.type;
+            resourceInputs["value"] = state?.value;
+            resourceInputs["valueNormalized"] = state?.valueNormalized;
+            resourceInputs["zoneId"] = state?.zoneId;
+            resourceInputs["zoneName"] = state?.zoneName;
         } else {
             const args = argsOrState as ZoneRecordArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            if ((!args || args.type === undefined) && !opts.urn) {
+            if (args?.type === undefined && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
-            if ((!args || args.value === undefined) && !opts.urn) {
+            if (args?.value === undefined && !opts.urn) {
                 throw new Error("Missing required property 'value'");
             }
-            if ((!args || args.zoneName === undefined) && !opts.urn) {
+            if (args?.zoneName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'zoneName'");
             }
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["priority"] = args ? args.priority : undefined;
-            resourceInputs["regions"] = args ? args.regions : undefined;
-            resourceInputs["ttl"] = args ? args.ttl : undefined;
-            resourceInputs["type"] = args ? args.type : undefined;
-            resourceInputs["value"] = args ? args.value : undefined;
-            resourceInputs["zoneName"] = args ? args.zoneName : undefined;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["priority"] = args?.priority;
+            resourceInputs["regions"] = args?.regions;
+            resourceInputs["ttl"] = args?.ttl;
+            resourceInputs["type"] = args?.type;
+            resourceInputs["value"] = args?.value;
+            resourceInputs["zoneName"] = args?.zoneName;
             resourceInputs["nameNormalized"] = undefined /*out*/;
             resourceInputs["qualifiedName"] = undefined /*out*/;
             resourceInputs["valueNormalized"] = undefined /*out*/;

@@ -93,64 +93,64 @@ export class RegisteredDomain extends pulumi.CustomResource {
         return obj['__pulumiType'] === RegisteredDomain.__pulumiType;
     }
 
-    public /*out*/ readonly accountId!: pulumi.Output<number>;
+    declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
      * Whether the domain should be set to auto-renew (default: `false`)
      */
-    public readonly autoRenewEnabled!: pulumi.Output<boolean>;
+    declare public readonly autoRenewEnabled: pulumi.Output<boolean>;
     /**
      * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
-    public readonly contactId!: pulumi.Output<number>;
+    declare public readonly contactId: pulumi.Output<number>;
     /**
      * Whether the domain should have DNSSEC enabled (default: `false`)
      */
-    public readonly dnssecEnabled!: pulumi.Output<boolean>;
+    declare public readonly dnssecEnabled: pulumi.Output<boolean>;
     /**
      * The domain registration details. (see below for nested schema)
      *
      * <a id="nestedblock--timeouts"></a>
      */
-    public /*out*/ readonly domainRegistration!: pulumi.Output<outputs.RegisteredDomainDomainRegistration>;
-    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly domainRegistration: pulumi.Output<outputs.RegisteredDomainDomainRegistration>;
+    declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
      */
-    public readonly extendedAttributes!: pulumi.Output<{[key: string]: string} | undefined>;
+    declare public readonly extendedAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The domain name to be registered
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      */
-    public readonly premiumPrice!: pulumi.Output<string | undefined>;
+    declare public readonly premiumPrice: pulumi.Output<string | undefined>;
     /**
      * The registrant change details.
      */
-    public /*out*/ readonly registrantChange!: pulumi.Output<outputs.RegisteredDomainRegistrantChange>;
+    declare public /*out*/ readonly registrantChange: pulumi.Output<outputs.RegisteredDomainRegistrantChange>;
     /**
      * The state of the domain.
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * (see below for nested schema)
      *
      * # Attributes Reference
      */
-    public readonly timeouts!: pulumi.Output<outputs.RegisteredDomainTimeouts | undefined>;
+    declare public readonly timeouts: pulumi.Output<outputs.RegisteredDomainTimeouts | undefined>;
     /**
      * Whether the domain transfer lock protection is enabled (default: `true`)
      */
-    public readonly transferLockEnabled!: pulumi.Output<boolean>;
+    declare public readonly transferLockEnabled: pulumi.Output<boolean>;
     /**
      * The domain name in Unicode format.
      */
-    public /*out*/ readonly unicodeName!: pulumi.Output<string>;
+    declare public /*out*/ readonly unicodeName: pulumi.Output<string>;
     /**
      * Whether the domain should have WhoIs privacy enabled (default: `false`)
      */
-    public readonly whoisPrivacyEnabled!: pulumi.Output<boolean>;
+    declare public readonly whoisPrivacyEnabled: pulumi.Output<boolean>;
 
     /**
      * Create a RegisteredDomain resource with the given unique name, arguments, and options.
@@ -165,38 +165,38 @@ export class RegisteredDomain extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RegisteredDomainState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["autoRenewEnabled"] = state ? state.autoRenewEnabled : undefined;
-            resourceInputs["contactId"] = state ? state.contactId : undefined;
-            resourceInputs["dnssecEnabled"] = state ? state.dnssecEnabled : undefined;
-            resourceInputs["domainRegistration"] = state ? state.domainRegistration : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["extendedAttributes"] = state ? state.extendedAttributes : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["premiumPrice"] = state ? state.premiumPrice : undefined;
-            resourceInputs["registrantChange"] = state ? state.registrantChange : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["timeouts"] = state ? state.timeouts : undefined;
-            resourceInputs["transferLockEnabled"] = state ? state.transferLockEnabled : undefined;
-            resourceInputs["unicodeName"] = state ? state.unicodeName : undefined;
-            resourceInputs["whoisPrivacyEnabled"] = state ? state.whoisPrivacyEnabled : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["autoRenewEnabled"] = state?.autoRenewEnabled;
+            resourceInputs["contactId"] = state?.contactId;
+            resourceInputs["dnssecEnabled"] = state?.dnssecEnabled;
+            resourceInputs["domainRegistration"] = state?.domainRegistration;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["extendedAttributes"] = state?.extendedAttributes;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["premiumPrice"] = state?.premiumPrice;
+            resourceInputs["registrantChange"] = state?.registrantChange;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["timeouts"] = state?.timeouts;
+            resourceInputs["transferLockEnabled"] = state?.transferLockEnabled;
+            resourceInputs["unicodeName"] = state?.unicodeName;
+            resourceInputs["whoisPrivacyEnabled"] = state?.whoisPrivacyEnabled;
         } else {
             const args = argsOrState as RegisteredDomainArgs | undefined;
-            if ((!args || args.contactId === undefined) && !opts.urn) {
+            if (args?.contactId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'contactId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["autoRenewEnabled"] = args ? args.autoRenewEnabled : undefined;
-            resourceInputs["contactId"] = args ? args.contactId : undefined;
-            resourceInputs["dnssecEnabled"] = args ? args.dnssecEnabled : undefined;
-            resourceInputs["extendedAttributes"] = args ? args.extendedAttributes : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["premiumPrice"] = args ? args.premiumPrice : undefined;
-            resourceInputs["timeouts"] = args ? args.timeouts : undefined;
-            resourceInputs["transferLockEnabled"] = args ? args.transferLockEnabled : undefined;
-            resourceInputs["whoisPrivacyEnabled"] = args ? args.whoisPrivacyEnabled : undefined;
+            resourceInputs["autoRenewEnabled"] = args?.autoRenewEnabled;
+            resourceInputs["contactId"] = args?.contactId;
+            resourceInputs["dnssecEnabled"] = args?.dnssecEnabled;
+            resourceInputs["extendedAttributes"] = args?.extendedAttributes;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["premiumPrice"] = args?.premiumPrice;
+            resourceInputs["timeouts"] = args?.timeouts;
+            resourceInputs["transferLockEnabled"] = args?.transferLockEnabled;
+            resourceInputs["whoisPrivacyEnabled"] = args?.whoisPrivacyEnabled;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["domainRegistration"] = undefined /*out*/;
             resourceInputs["expiresAt"] = undefined /*out*/;

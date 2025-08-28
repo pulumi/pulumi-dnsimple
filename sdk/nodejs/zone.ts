@@ -92,29 +92,29 @@ export class Zone extends pulumi.CustomResource {
     /**
      * The account ID for the zone.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<number>;
+    declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
      * Whether the zone is active.
      */
-    public readonly active!: pulumi.Output<boolean>;
+    declare public readonly active: pulumi.Output<boolean>;
     /**
      * The last time the zone was transferred only applicable for **secondary** zones.
      */
-    public /*out*/ readonly lastTransferredAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly lastTransferredAt: pulumi.Output<string>;
     /**
      * The zone name
      *
      * # Attributes Reference
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * Whether the zone is a reverse zone.
      */
-    public /*out*/ readonly reverse!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly reverse: pulumi.Output<boolean>;
     /**
      * Whether the zone is a secondary zone.
      */
-    public /*out*/ readonly secondary!: pulumi.Output<boolean>;
+    declare public /*out*/ readonly secondary: pulumi.Output<boolean>;
 
     /**
      * Create a Zone resource with the given unique name, arguments, and options.
@@ -129,19 +129,19 @@ export class Zone extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ZoneState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["active"] = state ? state.active : undefined;
-            resourceInputs["lastTransferredAt"] = state ? state.lastTransferredAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["reverse"] = state ? state.reverse : undefined;
-            resourceInputs["secondary"] = state ? state.secondary : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["active"] = state?.active;
+            resourceInputs["lastTransferredAt"] = state?.lastTransferredAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["reverse"] = state?.reverse;
+            resourceInputs["secondary"] = state?.secondary;
         } else {
             const args = argsOrState as ZoneArgs | undefined;
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["active"] = args ? args.active : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["active"] = args?.active;
+            resourceInputs["name"] = args?.name;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["lastTransferredAt"] = undefined /*out*/;
             resourceInputs["reverse"] = undefined /*out*/;
