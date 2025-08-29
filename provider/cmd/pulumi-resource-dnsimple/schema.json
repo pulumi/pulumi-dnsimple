@@ -54,24 +54,24 @@
         "variables": {
             "account": {
                 "type": "string",
-                "description": "The account for API operations.\n"
+                "description": "The account for API operations."
             },
             "prefetch": {
                 "type": "boolean",
-                "description": "Flag to enable the prefetch of zone records.\n"
+                "description": "Flag to enable the prefetch of zone records."
             },
             "sandbox": {
                 "type": "boolean",
-                "description": "Flag to enable the sandbox API.\n"
+                "description": "Flag to enable the sandbox API."
             },
             "token": {
                 "type": "string",
-                "description": "The API v2 token for API operations.\n",
+                "description": "The API v2 token for API operations.",
                 "secret": true
             },
             "userAgent": {
                 "type": "string",
-                "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
+                "description": "Custom string to append to the user agent used for sending HTTP requests to the API."
             }
         }
     },
@@ -297,47 +297,47 @@
         "properties": {
             "account": {
                 "type": "string",
-                "description": "The account for API operations.\n"
+                "description": "The account for API operations."
             },
             "prefetch": {
                 "type": "boolean",
-                "description": "Flag to enable the prefetch of zone records.\n"
+                "description": "Flag to enable the prefetch of zone records."
             },
             "sandbox": {
                 "type": "boolean",
-                "description": "Flag to enable the sandbox API.\n"
+                "description": "Flag to enable the sandbox API."
             },
             "token": {
                 "type": "string",
-                "description": "The API v2 token for API operations.\n",
+                "description": "The API v2 token for API operations.",
                 "secret": true
             },
             "userAgent": {
                 "type": "string",
-                "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
+                "description": "Custom string to append to the user agent used for sending HTTP requests to the API."
             }
         },
         "inputProperties": {
             "account": {
                 "type": "string",
-                "description": "The account for API operations.\n"
+                "description": "The account for API operations."
             },
             "prefetch": {
                 "type": "boolean",
-                "description": "Flag to enable the prefetch of zone records.\n"
+                "description": "Flag to enable the prefetch of zone records."
             },
             "sandbox": {
                 "type": "boolean",
-                "description": "Flag to enable the sandbox API.\n"
+                "description": "Flag to enable the sandbox API."
             },
             "token": {
                 "type": "string",
-                "description": "The API v2 token for API operations.\n",
+                "description": "The API v2 token for API operations.",
                 "secret": true
             },
             "userAgent": {
                 "type": "string",
-                "description": "Custom string to append to the user agent used for sending HTTP requests to the API.\n"
+                "description": "Custom string to append to the user agent used for sending HTTP requests to the API."
             }
         },
         "methods": {
@@ -1113,7 +1113,7 @@
                 },
                 "registrantChange": {
                     "$ref": "#/types/dnsimple:index/RegisteredDomainRegistrantChange:RegisteredDomainRegistrantChange",
-                    "description": "The registrant change details.\n"
+                    "description": "The registrant change details."
                 },
                 "state": {
                     "type": "string",
@@ -1237,7 +1237,7 @@
                     },
                     "registrantChange": {
                         "$ref": "#/types/dnsimple:index/RegisteredDomainRegistrantChange:RegisteredDomainRegistrantChange",
-                        "description": "The registrant change details.\n"
+                        "description": "The registrant change details."
                     },
                     "state": {
                         "type": "string",
