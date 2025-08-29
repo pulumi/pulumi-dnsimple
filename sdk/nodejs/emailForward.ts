@@ -63,19 +63,19 @@ export class EmailForward extends pulumi.CustomResource {
     /**
      * The source email address on the domain, in full form. This is a computed attribute.
      */
-    public /*out*/ readonly aliasEmail!: pulumi.Output<string>;
+    declare public /*out*/ readonly aliasEmail: pulumi.Output<string>;
     /**
      * The name part (the part before the @) of the source email address on the domain
      */
-    public readonly aliasName!: pulumi.Output<string>;
+    declare public readonly aliasName: pulumi.Output<string>;
     /**
      * The destination email address
      */
-    public readonly destinationEmail!: pulumi.Output<string>;
+    declare public readonly destinationEmail: pulumi.Output<string>;
     /**
      * The domain name to add the email forwarding rule to
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
 
     /**
      * Create a EmailForward resource with the given unique name, arguments, and options.
@@ -90,24 +90,24 @@ export class EmailForward extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EmailForwardState | undefined;
-            resourceInputs["aliasEmail"] = state ? state.aliasEmail : undefined;
-            resourceInputs["aliasName"] = state ? state.aliasName : undefined;
-            resourceInputs["destinationEmail"] = state ? state.destinationEmail : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
+            resourceInputs["aliasEmail"] = state?.aliasEmail;
+            resourceInputs["aliasName"] = state?.aliasName;
+            resourceInputs["destinationEmail"] = state?.destinationEmail;
+            resourceInputs["domain"] = state?.domain;
         } else {
             const args = argsOrState as EmailForwardArgs | undefined;
-            if ((!args || args.aliasName === undefined) && !opts.urn) {
+            if (args?.aliasName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'aliasName'");
             }
-            if ((!args || args.destinationEmail === undefined) && !opts.urn) {
+            if (args?.destinationEmail === undefined && !opts.urn) {
                 throw new Error("Missing required property 'destinationEmail'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            resourceInputs["aliasName"] = args ? args.aliasName : undefined;
-            resourceInputs["destinationEmail"] = args ? args.destinationEmail : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
+            resourceInputs["aliasName"] = args?.aliasName;
+            resourceInputs["destinationEmail"] = args?.destinationEmail;
+            resourceInputs["domain"] = args?.domain;
             resourceInputs["aliasEmail"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);

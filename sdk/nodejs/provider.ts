@@ -28,15 +28,15 @@ export class Provider extends pulumi.ProviderResource {
     /**
      * The account for API operations.
      */
-    public readonly account!: pulumi.Output<string | undefined>;
+    declare public readonly account: pulumi.Output<string | undefined>;
     /**
      * The API v2 token for API operations.
      */
-    public readonly token!: pulumi.Output<string | undefined>;
+    declare public readonly token: pulumi.Output<string | undefined>;
     /**
      * Custom string to append to the user agent used for sending HTTP requests to the API.
      */
-    public readonly userAgent!: pulumi.Output<string | undefined>;
+    declare public readonly userAgent: pulumi.Output<string | undefined>;
 
     /**
      * Create a Provider resource with the given unique name, arguments, and options.
@@ -49,11 +49,11 @@ export class Provider extends pulumi.ProviderResource {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
         {
-            resourceInputs["account"] = args ? args.account : undefined;
-            resourceInputs["prefetch"] = pulumi.output(args ? args.prefetch : undefined).apply(JSON.stringify);
-            resourceInputs["sandbox"] = pulumi.output(args ? args.sandbox : undefined).apply(JSON.stringify);
+            resourceInputs["account"] = args?.account;
+            resourceInputs["prefetch"] = pulumi.output(args?.prefetch).apply(JSON.stringify);
+            resourceInputs["sandbox"] = pulumi.output(args?.sandbox).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
-            resourceInputs["userAgent"] = args ? args.userAgent : undefined;
+            resourceInputs["userAgent"] = args?.userAgent;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["token"] };
