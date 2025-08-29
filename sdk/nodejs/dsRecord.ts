@@ -111,37 +111,37 @@ export class DsRecord extends pulumi.CustomResource {
     /**
      * DNSSEC algorithm number as a string.
      */
-    public readonly algorithm!: pulumi.Output<string>;
+    declare public readonly algorithm: pulumi.Output<string>;
     /**
      * The time the DS record was created at.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The hexidecimal representation of the digest of the corresponding DNSKEY record.
      */
-    public readonly digest!: pulumi.Output<string | undefined>;
+    declare public readonly digest: pulumi.Output<string | undefined>;
     /**
      * DNSSEC digest type number as a string.
      */
-    public readonly digestType!: pulumi.Output<string | undefined>;
+    declare public readonly digestType: pulumi.Output<string | undefined>;
     /**
      * The domain name or numeric ID to create the delegation signer record for.
      */
-    public readonly domain!: pulumi.Output<string>;
+    declare public readonly domain: pulumi.Output<string>;
     /**
      * A keytag that references the corresponding DNSKEY record.
      */
-    public readonly keytag!: pulumi.Output<string | undefined>;
+    declare public readonly keytag: pulumi.Output<string | undefined>;
     /**
      * A public key that references the corresponding DNSKEY record.
      *
      * # Attributes Reference
      */
-    public readonly publicKey!: pulumi.Output<string | undefined>;
+    declare public readonly publicKey: pulumi.Output<string | undefined>;
     /**
      * The time the DS record was last updated at.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a DsRecord resource with the given unique name, arguments, and options.
@@ -156,28 +156,28 @@ export class DsRecord extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DsRecordState | undefined;
-            resourceInputs["algorithm"] = state ? state.algorithm : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["digest"] = state ? state.digest : undefined;
-            resourceInputs["digestType"] = state ? state.digestType : undefined;
-            resourceInputs["domain"] = state ? state.domain : undefined;
-            resourceInputs["keytag"] = state ? state.keytag : undefined;
-            resourceInputs["publicKey"] = state ? state.publicKey : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["algorithm"] = state?.algorithm;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["digest"] = state?.digest;
+            resourceInputs["digestType"] = state?.digestType;
+            resourceInputs["domain"] = state?.domain;
+            resourceInputs["keytag"] = state?.keytag;
+            resourceInputs["publicKey"] = state?.publicKey;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as DsRecordArgs | undefined;
-            if ((!args || args.algorithm === undefined) && !opts.urn) {
+            if (args?.algorithm === undefined && !opts.urn) {
                 throw new Error("Missing required property 'algorithm'");
             }
-            if ((!args || args.domain === undefined) && !opts.urn) {
+            if (args?.domain === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domain'");
             }
-            resourceInputs["algorithm"] = args ? args.algorithm : undefined;
-            resourceInputs["digest"] = args ? args.digest : undefined;
-            resourceInputs["digestType"] = args ? args.digestType : undefined;
-            resourceInputs["domain"] = args ? args.domain : undefined;
-            resourceInputs["keytag"] = args ? args.keytag : undefined;
-            resourceInputs["publicKey"] = args ? args.publicKey : undefined;
+            resourceInputs["algorithm"] = args?.algorithm;
+            resourceInputs["digest"] = args?.digest;
+            resourceInputs["digestType"] = args?.digestType;
+            resourceInputs["domain"] = args?.domain;
+            resourceInputs["keytag"] = args?.keytag;
+            resourceInputs["publicKey"] = args?.publicKey;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
         }

@@ -1,18 +1,20 @@
 ---
 # *** WARNING: This file was auto-generated. Do not edit by hand unless you're certain you know what you are doing! ***
-title: Dnsimple Provider
-meta_desc: Provides an overview on how to configure the Pulumi Dnsimple provider.
+title: DNSimple Provider
+meta_desc: Provides an overview on how to configure the Pulumi DNSimple provider.
 layout: package
 ---
+
 ## Installation
 
-The Dnsimple provider is available as a package in all Pulumi languages:
+The DNSimple provider is available as a package in all Pulumi languages:
 
 * JavaScript/TypeScript: [`@pulumi/dnsimple`](https://www.npmjs.com/package/@pulumi/dnsimple)
 * Python: [`pulumi-dnsimple`](https://pypi.org/project/pulumi-dnsimple/)
 * Go: [`github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple`](https://github.com/pulumi/pulumi-dnsimple)
 * .NET: [`Pulumi.Dnsimple`](https://www.nuget.org/packages/Pulumi.Dnsimple)
 * Java: [`com.pulumi/dnsimple`](https://central.sonatype.com/artifact/com.pulumi/dnsimple)
+
 ## Overview
 
 The DNSimple provider is used to interact with the resources supported by DNSimple. The provider needs to be configured

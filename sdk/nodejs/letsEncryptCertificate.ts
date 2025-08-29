@@ -55,51 +55,51 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
     /**
      * The certificate alternate names
      */
-    public readonly alternateNames!: pulumi.Output<string[] | undefined>;
+    declare public readonly alternateNames: pulumi.Output<string[] | undefined>;
     /**
      * The identifying certification authority (CA)
      */
-    public /*out*/ readonly authorityIdentifier!: pulumi.Output<string>;
+    declare public /*out*/ readonly authorityIdentifier: pulumi.Output<string>;
     /**
      * True if the certificate should auto-renew
      */
-    public readonly autoRenew!: pulumi.Output<boolean>;
+    declare public readonly autoRenew: pulumi.Output<boolean>;
     /**
      * The datetime the certificate was created
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * The certificate signing request
      */
-    public /*out*/ readonly csr!: pulumi.Output<string>;
+    declare public /*out*/ readonly csr: pulumi.Output<string>;
     /**
      * The domain to be issued the certificate for
      */
-    public readonly domainId!: pulumi.Output<string>;
+    declare public readonly domainId: pulumi.Output<string>;
     /**
      * The datetime the certificate will expire
      */
-    public /*out*/ readonly expiresAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
      * The certificate name; use `""` for the root domain. Wildcard names are supported.
      */
-    public readonly name!: pulumi.Output<string>;
+    declare public readonly name: pulumi.Output<string>;
     /**
      * The signature algorithm to use for the certificate
      */
-    public readonly signatureAlgorithm!: pulumi.Output<string | undefined>;
+    declare public readonly signatureAlgorithm: pulumi.Output<string | undefined>;
     /**
      * The state of the certificate
      */
-    public /*out*/ readonly state!: pulumi.Output<string>;
+    declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
      * The datetime the certificate was last updated
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
      * The years the certificate will last
      */
-    public /*out*/ readonly years!: pulumi.Output<number>;
+    declare public /*out*/ readonly years: pulumi.Output<number>;
 
     /**
      * Create a LetsEncryptCertificate resource with the given unique name, arguments, and options.
@@ -114,34 +114,34 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as LetsEncryptCertificateState | undefined;
-            resourceInputs["alternateNames"] = state ? state.alternateNames : undefined;
-            resourceInputs["authorityIdentifier"] = state ? state.authorityIdentifier : undefined;
-            resourceInputs["autoRenew"] = state ? state.autoRenew : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["csr"] = state ? state.csr : undefined;
-            resourceInputs["domainId"] = state ? state.domainId : undefined;
-            resourceInputs["expiresAt"] = state ? state.expiresAt : undefined;
-            resourceInputs["name"] = state ? state.name : undefined;
-            resourceInputs["signatureAlgorithm"] = state ? state.signatureAlgorithm : undefined;
-            resourceInputs["state"] = state ? state.state : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
-            resourceInputs["years"] = state ? state.years : undefined;
+            resourceInputs["alternateNames"] = state?.alternateNames;
+            resourceInputs["authorityIdentifier"] = state?.authorityIdentifier;
+            resourceInputs["autoRenew"] = state?.autoRenew;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["csr"] = state?.csr;
+            resourceInputs["domainId"] = state?.domainId;
+            resourceInputs["expiresAt"] = state?.expiresAt;
+            resourceInputs["name"] = state?.name;
+            resourceInputs["signatureAlgorithm"] = state?.signatureAlgorithm;
+            resourceInputs["state"] = state?.state;
+            resourceInputs["updatedAt"] = state?.updatedAt;
+            resourceInputs["years"] = state?.years;
         } else {
             const args = argsOrState as LetsEncryptCertificateArgs | undefined;
-            if ((!args || args.autoRenew === undefined) && !opts.urn) {
+            if (args?.autoRenew === undefined && !opts.urn) {
                 throw new Error("Missing required property 'autoRenew'");
             }
-            if ((!args || args.domainId === undefined) && !opts.urn) {
+            if (args?.domainId === undefined && !opts.urn) {
                 throw new Error("Missing required property 'domainId'");
             }
-            if ((!args || args.name === undefined) && !opts.urn) {
+            if (args?.name === undefined && !opts.urn) {
                 throw new Error("Missing required property 'name'");
             }
-            resourceInputs["alternateNames"] = args ? args.alternateNames : undefined;
-            resourceInputs["autoRenew"] = args ? args.autoRenew : undefined;
-            resourceInputs["domainId"] = args ? args.domainId : undefined;
-            resourceInputs["name"] = args ? args.name : undefined;
-            resourceInputs["signatureAlgorithm"] = args ? args.signatureAlgorithm : undefined;
+            resourceInputs["alternateNames"] = args?.alternateNames;
+            resourceInputs["autoRenew"] = args?.autoRenew;
+            resourceInputs["domainId"] = args?.domainId;
+            resourceInputs["name"] = args?.name;
+            resourceInputs["signatureAlgorithm"] = args?.signatureAlgorithm;
             resourceInputs["authorityIdentifier"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["csr"] = undefined /*out*/;

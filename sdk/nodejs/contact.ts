@@ -179,81 +179,81 @@ export class Contact extends pulumi.CustomResource {
     /**
      * The account ID for the contact.
      */
-    public /*out*/ readonly accountId!: pulumi.Output<number>;
+    declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
      * Address line 1
      */
-    public readonly address1!: pulumi.Output<string>;
+    declare public readonly address1: pulumi.Output<string>;
     /**
      * Address line 2
      */
-    public readonly address2!: pulumi.Output<string>;
+    declare public readonly address2: pulumi.Output<string>;
     /**
      * City
      */
-    public readonly city!: pulumi.Output<string>;
+    declare public readonly city: pulumi.Output<string>;
     /**
      * Country
      */
-    public readonly country!: pulumi.Output<string>;
+    declare public readonly country: pulumi.Output<string>;
     /**
      * Timestamp representing when this contact was created.
      */
-    public /*out*/ readonly createdAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
      * Email
      *
      * # Attributes Reference
      */
-    public readonly email!: pulumi.Output<string>;
+    declare public readonly email: pulumi.Output<string>;
     /**
      * Fax
      */
-    public readonly fax!: pulumi.Output<string>;
+    declare public readonly fax: pulumi.Output<string>;
     /**
      * The fax number, normalized.
      */
-    public /*out*/ readonly faxNormalized!: pulumi.Output<string>;
+    declare public /*out*/ readonly faxNormalized: pulumi.Output<string>;
     /**
      * First name
      */
-    public readonly firstName!: pulumi.Output<string>;
+    declare public readonly firstName: pulumi.Output<string>;
     /**
      * Job title
      */
-    public readonly jobTitle!: pulumi.Output<string>;
+    declare public readonly jobTitle: pulumi.Output<string>;
     /**
      * Label
      */
-    public readonly label!: pulumi.Output<string>;
+    declare public readonly label: pulumi.Output<string>;
     /**
      * Last name
      */
-    public readonly lastName!: pulumi.Output<string>;
+    declare public readonly lastName: pulumi.Output<string>;
     /**
      * Organization name
      */
-    public readonly organizationName!: pulumi.Output<string>;
+    declare public readonly organizationName: pulumi.Output<string>;
     /**
      * Phone
      */
-    public readonly phone!: pulumi.Output<string>;
+    declare public readonly phone: pulumi.Output<string>;
     /**
      * The phone number, normalized.
      */
-    public /*out*/ readonly phoneNormalized!: pulumi.Output<string>;
+    declare public /*out*/ readonly phoneNormalized: pulumi.Output<string>;
     /**
      * Postal code
      */
-    public readonly postalCode!: pulumi.Output<string>;
+    declare public readonly postalCode: pulumi.Output<string>;
     /**
      * State province
      */
-    public readonly stateProvince!: pulumi.Output<string>;
+    declare public readonly stateProvince: pulumi.Output<string>;
     /**
      * Timestamp representing when this contact was updated.
      */
-    public /*out*/ readonly updatedAt!: pulumi.Output<string>;
+    declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
 
     /**
      * Create a Contact resource with the given unique name, arguments, and options.
@@ -268,68 +268,68 @@ export class Contact extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ContactState | undefined;
-            resourceInputs["accountId"] = state ? state.accountId : undefined;
-            resourceInputs["address1"] = state ? state.address1 : undefined;
-            resourceInputs["address2"] = state ? state.address2 : undefined;
-            resourceInputs["city"] = state ? state.city : undefined;
-            resourceInputs["country"] = state ? state.country : undefined;
-            resourceInputs["createdAt"] = state ? state.createdAt : undefined;
-            resourceInputs["email"] = state ? state.email : undefined;
-            resourceInputs["fax"] = state ? state.fax : undefined;
-            resourceInputs["faxNormalized"] = state ? state.faxNormalized : undefined;
-            resourceInputs["firstName"] = state ? state.firstName : undefined;
-            resourceInputs["jobTitle"] = state ? state.jobTitle : undefined;
-            resourceInputs["label"] = state ? state.label : undefined;
-            resourceInputs["lastName"] = state ? state.lastName : undefined;
-            resourceInputs["organizationName"] = state ? state.organizationName : undefined;
-            resourceInputs["phone"] = state ? state.phone : undefined;
-            resourceInputs["phoneNormalized"] = state ? state.phoneNormalized : undefined;
-            resourceInputs["postalCode"] = state ? state.postalCode : undefined;
-            resourceInputs["stateProvince"] = state ? state.stateProvince : undefined;
-            resourceInputs["updatedAt"] = state ? state.updatedAt : undefined;
+            resourceInputs["accountId"] = state?.accountId;
+            resourceInputs["address1"] = state?.address1;
+            resourceInputs["address2"] = state?.address2;
+            resourceInputs["city"] = state?.city;
+            resourceInputs["country"] = state?.country;
+            resourceInputs["createdAt"] = state?.createdAt;
+            resourceInputs["email"] = state?.email;
+            resourceInputs["fax"] = state?.fax;
+            resourceInputs["faxNormalized"] = state?.faxNormalized;
+            resourceInputs["firstName"] = state?.firstName;
+            resourceInputs["jobTitle"] = state?.jobTitle;
+            resourceInputs["label"] = state?.label;
+            resourceInputs["lastName"] = state?.lastName;
+            resourceInputs["organizationName"] = state?.organizationName;
+            resourceInputs["phone"] = state?.phone;
+            resourceInputs["phoneNormalized"] = state?.phoneNormalized;
+            resourceInputs["postalCode"] = state?.postalCode;
+            resourceInputs["stateProvince"] = state?.stateProvince;
+            resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
             const args = argsOrState as ContactArgs | undefined;
-            if ((!args || args.address1 === undefined) && !opts.urn) {
+            if (args?.address1 === undefined && !opts.urn) {
                 throw new Error("Missing required property 'address1'");
             }
-            if ((!args || args.city === undefined) && !opts.urn) {
+            if (args?.city === undefined && !opts.urn) {
                 throw new Error("Missing required property 'city'");
             }
-            if ((!args || args.country === undefined) && !opts.urn) {
+            if (args?.country === undefined && !opts.urn) {
                 throw new Error("Missing required property 'country'");
             }
-            if ((!args || args.email === undefined) && !opts.urn) {
+            if (args?.email === undefined && !opts.urn) {
                 throw new Error("Missing required property 'email'");
             }
-            if ((!args || args.firstName === undefined) && !opts.urn) {
+            if (args?.firstName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'firstName'");
             }
-            if ((!args || args.lastName === undefined) && !opts.urn) {
+            if (args?.lastName === undefined && !opts.urn) {
                 throw new Error("Missing required property 'lastName'");
             }
-            if ((!args || args.phone === undefined) && !opts.urn) {
+            if (args?.phone === undefined && !opts.urn) {
                 throw new Error("Missing required property 'phone'");
             }
-            if ((!args || args.postalCode === undefined) && !opts.urn) {
+            if (args?.postalCode === undefined && !opts.urn) {
                 throw new Error("Missing required property 'postalCode'");
             }
-            if ((!args || args.stateProvince === undefined) && !opts.urn) {
+            if (args?.stateProvince === undefined && !opts.urn) {
                 throw new Error("Missing required property 'stateProvince'");
             }
-            resourceInputs["address1"] = args ? args.address1 : undefined;
-            resourceInputs["address2"] = args ? args.address2 : undefined;
-            resourceInputs["city"] = args ? args.city : undefined;
-            resourceInputs["country"] = args ? args.country : undefined;
-            resourceInputs["email"] = args ? args.email : undefined;
-            resourceInputs["fax"] = args ? args.fax : undefined;
-            resourceInputs["firstName"] = args ? args.firstName : undefined;
-            resourceInputs["jobTitle"] = args ? args.jobTitle : undefined;
-            resourceInputs["label"] = args ? args.label : undefined;
-            resourceInputs["lastName"] = args ? args.lastName : undefined;
-            resourceInputs["organizationName"] = args ? args.organizationName : undefined;
-            resourceInputs["phone"] = args ? args.phone : undefined;
-            resourceInputs["postalCode"] = args ? args.postalCode : undefined;
-            resourceInputs["stateProvince"] = args ? args.stateProvince : undefined;
+            resourceInputs["address1"] = args?.address1;
+            resourceInputs["address2"] = args?.address2;
+            resourceInputs["city"] = args?.city;
+            resourceInputs["country"] = args?.country;
+            resourceInputs["email"] = args?.email;
+            resourceInputs["fax"] = args?.fax;
+            resourceInputs["firstName"] = args?.firstName;
+            resourceInputs["jobTitle"] = args?.jobTitle;
+            resourceInputs["label"] = args?.label;
+            resourceInputs["lastName"] = args?.lastName;
+            resourceInputs["organizationName"] = args?.organizationName;
+            resourceInputs["phone"] = args?.phone;
+            resourceInputs["postalCode"] = args?.postalCode;
+            resourceInputs["stateProvince"] = args?.stateProvince;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["faxNormalized"] = undefined /*out*/;
