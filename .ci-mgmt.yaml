@@ -1,6 +1,8 @@
 provider: dnsimple
 major-version: 4
 upstreamProviderOrg: dnsimple
+esc:
+  enabled: true
 env:
   DNSIMPLE_TOKEN: ${{ secrets.DNSIMPLE_TOKEN }}
   DNSIMPLE_ACCOUNT: ${{ secrets.DNSIMPLE_ACCOUNT }}
