@@ -12,7 +12,7 @@ namespace Pulumi.DNSimple
     /// <summary>
     /// Provides a DNSimple zone resource.
     /// 
-    /// &gt; Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+    /// &gt; Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `Active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
     /// 
     /// ## Example Usage
     /// 
