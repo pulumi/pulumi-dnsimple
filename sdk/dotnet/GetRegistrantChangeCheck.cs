@@ -37,15 +37,15 @@ namespace Pulumi.DNSimple
         /// 
         /// The following arguments are supported:
         /// 
-        /// * `domain_id` - (Required) The name or ID of the domain.
-        /// * `contact_id` - (Required) The ID of the contact you are planning to change to.
+        /// * `DomainId` - (Required) The name or ID of the domain.
+        /// * `ContactId` - (Required) The ID of the contact you are planning to change to.
         /// 
         /// The following additional attributes are exported:
         /// 
-        /// * `contact_id` - The ID of the contact you are planning to change to.
-        /// * `domain_id` - The name or ID of the domain.
-        /// * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-        /// * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+        /// * `ContactId` - The ID of the contact you are planning to change to.
+        /// * `DomainId` - The name or ID of the domain.
+        /// * `ExtendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+        /// * `RegistryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
         /// 
         /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
         /// </summary>
@@ -78,15 +78,15 @@ namespace Pulumi.DNSimple
         /// 
         /// The following arguments are supported:
         /// 
-        /// * `domain_id` - (Required) The name or ID of the domain.
-        /// * `contact_id` - (Required) The ID of the contact you are planning to change to.
+        /// * `DomainId` - (Required) The name or ID of the domain.
+        /// * `ContactId` - (Required) The ID of the contact you are planning to change to.
         /// 
         /// The following additional attributes are exported:
         /// 
-        /// * `contact_id` - The ID of the contact you are planning to change to.
-        /// * `domain_id` - The name or ID of the domain.
-        /// * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-        /// * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+        /// * `ContactId` - The ID of the contact you are planning to change to.
+        /// * `DomainId` - The name or ID of the domain.
+        /// * `ExtendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+        /// * `RegistryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
         /// 
         /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
         /// </summary>
@@ -119,15 +119,15 @@ namespace Pulumi.DNSimple
         /// 
         /// The following arguments are supported:
         /// 
-        /// * `domain_id` - (Required) The name or ID of the domain.
-        /// * `contact_id` - (Required) The ID of the contact you are planning to change to.
+        /// * `DomainId` - (Required) The name or ID of the domain.
+        /// * `ContactId` - (Required) The ID of the contact you are planning to change to.
         /// 
         /// The following additional attributes are exported:
         /// 
-        /// * `contact_id` - The ID of the contact you are planning to change to.
-        /// * `domain_id` - The name or ID of the domain.
-        /// * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-        /// * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+        /// * `ContactId` - The ID of the contact you are planning to change to.
+        /// * `DomainId` - The name or ID of the domain.
+        /// * `ExtendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+        /// * `RegistryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
         /// 
         /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
         /// </summary>
