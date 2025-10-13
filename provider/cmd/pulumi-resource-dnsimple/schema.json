@@ -121,7 +121,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.\n"
+                    "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the \u003cspan pulumi-lang-nodejs=\"`extendedAttributes`\" pulumi-lang-dotnet=\"`ExtendedAttributes`\" pulumi-lang-go=\"`extendedAttributes`\" pulumi-lang-python=\"`extended_attributes`\" pulumi-lang-yaml=\"`extendedAttributes`\" pulumi-lang-java=\"`extendedAttributes`\"\u003e`extended_attributes`\u003c/span\u003e will also be sent when a registrant change is initiated as part of changing the \u003cspan pulumi-lang-nodejs=\"`contactId`\" pulumi-lang-dotnet=\"`ContactId`\" pulumi-lang-go=\"`contactId`\" pulumi-lang-python=\"`contact_id`\" pulumi-lang-yaml=\"`contactId`\" pulumi-lang-java=\"`contactId`\"\u003e`contact_id`\u003c/span\u003e.\n"
                 },
                 "id": {
                     "type": "integer",
@@ -177,7 +177,7 @@
             "properties": {
                 "read": {
                     "type": "string",
-                    "description": "(String) - The timeout for the read operation e.g. `5m`\n"
+                    "description": "(String) - The timeout for the read operation e.g. \u003cspan pulumi-lang-nodejs=\"`5m`\" pulumi-lang-dotnet=\"`5m`\" pulumi-lang-go=\"`5m`\" pulumi-lang-python=\"`5m`\" pulumi-lang-yaml=\"`5m`\" pulumi-lang-java=\"`5m`\"\u003e`5m`\u003c/span\u003e\n"
                 }
             },
             "type": "object"
@@ -1079,7 +1079,7 @@
                 },
                 "autoRenewEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain should be set to auto-renew (default: `false`)\n"
+                    "description": "Whether the domain should be set to auto-renew (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "contactId": {
                     "type": "integer",
@@ -1087,7 +1087,7 @@
                 },
                 "dnssecEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain should have DNSSEC enabled (default: `false`)\n"
+                    "description": "Whether the domain should have DNSSEC enabled (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "domainRegistration": {
                     "$ref": "#/types/dnsimple:index/RegisteredDomainDomainRegistration:RegisteredDomainDomainRegistration",
@@ -1101,7 +1101,7 @@
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.\n"
+                    "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the \u003cspan pulumi-lang-nodejs=\"`extendedAttributes`\" pulumi-lang-dotnet=\"`ExtendedAttributes`\" pulumi-lang-go=\"`extendedAttributes`\" pulumi-lang-python=\"`extended_attributes`\" pulumi-lang-yaml=\"`extendedAttributes`\" pulumi-lang-java=\"`extendedAttributes`\"\u003e`extended_attributes`\u003c/span\u003e will also be sent when a registrant change is initiated as part of changing the \u003cspan pulumi-lang-nodejs=\"`contactId`\" pulumi-lang-dotnet=\"`ContactId`\" pulumi-lang-go=\"`contactId`\" pulumi-lang-python=\"`contact_id`\" pulumi-lang-yaml=\"`contactId`\" pulumi-lang-java=\"`contactId`\"\u003e`contact_id`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1125,7 +1125,7 @@
                 },
                 "transferLockEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain transfer lock protection is enabled (default: `true`)\n"
+                    "description": "Whether the domain transfer lock protection is enabled (default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "unicodeName": {
                     "type": "string",
@@ -1133,7 +1133,7 @@
                 },
                 "whoisPrivacyEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain should have WhoIs privacy enabled (default: `false`)\n"
+                    "description": "Whether the domain should have WhoIs privacy enabled (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 }
             },
             "required": [
@@ -1153,7 +1153,7 @@
             "inputProperties": {
                 "autoRenewEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain should be set to auto-renew (default: `false`)\n"
+                    "description": "Whether the domain should be set to auto-renew (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "contactId": {
                     "type": "integer",
@@ -1161,14 +1161,14 @@
                 },
                 "dnssecEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain should have DNSSEC enabled (default: `false`)\n"
+                    "description": "Whether the domain should have DNSSEC enabled (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 },
                 "extendedAttributes": {
                     "type": "object",
                     "additionalProperties": {
                         "type": "string"
                     },
-                    "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.\n"
+                    "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the \u003cspan pulumi-lang-nodejs=\"`extendedAttributes`\" pulumi-lang-dotnet=\"`ExtendedAttributes`\" pulumi-lang-go=\"`extendedAttributes`\" pulumi-lang-python=\"`extended_attributes`\" pulumi-lang-yaml=\"`extendedAttributes`\" pulumi-lang-java=\"`extendedAttributes`\"\u003e`extended_attributes`\u003c/span\u003e will also be sent when a registrant change is initiated as part of changing the \u003cspan pulumi-lang-nodejs=\"`contactId`\" pulumi-lang-dotnet=\"`ContactId`\" pulumi-lang-go=\"`contactId`\" pulumi-lang-python=\"`contact_id`\" pulumi-lang-yaml=\"`contactId`\" pulumi-lang-java=\"`contactId`\"\u003e`contact_id`\u003c/span\u003e.\n"
                 },
                 "name": {
                     "type": "string",
@@ -1184,11 +1184,11 @@
                 },
                 "transferLockEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain transfer lock protection is enabled (default: `true`)\n"
+                    "description": "Whether the domain transfer lock protection is enabled (default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                 },
                 "whoisPrivacyEnabled": {
                     "type": "boolean",
-                    "description": "Whether the domain should have WhoIs privacy enabled (default: `false`)\n"
+                    "description": "Whether the domain should have WhoIs privacy enabled (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                 }
             },
             "requiredInputs": [
@@ -1203,7 +1203,7 @@
                     },
                     "autoRenewEnabled": {
                         "type": "boolean",
-                        "description": "Whether the domain should be set to auto-renew (default: `false`)\n"
+                        "description": "Whether the domain should be set to auto-renew (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "contactId": {
                         "type": "integer",
@@ -1211,7 +1211,7 @@
                     },
                     "dnssecEnabled": {
                         "type": "boolean",
-                        "description": "Whether the domain should have DNSSEC enabled (default: `false`)\n"
+                        "description": "Whether the domain should have DNSSEC enabled (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     },
                     "domainRegistration": {
                         "$ref": "#/types/dnsimple:index/RegisteredDomainDomainRegistration:RegisteredDomainDomainRegistration",
@@ -1225,7 +1225,7 @@
                         "additionalProperties": {
                             "type": "string"
                         },
-                        "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.\n"
+                        "description": "A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the \u003cspan pulumi-lang-nodejs=\"`extendedAttributes`\" pulumi-lang-dotnet=\"`ExtendedAttributes`\" pulumi-lang-go=\"`extendedAttributes`\" pulumi-lang-python=\"`extended_attributes`\" pulumi-lang-yaml=\"`extendedAttributes`\" pulumi-lang-java=\"`extendedAttributes`\"\u003e`extended_attributes`\u003c/span\u003e will also be sent when a registrant change is initiated as part of changing the \u003cspan pulumi-lang-nodejs=\"`contactId`\" pulumi-lang-dotnet=\"`ContactId`\" pulumi-lang-go=\"`contactId`\" pulumi-lang-python=\"`contact_id`\" pulumi-lang-yaml=\"`contactId`\" pulumi-lang-java=\"`contactId`\"\u003e`contact_id`\u003c/span\u003e.\n"
                     },
                     "name": {
                         "type": "string",
@@ -1249,7 +1249,7 @@
                     },
                     "transferLockEnabled": {
                         "type": "boolean",
-                        "description": "Whether the domain transfer lock protection is enabled (default: `true`)\n"
+                        "description": "Whether the domain transfer lock protection is enabled (default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e)\n"
                     },
                     "unicodeName": {
                         "type": "string",
@@ -1257,14 +1257,14 @@
                     },
                     "whoisPrivacyEnabled": {
                         "type": "boolean",
-                        "description": "Whether the domain should have WhoIs privacy enabled (default: `false`)\n"
+                        "description": "Whether the domain should have WhoIs privacy enabled (default: \u003cspan pulumi-lang-nodejs=\"`false`\" pulumi-lang-dotnet=\"`False`\" pulumi-lang-go=\"`false`\" pulumi-lang-python=\"`false`\" pulumi-lang-yaml=\"`false`\" pulumi-lang-java=\"`false`\"\u003e`false`\u003c/span\u003e)\n"
                     }
                 },
                 "type": "object"
             }
         },
         "dnsimple:index/zone:Zone": {
-            "description": "Provides a DNSimple zone resource.\n\n\u003e Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Create a zone\nconst foobar = new dnsimple.Zone(\"foobar\", {name: dnsimple.zone});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Create a zone\nfoobar = dnsimple.Zone(\"foobar\", name=dnsimple[\"zone\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a zone\n    var foobar = new DNSimple.Zone(\"foobar\", new()\n    {\n        Name = dnsimple.Zone,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a zone\n\t\t_, err := dnsimple.NewZone(ctx, \"foobar\", \u0026dnsimple.ZoneArgs{\n\t\t\tName: pulumi.Any(dnsimple.Zone),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.Zone;\nimport com.pulumi.dnsimple.ZoneArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a zone\n        var foobar = new Zone(\"foobar\", ZoneArgs.builder()\n            .name(dnsimple.zone())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a zone\n  foobar:\n    type: dnsimple:Zone\n    properties:\n      name: ${dnsimple.zone}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple zones can be imported using their numeric record ID or the zone name.\n\nbash\n\n```sh\n$ pulumi import dnsimple:index/zone:Zone resource_name foo.com\n```\n\nThe zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.\n\nbash\n\ncurl -H 'Authorization: Bearer \u003cACCESS_TOKEN\u003e' https://api.dnsimple.com/v2/1234/zones/example.com | jq\n\n{\n\n  \"data\": {\n\n    \"id\": 1,\n\n    \"account_id\": 1234,\n\n    \"name\": \"example.com\",\n\n    \"reverse\": false,\n\n    \"secondary\": false,\n\n    \"last_transferred_at\": null,\n\n    \"active\": true,\n\n    \"created_at\": \"2023-04-18T04:58:01Z\",\n\n    \"updated_at\": \"2024-01-16T15:53:18Z\"\n\n  }\n\n}\n\n",
+            "description": "Provides a DNSimple zone resource.\n\n\u003e Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the \u003cspan pulumi-lang-nodejs=\"`active`\" pulumi-lang-dotnet=\"`Active`\" pulumi-lang-go=\"`active`\" pulumi-lang-python=\"`active`\" pulumi-lang-yaml=\"`active`\" pulumi-lang-java=\"`active`\"\u003e`active`\u003c/span\u003e state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.\n\n## Example Usage\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\n// Create a zone\nconst foobar = new dnsimple.Zone(\"foobar\", {name: dnsimple.zone});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\n# Create a zone\nfoobar = dnsimple.Zone(\"foobar\", name=dnsimple[\"zone\"])\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    // Create a zone\n    var foobar = new DNSimple.Zone(\"foobar\", new()\n    {\n        Name = dnsimple.Zone,\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t// Create a zone\n\t\t_, err := dnsimple.NewZone(ctx, \"foobar\", \u0026dnsimple.ZoneArgs{\n\t\t\tName: pulumi.Any(dnsimple.Zone),\n\t\t})\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.Zone;\nimport com.pulumi.dnsimple.ZoneArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        // Create a zone\n        var foobar = new Zone(\"foobar\", ZoneArgs.builder()\n            .name(dnsimple.zone())\n            .build());\n\n    }\n}\n```\n```yaml\nresources:\n  # Create a zone\n  foobar:\n    type: dnsimple:Zone\n    properties:\n      name: ${dnsimple.zone}\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\n## Import\n\nDNSimple zones can be imported using their numeric record ID or the zone name.\n\nbash\n\n```sh\n$ pulumi import dnsimple:index/zone:Zone resource_name foo.com\n```\n\nThe zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.\n\nbash\n\ncurl -H 'Authorization: Bearer \u003cACCESS_TOKEN\u003e' https://api.dnsimple.com/v2/1234/zones/example.com | jq\n\n{\n\n  \"data\": {\n\n    \"id\": 1,\n\n    \"account_id\": 1234,\n\n    \"name\": \"example.com\",\n\n    \"reverse\": false,\n\n    \"secondary\": false,\n\n    \"last_transferred_at\": null,\n\n    \"active\": true,\n\n    \"created_at\": \"2023-04-18T04:58:01Z\",\n\n    \"updated_at\": \"2024-01-16T15:53:18Z\"\n\n  }\n\n}\n\n",
             "properties": {
                 "accountId": {
                     "type": "integer",
@@ -1570,7 +1570,7 @@
             }
         },
         "dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck": {
-            "description": "Get information on the requirements of a registrant change.\n\n\u003e **Note:** The registrant change API is currently in developer preview and is subject to change.\n\nGet registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\nconst example = dnsimple.getRegistrantChangeCheck({\n    domainId: \"dnsimple.com\",\n    contactId: \"1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\nexample = dnsimple.get_registrant_change_check(domain_id=\"dnsimple.com\",\n    contact_id=\"1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()\n    {\n        DomainId = \"dnsimple.com\",\n        ContactId = \"1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.GetRegistrantChangeCheck(ctx, \u0026dnsimple.GetRegistrantChangeCheckArgs{\n\t\t\tDomainId:  \"dnsimple.com\",\n\t\t\tContactId: \"1234\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.DnsimpleFunctions;\nimport com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()\n            .domainId(\"dnsimple.com\")\n            .contactId(\"1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: dnsimple:getRegistrantChangeCheck\n      arguments:\n        domainId: dnsimple.com\n        contactId: '1234'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following arguments are supported:\n\n* `domain_id` - (Required) The name or ID of the domain.\n* `contact_id` - (Required) The ID of the contact you are planning to change to.\n\nThe following additional attributes are exported:\n\n* `contact_id` - The ID of the contact you are planning to change to.\n* `domain_id` - The name or ID of the domain.\n* `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)\n* `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.\n\n\u003ca id=\"nestedblock--extended_attributes\"\u003e\u003c/a\u003e\n",
+            "description": "Get information on the requirements of a registrant change.\n\n\u003e **Note:** The registrant change API is currently in developer preview and is subject to change.\n\nGet registrant change requirements for the `dnsimple.com` domain and the contact with ID \u003cspan pulumi-lang-nodejs=\"`1234`\" pulumi-lang-dotnet=\"`1234`\" pulumi-lang-go=\"`1234`\" pulumi-lang-python=\"`1234`\" pulumi-lang-yaml=\"`1234`\" pulumi-lang-java=\"`1234`\"\u003e`1234`\u003c/span\u003e:\n\n\u003c!--Start PulumiCodeChooser --\u003e\n```typescript\nimport * as pulumi from \"@pulumi/pulumi\";\nimport * as dnsimple from \"@pulumi/dnsimple\";\n\nconst example = dnsimple.getRegistrantChangeCheck({\n    domainId: \"dnsimple.com\",\n    contactId: \"1234\",\n});\n```\n```python\nimport pulumi\nimport pulumi_dnsimple as dnsimple\n\nexample = dnsimple.get_registrant_change_check(domain_id=\"dnsimple.com\",\n    contact_id=\"1234\")\n```\n```csharp\nusing System.Collections.Generic;\nusing System.Linq;\nusing Pulumi;\nusing DNSimple = Pulumi.DNSimple;\n\nreturn await Deployment.RunAsync(() =\u003e \n{\n    var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()\n    {\n        DomainId = \"dnsimple.com\",\n        ContactId = \"1234\",\n    });\n\n});\n```\n```go\npackage main\n\nimport (\n\t\"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple\"\n\t\"github.com/pulumi/pulumi/sdk/v3/go/pulumi\"\n)\n\nfunc main() {\n\tpulumi.Run(func(ctx *pulumi.Context) error {\n\t\t_, err := dnsimple.GetRegistrantChangeCheck(ctx, \u0026dnsimple.GetRegistrantChangeCheckArgs{\n\t\t\tDomainId:  \"dnsimple.com\",\n\t\t\tContactId: \"1234\",\n\t\t}, nil)\n\t\tif err != nil {\n\t\t\treturn err\n\t\t}\n\t\treturn nil\n\t})\n}\n```\n```java\npackage generated_program;\n\nimport com.pulumi.Context;\nimport com.pulumi.Pulumi;\nimport com.pulumi.core.Output;\nimport com.pulumi.dnsimple.DnsimpleFunctions;\nimport com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;\nimport java.util.List;\nimport java.util.ArrayList;\nimport java.util.Map;\nimport java.io.File;\nimport java.nio.file.Files;\nimport java.nio.file.Paths;\n\npublic class App {\n    public static void main(String[] args) {\n        Pulumi.run(App::stack);\n    }\n\n    public static void stack(Context ctx) {\n        final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()\n            .domainId(\"dnsimple.com\")\n            .contactId(\"1234\")\n            .build());\n\n    }\n}\n```\n```yaml\nvariables:\n  example:\n    fn::invoke:\n      function: dnsimple:getRegistrantChangeCheck\n      arguments:\n        domainId: dnsimple.com\n        contactId: '1234'\n```\n\u003c!--End PulumiCodeChooser --\u003e\n\nThe following arguments are supported:\n\n* \u003cspan pulumi-lang-nodejs=\"`domainId`\" pulumi-lang-dotnet=\"`DomainId`\" pulumi-lang-go=\"`domainId`\" pulumi-lang-python=\"`domain_id`\" pulumi-lang-yaml=\"`domainId`\" pulumi-lang-java=\"`domainId`\"\u003e`domain_id`\u003c/span\u003e - (Required) The name or ID of the domain.\n* \u003cspan pulumi-lang-nodejs=\"`contactId`\" pulumi-lang-dotnet=\"`ContactId`\" pulumi-lang-go=\"`contactId`\" pulumi-lang-python=\"`contact_id`\" pulumi-lang-yaml=\"`contactId`\" pulumi-lang-java=\"`contactId`\"\u003e`contact_id`\u003c/span\u003e - (Required) The ID of the contact you are planning to change to.\n\nThe following additional attributes are exported:\n\n* \u003cspan pulumi-lang-nodejs=\"`contactId`\" pulumi-lang-dotnet=\"`ContactId`\" pulumi-lang-go=\"`contactId`\" pulumi-lang-python=\"`contact_id`\" pulumi-lang-yaml=\"`contactId`\" pulumi-lang-java=\"`contactId`\"\u003e`contact_id`\u003c/span\u003e - The ID of the contact you are planning to change to.\n* \u003cspan pulumi-lang-nodejs=\"`domainId`\" pulumi-lang-dotnet=\"`DomainId`\" pulumi-lang-go=\"`domainId`\" pulumi-lang-python=\"`domain_id`\" pulumi-lang-yaml=\"`domainId`\" pulumi-lang-java=\"`domainId`\"\u003e`domain_id`\u003c/span\u003e - The name or ID of the domain.\n* \u003cspan pulumi-lang-nodejs=\"`extendedAttributes`\" pulumi-lang-dotnet=\"`ExtendedAttributes`\" pulumi-lang-go=\"`extendedAttributes`\" pulumi-lang-python=\"`extended_attributes`\" pulumi-lang-yaml=\"`extendedAttributes`\" pulumi-lang-java=\"`extendedAttributes`\"\u003e`extended_attributes`\u003c/span\u003e - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)\n* \u003cspan pulumi-lang-nodejs=\"`registryOwnerChange`\" pulumi-lang-dotnet=\"`RegistryOwnerChange`\" pulumi-lang-go=\"`registryOwnerChange`\" pulumi-lang-python=\"`registry_owner_change`\" pulumi-lang-yaml=\"`registryOwnerChange`\" pulumi-lang-java=\"`registryOwnerChange`\"\u003e`registry_owner_change`\u003c/span\u003e - (Boolean) Whether the registrant change is going to result in an owner change at the registry.\n\n\u003ca id=\"nestedblock--extended_attributes\"\u003e\u003c/a\u003e\n",
             "inputs": {
                 "description": "A collection of arguments for invoking getRegistrantChangeCheck.\n",
                 "properties": {

@@ -84,7 +84,7 @@ namespace Pulumi.DNSimple
         public Output<int> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain should be set to auto-renew (default: `false`)
+        /// Whether the domain should be set to auto-renew (default: `False`)
         /// </summary>
         [Output("autoRenewEnabled")]
         public Output<bool> AutoRenewEnabled { get; private set; } = null!;
@@ -96,7 +96,7 @@ namespace Pulumi.DNSimple
         public Output<int> ContactId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain should have DNSSEC enabled (default: `false`)
+        /// Whether the domain should have DNSSEC enabled (default: `False`)
         /// </summary>
         [Output("dnssecEnabled")]
         public Output<bool> DnssecEnabled { get; private set; } = null!;
@@ -113,7 +113,7 @@ namespace Pulumi.DNSimple
         public Output<string> ExpiresAt { get; private set; } = null!;
 
         /// <summary>
-        /// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
+        /// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `ExtendedAttributes` will also be sent when a registrant change is initiated as part of changing the `ContactId`.
         /// </summary>
         [Output("extendedAttributes")]
         public Output<ImmutableDictionary<string, string>?> ExtendedAttributes { get; private set; } = null!;
@@ -151,7 +151,7 @@ namespace Pulumi.DNSimple
         public Output<Outputs.RegisteredDomainTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain transfer lock protection is enabled (default: `true`)
+        /// Whether the domain transfer lock protection is enabled (default: `True`)
         /// </summary>
         [Output("transferLockEnabled")]
         public Output<bool> TransferLockEnabled { get; private set; } = null!;
@@ -163,7 +163,7 @@ namespace Pulumi.DNSimple
         public Output<string> UnicodeName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain should have WhoIs privacy enabled (default: `false`)
+        /// Whether the domain should have WhoIs privacy enabled (default: `False`)
         /// </summary>
         [Output("whoisPrivacyEnabled")]
         public Output<bool> WhoisPrivacyEnabled { get; private set; } = null!;
@@ -215,7 +215,7 @@ namespace Pulumi.DNSimple
     public sealed class RegisteredDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the domain should be set to auto-renew (default: `false`)
+        /// Whether the domain should be set to auto-renew (default: `False`)
         /// </summary>
         [Input("autoRenewEnabled")]
         public Input<bool>? AutoRenewEnabled { get; set; }
@@ -227,7 +227,7 @@ namespace Pulumi.DNSimple
         public Input<int> ContactId { get; set; } = null!;
 
         /// <summary>
-        /// Whether the domain should have DNSSEC enabled (default: `false`)
+        /// Whether the domain should have DNSSEC enabled (default: `False`)
         /// </summary>
         [Input("dnssecEnabled")]
         public Input<bool>? DnssecEnabled { get; set; }
@@ -236,7 +236,7 @@ namespace Pulumi.DNSimple
         private InputMap<string>? _extendedAttributes;
 
         /// <summary>
-        /// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
+        /// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `ExtendedAttributes` will also be sent when a registrant change is initiated as part of changing the `ContactId`.
         /// </summary>
         public InputMap<string> ExtendedAttributes
         {
@@ -265,13 +265,13 @@ namespace Pulumi.DNSimple
         public Input<Inputs.RegisteredDomainTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Whether the domain transfer lock protection is enabled (default: `true`)
+        /// Whether the domain transfer lock protection is enabled (default: `True`)
         /// </summary>
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
 
         /// <summary>
-        /// Whether the domain should have WhoIs privacy enabled (default: `false`)
+        /// Whether the domain should have WhoIs privacy enabled (default: `False`)
         /// </summary>
         [Input("whoisPrivacyEnabled")]
         public Input<bool>? WhoisPrivacyEnabled { get; set; }
@@ -288,7 +288,7 @@ namespace Pulumi.DNSimple
         public Input<int>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether the domain should be set to auto-renew (default: `false`)
+        /// Whether the domain should be set to auto-renew (default: `False`)
         /// </summary>
         [Input("autoRenewEnabled")]
         public Input<bool>? AutoRenewEnabled { get; set; }
@@ -300,7 +300,7 @@ namespace Pulumi.DNSimple
         public Input<int>? ContactId { get; set; }
 
         /// <summary>
-        /// Whether the domain should have DNSSEC enabled (default: `false`)
+        /// Whether the domain should have DNSSEC enabled (default: `False`)
         /// </summary>
         [Input("dnssecEnabled")]
         public Input<bool>? DnssecEnabled { get; set; }
@@ -320,7 +320,7 @@ namespace Pulumi.DNSimple
         private InputMap<string>? _extendedAttributes;
 
         /// <summary>
-        /// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
+        /// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `ExtendedAttributes` will also be sent when a registrant change is initiated as part of changing the `ContactId`.
         /// </summary>
         public InputMap<string> ExtendedAttributes
         {
@@ -361,7 +361,7 @@ namespace Pulumi.DNSimple
         public Input<Inputs.RegisteredDomainTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Whether the domain transfer lock protection is enabled (default: `true`)
+        /// Whether the domain transfer lock protection is enabled (default: `True`)
         /// </summary>
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
@@ -373,7 +373,7 @@ namespace Pulumi.DNSimple
         public Input<string>? UnicodeName { get; set; }
 
         /// <summary>
-        /// Whether the domain should have WhoIs privacy enabled (default: `false`)
+        /// Whether the domain should have WhoIs privacy enabled (default: `False`)
         /// </summary>
         [Input("whoisPrivacyEnabled")]
         public Input<bool>? WhoisPrivacyEnabled { get; set; }
