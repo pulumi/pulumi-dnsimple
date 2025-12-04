@@ -36,6 +36,7 @@ config:
         value: 'TODO: "${var.dnsimple_token}"'
 
 ```
+
 ```typescript
 import * as pulumi from "@pulumi/pulumi";
 import * as dnsimple from "@pulumi/dnsimple";
@@ -45,6 +46,7 @@ const www = new dnsimple.ZoneRecord("www", {});
 // Create an email forward
 const hello = new dnsimple.EmailForward("hello", {});
 ```
+
 {{% /choosable %}}
 {{% choosable language python %}}
 ```yaml
@@ -58,6 +60,7 @@ config:
         value: 'TODO: "${var.dnsimple_token}"'
 
 ```
+
 ```python
 import pulumi
 import pulumi_dnsimple as dnsimple
@@ -67,6 +70,7 @@ www = dnsimple.ZoneRecord("www")
 # Create an email forward
 hello = dnsimple.EmailForward("hello")
 ```
+
 {{% /choosable %}}
 {{% choosable language csharp %}}
 ```yaml
@@ -80,6 +84,7 @@ config:
         value: 'TODO: "${var.dnsimple_token}"'
 
 ```
+
 ```csharp
 using System.Collections.Generic;
 using System.Linq;
@@ -97,6 +102,7 @@ return await Deployment.RunAsync(() =>
 });
 
 ```
+
 {{% /choosable %}}
 {{% choosable language go %}}
 ```yaml
@@ -110,6 +116,7 @@ config:
         value: 'TODO: "${var.dnsimple_token}"'
 
 ```
+
 ```go
 package main
 
@@ -134,6 +141,7 @@ func main() {
 	})
 }
 ```
+
 {{% /choosable %}}
 {{% choosable language yaml %}}
 ```yaml
@@ -147,6 +155,7 @@ config:
         value: 'TODO: "${var.dnsimple_token}"'
 
 ```
+
 ```yaml
 resources:
   # Create a record
@@ -156,6 +165,7 @@ resources:
   hello:
     type: dnsimple:EmailForward
 ```
+
 {{% /choosable %}}
 {{% choosable language java %}}
 ```yaml
@@ -169,6 +179,7 @@ config:
         value: 'TODO: "${var.dnsimple_token}"'
 
 ```
+
 ```java
 package generated_program;
 
@@ -199,6 +210,7 @@ public class App {
     }
 }
 ```
+
 {{% /choosable %}}
 {{< /chooser >}}
 ## Configuration Reference
