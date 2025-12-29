@@ -3,15 +3,15 @@
         "resources": {
             "dnsimple_contact": {
                 "current": "dnsimple:index/contact:Contact",
-                "majorVersion": 4
+                "majorVersion": 5
             },
             "dnsimple_domain": {
                 "current": "dnsimple:index/domain:Domain",
-                "majorVersion": 4
+                "majorVersion": 5
             },
             "dnsimple_domain_delegation": {
                 "current": "dnsimple:index/domainDelegation:DomainDelegation",
-                "majorVersion": 4,
+                "majorVersion": 5,
                 "fields": {
                     "name_servers": {
                         "maxItemsOne": false
@@ -20,15 +20,15 @@
             },
             "dnsimple_ds_record": {
                 "current": "dnsimple:index/dsRecord:DsRecord",
-                "majorVersion": 4
+                "majorVersion": 5
             },
             "dnsimple_email_forward": {
                 "current": "dnsimple:index/emailForward:EmailForward",
-                "majorVersion": 4
+                "majorVersion": 5
             },
             "dnsimple_lets_encrypt_certificate": {
                 "current": "dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate",
-                "majorVersion": 4,
+                "majorVersion": 5,
                 "fields": {
                     "alternate_names": {
                         "maxItemsOne": false
@@ -37,15 +37,15 @@
             },
             "dnsimple_registered_domain": {
                 "current": "dnsimple:index/registeredDomain:RegisteredDomain",
-                "majorVersion": 4
+                "majorVersion": 5
             },
             "dnsimple_zone": {
                 "current": "dnsimple:index/zone:Zone",
-                "majorVersion": 4
+                "majorVersion": 5
             },
             "dnsimple_zone_record": {
                 "current": "dnsimple:index/zoneRecord:ZoneRecord",
-                "majorVersion": 4,
+                "majorVersion": 5,
                 "fields": {
                     "regions": {
                         "maxItemsOne": false
@@ -56,7 +56,7 @@
         "datasources": {
             "dnsimple_certificate": {
                 "current": "dnsimple:index/getCertificate:getCertificate",
-                "majorVersion": 4,
+                "majorVersion": 5,
                 "fields": {
                     "certificate_chain": {
                         "maxItemsOne": false
@@ -65,7 +65,7 @@
             },
             "dnsimple_registrant_change_check": {
                 "current": "dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck",
-                "majorVersion": 4,
+                "majorVersion": 5,
                 "fields": {
                     "extended_attributes": {
                         "maxItemsOne": false,
@@ -81,7 +81,7 @@
             },
             "dnsimple_zone": {
                 "current": "dnsimple:index/getZone:getZone",
-                "majorVersion": 4
+                "majorVersion": 5
             }
         }
     },

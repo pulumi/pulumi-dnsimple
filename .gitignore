@@ -38,3 +38,7 @@ sdk/python/venv
 
 # Ignore local mise config
 mise.local.toml
+
+# Ignore local skills files
+SKILL.md
+upgrade-provider-errors.md
