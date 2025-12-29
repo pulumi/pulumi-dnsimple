@@ -17,18 +17,11 @@ The DNSimple provider is available as a package in all Pulumi languages:
 
 ## Overview
 
+---
+## page_title: "Provider: DNSimple"
 The DNSimple provider allows you to manage DNS records, domains, certificates, and other DNSimple resources using Pulumi.
 
 This provider enables you to treat your DNS and domain infrastructure as code, making it easier to version, review, and manage your DNSimple resources alongside your other infrastructure.
-## Requirements
-
-- Pulumi >= 1.12
-- DNSimple account with API access
-## Installation
-
-Add the DNSimple provider to your Pulumi configuration:
-
-Then run `pulumi up` to download the provider.
 ## Authentication
 
 The provider requires authentication credentials to interact with the DNSimple API. You can provide credentials in several ways:
@@ -701,14 +694,3 @@ The following configuration inputs are supported in the provider configuration:
 - **`prefetch`** (Optional) - Set to `true` to enable prefetching zone records when dealing with large configurations. This is useful when you are dealing with API rate limitations given your number of zones and zone records. Can be provided via the `DNSIMPLE_PREFETCH` environment variable. Defaults to `false`.
 
 - **`userAgent`** (Optional) - Custom string to append to the user agent used for sending HTTP requests to the API. Useful for identifying your automation or integration.
-## Getting Help
-
-- Support article - Official support documentation
-- [Developer API documentation](https://developer.dnsimple.com/) - Complete API reference
-- GitHub Repository - Source code and issue tracker
-## Related Articles
-
-- Introducing DNSimple's Pulumi Provider
-- [DNSimple, Pulumi & Sentinel — A Guide to Policy as Code](https://blog.dnsimple.com/2023/05/policy-as-code/)
-- Manage Domain Transfer Locking and Contacts in Pulumi
-- How We Manage Domain and DNS Management with Infrastructure as Code
