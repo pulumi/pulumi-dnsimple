@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,29 +21,28 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a contact
-//			_, err := dnsimple.NewContact(ctx, "me", &dnsimple.ContactArgs{
-//				Label:            pulumi.String("Apple Appleseed"),
-//				FirstName:        pulumi.String("Apple"),
-//				LastName:         pulumi.String("Appleseed"),
-//				OrganizationName: pulumi.String("Contoso"),
+//			_, err := dnsimple.NewContact(ctx, "example", &dnsimple.ContactArgs{
+//				Label:            pulumi.String("Main Contact"),
+//				FirstName:        pulumi.String("John"),
+//				LastName:         pulumi.String("Doe"),
+//				OrganizationName: pulumi.String("Example Inc"),
 //				JobTitle:         pulumi.String("Manager"),
-//				Address1:         pulumi.String("Level 1, 2 Main St"),
-//				Address2:         pulumi.String("Marsfield"),
+//				Address1:         pulumi.String("123 Main Street"),
+//				Address2:         pulumi.String("Suite 100"),
 //				City:             pulumi.String("San Francisco"),
 //				StateProvince:    pulumi.String("California"),
-//				PostalCode:       pulumi.String("90210"),
+//				PostalCode:       pulumi.String("94105"),
 //				Country:          pulumi.String("US"),
-//				Phone:            pulumi.String("+1401239523"),
-//				Fax:              pulumi.String("+1849491024"),
-//				Email:            pulumi.String("apple@contoso.com"),
+//				Phone:            pulumi.String("+1.4155551234"),
+//				Fax:              pulumi.String("+1.4155555678"),
+//				Email:            pulumi.String("john@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -61,154 +60,48 @@ import (
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/contact:Contact resource_name 5678
+// $ pulumi import dnsimple:index/contact:Contact example 5678
 // ```
 //
-// The ID can be found within [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-//
-// bash
-//
-// curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/contacts?label_like=example.com | jq
-//
-// {
-//
-//	"data": [
-//
-//	  {
-//
-//	    "id": 1,
-//
-//	    "account_id": 1010,
-//
-//	    "label": "Default",
-//
-//	    "first_name": "First",
-//
-//	    "last_name": "User",
-//
-//	    "job_title": "CEO",
-//
-//	    "organization_name": "Awesome Company",
-//
-//	    "email": "first@example.com",
-//
-//	    "phone": "+18001234567",
-//
-//	    "fax": "+18011234567",
-//
-//	    "address1": "Italian Street, 10",
-//
-//	    "address2": "",
-//
-//	    "city": "Roma",
-//
-//	    "state_province": "RM",
-//
-//	    "postal_code": "00100",
-//
-//	    "country": "IT",
-//
-//	    "created_at": "2013-11-08T17:23:15Z",
-//
-//	    "updated_at": "2015-01-08T21:30:50Z"
-//
-//	  },
-//
-//	  {
-//
-//	    "id": 2,
-//
-//	    "account_id": 1010,
-//
-//	    "label": "",
-//
-//	    "first_name": "Second",
-//
-//	    "last_name": "User",
-//
-//	    "job_title": "",
-//
-//	    "organization_name": "",
-//
-//	    "email": "second@example.com",
-//
-//	    "phone": "+18881234567",
-//
-//	    "fax": "",
-//
-//	    "address1": "French Street",
-//
-//	    "address2": "c/o Someone",
-//
-//	    "city": "Paris",
-//
-//	    "state_province": "XY",
-//
-//	    "postal_code": "00200",
-//
-//	    "country": "FR",
-//
-//	    "created_at": "2014-12-06T15:46:18Z",
-//
-//	    "updated_at": "2014-12-06T15:46:18Z"
-//
-//	  }
-//
-//	],
-//
-//	"pagination": {
-//
-//	  "current_page": 1,
-//
-//	  "per_page": 30,
-//
-//	  "total_entries": 2,
-//
-//	  "total_pages": 1
-//
-//	}
-//
-// }
+// The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 type Contact struct {
 	pulumi.CustomResourceState
 
 	// The account ID for the contact.
 	AccountId pulumi.IntOutput `pulumi:"accountId"`
-	// Address line 1
+	// The primary address line (street address, building number, etc.).
 	Address1 pulumi.StringOutput `pulumi:"address1"`
-	// Address line 2
+	// The secondary address line (apartment, suite, floor, etc.).
 	Address2 pulumi.StringOutput `pulumi:"address2"`
-	// City
+	// The city where the contact is located.
 	City pulumi.StringOutput `pulumi:"city"`
-	// Country
+	// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
 	Country pulumi.StringOutput `pulumi:"country"`
 	// Timestamp representing when this contact was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// Email
-	//
-	// # Attributes Reference
+	// The contact's email address.
 	Email pulumi.StringOutput `pulumi:"email"`
-	// Fax
+	// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
 	Fax pulumi.StringOutput `pulumi:"fax"`
 	// The fax number, normalized.
 	FaxNormalized pulumi.StringOutput `pulumi:"faxNormalized"`
-	// First name
+	// The first name of the contact person.
 	FirstName pulumi.StringOutput `pulumi:"firstName"`
-	// Job title
+	// The job title or position of the contact person within the organization.
 	JobTitle pulumi.StringOutput `pulumi:"jobTitle"`
-	// Label
+	// A descriptive label for the contact to help identify it.
 	Label pulumi.StringOutput `pulumi:"label"`
-	// Last name
+	// The last name of the contact person.
 	LastName pulumi.StringOutput `pulumi:"lastName"`
-	// Organization name
+	// The name of the organization or company associated with the contact.
 	OrganizationName pulumi.StringOutput `pulumi:"organizationName"`
-	// Phone
+	// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
 	Phone pulumi.StringOutput `pulumi:"phone"`
 	// The phone number, normalized.
 	PhoneNormalized pulumi.StringOutput `pulumi:"phoneNormalized"`
-	// Postal code
+	// The postal code, ZIP code, or equivalent for the contact's location.
 	PostalCode pulumi.StringOutput `pulumi:"postalCode"`
-	// State province
+	// The state, province, or region where the contact is located.
 	StateProvince pulumi.StringOutput `pulumi:"stateProvince"`
 	// Timestamp representing when this contact was updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
@@ -273,41 +166,39 @@ func GetContact(ctx *pulumi.Context,
 type contactState struct {
 	// The account ID for the contact.
 	AccountId *int `pulumi:"accountId"`
-	// Address line 1
+	// The primary address line (street address, building number, etc.).
 	Address1 *string `pulumi:"address1"`
-	// Address line 2
+	// The secondary address line (apartment, suite, floor, etc.).
 	Address2 *string `pulumi:"address2"`
-	// City
+	// The city where the contact is located.
 	City *string `pulumi:"city"`
-	// Country
+	// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
 	Country *string `pulumi:"country"`
 	// Timestamp representing when this contact was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// Email
-	//
-	// # Attributes Reference
+	// The contact's email address.
 	Email *string `pulumi:"email"`
-	// Fax
+	// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
 	Fax *string `pulumi:"fax"`
 	// The fax number, normalized.
 	FaxNormalized *string `pulumi:"faxNormalized"`
-	// First name
+	// The first name of the contact person.
 	FirstName *string `pulumi:"firstName"`
-	// Job title
+	// The job title or position of the contact person within the organization.
 	JobTitle *string `pulumi:"jobTitle"`
-	// Label
+	// A descriptive label for the contact to help identify it.
 	Label *string `pulumi:"label"`
-	// Last name
+	// The last name of the contact person.
 	LastName *string `pulumi:"lastName"`
-	// Organization name
+	// The name of the organization or company associated with the contact.
 	OrganizationName *string `pulumi:"organizationName"`
-	// Phone
+	// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
 	Phone *string `pulumi:"phone"`
 	// The phone number, normalized.
 	PhoneNormalized *string `pulumi:"phoneNormalized"`
-	// Postal code
+	// The postal code, ZIP code, or equivalent for the contact's location.
 	PostalCode *string `pulumi:"postalCode"`
-	// State province
+	// The state, province, or region where the contact is located.
 	StateProvince *string `pulumi:"stateProvince"`
 	// Timestamp representing when this contact was updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
@@ -316,41 +207,39 @@ type contactState struct {
 type ContactState struct {
 	// The account ID for the contact.
 	AccountId pulumi.IntPtrInput
-	// Address line 1
+	// The primary address line (street address, building number, etc.).
 	Address1 pulumi.StringPtrInput
-	// Address line 2
+	// The secondary address line (apartment, suite, floor, etc.).
 	Address2 pulumi.StringPtrInput
-	// City
+	// The city where the contact is located.
 	City pulumi.StringPtrInput
-	// Country
+	// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
 	Country pulumi.StringPtrInput
 	// Timestamp representing when this contact was created.
 	CreatedAt pulumi.StringPtrInput
-	// Email
-	//
-	// # Attributes Reference
+	// The contact's email address.
 	Email pulumi.StringPtrInput
-	// Fax
+	// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
 	Fax pulumi.StringPtrInput
 	// The fax number, normalized.
 	FaxNormalized pulumi.StringPtrInput
-	// First name
+	// The first name of the contact person.
 	FirstName pulumi.StringPtrInput
-	// Job title
+	// The job title or position of the contact person within the organization.
 	JobTitle pulumi.StringPtrInput
-	// Label
+	// A descriptive label for the contact to help identify it.
 	Label pulumi.StringPtrInput
-	// Last name
+	// The last name of the contact person.
 	LastName pulumi.StringPtrInput
-	// Organization name
+	// The name of the organization or company associated with the contact.
 	OrganizationName pulumi.StringPtrInput
-	// Phone
+	// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
 	Phone pulumi.StringPtrInput
 	// The phone number, normalized.
 	PhoneNormalized pulumi.StringPtrInput
-	// Postal code
+	// The postal code, ZIP code, or equivalent for the contact's location.
 	PostalCode pulumi.StringPtrInput
-	// State province
+	// The state, province, or region where the contact is located.
 	StateProvince pulumi.StringPtrInput
 	// Timestamp representing when this contact was updated.
 	UpdatedAt pulumi.StringPtrInput
@@ -361,69 +250,65 @@ func (ContactState) ElementType() reflect.Type {
 }
 
 type contactArgs struct {
-	// Address line 1
+	// The primary address line (street address, building number, etc.).
 	Address1 string `pulumi:"address1"`
-	// Address line 2
+	// The secondary address line (apartment, suite, floor, etc.).
 	Address2 *string `pulumi:"address2"`
-	// City
+	// The city where the contact is located.
 	City string `pulumi:"city"`
-	// Country
+	// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
 	Country string `pulumi:"country"`
-	// Email
-	//
-	// # Attributes Reference
+	// The contact's email address.
 	Email string `pulumi:"email"`
-	// Fax
+	// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
 	Fax *string `pulumi:"fax"`
-	// First name
+	// The first name of the contact person.
 	FirstName string `pulumi:"firstName"`
-	// Job title
+	// The job title or position of the contact person within the organization.
 	JobTitle *string `pulumi:"jobTitle"`
-	// Label
+	// A descriptive label for the contact to help identify it.
 	Label *string `pulumi:"label"`
-	// Last name
+	// The last name of the contact person.
 	LastName string `pulumi:"lastName"`
-	// Organization name
+	// The name of the organization or company associated with the contact.
 	OrganizationName *string `pulumi:"organizationName"`
-	// Phone
+	// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
 	Phone string `pulumi:"phone"`
-	// Postal code
+	// The postal code, ZIP code, or equivalent for the contact's location.
 	PostalCode string `pulumi:"postalCode"`
-	// State province
+	// The state, province, or region where the contact is located.
 	StateProvince string `pulumi:"stateProvince"`
 }
 
 // The set of arguments for constructing a Contact resource.
 type ContactArgs struct {
-	// Address line 1
+	// The primary address line (street address, building number, etc.).
 	Address1 pulumi.StringInput
-	// Address line 2
+	// The secondary address line (apartment, suite, floor, etc.).
 	Address2 pulumi.StringPtrInput
-	// City
+	// The city where the contact is located.
 	City pulumi.StringInput
-	// Country
+	// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
 	Country pulumi.StringInput
-	// Email
-	//
-	// # Attributes Reference
+	// The contact's email address.
 	Email pulumi.StringInput
-	// Fax
+	// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
 	Fax pulumi.StringPtrInput
-	// First name
+	// The first name of the contact person.
 	FirstName pulumi.StringInput
-	// Job title
+	// The job title or position of the contact person within the organization.
 	JobTitle pulumi.StringPtrInput
-	// Label
+	// A descriptive label for the contact to help identify it.
 	Label pulumi.StringPtrInput
-	// Last name
+	// The last name of the contact person.
 	LastName pulumi.StringInput
-	// Organization name
+	// The name of the organization or company associated with the contact.
 	OrganizationName pulumi.StringPtrInput
-	// Phone
+	// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
 	Phone pulumi.StringInput
-	// Postal code
+	// The postal code, ZIP code, or equivalent for the contact's location.
 	PostalCode pulumi.StringInput
-	// State province
+	// The state, province, or region where the contact is located.
 	StateProvince pulumi.StringInput
 }
 
@@ -519,22 +404,22 @@ func (o ContactOutput) AccountId() pulumi.IntOutput {
 	return o.ApplyT(func(v *Contact) pulumi.IntOutput { return v.AccountId }).(pulumi.IntOutput)
 }
 
-// Address line 1
+// The primary address line (street address, building number, etc.).
 func (o ContactOutput) Address1() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Address1 }).(pulumi.StringOutput)
 }
 
-// Address line 2
+// The secondary address line (apartment, suite, floor, etc.).
 func (o ContactOutput) Address2() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Address2 }).(pulumi.StringOutput)
 }
 
-// City
+// The city where the contact is located.
 func (o ContactOutput) City() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.City }).(pulumi.StringOutput)
 }
 
-// Country
+// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
 func (o ContactOutput) Country() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Country }).(pulumi.StringOutput)
 }
@@ -544,14 +429,12 @@ func (o ContactOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// Email
-//
-// # Attributes Reference
+// The contact's email address.
 func (o ContactOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Email }).(pulumi.StringOutput)
 }
 
-// Fax
+// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
 func (o ContactOutput) Fax() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Fax }).(pulumi.StringOutput)
 }
@@ -561,32 +444,32 @@ func (o ContactOutput) FaxNormalized() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.FaxNormalized }).(pulumi.StringOutput)
 }
 
-// First name
+// The first name of the contact person.
 func (o ContactOutput) FirstName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.FirstName }).(pulumi.StringOutput)
 }
 
-// Job title
+// The job title or position of the contact person within the organization.
 func (o ContactOutput) JobTitle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.JobTitle }).(pulumi.StringOutput)
 }
 
-// Label
+// A descriptive label for the contact to help identify it.
 func (o ContactOutput) Label() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Label }).(pulumi.StringOutput)
 }
 
-// Last name
+// The last name of the contact person.
 func (o ContactOutput) LastName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.LastName }).(pulumi.StringOutput)
 }
 
-// Organization name
+// The name of the organization or company associated with the contact.
 func (o ContactOutput) OrganizationName() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.OrganizationName }).(pulumi.StringOutput)
 }
 
-// Phone
+// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
 func (o ContactOutput) Phone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.Phone }).(pulumi.StringOutput)
 }
@@ -596,12 +479,12 @@ func (o ContactOutput) PhoneNormalized() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.PhoneNormalized }).(pulumi.StringOutput)
 }
 
-// Postal code
+// The postal code, ZIP code, or equivalent for the contact's location.
 func (o ContactOutput) PostalCode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.PostalCode }).(pulumi.StringOutput)
 }
 
-// State province
+// The state, province, or region where the contact is located.
 func (o ContactOutput) StateProvince() pulumi.StringOutput {
 	return o.ApplyT(func(v *Contact) pulumi.StringOutput { return v.StateProvince }).(pulumi.StringOutput)
 }

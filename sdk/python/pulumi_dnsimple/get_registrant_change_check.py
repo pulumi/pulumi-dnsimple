@@ -47,16 +47,25 @@ class GetRegistrantChangeCheckResult:
     @_builtins.property
     @pulumi.getter(name="contactId")
     def contact_id(self) -> _builtins.str:
+        """
+        The ID of the contact you are planning to change to.
+        """
         return pulumi.get(self, "contact_id")
 
     @_builtins.property
     @pulumi.getter(name="domainId")
     def domain_id(self) -> _builtins.str:
+        """
+        The name or ID of the domain.
+        """
         return pulumi.get(self, "domain_id")
 
     @_builtins.property
     @pulumi.getter(name="extendedAttributes")
     def extended_attributes(self) -> Sequence['outputs.GetRegistrantChangeCheckExtendedAttributeResult']:
+        """
+        (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+        """
         return pulumi.get(self, "extended_attributes")
 
     @_builtins.property
@@ -67,6 +76,9 @@ class GetRegistrantChangeCheckResult:
     @_builtins.property
     @pulumi.getter(name="registryOwnerChange")
     def registry_owner_change(self) -> _builtins.bool:
+        """
+        (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+        """
         return pulumi.get(self, "registry_owner_change")
 
 
@@ -91,29 +103,21 @@ def get_registrant_change_check(contact_id: Optional[_builtins.str] = None,
 
     > **Note:** The registrant change API is currently in developer preview and is subject to change.
 
-    Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+    ## Example Usage
+
+    Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
 
     ```python
     import pulumi
     import pulumi_dnsimple as dnsimple
 
-    example = dnsimple.get_registrant_change_check(domain_id="dnsimple.com",
+    example = dnsimple.get_registrant_change_check(domain_id="example.com",
         contact_id="1234")
     ```
 
-    The following arguments are supported:
 
-    * `domain_id` - (Required) The name or ID of the domain.
-    * `contact_id` - (Required) The ID of the contact you are planning to change to.
-
-    The following additional attributes are exported:
-
-    * `contact_id` - The ID of the contact you are planning to change to.
-    * `domain_id` - The name or ID of the domain.
-    * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-    * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-
-    <a id="nestedblock--extended_attributes"></a>
+    :param _builtins.str contact_id: The ID of the contact you are planning to change to.
+    :param _builtins.str domain_id: The name or ID of the domain.
     """
     __args__ = dict()
     __args__['contactId'] = contact_id
@@ -135,29 +139,21 @@ def get_registrant_change_check_output(contact_id: Optional[pulumi.Input[_builti
 
     > **Note:** The registrant change API is currently in developer preview and is subject to change.
 
-    Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+    ## Example Usage
+
+    Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
 
     ```python
     import pulumi
     import pulumi_dnsimple as dnsimple
 
-    example = dnsimple.get_registrant_change_check(domain_id="dnsimple.com",
+    example = dnsimple.get_registrant_change_check(domain_id="example.com",
         contact_id="1234")
     ```
 
-    The following arguments are supported:
 
-    * `domain_id` - (Required) The name or ID of the domain.
-    * `contact_id` - (Required) The ID of the contact you are planning to change to.
-
-    The following additional attributes are exported:
-
-    * `contact_id` - The ID of the contact you are planning to change to.
-    * `domain_id` - The name or ID of the domain.
-    * `extended_attributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-    * `registry_owner_change` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-
-    <a id="nestedblock--extended_attributes"></a>
+    :param _builtins.str contact_id: The ID of the contact you are planning to change to.
+    :param _builtins.str domain_id: The name or ID of the domain.
     """
     __args__ = dict()
     __args__['contactId'] = contact_id

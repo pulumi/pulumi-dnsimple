@@ -13,9 +13,17 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetZonePlainArgs Empty = new GetZonePlainArgs();
 
+    /**
+     * The name of the zone.
+     * 
+     */
     @Import(name="name", required=true)
     private String name;
 
+    /**
+     * @return The name of the zone.
+     * 
+     */
     public String name() {
         return this.name;
     }
@@ -44,6 +52,12 @@ public final class GetZonePlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetZonePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param name The name of the zone.
+         * 
+         * @return builder
+         * 
+         */
         public Builder name(String name) {
             $.name = name;
             return this;

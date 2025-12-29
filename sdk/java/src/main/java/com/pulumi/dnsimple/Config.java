@@ -19,6 +19,13 @@ public final class Config {
         return Codegen.stringProp("account").config(config).get();
     }
 /**
+ * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+ * 
+ */
+    public Optional<String> debugTransportFile() {
+        return Codegen.stringProp("debugTransportFile").config(config).get();
+    }
+/**
  * Flag to enable the prefetch of zone records.
  * 
  */

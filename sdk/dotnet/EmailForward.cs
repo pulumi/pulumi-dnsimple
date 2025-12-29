@@ -22,11 +22,11 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var foobar = new DNSimple.EmailForward("foobar", new()
+    ///     var example = new DNSimple.EmailForward("example", new()
     ///     {
-    ///         Domain = dnsimpleDomain.Name,
+    ///         Domain = "example.com",
     ///         AliasName = "sales",
-    ///         DestinationEmail = "alice.appleseed@example.com",
+    ///         DestinationEmail = "alice@example.com",
     ///     });
     /// 
     /// });
@@ -34,15 +34,15 @@ namespace Pulumi.DNSimple
     /// 
     /// ## Import
     /// 
-    /// DNSimple resources can be imported using the domain name and numeric email forward ID.
-    /// 
-    /// **Importing email forward for example.com with email forward ID 1234**
+    /// DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/emailForward:EmailForward resource_name example.com_1234
+    /// $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
     /// ```
+    /// 
+    /// The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/emailForward:EmailForward")]
     public partial class EmailForward : global::Pulumi.CustomResource
@@ -54,19 +54,19 @@ namespace Pulumi.DNSimple
         public Output<string> AliasEmail { get; private set; } = null!;
 
         /// <summary>
-        /// The name part (the part before the @) of the source email address on the domain
+        /// The name part (the part before the @) of the source email address on the domain.
         /// </summary>
         [Output("aliasName")]
         public Output<string> AliasName { get; private set; } = null!;
 
         /// <summary>
-        /// The destination email address
+        /// The destination email address.
         /// </summary>
         [Output("destinationEmail")]
         public Output<string> DestinationEmail { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name to add the email forwarding rule to
+        /// The domain name to add the email forwarding rule to.
         /// </summary>
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
@@ -118,19 +118,19 @@ namespace Pulumi.DNSimple
     public sealed class EmailForwardArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name part (the part before the @) of the source email address on the domain
+        /// The name part (the part before the @) of the source email address on the domain.
         /// </summary>
         [Input("aliasName", required: true)]
         public Input<string> AliasName { get; set; } = null!;
 
         /// <summary>
-        /// The destination email address
+        /// The destination email address.
         /// </summary>
         [Input("destinationEmail", required: true)]
         public Input<string> DestinationEmail { get; set; } = null!;
 
         /// <summary>
-        /// The domain name to add the email forwarding rule to
+        /// The domain name to add the email forwarding rule to.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
@@ -150,19 +150,19 @@ namespace Pulumi.DNSimple
         public Input<string>? AliasEmail { get; set; }
 
         /// <summary>
-        /// The name part (the part before the @) of the source email address on the domain
+        /// The name part (the part before the @) of the source email address on the domain.
         /// </summary>
         [Input("aliasName")]
         public Input<string>? AliasName { get; set; }
 
         /// <summary>
-        /// The destination email address
+        /// The destination email address.
         /// </summary>
         [Input("destinationEmail")]
         public Input<string>? DestinationEmail { get; set; }
 
         /// <summary>
-        /// The domain name to add the email forwarding rule to
+        /// The domain name to add the email forwarding rule to.
         /// </summary>
         [Input("domain")]
         public Input<string>? Domain { get; set; }

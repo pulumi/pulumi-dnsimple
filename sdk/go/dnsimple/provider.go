@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -20,6 +20,8 @@ type Provider struct {
 
 	// The account for API operations.
 	Account pulumi.StringPtrOutput `pulumi:"account"`
+	// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+	DebugTransportFile pulumi.StringPtrOutput `pulumi:"debugTransportFile"`
 	// The API v2 token for API operations.
 	Token pulumi.StringPtrOutput `pulumi:"token"`
 	// Custom string to append to the user agent used for sending HTTP requests to the API.
@@ -52,6 +54,8 @@ func NewProvider(ctx *pulumi.Context,
 type providerArgs struct {
 	// The account for API operations.
 	Account *string `pulumi:"account"`
+	// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+	DebugTransportFile *string `pulumi:"debugTransportFile"`
 	// Flag to enable the prefetch of zone records.
 	Prefetch *bool `pulumi:"prefetch"`
 	// Flag to enable the sandbox API.
@@ -66,6 +70,8 @@ type providerArgs struct {
 type ProviderArgs struct {
 	// The account for API operations.
 	Account pulumi.StringPtrInput
+	// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+	DebugTransportFile pulumi.StringPtrInput
 	// Flag to enable the prefetch of zone records.
 	Prefetch pulumi.BoolPtrInput
 	// Flag to enable the sandbox API.
@@ -139,6 +145,11 @@ func (o ProviderOutput) ToProviderOutputWithContext(ctx context.Context) Provide
 // The account for API operations.
 func (o ProviderOutput) Account() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Account }).(pulumi.StringPtrOutput)
+}
+
+// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+func (o ProviderOutput) DebugTransportFile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DebugTransportFile }).(pulumi.StringPtrOutput)
 }
 
 // The API v2 token for API operations.

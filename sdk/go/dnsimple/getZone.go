@@ -7,10 +7,35 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.LookupZone(ctx, &dnsimple.LookupZoneArgs{
+//				Name: "example.com",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.InvokeOption) (*LookupZoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupZoneResult
@@ -23,15 +48,19 @@ func LookupZone(ctx *pulumi.Context, args *LookupZoneArgs, opts ...pulumi.Invoke
 
 // A collection of arguments for invoking getZone.
 type LookupZoneArgs struct {
+	// The name of the zone.
 	Name string `pulumi:"name"`
 }
 
 // A collection of values returned by getZone.
 type LookupZoneResult struct {
-	AccountId int    `pulumi:"accountId"`
-	Id        int    `pulumi:"id"`
-	Name      string `pulumi:"name"`
-	Reverse   bool   `pulumi:"reverse"`
+	// The account ID.
+	AccountId int `pulumi:"accountId"`
+	// The zone ID.
+	Id   int    `pulumi:"id"`
+	Name string `pulumi:"name"`
+	// Whether the zone is a reverse zone (`true`) or forward zone (`false`).
+	Reverse bool `pulumi:"reverse"`
 }
 
 func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pulumi.InvokeOption) LookupZoneResultOutput {
@@ -45,6 +74,7 @@ func LookupZoneOutput(ctx *pulumi.Context, args LookupZoneOutputArgs, opts ...pu
 
 // A collection of arguments for invoking getZone.
 type LookupZoneOutputArgs struct {
+	// The name of the zone.
 	Name pulumi.StringInput `pulumi:"name"`
 }
 
@@ -67,10 +97,12 @@ func (o LookupZoneResultOutput) ToLookupZoneResultOutputWithContext(ctx context.
 	return o
 }
 
+// The account ID.
 func (o LookupZoneResultOutput) AccountId() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZoneResult) int { return v.AccountId }).(pulumi.IntOutput)
 }
 
+// The zone ID.
 func (o LookupZoneResultOutput) Id() pulumi.IntOutput {
 	return o.ApplyT(func(v LookupZoneResult) int { return v.Id }).(pulumi.IntOutput)
 }
@@ -79,6 +111,7 @@ func (o LookupZoneResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupZoneResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// Whether the zone is a reverse zone (`true`) or forward zone (`false`).
 func (o LookupZoneResultOutput) Reverse() pulumi.BoolOutput {
 	return o.ApplyT(func(v LookupZoneResult) bool { return v.Reverse }).(pulumi.BoolOutput)
 }

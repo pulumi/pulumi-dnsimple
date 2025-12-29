@@ -58,7 +58,7 @@ class GetCertificateResult:
     @pulumi.getter(name="certificateChains")
     def certificate_chains(self) -> Sequence[_builtins.str]:
         """
-        A list of certificates that make up the chain
+        A list of certificates that make up the certificate chain.
         """
         return pulumi.get(self, "certificate_chains")
 
@@ -75,13 +75,16 @@ class GetCertificateResult:
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.str:
+        """
+        The certificate ID.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
     @pulumi.getter(name="privateKey")
     def private_key(self) -> _builtins.str:
         """
-        The corresponding Private Key for the SSL Certificate
+        The corresponding private key for the SSL certificate.
         """
         return pulumi.get(self, "private_key")
 
@@ -89,7 +92,7 @@ class GetCertificateResult:
     @pulumi.getter(name="rootCertificate")
     def root_certificate(self) -> _builtins.str:
         """
-        The Root Certificate of the issuing CA
+        The root certificate of the issuing CA.
         """
         return pulumi.get(self, "root_certificate")
 
@@ -97,7 +100,7 @@ class GetCertificateResult:
     @pulumi.getter(name="serverCertificate")
     def server_certificate(self) -> _builtins.str:
         """
-        The SSL Certificate
+        The SSL certificate.
         """
         return pulumi.get(self, "server_certificate")
 
@@ -128,7 +131,7 @@ def get_certificate(certificate_id: Optional[_builtins.int] = None,
                     timeouts: Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
-    Provides a DNSimple certificate data source.
+    Get information about a DNSimple SSL certificate.
 
     ## Example Usage
 
@@ -136,13 +139,14 @@ def get_certificate(certificate_id: Optional[_builtins.int] = None,
     import pulumi
     import pulumi_dnsimple as dnsimple
 
-    foobar = dnsimple.get_certificate(domain=dnsimple_domain,
-        certificate_id=dnsimple_certificate_id)
+    example = dnsimple.get_certificate(domain="example.com",
+        certificate_id=1234)
     ```
 
 
-    :param _builtins.int certificate_id: The ID of the SSL Certificate
-    :param _builtins.str domain: The domain of the SSL Certificate
+    :param _builtins.int certificate_id: The ID of the SSL certificate.
+    :param _builtins.str domain: The domain name of the SSL certificate.
+    :param Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict'] timeouts: (see below for nested schema)
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -165,7 +169,7 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[_builtins.int]]
                            timeouts: Optional[pulumi.Input[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
-    Provides a DNSimple certificate data source.
+    Get information about a DNSimple SSL certificate.
 
     ## Example Usage
 
@@ -173,13 +177,14 @@ def get_certificate_output(certificate_id: Optional[pulumi.Input[_builtins.int]]
     import pulumi
     import pulumi_dnsimple as dnsimple
 
-    foobar = dnsimple.get_certificate(domain=dnsimple_domain,
-        certificate_id=dnsimple_certificate_id)
+    example = dnsimple.get_certificate(domain="example.com",
+        certificate_id=1234)
     ```
 
 
-    :param _builtins.int certificate_id: The ID of the SSL Certificate
-    :param _builtins.str domain: The domain of the SSL Certificate
+    :param _builtins.int certificate_id: The ID of the SSL certificate.
+    :param _builtins.str domain: The domain name of the SSL certificate.
+    :param Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict'] timeouts: (see below for nested schema)
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id

@@ -10,17 +10,41 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegistrantChangeCheckExtendedAttributeOption {
+    /**
+     * @return (String) - The description of the option.
+     * 
+     */
     private String description;
+    /**
+     * @return (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
+     * 
+     */
     private String title;
+    /**
+     * @return (String) - The value of the option.
+     * 
+     */
     private String value;
 
     private GetRegistrantChangeCheckExtendedAttributeOption() {}
+    /**
+     * @return (String) - The description of the option.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
+     * 
+     */
     public String title() {
         return this.title;
     }
+    /**
+     * @return (String) - The value of the option.
+     * 
+     */
     public String value() {
         return this.value;
     }

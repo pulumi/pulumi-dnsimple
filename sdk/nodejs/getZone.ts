@@ -4,6 +4,18 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const example = dnsimple.getZone({
+ *     name: "example.com",
+ * });
+ * ```
+ */
 export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("dnsimple:index/getZone:getZone", {
@@ -15,6 +27,9 @@ export function getZone(args: GetZoneArgs, opts?: pulumi.InvokeOptions): Promise
  * A collection of arguments for invoking getZone.
  */
 export interface GetZoneArgs {
+    /**
+     * The name of the zone.
+     */
     name: string;
 }
 
@@ -22,11 +37,32 @@ export interface GetZoneArgs {
  * A collection of values returned by getZone.
  */
 export interface GetZoneResult {
+    /**
+     * The account ID.
+     */
     readonly accountId: number;
+    /**
+     * The zone ID.
+     */
     readonly id: number;
     readonly name: string;
+    /**
+     * Whether the zone is a reverse zone (`true`) or forward zone (`false`).
+     */
     readonly reverse: boolean;
 }
+/**
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const example = dnsimple.getZone({
+ *     name: "example.com",
+ * });
+ * ```
+ */
 export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("dnsimple:index/getZone:getZone", {
@@ -38,5 +74,8 @@ export function getZoneOutput(args: GetZoneOutputArgs, opts?: pulumi.InvokeOutpu
  * A collection of arguments for invoking getZone.
  */
 export interface GetZoneOutputArgs {
+    /**
+     * The name of the zone.
+     */
     name: pulumi.Input<string>;
 }

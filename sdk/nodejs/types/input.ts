@@ -8,29 +8,29 @@ import * as enums from "../types/enums";
 
 export interface GetCertificateTimeouts {
     /**
-     * (String) - The timeout for the read operation e.g. `5m`
+     * (String) - The timeout for the read operation, e.g., `5m`.
      */
     read?: string;
 }
 
 export interface GetCertificateTimeoutsArgs {
     /**
-     * (String) - The timeout for the read operation e.g. `5m`
+     * (String) - The timeout for the read operation, e.g., `5m`.
      */
     read?: pulumi.Input<string>;
 }
 
 export interface RegisteredDomainDomainRegistration {
     /**
-     * The ID of this resource.
+     * (Number) - The ID of the domain registration.
      */
     id?: pulumi.Input<number>;
     /**
-     * The registration period in years.
+     * (Number) - The registration period in years.
      */
     period?: pulumi.Input<number>;
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      */
     state?: pulumi.Input<string>;
 }
@@ -41,7 +41,7 @@ export interface RegisteredDomainRegistrantChange {
      */
     accountId?: pulumi.Input<number>;
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
     contactId?: pulumi.Input<number>;
     /**
@@ -53,7 +53,7 @@ export interface RegisteredDomainRegistrantChange {
      */
     extendedAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The ID of this resource.
+     * (Number) - The ID of the domain registration.
      */
     id?: pulumi.Input<number>;
     /**
@@ -65,14 +65,14 @@ export interface RegisteredDomainRegistrantChange {
      */
     registryOwnerChange?: pulumi.Input<boolean>;
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      */
     state?: pulumi.Input<string>;
 }
 
 export interface RegisteredDomainTimeouts {
     /**
-     * Create timeout.
+     * (String) - The timeout for the read operation e.g. `5m`
      */
     create?: pulumi.Input<string>;
     /**
@@ -80,7 +80,7 @@ export interface RegisteredDomainTimeouts {
      */
     delete?: pulumi.Input<string>;
     /**
-     * Update timeout.
+     * (String) - The timeout for the read operation e.g. `5m`
      */
     update?: pulumi.Input<string>;
 }

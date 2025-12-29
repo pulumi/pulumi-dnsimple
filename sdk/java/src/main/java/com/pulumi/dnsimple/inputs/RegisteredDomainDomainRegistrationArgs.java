@@ -17,14 +17,14 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
     public static final RegisteredDomainDomainRegistrationArgs Empty = new RegisteredDomainDomainRegistrationArgs();
 
     /**
-     * The ID of this resource.
+     * (Number) - The ID of the domain registration.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of this resource.
+     * @return (Number) - The ID of the domain registration.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -32,14 +32,14 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
     }
 
     /**
-     * The registration period in years.
+     * (Number) - The registration period in years.
      * 
      */
     @Import(name="period")
     private @Nullable Output<Integer> period;
 
     /**
-     * @return The registration period in years.
+     * @return (Number) - The registration period in years.
      * 
      */
     public Optional<Output<Integer>> period() {
@@ -47,14 +47,14 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
     }
 
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     public Optional<Output<String>> state() {
@@ -88,7 +88,7 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id (Number) - The ID of the domain registration.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id (Number) - The ID of the domain registration.
          * 
          * @return builder
          * 
@@ -109,7 +109,7 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param period The registration period in years.
+         * @param period (Number) - The registration period in years.
          * 
          * @return builder
          * 
@@ -120,7 +120,7 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param period The registration period in years.
+         * @param period (Number) - The registration period in years.
          * 
          * @return builder
          * 
@@ -130,7 +130,7 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param state The state of the domain.
+         * @param state (String) - The state of the domain registration.
          * 
          * @return builder
          * 
@@ -141,7 +141,7 @@ public final class RegisteredDomainDomainRegistrationArgs extends com.pulumi.res
         }
 
         /**
-         * @param state The state of the domain.
+         * @param state (String) - The state of the domain registration.
          * 
          * @return builder
          * 

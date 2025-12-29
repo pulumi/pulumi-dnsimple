@@ -33,18 +33,14 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone name
-     * 
-     * # Attributes Reference
+     * The zone name.
      * 
      */
     @Import(name="name", required=true)
     private Output<String> name;
 
     /**
-     * @return The zone name
-     * 
-     * # Attributes Reference
+     * @return The zone name.
      * 
      */
     public Output<String> name() {
@@ -98,9 +94,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name
-         * 
-         * # Attributes Reference
+         * @param name The zone name.
          * 
          * @return builder
          * 
@@ -111,9 +105,7 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name
-         * 
-         * # Attributes Reference
+         * @param name The zone name.
          * 
          * @return builder
          * 

@@ -19,14 +19,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     public static final LetsEncryptCertificateState Empty = new LetsEncryptCertificateState();
 
     /**
-     * The certificate alternate names
+     * List of alternate names (SANs) for the certificate.
      * 
      */
     @Import(name="alternateNames")
     private @Nullable Output<List<String>> alternateNames;
 
     /**
-     * @return The certificate alternate names
+     * @return List of alternate names (SANs) for the certificate.
      * 
      */
     public Optional<Output<List<String>>> alternateNames() {
@@ -34,14 +34,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The identifying certification authority (CA)
+     * The identifying certification authority (CA).
      * 
      */
     @Import(name="authorityIdentifier")
     private @Nullable Output<String> authorityIdentifier;
 
     /**
-     * @return The identifying certification authority (CA)
+     * @return The identifying certification authority (CA).
      * 
      */
     public Optional<Output<String>> authorityIdentifier() {
@@ -49,14 +49,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * True if the certificate should auto-renew
+     * Whether the certificate should auto-renew.
      * 
      */
     @Import(name="autoRenew")
     private @Nullable Output<Boolean> autoRenew;
 
     /**
-     * @return True if the certificate should auto-renew
+     * @return Whether the certificate should auto-renew.
      * 
      */
     public Optional<Output<Boolean>> autoRenew() {
@@ -64,14 +64,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The datetime the certificate was created
+     * The datetime when the certificate was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The datetime the certificate was created
+     * @return The datetime when the certificate was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -79,14 +79,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The certificate signing request
+     * The certificate signing request.
      * 
      */
     @Import(name="csr")
     private @Nullable Output<String> csr;
 
     /**
-     * @return The certificate signing request
+     * @return The certificate signing request.
      * 
      */
     public Optional<Output<String>> csr() {
@@ -94,14 +94,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The domain to be issued the certificate for
+     * The domain name or ID to issue the certificate for.
      * 
      */
     @Import(name="domainId")
     private @Nullable Output<String> domainId;
 
     /**
-     * @return The domain to be issued the certificate for
+     * @return The domain name or ID to issue the certificate for.
      * 
      */
     public Optional<Output<String>> domainId() {
@@ -109,14 +109,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The datetime the certificate will expire
+     * The datetime when the certificate will expire.
      * 
      */
     @Import(name="expiresAt")
     private @Nullable Output<String> expiresAt;
 
     /**
-     * @return The datetime the certificate will expire
+     * @return The datetime when the certificate will expire.
      * 
      */
     public Optional<Output<String>> expiresAt() {
@@ -139,14 +139,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The signature algorithm to use for the certificate
+     * The signature algorithm to use for the certificate.
      * 
      */
     @Import(name="signatureAlgorithm")
     private @Nullable Output<String> signatureAlgorithm;
 
     /**
-     * @return The signature algorithm to use for the certificate
+     * @return The signature algorithm to use for the certificate.
      * 
      */
     public Optional<Output<String>> signatureAlgorithm() {
@@ -154,14 +154,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The state of the certificate
+     * The state of the certificate.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the certificate
+     * @return The state of the certificate.
      * 
      */
     public Optional<Output<String>> state() {
@@ -169,14 +169,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The datetime the certificate was last updated
+     * The datetime when the certificate was last updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return The datetime the certificate was last updated
+     * @return The datetime when the certificate was last updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -184,14 +184,14 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
     }
 
     /**
-     * The years the certificate will last
+     * The number of years the certificate will last.
      * 
      */
     @Import(name="years")
     private @Nullable Output<Integer> years;
 
     /**
-     * @return The years the certificate will last
+     * @return The number of years the certificate will last.
      * 
      */
     public Optional<Output<Integer>> years() {
@@ -234,7 +234,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param alternateNames The certificate alternate names
+         * @param alternateNames List of alternate names (SANs) for the certificate.
          * 
          * @return builder
          * 
@@ -245,7 +245,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param alternateNames The certificate alternate names
+         * @param alternateNames List of alternate names (SANs) for the certificate.
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param alternateNames The certificate alternate names
+         * @param alternateNames List of alternate names (SANs) for the certificate.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param authorityIdentifier The identifying certification authority (CA)
+         * @param authorityIdentifier The identifying certification authority (CA).
          * 
          * @return builder
          * 
@@ -276,7 +276,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param authorityIdentifier The identifying certification authority (CA)
+         * @param authorityIdentifier The identifying certification authority (CA).
          * 
          * @return builder
          * 
@@ -286,7 +286,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRenew True if the certificate should auto-renew
+         * @param autoRenew Whether the certificate should auto-renew.
          * 
          * @return builder
          * 
@@ -297,7 +297,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param autoRenew True if the certificate should auto-renew
+         * @param autoRenew Whether the certificate should auto-renew.
          * 
          * @return builder
          * 
@@ -307,7 +307,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createdAt The datetime the certificate was created
+         * @param createdAt The datetime when the certificate was created.
          * 
          * @return builder
          * 
@@ -318,7 +318,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param createdAt The datetime the certificate was created
+         * @param createdAt The datetime when the certificate was created.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param csr The certificate signing request
+         * @param csr The certificate signing request.
          * 
          * @return builder
          * 
@@ -339,7 +339,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param csr The certificate signing request
+         * @param csr The certificate signing request.
          * 
          * @return builder
          * 
@@ -349,7 +349,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param domainId The domain to be issued the certificate for
+         * @param domainId The domain name or ID to issue the certificate for.
          * 
          * @return builder
          * 
@@ -360,7 +360,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param domainId The domain to be issued the certificate for
+         * @param domainId The domain name or ID to issue the certificate for.
          * 
          * @return builder
          * 
@@ -370,7 +370,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param expiresAt The datetime the certificate will expire
+         * @param expiresAt The datetime when the certificate will expire.
          * 
          * @return builder
          * 
@@ -381,7 +381,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param expiresAt The datetime the certificate will expire
+         * @param expiresAt The datetime when the certificate will expire.
          * 
          * @return builder
          * 
@@ -412,7 +412,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * @param signatureAlgorithm The signature algorithm to use for the certificate.
          * 
          * @return builder
          * 
@@ -423,7 +423,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * @param signatureAlgorithm The signature algorithm to use for the certificate.
          * 
          * @return builder
          * 
@@ -433,7 +433,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param state The state of the certificate
+         * @param state The state of the certificate.
          * 
          * @return builder
          * 
@@ -444,7 +444,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param state The state of the certificate
+         * @param state The state of the certificate.
          * 
          * @return builder
          * 
@@ -454,7 +454,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt The datetime the certificate was last updated
+         * @param updatedAt The datetime when the certificate was last updated.
          * 
          * @return builder
          * 
@@ -465,7 +465,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param updatedAt The datetime the certificate was last updated
+         * @param updatedAt The datetime when the certificate was last updated.
          * 
          * @return builder
          * 
@@ -475,7 +475,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param years The years the certificate will last
+         * @param years The number of years the certificate will last.
          * 
          * @return builder
          * 
@@ -486,7 +486,7 @@ public final class LetsEncryptCertificateState extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param years The years the certificate will last
+         * @param years The number of years the certificate will last.
          * 
          * @return builder
          * 

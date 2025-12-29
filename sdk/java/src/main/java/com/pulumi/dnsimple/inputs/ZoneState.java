@@ -63,18 +63,14 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone name
-     * 
-     * # Attributes Reference
+     * The zone name.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The zone name
-     * 
-     * # Attributes Reference
+     * @return The zone name.
      * 
      */
     public Optional<Output<String>> name() {
@@ -204,9 +200,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name
-         * 
-         * # Attributes Reference
+         * @param name The zone name.
          * 
          * @return builder
          * 
@@ -217,9 +211,7 @@ public final class ZoneState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The zone name
-         * 
-         * # Attributes Reference
+         * @param name The zone name.
          * 
          * @return builder
          * 

@@ -12,33 +12,60 @@ import * as utilities from "./utilities";
  *
  * ## Example Usage
  *
+ * The simplest example below requires a contact (existing or a new one to be created) and basic domain information.
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * const aliceMain = new dnsimple.Contact("alice_main", {
- *     label: "Alice Appleseed",
- *     firstName: "Alice Main",
+ *     label: "Alice",
+ *     firstName: "Alice",
  *     lastName: "Appleseed",
  *     organizationName: "Contoso",
  *     jobTitle: "Manager",
  *     address1: "Level 1, 2 Main St",
- *     address2: "Marsfield",
  *     city: "San Francisco",
  *     stateProvince: "California",
  *     postalCode: "90210",
  *     country: "US",
- *     phone: "+1401239523",
- *     fax: "+1849491024",
+ *     phone: "+1.401239523",
  *     email: "apple@contoso.com",
  * });
- * const appleseedBio = new dnsimple.RegisteredDomain("appleseed_bio", {
- *     name: "appleseed.bio",
+ * const exampleCom = new dnsimple.RegisteredDomain("example_com", {
+ *     name: "example.com",
+ *     contactId: aliceMain.id,
+ * });
+ * ```
+ *
+ * ### Example with more settings
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const exampleCom = new dnsimple.RegisteredDomain("example_com", {
+ *     name: "example.com",
  *     contactId: aliceMain.id,
  *     autoRenewEnabled: true,
  *     transferLockEnabled: true,
  *     whoisPrivacyEnabled: true,
  *     dnssecEnabled: false,
+ * });
+ * ```
+ *
+ * ### Example with extended attributes
+ *
+ * Some domain extensions require additional information during registration. You can check if a domain extension requires extended attributes using the [TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes).
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as dnsimple from "@pulumi/dnsimple";
+ *
+ * const exampleBio = new dnsimple.RegisteredDomain("example_bio", {
+ *     name: "example.bio",
+ *     contactId: aliceMain.id,
+ *     autoRenewEnabled: true,
  *     extendedAttributes: {
  *         bio_agree: "I Agree",
  *     },
@@ -49,20 +76,20 @@ import * as utilities from "./utilities";
  *
  * DNSimple registered domains can be imported using their domain name and **optionally** with domain registration ID.
  *
- * **Importing registered domain example.com**
+ * **Importing registered domain example.com:**
  *
  * bash
  *
  * ```sh
- * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com
+ * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
  * ```
  *
- * **Importing registered domain example.com with domain registration ID 1234**
+ * **Importing registered domain example.com with domain registration ID 1234:**
  *
  * bash
  *
  * ```sh
- * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com_1234
+ * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
  * ```
  */
 export class RegisteredDomain extends pulumi.CustomResource {
@@ -95,21 +122,19 @@ export class RegisteredDomain extends pulumi.CustomResource {
 
     declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
-     * Whether the domain should be set to auto-renew (default: `false`)
+     * Whether the domain should be set to auto-renew (default: `false`).
      */
     declare public readonly autoRenewEnabled: pulumi.Output<boolean>;
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
     declare public readonly contactId: pulumi.Output<number>;
     /**
-     * Whether the domain should have DNSSEC enabled (default: `false`)
+     * Whether the domain should have DNSSEC enabled (default: `false`).
      */
     declare public readonly dnssecEnabled: pulumi.Output<boolean>;
     /**
      * The domain registration details. (see below for nested schema)
-     *
-     * <a id="nestedblock--timeouts"></a>
      */
     declare public /*out*/ readonly domainRegistration: pulumi.Output<outputs.RegisteredDomainDomainRegistration>;
     declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
@@ -118,11 +143,11 @@ export class RegisteredDomain extends pulumi.CustomResource {
      */
     declare public readonly extendedAttributes: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The domain name to be registered
+     * The domain name to be registered.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      */
     declare public readonly premiumPrice: pulumi.Output<string | undefined>;
     /**
@@ -130,17 +155,15 @@ export class RegisteredDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly registrantChange: pulumi.Output<outputs.RegisteredDomainRegistrantChange>;
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * (see below for nested schema)
-     *
-     * # Attributes Reference
+     * (see below for nested schema).
      */
     declare public readonly timeouts: pulumi.Output<outputs.RegisteredDomainTimeouts | undefined>;
     /**
-     * Whether the domain transfer lock protection is enabled (default: `true`)
+     * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     declare public readonly transferLockEnabled: pulumi.Output<boolean>;
     /**
@@ -148,7 +171,7 @@ export class RegisteredDomain extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly unicodeName: pulumi.Output<string>;
     /**
-     * Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * Whether the domain should have WHOIS privacy enabled (default: `false`).
      */
     declare public readonly whoisPrivacyEnabled: pulumi.Output<boolean>;
 
@@ -215,21 +238,19 @@ export class RegisteredDomain extends pulumi.CustomResource {
 export interface RegisteredDomainState {
     accountId?: pulumi.Input<number>;
     /**
-     * Whether the domain should be set to auto-renew (default: `false`)
+     * Whether the domain should be set to auto-renew (default: `false`).
      */
     autoRenewEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
     contactId?: pulumi.Input<number>;
     /**
-     * Whether the domain should have DNSSEC enabled (default: `false`)
+     * Whether the domain should have DNSSEC enabled (default: `false`).
      */
     dnssecEnabled?: pulumi.Input<boolean>;
     /**
      * The domain registration details. (see below for nested schema)
-     *
-     * <a id="nestedblock--timeouts"></a>
      */
     domainRegistration?: pulumi.Input<inputs.RegisteredDomainDomainRegistration>;
     expiresAt?: pulumi.Input<string>;
@@ -238,11 +259,11 @@ export interface RegisteredDomainState {
      */
     extendedAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The domain name to be registered
+     * The domain name to be registered.
      */
     name?: pulumi.Input<string>;
     /**
-     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      */
     premiumPrice?: pulumi.Input<string>;
     /**
@@ -250,17 +271,15 @@ export interface RegisteredDomainState {
      */
     registrantChange?: pulumi.Input<inputs.RegisteredDomainRegistrantChange>;
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      */
     state?: pulumi.Input<string>;
     /**
-     * (see below for nested schema)
-     *
-     * # Attributes Reference
+     * (see below for nested schema).
      */
     timeouts?: pulumi.Input<inputs.RegisteredDomainTimeouts>;
     /**
-     * Whether the domain transfer lock protection is enabled (default: `true`)
+     * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     transferLockEnabled?: pulumi.Input<boolean>;
     /**
@@ -268,7 +287,7 @@ export interface RegisteredDomainState {
      */
     unicodeName?: pulumi.Input<string>;
     /**
-     * Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * Whether the domain should have WHOIS privacy enabled (default: `false`).
      */
     whoisPrivacyEnabled?: pulumi.Input<boolean>;
 }
@@ -278,15 +297,15 @@ export interface RegisteredDomainState {
  */
 export interface RegisteredDomainArgs {
     /**
-     * Whether the domain should be set to auto-renew (default: `false`)
+     * Whether the domain should be set to auto-renew (default: `false`).
      */
     autoRenewEnabled?: pulumi.Input<boolean>;
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
     contactId: pulumi.Input<number>;
     /**
-     * Whether the domain should have DNSSEC enabled (default: `false`)
+     * Whether the domain should have DNSSEC enabled (default: `false`).
      */
     dnssecEnabled?: pulumi.Input<boolean>;
     /**
@@ -294,25 +313,23 @@ export interface RegisteredDomainArgs {
      */
     extendedAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The domain name to be registered
+     * The domain name to be registered.
      */
     name: pulumi.Input<string>;
     /**
-     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      */
     premiumPrice?: pulumi.Input<string>;
     /**
-     * (see below for nested schema)
-     *
-     * # Attributes Reference
+     * (see below for nested schema).
      */
     timeouts?: pulumi.Input<inputs.RegisteredDomainTimeouts>;
     /**
-     * Whether the domain transfer lock protection is enabled (default: `true`)
+     * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     transferLockEnabled?: pulumi.Input<boolean>;
     /**
-     * Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * Whether the domain should have WHOIS privacy enabled (default: `false`).
      */
     whoisPrivacyEnabled?: pulumi.Input<boolean>;
 }

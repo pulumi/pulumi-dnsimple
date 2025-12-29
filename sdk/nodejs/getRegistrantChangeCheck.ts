@@ -12,31 +12,19 @@ import * as utilities from "./utilities";
  *
  * > **Note:** The registrant change API is currently in developer preview and is subject to change.
  *
- * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+ * ## Example Usage
+ *
+ * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * const example = dnsimple.getRegistrantChangeCheck({
- *     domainId: "dnsimple.com",
+ *     domainId: "example.com",
  *     contactId: "1234",
  * });
  * ```
- *
- * The following arguments are supported:
- *
- * * `domainId` - (Required) The name or ID of the domain.
- * * `contactId` - (Required) The ID of the contact you are planning to change to.
- *
- * The following additional attributes are exported:
- *
- * * `contactId` - The ID of the contact you are planning to change to.
- * * `domainId` - The name or ID of the domain.
- * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
- * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
- *
- * <a id="nestedblock--extended_attributes"></a>
  */
 export function getRegistrantChangeCheck(args: GetRegistrantChangeCheckArgs, opts?: pulumi.InvokeOptions): Promise<GetRegistrantChangeCheckResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -50,7 +38,13 @@ export function getRegistrantChangeCheck(args: GetRegistrantChangeCheckArgs, opt
  * A collection of arguments for invoking getRegistrantChangeCheck.
  */
 export interface GetRegistrantChangeCheckArgs {
+    /**
+     * The ID of the contact you are planning to change to.
+     */
     contactId: string;
+    /**
+     * The name or ID of the domain.
+     */
     domainId: string;
 }
 
@@ -58,10 +52,22 @@ export interface GetRegistrantChangeCheckArgs {
  * A collection of values returned by getRegistrantChangeCheck.
  */
 export interface GetRegistrantChangeCheckResult {
+    /**
+     * The ID of the contact you are planning to change to.
+     */
     readonly contactId: string;
+    /**
+     * The name or ID of the domain.
+     */
     readonly domainId: string;
+    /**
+     * (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     */
     readonly extendedAttributes: outputs.GetRegistrantChangeCheckExtendedAttribute[];
     readonly id: string;
+    /**
+     * (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     */
     readonly registryOwnerChange: boolean;
 }
 /**
@@ -69,31 +75,19 @@ export interface GetRegistrantChangeCheckResult {
  *
  * > **Note:** The registrant change API is currently in developer preview and is subject to change.
  *
- * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+ * ## Example Usage
+ *
+ * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * const example = dnsimple.getRegistrantChangeCheck({
- *     domainId: "dnsimple.com",
+ *     domainId: "example.com",
  *     contactId: "1234",
  * });
  * ```
- *
- * The following arguments are supported:
- *
- * * `domainId` - (Required) The name or ID of the domain.
- * * `contactId` - (Required) The ID of the contact you are planning to change to.
- *
- * The following additional attributes are exported:
- *
- * * `contactId` - The ID of the contact you are planning to change to.
- * * `domainId` - The name or ID of the domain.
- * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
- * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
- *
- * <a id="nestedblock--extended_attributes"></a>
  */
 export function getRegistrantChangeCheckOutput(args: GetRegistrantChangeCheckOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistrantChangeCheckResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
@@ -107,6 +101,12 @@ export function getRegistrantChangeCheckOutput(args: GetRegistrantChangeCheckOut
  * A collection of arguments for invoking getRegistrantChangeCheck.
  */
 export interface GetRegistrantChangeCheckOutputArgs {
+    /**
+     * The ID of the contact you are planning to change to.
+     */
     contactId: pulumi.Input<string>;
+    /**
+     * The name or ID of the domain.
+     */
     domainId: pulumi.Input<string>;
 }

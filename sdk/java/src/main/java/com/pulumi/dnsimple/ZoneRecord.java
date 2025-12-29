@@ -44,47 +44,30 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         // Add a record to the root domain
- *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()
- *             .zoneName(dnsimpleDomain)
+ *         var apex = new ZoneRecord("apex", ZoneRecordArgs.builder()
+ *             .zoneName("example.com")
  *             .name("")
- *             .value("192.168.0.11")
+ *             .value("192.0.2.1")
  *             .type("A")
  *             .ttl(3600)
  *             .build());
  * 
- *     }
- * }
- * }
- * </pre>
- * 
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.dnsimple.ZoneRecord;
- * import com.pulumi.dnsimple.ZoneRecordArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         // Add a record to a sub-domain
- *         var foobar = new ZoneRecord("foobar", ZoneRecordArgs.builder()
- *             .zoneName(dnsimpleDomain)
- *             .name("terraform")
- *             .value("192.168.0.11")
+ *         // Add a record to a subdomain
+ *         var www = new ZoneRecord("www", ZoneRecordArgs.builder()
+ *             .zoneName("example.com")
+ *             .name("www")
+ *             .value("192.0.2.1")
  *             .type("A")
+ *             .ttl(3600)
+ *             .build());
+ * 
+ *         // Add an MX record
+ *         var mx = new ZoneRecord("mx", ZoneRecordArgs.builder()
+ *             .zoneName("example.com")
+ *             .name("")
+ *             .value("mail.example.com")
+ *             .type("MX")
+ *             .priority(10)
  *             .ttl(3600)
  *             .build());
  * 
@@ -95,38 +78,30 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+ * DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
  * 
- * **Importing record example.com with record ID 1234**
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
- * ```
- * 
- * **Importing record www.example.com with record ID 1234**
+ * **Importing record for example.com with record ID 1234:**
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+ * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
  * ```
  * 
- * The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+ * The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
  * 
  */
 @ResourceType(type="dnsimple:index/zoneRecord:ZoneRecord")
 public class ZoneRecord extends com.pulumi.resources.CustomResource {
     /**
-     * The name of the record
+     * The name of the record. Use `&#34;&#34;` for the root domain.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The name of the record
+     * @return The name of the record. Use `&#34;&#34;` for the root domain.
      * 
      */
     public Output<String> name() {
@@ -139,28 +114,28 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
         return this.nameNormalized;
     }
     /**
-     * The priority of the record - only useful for some record types
+     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return The priority of the record - only useful for some record types
+     * @return The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      * 
      */
     public Output<Integer> priority() {
         return this.priority;
     }
     /**
-     * The FQDN of the record
+     * The fully qualified domain name (FQDN) of the record.
      * 
      */
     @Export(name="qualifiedName", refs={String.class}, tree="[0]")
     private Output<String> qualifiedName;
 
     /**
-     * @return The FQDN of the record
+     * @return The fully qualified domain name (FQDN) of the record.
      * 
      */
     public Output<String> qualifiedName() {
@@ -181,84 +156,84 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.regions);
     }
     /**
-     * The TTL of the record - defaults to 3600
+     * The TTL of the record. Defaults to `3600`.
      * 
      */
     @Export(name="ttl", refs={Integer.class}, tree="[0]")
     private Output<Integer> ttl;
 
     /**
-     * @return The TTL of the record - defaults to 3600
+     * @return The TTL of the record. Defaults to `3600`.
      * 
      */
     public Output<Integer> ttl() {
         return this.ttl;
     }
     /**
-     * The type of the record
+     * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output<String> type;
 
     /**
-     * @return The type of the record
+     * @return The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      * 
      */
     public Output<String> type() {
         return this.type;
     }
     /**
-     * The value of the record
+     * The value of the record.
      * 
      */
     @Export(name="value", refs={String.class}, tree="[0]")
     private Output<String> value;
 
     /**
-     * @return The value of the record
+     * @return The value of the record.
      * 
      */
     public Output<String> value() {
         return this.value;
     }
     /**
-     * The normalized value of the record
+     * The normalized value of the record.
      * 
      */
     @Export(name="valueNormalized", refs={String.class}, tree="[0]")
     private Output<String> valueNormalized;
 
     /**
-     * @return The normalized value of the record
+     * @return The normalized value of the record.
      * 
      */
     public Output<String> valueNormalized() {
         return this.valueNormalized;
     }
     /**
-     * The zone ID of the record
+     * The zone ID of the record.
      * 
      */
     @Export(name="zoneId", refs={String.class}, tree="[0]")
     private Output<String> zoneId;
 
     /**
-     * @return The zone ID of the record
+     * @return The zone ID of the record.
      * 
      */
     public Output<String> zoneId() {
         return this.zoneId;
     }
     /**
-     * The zone name to add the record to
+     * The zone name to add the record to.
      * 
      */
     @Export(name="zoneName", refs={String.class}, tree="[0]")
     private Output<String> zoneName;
 
     /**
-     * @return The zone name to add the record to
+     * @return The zone name to add the record to.
      * 
      */
     public Output<String> zoneName() {

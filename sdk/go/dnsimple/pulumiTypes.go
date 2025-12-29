@@ -7,18 +7,18 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 var _ = internal.GetEnvOrDefault
 
 type RegisteredDomainDomainRegistration struct {
-	// The ID of this resource.
+	// (Number) - The ID of the domain registration.
 	Id *int `pulumi:"id"`
-	// The registration period in years.
+	// (Number) - The registration period in years.
 	Period *int `pulumi:"period"`
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State *string `pulumi:"state"`
 }
 
@@ -34,11 +34,11 @@ type RegisteredDomainDomainRegistrationInput interface {
 }
 
 type RegisteredDomainDomainRegistrationArgs struct {
-	// The ID of this resource.
+	// (Number) - The ID of the domain registration.
 	Id pulumi.IntPtrInput `pulumi:"id"`
-	// The registration period in years.
+	// (Number) - The registration period in years.
 	Period pulumi.IntPtrInput `pulumi:"period"`
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -119,17 +119,17 @@ func (o RegisteredDomainDomainRegistrationOutput) ToRegisteredDomainDomainRegist
 	}).(RegisteredDomainDomainRegistrationPtrOutput)
 }
 
-// The ID of this resource.
+// (Number) - The ID of the domain registration.
 func (o RegisteredDomainDomainRegistrationOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainDomainRegistration) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
 
-// The registration period in years.
+// (Number) - The registration period in years.
 func (o RegisteredDomainDomainRegistrationOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainDomainRegistration) *int { return v.Period }).(pulumi.IntPtrOutput)
 }
 
-// The state of the domain.
+// (String) - The state of the domain registration.
 func (o RegisteredDomainDomainRegistrationOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainDomainRegistration) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -158,7 +158,7 @@ func (o RegisteredDomainDomainRegistrationPtrOutput) Elem() RegisteredDomainDoma
 	}).(RegisteredDomainDomainRegistrationOutput)
 }
 
-// The ID of this resource.
+// (Number) - The ID of the domain registration.
 func (o RegisteredDomainDomainRegistrationPtrOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainDomainRegistration) *int {
 		if v == nil {
@@ -168,7 +168,7 @@ func (o RegisteredDomainDomainRegistrationPtrOutput) Id() pulumi.IntPtrOutput {
 	}).(pulumi.IntPtrOutput)
 }
 
-// The registration period in years.
+// (Number) - The registration period in years.
 func (o RegisteredDomainDomainRegistrationPtrOutput) Period() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainDomainRegistration) *int {
 		if v == nil {
@@ -178,7 +178,7 @@ func (o RegisteredDomainDomainRegistrationPtrOutput) Period() pulumi.IntPtrOutpu
 	}).(pulumi.IntPtrOutput)
 }
 
-// The state of the domain.
+// (String) - The state of the domain registration.
 func (o RegisteredDomainDomainRegistrationPtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainDomainRegistration) *string {
 		if v == nil {
@@ -191,19 +191,19 @@ func (o RegisteredDomainDomainRegistrationPtrOutput) State() pulumi.StringPtrOut
 type RegisteredDomainRegistrantChange struct {
 	// DNSimple Account ID to which the registrant change belongs to
 	AccountId *int `pulumi:"accountId"`
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId *int `pulumi:"contactId"`
 	// DNSimple domain ID for which the registrant change is being performed
 	DomainId *string `pulumi:"domainId"`
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes map[string]string `pulumi:"extendedAttributes"`
-	// The ID of this resource.
+	// (Number) - The ID of the domain registration.
 	Id *int `pulumi:"id"`
 	// Date when the registrant change lock was lifted for the domain
 	IrtLockLiftedBy *string `pulumi:"irtLockLiftedBy"`
 	// True if the registrant change will result in a registry owner change
 	RegistryOwnerChange *bool `pulumi:"registryOwnerChange"`
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State *string `pulumi:"state"`
 }
 
@@ -221,19 +221,19 @@ type RegisteredDomainRegistrantChangeInput interface {
 type RegisteredDomainRegistrantChangeArgs struct {
 	// DNSimple Account ID to which the registrant change belongs to
 	AccountId pulumi.IntPtrInput `pulumi:"accountId"`
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId pulumi.IntPtrInput `pulumi:"contactId"`
 	// DNSimple domain ID for which the registrant change is being performed
 	DomainId pulumi.StringPtrInput `pulumi:"domainId"`
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes pulumi.StringMapInput `pulumi:"extendedAttributes"`
-	// The ID of this resource.
+	// (Number) - The ID of the domain registration.
 	Id pulumi.IntPtrInput `pulumi:"id"`
 	// Date when the registrant change lock was lifted for the domain
 	IrtLockLiftedBy pulumi.StringPtrInput `pulumi:"irtLockLiftedBy"`
 	// True if the registrant change will result in a registry owner change
 	RegistryOwnerChange pulumi.BoolPtrInput `pulumi:"registryOwnerChange"`
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State pulumi.StringPtrInput `pulumi:"state"`
 }
 
@@ -319,7 +319,7 @@ func (o RegisteredDomainRegistrantChangeOutput) AccountId() pulumi.IntPtrOutput 
 	return o.ApplyT(func(v RegisteredDomainRegistrantChange) *int { return v.AccountId }).(pulumi.IntPtrOutput)
 }
 
-// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 func (o RegisteredDomainRegistrantChangeOutput) ContactId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainRegistrantChange) *int { return v.ContactId }).(pulumi.IntPtrOutput)
 }
@@ -334,7 +334,7 @@ func (o RegisteredDomainRegistrantChangeOutput) ExtendedAttributes() pulumi.Stri
 	return o.ApplyT(func(v RegisteredDomainRegistrantChange) map[string]string { return v.ExtendedAttributes }).(pulumi.StringMapOutput)
 }
 
-// The ID of this resource.
+// (Number) - The ID of the domain registration.
 func (o RegisteredDomainRegistrantChangeOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainRegistrantChange) *int { return v.Id }).(pulumi.IntPtrOutput)
 }
@@ -349,7 +349,7 @@ func (o RegisteredDomainRegistrantChangeOutput) RegistryOwnerChange() pulumi.Boo
 	return o.ApplyT(func(v RegisteredDomainRegistrantChange) *bool { return v.RegistryOwnerChange }).(pulumi.BoolPtrOutput)
 }
 
-// The state of the domain.
+// (String) - The state of the domain registration.
 func (o RegisteredDomainRegistrantChangeOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainRegistrantChange) *string { return v.State }).(pulumi.StringPtrOutput)
 }
@@ -388,7 +388,7 @@ func (o RegisteredDomainRegistrantChangePtrOutput) AccountId() pulumi.IntPtrOutp
 	}).(pulumi.IntPtrOutput)
 }
 
-// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 func (o RegisteredDomainRegistrantChangePtrOutput) ContactId() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainRegistrantChange) *int {
 		if v == nil {
@@ -418,7 +418,7 @@ func (o RegisteredDomainRegistrantChangePtrOutput) ExtendedAttributes() pulumi.S
 	}).(pulumi.StringMapOutput)
 }
 
-// The ID of this resource.
+// (Number) - The ID of the domain registration.
 func (o RegisteredDomainRegistrantChangePtrOutput) Id() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainRegistrantChange) *int {
 		if v == nil {
@@ -448,7 +448,7 @@ func (o RegisteredDomainRegistrantChangePtrOutput) RegistryOwnerChange() pulumi.
 	}).(pulumi.BoolPtrOutput)
 }
 
-// The state of the domain.
+// (String) - The state of the domain registration.
 func (o RegisteredDomainRegistrantChangePtrOutput) State() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainRegistrantChange) *string {
 		if v == nil {
@@ -459,11 +459,11 @@ func (o RegisteredDomainRegistrantChangePtrOutput) State() pulumi.StringPtrOutpu
 }
 
 type RegisteredDomainTimeouts struct {
-	// Create timeout.
+	// (String) - The timeout for the read operation e.g. `5m`
 	Create *string `pulumi:"create"`
 	// Delete timeout (currently unused).
 	Delete *string `pulumi:"delete"`
-	// Update timeout.
+	// (String) - The timeout for the read operation e.g. `5m`
 	Update *string `pulumi:"update"`
 }
 
@@ -479,11 +479,11 @@ type RegisteredDomainTimeoutsInput interface {
 }
 
 type RegisteredDomainTimeoutsArgs struct {
-	// Create timeout.
+	// (String) - The timeout for the read operation e.g. `5m`
 	Create pulumi.StringPtrInput `pulumi:"create"`
 	// Delete timeout (currently unused).
 	Delete pulumi.StringPtrInput `pulumi:"delete"`
-	// Update timeout.
+	// (String) - The timeout for the read operation e.g. `5m`
 	Update pulumi.StringPtrInput `pulumi:"update"`
 }
 
@@ -564,7 +564,7 @@ func (o RegisteredDomainTimeoutsOutput) ToRegisteredDomainTimeoutsPtrOutputWithC
 	}).(RegisteredDomainTimeoutsPtrOutput)
 }
 
-// Create timeout.
+// (String) - The timeout for the read operation e.g. `5m`
 func (o RegisteredDomainTimeoutsOutput) Create() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainTimeouts) *string { return v.Create }).(pulumi.StringPtrOutput)
 }
@@ -574,7 +574,7 @@ func (o RegisteredDomainTimeoutsOutput) Delete() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainTimeouts) *string { return v.Delete }).(pulumi.StringPtrOutput)
 }
 
-// Update timeout.
+// (String) - The timeout for the read operation e.g. `5m`
 func (o RegisteredDomainTimeoutsOutput) Update() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RegisteredDomainTimeouts) *string { return v.Update }).(pulumi.StringPtrOutput)
 }
@@ -603,7 +603,7 @@ func (o RegisteredDomainTimeoutsPtrOutput) Elem() RegisteredDomainTimeoutsOutput
 	}).(RegisteredDomainTimeoutsOutput)
 }
 
-// Create timeout.
+// (String) - The timeout for the read operation e.g. `5m`
 func (o RegisteredDomainTimeoutsPtrOutput) Create() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainTimeouts) *string {
 		if v == nil {
@@ -623,7 +623,7 @@ func (o RegisteredDomainTimeoutsPtrOutput) Delete() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Update timeout.
+// (String) - The timeout for the read operation e.g. `5m`
 func (o RegisteredDomainTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomainTimeouts) *string {
 		if v == nil {
@@ -634,7 +634,7 @@ func (o RegisteredDomainTimeoutsPtrOutput) Update() pulumi.StringPtrOutput {
 }
 
 type GetCertificateTimeouts struct {
-	// (String) - The timeout for the read operation e.g. `5m`
+	// (String) - The timeout for the read operation, e.g., `5m`.
 	Read *string `pulumi:"read"`
 }
 
@@ -650,7 +650,7 @@ type GetCertificateTimeoutsInput interface {
 }
 
 type GetCertificateTimeoutsArgs struct {
-	// (String) - The timeout for the read operation e.g. `5m`
+	// (String) - The timeout for the read operation, e.g., `5m`.
 	Read pulumi.StringPtrInput `pulumi:"read"`
 }
 
@@ -731,7 +731,7 @@ func (o GetCertificateTimeoutsOutput) ToGetCertificateTimeoutsPtrOutputWithConte
 	}).(GetCertificateTimeoutsPtrOutput)
 }
 
-// (String) - The timeout for the read operation e.g. `5m`
+// (String) - The timeout for the read operation, e.g., `5m`.
 func (o GetCertificateTimeoutsOutput) Read() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v GetCertificateTimeouts) *string { return v.Read }).(pulumi.StringPtrOutput)
 }
@@ -760,7 +760,7 @@ func (o GetCertificateTimeoutsPtrOutput) Elem() GetCertificateTimeoutsOutput {
 	}).(GetCertificateTimeoutsOutput)
 }
 
-// (String) - The timeout for the read operation e.g. `5m`
+// (String) - The timeout for the read operation, e.g., `5m`.
 func (o GetCertificateTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GetCertificateTimeouts) *string {
 		if v == nil {
@@ -771,10 +771,14 @@ func (o GetCertificateTimeoutsPtrOutput) Read() pulumi.StringPtrOutput {
 }
 
 type GetRegistrantChangeCheckExtendedAttribute struct {
-	Description string                                            `pulumi:"description"`
-	Name        string                                            `pulumi:"name"`
-	Options     []GetRegistrantChangeCheckExtendedAttributeOption `pulumi:"options"`
-	Required    bool                                              `pulumi:"required"`
+	// (String) - The description of the option.
+	Description string `pulumi:"description"`
+	// (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
+	Name string `pulumi:"name"`
+	// (List) - A list of options for the extended attribute. (see below for nested schema)
+	Options []GetRegistrantChangeCheckExtendedAttributeOption `pulumi:"options"`
+	// (Boolean) - Whether the extended attribute is required.
+	Required bool `pulumi:"required"`
 }
 
 // GetRegistrantChangeCheckExtendedAttributeInput is an input type that accepts GetRegistrantChangeCheckExtendedAttributeArgs and GetRegistrantChangeCheckExtendedAttributeOutput values.
@@ -789,10 +793,14 @@ type GetRegistrantChangeCheckExtendedAttributeInput interface {
 }
 
 type GetRegistrantChangeCheckExtendedAttributeArgs struct {
-	Description pulumi.StringInput                                        `pulumi:"description"`
-	Name        pulumi.StringInput                                        `pulumi:"name"`
-	Options     GetRegistrantChangeCheckExtendedAttributeOptionArrayInput `pulumi:"options"`
-	Required    pulumi.BoolInput                                          `pulumi:"required"`
+	// (String) - The description of the option.
+	Description pulumi.StringInput `pulumi:"description"`
+	// (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// (List) - A list of options for the extended attribute. (see below for nested schema)
+	Options GetRegistrantChangeCheckExtendedAttributeOptionArrayInput `pulumi:"options"`
+	// (Boolean) - Whether the extended attribute is required.
+	Required pulumi.BoolInput `pulumi:"required"`
 }
 
 func (GetRegistrantChangeCheckExtendedAttributeArgs) ElementType() reflect.Type {
@@ -846,20 +854,24 @@ func (o GetRegistrantChangeCheckExtendedAttributeOutput) ToGetRegistrantChangeCh
 	return o
 }
 
+// (String) - The description of the option.
 func (o GetRegistrantChangeCheckExtendedAttributeOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttribute) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
 func (o GetRegistrantChangeCheckExtendedAttributeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttribute) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// (List) - A list of options for the extended attribute. (see below for nested schema)
 func (o GetRegistrantChangeCheckExtendedAttributeOutput) Options() GetRegistrantChangeCheckExtendedAttributeOptionArrayOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttribute) []GetRegistrantChangeCheckExtendedAttributeOption {
 		return v.Options
 	}).(GetRegistrantChangeCheckExtendedAttributeOptionArrayOutput)
 }
 
+// (Boolean) - Whether the extended attribute is required.
 func (o GetRegistrantChangeCheckExtendedAttributeOutput) Required() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttribute) bool { return v.Required }).(pulumi.BoolOutput)
 }
@@ -885,9 +897,12 @@ func (o GetRegistrantChangeCheckExtendedAttributeArrayOutput) Index(i pulumi.Int
 }
 
 type GetRegistrantChangeCheckExtendedAttributeOption struct {
+	// (String) - The description of the option.
 	Description string `pulumi:"description"`
-	Title       string `pulumi:"title"`
-	Value       string `pulumi:"value"`
+	// (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
+	Title string `pulumi:"title"`
+	// (String) - The value of the option.
+	Value string `pulumi:"value"`
 }
 
 // GetRegistrantChangeCheckExtendedAttributeOptionInput is an input type that accepts GetRegistrantChangeCheckExtendedAttributeOptionArgs and GetRegistrantChangeCheckExtendedAttributeOptionOutput values.
@@ -902,9 +917,12 @@ type GetRegistrantChangeCheckExtendedAttributeOptionInput interface {
 }
 
 type GetRegistrantChangeCheckExtendedAttributeOptionArgs struct {
+	// (String) - The description of the option.
 	Description pulumi.StringInput `pulumi:"description"`
-	Title       pulumi.StringInput `pulumi:"title"`
-	Value       pulumi.StringInput `pulumi:"value"`
+	// (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
+	Title pulumi.StringInput `pulumi:"title"`
+	// (String) - The value of the option.
+	Value pulumi.StringInput `pulumi:"value"`
 }
 
 func (GetRegistrantChangeCheckExtendedAttributeOptionArgs) ElementType() reflect.Type {
@@ -958,14 +976,17 @@ func (o GetRegistrantChangeCheckExtendedAttributeOptionOutput) ToGetRegistrantCh
 	return o
 }
 
+// (String) - The description of the option.
 func (o GetRegistrantChangeCheckExtendedAttributeOptionOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttributeOption) string { return v.Description }).(pulumi.StringOutput)
 }
 
+// (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
 func (o GetRegistrantChangeCheckExtendedAttributeOptionOutput) Title() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttributeOption) string { return v.Title }).(pulumi.StringOutput)
 }
 
+// (String) - The value of the option.
 func (o GetRegistrantChangeCheckExtendedAttributeOptionOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckExtendedAttributeOption) string { return v.Value }).(pulumi.StringOutput)
 }

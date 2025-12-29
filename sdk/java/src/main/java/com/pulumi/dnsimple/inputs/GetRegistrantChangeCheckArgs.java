@@ -14,16 +14,32 @@ public final class GetRegistrantChangeCheckArgs extends com.pulumi.resources.Inv
 
     public static final GetRegistrantChangeCheckArgs Empty = new GetRegistrantChangeCheckArgs();
 
+    /**
+     * The ID of the contact you are planning to change to.
+     * 
+     */
     @Import(name="contactId", required=true)
     private Output<String> contactId;
 
+    /**
+     * @return The ID of the contact you are planning to change to.
+     * 
+     */
     public Output<String> contactId() {
         return this.contactId;
     }
 
+    /**
+     * The name or ID of the domain.
+     * 
+     */
     @Import(name="domainId", required=true)
     private Output<String> domainId;
 
+    /**
+     * @return The name or ID of the domain.
+     * 
+     */
     public Output<String> domainId() {
         return this.domainId;
     }
@@ -53,20 +69,44 @@ public final class GetRegistrantChangeCheckArgs extends com.pulumi.resources.Inv
             $ = new GetRegistrantChangeCheckArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contactId The ID of the contact you are planning to change to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contactId(Output<String> contactId) {
             $.contactId = contactId;
             return this;
         }
 
+        /**
+         * @param contactId The ID of the contact you are planning to change to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contactId(String contactId) {
             return contactId(Output.of(contactId));
         }
 
+        /**
+         * @param domainId The name or ID of the domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainId(Output<String> domainId) {
             $.domainId = domainId;
             return this;
         }
 
+        /**
+         * @param domainId The name or ID of the domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainId(String domainId) {
             return domainId(Output.of(domainId));
         }

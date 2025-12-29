@@ -14,7 +14,7 @@ namespace Pulumi.DNSimple.Outputs
     public sealed class RegisteredDomainTimeouts
     {
         /// <summary>
-        /// Create timeout.
+        /// (String) - The timeout for the read operation e.g. `5m`
         /// </summary>
         public readonly string? Create;
         /// <summary>
@@ -22,7 +22,7 @@ namespace Pulumi.DNSimple.Outputs
         /// </summary>
         public readonly string? Delete;
         /// <summary>
-        /// Update timeout.
+        /// (String) - The timeout for the read operation e.g. `5m`
         /// </summary>
         public readonly string? Update;
 

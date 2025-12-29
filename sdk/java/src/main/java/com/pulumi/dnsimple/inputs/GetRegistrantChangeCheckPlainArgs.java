@@ -13,16 +13,32 @@ public final class GetRegistrantChangeCheckPlainArgs extends com.pulumi.resource
 
     public static final GetRegistrantChangeCheckPlainArgs Empty = new GetRegistrantChangeCheckPlainArgs();
 
+    /**
+     * The ID of the contact you are planning to change to.
+     * 
+     */
     @Import(name="contactId", required=true)
     private String contactId;
 
+    /**
+     * @return The ID of the contact you are planning to change to.
+     * 
+     */
     public String contactId() {
         return this.contactId;
     }
 
+    /**
+     * The name or ID of the domain.
+     * 
+     */
     @Import(name="domainId", required=true)
     private String domainId;
 
+    /**
+     * @return The name or ID of the domain.
+     * 
+     */
     public String domainId() {
         return this.domainId;
     }
@@ -52,11 +68,23 @@ public final class GetRegistrantChangeCheckPlainArgs extends com.pulumi.resource
             $ = new GetRegistrantChangeCheckPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param contactId The ID of the contact you are planning to change to.
+         * 
+         * @return builder
+         * 
+         */
         public Builder contactId(String contactId) {
             $.contactId = contactId;
             return this;
         }
 
+        /**
+         * @param domainId The name or ID of the domain.
+         * 
+         * @return builder
+         * 
+         */
         public Builder domainId(String domainId) {
             $.domainId = domainId;
             return this;

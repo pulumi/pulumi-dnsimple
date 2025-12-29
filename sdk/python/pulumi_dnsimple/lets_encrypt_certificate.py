@@ -26,11 +26,11 @@ class LetsEncryptCertificateArgs:
                  signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LetsEncryptCertificate resource.
-        :param pulumi.Input[_builtins.bool] auto_renew: True if the certificate should auto-renew
-        :param pulumi.Input[_builtins.str] domain_id: The domain to be issued the certificate for
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether the certificate should auto-renew.
+        :param pulumi.Input[_builtins.str] domain_id: The domain name or ID to issue the certificate for.
         :param pulumi.Input[_builtins.str] name: The certificate name; use `""` for the root domain. Wildcard names are supported.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: The certificate alternate names
-        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: List of alternate names (SANs) for the certificate.
+        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate.
         """
         pulumi.set(__self__, "auto_renew", auto_renew)
         pulumi.set(__self__, "domain_id", domain_id)
@@ -44,7 +44,7 @@ class LetsEncryptCertificateArgs:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Input[_builtins.bool]:
         """
-        True if the certificate should auto-renew
+        Whether the certificate should auto-renew.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -56,7 +56,7 @@ class LetsEncryptCertificateArgs:
     @pulumi.getter(name="domainId")
     def domain_id(self) -> pulumi.Input[_builtins.str]:
         """
-        The domain to be issued the certificate for
+        The domain name or ID to issue the certificate for.
         """
         return pulumi.get(self, "domain_id")
 
@@ -80,7 +80,7 @@ class LetsEncryptCertificateArgs:
     @pulumi.getter(name="alternateNames")
     def alternate_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The certificate alternate names
+        List of alternate names (SANs) for the certificate.
         """
         return pulumi.get(self, "alternate_names")
 
@@ -92,7 +92,7 @@ class LetsEncryptCertificateArgs:
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The signature algorithm to use for the certificate
+        The signature algorithm to use for the certificate.
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -118,18 +118,18 @@ class _LetsEncryptCertificateState:
                  years: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LetsEncryptCertificate resources.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: The certificate alternate names
-        :param pulumi.Input[_builtins.str] authority_identifier: The identifying certification authority (CA)
-        :param pulumi.Input[_builtins.bool] auto_renew: True if the certificate should auto-renew
-        :param pulumi.Input[_builtins.str] created_at: The datetime the certificate was created
-        :param pulumi.Input[_builtins.str] csr: The certificate signing request
-        :param pulumi.Input[_builtins.str] domain_id: The domain to be issued the certificate for
-        :param pulumi.Input[_builtins.str] expires_at: The datetime the certificate will expire
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: List of alternate names (SANs) for the certificate.
+        :param pulumi.Input[_builtins.str] authority_identifier: The identifying certification authority (CA).
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether the certificate should auto-renew.
+        :param pulumi.Input[_builtins.str] created_at: The datetime when the certificate was created.
+        :param pulumi.Input[_builtins.str] csr: The certificate signing request.
+        :param pulumi.Input[_builtins.str] domain_id: The domain name or ID to issue the certificate for.
+        :param pulumi.Input[_builtins.str] expires_at: The datetime when the certificate will expire.
         :param pulumi.Input[_builtins.str] name: The certificate name; use `""` for the root domain. Wildcard names are supported.
-        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate
-        :param pulumi.Input[_builtins.str] state: The state of the certificate
-        :param pulumi.Input[_builtins.str] updated_at: The datetime the certificate was last updated
-        :param pulumi.Input[_builtins.int] years: The years the certificate will last
+        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate.
+        :param pulumi.Input[_builtins.str] state: The state of the certificate.
+        :param pulumi.Input[_builtins.str] updated_at: The datetime when the certificate was last updated.
+        :param pulumi.Input[_builtins.int] years: The number of years the certificate will last.
         """
         if alternate_names is not None:
             pulumi.set(__self__, "alternate_names", alternate_names)
@@ -160,7 +160,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="alternateNames")
     def alternate_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The certificate alternate names
+        List of alternate names (SANs) for the certificate.
         """
         return pulumi.get(self, "alternate_names")
 
@@ -172,7 +172,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="authorityIdentifier")
     def authority_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The identifying certification authority (CA)
+        The identifying certification authority (CA).
         """
         return pulumi.get(self, "authority_identifier")
 
@@ -184,7 +184,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
-        True if the certificate should auto-renew
+        Whether the certificate should auto-renew.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -196,7 +196,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The datetime the certificate was created
+        The datetime when the certificate was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -208,7 +208,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter
     def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The certificate signing request
+        The certificate signing request.
         """
         return pulumi.get(self, "csr")
 
@@ -220,7 +220,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="domainId")
     def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The domain to be issued the certificate for
+        The domain name or ID to issue the certificate for.
         """
         return pulumi.get(self, "domain_id")
 
@@ -232,7 +232,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The datetime the certificate will expire
+        The datetime when the certificate will expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -256,7 +256,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The signature algorithm to use for the certificate
+        The signature algorithm to use for the certificate.
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -268,7 +268,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the certificate
+        The state of the certificate.
         """
         return pulumi.get(self, "state")
 
@@ -280,7 +280,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The datetime the certificate was last updated
+        The datetime when the certificate was last updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -292,7 +292,7 @@ class _LetsEncryptCertificateState:
     @pulumi.getter
     def years(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The years the certificate will last
+        The number of years the certificate will last.
         """
         return pulumi.get(self, "years")
 
@@ -322,23 +322,35 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        foobar = dnsimple.LetsEncryptCertificate("foobar",
-            domain_id=dnsimple["domainId"],
-            auto_renew=False,
+        example = dnsimple.LetsEncryptCertificate("example",
+            domain_id="example.com",
             name="www",
+            auto_renew=True,
             alternate_names=[
                 "docs.example.com",
                 "status.example.com",
             ])
         ```
 
+        ## Import
+
+        DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
+
+        bash
+
+        ```sh
+        $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+        ```
+
+        The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: The certificate alternate names
-        :param pulumi.Input[_builtins.bool] auto_renew: True if the certificate should auto-renew
-        :param pulumi.Input[_builtins.str] domain_id: The domain to be issued the certificate for
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: List of alternate names (SANs) for the certificate.
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether the certificate should auto-renew.
+        :param pulumi.Input[_builtins.str] domain_id: The domain name or ID to issue the certificate for.
         :param pulumi.Input[_builtins.str] name: The certificate name; use `""` for the root domain. Wildcard names are supported.
-        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate
+        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate.
         """
         ...
     @overload
@@ -355,15 +367,27 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        foobar = dnsimple.LetsEncryptCertificate("foobar",
-            domain_id=dnsimple["domainId"],
-            auto_renew=False,
+        example = dnsimple.LetsEncryptCertificate("example",
+            domain_id="example.com",
             name="www",
+            auto_renew=True,
             alternate_names=[
                 "docs.example.com",
                 "status.example.com",
             ])
         ```
+
+        ## Import
+
+        DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
+
+        bash
+
+        ```sh
+        $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+        ```
+
+        The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
 
         :param str resource_name: The name of the resource.
         :param LetsEncryptCertificateArgs args: The arguments to use to populate this resource's properties.
@@ -441,18 +465,18 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: The certificate alternate names
-        :param pulumi.Input[_builtins.str] authority_identifier: The identifying certification authority (CA)
-        :param pulumi.Input[_builtins.bool] auto_renew: True if the certificate should auto-renew
-        :param pulumi.Input[_builtins.str] created_at: The datetime the certificate was created
-        :param pulumi.Input[_builtins.str] csr: The certificate signing request
-        :param pulumi.Input[_builtins.str] domain_id: The domain to be issued the certificate for
-        :param pulumi.Input[_builtins.str] expires_at: The datetime the certificate will expire
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: List of alternate names (SANs) for the certificate.
+        :param pulumi.Input[_builtins.str] authority_identifier: The identifying certification authority (CA).
+        :param pulumi.Input[_builtins.bool] auto_renew: Whether the certificate should auto-renew.
+        :param pulumi.Input[_builtins.str] created_at: The datetime when the certificate was created.
+        :param pulumi.Input[_builtins.str] csr: The certificate signing request.
+        :param pulumi.Input[_builtins.str] domain_id: The domain name or ID to issue the certificate for.
+        :param pulumi.Input[_builtins.str] expires_at: The datetime when the certificate will expire.
         :param pulumi.Input[_builtins.str] name: The certificate name; use `""` for the root domain. Wildcard names are supported.
-        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate
-        :param pulumi.Input[_builtins.str] state: The state of the certificate
-        :param pulumi.Input[_builtins.str] updated_at: The datetime the certificate was last updated
-        :param pulumi.Input[_builtins.int] years: The years the certificate will last
+        :param pulumi.Input[_builtins.str] signature_algorithm: The signature algorithm to use for the certificate.
+        :param pulumi.Input[_builtins.str] state: The state of the certificate.
+        :param pulumi.Input[_builtins.str] updated_at: The datetime when the certificate was last updated.
+        :param pulumi.Input[_builtins.int] years: The number of years the certificate will last.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -476,7 +500,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="alternateNames")
     def alternate_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:
         """
-        The certificate alternate names
+        List of alternate names (SANs) for the certificate.
         """
         return pulumi.get(self, "alternate_names")
 
@@ -484,7 +508,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="authorityIdentifier")
     def authority_identifier(self) -> pulumi.Output[_builtins.str]:
         """
-        The identifying certification authority (CA)
+        The identifying certification authority (CA).
         """
         return pulumi.get(self, "authority_identifier")
 
@@ -492,7 +516,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="autoRenew")
     def auto_renew(self) -> pulumi.Output[_builtins.bool]:
         """
-        True if the certificate should auto-renew
+        Whether the certificate should auto-renew.
         """
         return pulumi.get(self, "auto_renew")
 
@@ -500,7 +524,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The datetime the certificate was created
+        The datetime when the certificate was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -508,7 +532,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter
     def csr(self) -> pulumi.Output[_builtins.str]:
         """
-        The certificate signing request
+        The certificate signing request.
         """
         return pulumi.get(self, "csr")
 
@@ -516,7 +540,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="domainId")
     def domain_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The domain to be issued the certificate for
+        The domain name or ID to issue the certificate for.
         """
         return pulumi.get(self, "domain_id")
 
@@ -524,7 +548,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="expiresAt")
     def expires_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The datetime the certificate will expire
+        The datetime when the certificate will expire.
         """
         return pulumi.get(self, "expires_at")
 
@@ -540,7 +564,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="signatureAlgorithm")
     def signature_algorithm(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The signature algorithm to use for the certificate
+        The signature algorithm to use for the certificate.
         """
         return pulumi.get(self, "signature_algorithm")
 
@@ -548,7 +572,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[_builtins.str]:
         """
-        The state of the certificate
+        The state of the certificate.
         """
         return pulumi.get(self, "state")
 
@@ -556,7 +580,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The datetime the certificate was last updated
+        The datetime when the certificate was last updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -564,7 +588,7 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     @pulumi.getter
     def years(self) -> pulumi.Output[_builtins.int]:
         """
-        The years the certificate will last
+        The number of years the certificate will last.
         """
         return pulumi.get(self, "years")
 

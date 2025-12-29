@@ -11,12 +11,69 @@ namespace Pulumi.DNSimple
 {
     public static class GetZone
     {
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DNSimple.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetZoneResult> InvokeAsync(GetZoneArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DNSimple.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = DNSimple.GetZone.Invoke(new()
+        ///     {
+        ///         Name = "example.com",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetZoneResult> Invoke(GetZoneInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
     }
@@ -24,6 +81,9 @@ namespace Pulumi.DNSimple
 
     public sealed class GetZoneArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the zone.
+        /// </summary>
         [Input("name", required: true)]
         public string Name { get; set; } = null!;
 
@@ -35,6 +95,9 @@ namespace Pulumi.DNSimple
 
     public sealed class GetZoneInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The name of the zone.
+        /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
@@ -48,9 +111,18 @@ namespace Pulumi.DNSimple
     [OutputType]
     public sealed class GetZoneResult
     {
+        /// <summary>
+        /// The account ID.
+        /// </summary>
         public readonly int AccountId;
+        /// <summary>
+        /// The zone ID.
+        /// </summary>
         public readonly int Id;
         public readonly string Name;
+        /// <summary>
+        /// Whether the zone is a reverse zone (`True`) or forward zone (`False`).
+        /// </summary>
         public readonly bool Reverse;
 
         [OutputConstructor]

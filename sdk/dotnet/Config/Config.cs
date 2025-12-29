@@ -42,6 +42,16 @@ namespace Pulumi.DNSimple
             set => _account.Set(value);
         }
 
+        private static readonly __Value<string?> _debugTransportFile = new __Value<string?>(() => __config.Get("debugTransportFile"));
+        /// <summary>
+        /// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+        /// </summary>
+        public static string? DebugTransportFile
+        {
+            get => _debugTransportFile.Get();
+            set => _debugTransportFile.Set(value);
+        }
+
         private static readonly __Value<bool?> _prefetch = new __Value<bool?>(() => __config.GetBoolean("prefetch"));
         /// <summary>
         /// Flag to enable the prefetch of zone records.

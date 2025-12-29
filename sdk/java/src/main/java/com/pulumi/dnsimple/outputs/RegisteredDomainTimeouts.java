@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegisteredDomainTimeouts {
     /**
-     * @return Create timeout.
+     * @return (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     private @Nullable String create;
@@ -22,14 +22,14 @@ public final class RegisteredDomainTimeouts {
      */
     private @Nullable String delete;
     /**
-     * @return Update timeout.
+     * @return (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     private @Nullable String update;
 
     private RegisteredDomainTimeouts() {}
     /**
-     * @return Create timeout.
+     * @return (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     public Optional<String> create() {
@@ -43,7 +43,7 @@ public final class RegisteredDomainTimeouts {
         return Optional.ofNullable(this.delete);
     }
     /**
-     * @return Update timeout.
+     * @return (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     public Optional<String> update() {

@@ -24,9 +24,7 @@ class DomainDelegationArgs:
         """
         The set of arguments for constructing a DomainDelegation resource.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The list of name servers to delegate to.
-               
-               # Attributes Reference
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of name servers to delegate to.
         """
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "name_servers", name_servers)
@@ -47,9 +45,7 @@ class DomainDelegationArgs:
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]:
         """
-        The list of name servers to delegate to.
-
-        # Attributes Reference
+        List of name servers to delegate to.
         """
         return pulumi.get(self, "name_servers")
 
@@ -66,9 +62,7 @@ class _DomainDelegationState:
         """
         Input properties used for looking up and filtering DomainDelegation resources.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The list of name servers to delegate to.
-               
-               # Attributes Reference
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of name servers to delegate to.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -91,9 +85,7 @@ class _DomainDelegationState:
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
         """
-        The list of name servers to delegate to.
-
-        # Attributes Reference
+        List of name servers to delegate to.
         """
         return pulumi.get(self, "name_servers")
 
@@ -118,9 +110,8 @@ class DomainDelegation(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        # Create a domain delegation
-        foobar = dnsimple.DomainDelegation("foobar",
-            domain=dnsimple["domain"],
+        example = dnsimple.DomainDelegation("example",
+            domain="example.com",
             name_servers=[
                 "ns1.example.org",
                 "ns2.example.com",
@@ -131,20 +122,16 @@ class DomainDelegation(pulumi.CustomResource):
 
         DNSimple domain delegations can be imported using the domain name.
 
-        **Importing domain delegation for example.com**
-
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation resource_name example.com
+        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
         ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The list of name servers to delegate to.
-               
-               # Attributes Reference
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of name servers to delegate to.
         """
         ...
     @overload
@@ -159,9 +146,8 @@ class DomainDelegation(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        # Create a domain delegation
-        foobar = dnsimple.DomainDelegation("foobar",
-            domain=dnsimple["domain"],
+        example = dnsimple.DomainDelegation("example",
+            domain="example.com",
             name_servers=[
                 "ns1.example.org",
                 "ns2.example.com",
@@ -172,12 +158,10 @@ class DomainDelegation(pulumi.CustomResource):
 
         DNSimple domain delegations can be imported using the domain name.
 
-        **Importing domain delegation for example.com**
-
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation resource_name example.com
+        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
         ```
 
         :param str resource_name: The name of the resource.
@@ -232,9 +216,7 @@ class DomainDelegation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain name.
-        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: The list of name servers to delegate to.
-               
-               # Attributes Reference
+        :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of name servers to delegate to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -256,9 +238,7 @@ class DomainDelegation(pulumi.CustomResource):
     @pulumi.getter(name="nameServers")
     def name_servers(self) -> pulumi.Output[Sequence[_builtins.str]]:
         """
-        The list of name servers to delegate to.
-
-        # Attributes Reference
+        List of name servers to delegate to.
         """
         return pulumi.get(self, "name_servers")
 

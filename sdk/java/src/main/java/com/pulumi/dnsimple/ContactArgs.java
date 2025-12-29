@@ -17,14 +17,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     public static final ContactArgs Empty = new ContactArgs();
 
     /**
-     * Address line 1
+     * The primary address line (street address, building number, etc.).
      * 
      */
     @Import(name="address1", required=true)
     private Output<String> address1;
 
     /**
-     * @return Address line 1
+     * @return The primary address line (street address, building number, etc.).
      * 
      */
     public Output<String> address1() {
@@ -32,14 +32,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Address line 2
+     * The secondary address line (apartment, suite, floor, etc.).
      * 
      */
     @Import(name="address2")
     private @Nullable Output<String> address2;
 
     /**
-     * @return Address line 2
+     * @return The secondary address line (apartment, suite, floor, etc.).
      * 
      */
     public Optional<Output<String>> address2() {
@@ -47,14 +47,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * City
+     * The city where the contact is located.
      * 
      */
     @Import(name="city", required=true)
     private Output<String> city;
 
     /**
-     * @return City
+     * @return The city where the contact is located.
      * 
      */
     public Output<String> city() {
@@ -62,14 +62,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Country
+     * The two-letter ISO country code (e.g., &#34;US&#34;, &#34;CA&#34;, &#34;IT&#34;) for the contact&#39;s location.
      * 
      */
     @Import(name="country", required=true)
     private Output<String> country;
 
     /**
-     * @return Country
+     * @return The two-letter ISO country code (e.g., &#34;US&#34;, &#34;CA&#34;, &#34;IT&#34;) for the contact&#39;s location.
      * 
      */
     public Output<String> country() {
@@ -77,18 +77,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Email
-     * 
-     * # Attributes Reference
+     * The contact&#39;s email address.
      * 
      */
     @Import(name="email", required=true)
     private Output<String> email;
 
     /**
-     * @return Email
-     * 
-     * # Attributes Reference
+     * @return The contact&#39;s email address.
      * 
      */
     public Output<String> email() {
@@ -96,14 +92,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Fax
+     * The contact&#39;s fax number. Use international format with country code (e.g., &#34;+1.8491234567&#34; for US numbers).
      * 
      */
     @Import(name="fax")
     private @Nullable Output<String> fax;
 
     /**
-     * @return Fax
+     * @return The contact&#39;s fax number. Use international format with country code (e.g., &#34;+1.8491234567&#34; for US numbers).
      * 
      */
     public Optional<Output<String>> fax() {
@@ -111,14 +107,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * First name
+     * The first name of the contact person.
      * 
      */
     @Import(name="firstName", required=true)
     private Output<String> firstName;
 
     /**
-     * @return First name
+     * @return The first name of the contact person.
      * 
      */
     public Output<String> firstName() {
@@ -126,14 +122,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Job title
+     * The job title or position of the contact person within the organization.
      * 
      */
     @Import(name="jobTitle")
     private @Nullable Output<String> jobTitle;
 
     /**
-     * @return Job title
+     * @return The job title or position of the contact person within the organization.
      * 
      */
     public Optional<Output<String>> jobTitle() {
@@ -141,14 +137,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Label
+     * A descriptive label for the contact to help identify it.
      * 
      */
     @Import(name="label")
     private @Nullable Output<String> label;
 
     /**
-     * @return Label
+     * @return A descriptive label for the contact to help identify it.
      * 
      */
     public Optional<Output<String>> label() {
@@ -156,14 +152,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Last name
+     * The last name of the contact person.
      * 
      */
     @Import(name="lastName", required=true)
     private Output<String> lastName;
 
     /**
-     * @return Last name
+     * @return The last name of the contact person.
      * 
      */
     public Output<String> lastName() {
@@ -171,14 +167,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Organization name
+     * The name of the organization or company associated with the contact.
      * 
      */
     @Import(name="organizationName")
     private @Nullable Output<String> organizationName;
 
     /**
-     * @return Organization name
+     * @return The name of the organization or company associated with the contact.
      * 
      */
     public Optional<Output<String>> organizationName() {
@@ -186,14 +182,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Phone
+     * The contact&#39;s phone number. Use international format with country code (e.g., &#34;+1.4012345678&#34; for US numbers).
      * 
      */
     @Import(name="phone", required=true)
     private Output<String> phone;
 
     /**
-     * @return Phone
+     * @return The contact&#39;s phone number. Use international format with country code (e.g., &#34;+1.4012345678&#34; for US numbers).
      * 
      */
     public Output<String> phone() {
@@ -201,14 +197,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Postal code
+     * The postal code, ZIP code, or equivalent for the contact&#39;s location.
      * 
      */
     @Import(name="postalCode", required=true)
     private Output<String> postalCode;
 
     /**
-     * @return Postal code
+     * @return The postal code, ZIP code, or equivalent for the contact&#39;s location.
      * 
      */
     public Output<String> postalCode() {
@@ -216,14 +212,14 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * State province
+     * The state, province, or region where the contact is located.
      * 
      */
     @Import(name="stateProvince", required=true)
     private Output<String> stateProvince;
 
     /**
-     * @return State province
+     * @return The state, province, or region where the contact is located.
      * 
      */
     public Output<String> stateProvince() {
@@ -268,7 +264,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address1 Address line 1
+         * @param address1 The primary address line (street address, building number, etc.).
          * 
          * @return builder
          * 
@@ -279,7 +275,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address1 Address line 1
+         * @param address1 The primary address line (street address, building number, etc.).
          * 
          * @return builder
          * 
@@ -289,7 +285,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address2 Address line 2
+         * @param address2 The secondary address line (apartment, suite, floor, etc.).
          * 
          * @return builder
          * 
@@ -300,7 +296,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param address2 Address line 2
+         * @param address2 The secondary address line (apartment, suite, floor, etc.).
          * 
          * @return builder
          * 
@@ -310,7 +306,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city City
+         * @param city The city where the contact is located.
          * 
          * @return builder
          * 
@@ -321,7 +317,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param city City
+         * @param city The city where the contact is located.
          * 
          * @return builder
          * 
@@ -331,7 +327,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param country Country
+         * @param country The two-letter ISO country code (e.g., &#34;US&#34;, &#34;CA&#34;, &#34;IT&#34;) for the contact&#39;s location.
          * 
          * @return builder
          * 
@@ -342,7 +338,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param country Country
+         * @param country The two-letter ISO country code (e.g., &#34;US&#34;, &#34;CA&#34;, &#34;IT&#34;) for the contact&#39;s location.
          * 
          * @return builder
          * 
@@ -352,9 +348,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email
-         * 
-         * # Attributes Reference
+         * @param email The contact&#39;s email address.
          * 
          * @return builder
          * 
@@ -365,9 +359,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param email Email
-         * 
-         * # Attributes Reference
+         * @param email The contact&#39;s email address.
          * 
          * @return builder
          * 
@@ -377,7 +369,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fax Fax
+         * @param fax The contact&#39;s fax number. Use international format with country code (e.g., &#34;+1.8491234567&#34; for US numbers).
          * 
          * @return builder
          * 
@@ -388,7 +380,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param fax Fax
+         * @param fax The contact&#39;s fax number. Use international format with country code (e.g., &#34;+1.8491234567&#34; for US numbers).
          * 
          * @return builder
          * 
@@ -398,7 +390,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName First name
+         * @param firstName The first name of the contact person.
          * 
          * @return builder
          * 
@@ -409,7 +401,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param firstName First name
+         * @param firstName The first name of the contact person.
          * 
          * @return builder
          * 
@@ -419,7 +411,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobTitle Job title
+         * @param jobTitle The job title or position of the contact person within the organization.
          * 
          * @return builder
          * 
@@ -430,7 +422,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param jobTitle Job title
+         * @param jobTitle The job title or position of the contact person within the organization.
          * 
          * @return builder
          * 
@@ -440,7 +432,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Label
+         * @param label A descriptive label for the contact to help identify it.
          * 
          * @return builder
          * 
@@ -451,7 +443,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param label Label
+         * @param label A descriptive label for the contact to help identify it.
          * 
          * @return builder
          * 
@@ -461,7 +453,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName Last name
+         * @param lastName The last name of the contact person.
          * 
          * @return builder
          * 
@@ -472,7 +464,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param lastName Last name
+         * @param lastName The last name of the contact person.
          * 
          * @return builder
          * 
@@ -482,7 +474,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationName Organization name
+         * @param organizationName The name of the organization or company associated with the contact.
          * 
          * @return builder
          * 
@@ -493,7 +485,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param organizationName Organization name
+         * @param organizationName The name of the organization or company associated with the contact.
          * 
          * @return builder
          * 
@@ -503,7 +495,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phone Phone
+         * @param phone The contact&#39;s phone number. Use international format with country code (e.g., &#34;+1.4012345678&#34; for US numbers).
          * 
          * @return builder
          * 
@@ -514,7 +506,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param phone Phone
+         * @param phone The contact&#39;s phone number. Use international format with country code (e.g., &#34;+1.4012345678&#34; for US numbers).
          * 
          * @return builder
          * 
@@ -524,7 +516,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postalCode Postal code
+         * @param postalCode The postal code, ZIP code, or equivalent for the contact&#39;s location.
          * 
          * @return builder
          * 
@@ -535,7 +527,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param postalCode Postal code
+         * @param postalCode The postal code, ZIP code, or equivalent for the contact&#39;s location.
          * 
          * @return builder
          * 
@@ -545,7 +537,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stateProvince State province
+         * @param stateProvince The state, province, or region where the contact is located.
          * 
          * @return builder
          * 
@@ -556,7 +548,7 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param stateProvince State province
+         * @param stateProvince The state, province, or region where the contact is located.
          * 
          * @return builder
          * 

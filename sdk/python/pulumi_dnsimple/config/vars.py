@@ -28,6 +28,13 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('account')
 
     @_builtins.property
+    def debug_transport_file(self) -> Optional[str]:
+        """
+        File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+        """
+        return __config__.get('debugTransportFile')
+
+    @_builtins.property
     def prefetch(self) -> Optional[bool]:
         """
         Flag to enable the prefetch of zone records.

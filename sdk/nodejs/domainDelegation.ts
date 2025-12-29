@@ -11,9 +11,8 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * // Create a domain delegation
- * const foobar = new dnsimple.DomainDelegation("foobar", {
- *     domain: dnsimple.domain,
+ * const example = new dnsimple.DomainDelegation("example", {
+ *     domain: "example.com",
  *     nameServers: [
  *         "ns1.example.org",
  *         "ns2.example.com",
@@ -25,12 +24,10 @@ import * as utilities from "./utilities";
  *
  * DNSimple domain delegations can be imported using the domain name.
  *
- * **Importing domain delegation for example.com**
- *
  * bash
  *
  * ```sh
- * $ pulumi import dnsimple:index/domainDelegation:DomainDelegation resource_name example.com
+ * $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
  * ```
  */
 export class DomainDelegation extends pulumi.CustomResource {
@@ -66,9 +63,7 @@ export class DomainDelegation extends pulumi.CustomResource {
      */
     declare public readonly domain: pulumi.Output<string>;
     /**
-     * The list of name servers to delegate to.
-     *
-     * # Attributes Reference
+     * List of name servers to delegate to.
      */
     declare public readonly nameServers: pulumi.Output<string[]>;
 
@@ -112,9 +107,7 @@ export interface DomainDelegationState {
      */
     domain?: pulumi.Input<string>;
     /**
-     * The list of name servers to delegate to.
-     *
-     * # Attributes Reference
+     * List of name servers to delegate to.
      */
     nameServers?: pulumi.Input<pulumi.Input<string>[]>;
 }
@@ -128,9 +121,7 @@ export interface DomainDelegationArgs {
      */
     domain: pulumi.Input<string>;
     /**
-     * The list of name servers to delegate to.
-     *
-     * # Attributes Reference
+     * List of name servers to delegate to.
      */
     nameServers: pulumi.Input<pulumi.Input<string>[]>;
 }

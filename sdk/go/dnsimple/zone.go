@@ -8,13 +8,13 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
 // Provides a DNSimple zone resource.
 //
-// > Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+// > **Note:** Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
 //
 // ## Example Usage
 //
@@ -23,16 +23,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a zone
-//			_, err := dnsimple.NewZone(ctx, "foobar", &dnsimple.ZoneArgs{
-//				Name: pulumi.Any(dnsimple.Zone),
+//			_, err := dnsimple.NewZone(ctx, "example", &dnsimple.ZoneArgs{
+//				Name: pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -45,45 +44,15 @@ import (
 //
 // ## Import
 //
-// DNSimple zones can be imported using their numeric record ID or the zone name.
+// DNSimple zones can be imported using the zone name.
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/zone:Zone resource_name foo.com
+// $ pulumi import dnsimple:index/zone:Zone example example.com
 // ```
 //
-// The zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-//
-// bash
-//
-// curl -H 'Authorization: Bearer <ACCESS_TOKEN>' https://api.dnsimple.com/v2/1234/zones/example.com | jq
-//
-// {
-//
-//	"data": {
-//
-//	  "id": 1,
-//
-//	  "account_id": 1234,
-//
-//	  "name": "example.com",
-//
-//	  "reverse": false,
-//
-//	  "secondary": false,
-//
-//	  "last_transferred_at": null,
-//
-//	  "active": true,
-//
-//	  "created_at": "2023-04-18T04:58:01Z",
-//
-//	  "updated_at": "2024-01-16T15:53:18Z"
-//
-//	}
-//
-// }
+// The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 type Zone struct {
 	pulumi.CustomResourceState
 
@@ -93,9 +62,7 @@ type Zone struct {
 	Active pulumi.BoolOutput `pulumi:"active"`
 	// The last time the zone was transferred only applicable for **secondary** zones.
 	LastTransferredAt pulumi.StringOutput `pulumi:"lastTransferredAt"`
-	// The zone name
-	//
-	// # Attributes Reference
+	// The zone name.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the zone is a reverse zone.
 	Reverse pulumi.BoolOutput `pulumi:"reverse"`
@@ -142,9 +109,7 @@ type zoneState struct {
 	Active *bool `pulumi:"active"`
 	// The last time the zone was transferred only applicable for **secondary** zones.
 	LastTransferredAt *string `pulumi:"lastTransferredAt"`
-	// The zone name
-	//
-	// # Attributes Reference
+	// The zone name.
 	Name *string `pulumi:"name"`
 	// Whether the zone is a reverse zone.
 	Reverse *bool `pulumi:"reverse"`
@@ -159,9 +124,7 @@ type ZoneState struct {
 	Active pulumi.BoolPtrInput
 	// The last time the zone was transferred only applicable for **secondary** zones.
 	LastTransferredAt pulumi.StringPtrInput
-	// The zone name
-	//
-	// # Attributes Reference
+	// The zone name.
 	Name pulumi.StringPtrInput
 	// Whether the zone is a reverse zone.
 	Reverse pulumi.BoolPtrInput
@@ -176,9 +139,7 @@ func (ZoneState) ElementType() reflect.Type {
 type zoneArgs struct {
 	// Whether the zone is active.
 	Active *bool `pulumi:"active"`
-	// The zone name
-	//
-	// # Attributes Reference
+	// The zone name.
 	Name string `pulumi:"name"`
 }
 
@@ -186,9 +147,7 @@ type zoneArgs struct {
 type ZoneArgs struct {
 	// Whether the zone is active.
 	Active pulumi.BoolPtrInput
-	// The zone name
-	//
-	// # Attributes Reference
+	// The zone name.
 	Name pulumi.StringInput
 }
 
@@ -294,9 +253,7 @@ func (o ZoneOutput) LastTransferredAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.LastTransferredAt }).(pulumi.StringOutput)
 }
 
-// The zone name
-//
-// # Attributes Reference
+// The zone name.
 func (o ZoneOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Zone) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

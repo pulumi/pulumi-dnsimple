@@ -18,14 +18,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     public static final ZoneRecordState Empty = new ZoneRecordState();
 
     /**
-     * The name of the record
+     * The name of the record. Use `&#34;&#34;` for the root domain.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of the record
+     * @return The name of the record. Use `&#34;&#34;` for the root domain.
      * 
      */
     public Optional<Output<String>> name() {
@@ -40,14 +40,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the record - only useful for some record types
+     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority of the record - only useful for some record types
+     * @return The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -55,14 +55,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The FQDN of the record
+     * The fully qualified domain name (FQDN) of the record.
      * 
      */
     @Import(name="qualifiedName")
     private @Nullable Output<String> qualifiedName;
 
     /**
-     * @return The FQDN of the record
+     * @return The fully qualified domain name (FQDN) of the record.
      * 
      */
     public Optional<Output<String>> qualifiedName() {
@@ -85,14 +85,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The TTL of the record - defaults to 3600
+     * The TTL of the record. Defaults to `3600`.
      * 
      */
     @Import(name="ttl")
     private @Nullable Output<Integer> ttl;
 
     /**
-     * @return The TTL of the record - defaults to 3600
+     * @return The TTL of the record. Defaults to `3600`.
      * 
      */
     public Optional<Output<Integer>> ttl() {
@@ -100,14 +100,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The type of the record
+     * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return The type of the record
+     * @return The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      * 
      */
     public Optional<Output<String>> type() {
@@ -115,14 +115,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The value of the record
+     * The value of the record.
      * 
      */
     @Import(name="value")
     private @Nullable Output<String> value;
 
     /**
-     * @return The value of the record
+     * @return The value of the record.
      * 
      */
     public Optional<Output<String>> value() {
@@ -130,14 +130,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The normalized value of the record
+     * The normalized value of the record.
      * 
      */
     @Import(name="valueNormalized")
     private @Nullable Output<String> valueNormalized;
 
     /**
-     * @return The normalized value of the record
+     * @return The normalized value of the record.
      * 
      */
     public Optional<Output<String>> valueNormalized() {
@@ -145,14 +145,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone ID of the record
+     * The zone ID of the record.
      * 
      */
     @Import(name="zoneId")
     private @Nullable Output<String> zoneId;
 
     /**
-     * @return The zone ID of the record
+     * @return The zone ID of the record.
      * 
      */
     public Optional<Output<String>> zoneId() {
@@ -160,14 +160,14 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The zone name to add the record to
+     * The zone name to add the record to.
      * 
      */
     @Import(name="zoneName")
     private @Nullable Output<String> zoneName;
 
     /**
-     * @return The zone name to add the record to
+     * @return The zone name to add the record to.
      * 
      */
     public Optional<Output<String>> zoneName() {
@@ -209,7 +209,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record
+         * @param name The name of the record. Use `&#34;&#34;` for the root domain.
          * 
          * @return builder
          * 
@@ -220,7 +220,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The name of the record
+         * @param name The name of the record. Use `&#34;&#34;` for the root domain.
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the record - only useful for some record types
+         * @param priority The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
          * 
          * @return builder
          * 
@@ -250,7 +250,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the record - only useful for some record types
+         * @param priority The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
          * 
          * @return builder
          * 
@@ -260,7 +260,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param qualifiedName The FQDN of the record
+         * @param qualifiedName The fully qualified domain name (FQDN) of the record.
          * 
          * @return builder
          * 
@@ -271,7 +271,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param qualifiedName The FQDN of the record
+         * @param qualifiedName The fully qualified domain name (FQDN) of the record.
          * 
          * @return builder
          * 
@@ -312,7 +312,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL of the record - defaults to 3600
+         * @param ttl The TTL of the record. Defaults to `3600`.
          * 
          * @return builder
          * 
@@ -323,7 +323,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param ttl The TTL of the record - defaults to 3600
+         * @param ttl The TTL of the record. Defaults to `3600`.
          * 
          * @return builder
          * 
@@ -333,7 +333,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the record
+         * @param type The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
          * 
          * @return builder
          * 
@@ -344,7 +344,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type The type of the record
+         * @param type The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
          * 
          * @return builder
          * 
@@ -354,7 +354,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record
+         * @param value The value of the record.
          * 
          * @return builder
          * 
@@ -365,7 +365,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param value The value of the record
+         * @param value The value of the record.
          * 
          * @return builder
          * 
@@ -375,7 +375,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valueNormalized The normalized value of the record
+         * @param valueNormalized The normalized value of the record.
          * 
          * @return builder
          * 
@@ -386,7 +386,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param valueNormalized The normalized value of the record
+         * @param valueNormalized The normalized value of the record.
          * 
          * @return builder
          * 
@@ -396,7 +396,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the record
+         * @param zoneId The zone ID of the record.
          * 
          * @return builder
          * 
@@ -407,7 +407,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneId The zone ID of the record
+         * @param zoneId The zone ID of the record.
          * 
          * @return builder
          * 
@@ -417,7 +417,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The zone name to add the record to
+         * @param zoneName The zone name to add the record to.
          * 
          * @return builder
          * 
@@ -428,7 +428,7 @@ public final class ZoneRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zoneName The zone name to add the record to
+         * @param zoneName The zone name to add the record to.
          * 
          * @return builder
          * 

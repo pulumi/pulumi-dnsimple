@@ -41,8 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new DsRecord("foobar", DsRecordArgs.builder()
- *             .domain(dnsimple.domain())
+ *         var example = new DsRecord("example", DsRecordArgs.builder()
+ *             .domain("example.com")
  *             .algorithm("8")
  *             .digest("6CEEA0117A02480216EBF745A7B690F938860074E4AD11AF2AC573007205682B")
  *             .digestType("2")
@@ -56,61 +56,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DNSimple DS record resources can be imported using their domain ID and numeric record ID.
+ * DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/dsRecord:DsRecord resource_name example.com_5678
+ * $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
  * ```
  * 
- * The record ID can be found within [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
- * 
- * bash
- * 
- * curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1010/domains/example.com/ds_records | jq
- * 
- * {
- * 
- *   &#34;data&#34;: [
- * 
- *     {
- *     
- *       &#34;id&#34;: 24,
- *     
- *       &#34;domain_id&#34;: 1010,
- *     
- *       &#34;algorithm&#34;: &#34;8&#34;,
- *     
- *       &#34;digest&#34;: &#34;C1F6E04A5A61FBF65BF9DC8294C363CF11C89E802D926BDAB79C55D27BEFA94F&#34;,
- *     
- *       &#34;digest_type&#34;: &#34;2&#34;,
- *     
- *       &#34;keytag&#34;: &#34;44620&#34;,
- *     
- *       &#34;public_key&#34;: null,
- *     
- *       &#34;created_at&#34;: &#34;2017-03-03T13:49:58Z&#34;,
- *     
- *       &#34;updated_at&#34;: &#34;2017-03-03T13:49:58Z&#34;
- *     
- *     }
- * 
- *   ],
- * 
- *   &#34;pagination&#34;: {
- * 
- *     &#34;current_page&#34;: 1,
- *     
- *     &#34;per_page&#34;: 30,
- *     
- *     &#34;total_entries&#34;: 1,
- *     
- *     &#34;total_pages&#34;: 1
- * 
- *   }
- * 
- * }
+ * The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
  */
 @ResourceType(type="dnsimple:index/dsRecord:DsRecord")
@@ -130,28 +84,28 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
         return this.algorithm;
     }
     /**
-     * The time the DS record was created at.
+     * The timestamp when the DS record was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return The time the DS record was created at.
+     * @return The timestamp when the DS record was created.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * The hexidecimal representation of the digest of the corresponding DNSKEY record.
+     * The hexadecimal representation of the digest of the corresponding DNSKEY record.
      * 
      */
     @Export(name="digest", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> digest;
 
     /**
-     * @return The hexidecimal representation of the digest of the corresponding DNSKEY record.
+     * @return The hexadecimal representation of the digest of the corresponding DNSKEY record.
      * 
      */
     public Output<Optional<String>> digest() {
@@ -185,24 +139,14 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
     public Output<String> domain() {
         return this.domain;
     }
-    /**
-     * A keytag that references the corresponding DNSKEY record.
-     * 
-     */
     @Export(name="keytag", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> keytag;
 
-    /**
-     * @return A keytag that references the corresponding DNSKEY record.
-     * 
-     */
     public Output<Optional<String>> keytag() {
         return Codegen.optional(this.keytag);
     }
     /**
      * A public key that references the corresponding DNSKEY record.
-     * 
-     * # Attributes Reference
      * 
      */
     @Export(name="publicKey", refs={String.class}, tree="[0]")
@@ -211,21 +155,19 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
     /**
      * @return A public key that references the corresponding DNSKEY record.
      * 
-     * # Attributes Reference
-     * 
      */
     public Output<Optional<String>> publicKey() {
         return Codegen.optional(this.publicKey);
     }
     /**
-     * The time the DS record was last updated at.
+     * The timestamp when the DS record was last updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return The time the DS record was last updated at.
+     * @return The timestamp when the DS record was last updated.
      * 
      */
     public Output<String> updatedAt() {

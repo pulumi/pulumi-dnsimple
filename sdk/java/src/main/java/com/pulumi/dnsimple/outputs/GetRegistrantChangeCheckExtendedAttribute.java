@@ -13,21 +13,53 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegistrantChangeCheckExtendedAttribute {
+    /**
+     * @return (String) - The description of the option.
+     * 
+     */
     private String description;
+    /**
+     * @return (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
+     * 
+     */
     private String name;
+    /**
+     * @return (List) - A list of options for the extended attribute. (see below for nested schema)
+     * 
+     */
     private List<GetRegistrantChangeCheckExtendedAttributeOption> options;
+    /**
+     * @return (Boolean) - Whether the extended attribute is required.
+     * 
+     */
     private Boolean required;
 
     private GetRegistrantChangeCheckExtendedAttribute() {}
+    /**
+     * @return (String) - The description of the option.
+     * 
+     */
     public String description() {
         return this.description;
     }
+    /**
+     * @return (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
+     * 
+     */
     public String name() {
         return this.name;
     }
+    /**
+     * @return (List) - A list of options for the extended attribute. (see below for nested schema)
+     * 
+     */
     public List<GetRegistrantChangeCheckExtendedAttributeOption> options() {
         return this.options;
     }
+    /**
+     * @return (Boolean) - Whether the extended attribute is required.
+     * 
+     */
     public Boolean required() {
         return this.required;
     }

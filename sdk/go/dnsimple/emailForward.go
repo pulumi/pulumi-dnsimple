@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,17 +21,17 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewEmailForward(ctx, "foobar", &dnsimple.EmailForwardArgs{
-//				Domain:           pulumi.Any(dnsimpleDomain.Name),
+//			_, err := dnsimple.NewEmailForward(ctx, "example", &dnsimple.EmailForwardArgs{
+//				Domain:           pulumi.String("example.com"),
 //				AliasName:        pulumi.String("sales"),
-//				DestinationEmail: pulumi.String("alice.appleseed@example.com"),
+//				DestinationEmail: pulumi.String("alice@example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -44,25 +44,25 @@ import (
 //
 // ## Import
 //
-// DNSimple resources can be imported using the domain name and numeric email forward ID.
-//
-// **Importing email forward for example.com with email forward ID 1234**
+// DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/emailForward:EmailForward resource_name example.com_1234
+// $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
 // ```
+//
+// The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
 type EmailForward struct {
 	pulumi.CustomResourceState
 
 	// The source email address on the domain, in full form. This is a computed attribute.
 	AliasEmail pulumi.StringOutput `pulumi:"aliasEmail"`
-	// The name part (the part before the @) of the source email address on the domain
+	// The name part (the part before the @) of the source email address on the domain.
 	AliasName pulumi.StringOutput `pulumi:"aliasName"`
-	// The destination email address
+	// The destination email address.
 	DestinationEmail pulumi.StringOutput `pulumi:"destinationEmail"`
-	// The domain name to add the email forwarding rule to
+	// The domain name to add the email forwarding rule to.
 	Domain pulumi.StringOutput `pulumi:"domain"`
 }
 
@@ -107,22 +107,22 @@ func GetEmailForward(ctx *pulumi.Context,
 type emailForwardState struct {
 	// The source email address on the domain, in full form. This is a computed attribute.
 	AliasEmail *string `pulumi:"aliasEmail"`
-	// The name part (the part before the @) of the source email address on the domain
+	// The name part (the part before the @) of the source email address on the domain.
 	AliasName *string `pulumi:"aliasName"`
-	// The destination email address
+	// The destination email address.
 	DestinationEmail *string `pulumi:"destinationEmail"`
-	// The domain name to add the email forwarding rule to
+	// The domain name to add the email forwarding rule to.
 	Domain *string `pulumi:"domain"`
 }
 
 type EmailForwardState struct {
 	// The source email address on the domain, in full form. This is a computed attribute.
 	AliasEmail pulumi.StringPtrInput
-	// The name part (the part before the @) of the source email address on the domain
+	// The name part (the part before the @) of the source email address on the domain.
 	AliasName pulumi.StringPtrInput
-	// The destination email address
+	// The destination email address.
 	DestinationEmail pulumi.StringPtrInput
-	// The domain name to add the email forwarding rule to
+	// The domain name to add the email forwarding rule to.
 	Domain pulumi.StringPtrInput
 }
 
@@ -131,21 +131,21 @@ func (EmailForwardState) ElementType() reflect.Type {
 }
 
 type emailForwardArgs struct {
-	// The name part (the part before the @) of the source email address on the domain
+	// The name part (the part before the @) of the source email address on the domain.
 	AliasName string `pulumi:"aliasName"`
-	// The destination email address
+	// The destination email address.
 	DestinationEmail string `pulumi:"destinationEmail"`
-	// The domain name to add the email forwarding rule to
+	// The domain name to add the email forwarding rule to.
 	Domain string `pulumi:"domain"`
 }
 
 // The set of arguments for constructing a EmailForward resource.
 type EmailForwardArgs struct {
-	// The name part (the part before the @) of the source email address on the domain
+	// The name part (the part before the @) of the source email address on the domain.
 	AliasName pulumi.StringInput
-	// The destination email address
+	// The destination email address.
 	DestinationEmail pulumi.StringInput
-	// The domain name to add the email forwarding rule to
+	// The domain name to add the email forwarding rule to.
 	Domain pulumi.StringInput
 }
 
@@ -241,17 +241,17 @@ func (o EmailForwardOutput) AliasEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.AliasEmail }).(pulumi.StringOutput)
 }
 
-// The name part (the part before the @) of the source email address on the domain
+// The name part (the part before the @) of the source email address on the domain.
 func (o EmailForwardOutput) AliasName() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.AliasName }).(pulumi.StringOutput)
 }
 
-// The destination email address
+// The destination email address.
 func (o EmailForwardOutput) DestinationEmail() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.DestinationEmail }).(pulumi.StringOutput)
 }
 
-// The domain name to add the email forwarding rule to
+// The domain name to add the email forwarding rule to.
 func (o EmailForwardOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *EmailForward) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }

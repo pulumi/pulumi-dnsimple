@@ -40,10 +40,10 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var foobar = new EmailForward("foobar", EmailForwardArgs.builder()
- *             .domain(dnsimpleDomain.name())
+ *         var example = new EmailForward("example", EmailForwardArgs.builder()
+ *             .domain("example.com")
  *             .aliasName("sales")
- *             .destinationEmail("alice.appleseed}{@literal @}{@code example.com")
+ *             .destinationEmail("alice}{@literal @}{@code example.com")
  *             .build());
  * 
  *     }}{@code
@@ -53,15 +53,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DNSimple resources can be imported using the domain name and numeric email forward ID.
- * 
- * **Importing email forward for example.com with email forward ID 1234**
+ * DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/emailForward:EmailForward resource_name example.com_1234
+ * $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
  * ```
+ * 
+ * The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
  * 
  */
 @ResourceType(type="dnsimple:index/emailForward:EmailForward")
@@ -81,42 +81,42 @@ public class EmailForward extends com.pulumi.resources.CustomResource {
         return this.aliasEmail;
     }
     /**
-     * The name part (the part before the {@literal @}) of the source email address on the domain
+     * The name part (the part before the {@literal @}) of the source email address on the domain.
      * 
      */
     @Export(name="aliasName", refs={String.class}, tree="[0]")
     private Output<String> aliasName;
 
     /**
-     * @return The name part (the part before the {@literal @}) of the source email address on the domain
+     * @return The name part (the part before the {@literal @}) of the source email address on the domain.
      * 
      */
     public Output<String> aliasName() {
         return this.aliasName;
     }
     /**
-     * The destination email address
+     * The destination email address.
      * 
      */
     @Export(name="destinationEmail", refs={String.class}, tree="[0]")
     private Output<String> destinationEmail;
 
     /**
-     * @return The destination email address
+     * @return The destination email address.
      * 
      */
     public Output<String> destinationEmail() {
         return this.destinationEmail;
     }
     /**
-     * The domain name to add the email forwarding rule to
+     * The domain name to add the email forwarding rule to.
      * 
      */
     @Export(name="domain", refs={String.class}, tree="[0]")
     private Output<String> domain;
 
     /**
-     * @return The domain name to add the email forwarding rule to
+     * @return The domain name to add the email forwarding rule to.
      * 
      */
     public Output<String> domain() {

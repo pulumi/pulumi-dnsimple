@@ -18,7 +18,7 @@ import javax.annotation.Nullable;
 /**
  * Provides a DNSimple zone resource.
  * 
- * &gt; Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+ * &gt; **Note:** Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
  * 
  * ## Example Usage
  * 
@@ -44,9 +44,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a zone
- *         var foobar = new Zone("foobar", ZoneArgs.builder()
- *             .name(dnsimple.zone())
+ *         var example = new Zone("example", ZoneArgs.builder()
+ *             .name("example.com")
  *             .build());
  * 
  *     }
@@ -56,45 +55,15 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DNSimple zones can be imported using their numeric record ID or the zone name.
+ * DNSimple zones can be imported using the zone name.
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/zone:Zone resource_name foo.com
+ * $ pulumi import dnsimple:index/zone:Zone example example.com
  * ```
  * 
- * The zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
- * 
- * bash
- * 
- * curl -H &#39;Authorization: Bearer &lt;ACCESS_TOKEN&gt;&#39; https://api.dnsimple.com/v2/1234/zones/example.com | jq
- * 
- * {
- * 
- *   &#34;data&#34;: {
- * 
- *     &#34;id&#34;: 1,
- *     
- *     &#34;account_id&#34;: 1234,
- *     
- *     &#34;name&#34;: &#34;example.com&#34;,
- *     
- *     &#34;reverse&#34;: false,
- *     
- *     &#34;secondary&#34;: false,
- *     
- *     &#34;last_transferred_at&#34;: null,
- *     
- *     &#34;active&#34;: true,
- *     
- *     &#34;created_at&#34;: &#34;2023-04-18T04:58:01Z&#34;,
- *     
- *     &#34;updated_at&#34;: &#34;2024-01-16T15:53:18Z&#34;
- * 
- *   }
- * 
- * }
+ * The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
  */
 @ResourceType(type="dnsimple:index/zone:Zone")
@@ -142,18 +111,14 @@ public class Zone extends com.pulumi.resources.CustomResource {
         return this.lastTransferredAt;
     }
     /**
-     * The zone name
-     * 
-     * # Attributes Reference
+     * The zone name.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The zone name
-     * 
-     * # Attributes Reference
+     * @return The zone name.
      * 
      */
     public Output<String> name() {

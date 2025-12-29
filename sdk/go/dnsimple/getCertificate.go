@@ -7,11 +7,11 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Provides a DNSimple certificate data source.
+// Get information about a DNSimple SSL certificate.
 //
 // ## Example Usage
 //
@@ -20,7 +20,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -28,8 +28,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dnsimple.GetCertificate(ctx, &dnsimple.GetCertificateArgs{
-//				Domain:        dnsimpleDomain,
-//				CertificateId: dnsimpleCertificateId,
+//				Domain:        "example.com",
+//				CertificateId: 1234,
 //			}, nil)
 //			if err != nil {
 //				return err
@@ -51,25 +51,27 @@ func GetCertificate(ctx *pulumi.Context, args *GetCertificateArgs, opts ...pulum
 
 // A collection of arguments for invoking getCertificate.
 type GetCertificateArgs struct {
-	// The ID of the SSL Certificate
+	// The ID of the SSL certificate.
 	CertificateId int `pulumi:"certificateId"`
-	// The domain of the SSL Certificate
-	Domain   string                  `pulumi:"domain"`
+	// The domain name of the SSL certificate.
+	Domain string `pulumi:"domain"`
+	// (see below for nested schema)
 	Timeouts *GetCertificateTimeouts `pulumi:"timeouts"`
 }
 
 // A collection of values returned by getCertificate.
 type GetCertificateResult struct {
-	// A list of certificates that make up the chain
+	// A list of certificates that make up the certificate chain.
 	CertificateChains []string `pulumi:"certificateChains"`
 	CertificateId     int      `pulumi:"certificateId"`
 	Domain            string   `pulumi:"domain"`
-	Id                string   `pulumi:"id"`
-	// The corresponding Private Key for the SSL Certificate
+	// The certificate ID.
+	Id string `pulumi:"id"`
+	// The corresponding private key for the SSL certificate.
 	PrivateKey string `pulumi:"privateKey"`
-	// The Root Certificate of the issuing CA
+	// The root certificate of the issuing CA.
 	RootCertificate string `pulumi:"rootCertificate"`
-	// The SSL Certificate
+	// The SSL certificate.
 	ServerCertificate string                  `pulumi:"serverCertificate"`
 	Timeouts          *GetCertificateTimeouts `pulumi:"timeouts"`
 }
@@ -85,10 +87,11 @@ func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, op
 
 // A collection of arguments for invoking getCertificate.
 type GetCertificateOutputArgs struct {
-	// The ID of the SSL Certificate
+	// The ID of the SSL certificate.
 	CertificateId pulumi.IntInput `pulumi:"certificateId"`
-	// The domain of the SSL Certificate
-	Domain   pulumi.StringInput             `pulumi:"domain"`
+	// The domain name of the SSL certificate.
+	Domain pulumi.StringInput `pulumi:"domain"`
+	// (see below for nested schema)
 	Timeouts GetCertificateTimeoutsPtrInput `pulumi:"timeouts"`
 }
 
@@ -111,7 +114,7 @@ func (o GetCertificateResultOutput) ToGetCertificateResultOutputWithContext(ctx 
 	return o
 }
 
-// A list of certificates that make up the chain
+// A list of certificates that make up the certificate chain.
 func (o GetCertificateResultOutput) CertificateChains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetCertificateResult) []string { return v.CertificateChains }).(pulumi.StringArrayOutput)
 }
@@ -124,21 +127,22 @@ func (o GetCertificateResultOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.Domain }).(pulumi.StringOutput)
 }
 
+// The certificate ID.
 func (o GetCertificateResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// The corresponding Private Key for the SSL Certificate
+// The corresponding private key for the SSL certificate.
 func (o GetCertificateResultOutput) PrivateKey() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.PrivateKey }).(pulumi.StringOutput)
 }
 
-// The Root Certificate of the issuing CA
+// The root certificate of the issuing CA.
 func (o GetCertificateResultOutput) RootCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.RootCertificate }).(pulumi.StringOutput)
 }
 
-// The SSL Certificate
+// The SSL certificate.
 func (o GetCertificateResultOutput) ServerCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCertificateResult) string { return v.ServerCertificate }).(pulumi.StringOutput)
 }

@@ -13,16 +13,28 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * const foobar = new dnsimple.LetsEncryptCertificate("foobar", {
- *     domainId: dnsimple.domainId,
- *     autoRenew: false,
+ * const example = new dnsimple.LetsEncryptCertificate("example", {
+ *     domainId: "example.com",
  *     name: "www",
+ *     autoRenew: true,
  *     alternateNames: [
  *         "docs.example.com",
  *         "status.example.com",
  *     ],
  * });
  * ```
+ *
+ * ## Import
+ *
+ * DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
+ *
+ * bash
+ *
+ * ```sh
+ * $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+ * ```
+ *
+ * The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
  */
 export class LetsEncryptCertificate extends pulumi.CustomResource {
     /**
@@ -53,31 +65,31 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
     }
 
     /**
-     * The certificate alternate names
+     * List of alternate names (SANs) for the certificate.
      */
     declare public readonly alternateNames: pulumi.Output<string[] | undefined>;
     /**
-     * The identifying certification authority (CA)
+     * The identifying certification authority (CA).
      */
     declare public /*out*/ readonly authorityIdentifier: pulumi.Output<string>;
     /**
-     * True if the certificate should auto-renew
+     * Whether the certificate should auto-renew.
      */
     declare public readonly autoRenew: pulumi.Output<boolean>;
     /**
-     * The datetime the certificate was created
+     * The datetime when the certificate was created.
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * The certificate signing request
+     * The certificate signing request.
      */
     declare public /*out*/ readonly csr: pulumi.Output<string>;
     /**
-     * The domain to be issued the certificate for
+     * The domain name or ID to issue the certificate for.
      */
     declare public readonly domainId: pulumi.Output<string>;
     /**
-     * The datetime the certificate will expire
+     * The datetime when the certificate will expire.
      */
     declare public /*out*/ readonly expiresAt: pulumi.Output<string>;
     /**
@@ -85,19 +97,19 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
-     * The signature algorithm to use for the certificate
+     * The signature algorithm to use for the certificate.
      */
     declare public readonly signatureAlgorithm: pulumi.Output<string | undefined>;
     /**
-     * The state of the certificate
+     * The state of the certificate.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
     /**
-     * The datetime the certificate was last updated
+     * The datetime when the certificate was last updated.
      */
     declare public /*out*/ readonly updatedAt: pulumi.Output<string>;
     /**
-     * The years the certificate will last
+     * The number of years the certificate will last.
      */
     declare public /*out*/ readonly years: pulumi.Output<number>;
 
@@ -160,31 +172,31 @@ export class LetsEncryptCertificate extends pulumi.CustomResource {
  */
 export interface LetsEncryptCertificateState {
     /**
-     * The certificate alternate names
+     * List of alternate names (SANs) for the certificate.
      */
     alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The identifying certification authority (CA)
+     * The identifying certification authority (CA).
      */
     authorityIdentifier?: pulumi.Input<string>;
     /**
-     * True if the certificate should auto-renew
+     * Whether the certificate should auto-renew.
      */
     autoRenew?: pulumi.Input<boolean>;
     /**
-     * The datetime the certificate was created
+     * The datetime when the certificate was created.
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * The certificate signing request
+     * The certificate signing request.
      */
     csr?: pulumi.Input<string>;
     /**
-     * The domain to be issued the certificate for
+     * The domain name or ID to issue the certificate for.
      */
     domainId?: pulumi.Input<string>;
     /**
-     * The datetime the certificate will expire
+     * The datetime when the certificate will expire.
      */
     expiresAt?: pulumi.Input<string>;
     /**
@@ -192,19 +204,19 @@ export interface LetsEncryptCertificateState {
      */
     name?: pulumi.Input<string>;
     /**
-     * The signature algorithm to use for the certificate
+     * The signature algorithm to use for the certificate.
      */
     signatureAlgorithm?: pulumi.Input<string>;
     /**
-     * The state of the certificate
+     * The state of the certificate.
      */
     state?: pulumi.Input<string>;
     /**
-     * The datetime the certificate was last updated
+     * The datetime when the certificate was last updated.
      */
     updatedAt?: pulumi.Input<string>;
     /**
-     * The years the certificate will last
+     * The number of years the certificate will last.
      */
     years?: pulumi.Input<number>;
 }
@@ -214,15 +226,15 @@ export interface LetsEncryptCertificateState {
  */
 export interface LetsEncryptCertificateArgs {
     /**
-     * The certificate alternate names
+     * List of alternate names (SANs) for the certificate.
      */
     alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * True if the certificate should auto-renew
+     * Whether the certificate should auto-renew.
      */
     autoRenew: pulumi.Input<boolean>;
     /**
-     * The domain to be issued the certificate for
+     * The domain name or ID to issue the certificate for.
      */
     domainId: pulumi.Input<string>;
     /**
@@ -230,7 +242,7 @@ export interface LetsEncryptCertificateArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The signature algorithm to use for the certificate
+     * The signature algorithm to use for the certificate.
      */
     signatureAlgorithm?: pulumi.Input<string>;
 }

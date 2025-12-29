@@ -14,15 +14,15 @@ namespace Pulumi.DNSimple.Outputs
     public sealed class RegisteredDomainDomainRegistration
     {
         /// <summary>
-        /// The ID of this resource.
+        /// (Number) - The ID of the domain registration.
         /// </summary>
         public readonly int? Id;
         /// <summary>
-        /// The registration period in years.
+        /// (Number) - The registration period in years.
         /// </summary>
         public readonly int? Period;
         /// <summary>
-        /// The state of the domain.
+        /// (String) - The state of the domain registration.
         /// </summary>
         public readonly string? State;
 

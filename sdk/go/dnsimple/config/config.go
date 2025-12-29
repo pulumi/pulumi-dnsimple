@@ -4,7 +4,7 @@
 package config
 
 import (
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
 )
@@ -14,6 +14,11 @@ var _ = internal.GetEnvOrDefault
 // The account for API operations.
 func GetAccount(ctx *pulumi.Context) string {
 	return config.Get(ctx, "dnsimple:account")
+}
+
+// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+func GetDebugTransportFile(ctx *pulumi.Context) string {
+	return config.Get(ctx, "dnsimple:debugTransportFile")
 }
 
 // Flag to enable the prefetch of zone records.
