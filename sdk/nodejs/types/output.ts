@@ -8,35 +8,56 @@ import * as enums from "../types/enums";
 
 export interface GetCertificateTimeouts {
     /**
-     * (String) - The timeout for the read operation e.g. `5m`
+     * (String) - The timeout for the read operation, e.g., `5m`.
      */
     read?: string;
 }
 
 export interface GetRegistrantChangeCheckExtendedAttribute {
+    /**
+     * (String) - The description of the option.
+     */
     description: string;
+    /**
+     * (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
+     */
     name: string;
+    /**
+     * (List) - A list of options for the extended attribute. (see below for nested schema)
+     */
     options: outputs.GetRegistrantChangeCheckExtendedAttributeOption[];
+    /**
+     * (Boolean) - Whether the extended attribute is required.
+     */
     required: boolean;
 }
 
 export interface GetRegistrantChangeCheckExtendedAttributeOption {
+    /**
+     * (String) - The description of the option.
+     */
     description: string;
+    /**
+     * (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
+     */
     title: string;
+    /**
+     * (String) - The value of the option.
+     */
     value: string;
 }
 
 export interface RegisteredDomainDomainRegistration {
     /**
-     * The ID of this resource.
+     * (Number) - The ID of the domain registration.
      */
     id: number;
     /**
-     * The registration period in years.
+     * (Number) - The registration period in years.
      */
     period: number;
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      */
     state: string;
 }
@@ -47,7 +68,7 @@ export interface RegisteredDomainRegistrantChange {
      */
     accountId: number;
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
     contactId: number;
     /**
@@ -59,7 +80,7 @@ export interface RegisteredDomainRegistrantChange {
      */
     extendedAttributes: {[key: string]: string};
     /**
-     * The ID of this resource.
+     * (Number) - The ID of the domain registration.
      */
     id: number;
     /**
@@ -71,14 +92,14 @@ export interface RegisteredDomainRegistrantChange {
      */
     registryOwnerChange: boolean;
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      */
     state: string;
 }
 
 export interface RegisteredDomainTimeouts {
     /**
-     * Create timeout.
+     * (String) - The timeout for the read operation e.g. `5m`
      */
     create?: string;
     /**
@@ -86,7 +107,7 @@ export interface RegisteredDomainTimeouts {
      */
     delete?: string;
     /**
-     * Update timeout.
+     * (String) - The timeout for the read operation e.g. `5m`
      */
     update?: string;
 }

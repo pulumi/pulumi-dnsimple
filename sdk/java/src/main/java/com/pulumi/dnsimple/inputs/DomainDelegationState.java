@@ -32,18 +32,14 @@ public final class DomainDelegationState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The list of name servers to delegate to.
-     * 
-     * # Attributes Reference
+     * List of name servers to delegate to.
      * 
      */
     @Import(name="nameServers")
     private @Nullable Output<List<String>> nameServers;
 
     /**
-     * @return The list of name servers to delegate to.
-     * 
-     * # Attributes Reference
+     * @return List of name servers to delegate to.
      * 
      */
     public Optional<Output<List<String>>> nameServers() {
@@ -97,9 +93,7 @@ public final class DomainDelegationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nameServers The list of name servers to delegate to.
-         * 
-         * # Attributes Reference
+         * @param nameServers List of name servers to delegate to.
          * 
          * @return builder
          * 
@@ -110,9 +104,7 @@ public final class DomainDelegationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nameServers The list of name servers to delegate to.
-         * 
-         * # Attributes Reference
+         * @param nameServers List of name servers to delegate to.
          * 
          * @return builder
          * 
@@ -122,9 +114,7 @@ public final class DomainDelegationState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param nameServers The list of name servers to delegate to.
-         * 
-         * # Attributes Reference
+         * @param nameServers List of name servers to delegate to.
          * 
          * @return builder
          * 

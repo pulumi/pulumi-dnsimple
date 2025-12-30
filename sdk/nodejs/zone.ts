@@ -7,7 +7,7 @@ import * as utilities from "./utilities";
 /**
  * Provides a DNSimple zone resource.
  *
- * > Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+ * > **Note:** Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
  *
  * ## Example Usage
  *
@@ -15,51 +15,20 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * // Create a zone
- * const foobar = new dnsimple.Zone("foobar", {name: dnsimple.zone});
+ * const example = new dnsimple.Zone("example", {name: "example.com"});
  * ```
  *
  * ## Import
  *
- * DNSimple zones can be imported using their numeric record ID or the zone name.
+ * DNSimple zones can be imported using the zone name.
  *
  * bash
  *
  * ```sh
- * $ pulumi import dnsimple:index/zone:Zone resource_name foo.com
+ * $ pulumi import dnsimple:index/zone:Zone example example.com
  * ```
  *
- * The zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
- *
- * bash
- *
- * curl -H 'Authorization: Bearer <ACCESS_TOKEN>' https://api.dnsimple.com/v2/1234/zones/example.com | jq
- *
- * {
- *
- *   "data": {
- *
- *     "id": 1,
- *     
- *     "account_id": 1234,
- *     
- *     "name": "example.com",
- *     
- *     "reverse": false,
- *     
- *     "secondary": false,
- *     
- *     "last_transferred_at": null,
- *     
- *     "active": true,
- *     
- *     "created_at": "2023-04-18T04:58:01Z",
- *     
- *     "updated_at": "2024-01-16T15:53:18Z"
- *
- *   }
- *
- * }
+ * The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  */
 export class Zone extends pulumi.CustomResource {
     /**
@@ -102,9 +71,7 @@ export class Zone extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly lastTransferredAt: pulumi.Output<string>;
     /**
-     * The zone name
-     *
-     * # Attributes Reference
+     * The zone name.
      */
     declare public readonly name: pulumi.Output<string>;
     /**
@@ -169,9 +136,7 @@ export interface ZoneState {
      */
     lastTransferredAt?: pulumi.Input<string>;
     /**
-     * The zone name
-     *
-     * # Attributes Reference
+     * The zone name.
      */
     name?: pulumi.Input<string>;
     /**
@@ -193,9 +158,7 @@ export interface ZoneArgs {
      */
     active?: pulumi.Input<boolean>;
     /**
-     * The zone name
-     *
-     * # Attributes Reference
+     * The zone name.
      */
     name: pulumi.Input<string>;
 }

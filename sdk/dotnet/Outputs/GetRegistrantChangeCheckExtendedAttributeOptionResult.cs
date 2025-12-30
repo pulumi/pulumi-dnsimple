@@ -13,8 +13,17 @@ namespace Pulumi.DNSimple.Outputs
     [OutputType]
     public sealed class GetRegistrantChangeCheckExtendedAttributeOptionResult
     {
+        /// <summary>
+        /// (String) - The description of the option.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// (String) - The human-readable title of the option, e.g., `Australian Company Number (ACN)`.
+        /// </summary>
         public readonly string Title;
+        /// <summary>
+        /// (String) - The value of the option.
+        /// </summary>
         public readonly string Value;
 
         [OutputConstructor]

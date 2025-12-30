@@ -31,14 +31,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name part (the part before the {@literal @}) of the source email address on the domain
+     * The name part (the part before the {@literal @}) of the source email address on the domain.
      * 
      */
     @Import(name="aliasName")
     private @Nullable Output<String> aliasName;
 
     /**
-     * @return The name part (the part before the {@literal @}) of the source email address on the domain
+     * @return The name part (the part before the {@literal @}) of the source email address on the domain.
      * 
      */
     public Optional<Output<String>> aliasName() {
@@ -46,14 +46,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination email address
+     * The destination email address.
      * 
      */
     @Import(name="destinationEmail")
     private @Nullable Output<String> destinationEmail;
 
     /**
-     * @return The destination email address
+     * @return The destination email address.
      * 
      */
     public Optional<Output<String>> destinationEmail() {
@@ -61,14 +61,14 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name to add the email forwarding rule to
+     * The domain name to add the email forwarding rule to.
      * 
      */
     @Import(name="domain")
     private @Nullable Output<String> domain;
 
     /**
-     * @return The domain name to add the email forwarding rule to
+     * @return The domain name to add the email forwarding rule to.
      * 
      */
     public Optional<Output<String>> domain() {
@@ -124,7 +124,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasName The name part (the part before the {@literal @}) of the source email address on the domain
+         * @param aliasName The name part (the part before the {@literal @}) of the source email address on the domain.
          * 
          * @return builder
          * 
@@ -135,7 +135,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param aliasName The name part (the part before the {@literal @}) of the source email address on the domain
+         * @param aliasName The name part (the part before the {@literal @}) of the source email address on the domain.
          * 
          * @return builder
          * 
@@ -145,7 +145,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationEmail The destination email address
+         * @param destinationEmail The destination email address.
          * 
          * @return builder
          * 
@@ -156,7 +156,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destinationEmail The destination email address
+         * @param destinationEmail The destination email address.
          * 
          * @return builder
          * 
@@ -166,7 +166,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The domain name to add the email forwarding rule to
+         * @param domain The domain name to add the email forwarding rule to.
          * 
          * @return builder
          * 
@@ -177,7 +177,7 @@ public final class EmailForwardState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param domain The domain name to add the email forwarding rule to
+         * @param domain The domain name to add the email forwarding rule to.
          * 
          * @return builder
          * 

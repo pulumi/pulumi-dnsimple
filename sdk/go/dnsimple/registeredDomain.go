@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -16,12 +16,14 @@ import (
 //
 // ## Example Usage
 //
+// The simplest example below requires a contact (existing or a new one to be created) and basic domain information.
+//
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,31 +31,86 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			aliceMain, err := dnsimple.NewContact(ctx, "alice_main", &dnsimple.ContactArgs{
-//				Label:            pulumi.String("Alice Appleseed"),
-//				FirstName:        pulumi.String("Alice Main"),
+//				Label:            pulumi.String("Alice"),
+//				FirstName:        pulumi.String("Alice"),
 //				LastName:         pulumi.String("Appleseed"),
 //				OrganizationName: pulumi.String("Contoso"),
 //				JobTitle:         pulumi.String("Manager"),
 //				Address1:         pulumi.String("Level 1, 2 Main St"),
-//				Address2:         pulumi.String("Marsfield"),
 //				City:             pulumi.String("San Francisco"),
 //				StateProvince:    pulumi.String("California"),
 //				PostalCode:       pulumi.String("90210"),
 //				Country:          pulumi.String("US"),
-//				Phone:            pulumi.String("+1401239523"),
-//				Fax:              pulumi.String("+1849491024"),
+//				Phone:            pulumi.String("+1.401239523"),
 //				Email:            pulumi.String("apple@contoso.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = dnsimple.NewRegisteredDomain(ctx, "appleseed_bio", &dnsimple.RegisteredDomainArgs{
-//				Name:                pulumi.String("appleseed.bio"),
-//				ContactId:           aliceMain.ID(),
+//			_, err = dnsimple.NewRegisteredDomain(ctx, "example_com", &dnsimple.RegisteredDomainArgs{
+//				Name:      pulumi.String("example.com"),
+//				ContactId: aliceMain.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Example with more settings
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewRegisteredDomain(ctx, "example_com", &dnsimple.RegisteredDomainArgs{
+//				Name:                pulumi.String("example.com"),
+//				ContactId:           pulumi.Any(aliceMain.Id),
 //				AutoRenewEnabled:    pulumi.Bool(true),
 //				TransferLockEnabled: pulumi.Bool(true),
 //				WhoisPrivacyEnabled: pulumi.Bool(true),
 //				DnssecEnabled:       pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ### Example with extended attributes
+//
+// Some domain extensions require additional information during registration. You can check if a domain extension requires extended attributes using the [TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes).
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewRegisteredDomain(ctx, "example_bio", &dnsimple.RegisteredDomainArgs{
+//				Name:             pulumi.String("example.bio"),
+//				ContactId:        pulumi.Any(aliceMain.Id),
+//				AutoRenewEnabled: pulumi.Bool(true),
 //				ExtendedAttributes: pulumi.StringMap{
 //					"bio_agree": pulumi.String("I Agree"),
 //				},
@@ -71,55 +128,51 @@ import (
 //
 // DNSimple registered domains can be imported using their domain name and **optionally** with domain registration ID.
 //
-// **Importing registered domain example.com**
+// **Importing registered domain example.com:**
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com
+// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
 // ```
 //
-// **Importing registered domain example.com with domain registration ID 1234**
+// **Importing registered domain example.com with domain registration ID 1234:**
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com_1234
+// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
 // ```
 type RegisteredDomain struct {
 	pulumi.CustomResourceState
 
 	AccountId pulumi.IntOutput `pulumi:"accountId"`
-	// Whether the domain should be set to auto-renew (default: `false`)
+	// Whether the domain should be set to auto-renew (default: `false`).
 	AutoRenewEnabled pulumi.BoolOutput `pulumi:"autoRenewEnabled"`
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId pulumi.IntOutput `pulumi:"contactId"`
-	// Whether the domain should have DNSSEC enabled (default: `false`)
+	// Whether the domain should have DNSSEC enabled (default: `false`).
 	DnssecEnabled pulumi.BoolOutput `pulumi:"dnssecEnabled"`
 	// The domain registration details. (see below for nested schema)
-	//
-	// <a id="nestedblock--timeouts"></a>
 	DomainRegistration RegisteredDomainDomainRegistrationOutput `pulumi:"domainRegistration"`
 	ExpiresAt          pulumi.StringOutput                      `pulumi:"expiresAt"`
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes pulumi.StringMapOutput `pulumi:"extendedAttributes"`
-	// The domain name to be registered
+	// The domain name to be registered.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
 	PremiumPrice pulumi.StringPtrOutput `pulumi:"premiumPrice"`
 	// The registrant change details.
 	RegistrantChange RegisteredDomainRegistrantChangeOutput `pulumi:"registrantChange"`
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State pulumi.StringOutput `pulumi:"state"`
-	// (see below for nested schema)
-	//
-	// # Attributes Reference
+	// (see below for nested schema).
 	Timeouts RegisteredDomainTimeoutsPtrOutput `pulumi:"timeouts"`
-	// Whether the domain transfer lock protection is enabled (default: `true`)
+	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled pulumi.BoolOutput `pulumi:"transferLockEnabled"`
 	// The domain name in Unicode format.
 	UnicodeName pulumi.StringOutput `pulumi:"unicodeName"`
-	// Whether the domain should have WhoIs privacy enabled (default: `false`)
+	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled pulumi.BoolOutput `pulumi:"whoisPrivacyEnabled"`
 }
 
@@ -160,71 +213,63 @@ func GetRegisteredDomain(ctx *pulumi.Context,
 // Input properties used for looking up and filtering RegisteredDomain resources.
 type registeredDomainState struct {
 	AccountId *int `pulumi:"accountId"`
-	// Whether the domain should be set to auto-renew (default: `false`)
+	// Whether the domain should be set to auto-renew (default: `false`).
 	AutoRenewEnabled *bool `pulumi:"autoRenewEnabled"`
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId *int `pulumi:"contactId"`
-	// Whether the domain should have DNSSEC enabled (default: `false`)
+	// Whether the domain should have DNSSEC enabled (default: `false`).
 	DnssecEnabled *bool `pulumi:"dnssecEnabled"`
 	// The domain registration details. (see below for nested schema)
-	//
-	// <a id="nestedblock--timeouts"></a>
 	DomainRegistration *RegisteredDomainDomainRegistration `pulumi:"domainRegistration"`
 	ExpiresAt          *string                             `pulumi:"expiresAt"`
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes map[string]string `pulumi:"extendedAttributes"`
-	// The domain name to be registered
+	// The domain name to be registered.
 	Name *string `pulumi:"name"`
-	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
 	PremiumPrice *string `pulumi:"premiumPrice"`
 	// The registrant change details.
 	RegistrantChange *RegisteredDomainRegistrantChange `pulumi:"registrantChange"`
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State *string `pulumi:"state"`
-	// (see below for nested schema)
-	//
-	// # Attributes Reference
+	// (see below for nested schema).
 	Timeouts *RegisteredDomainTimeouts `pulumi:"timeouts"`
-	// Whether the domain transfer lock protection is enabled (default: `true`)
+	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled *bool `pulumi:"transferLockEnabled"`
 	// The domain name in Unicode format.
 	UnicodeName *string `pulumi:"unicodeName"`
-	// Whether the domain should have WhoIs privacy enabled (default: `false`)
+	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled *bool `pulumi:"whoisPrivacyEnabled"`
 }
 
 type RegisteredDomainState struct {
 	AccountId pulumi.IntPtrInput
-	// Whether the domain should be set to auto-renew (default: `false`)
+	// Whether the domain should be set to auto-renew (default: `false`).
 	AutoRenewEnabled pulumi.BoolPtrInput
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId pulumi.IntPtrInput
-	// Whether the domain should have DNSSEC enabled (default: `false`)
+	// Whether the domain should have DNSSEC enabled (default: `false`).
 	DnssecEnabled pulumi.BoolPtrInput
 	// The domain registration details. (see below for nested schema)
-	//
-	// <a id="nestedblock--timeouts"></a>
 	DomainRegistration RegisteredDomainDomainRegistrationPtrInput
 	ExpiresAt          pulumi.StringPtrInput
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes pulumi.StringMapInput
-	// The domain name to be registered
+	// The domain name to be registered.
 	Name pulumi.StringPtrInput
-	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
 	PremiumPrice pulumi.StringPtrInput
 	// The registrant change details.
 	RegistrantChange RegisteredDomainRegistrantChangePtrInput
-	// The state of the domain.
+	// (String) - The state of the domain registration.
 	State pulumi.StringPtrInput
-	// (see below for nested schema)
-	//
-	// # Attributes Reference
+	// (see below for nested schema).
 	Timeouts RegisteredDomainTimeoutsPtrInput
-	// Whether the domain transfer lock protection is enabled (default: `true`)
+	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled pulumi.BoolPtrInput
 	// The domain name in Unicode format.
 	UnicodeName pulumi.StringPtrInput
-	// Whether the domain should have WhoIs privacy enabled (default: `false`)
+	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled pulumi.BoolPtrInput
 }
 
@@ -233,49 +278,45 @@ func (RegisteredDomainState) ElementType() reflect.Type {
 }
 
 type registeredDomainArgs struct {
-	// Whether the domain should be set to auto-renew (default: `false`)
+	// Whether the domain should be set to auto-renew (default: `false`).
 	AutoRenewEnabled *bool `pulumi:"autoRenewEnabled"`
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId int `pulumi:"contactId"`
-	// Whether the domain should have DNSSEC enabled (default: `false`)
+	// Whether the domain should have DNSSEC enabled (default: `false`).
 	DnssecEnabled *bool `pulumi:"dnssecEnabled"`
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes map[string]string `pulumi:"extendedAttributes"`
-	// The domain name to be registered
+	// The domain name to be registered.
 	Name string `pulumi:"name"`
-	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
 	PremiumPrice *string `pulumi:"premiumPrice"`
-	// (see below for nested schema)
-	//
-	// # Attributes Reference
+	// (see below for nested schema).
 	Timeouts *RegisteredDomainTimeouts `pulumi:"timeouts"`
-	// Whether the domain transfer lock protection is enabled (default: `true`)
+	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled *bool `pulumi:"transferLockEnabled"`
-	// Whether the domain should have WhoIs privacy enabled (default: `false`)
+	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled *bool `pulumi:"whoisPrivacyEnabled"`
 }
 
 // The set of arguments for constructing a RegisteredDomain resource.
 type RegisteredDomainArgs struct {
-	// Whether the domain should be set to auto-renew (default: `false`)
+	// Whether the domain should be set to auto-renew (default: `false`).
 	AutoRenewEnabled pulumi.BoolPtrInput
-	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+	// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 	ContactId pulumi.IntInput
-	// Whether the domain should have DNSSEC enabled (default: `false`)
+	// Whether the domain should have DNSSEC enabled (default: `false`).
 	DnssecEnabled pulumi.BoolPtrInput
 	// A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
 	ExtendedAttributes pulumi.StringMapInput
-	// The domain name to be registered
+	// The domain name to be registered.
 	Name pulumi.StringInput
-	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+	// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
 	PremiumPrice pulumi.StringPtrInput
-	// (see below for nested schema)
-	//
-	// # Attributes Reference
+	// (see below for nested schema).
 	Timeouts RegisteredDomainTimeoutsPtrInput
-	// Whether the domain transfer lock protection is enabled (default: `true`)
+	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled pulumi.BoolPtrInput
-	// Whether the domain should have WhoIs privacy enabled (default: `false`)
+	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled pulumi.BoolPtrInput
 }
 
@@ -370,24 +411,22 @@ func (o RegisteredDomainOutput) AccountId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.IntOutput { return v.AccountId }).(pulumi.IntOutput)
 }
 
-// Whether the domain should be set to auto-renew (default: `false`)
+// Whether the domain should be set to auto-renew (default: `false`).
 func (o RegisteredDomainOutput) AutoRenewEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.BoolOutput { return v.AutoRenewEnabled }).(pulumi.BoolOutput)
 }
 
-// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
 func (o RegisteredDomainOutput) ContactId() pulumi.IntOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.IntOutput { return v.ContactId }).(pulumi.IntOutput)
 }
 
-// Whether the domain should have DNSSEC enabled (default: `false`)
+// Whether the domain should have DNSSEC enabled (default: `false`).
 func (o RegisteredDomainOutput) DnssecEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.BoolOutput { return v.DnssecEnabled }).(pulumi.BoolOutput)
 }
 
 // The domain registration details. (see below for nested schema)
-//
-// <a id="nestedblock--timeouts"></a>
 func (o RegisteredDomainOutput) DomainRegistration() RegisteredDomainDomainRegistrationOutput {
 	return o.ApplyT(func(v *RegisteredDomain) RegisteredDomainDomainRegistrationOutput { return v.DomainRegistration }).(RegisteredDomainDomainRegistrationOutput)
 }
@@ -401,12 +440,12 @@ func (o RegisteredDomainOutput) ExtendedAttributes() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.StringMapOutput { return v.ExtendedAttributes }).(pulumi.StringMapOutput)
 }
 
-// The domain name to be registered
+// The domain name to be registered.
 func (o RegisteredDomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
 func (o RegisteredDomainOutput) PremiumPrice() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.StringPtrOutput { return v.PremiumPrice }).(pulumi.StringPtrOutput)
 }
@@ -416,19 +455,17 @@ func (o RegisteredDomainOutput) RegistrantChange() RegisteredDomainRegistrantCha
 	return o.ApplyT(func(v *RegisteredDomain) RegisteredDomainRegistrantChangeOutput { return v.RegistrantChange }).(RegisteredDomainRegistrantChangeOutput)
 }
 
-// The state of the domain.
+// (String) - The state of the domain registration.
 func (o RegisteredDomainOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// (see below for nested schema)
-//
-// # Attributes Reference
+// (see below for nested schema).
 func (o RegisteredDomainOutput) Timeouts() RegisteredDomainTimeoutsPtrOutput {
 	return o.ApplyT(func(v *RegisteredDomain) RegisteredDomainTimeoutsPtrOutput { return v.Timeouts }).(RegisteredDomainTimeoutsPtrOutput)
 }
 
-// Whether the domain transfer lock protection is enabled (default: `true`)
+// Whether the domain transfer lock protection is enabled (default: `true`).
 func (o RegisteredDomainOutput) TransferLockEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.BoolOutput { return v.TransferLockEnabled }).(pulumi.BoolOutput)
 }
@@ -438,7 +475,7 @@ func (o RegisteredDomainOutput) UnicodeName() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.StringOutput { return v.UnicodeName }).(pulumi.StringOutput)
 }
 
-// Whether the domain should have WhoIs privacy enabled (default: `false`)
+// Whether the domain should have WHOIS privacy enabled (default: `false`).
 func (o RegisteredDomainOutput) WhoisPrivacyEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.BoolOutput { return v.WhoisPrivacyEnabled }).(pulumi.BoolOutput)
 }

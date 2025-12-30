@@ -25,6 +25,12 @@ namespace Pulumi.DNSimple
         public Output<string?> Account { get; private set; } = null!;
 
         /// <summary>
+        /// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+        /// </summary>
+        [Output("debugTransportFile")]
+        public Output<string?> DebugTransportFile { get; private set; } = null!;
+
+        /// <summary>
         /// The API v2 token for API operations.
         /// </summary>
         [Output("token")]
@@ -79,6 +85,12 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Input("account")]
         public Input<string>? Account { get; set; }
+
+        /// <summary>
+        /// File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+        /// </summary>
+        [Input("debugTransportFile")]
+        public Input<string>? DebugTransportFile { get; set; }
 
         /// <summary>
         /// Flag to enable the prefetch of zone records.

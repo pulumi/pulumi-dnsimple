@@ -20,10 +20,9 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a domain delegation
-    ///     var foobar = new DNSimple.DomainDelegation("foobar", new()
+    ///     var example = new DNSimple.DomainDelegation("example", new()
     ///     {
-    ///         Domain = dnsimple.Domain,
+    ///         Domain = "example.com",
     ///         NameServers = new[]
     ///         {
     ///             "ns1.example.org",
@@ -38,12 +37,10 @@ namespace Pulumi.DNSimple
     /// 
     /// DNSimple domain delegations can be imported using the domain name.
     /// 
-    /// **Importing domain delegation for example.com**
-    /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/domainDelegation:DomainDelegation resource_name example.com
+    /// $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
     /// ```
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/domainDelegation:DomainDelegation")]
@@ -56,9 +53,7 @@ namespace Pulumi.DNSimple
         public Output<string> Domain { get; private set; } = null!;
 
         /// <summary>
-        /// The list of name servers to delegate to.
-        /// 
-        /// # Attributes Reference
+        /// List of name servers to delegate to.
         /// </summary>
         [Output("nameServers")]
         public Output<ImmutableArray<string>> NameServers { get; private set; } = null!;
@@ -119,9 +114,7 @@ namespace Pulumi.DNSimple
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// The list of name servers to delegate to.
-        /// 
-        /// # Attributes Reference
+        /// List of name servers to delegate to.
         /// </summary>
         public InputList<string> NameServers
         {
@@ -147,9 +140,7 @@ namespace Pulumi.DNSimple
         private InputList<string>? _nameServers;
 
         /// <summary>
-        /// The list of name servers to delegate to.
-        /// 
-        /// # Attributes Reference
+        /// List of name servers to delegate to.
         /// </summary>
         public InputList<string> NameServers
         {

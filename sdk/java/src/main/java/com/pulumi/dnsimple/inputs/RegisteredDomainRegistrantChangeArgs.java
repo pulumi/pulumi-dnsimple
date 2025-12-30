@@ -34,14 +34,14 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
     }
 
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     @Import(name="contactId")
     private @Nullable Output<Integer> contactId;
 
     /**
-     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     public Optional<Output<Integer>> contactId() {
@@ -79,14 +79,14 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
     }
 
     /**
-     * The ID of this resource.
+     * (Number) - The ID of the domain registration.
      * 
      */
     @Import(name="id")
     private @Nullable Output<Integer> id;
 
     /**
-     * @return The ID of this resource.
+     * @return (Number) - The ID of the domain registration.
      * 
      */
     public Optional<Output<Integer>> id() {
@@ -124,14 +124,14 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
     }
 
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     public Optional<Output<String>> state() {
@@ -191,7 +191,7 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
         }
 
         /**
-         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
         }
 
         /**
-         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
          * 
          * @return builder
          * 
@@ -254,7 +254,7 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id (Number) - The ID of the domain registration.
          * 
          * @return builder
          * 
@@ -265,7 +265,7 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
         }
 
         /**
-         * @param id The ID of this resource.
+         * @param id (Number) - The ID of the domain registration.
          * 
          * @return builder
          * 
@@ -317,7 +317,7 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
         }
 
         /**
-         * @param state The state of the domain.
+         * @param state (String) - The state of the domain registration.
          * 
          * @return builder
          * 
@@ -328,7 +328,7 @@ public final class RegisteredDomainRegistrantChangeArgs extends com.pulumi.resou
         }
 
         /**
-         * @param state The state of the domain.
+         * @param state (String) - The state of the domain registration.
          * 
          * @return builder
          * 

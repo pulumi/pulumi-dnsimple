@@ -15,14 +15,14 @@ public final class GetCertificateTimeouts extends com.pulumi.resources.InvokeArg
     public static final GetCertificateTimeouts Empty = new GetCertificateTimeouts();
 
     /**
-     * (String) - The timeout for the read operation e.g. `5m`
+     * (String) - The timeout for the read operation, e.g., `5m`.
      * 
      */
     @Import(name="read")
     private @Nullable String read;
 
     /**
-     * @return (String) - The timeout for the read operation e.g. `5m`
+     * @return (String) - The timeout for the read operation, e.g., `5m`.
      * 
      */
     public Optional<String> read() {
@@ -54,7 +54,7 @@ public final class GetCertificateTimeouts extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param read (String) - The timeout for the read operation e.g. `5m`
+         * @param read (String) - The timeout for the read operation, e.g., `5m`.
          * 
          * @return builder
          * 

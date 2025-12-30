@@ -23,33 +23,33 @@ namespace Pulumi.DNSimple
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Add a record to the root domain
-    ///     var foobar = new DNSimple.ZoneRecord("foobar", new()
+    ///     var apex = new DNSimple.ZoneRecord("apex", new()
     ///     {
-    ///         ZoneName = dnsimpleDomain,
+    ///         ZoneName = "example.com",
     ///         Name = "",
-    ///         Value = "192.168.0.11",
+    ///         Value = "192.0.2.1",
     ///         Type = "A",
     ///         Ttl = 3600,
     ///     });
     /// 
-    /// });
-    /// ```
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using DNSimple = Pulumi.DNSimple;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     // Add a record to a sub-domain
-    ///     var foobar = new DNSimple.ZoneRecord("foobar", new()
+    ///     // Add a record to a subdomain
+    ///     var www = new DNSimple.ZoneRecord("www", new()
     ///     {
-    ///         ZoneName = dnsimpleDomain,
-    ///         Name = "terraform",
-    ///         Value = "192.168.0.11",
+    ///         ZoneName = "example.com",
+    ///         Name = "www",
+    ///         Value = "192.0.2.1",
     ///         Type = "A",
+    ///         Ttl = 3600,
+    ///     });
+    /// 
+    ///     // Add an MX record
+    ///     var mx = new DNSimple.ZoneRecord("mx", new()
+    ///     {
+    ///         ZoneName = "example.com",
+    ///         Name = "",
+    ///         Value = "mail.example.com",
+    ///         Type = "MX",
+    ///         Priority = 10,
     ///         Ttl = 3600,
     ///     });
     /// 
@@ -58,31 +58,23 @@ namespace Pulumi.DNSimple
     /// 
     /// ## Import
     /// 
-    /// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+    /// DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
     /// 
-    /// **Importing record example.com with record ID 1234**
-    /// 
-    /// bash
-    /// 
-    /// ```sh
-    /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-    /// ```
-    /// 
-    /// **Importing record www.example.com with record ID 1234**
+    /// **Importing record for example.com with record ID 1234:**
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+    /// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
     /// ```
     /// 
-    /// The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+    /// The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/zoneRecord:ZoneRecord")]
     public partial class ZoneRecord : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// The name of the record
+        /// The name of the record. Use `""` for the root domain.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -91,13 +83,13 @@ namespace Pulumi.DNSimple
         public Output<string> NameNormalized { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the record - only useful for some record types
+        /// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
 
         /// <summary>
-        /// The FQDN of the record
+        /// The fully qualified domain name (FQDN) of the record.
         /// </summary>
         [Output("qualifiedName")]
         public Output<string> QualifiedName { get; private set; } = null!;
@@ -109,37 +101,37 @@ namespace Pulumi.DNSimple
         public Output<ImmutableArray<string>> Regions { get; private set; } = null!;
 
         /// <summary>
-        /// The TTL of the record - defaults to 3600
+        /// The TTL of the record. Defaults to `3600`.
         /// </summary>
         [Output("ttl")]
         public Output<int> Ttl { get; private set; } = null!;
 
         /// <summary>
-        /// The type of the record
+        /// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
 
         /// <summary>
-        /// The value of the record
+        /// The value of the record.
         /// </summary>
         [Output("value")]
         public Output<string> Value { get; private set; } = null!;
 
         /// <summary>
-        /// The normalized value of the record
+        /// The normalized value of the record.
         /// </summary>
         [Output("valueNormalized")]
         public Output<string> ValueNormalized { get; private set; } = null!;
 
         /// <summary>
-        /// The zone ID of the record
+        /// The zone ID of the record.
         /// </summary>
         [Output("zoneId")]
         public Output<string> ZoneId { get; private set; } = null!;
 
         /// <summary>
-        /// The zone name to add the record to
+        /// The zone name to add the record to.
         /// </summary>
         [Output("zoneName")]
         public Output<string> ZoneName { get; private set; } = null!;
@@ -191,13 +183,13 @@ namespace Pulumi.DNSimple
     public sealed class ZoneRecordArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the record
+        /// The name of the record. Use `""` for the root domain.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the record - only useful for some record types
+        /// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -215,25 +207,25 @@ namespace Pulumi.DNSimple
         }
 
         /// <summary>
-        /// The TTL of the record - defaults to 3600
+        /// The TTL of the record. Defaults to `3600`.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the record
+        /// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
 
         /// <summary>
-        /// The value of the record
+        /// The value of the record.
         /// </summary>
         [Input("value", required: true)]
         public Input<string> Value { get; set; } = null!;
 
         /// <summary>
-        /// The zone name to add the record to
+        /// The zone name to add the record to.
         /// </summary>
         [Input("zoneName", required: true)]
         public Input<string> ZoneName { get; set; } = null!;
@@ -247,7 +239,7 @@ namespace Pulumi.DNSimple
     public sealed class ZoneRecordState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The name of the record
+        /// The name of the record. Use `""` for the root domain.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -256,13 +248,13 @@ namespace Pulumi.DNSimple
         public Input<string>? NameNormalized { get; set; }
 
         /// <summary>
-        /// The priority of the record - only useful for some record types
+        /// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
 
         /// <summary>
-        /// The FQDN of the record
+        /// The fully qualified domain name (FQDN) of the record.
         /// </summary>
         [Input("qualifiedName")]
         public Input<string>? QualifiedName { get; set; }
@@ -280,37 +272,37 @@ namespace Pulumi.DNSimple
         }
 
         /// <summary>
-        /// The TTL of the record - defaults to 3600
+        /// The TTL of the record. Defaults to `3600`.
         /// </summary>
         [Input("ttl")]
         public Input<int>? Ttl { get; set; }
 
         /// <summary>
-        /// The type of the record
+        /// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }
 
         /// <summary>
-        /// The value of the record
+        /// The value of the record.
         /// </summary>
         [Input("value")]
         public Input<string>? Value { get; set; }
 
         /// <summary>
-        /// The normalized value of the record
+        /// The normalized value of the record.
         /// </summary>
         [Input("valueNormalized")]
         public Input<string>? ValueNormalized { get; set; }
 
         /// <summary>
-        /// The zone ID of the record
+        /// The zone ID of the record.
         /// </summary>
         [Input("zoneId")]
         public Input<string>? ZoneId { get; set; }
 
         /// <summary>
-        /// The zone name to add the record to
+        /// The zone name to add the record to.
         /// </summary>
         [Input("zoneName")]
         public Input<string>? ZoneName { get; set; }

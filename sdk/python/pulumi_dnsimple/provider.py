@@ -20,6 +20,7 @@ __all__ = ['ProviderArgs', 'Provider']
 class ProviderArgs:
     def __init__(__self__, *,
                  account: Optional[pulumi.Input[_builtins.str]] = None,
+                 debug_transport_file: Optional[pulumi.Input[_builtins.str]] = None,
                  prefetch: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -27,6 +28,7 @@ class ProviderArgs:
         """
         The set of arguments for constructing a Provider resource.
         :param pulumi.Input[_builtins.str] account: The account for API operations.
+        :param pulumi.Input[_builtins.str] debug_transport_file: File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
         :param pulumi.Input[_builtins.bool] prefetch: Flag to enable the prefetch of zone records.
         :param pulumi.Input[_builtins.bool] sandbox: Flag to enable the sandbox API.
         :param pulumi.Input[_builtins.str] token: The API v2 token for API operations.
@@ -34,6 +36,8 @@ class ProviderArgs:
         """
         if account is not None:
             pulumi.set(__self__, "account", account)
+        if debug_transport_file is not None:
+            pulumi.set(__self__, "debug_transport_file", debug_transport_file)
         if prefetch is not None:
             pulumi.set(__self__, "prefetch", prefetch)
         if sandbox is not None:
@@ -54,6 +58,18 @@ class ProviderArgs:
     @account.setter
     def account(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "account", value)
+
+    @_builtins.property
+    @pulumi.getter(name="debugTransportFile")
+    def debug_transport_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+        """
+        return pulumi.get(self, "debug_transport_file")
+
+    @debug_transport_file.setter
+    def debug_transport_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "debug_transport_file", value)
 
     @_builtins.property
     @pulumi.getter
@@ -111,6 +127,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[_builtins.str]] = None,
+                 debug_transport_file: Optional[pulumi.Input[_builtins.str]] = None,
                  prefetch: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -125,6 +142,7 @@ class Provider(pulumi.ProviderResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] account: The account for API operations.
+        :param pulumi.Input[_builtins.str] debug_transport_file: File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
         :param pulumi.Input[_builtins.bool] prefetch: Flag to enable the prefetch of zone records.
         :param pulumi.Input[_builtins.bool] sandbox: Flag to enable the sandbox API.
         :param pulumi.Input[_builtins.str] token: The API v2 token for API operations.
@@ -158,6 +176,7 @@ class Provider(pulumi.ProviderResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account: Optional[pulumi.Input[_builtins.str]] = None,
+                 debug_transport_file: Optional[pulumi.Input[_builtins.str]] = None,
                  prefetch: Optional[pulumi.Input[_builtins.bool]] = None,
                  sandbox: Optional[pulumi.Input[_builtins.bool]] = None,
                  token: Optional[pulumi.Input[_builtins.str]] = None,
@@ -172,6 +191,7 @@ class Provider(pulumi.ProviderResource):
             __props__ = ProviderArgs.__new__(ProviderArgs)
 
             __props__.__dict__["account"] = account
+            __props__.__dict__["debug_transport_file"] = debug_transport_file
             __props__.__dict__["prefetch"] = pulumi.Output.from_input(prefetch).apply(pulumi.runtime.to_json) if prefetch is not None else None
             __props__.__dict__["sandbox"] = pulumi.Output.from_input(sandbox).apply(pulumi.runtime.to_json) if sandbox is not None else None
             __props__.__dict__["token"] = None if token is None else pulumi.Output.secret(token)
@@ -191,6 +211,14 @@ class Provider(pulumi.ProviderResource):
         The account for API operations.
         """
         return pulumi.get(self, "account")
+
+    @_builtins.property
+    @pulumi.getter(name="debugTransportFile")
+    def debug_transport_file(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+        """
+        return pulumi.get(self, "debug_transport_file")
 
     @_builtins.property
     @pulumi.getter

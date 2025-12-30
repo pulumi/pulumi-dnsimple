@@ -16,7 +16,9 @@ namespace Pulumi.DNSimple
         /// 
         /// &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
         /// 
-        /// Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+        /// ## Example Usage
+        /// 
+        /// Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -28,26 +30,12 @@ namespace Pulumi.DNSimple
         /// {
         ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
         ///     {
-        ///         DomainId = "dnsimple.com",
+        ///         DomainId = "example.com",
         ///         ContactId = "1234",
         ///     });
         /// 
         /// });
         /// ```
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `DomainId` - (Required) The name or ID of the domain.
-        /// * `ContactId` - (Required) The ID of the contact you are planning to change to.
-        /// 
-        /// The following additional attributes are exported:
-        /// 
-        /// * `ContactId` - The ID of the contact you are planning to change to.
-        /// * `DomainId` - The name or ID of the domain.
-        /// * `ExtendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-        /// * `RegistryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-        /// 
-        /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
         /// </summary>
         public static Task<GetRegistrantChangeCheckResult> InvokeAsync(GetRegistrantChangeCheckArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRegistrantChangeCheckResult>("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args ?? new GetRegistrantChangeCheckArgs(), options.WithDefaults());
@@ -57,7 +45,9 @@ namespace Pulumi.DNSimple
         /// 
         /// &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
         /// 
-        /// Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+        /// ## Example Usage
+        /// 
+        /// Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -69,26 +59,12 @@ namespace Pulumi.DNSimple
         /// {
         ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
         ///     {
-        ///         DomainId = "dnsimple.com",
+        ///         DomainId = "example.com",
         ///         ContactId = "1234",
         ///     });
         /// 
         /// });
         /// ```
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `DomainId` - (Required) The name or ID of the domain.
-        /// * `ContactId` - (Required) The ID of the contact you are planning to change to.
-        /// 
-        /// The following additional attributes are exported:
-        /// 
-        /// * `ContactId` - The ID of the contact you are planning to change to.
-        /// * `DomainId` - The name or ID of the domain.
-        /// * `ExtendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-        /// * `RegistryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-        /// 
-        /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
         /// </summary>
         public static Output<GetRegistrantChangeCheckResult> Invoke(GetRegistrantChangeCheckInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistrantChangeCheckResult>("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args ?? new GetRegistrantChangeCheckInvokeArgs(), options.WithDefaults());
@@ -98,7 +74,9 @@ namespace Pulumi.DNSimple
         /// 
         /// &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
         /// 
-        /// Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+        /// ## Example Usage
+        /// 
+        /// Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
         /// 
         /// ```csharp
         /// using System.Collections.Generic;
@@ -110,26 +88,12 @@ namespace Pulumi.DNSimple
         /// {
         ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
         ///     {
-        ///         DomainId = "dnsimple.com",
+        ///         DomainId = "example.com",
         ///         ContactId = "1234",
         ///     });
         /// 
         /// });
         /// ```
-        /// 
-        /// The following arguments are supported:
-        /// 
-        /// * `DomainId` - (Required) The name or ID of the domain.
-        /// * `ContactId` - (Required) The ID of the contact you are planning to change to.
-        /// 
-        /// The following additional attributes are exported:
-        /// 
-        /// * `ContactId` - The ID of the contact you are planning to change to.
-        /// * `DomainId` - The name or ID of the domain.
-        /// * `ExtendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-        /// * `RegistryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-        /// 
-        /// &lt;a id="nestedblock--extended_attributes"&gt;&lt;/a&gt;
         /// </summary>
         public static Output<GetRegistrantChangeCheckResult> Invoke(GetRegistrantChangeCheckInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistrantChangeCheckResult>("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args ?? new GetRegistrantChangeCheckInvokeArgs(), options.WithDefaults());
@@ -138,9 +102,15 @@ namespace Pulumi.DNSimple
 
     public sealed class GetRegistrantChangeCheckArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the contact you are planning to change to.
+        /// </summary>
         [Input("contactId", required: true)]
         public string ContactId { get; set; } = null!;
 
+        /// <summary>
+        /// The name or ID of the domain.
+        /// </summary>
         [Input("domainId", required: true)]
         public string DomainId { get; set; } = null!;
 
@@ -152,9 +122,15 @@ namespace Pulumi.DNSimple
 
     public sealed class GetRegistrantChangeCheckInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the contact you are planning to change to.
+        /// </summary>
         [Input("contactId", required: true)]
         public Input<string> ContactId { get; set; } = null!;
 
+        /// <summary>
+        /// The name or ID of the domain.
+        /// </summary>
         [Input("domainId", required: true)]
         public Input<string> DomainId { get; set; } = null!;
 
@@ -168,10 +144,22 @@ namespace Pulumi.DNSimple
     [OutputType]
     public sealed class GetRegistrantChangeCheckResult
     {
+        /// <summary>
+        /// The ID of the contact you are planning to change to.
+        /// </summary>
         public readonly string ContactId;
+        /// <summary>
+        /// The name or ID of the domain.
+        /// </summary>
         public readonly string DomainId;
+        /// <summary>
+        /// (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegistrantChangeCheckExtendedAttributeResult> ExtendedAttributes;
         public readonly string Id;
+        /// <summary>
+        /// (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+        /// </summary>
         public readonly bool RegistryOwnerChange;
 
         [OutputConstructor]

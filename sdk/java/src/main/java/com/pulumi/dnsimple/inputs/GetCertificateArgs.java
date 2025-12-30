@@ -19,14 +19,14 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
     public static final GetCertificateArgs Empty = new GetCertificateArgs();
 
     /**
-     * The ID of the SSL Certificate
+     * The ID of the SSL certificate.
      * 
      */
     @Import(name="certificateId", required=true)
     private Output<Integer> certificateId;
 
     /**
-     * @return The ID of the SSL Certificate
+     * @return The ID of the SSL certificate.
      * 
      */
     public Output<Integer> certificateId() {
@@ -34,23 +34,31 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
-     * The domain of the SSL Certificate
+     * The domain name of the SSL certificate.
      * 
      */
     @Import(name="domain", required=true)
     private Output<String> domain;
 
     /**
-     * @return The domain of the SSL Certificate
+     * @return The domain name of the SSL certificate.
      * 
      */
     public Output<String> domain() {
         return this.domain;
     }
 
+    /**
+     * (see below for nested schema)
+     * 
+     */
     @Import(name="timeouts")
     private @Nullable Output<GetCertificateTimeoutsArgs> timeouts;
 
+    /**
+     * @return (see below for nested schema)
+     * 
+     */
     public Optional<Output<GetCertificateTimeoutsArgs>> timeouts() {
         return Optional.ofNullable(this.timeouts);
     }
@@ -82,7 +90,7 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param certificateId The ID of the SSL Certificate
+         * @param certificateId The ID of the SSL certificate.
          * 
          * @return builder
          * 
@@ -93,7 +101,7 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param certificateId The ID of the SSL Certificate
+         * @param certificateId The ID of the SSL certificate.
          * 
          * @return builder
          * 
@@ -103,7 +111,7 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domain The domain of the SSL Certificate
+         * @param domain The domain name of the SSL certificate.
          * 
          * @return builder
          * 
@@ -114,7 +122,7 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         /**
-         * @param domain The domain of the SSL Certificate
+         * @param domain The domain name of the SSL certificate.
          * 
          * @return builder
          * 
@@ -123,11 +131,23 @@ public final class GetCertificateArgs extends com.pulumi.resources.InvokeArgs {
             return domain(Output.of(domain));
         }
 
+        /**
+         * @param timeouts (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeouts(@Nullable Output<GetCertificateTimeoutsArgs> timeouts) {
             $.timeouts = timeouts;
             return this;
         }
 
+        /**
+         * @param timeouts (see below for nested schema)
+         * 
+         * @return builder
+         * 
+         */
         public Builder timeouts(GetCertificateTimeoutsArgs timeouts) {
             return timeouts(Output.of(timeouts));
         }

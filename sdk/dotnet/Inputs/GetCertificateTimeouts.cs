@@ -13,7 +13,7 @@ namespace Pulumi.DNSimple.Inputs
     public sealed class GetCertificateTimeoutsArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// (String) - The timeout for the read operation e.g. `5m`
+        /// (String) - The timeout for the read operation, e.g., `5m`.
         /// </summary>
         [Input("read")]
         public string? Read { get; set; }

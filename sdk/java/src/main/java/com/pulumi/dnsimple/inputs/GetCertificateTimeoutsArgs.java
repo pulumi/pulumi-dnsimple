@@ -16,14 +16,14 @@ public final class GetCertificateTimeoutsArgs extends com.pulumi.resources.Resou
     public static final GetCertificateTimeoutsArgs Empty = new GetCertificateTimeoutsArgs();
 
     /**
-     * (String) - The timeout for the read operation e.g. `5m`
+     * (String) - The timeout for the read operation, e.g., `5m`.
      * 
      */
     @Import(name="read")
     private @Nullable Output<String> read;
 
     /**
-     * @return (String) - The timeout for the read operation e.g. `5m`
+     * @return (String) - The timeout for the read operation, e.g., `5m`.
      * 
      */
     public Optional<Output<String>> read() {
@@ -55,7 +55,7 @@ public final class GetCertificateTimeoutsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param read (String) - The timeout for the read operation e.g. `5m`
+         * @param read (String) - The timeout for the read operation, e.g., `5m`.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class GetCertificateTimeoutsArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param read (String) - The timeout for the read operation e.g. `5m`
+         * @param read (String) - The timeout for the read operation, e.g., `5m`.
          * 
          * @return builder
          * 

@@ -1,5 +1,5 @@
 provider: dnsimple
-major-version: 4
+major-version: 5
 upstreamProviderOrg: dnsimple
 esc:
     enabled: true

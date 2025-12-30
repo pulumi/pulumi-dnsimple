@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,15 +21,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.NewDsRecord(ctx, "foobar", &dnsimple.DsRecordArgs{
-//				Domain:     pulumi.Any(dnsimple.Domain),
+//			_, err := dnsimple.NewDsRecord(ctx, "example", &dnsimple.DsRecordArgs{
+//				Domain:     pulumi.String("example.com"),
 //				Algorithm:  pulumi.String("8"),
 //				Digest:     pulumi.String("6CEEA0117A02480216EBF745A7B690F938860074E4AD11AF2AC573007205682B"),
 //				DigestType: pulumi.String("2"),
@@ -46,81 +46,32 @@ import (
 //
 // ## Import
 //
-// DNSimple DS record resources can be imported using their domain ID and numeric record ID.
+// DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/dsRecord:DsRecord resource_name example.com_5678
+// $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
 // ```
 //
-// The record ID can be found within [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-//
-// bash
-//
-// curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1010/domains/example.com/ds_records | jq
-//
-// {
-//
-//	"data": [
-//
-//	  {
-//
-//	    "id": 24,
-//
-//	    "domain_id": 1010,
-//
-//	    "algorithm": "8",
-//
-//	    "digest": "C1F6E04A5A61FBF65BF9DC8294C363CF11C89E802D926BDAB79C55D27BEFA94F",
-//
-//	    "digest_type": "2",
-//
-//	    "keytag": "44620",
-//
-//	    "public_key": null,
-//
-//	    "created_at": "2017-03-03T13:49:58Z",
-//
-//	    "updated_at": "2017-03-03T13:49:58Z"
-//
-//	  }
-//
-//	],
-//
-//	"pagination": {
-//
-//	  "current_page": 1,
-//
-//	  "per_page": 30,
-//
-//	  "total_entries": 1,
-//
-//	  "total_pages": 1
-//
-//	}
-//
-// }
+// The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 type DsRecord struct {
 	pulumi.CustomResourceState
 
 	// DNSSEC algorithm number as a string.
 	Algorithm pulumi.StringOutput `pulumi:"algorithm"`
-	// The time the DS record was created at.
+	// The timestamp when the DS record was created.
 	CreatedAt pulumi.StringOutput `pulumi:"createdAt"`
-	// The hexidecimal representation of the digest of the corresponding DNSKEY record.
+	// The hexadecimal representation of the digest of the corresponding DNSKEY record.
 	Digest pulumi.StringPtrOutput `pulumi:"digest"`
 	// DNSSEC digest type number as a string.
 	DigestType pulumi.StringPtrOutput `pulumi:"digestType"`
 	// The domain name or numeric ID to create the delegation signer record for.
-	Domain pulumi.StringOutput `pulumi:"domain"`
-	// A keytag that references the corresponding DNSKEY record.
+	Domain pulumi.StringOutput    `pulumi:"domain"`
 	Keytag pulumi.StringPtrOutput `pulumi:"keytag"`
 	// A public key that references the corresponding DNSKEY record.
-	//
-	// # Attributes Reference
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
-	// The time the DS record was last updated at.
+	// The timestamp when the DS record was last updated.
 	UpdatedAt pulumi.StringOutput `pulumi:"updatedAt"`
 }
 
@@ -162,42 +113,36 @@ func GetDsRecord(ctx *pulumi.Context,
 type dsRecordState struct {
 	// DNSSEC algorithm number as a string.
 	Algorithm *string `pulumi:"algorithm"`
-	// The time the DS record was created at.
+	// The timestamp when the DS record was created.
 	CreatedAt *string `pulumi:"createdAt"`
-	// The hexidecimal representation of the digest of the corresponding DNSKEY record.
+	// The hexadecimal representation of the digest of the corresponding DNSKEY record.
 	Digest *string `pulumi:"digest"`
 	// DNSSEC digest type number as a string.
 	DigestType *string `pulumi:"digestType"`
 	// The domain name or numeric ID to create the delegation signer record for.
 	Domain *string `pulumi:"domain"`
-	// A keytag that references the corresponding DNSKEY record.
 	Keytag *string `pulumi:"keytag"`
 	// A public key that references the corresponding DNSKEY record.
-	//
-	// # Attributes Reference
 	PublicKey *string `pulumi:"publicKey"`
-	// The time the DS record was last updated at.
+	// The timestamp when the DS record was last updated.
 	UpdatedAt *string `pulumi:"updatedAt"`
 }
 
 type DsRecordState struct {
 	// DNSSEC algorithm number as a string.
 	Algorithm pulumi.StringPtrInput
-	// The time the DS record was created at.
+	// The timestamp when the DS record was created.
 	CreatedAt pulumi.StringPtrInput
-	// The hexidecimal representation of the digest of the corresponding DNSKEY record.
+	// The hexadecimal representation of the digest of the corresponding DNSKEY record.
 	Digest pulumi.StringPtrInput
 	// DNSSEC digest type number as a string.
 	DigestType pulumi.StringPtrInput
 	// The domain name or numeric ID to create the delegation signer record for.
 	Domain pulumi.StringPtrInput
-	// A keytag that references the corresponding DNSKEY record.
 	Keytag pulumi.StringPtrInput
 	// A public key that references the corresponding DNSKEY record.
-	//
-	// # Attributes Reference
 	PublicKey pulumi.StringPtrInput
-	// The time the DS record was last updated at.
+	// The timestamp when the DS record was last updated.
 	UpdatedAt pulumi.StringPtrInput
 }
 
@@ -208,17 +153,14 @@ func (DsRecordState) ElementType() reflect.Type {
 type dsRecordArgs struct {
 	// DNSSEC algorithm number as a string.
 	Algorithm string `pulumi:"algorithm"`
-	// The hexidecimal representation of the digest of the corresponding DNSKEY record.
+	// The hexadecimal representation of the digest of the corresponding DNSKEY record.
 	Digest *string `pulumi:"digest"`
 	// DNSSEC digest type number as a string.
 	DigestType *string `pulumi:"digestType"`
 	// The domain name or numeric ID to create the delegation signer record for.
-	Domain string `pulumi:"domain"`
-	// A keytag that references the corresponding DNSKEY record.
+	Domain string  `pulumi:"domain"`
 	Keytag *string `pulumi:"keytag"`
 	// A public key that references the corresponding DNSKEY record.
-	//
-	// # Attributes Reference
 	PublicKey *string `pulumi:"publicKey"`
 }
 
@@ -226,17 +168,14 @@ type dsRecordArgs struct {
 type DsRecordArgs struct {
 	// DNSSEC algorithm number as a string.
 	Algorithm pulumi.StringInput
-	// The hexidecimal representation of the digest of the corresponding DNSKEY record.
+	// The hexadecimal representation of the digest of the corresponding DNSKEY record.
 	Digest pulumi.StringPtrInput
 	// DNSSEC digest type number as a string.
 	DigestType pulumi.StringPtrInput
 	// The domain name or numeric ID to create the delegation signer record for.
 	Domain pulumi.StringInput
-	// A keytag that references the corresponding DNSKEY record.
 	Keytag pulumi.StringPtrInput
 	// A public key that references the corresponding DNSKEY record.
-	//
-	// # Attributes Reference
 	PublicKey pulumi.StringPtrInput
 }
 
@@ -332,12 +271,12 @@ func (o DsRecordOutput) Algorithm() pulumi.StringOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringOutput { return v.Algorithm }).(pulumi.StringOutput)
 }
 
-// The time the DS record was created at.
+// The timestamp when the DS record was created.
 func (o DsRecordOutput) CreatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringOutput { return v.CreatedAt }).(pulumi.StringOutput)
 }
 
-// The hexidecimal representation of the digest of the corresponding DNSKEY record.
+// The hexadecimal representation of the digest of the corresponding DNSKEY record.
 func (o DsRecordOutput) Digest() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringPtrOutput { return v.Digest }).(pulumi.StringPtrOutput)
 }
@@ -352,19 +291,16 @@ func (o DsRecordOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// A keytag that references the corresponding DNSKEY record.
 func (o DsRecordOutput) Keytag() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringPtrOutput { return v.Keytag }).(pulumi.StringPtrOutput)
 }
 
 // A public key that references the corresponding DNSKEY record.
-//
-// # Attributes Reference
 func (o DsRecordOutput) PublicKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringPtrOutput { return v.PublicKey }).(pulumi.StringPtrOutput)
 }
 
-// The time the DS record was last updated at.
+// The timestamp when the DS record was last updated.
 func (o DsRecordOutput) UpdatedAt() pulumi.StringOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringOutput { return v.UpdatedAt }).(pulumi.StringOutput)
 }

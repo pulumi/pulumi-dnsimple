@@ -28,13 +28,13 @@ class ZoneRecordArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
-        :param pulumi.Input[_builtins.str] name: The name of the record
-        :param pulumi.Input[_builtins.str] type: The type of the record
-        :param pulumi.Input[_builtins.str] value: The value of the record
-        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to
-        :param pulumi.Input[_builtins.int] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
+        :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
+        :param pulumi.Input[_builtins.str] value: The value of the record.
+        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to.
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record - defaults to 3600
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
         """
         pulumi.set(__self__, "name", name)
         pulumi.set(__self__, "type", type)
@@ -51,7 +51,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The name of the record
+        The name of the record. Use `""` for the root domain.
         """
         return pulumi.get(self, "name")
 
@@ -63,7 +63,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[_builtins.str]:
         """
-        The type of the record
+        The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         """
         return pulumi.get(self, "type")
 
@@ -75,7 +75,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def value(self) -> pulumi.Input[_builtins.str]:
         """
-        The value of the record
+        The value of the record.
         """
         return pulumi.get(self, "value")
 
@@ -87,7 +87,7 @@ class ZoneRecordArgs:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Input[_builtins.str]:
         """
-        The zone name to add the record to
+        The zone name to add the record to.
         """
         return pulumi.get(self, "zone_name")
 
@@ -99,7 +99,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The priority of the record - only useful for some record types
+        The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         """
         return pulumi.get(self, "priority")
 
@@ -123,7 +123,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The TTL of the record - defaults to 3600
+        The TTL of the record. Defaults to `3600`.
         """
         return pulumi.get(self, "ttl")
 
@@ -148,16 +148,16 @@ class _ZoneRecordState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneRecord resources.
-        :param pulumi.Input[_builtins.str] name: The name of the record
-        :param pulumi.Input[_builtins.int] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[_builtins.str] qualified_name: The FQDN of the record
+        :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        :param pulumi.Input[_builtins.str] qualified_name: The fully qualified domain name (FQDN) of the record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record - defaults to 3600
-        :param pulumi.Input[_builtins.str] type: The type of the record
-        :param pulumi.Input[_builtins.str] value: The value of the record
-        :param pulumi.Input[_builtins.str] value_normalized: The normalized value of the record
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the record
-        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
+        :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
+        :param pulumi.Input[_builtins.str] value: The value of the record.
+        :param pulumi.Input[_builtins.str] value_normalized: The normalized value of the record.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the record.
+        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to.
         """
         if name is not None:
             pulumi.set(__self__, "name", name)
@@ -186,7 +186,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The name of the record
+        The name of the record. Use `""` for the root domain.
         """
         return pulumi.get(self, "name")
 
@@ -207,7 +207,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def priority(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The priority of the record - only useful for some record types
+        The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         """
         return pulumi.get(self, "priority")
 
@@ -219,7 +219,7 @@ class _ZoneRecordState:
     @pulumi.getter(name="qualifiedName")
     def qualified_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The FQDN of the record
+        The fully qualified domain name (FQDN) of the record.
         """
         return pulumi.get(self, "qualified_name")
 
@@ -243,7 +243,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def ttl(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The TTL of the record - defaults to 3600
+        The TTL of the record. Defaults to `3600`.
         """
         return pulumi.get(self, "ttl")
 
@@ -255,7 +255,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The type of the record
+        The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         """
         return pulumi.get(self, "type")
 
@@ -267,7 +267,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def value(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The value of the record
+        The value of the record.
         """
         return pulumi.get(self, "value")
 
@@ -279,7 +279,7 @@ class _ZoneRecordState:
     @pulumi.getter(name="valueNormalized")
     def value_normalized(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The normalized value of the record
+        The normalized value of the record.
         """
         return pulumi.get(self, "value_normalized")
 
@@ -291,7 +291,7 @@ class _ZoneRecordState:
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The zone ID of the record
+        The zone ID of the record.
         """
         return pulumi.get(self, "zone_id")
 
@@ -303,7 +303,7 @@ class _ZoneRecordState:
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The zone name to add the record to
+        The zone name to add the record to.
         """
         return pulumi.get(self, "zone_name")
 
@@ -336,58 +336,52 @@ class ZoneRecord(pulumi.CustomResource):
         import pulumi_dnsimple as dnsimple
 
         # Add a record to the root domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            zone_name=dnsimple_domain,
+        apex = dnsimple.ZoneRecord("apex",
+            zone_name="example.com",
             name="",
-            value="192.168.0.11",
+            value="192.0.2.1",
             type="A",
             ttl=3600)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add a record to a sub-domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            zone_name=dnsimple_domain,
-            name="terraform",
-            value="192.168.0.11",
+        # Add a record to a subdomain
+        www = dnsimple.ZoneRecord("www",
+            zone_name="example.com",
+            name="www",
+            value="192.0.2.1",
             type="A",
+            ttl=3600)
+        # Add an MX record
+        mx = dnsimple.ZoneRecord("mx",
+            zone_name="example.com",
+            name="",
+            value="mail.example.com",
+            type="MX",
+            priority=10,
             ttl=3600)
         ```
 
         ## Import
 
-        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+        DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
 
-        **Importing record example.com with record ID 1234**
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-        ```
-
-        **Importing record www.example.com with record ID 1234**
+        **Importing record for example.com with record ID 1234:**
 
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
         ```
 
-        The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+        The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the record
-        :param pulumi.Input[_builtins.int] priority: The priority of the record - only useful for some record types
+        :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record - defaults to 3600
-        :param pulumi.Input[_builtins.str] type: The type of the record
-        :param pulumi.Input[_builtins.str] value: The value of the record
-        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
+        :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
+        :param pulumi.Input[_builtins.str] value: The value of the record.
+        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to.
         """
         ...
     @overload
@@ -405,48 +399,42 @@ class ZoneRecord(pulumi.CustomResource):
         import pulumi_dnsimple as dnsimple
 
         # Add a record to the root domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            zone_name=dnsimple_domain,
+        apex = dnsimple.ZoneRecord("apex",
+            zone_name="example.com",
             name="",
-            value="192.168.0.11",
+            value="192.0.2.1",
             type="A",
             ttl=3600)
-        ```
-
-        ```python
-        import pulumi
-        import pulumi_dnsimple as dnsimple
-
-        # Add a record to a sub-domain
-        foobar = dnsimple.ZoneRecord("foobar",
-            zone_name=dnsimple_domain,
-            name="terraform",
-            value="192.168.0.11",
+        # Add a record to a subdomain
+        www = dnsimple.ZoneRecord("www",
+            zone_name="example.com",
+            name="www",
+            value="192.0.2.1",
             type="A",
+            ttl=3600)
+        # Add an MX record
+        mx = dnsimple.ZoneRecord("mx",
+            zone_name="example.com",
+            name="",
+            value="mail.example.com",
+            type="MX",
+            priority=10,
             ttl=3600)
         ```
 
         ## Import
 
-        DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+        DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
 
-        **Importing record example.com with record ID 1234**
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-        ```
-
-        **Importing record www.example.com with record ID 1234**
+        **Importing record for example.com with record ID 1234:**
 
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
         ```
 
-        The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+        The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
 
         :param str resource_name: The name of the resource.
         :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.
@@ -526,16 +514,16 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] name: The name of the record
-        :param pulumi.Input[_builtins.int] priority: The priority of the record - only useful for some record types
-        :param pulumi.Input[_builtins.str] qualified_name: The FQDN of the record
+        :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        :param pulumi.Input[_builtins.str] qualified_name: The fully qualified domain name (FQDN) of the record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
-        :param pulumi.Input[_builtins.int] ttl: The TTL of the record - defaults to 3600
-        :param pulumi.Input[_builtins.str] type: The type of the record
-        :param pulumi.Input[_builtins.str] value: The value of the record
-        :param pulumi.Input[_builtins.str] value_normalized: The normalized value of the record
-        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the record
-        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to
+        :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
+        :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
+        :param pulumi.Input[_builtins.str] value: The value of the record.
+        :param pulumi.Input[_builtins.str] value_normalized: The normalized value of the record.
+        :param pulumi.Input[_builtins.str] zone_id: The zone ID of the record.
+        :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -558,7 +546,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The name of the record
+        The name of the record. Use `""` for the root domain.
         """
         return pulumi.get(self, "name")
 
@@ -571,7 +559,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[_builtins.int]:
         """
-        The priority of the record - only useful for some record types
+        The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         """
         return pulumi.get(self, "priority")
 
@@ -579,7 +567,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter(name="qualifiedName")
     def qualified_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The FQDN of the record
+        The fully qualified domain name (FQDN) of the record.
         """
         return pulumi.get(self, "qualified_name")
 
@@ -595,7 +583,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def ttl(self) -> pulumi.Output[_builtins.int]:
         """
-        The TTL of the record - defaults to 3600
+        The TTL of the record. Defaults to `3600`.
         """
         return pulumi.get(self, "ttl")
 
@@ -603,7 +591,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[_builtins.str]:
         """
-        The type of the record
+        The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         """
         return pulumi.get(self, "type")
 
@@ -611,7 +599,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def value(self) -> pulumi.Output[_builtins.str]:
         """
-        The value of the record
+        The value of the record.
         """
         return pulumi.get(self, "value")
 
@@ -619,7 +607,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter(name="valueNormalized")
     def value_normalized(self) -> pulumi.Output[_builtins.str]:
         """
-        The normalized value of the record
+        The normalized value of the record.
         """
         return pulumi.get(self, "value_normalized")
 
@@ -627,7 +615,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter(name="zoneId")
     def zone_id(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone ID of the record
+        The zone ID of the record.
         """
         return pulumi.get(self, "zone_id")
 
@@ -635,7 +623,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter(name="zoneName")
     def zone_name(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone name to add the record to
+        The zone name to add the record to.
         """
         return pulumi.get(self, "zone_name")
 

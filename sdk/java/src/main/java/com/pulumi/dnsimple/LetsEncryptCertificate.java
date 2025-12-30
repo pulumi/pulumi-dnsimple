@@ -44,10 +44,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var foobar = new LetsEncryptCertificate("foobar", LetsEncryptCertificateArgs.builder()
- *             .domainId(dnsimple.domainId())
- *             .autoRenew(false)
+ *         var example = new LetsEncryptCertificate("example", LetsEncryptCertificateArgs.builder()
+ *             .domainId("example.com")
  *             .name("www")
+ *             .autoRenew(true)
  *             .alternateNames(            
  *                 "docs.example.com",
  *                 "status.example.com")
@@ -58,102 +58,114 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ## Import
+ * 
+ * DNSimple Let&#39;s Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
+ * 
+ * bash
+ * 
+ * ```sh
+ * $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+ * ```
+ * 
+ * The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
+ * 
  */
 @ResourceType(type="dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate")
 public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource {
     /**
-     * The certificate alternate names
+     * List of alternate names (SANs) for the certificate.
      * 
      */
     @Export(name="alternateNames", refs={List.class,String.class}, tree="[0,1]")
     private Output</* @Nullable */ List<String>> alternateNames;
 
     /**
-     * @return The certificate alternate names
+     * @return List of alternate names (SANs) for the certificate.
      * 
      */
     public Output<Optional<List<String>>> alternateNames() {
         return Codegen.optional(this.alternateNames);
     }
     /**
-     * The identifying certification authority (CA)
+     * The identifying certification authority (CA).
      * 
      */
     @Export(name="authorityIdentifier", refs={String.class}, tree="[0]")
     private Output<String> authorityIdentifier;
 
     /**
-     * @return The identifying certification authority (CA)
+     * @return The identifying certification authority (CA).
      * 
      */
     public Output<String> authorityIdentifier() {
         return this.authorityIdentifier;
     }
     /**
-     * True if the certificate should auto-renew
+     * Whether the certificate should auto-renew.
      * 
      */
     @Export(name="autoRenew", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenew;
 
     /**
-     * @return True if the certificate should auto-renew
+     * @return Whether the certificate should auto-renew.
      * 
      */
     public Output<Boolean> autoRenew() {
         return this.autoRenew;
     }
     /**
-     * The datetime the certificate was created
+     * The datetime when the certificate was created.
      * 
      */
     @Export(name="createdAt", refs={String.class}, tree="[0]")
     private Output<String> createdAt;
 
     /**
-     * @return The datetime the certificate was created
+     * @return The datetime when the certificate was created.
      * 
      */
     public Output<String> createdAt() {
         return this.createdAt;
     }
     /**
-     * The certificate signing request
+     * The certificate signing request.
      * 
      */
     @Export(name="csr", refs={String.class}, tree="[0]")
     private Output<String> csr;
 
     /**
-     * @return The certificate signing request
+     * @return The certificate signing request.
      * 
      */
     public Output<String> csr() {
         return this.csr;
     }
     /**
-     * The domain to be issued the certificate for
+     * The domain name or ID to issue the certificate for.
      * 
      */
     @Export(name="domainId", refs={String.class}, tree="[0]")
     private Output<String> domainId;
 
     /**
-     * @return The domain to be issued the certificate for
+     * @return The domain name or ID to issue the certificate for.
      * 
      */
     public Output<String> domainId() {
         return this.domainId;
     }
     /**
-     * The datetime the certificate will expire
+     * The datetime when the certificate will expire.
      * 
      */
     @Export(name="expiresAt", refs={String.class}, tree="[0]")
     private Output<String> expiresAt;
 
     /**
-     * @return The datetime the certificate will expire
+     * @return The datetime when the certificate will expire.
      * 
      */
     public Output<String> expiresAt() {
@@ -174,56 +186,56 @@ public class LetsEncryptCertificate extends com.pulumi.resources.CustomResource 
         return this.name;
     }
     /**
-     * The signature algorithm to use for the certificate
+     * The signature algorithm to use for the certificate.
      * 
      */
     @Export(name="signatureAlgorithm", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> signatureAlgorithm;
 
     /**
-     * @return The signature algorithm to use for the certificate
+     * @return The signature algorithm to use for the certificate.
      * 
      */
     public Output<Optional<String>> signatureAlgorithm() {
         return Codegen.optional(this.signatureAlgorithm);
     }
     /**
-     * The state of the certificate
+     * The state of the certificate.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The state of the certificate
+     * @return The state of the certificate.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * The datetime the certificate was last updated
+     * The datetime when the certificate was last updated.
      * 
      */
     @Export(name="updatedAt", refs={String.class}, tree="[0]")
     private Output<String> updatedAt;
 
     /**
-     * @return The datetime the certificate was last updated
+     * @return The datetime when the certificate was last updated.
      * 
      */
     public Output<String> updatedAt() {
         return this.updatedAt;
     }
     /**
-     * The years the certificate will last
+     * The number of years the certificate will last.
      * 
      */
     @Export(name="years", refs={Integer.class}, tree="[0]")
     private Output<Integer> years;
 
     /**
-     * @return The years the certificate will last
+     * @return The number of years the certificate will last.
      * 
      */
     public Output<Integer> years() {

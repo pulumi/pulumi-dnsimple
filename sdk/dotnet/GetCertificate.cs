@@ -12,7 +12,7 @@ namespace Pulumi.DNSimple
     public static class GetCertificate
     {
         /// <summary>
-        /// Provides a DNSimple certificate data source.
+        /// Get information about a DNSimple SSL certificate.
         /// 
         /// ## Example Usage
         /// 
@@ -24,10 +24,10 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foobar = DNSimple.GetCertificate.Invoke(new()
+        ///     var example = DNSimple.GetCertificate.Invoke(new()
         ///     {
-        ///         Domain = dnsimpleDomain,
-        ///         CertificateId = dnsimpleCertificateId,
+        ///         Domain = "example.com",
+        ///         CertificateId = 1234,
         ///     });
         /// 
         /// });
@@ -37,7 +37,7 @@ namespace Pulumi.DNSimple
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetCertificateResult>("dnsimple:index/getCertificate:getCertificate", args ?? new GetCertificateArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a DNSimple certificate data source.
+        /// Get information about a DNSimple SSL certificate.
         /// 
         /// ## Example Usage
         /// 
@@ -49,10 +49,10 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foobar = DNSimple.GetCertificate.Invoke(new()
+        ///     var example = DNSimple.GetCertificate.Invoke(new()
         ///     {
-        ///         Domain = dnsimpleDomain,
-        ///         CertificateId = dnsimpleCertificateId,
+        ///         Domain = "example.com",
+        ///         CertificateId = 1234,
         ///     });
         /// 
         /// });
@@ -62,7 +62,7 @@ namespace Pulumi.DNSimple
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateResult>("dnsimple:index/getCertificate:getCertificate", args ?? new GetCertificateInvokeArgs(), options.WithDefaults());
 
         /// <summary>
-        /// Provides a DNSimple certificate data source.
+        /// Get information about a DNSimple SSL certificate.
         /// 
         /// ## Example Usage
         /// 
@@ -74,10 +74,10 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var foobar = DNSimple.GetCertificate.Invoke(new()
+        ///     var example = DNSimple.GetCertificate.Invoke(new()
         ///     {
-        ///         Domain = dnsimpleDomain,
-        ///         CertificateId = dnsimpleCertificateId,
+        ///         Domain = "example.com",
+        ///         CertificateId = 1234,
         ///     });
         /// 
         /// });
@@ -91,17 +91,20 @@ namespace Pulumi.DNSimple
     public sealed class GetCertificateArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the SSL Certificate
+        /// The ID of the SSL certificate.
         /// </summary>
         [Input("certificateId", required: true)]
         public int CertificateId { get; set; }
 
         /// <summary>
-        /// The domain of the SSL Certificate
+        /// The domain name of the SSL certificate.
         /// </summary>
         [Input("domain", required: true)]
         public string Domain { get; set; } = null!;
 
+        /// <summary>
+        /// (see below for nested schema)
+        /// </summary>
         [Input("timeouts")]
         public Inputs.GetCertificateTimeoutsArgs? Timeouts { get; set; }
 
@@ -114,17 +117,20 @@ namespace Pulumi.DNSimple
     public sealed class GetCertificateInvokeArgs : global::Pulumi.InvokeArgs
     {
         /// <summary>
-        /// The ID of the SSL Certificate
+        /// The ID of the SSL certificate.
         /// </summary>
         [Input("certificateId", required: true)]
         public Input<int> CertificateId { get; set; } = null!;
 
         /// <summary>
-        /// The domain of the SSL Certificate
+        /// The domain name of the SSL certificate.
         /// </summary>
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
+        /// <summary>
+        /// (see below for nested schema)
+        /// </summary>
         [Input("timeouts")]
         public Input<Inputs.GetCertificateTimeoutsInputArgs>? Timeouts { get; set; }
 
@@ -139,22 +145,25 @@ namespace Pulumi.DNSimple
     public sealed class GetCertificateResult
     {
         /// <summary>
-        /// A list of certificates that make up the chain
+        /// A list of certificates that make up the certificate chain.
         /// </summary>
         public readonly ImmutableArray<string> CertificateChains;
         public readonly int CertificateId;
         public readonly string Domain;
+        /// <summary>
+        /// The certificate ID.
+        /// </summary>
         public readonly string Id;
         /// <summary>
-        /// The corresponding Private Key for the SSL Certificate
+        /// The corresponding private key for the SSL certificate.
         /// </summary>
         public readonly string PrivateKey;
         /// <summary>
-        /// The Root Certificate of the issuing CA
+        /// The root certificate of the issuing CA.
         /// </summary>
         public readonly string RootCertificate;
         /// <summary>
-        /// The SSL Certificate
+        /// The SSL certificate.
         /// </summary>
         public readonly string ServerCertificate;
         public readonly Outputs.GetCertificateTimeoutsResult? Timeouts;

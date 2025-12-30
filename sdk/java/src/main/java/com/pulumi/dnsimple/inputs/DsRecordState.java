@@ -31,14 +31,14 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The time the DS record was created at.
+     * The timestamp when the DS record was created.
      * 
      */
     @Import(name="createdAt")
     private @Nullable Output<String> createdAt;
 
     /**
-     * @return The time the DS record was created at.
+     * @return The timestamp when the DS record was created.
      * 
      */
     public Optional<Output<String>> createdAt() {
@@ -46,14 +46,14 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The hexidecimal representation of the digest of the corresponding DNSKEY record.
+     * The hexadecimal representation of the digest of the corresponding DNSKEY record.
      * 
      */
     @Import(name="digest")
     private @Nullable Output<String> digest;
 
     /**
-     * @return The hexidecimal representation of the digest of the corresponding DNSKEY record.
+     * @return The hexadecimal representation of the digest of the corresponding DNSKEY record.
      * 
      */
     public Optional<Output<String>> digest() {
@@ -90,25 +90,15 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.domain);
     }
 
-    /**
-     * A keytag that references the corresponding DNSKEY record.
-     * 
-     */
     @Import(name="keytag")
     private @Nullable Output<String> keytag;
 
-    /**
-     * @return A keytag that references the corresponding DNSKEY record.
-     * 
-     */
     public Optional<Output<String>> keytag() {
         return Optional.ofNullable(this.keytag);
     }
 
     /**
      * A public key that references the corresponding DNSKEY record.
-     * 
-     * # Attributes Reference
      * 
      */
     @Import(name="publicKey")
@@ -117,22 +107,20 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return A public key that references the corresponding DNSKEY record.
      * 
-     * # Attributes Reference
-     * 
      */
     public Optional<Output<String>> publicKey() {
         return Optional.ofNullable(this.publicKey);
     }
 
     /**
-     * The time the DS record was last updated at.
+     * The timestamp when the DS record was last updated.
      * 
      */
     @Import(name="updatedAt")
     private @Nullable Output<String> updatedAt;
 
     /**
-     * @return The time the DS record was last updated at.
+     * @return The timestamp when the DS record was last updated.
      * 
      */
     public Optional<Output<String>> updatedAt() {
@@ -192,7 +180,7 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The time the DS record was created at.
+         * @param createdAt The timestamp when the DS record was created.
          * 
          * @return builder
          * 
@@ -203,7 +191,7 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param createdAt The time the DS record was created at.
+         * @param createdAt The timestamp when the DS record was created.
          * 
          * @return builder
          * 
@@ -213,7 +201,7 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param digest The hexidecimal representation of the digest of the corresponding DNSKEY record.
+         * @param digest The hexadecimal representation of the digest of the corresponding DNSKEY record.
          * 
          * @return builder
          * 
@@ -224,7 +212,7 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param digest The hexidecimal representation of the digest of the corresponding DNSKEY record.
+         * @param digest The hexadecimal representation of the digest of the corresponding DNSKEY record.
          * 
          * @return builder
          * 
@@ -275,31 +263,17 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
             return domain(Output.of(domain));
         }
 
-        /**
-         * @param keytag A keytag that references the corresponding DNSKEY record.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keytag(@Nullable Output<String> keytag) {
             $.keytag = keytag;
             return this;
         }
 
-        /**
-         * @param keytag A keytag that references the corresponding DNSKEY record.
-         * 
-         * @return builder
-         * 
-         */
         public Builder keytag(String keytag) {
             return keytag(Output.of(keytag));
         }
 
         /**
          * @param publicKey A public key that references the corresponding DNSKEY record.
-         * 
-         * # Attributes Reference
          * 
          * @return builder
          * 
@@ -312,8 +286,6 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param publicKey A public key that references the corresponding DNSKEY record.
          * 
-         * # Attributes Reference
-         * 
          * @return builder
          * 
          */
@@ -322,7 +294,7 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The time the DS record was last updated at.
+         * @param updatedAt The timestamp when the DS record was last updated.
          * 
          * @return builder
          * 
@@ -333,7 +305,7 @@ public final class DsRecordState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updatedAt The time the DS record was last updated at.
+         * @param updatedAt The timestamp when the DS record was last updated.
          * 
          * @return builder
          * 

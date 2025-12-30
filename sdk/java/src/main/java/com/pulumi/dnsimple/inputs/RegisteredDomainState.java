@@ -29,14 +29,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the domain should be set to auto-renew (default: `false`)
+     * Whether the domain should be set to auto-renew (default: `false`).
      * 
      */
     @Import(name="autoRenewEnabled")
     private @Nullable Output<Boolean> autoRenewEnabled;
 
     /**
-     * @return Whether the domain should be set to auto-renew (default: `false`)
+     * @return Whether the domain should be set to auto-renew (default: `false`).
      * 
      */
     public Optional<Output<Boolean>> autoRenewEnabled() {
@@ -44,14 +44,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     @Import(name="contactId")
     private @Nullable Output<Integer> contactId;
 
     /**
-     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     public Optional<Output<Integer>> contactId() {
@@ -59,14 +59,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the domain should have DNSSEC enabled (default: `false`)
+     * Whether the domain should have DNSSEC enabled (default: `false`).
      * 
      */
     @Import(name="dnssecEnabled")
     private @Nullable Output<Boolean> dnssecEnabled;
 
     /**
-     * @return Whether the domain should have DNSSEC enabled (default: `false`)
+     * @return Whether the domain should have DNSSEC enabled (default: `false`).
      * 
      */
     public Optional<Output<Boolean>> dnssecEnabled() {
@@ -76,16 +76,12 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     /**
      * The domain registration details. (see below for nested schema)
      * 
-     * &lt;a id=&#34;nestedblock--timeouts&#34;&gt;&lt;/a&gt;
-     * 
      */
     @Import(name="domainRegistration")
     private @Nullable Output<RegisteredDomainDomainRegistrationArgs> domainRegistration;
 
     /**
      * @return The domain registration details. (see below for nested schema)
-     * 
-     * &lt;a id=&#34;nestedblock--timeouts&#34;&gt;&lt;/a&gt;
      * 
      */
     public Optional<Output<RegisteredDomainDomainRegistrationArgs>> domainRegistration() {
@@ -115,14 +111,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The domain name to be registered
+     * The domain name to be registered.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The domain name to be registered
+     * @return The domain name to be registered.
      * 
      */
     public Optional<Output<String>> name() {
@@ -130,14 +126,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      * 
      */
     @Import(name="premiumPrice")
     private @Nullable Output<String> premiumPrice;
 
     /**
-     * @return The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * @return The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      * 
      */
     public Optional<Output<String>> premiumPrice() {
@@ -160,14 +156,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     public Optional<Output<String>> state() {
@@ -175,18 +171,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (see below for nested schema)
-     * 
-     * # Attributes Reference
+     * (see below for nested schema).
      * 
      */
     @Import(name="timeouts")
     private @Nullable Output<RegisteredDomainTimeoutsArgs> timeouts;
 
     /**
-     * @return (see below for nested schema)
-     * 
-     * # Attributes Reference
+     * @return (see below for nested schema).
      * 
      */
     public Optional<Output<RegisteredDomainTimeoutsArgs>> timeouts() {
@@ -194,14 +186,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the domain transfer lock protection is enabled (default: `true`)
+     * Whether the domain transfer lock protection is enabled (default: `true`).
      * 
      */
     @Import(name="transferLockEnabled")
     private @Nullable Output<Boolean> transferLockEnabled;
 
     /**
-     * @return Whether the domain transfer lock protection is enabled (default: `true`)
+     * @return Whether the domain transfer lock protection is enabled (default: `true`).
      * 
      */
     public Optional<Output<Boolean>> transferLockEnabled() {
@@ -224,14 +216,14 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * Whether the domain should have WHOIS privacy enabled (default: `false`).
      * 
      */
     @Import(name="whoisPrivacyEnabled")
     private @Nullable Output<Boolean> whoisPrivacyEnabled;
 
     /**
-     * @return Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * @return Whether the domain should have WHOIS privacy enabled (default: `false`).
      * 
      */
     public Optional<Output<Boolean>> whoisPrivacyEnabled() {
@@ -286,7 +278,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewEnabled Whether the domain should be set to auto-renew (default: `false`)
+         * @param autoRenewEnabled Whether the domain should be set to auto-renew (default: `false`).
          * 
          * @return builder
          * 
@@ -297,7 +289,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param autoRenewEnabled Whether the domain should be set to auto-renew (default: `false`)
+         * @param autoRenewEnabled Whether the domain should be set to auto-renew (default: `false`).
          * 
          * @return builder
          * 
@@ -307,7 +299,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
          * 
          * @return builder
          * 
@@ -318,7 +310,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+         * @param contactId The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
          * 
          * @return builder
          * 
@@ -328,7 +320,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnssecEnabled Whether the domain should have DNSSEC enabled (default: `false`)
+         * @param dnssecEnabled Whether the domain should have DNSSEC enabled (default: `false`).
          * 
          * @return builder
          * 
@@ -339,7 +331,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnssecEnabled Whether the domain should have DNSSEC enabled (default: `false`)
+         * @param dnssecEnabled Whether the domain should have DNSSEC enabled (default: `false`).
          * 
          * @return builder
          * 
@@ -351,8 +343,6 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         /**
          * @param domainRegistration The domain registration details. (see below for nested schema)
          * 
-         * &lt;a id=&#34;nestedblock--timeouts&#34;&gt;&lt;/a&gt;
-         * 
          * @return builder
          * 
          */
@@ -363,8 +353,6 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param domainRegistration The domain registration details. (see below for nested schema)
-         * 
-         * &lt;a id=&#34;nestedblock--timeouts&#34;&gt;&lt;/a&gt;
          * 
          * @return builder
          * 
@@ -404,7 +392,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The domain name to be registered
+         * @param name The domain name to be registered.
          * 
          * @return builder
          * 
@@ -415,7 +403,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param name The domain name to be registered
+         * @param name The domain name to be registered.
          * 
          * @return builder
          * 
@@ -425,7 +413,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param premiumPrice The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+         * @param premiumPrice The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
          * 
          * @return builder
          * 
@@ -436,7 +424,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param premiumPrice The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+         * @param premiumPrice The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
          * 
          * @return builder
          * 
@@ -467,7 +455,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state The state of the domain.
+         * @param state (String) - The state of the domain registration.
          * 
          * @return builder
          * 
@@ -478,7 +466,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param state The state of the domain.
+         * @param state (String) - The state of the domain registration.
          * 
          * @return builder
          * 
@@ -488,9 +476,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param timeouts (see below for nested schema)
-         * 
-         * # Attributes Reference
+         * @param timeouts (see below for nested schema).
          * 
          * @return builder
          * 
@@ -501,9 +487,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param timeouts (see below for nested schema)
-         * 
-         * # Attributes Reference
+         * @param timeouts (see below for nested schema).
          * 
          * @return builder
          * 
@@ -513,7 +497,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transferLockEnabled Whether the domain transfer lock protection is enabled (default: `true`)
+         * @param transferLockEnabled Whether the domain transfer lock protection is enabled (default: `true`).
          * 
          * @return builder
          * 
@@ -524,7 +508,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param transferLockEnabled Whether the domain transfer lock protection is enabled (default: `true`)
+         * @param transferLockEnabled Whether the domain transfer lock protection is enabled (default: `true`).
          * 
          * @return builder
          * 
@@ -555,7 +539,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param whoisPrivacyEnabled Whether the domain should have WhoIs privacy enabled (default: `false`)
+         * @param whoisPrivacyEnabled Whether the domain should have WHOIS privacy enabled (default: `false`).
          * 
          * @return builder
          * 
@@ -566,7 +550,7 @@ public final class RegisteredDomainState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param whoisPrivacyEnabled Whether the domain should have WhoIs privacy enabled (default: `false`)
+         * @param whoisPrivacyEnabled Whether the domain should have WHOIS privacy enabled (default: `false`).
          * 
          * @return builder
          * 

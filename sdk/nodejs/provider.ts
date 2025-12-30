@@ -30,6 +30,10 @@ export class Provider extends pulumi.ProviderResource {
      */
     declare public readonly account: pulumi.Output<string | undefined>;
     /**
+     * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+     */
+    declare public readonly debugTransportFile: pulumi.Output<string | undefined>;
+    /**
      * The API v2 token for API operations.
      */
     declare public readonly token: pulumi.Output<string | undefined>;
@@ -50,6 +54,7 @@ export class Provider extends pulumi.ProviderResource {
         opts = opts || {};
         {
             resourceInputs["account"] = args?.account;
+            resourceInputs["debugTransportFile"] = args?.debugTransportFile;
             resourceInputs["prefetch"] = pulumi.output(args?.prefetch).apply(JSON.stringify);
             resourceInputs["sandbox"] = pulumi.output(args?.sandbox).apply(JSON.stringify);
             resourceInputs["token"] = args?.token ? pulumi.secret(args.token) : undefined;
@@ -79,6 +84,10 @@ export interface ProviderArgs {
      * The account for API operations.
      */
     account?: pulumi.Input<string>;
+    /**
+     * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+     */
+    debugTransportFile?: pulumi.Input<string>;
     /**
      * Flag to enable the prefetch of zone records.
      */

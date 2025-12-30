@@ -19,14 +19,14 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     public static final LetsEncryptCertificateArgs Empty = new LetsEncryptCertificateArgs();
 
     /**
-     * The certificate alternate names
+     * List of alternate names (SANs) for the certificate.
      * 
      */
     @Import(name="alternateNames")
     private @Nullable Output<List<String>> alternateNames;
 
     /**
-     * @return The certificate alternate names
+     * @return List of alternate names (SANs) for the certificate.
      * 
      */
     public Optional<Output<List<String>>> alternateNames() {
@@ -34,14 +34,14 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * True if the certificate should auto-renew
+     * Whether the certificate should auto-renew.
      * 
      */
     @Import(name="autoRenew", required=true)
     private Output<Boolean> autoRenew;
 
     /**
-     * @return True if the certificate should auto-renew
+     * @return Whether the certificate should auto-renew.
      * 
      */
     public Output<Boolean> autoRenew() {
@@ -49,14 +49,14 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The domain to be issued the certificate for
+     * The domain name or ID to issue the certificate for.
      * 
      */
     @Import(name="domainId", required=true)
     private Output<String> domainId;
 
     /**
-     * @return The domain to be issued the certificate for
+     * @return The domain name or ID to issue the certificate for.
      * 
      */
     public Output<String> domainId() {
@@ -79,14 +79,14 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * The signature algorithm to use for the certificate
+     * The signature algorithm to use for the certificate.
      * 
      */
     @Import(name="signatureAlgorithm")
     private @Nullable Output<String> signatureAlgorithm;
 
     /**
-     * @return The signature algorithm to use for the certificate
+     * @return The signature algorithm to use for the certificate.
      * 
      */
     public Optional<Output<String>> signatureAlgorithm() {
@@ -122,7 +122,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alternateNames The certificate alternate names
+         * @param alternateNames List of alternate names (SANs) for the certificate.
          * 
          * @return builder
          * 
@@ -133,7 +133,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alternateNames The certificate alternate names
+         * @param alternateNames List of alternate names (SANs) for the certificate.
          * 
          * @return builder
          * 
@@ -143,7 +143,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param alternateNames The certificate alternate names
+         * @param alternateNames List of alternate names (SANs) for the certificate.
          * 
          * @return builder
          * 
@@ -153,7 +153,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param autoRenew True if the certificate should auto-renew
+         * @param autoRenew Whether the certificate should auto-renew.
          * 
          * @return builder
          * 
@@ -164,7 +164,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param autoRenew True if the certificate should auto-renew
+         * @param autoRenew Whether the certificate should auto-renew.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param domainId The domain to be issued the certificate for
+         * @param domainId The domain name or ID to issue the certificate for.
          * 
          * @return builder
          * 
@@ -185,7 +185,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param domainId The domain to be issued the certificate for
+         * @param domainId The domain name or ID to issue the certificate for.
          * 
          * @return builder
          * 
@@ -216,7 +216,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * @param signatureAlgorithm The signature algorithm to use for the certificate.
          * 
          * @return builder
          * 
@@ -227,7 +227,7 @@ public final class LetsEncryptCertificateArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param signatureAlgorithm The signature algorithm to use for the certificate
+         * @param signatureAlgorithm The signature algorithm to use for the certificate.
          * 
          * @return builder
          * 

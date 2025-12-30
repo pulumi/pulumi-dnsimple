@@ -22,7 +22,7 @@ import java.util.concurrent.CompletableFuture;
 
 public final class DnsimpleFunctions {
     /**
-     * Provides a DNSimple certificate data source.
+     * Get information about a DNSimple SSL certificate.
      * 
      * ## Example Usage
      * 
@@ -48,9 +48,9 @@ public final class DnsimpleFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .domain(dnsimpleDomain)
-     *             .certificateId(dnsimpleCertificateId)
+     *         final var example = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .domain("example.com")
+     *             .certificateId(1234)
      *             .build());
      * 
      *     }
@@ -63,7 +63,7 @@ public final class DnsimpleFunctions {
         return getCertificate(args, InvokeOptions.Empty);
     }
     /**
-     * Provides a DNSimple certificate data source.
+     * Get information about a DNSimple SSL certificate.
      * 
      * ## Example Usage
      * 
@@ -89,9 +89,9 @@ public final class DnsimpleFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .domain(dnsimpleDomain)
-     *             .certificateId(dnsimpleCertificateId)
+     *         final var example = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .domain("example.com")
+     *             .certificateId(1234)
      *             .build());
      * 
      *     }
@@ -104,7 +104,7 @@ public final class DnsimpleFunctions {
         return getCertificatePlain(args, InvokeOptions.Empty);
     }
     /**
-     * Provides a DNSimple certificate data source.
+     * Get information about a DNSimple SSL certificate.
      * 
      * ## Example Usage
      * 
@@ -130,9 +130,9 @@ public final class DnsimpleFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .domain(dnsimpleDomain)
-     *             .certificateId(dnsimpleCertificateId)
+     *         final var example = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .domain("example.com")
+     *             .certificateId(1234)
      *             .build());
      * 
      *     }
@@ -145,7 +145,7 @@ public final class DnsimpleFunctions {
         return Deployment.getInstance().invoke("dnsimple:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides a DNSimple certificate data source.
+     * Get information about a DNSimple SSL certificate.
      * 
      * ## Example Usage
      * 
@@ -171,9 +171,9 @@ public final class DnsimpleFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .domain(dnsimpleDomain)
-     *             .certificateId(dnsimpleCertificateId)
+     *         final var example = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .domain("example.com")
+     *             .certificateId(1234)
      *             .build());
      * 
      *     }
@@ -186,7 +186,7 @@ public final class DnsimpleFunctions {
         return Deployment.getInstance().invoke("dnsimple:index/getCertificate:getCertificate", TypeShape.of(GetCertificateResult.class), args, Utilities.withVersion(options));
     }
     /**
-     * Provides a DNSimple certificate data source.
+     * Get information about a DNSimple SSL certificate.
      * 
      * ## Example Usage
      * 
@@ -212,9 +212,9 @@ public final class DnsimpleFunctions {
      *     }
      * 
      *     public static void stack(Context ctx) {
-     *         final var foobar = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
-     *             .domain(dnsimpleDomain)
-     *             .certificateId(dnsimpleCertificateId)
+     *         final var example = DnsimpleFunctions.getCertificate(GetCertificateArgs.builder()
+     *             .domain("example.com")
+     *             .certificateId(1234)
      *             .build());
      * 
      *     }
@@ -231,7 +231,9 @@ public final class DnsimpleFunctions {
      * 
      * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
      * 
-     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * ## Example Usage
+     * 
+     * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
      * 
      * <pre>
      * {@code
@@ -256,7 +258,7 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
-     *             .domainId("dnsimple.com")
+     *             .domainId("example.com")
      *             .contactId("1234")
      *             .build());
      * 
@@ -264,20 +266,6 @@ public final class DnsimpleFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following arguments are supported:
-     * 
-     * * `domainId` - (Required) The name or ID of the domain.
-     * * `contactId` - (Required) The ID of the contact you are planning to change to.
-     * 
-     * The following additional attributes are exported:
-     * 
-     * * `contactId` - The ID of the contact you are planning to change to.
-     * * `domainId` - The name or ID of the domain.
-     * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-     * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-     * 
-     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
      * 
      */
     public static Output<GetRegistrantChangeCheckResult> getRegistrantChangeCheck(GetRegistrantChangeCheckArgs args) {
@@ -288,7 +276,9 @@ public final class DnsimpleFunctions {
      * 
      * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
      * 
-     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * ## Example Usage
+     * 
+     * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
      * 
      * <pre>
      * {@code
@@ -313,7 +303,7 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
-     *             .domainId("dnsimple.com")
+     *             .domainId("example.com")
      *             .contactId("1234")
      *             .build());
      * 
@@ -321,20 +311,6 @@ public final class DnsimpleFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following arguments are supported:
-     * 
-     * * `domainId` - (Required) The name or ID of the domain.
-     * * `contactId` - (Required) The ID of the contact you are planning to change to.
-     * 
-     * The following additional attributes are exported:
-     * 
-     * * `contactId` - The ID of the contact you are planning to change to.
-     * * `domainId` - The name or ID of the domain.
-     * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-     * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-     * 
-     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
      * 
      */
     public static CompletableFuture<GetRegistrantChangeCheckResult> getRegistrantChangeCheckPlain(GetRegistrantChangeCheckPlainArgs args) {
@@ -345,7 +321,9 @@ public final class DnsimpleFunctions {
      * 
      * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
      * 
-     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * ## Example Usage
+     * 
+     * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
      * 
      * <pre>
      * {@code
@@ -370,7 +348,7 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
-     *             .domainId("dnsimple.com")
+     *             .domainId("example.com")
      *             .contactId("1234")
      *             .build());
      * 
@@ -378,20 +356,6 @@ public final class DnsimpleFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following arguments are supported:
-     * 
-     * * `domainId` - (Required) The name or ID of the domain.
-     * * `contactId` - (Required) The ID of the contact you are planning to change to.
-     * 
-     * The following additional attributes are exported:
-     * 
-     * * `contactId` - The ID of the contact you are planning to change to.
-     * * `domainId` - The name or ID of the domain.
-     * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-     * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-     * 
-     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
      * 
      */
     public static Output<GetRegistrantChangeCheckResult> getRegistrantChangeCheck(GetRegistrantChangeCheckArgs args, InvokeOptions options) {
@@ -402,7 +366,9 @@ public final class DnsimpleFunctions {
      * 
      * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
      * 
-     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * ## Example Usage
+     * 
+     * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
      * 
      * <pre>
      * {@code
@@ -427,7 +393,7 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
-     *             .domainId("dnsimple.com")
+     *             .domainId("example.com")
      *             .contactId("1234")
      *             .build());
      * 
@@ -435,20 +401,6 @@ public final class DnsimpleFunctions {
      * }
      * }
      * </pre>
-     * 
-     * The following arguments are supported:
-     * 
-     * * `domainId` - (Required) The name or ID of the domain.
-     * * `contactId` - (Required) The ID of the contact you are planning to change to.
-     * 
-     * The following additional attributes are exported:
-     * 
-     * * `contactId` - The ID of the contact you are planning to change to.
-     * * `domainId` - The name or ID of the domain.
-     * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-     * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-     * 
-     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
      * 
      */
     public static Output<GetRegistrantChangeCheckResult> getRegistrantChangeCheck(GetRegistrantChangeCheckArgs args, InvokeOutputOptions options) {
@@ -459,7 +411,9 @@ public final class DnsimpleFunctions {
      * 
      * &gt; **Note:** The registrant change API is currently in developer preview and is subject to change.
      * 
-     * Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+     * ## Example Usage
+     * 
+     * Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
      * 
      * <pre>
      * {@code
@@ -484,7 +438,7 @@ public final class DnsimpleFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var example = DnsimpleFunctions.getRegistrantChangeCheck(GetRegistrantChangeCheckArgs.builder()
-     *             .domainId("dnsimple.com")
+     *             .domainId("example.com")
      *             .contactId("1234")
      *             .build());
      * 
@@ -493,36 +447,197 @@ public final class DnsimpleFunctions {
      * }
      * </pre>
      * 
-     * The following arguments are supported:
-     * 
-     * * `domainId` - (Required) The name or ID of the domain.
-     * * `contactId` - (Required) The ID of the contact you are planning to change to.
-     * 
-     * The following additional attributes are exported:
-     * 
-     * * `contactId` - The ID of the contact you are planning to change to.
-     * * `domainId` - The name or ID of the domain.
-     * * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-     * * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-     * 
-     * &lt;a id=&#34;nestedblock--extended_attributes&#34;&gt;&lt;/a&gt;
-     * 
      */
     public static CompletableFuture<GetRegistrantChangeCheckResult> getRegistrantChangeCheckPlain(GetRegistrantChangeCheckPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", TypeShape.of(GetRegistrantChangeCheckResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetZoneResult> getZone(GetZoneArgs args) {
         return getZone(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args) {
         return getZonePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static Output<GetZoneResult> getZone(GetZoneArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * ## Example Usage
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.DnsimpleFunctions;
+     * import com.pulumi.dnsimple.inputs.GetZoneArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = DnsimpleFunctions.getZone(GetZoneArgs.builder()
+     *             .name("example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
     public static CompletableFuture<GetZoneResult> getZonePlain(GetZonePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }

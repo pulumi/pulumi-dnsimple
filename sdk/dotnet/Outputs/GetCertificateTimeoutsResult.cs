@@ -14,7 +14,7 @@ namespace Pulumi.DNSimple.Outputs
     public sealed class GetCertificateTimeoutsResult
     {
         /// <summary>
-        /// (String) - The timeout for the read operation e.g. `5m`
+        /// (String) - The timeout for the read operation, e.g., `5m`.
         /// </summary>
         public readonly string? Read;
 

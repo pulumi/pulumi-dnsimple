@@ -25,6 +25,8 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * The simplest example below requires a contact (existing or a new one to be created) and basic domain information.
+ * 
  * <pre>
  * {@code
  * package generated_program;
@@ -50,30 +52,23 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var aliceMain = new Contact("aliceMain", ContactArgs.builder()
- *             .label("Alice Appleseed")
- *             .firstName("Alice Main")
+ *             .label("Alice")
+ *             .firstName("Alice")
  *             .lastName("Appleseed")
  *             .organizationName("Contoso")
  *             .jobTitle("Manager")
  *             .address1("Level 1, 2 Main St")
- *             .address2("Marsfield")
  *             .city("San Francisco")
  *             .stateProvince("California")
  *             .postalCode("90210")
  *             .country("US")
- *             .phone("+1401239523")
- *             .fax("+1849491024")
+ *             .phone("+1.401239523")
  *             .email("apple}{@literal @}{@code contoso.com")
  *             .build());
  * 
- *         var appleseedBio = new RegisteredDomain("appleseedBio", RegisteredDomainArgs.builder()
- *             .name("appleseed.bio")
+ *         var exampleCom = new RegisteredDomain("exampleCom", RegisteredDomainArgs.builder()
+ *             .name("example.com")
  *             .contactId(aliceMain.id())
- *             .autoRenewEnabled(true)
- *             .transferLockEnabled(true)
- *             .whoisPrivacyEnabled(true)
- *             .dnssecEnabled(false)
- *             .extendedAttributes(Map.of("bio_agree", "I Agree"))
  *             .build());
  * 
  *     }}{@code
@@ -81,24 +76,100 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * 
+ * ### Example with more settings
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.dnsimple.RegisteredDomain;
+ * import com.pulumi.dnsimple.RegisteredDomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleCom = new RegisteredDomain("exampleCom", RegisteredDomainArgs.builder()
+ *             .name("example.com")
+ *             .contactId(aliceMain.id())
+ *             .autoRenewEnabled(true)
+ *             .transferLockEnabled(true)
+ *             .whoisPrivacyEnabled(true)
+ *             .dnssecEnabled(false)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
+ * ### Example with extended attributes
+ * 
+ * Some domain extensions require additional information during registration. You can check if a domain extension requires extended attributes using the [TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes).
+ * 
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.dnsimple.RegisteredDomain;
+ * import com.pulumi.dnsimple.RegisteredDomainArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleBio = new RegisteredDomain("exampleBio", RegisteredDomainArgs.builder()
+ *             .name("example.bio")
+ *             .contactId(aliceMain.id())
+ *             .autoRenewEnabled(true)
+ *             .extendedAttributes(Map.of("bio_agree", "I Agree"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * 
  * ## Import
  * 
  * DNSimple registered domains can be imported using their domain name and **optionally** with domain registration ID.
  * 
- * **Importing registered domain example.com**
+ * **Importing registered domain example.com:**
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com
+ * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
  * ```
  * 
- * **Importing registered domain example.com with domain registration ID 1234**
+ * **Importing registered domain example.com with domain registration ID 1234:**
  * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com_1234
+ * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
  * ```
  * 
  */
@@ -111,42 +182,42 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Whether the domain should be set to auto-renew (default: `false`)
+     * Whether the domain should be set to auto-renew (default: `false`).
      * 
      */
     @Export(name="autoRenewEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> autoRenewEnabled;
 
     /**
-     * @return Whether the domain should be set to auto-renew (default: `false`)
+     * @return Whether the domain should be set to auto-renew (default: `false`).
      * 
      */
     public Output<Boolean> autoRenewEnabled() {
         return this.autoRenewEnabled;
     }
     /**
-     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     @Export(name="contactId", refs={Integer.class}, tree="[0]")
     private Output<Integer> contactId;
 
     /**
-     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     public Output<Integer> contactId() {
         return this.contactId;
     }
     /**
-     * Whether the domain should have DNSSEC enabled (default: `false`)
+     * Whether the domain should have DNSSEC enabled (default: `false`).
      * 
      */
     @Export(name="dnssecEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> dnssecEnabled;
 
     /**
-     * @return Whether the domain should have DNSSEC enabled (default: `false`)
+     * @return Whether the domain should have DNSSEC enabled (default: `false`).
      * 
      */
     public Output<Boolean> dnssecEnabled() {
@@ -155,16 +226,12 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
     /**
      * The domain registration details. (see below for nested schema)
      * 
-     * &lt;a id=&#34;nestedblock--timeouts&#34;&gt;&lt;/a&gt;
-     * 
      */
     @Export(name="domainRegistration", refs={RegisteredDomainDomainRegistration.class}, tree="[0]")
     private Output<RegisteredDomainDomainRegistration> domainRegistration;
 
     /**
      * @return The domain registration details. (see below for nested schema)
-     * 
-     * &lt;a id=&#34;nestedblock--timeouts&#34;&gt;&lt;/a&gt;
      * 
      */
     public Output<RegisteredDomainDomainRegistration> domainRegistration() {
@@ -191,28 +258,28 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.extendedAttributes);
     }
     /**
-     * The domain name to be registered
+     * The domain name to be registered.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return The domain name to be registered
+     * @return The domain name to be registered.
      * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      * 
      */
     @Export(name="premiumPrice", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> premiumPrice;
 
     /**
-     * @return The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+     * @return The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
      * 
      */
     public Output<Optional<String>> premiumPrice() {
@@ -233,46 +300,42 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
         return this.registrantChange;
     }
     /**
-     * The state of the domain.
+     * (String) - The state of the domain registration.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * (see below for nested schema)
-     * 
-     * # Attributes Reference
+     * (see below for nested schema).
      * 
      */
     @Export(name="timeouts", refs={RegisteredDomainTimeouts.class}, tree="[0]")
     private Output</* @Nullable */ RegisteredDomainTimeouts> timeouts;
 
     /**
-     * @return (see below for nested schema)
-     * 
-     * # Attributes Reference
+     * @return (see below for nested schema).
      * 
      */
     public Output<Optional<RegisteredDomainTimeouts>> timeouts() {
         return Codegen.optional(this.timeouts);
     }
     /**
-     * Whether the domain transfer lock protection is enabled (default: `true`)
+     * Whether the domain transfer lock protection is enabled (default: `true`).
      * 
      */
     @Export(name="transferLockEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> transferLockEnabled;
 
     /**
-     * @return Whether the domain transfer lock protection is enabled (default: `true`)
+     * @return Whether the domain transfer lock protection is enabled (default: `true`).
      * 
      */
     public Output<Boolean> transferLockEnabled() {
@@ -293,14 +356,14 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
         return this.unicodeName;
     }
     /**
-     * Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * Whether the domain should have WHOIS privacy enabled (default: `false`).
      * 
      */
     @Export(name="whoisPrivacyEnabled", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> whoisPrivacyEnabled;
 
     /**
-     * @return Whether the domain should have WhoIs privacy enabled (default: `false`)
+     * @return Whether the domain should have WHOIS privacy enabled (default: `false`).
      * 
      */
     public Output<Boolean> whoisPrivacyEnabled() {

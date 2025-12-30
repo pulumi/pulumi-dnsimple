@@ -32,15 +32,15 @@ if not MYPY:
     class RegisteredDomainDomainRegistrationArgsDict(TypedDict):
         id: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The ID of this resource.
+        (Number) - The ID of the domain registration.
         """
         period: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The registration period in years.
+        (Number) - The registration period in years.
         """
         state: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The state of the domain.
+        (String) - The state of the domain registration.
         """
 elif False:
     RegisteredDomainDomainRegistrationArgsDict: TypeAlias = Mapping[str, Any]
@@ -52,9 +52,9 @@ class RegisteredDomainDomainRegistrationArgs:
                  period: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.int] id: The ID of this resource.
-        :param pulumi.Input[_builtins.int] period: The registration period in years.
-        :param pulumi.Input[_builtins.str] state: The state of the domain.
+        :param pulumi.Input[_builtins.int] id: (Number) - The ID of the domain registration.
+        :param pulumi.Input[_builtins.int] period: (Number) - The registration period in years.
+        :param pulumi.Input[_builtins.str] state: (String) - The state of the domain registration.
         """
         if id is not None:
             pulumi.set(__self__, "id", id)
@@ -67,7 +67,7 @@ class RegisteredDomainDomainRegistrationArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of this resource.
+        (Number) - The ID of the domain registration.
         """
         return pulumi.get(self, "id")
 
@@ -79,7 +79,7 @@ class RegisteredDomainDomainRegistrationArgs:
     @pulumi.getter
     def period(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The registration period in years.
+        (Number) - The registration period in years.
         """
         return pulumi.get(self, "period")
 
@@ -91,7 +91,7 @@ class RegisteredDomainDomainRegistrationArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the domain.
+        (String) - The state of the domain registration.
         """
         return pulumi.get(self, "state")
 
@@ -108,7 +108,7 @@ if not MYPY:
         """
         contact_id: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         """
         domain_id: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -120,7 +120,7 @@ if not MYPY:
         """
         id: NotRequired[pulumi.Input[_builtins.int]]
         """
-        The ID of this resource.
+        (Number) - The ID of the domain registration.
         """
         irt_lock_lifted_by: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -132,7 +132,7 @@ if not MYPY:
         """
         state: NotRequired[pulumi.Input[_builtins.str]]
         """
-        The state of the domain.
+        (String) - The state of the domain registration.
         """
 elif False:
     RegisteredDomainRegistrantChangeArgsDict: TypeAlias = Mapping[str, Any]
@@ -150,13 +150,13 @@ class RegisteredDomainRegistrantChangeArgs:
                  state: Optional[pulumi.Input[_builtins.str]] = None):
         """
         :param pulumi.Input[_builtins.int] account_id: DNSimple Account ID to which the registrant change belongs to
-        :param pulumi.Input[_builtins.int] contact_id: The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        :param pulumi.Input[_builtins.int] contact_id: The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         :param pulumi.Input[_builtins.str] domain_id: DNSimple domain ID for which the registrant change is being performed
         :param pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]] extended_attributes: A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
-        :param pulumi.Input[_builtins.int] id: The ID of this resource.
+        :param pulumi.Input[_builtins.int] id: (Number) - The ID of the domain registration.
         :param pulumi.Input[_builtins.str] irt_lock_lifted_by: Date when the registrant change lock was lifted for the domain
         :param pulumi.Input[_builtins.bool] registry_owner_change: True if the registrant change will result in a registry owner change
-        :param pulumi.Input[_builtins.str] state: The state of the domain.
+        :param pulumi.Input[_builtins.str] state: (String) - The state of the domain registration.
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
@@ -191,7 +191,7 @@ class RegisteredDomainRegistrantChangeArgs:
     @pulumi.getter(name="contactId")
     def contact_id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         """
         return pulumi.get(self, "contact_id")
 
@@ -227,7 +227,7 @@ class RegisteredDomainRegistrantChangeArgs:
     @pulumi.getter
     def id(self) -> Optional[pulumi.Input[_builtins.int]]:
         """
-        The ID of this resource.
+        (Number) - The ID of the domain registration.
         """
         return pulumi.get(self, "id")
 
@@ -263,7 +263,7 @@ class RegisteredDomainRegistrantChangeArgs:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The state of the domain.
+        (String) - The state of the domain registration.
         """
         return pulumi.get(self, "state")
 
@@ -276,7 +276,7 @@ if not MYPY:
     class RegisteredDomainTimeoutsArgsDict(TypedDict):
         create: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Create timeout.
+        (String) - The timeout for the read operation e.g. `5m`
         """
         delete: NotRequired[pulumi.Input[_builtins.str]]
         """
@@ -284,7 +284,7 @@ if not MYPY:
         """
         update: NotRequired[pulumi.Input[_builtins.str]]
         """
-        Update timeout.
+        (String) - The timeout for the read operation e.g. `5m`
         """
 elif False:
     RegisteredDomainTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
@@ -296,9 +296,9 @@ class RegisteredDomainTimeoutsArgs:
                  delete: Optional[pulumi.Input[_builtins.str]] = None,
                  update: Optional[pulumi.Input[_builtins.str]] = None):
         """
-        :param pulumi.Input[_builtins.str] create: Create timeout.
+        :param pulumi.Input[_builtins.str] create: (String) - The timeout for the read operation e.g. `5m`
         :param pulumi.Input[_builtins.str] delete: Delete timeout (currently unused).
-        :param pulumi.Input[_builtins.str] update: Update timeout.
+        :param pulumi.Input[_builtins.str] update: (String) - The timeout for the read operation e.g. `5m`
         """
         if create is not None:
             pulumi.set(__self__, "create", create)
@@ -311,7 +311,7 @@ class RegisteredDomainTimeoutsArgs:
     @pulumi.getter
     def create(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Create timeout.
+        (String) - The timeout for the read operation e.g. `5m`
         """
         return pulumi.get(self, "create")
 
@@ -335,7 +335,7 @@ class RegisteredDomainTimeoutsArgs:
     @pulumi.getter
     def update(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Update timeout.
+        (String) - The timeout for the read operation e.g. `5m`
         """
         return pulumi.get(self, "update")
 
@@ -348,7 +348,7 @@ if not MYPY:
     class GetCertificateTimeoutsArgsDict(TypedDict):
         read: NotRequired[_builtins.str]
         """
-        (String) - The timeout for the read operation e.g. `5m`
+        (String) - The timeout for the read operation, e.g., `5m`.
         """
 elif False:
     GetCertificateTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
@@ -358,7 +358,7 @@ class GetCertificateTimeoutsArgs:
     def __init__(__self__, *,
                  read: Optional[_builtins.str] = None):
         """
-        :param _builtins.str read: (String) - The timeout for the read operation e.g. `5m`
+        :param _builtins.str read: (String) - The timeout for the read operation, e.g., `5m`.
         """
         if read is not None:
             pulumi.set(__self__, "read", read)
@@ -367,7 +367,7 @@ class GetCertificateTimeoutsArgs:
     @pulumi.getter
     def read(self) -> Optional[_builtins.str]:
         """
-        (String) - The timeout for the read operation e.g. `5m`
+        (String) - The timeout for the read operation, e.g., `5m`.
         """
         return pulumi.get(self, "read")
 

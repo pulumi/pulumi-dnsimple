@@ -13,9 +13,21 @@ namespace Pulumi.DNSimple.Outputs
     [OutputType]
     public sealed class GetRegistrantChangeCheckExtendedAttributeResult
     {
+        /// <summary>
+        /// (String) - The description of the option.
+        /// </summary>
         public readonly string Description;
+        /// <summary>
+        /// (String) - The name of the extended attribute, e.g., `x-au-registrant-id-type`.
+        /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// (List) - A list of options for the extended attribute. (see below for nested schema)
+        /// </summary>
         public readonly ImmutableArray<Outputs.GetRegistrantChangeCheckExtendedAttributeOptionResult> Options;
+        /// <summary>
+        /// (Boolean) - Whether the extended attribute is required.
+        /// </summary>
         public readonly bool Required;
 
         [OutputConstructor]

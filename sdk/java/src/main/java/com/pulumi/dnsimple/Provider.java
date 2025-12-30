@@ -38,6 +38,20 @@ public class Provider extends com.pulumi.resources.ProviderResource {
         return Codegen.optional(this.account);
     }
     /**
+     * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+     * 
+     */
+    @Export(name="debugTransportFile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> debugTransportFile;
+
+    /**
+     * @return File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+     * 
+     */
+    public Output<Optional<String>> debugTransportFile() {
+        return Codegen.optional(this.debugTransportFile);
+    }
+    /**
      * The API v2 token for API operations.
      * 
      */

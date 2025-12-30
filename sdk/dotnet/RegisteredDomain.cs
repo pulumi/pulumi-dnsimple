@@ -14,6 +14,8 @@ namespace Pulumi.DNSimple
     /// 
     /// ## Example Usage
     /// 
+    /// The simplest example below requires a contact (existing or a new one to be created) and basic domain information.
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -24,30 +26,69 @@ namespace Pulumi.DNSimple
     /// {
     ///     var aliceMain = new DNSimple.Contact("alice_main", new()
     ///     {
-    ///         Label = "Alice Appleseed",
-    ///         FirstName = "Alice Main",
+    ///         Label = "Alice",
+    ///         FirstName = "Alice",
     ///         LastName = "Appleseed",
     ///         OrganizationName = "Contoso",
     ///         JobTitle = "Manager",
     ///         Address1 = "Level 1, 2 Main St",
-    ///         Address2 = "Marsfield",
     ///         City = "San Francisco",
     ///         StateProvince = "California",
     ///         PostalCode = "90210",
     ///         Country = "US",
-    ///         Phone = "+1401239523",
-    ///         Fax = "+1849491024",
+    ///         Phone = "+1.401239523",
     ///         Email = "apple@contoso.com",
     ///     });
     /// 
-    ///     var appleseedBio = new DNSimple.RegisteredDomain("appleseed_bio", new()
+    ///     var exampleCom = new DNSimple.RegisteredDomain("example_com", new()
     ///     {
-    ///         Name = "appleseed.bio",
+    ///         Name = "example.com",
+    ///         ContactId = aliceMain.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Example with more settings
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleCom = new DNSimple.RegisteredDomain("example_com", new()
+    ///     {
+    ///         Name = "example.com",
     ///         ContactId = aliceMain.Id,
     ///         AutoRenewEnabled = true,
     ///         TransferLockEnabled = true,
     ///         WhoisPrivacyEnabled = true,
     ///         DnssecEnabled = false,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ### Example with extended attributes
+    /// 
+    /// Some domain extensions require additional information during registration. You can check if a domain extension requires extended attributes using the [TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes).
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using DNSimple = Pulumi.DNSimple;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleBio = new DNSimple.RegisteredDomain("example_bio", new()
+    ///     {
+    ///         Name = "example.bio",
+    ///         ContactId = aliceMain.Id,
+    ///         AutoRenewEnabled = true,
     ///         ExtendedAttributes = 
     ///         {
     ///             { "bio_agree", "I Agree" },
@@ -61,20 +102,20 @@ namespace Pulumi.DNSimple
     /// 
     /// DNSimple registered domains can be imported using their domain name and **optionally** with domain registration ID.
     /// 
-    /// **Importing registered domain example.com**
+    /// **Importing registered domain example.com:**
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com
+    /// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
     /// ```
     /// 
-    /// **Importing registered domain example.com with domain registration ID 1234**
+    /// **Importing registered domain example.com with domain registration ID 1234:**
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain resource_name example.com_1234
+    /// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
     /// ```
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/registeredDomain:RegisteredDomain")]
@@ -84,27 +125,25 @@ namespace Pulumi.DNSimple
         public Output<int> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain should be set to auto-renew (default: `False`)
+        /// Whether the domain should be set to auto-renew (default: `False`).
         /// </summary>
         [Output("autoRenewEnabled")]
         public Output<bool> AutoRenewEnabled { get; private set; } = null!;
 
         /// <summary>
-        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         /// </summary>
         [Output("contactId")]
         public Output<int> ContactId { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain should have DNSSEC enabled (default: `False`)
+        /// Whether the domain should have DNSSEC enabled (default: `False`).
         /// </summary>
         [Output("dnssecEnabled")]
         public Output<bool> DnssecEnabled { get; private set; } = null!;
 
         /// <summary>
         /// The domain registration details. (see below for nested schema)
-        /// 
-        /// &lt;a id="nestedblock--timeouts"&gt;&lt;/a&gt;
         /// </summary>
         [Output("domainRegistration")]
         public Output<Outputs.RegisteredDomainDomainRegistration> DomainRegistration { get; private set; } = null!;
@@ -119,13 +158,13 @@ namespace Pulumi.DNSimple
         public Output<ImmutableDictionary<string, string>?> ExtendedAttributes { get; private set; } = null!;
 
         /// <summary>
-        /// The domain name to be registered
+        /// The domain name to be registered.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+        /// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         /// </summary>
         [Output("premiumPrice")]
         public Output<string?> PremiumPrice { get; private set; } = null!;
@@ -137,21 +176,19 @@ namespace Pulumi.DNSimple
         public Output<Outputs.RegisteredDomainRegistrantChange> RegistrantChange { get; private set; } = null!;
 
         /// <summary>
-        /// The state of the domain.
+        /// (String) - The state of the domain registration.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
         /// <summary>
-        /// (see below for nested schema)
-        /// 
-        /// # Attributes Reference
+        /// (see below for nested schema).
         /// </summary>
         [Output("timeouts")]
         public Output<Outputs.RegisteredDomainTimeouts?> Timeouts { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain transfer lock protection is enabled (default: `True`)
+        /// Whether the domain transfer lock protection is enabled (default: `True`).
         /// </summary>
         [Output("transferLockEnabled")]
         public Output<bool> TransferLockEnabled { get; private set; } = null!;
@@ -163,7 +200,7 @@ namespace Pulumi.DNSimple
         public Output<string> UnicodeName { get; private set; } = null!;
 
         /// <summary>
-        /// Whether the domain should have WhoIs privacy enabled (default: `False`)
+        /// Whether the domain should have WHOIS privacy enabled (default: `False`).
         /// </summary>
         [Output("whoisPrivacyEnabled")]
         public Output<bool> WhoisPrivacyEnabled { get; private set; } = null!;
@@ -215,19 +252,19 @@ namespace Pulumi.DNSimple
     public sealed class RegisteredDomainArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Whether the domain should be set to auto-renew (default: `False`)
+        /// Whether the domain should be set to auto-renew (default: `False`).
         /// </summary>
         [Input("autoRenewEnabled")]
         public Input<bool>? AutoRenewEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         /// </summary>
         [Input("contactId", required: true)]
         public Input<int> ContactId { get; set; } = null!;
 
         /// <summary>
-        /// Whether the domain should have DNSSEC enabled (default: `False`)
+        /// Whether the domain should have DNSSEC enabled (default: `False`).
         /// </summary>
         [Input("dnssecEnabled")]
         public Input<bool>? DnssecEnabled { get; set; }
@@ -245,33 +282,31 @@ namespace Pulumi.DNSimple
         }
 
         /// <summary>
-        /// The domain name to be registered
+        /// The domain name to be registered.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+        /// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         /// </summary>
         [Input("premiumPrice")]
         public Input<string>? PremiumPrice { get; set; }
 
         /// <summary>
-        /// (see below for nested schema)
-        /// 
-        /// # Attributes Reference
+        /// (see below for nested schema).
         /// </summary>
         [Input("timeouts")]
         public Input<Inputs.RegisteredDomainTimeoutsArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Whether the domain transfer lock protection is enabled (default: `True`)
+        /// Whether the domain transfer lock protection is enabled (default: `True`).
         /// </summary>
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
 
         /// <summary>
-        /// Whether the domain should have WhoIs privacy enabled (default: `False`)
+        /// Whether the domain should have WHOIS privacy enabled (default: `False`).
         /// </summary>
         [Input("whoisPrivacyEnabled")]
         public Input<bool>? WhoisPrivacyEnabled { get; set; }
@@ -288,27 +323,25 @@ namespace Pulumi.DNSimple
         public Input<int>? AccountId { get; set; }
 
         /// <summary>
-        /// Whether the domain should be set to auto-renew (default: `False`)
+        /// Whether the domain should be set to auto-renew (default: `False`).
         /// </summary>
         [Input("autoRenewEnabled")]
         public Input<bool>? AutoRenewEnabled { get; set; }
 
         /// <summary>
-        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         /// </summary>
         [Input("contactId")]
         public Input<int>? ContactId { get; set; }
 
         /// <summary>
-        /// Whether the domain should have DNSSEC enabled (default: `False`)
+        /// Whether the domain should have DNSSEC enabled (default: `False`).
         /// </summary>
         [Input("dnssecEnabled")]
         public Input<bool>? DnssecEnabled { get; set; }
 
         /// <summary>
         /// The domain registration details. (see below for nested schema)
-        /// 
-        /// &lt;a id="nestedblock--timeouts"&gt;&lt;/a&gt;
         /// </summary>
         [Input("domainRegistration")]
         public Input<Inputs.RegisteredDomainDomainRegistrationGetArgs>? DomainRegistration { get; set; }
@@ -329,13 +362,13 @@ namespace Pulumi.DNSimple
         }
 
         /// <summary>
-        /// The domain name to be registered
+        /// The domain name to be registered.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium. And [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
+        /// The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         /// </summary>
         [Input("premiumPrice")]
         public Input<string>? PremiumPrice { get; set; }
@@ -347,21 +380,19 @@ namespace Pulumi.DNSimple
         public Input<Inputs.RegisteredDomainRegistrantChangeGetArgs>? RegistrantChange { get; set; }
 
         /// <summary>
-        /// The state of the domain.
+        /// (String) - The state of the domain registration.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
 
         /// <summary>
-        /// (see below for nested schema)
-        /// 
-        /// # Attributes Reference
+        /// (see below for nested schema).
         /// </summary>
         [Input("timeouts")]
         public Input<Inputs.RegisteredDomainTimeoutsGetArgs>? Timeouts { get; set; }
 
         /// <summary>
-        /// Whether the domain transfer lock protection is enabled (default: `True`)
+        /// Whether the domain transfer lock protection is enabled (default: `True`).
         /// </summary>
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
@@ -373,7 +404,7 @@ namespace Pulumi.DNSimple
         public Input<string>? UnicodeName { get; set; }
 
         /// <summary>
-        /// Whether the domain should have WhoIs privacy enabled (default: `False`)
+        /// Whether the domain should have WHOIS privacy enabled (default: `False`).
         /// </summary>
         [Input("whoisPrivacyEnabled")]
         public Input<bool>? WhoisPrivacyEnabled { get; set; }

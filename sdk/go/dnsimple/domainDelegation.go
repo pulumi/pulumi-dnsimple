@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -19,16 +19,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a domain delegation
-//			_, err := dnsimple.NewDomainDelegation(ctx, "foobar", &dnsimple.DomainDelegationArgs{
-//				Domain: pulumi.Any(dnsimple.Domain),
+//			_, err := dnsimple.NewDomainDelegation(ctx, "example", &dnsimple.DomainDelegationArgs{
+//				Domain: pulumi.String("example.com"),
 //				NameServers: pulumi.StringArray{
 //					pulumi.String("ns1.example.org"),
 //					pulumi.String("ns2.example.com"),
@@ -47,21 +46,17 @@ import (
 //
 // DNSimple domain delegations can be imported using the domain name.
 //
-// **Importing domain delegation for example.com**
-//
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/domainDelegation:DomainDelegation resource_name example.com
+// $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
 // ```
 type DomainDelegation struct {
 	pulumi.CustomResourceState
 
 	// The domain name.
 	Domain pulumi.StringOutput `pulumi:"domain"`
-	// The list of name servers to delegate to.
-	//
-	// # Attributes Reference
+	// List of name servers to delegate to.
 	NameServers pulumi.StringArrayOutput `pulumi:"nameServers"`
 }
 
@@ -103,18 +98,14 @@ func GetDomainDelegation(ctx *pulumi.Context,
 type domainDelegationState struct {
 	// The domain name.
 	Domain *string `pulumi:"domain"`
-	// The list of name servers to delegate to.
-	//
-	// # Attributes Reference
+	// List of name servers to delegate to.
 	NameServers []string `pulumi:"nameServers"`
 }
 
 type DomainDelegationState struct {
 	// The domain name.
 	Domain pulumi.StringPtrInput
-	// The list of name servers to delegate to.
-	//
-	// # Attributes Reference
+	// List of name servers to delegate to.
 	NameServers pulumi.StringArrayInput
 }
 
@@ -125,9 +116,7 @@ func (DomainDelegationState) ElementType() reflect.Type {
 type domainDelegationArgs struct {
 	// The domain name.
 	Domain string `pulumi:"domain"`
-	// The list of name servers to delegate to.
-	//
-	// # Attributes Reference
+	// List of name servers to delegate to.
 	NameServers []string `pulumi:"nameServers"`
 }
 
@@ -135,9 +124,7 @@ type domainDelegationArgs struct {
 type DomainDelegationArgs struct {
 	// The domain name.
 	Domain pulumi.StringInput
-	// The list of name servers to delegate to.
-	//
-	// # Attributes Reference
+	// List of name servers to delegate to.
 	NameServers pulumi.StringArrayInput
 }
 
@@ -233,9 +220,7 @@ func (o DomainDelegationOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DomainDelegation) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-// The list of name servers to delegate to.
-//
-// # Attributes Reference
+// List of name servers to delegate to.
 func (o DomainDelegationOutput) NameServers() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *DomainDelegation) pulumi.StringArrayOutput { return v.NameServers }).(pulumi.StringArrayOutput)
 }

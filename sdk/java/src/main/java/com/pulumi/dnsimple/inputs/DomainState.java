@@ -48,18 +48,14 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The domain name to be created
-     * 
-     * # Attributes Reference
+     * The domain name to be created.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The domain name to be created
-     * 
-     * # Attributes Reference
+     * @return The domain name to be created.
      * 
      */
     public Optional<Output<String>> name() {
@@ -199,9 +195,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name to be created
-         * 
-         * # Attributes Reference
+         * @param name The domain name to be created.
          * 
          * @return builder
          * 
@@ -212,9 +206,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name The domain name to be created
-         * 
-         * # Attributes Reference
+         * @param name The domain name to be created.
          * 
          * @return builder
          * 

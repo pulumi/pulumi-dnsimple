@@ -19,6 +19,11 @@ account: Optional[str]
 The account for API operations.
 """
 
+debugTransportFile: Optional[str]
+"""
+File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+"""
+
 prefetch: Optional[bool]
 """
 Flag to enable the prefetch of zone records.

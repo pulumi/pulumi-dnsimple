@@ -23,9 +23,7 @@ class ZoneArgs:
                  active: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Zone resource.
-        :param pulumi.Input[_builtins.str] name: The zone name
-               
-               # Attributes Reference
+        :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.bool] active: Whether the zone is active.
         """
         pulumi.set(__self__, "name", name)
@@ -36,9 +34,7 @@ class ZoneArgs:
     @pulumi.getter
     def name(self) -> pulumi.Input[_builtins.str]:
         """
-        The zone name
-
-        # Attributes Reference
+        The zone name.
         """
         return pulumi.get(self, "name")
 
@@ -73,9 +69,7 @@ class _ZoneState:
         :param pulumi.Input[_builtins.int] account_id: The account ID for the zone.
         :param pulumi.Input[_builtins.bool] active: Whether the zone is active.
         :param pulumi.Input[_builtins.str] last_transferred_at: The last time the zone was transferred only applicable for **secondary** zones.
-        :param pulumi.Input[_builtins.str] name: The zone name
-               
-               # Attributes Reference
+        :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.bool] reverse: Whether the zone is a reverse zone.
         :param pulumi.Input[_builtins.bool] secondary: Whether the zone is a secondary zone.
         """
@@ -132,9 +126,7 @@ class _ZoneState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The zone name
-
-        # Attributes Reference
+        The zone name.
         """
         return pulumi.get(self, "name")
 
@@ -179,7 +171,7 @@ class Zone(pulumi.CustomResource):
         """
         Provides a DNSimple zone resource.
 
-        > Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+        > **Note:** Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
 
         ## Example Usage
 
@@ -187,58 +179,25 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        # Create a zone
-        foobar = dnsimple.Zone("foobar", name=dnsimple["zone"])
+        example = dnsimple.Zone("example", name="example.com")
         ```
 
         ## Import
 
-        DNSimple zones can be imported using their numeric record ID or the zone name.
+        DNSimple zones can be imported using the zone name.
 
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/zone:Zone resource_name foo.com
+        $ pulumi import dnsimple:index/zone:Zone example example.com
         ```
 
-        The zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-
-        bash
-
-        curl -H 'Authorization: Bearer <ACCESS_TOKEN>' https://api.dnsimple.com/v2/1234/zones/example.com | jq
-
-        {
-
-          "data": {
-
-            "id": 1,
-            
-            "account_id": 1234,
-            
-            "name": "example.com",
-            
-            "reverse": false,
-            
-            "secondary": false,
-            
-            "last_transferred_at": null,
-            
-            "active": true,
-            
-            "created_at": "2023-04-18T04:58:01Z",
-            
-            "updated_at": "2024-01-16T15:53:18Z"
-
-          }
-
-        }
+        The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.bool] active: Whether the zone is active.
-        :param pulumi.Input[_builtins.str] name: The zone name
-               
-               # Attributes Reference
+        :param pulumi.Input[_builtins.str] name: The zone name.
         """
         ...
     @overload
@@ -249,7 +208,7 @@ class Zone(pulumi.CustomResource):
         """
         Provides a DNSimple zone resource.
 
-        > Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+        > **Note:** Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
 
         ## Example Usage
 
@@ -257,51 +216,20 @@ class Zone(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        # Create a zone
-        foobar = dnsimple.Zone("foobar", name=dnsimple["zone"])
+        example = dnsimple.Zone("example", name="example.com")
         ```
 
         ## Import
 
-        DNSimple zones can be imported using their numeric record ID or the zone name.
+        DNSimple zones can be imported using the zone name.
 
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/zone:Zone resource_name foo.com
+        $ pulumi import dnsimple:index/zone:Zone example example.com
         ```
 
-        The zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-
-        bash
-
-        curl -H 'Authorization: Bearer <ACCESS_TOKEN>' https://api.dnsimple.com/v2/1234/zones/example.com | jq
-
-        {
-
-          "data": {
-
-            "id": 1,
-            
-            "account_id": 1234,
-            
-            "name": "example.com",
-            
-            "reverse": false,
-            
-            "secondary": false,
-            
-            "last_transferred_at": null,
-            
-            "active": true,
-            
-            "created_at": "2023-04-18T04:58:01Z",
-            
-            "updated_at": "2024-01-16T15:53:18Z"
-
-          }
-
-        }
+        The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.
@@ -363,9 +291,7 @@ class Zone(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] account_id: The account ID for the zone.
         :param pulumi.Input[_builtins.bool] active: Whether the zone is active.
         :param pulumi.Input[_builtins.str] last_transferred_at: The last time the zone was transferred only applicable for **secondary** zones.
-        :param pulumi.Input[_builtins.str] name: The zone name
-               
-               # Attributes Reference
+        :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.bool] reverse: Whether the zone is a reverse zone.
         :param pulumi.Input[_builtins.bool] secondary: Whether the zone is a secondary zone.
         """
@@ -409,9 +335,7 @@ class Zone(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[_builtins.str]:
         """
-        The zone name
-
-        # Attributes Reference
+        The zone name.
         """
         return pulumi.get(self, "name")
 

@@ -7,7 +7,7 @@ import (
 	"context"
 	"reflect"
 
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -15,14 +15,16 @@ import (
 //
 // > **Note:** The registrant change API is currently in developer preview and is subject to change.
 //
-// Get registrant change requirements for the `dnsimple.com` domain and the contact with ID `1234`:
+// ## Example Usage
+//
+// Get registrant change requirements for the `example.com` domain and the contact with ID `1234`:
 //
 // ```go
 // package main
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -30,7 +32,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := dnsimple.GetRegistrantChangeCheck(ctx, &dnsimple.GetRegistrantChangeCheckArgs{
-//				DomainId:  "dnsimple.com",
+//				DomainId:  "example.com",
 //				ContactId: "1234",
 //			}, nil)
 //			if err != nil {
@@ -41,20 +43,6 @@ import (
 //	}
 //
 // ```
-//
-// The following arguments are supported:
-//
-// * `domainId` - (Required) The name or ID of the domain.
-// * `contactId` - (Required) The ID of the contact you are planning to change to.
-//
-// The following additional attributes are exported:
-//
-// * `contactId` - The ID of the contact you are planning to change to.
-// * `domainId` - The name or ID of the domain.
-// * `extendedAttributes` - (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
-// * `registryOwnerChange` - (Boolean) Whether the registrant change is going to result in an owner change at the registry.
-//
-// <a id="nestedblock--extended_attributes"></a>
 func GetRegistrantChangeCheck(ctx *pulumi.Context, args *GetRegistrantChangeCheckArgs, opts ...pulumi.InvokeOption) (*GetRegistrantChangeCheckResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetRegistrantChangeCheckResult
@@ -67,17 +55,23 @@ func GetRegistrantChangeCheck(ctx *pulumi.Context, args *GetRegistrantChangeChec
 
 // A collection of arguments for invoking getRegistrantChangeCheck.
 type GetRegistrantChangeCheckArgs struct {
+	// The ID of the contact you are planning to change to.
 	ContactId string `pulumi:"contactId"`
-	DomainId  string `pulumi:"domainId"`
+	// The name or ID of the domain.
+	DomainId string `pulumi:"domainId"`
 }
 
 // A collection of values returned by getRegistrantChangeCheck.
 type GetRegistrantChangeCheckResult struct {
-	ContactId           string                                      `pulumi:"contactId"`
-	DomainId            string                                      `pulumi:"domainId"`
-	ExtendedAttributes  []GetRegistrantChangeCheckExtendedAttribute `pulumi:"extendedAttributes"`
-	Id                  string                                      `pulumi:"id"`
-	RegistryOwnerChange bool                                        `pulumi:"registryOwnerChange"`
+	// The ID of the contact you are planning to change to.
+	ContactId string `pulumi:"contactId"`
+	// The name or ID of the domain.
+	DomainId string `pulumi:"domainId"`
+	// (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+	ExtendedAttributes []GetRegistrantChangeCheckExtendedAttribute `pulumi:"extendedAttributes"`
+	Id                 string                                      `pulumi:"id"`
+	// (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+	RegistryOwnerChange bool `pulumi:"registryOwnerChange"`
 }
 
 func GetRegistrantChangeCheckOutput(ctx *pulumi.Context, args GetRegistrantChangeCheckOutputArgs, opts ...pulumi.InvokeOption) GetRegistrantChangeCheckResultOutput {
@@ -91,8 +85,10 @@ func GetRegistrantChangeCheckOutput(ctx *pulumi.Context, args GetRegistrantChang
 
 // A collection of arguments for invoking getRegistrantChangeCheck.
 type GetRegistrantChangeCheckOutputArgs struct {
+	// The ID of the contact you are planning to change to.
 	ContactId pulumi.StringInput `pulumi:"contactId"`
-	DomainId  pulumi.StringInput `pulumi:"domainId"`
+	// The name or ID of the domain.
+	DomainId pulumi.StringInput `pulumi:"domainId"`
 }
 
 func (GetRegistrantChangeCheckOutputArgs) ElementType() reflect.Type {
@@ -114,14 +110,17 @@ func (o GetRegistrantChangeCheckResultOutput) ToGetRegistrantChangeCheckResultOu
 	return o
 }
 
+// The ID of the contact you are planning to change to.
 func (o GetRegistrantChangeCheckResultOutput) ContactId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckResult) string { return v.ContactId }).(pulumi.StringOutput)
 }
 
+// The name or ID of the domain.
 func (o GetRegistrantChangeCheckResultOutput) DomainId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckResult) string { return v.DomainId }).(pulumi.StringOutput)
 }
 
+// (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
 func (o GetRegistrantChangeCheckResultOutput) ExtendedAttributes() GetRegistrantChangeCheckExtendedAttributeArrayOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckResult) []GetRegistrantChangeCheckExtendedAttribute {
 		return v.ExtendedAttributes
@@ -132,6 +131,7 @@ func (o GetRegistrantChangeCheckResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
+// (Boolean) Whether the registrant change is going to result in an owner change at the registry.
 func (o GetRegistrantChangeCheckResultOutput) RegistryOwnerChange() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegistrantChangeCheckResult) bool { return v.RegistryOwnerChange }).(pulumi.BoolOutput)
 }

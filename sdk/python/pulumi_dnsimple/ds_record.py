@@ -29,12 +29,9 @@ class DsRecordArgs:
         The set of arguments for constructing a DsRecord resource.
         :param pulumi.Input[_builtins.str] algorithm: DNSSEC algorithm number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
-        :param pulumi.Input[_builtins.str] digest: The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
-        :param pulumi.Input[_builtins.str] keytag: A keytag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
-               
-               # Attributes Reference
         """
         pulumi.set(__self__, "algorithm", algorithm)
         pulumi.set(__self__, "domain", domain)
@@ -75,7 +72,7 @@ class DsRecordArgs:
     @pulumi.getter
     def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        The hexadecimal representation of the digest of the corresponding DNSKEY record.
         """
         return pulumi.get(self, "digest")
 
@@ -98,9 +95,6 @@ class DsRecordArgs:
     @_builtins.property
     @pulumi.getter
     def keytag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A keytag that references the corresponding DNSKEY record.
-        """
         return pulumi.get(self, "keytag")
 
     @keytag.setter
@@ -112,8 +106,6 @@ class DsRecordArgs:
     def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A public key that references the corresponding DNSKEY record.
-
-        # Attributes Reference
         """
         return pulumi.get(self, "public_key")
 
@@ -136,15 +128,12 @@ class _DsRecordState:
         """
         Input properties used for looking up and filtering DsRecord resources.
         :param pulumi.Input[_builtins.str] algorithm: DNSSEC algorithm number as a string.
-        :param pulumi.Input[_builtins.str] created_at: The time the DS record was created at.
-        :param pulumi.Input[_builtins.str] digest: The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        :param pulumi.Input[_builtins.str] created_at: The timestamp when the DS record was created.
+        :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
-        :param pulumi.Input[_builtins.str] keytag: A keytag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
-               
-               # Attributes Reference
-        :param pulumi.Input[_builtins.str] updated_at: The time the DS record was last updated at.
+        :param pulumi.Input[_builtins.str] updated_at: The timestamp when the DS record was last updated.
         """
         if algorithm is not None:
             pulumi.set(__self__, "algorithm", algorithm)
@@ -179,7 +168,7 @@ class _DsRecordState:
     @pulumi.getter(name="createdAt")
     def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The time the DS record was created at.
+        The timestamp when the DS record was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -191,7 +180,7 @@ class _DsRecordState:
     @pulumi.getter
     def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        The hexadecimal representation of the digest of the corresponding DNSKEY record.
         """
         return pulumi.get(self, "digest")
 
@@ -226,9 +215,6 @@ class _DsRecordState:
     @_builtins.property
     @pulumi.getter
     def keytag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        """
-        A keytag that references the corresponding DNSKEY record.
-        """
         return pulumi.get(self, "keytag")
 
     @keytag.setter
@@ -240,8 +226,6 @@ class _DsRecordState:
     def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
         A public key that references the corresponding DNSKEY record.
-
-        # Attributes Reference
         """
         return pulumi.get(self, "public_key")
 
@@ -253,7 +237,7 @@ class _DsRecordState:
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        The time the DS record was last updated at.
+        The timestamp when the DS record was last updated.
         """
         return pulumi.get(self, "updated_at")
 
@@ -284,8 +268,8 @@ class DsRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        foobar = dnsimple.DsRecord("foobar",
-            domain=dnsimple["domain"],
+        example = dnsimple.DsRecord("example",
+            domain="example.com",
             algorithm="8",
             digest="6CEEA0117A02480216EBF745A7B690F938860074E4AD11AF2AC573007205682B",
             digest_type="2",
@@ -294,72 +278,23 @@ class DsRecord(pulumi.CustomResource):
 
         ## Import
 
-        DNSimple DS record resources can be imported using their domain ID and numeric record ID.
+        DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
 
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/dsRecord:DsRecord resource_name example.com_5678
+        $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
         ```
 
-        The record ID can be found within [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-
-        bash
-
-        curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1010/domains/example.com/ds_records | jq
-
-        {
-
-          "data": [
-
-            {
-            
-              "id": 24,
-            
-              "domain_id": 1010,
-            
-              "algorithm": "8",
-            
-              "digest": "C1F6E04A5A61FBF65BF9DC8294C363CF11C89E802D926BDAB79C55D27BEFA94F",
-            
-              "digest_type": "2",
-            
-              "keytag": "44620",
-            
-              "public_key": null,
-            
-              "created_at": "2017-03-03T13:49:58Z",
-            
-              "updated_at": "2017-03-03T13:49:58Z"
-            
-            }
-
-          ],
-
-          "pagination": {
-
-            "current_page": 1,
-            
-            "per_page": 30,
-            
-            "total_entries": 1,
-            
-            "total_pages": 1
-
-          }
-
-        }
+        The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] algorithm: DNSSEC algorithm number as a string.
-        :param pulumi.Input[_builtins.str] digest: The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
-        :param pulumi.Input[_builtins.str] keytag: A keytag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
-               
-               # Attributes Reference
         """
         ...
     @overload
@@ -376,8 +311,8 @@ class DsRecord(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        foobar = dnsimple.DsRecord("foobar",
-            domain=dnsimple["domain"],
+        example = dnsimple.DsRecord("example",
+            domain="example.com",
             algorithm="8",
             digest="6CEEA0117A02480216EBF745A7B690F938860074E4AD11AF2AC573007205682B",
             digest_type="2",
@@ -386,61 +321,15 @@ class DsRecord(pulumi.CustomResource):
 
         ## Import
 
-        DNSimple DS record resources can be imported using their domain ID and numeric record ID.
+        DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
 
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/dsRecord:DsRecord resource_name example.com_5678
+        $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
         ```
 
-        The record ID can be found within [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-
-        bash
-
-        curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1010/domains/example.com/ds_records | jq
-
-        {
-
-          "data": [
-
-            {
-            
-              "id": 24,
-            
-              "domain_id": 1010,
-            
-              "algorithm": "8",
-            
-              "digest": "C1F6E04A5A61FBF65BF9DC8294C363CF11C89E802D926BDAB79C55D27BEFA94F",
-            
-              "digest_type": "2",
-            
-              "keytag": "44620",
-            
-              "public_key": null,
-            
-              "created_at": "2017-03-03T13:49:58Z",
-            
-              "updated_at": "2017-03-03T13:49:58Z"
-            
-            }
-
-          ],
-
-          "pagination": {
-
-            "current_page": 1,
-            
-            "per_page": 30,
-            
-            "total_entries": 1,
-            
-            "total_pages": 1
-
-          }
-
-        }
+        The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
         :param DsRecordArgs args: The arguments to use to populate this resource's properties.
@@ -510,15 +399,12 @@ class DsRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] algorithm: DNSSEC algorithm number as a string.
-        :param pulumi.Input[_builtins.str] created_at: The time the DS record was created at.
-        :param pulumi.Input[_builtins.str] digest: The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        :param pulumi.Input[_builtins.str] created_at: The timestamp when the DS record was created.
+        :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
-        :param pulumi.Input[_builtins.str] keytag: A keytag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
-               
-               # Attributes Reference
-        :param pulumi.Input[_builtins.str] updated_at: The time the DS record was last updated at.
+        :param pulumi.Input[_builtins.str] updated_at: The timestamp when the DS record was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -546,7 +432,7 @@ class DsRecord(pulumi.CustomResource):
     @pulumi.getter(name="createdAt")
     def created_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The time the DS record was created at.
+        The timestamp when the DS record was created.
         """
         return pulumi.get(self, "created_at")
 
@@ -554,7 +440,7 @@ class DsRecord(pulumi.CustomResource):
     @pulumi.getter
     def digest(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
-        The hexidecimal representation of the digest of the corresponding DNSKEY record.
+        The hexadecimal representation of the digest of the corresponding DNSKEY record.
         """
         return pulumi.get(self, "digest")
 
@@ -577,9 +463,6 @@ class DsRecord(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def keytag(self) -> pulumi.Output[Optional[_builtins.str]]:
-        """
-        A keytag that references the corresponding DNSKEY record.
-        """
         return pulumi.get(self, "keytag")
 
     @_builtins.property
@@ -587,8 +470,6 @@ class DsRecord(pulumi.CustomResource):
     def public_key(self) -> pulumi.Output[Optional[_builtins.str]]:
         """
         A public key that references the corresponding DNSKEY record.
-
-        # Attributes Reference
         """
         return pulumi.get(self, "public_key")
 
@@ -596,7 +477,7 @@ class DsRecord(pulumi.CustomResource):
     @pulumi.getter(name="updatedAt")
     def updated_at(self) -> pulumi.Output[_builtins.str]:
         """
-        The time the DS record was last updated at.
+        The timestamp when the DS record was last updated.
         """
         return pulumi.get(self, "updated_at")
 

@@ -19,6 +19,17 @@ Object.defineProperty(exports, "account", {
 });
 
 /**
+ * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+ */
+export declare const debugTransportFile: string | undefined;
+Object.defineProperty(exports, "debugTransportFile", {
+    get() {
+        return __config.get("debugTransportFile");
+    },
+    enumerable: true,
+});
+
+/**
  * Flag to enable the prefetch of zone records.
  */
 export declare const prefetch: boolean | undefined;

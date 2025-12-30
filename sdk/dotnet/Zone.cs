@@ -12,7 +12,7 @@ namespace Pulumi.DNSimple
     /// <summary>
     /// Provides a DNSimple zone resource.
     /// 
-    /// &gt; Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `Active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
+    /// &gt; **Note:** Currently the resource creation acts as an import, so the zone must already exist in DNSimple. The only attribute that will be modified during resource creation is the `Active` state of the zone. This is because our API does not allow for the creation of zones. Creation of zones happens through the purchase or creation of domains. We expect this behavior to change in the future.
     /// 
     /// ## Example Usage
     /// 
@@ -24,10 +24,9 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a zone
-    ///     var foobar = new DNSimple.Zone("foobar", new()
+    ///     var example = new DNSimple.Zone("example", new()
     ///     {
-    ///         Name = dnsimple.Zone,
+    ///         Name = "example.com",
     ///     });
     /// 
     /// });
@@ -35,45 +34,15 @@ namespace Pulumi.DNSimple
     /// 
     /// ## Import
     /// 
-    /// DNSimple zones can be imported using their numeric record ID or the zone name.
+    /// DNSimple zones can be imported using the zone name.
     /// 
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/zone:Zone resource_name foo.com
+    /// $ pulumi import dnsimple:index/zone:Zone example example.com
     /// ```
     /// 
-    /// The zone ID can be found within [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-    /// 
-    /// bash
-    /// 
-    /// curl -H 'Authorization: Bearer &lt;ACCESS_TOKEN&gt;' https://api.dnsimple.com/v2/1234/zones/example.com | jq
-    /// 
-    /// {
-    /// 
-    ///   "data": {
-    /// 
-    ///     "id": 1,
-    ///     
-    ///     "account_id": 1234,
-    ///     
-    ///     "name": "example.com",
-    ///     
-    ///     "reverse": false,
-    ///     
-    ///     "secondary": false,
-    ///     
-    ///     "last_transferred_at": null,
-    ///     
-    ///     "active": true,
-    ///     
-    ///     "created_at": "2023-04-18T04:58:01Z",
-    ///     
-    ///     "updated_at": "2024-01-16T15:53:18Z"
-    /// 
-    ///   }
-    /// 
-    /// }
+    /// The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/zone:Zone")]
     public partial class Zone : global::Pulumi.CustomResource
@@ -97,9 +66,7 @@ namespace Pulumi.DNSimple
         public Output<string> LastTransferredAt { get; private set; } = null!;
 
         /// <summary>
-        /// The zone name
-        /// 
-        /// # Attributes Reference
+        /// The zone name.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -169,9 +136,7 @@ namespace Pulumi.DNSimple
         public Input<bool>? Active { get; set; }
 
         /// <summary>
-        /// The zone name
-        /// 
-        /// # Attributes Reference
+        /// The zone name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
@@ -203,9 +168,7 @@ namespace Pulumi.DNSimple
         public Input<string>? LastTransferredAt { get; set; }
 
         /// <summary>
-        /// The zone name
-        /// 
-        /// # Attributes Reference
+        /// The zone name.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

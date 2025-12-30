@@ -14,50 +14,45 @@ import * as utilities from "./utilities";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
  * // Add a record to the root domain
- * const foobar = new dnsimple.ZoneRecord("foobar", {
- *     zoneName: dnsimpleDomain,
+ * const apex = new dnsimple.ZoneRecord("apex", {
+ *     zoneName: "example.com",
  *     name: "",
- *     value: "192.168.0.11",
+ *     value: "192.0.2.1",
  *     type: "A",
  *     ttl: 3600,
  * });
- * ```
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as dnsimple from "@pulumi/dnsimple";
- *
- * // Add a record to a sub-domain
- * const foobar = new dnsimple.ZoneRecord("foobar", {
- *     zoneName: dnsimpleDomain,
- *     name: "terraform",
- *     value: "192.168.0.11",
+ * // Add a record to a subdomain
+ * const www = new dnsimple.ZoneRecord("www", {
+ *     zoneName: "example.com",
+ *     name: "www",
+ *     value: "192.0.2.1",
  *     type: "A",
+ *     ttl: 3600,
+ * });
+ * // Add an MX record
+ * const mx = new dnsimple.ZoneRecord("mx", {
+ *     zoneName: "example.com",
+ *     name: "",
+ *     value: "mail.example.com",
+ *     type: "MX",
+ *     priority: 10,
  *     ttl: 3600,
  * });
  * ```
  *
  * ## Import
  *
- * DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+ * DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
  *
- * **Importing record example.com with record ID 1234**
- *
- * bash
- *
- * ```sh
- * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
- * ```
- *
- * **Importing record www.example.com with record ID 1234**
+ * **Importing record for example.com with record ID 1234:**
  *
  * bash
  *
  * ```sh
- * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+ * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
  * ```
  *
- * The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+ * The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
  */
 export class ZoneRecord extends pulumi.CustomResource {
     /**
@@ -88,16 +83,16 @@ export class ZoneRecord extends pulumi.CustomResource {
     }
 
     /**
-     * The name of the record
+     * The name of the record. Use `""` for the root domain.
      */
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly nameNormalized: pulumi.Output<string>;
     /**
-     * The priority of the record - only useful for some record types
+     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      */
     declare public readonly priority: pulumi.Output<number>;
     /**
-     * The FQDN of the record
+     * The fully qualified domain name (FQDN) of the record.
      */
     declare public /*out*/ readonly qualifiedName: pulumi.Output<string>;
     /**
@@ -105,27 +100,27 @@ export class ZoneRecord extends pulumi.CustomResource {
      */
     declare public readonly regions: pulumi.Output<string[] | undefined>;
     /**
-     * The TTL of the record - defaults to 3600
+     * The TTL of the record. Defaults to `3600`.
      */
     declare public readonly ttl: pulumi.Output<number>;
     /**
-     * The type of the record
+     * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      */
     declare public readonly type: pulumi.Output<string>;
     /**
-     * The value of the record
+     * The value of the record.
      */
     declare public readonly value: pulumi.Output<string>;
     /**
-     * The normalized value of the record
+     * The normalized value of the record.
      */
     declare public /*out*/ readonly valueNormalized: pulumi.Output<string>;
     /**
-     * The zone ID of the record
+     * The zone ID of the record.
      */
     declare public /*out*/ readonly zoneId: pulumi.Output<string>;
     /**
-     * The zone name to add the record to
+     * The zone name to add the record to.
      */
     declare public readonly zoneName: pulumi.Output<string>;
 
@@ -189,16 +184,16 @@ export class ZoneRecord extends pulumi.CustomResource {
  */
 export interface ZoneRecordState {
     /**
-     * The name of the record
+     * The name of the record. Use `""` for the root domain.
      */
     name?: pulumi.Input<string>;
     nameNormalized?: pulumi.Input<string>;
     /**
-     * The priority of the record - only useful for some record types
+     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      */
     priority?: pulumi.Input<number>;
     /**
-     * The FQDN of the record
+     * The fully qualified domain name (FQDN) of the record.
      */
     qualifiedName?: pulumi.Input<string>;
     /**
@@ -206,27 +201,27 @@ export interface ZoneRecordState {
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The TTL of the record - defaults to 3600
+     * The TTL of the record. Defaults to `3600`.
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of the record
+     * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      */
     type?: pulumi.Input<string>;
     /**
-     * The value of the record
+     * The value of the record.
      */
     value?: pulumi.Input<string>;
     /**
-     * The normalized value of the record
+     * The normalized value of the record.
      */
     valueNormalized?: pulumi.Input<string>;
     /**
-     * The zone ID of the record
+     * The zone ID of the record.
      */
     zoneId?: pulumi.Input<string>;
     /**
-     * The zone name to add the record to
+     * The zone name to add the record to.
      */
     zoneName?: pulumi.Input<string>;
 }
@@ -236,11 +231,11 @@ export interface ZoneRecordState {
  */
 export interface ZoneRecordArgs {
     /**
-     * The name of the record
+     * The name of the record. Use `""` for the root domain.
      */
     name: pulumi.Input<string>;
     /**
-     * The priority of the record - only useful for some record types
+     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      */
     priority?: pulumi.Input<number>;
     /**
@@ -248,19 +243,19 @@ export interface ZoneRecordArgs {
      */
     regions?: pulumi.Input<pulumi.Input<string>[]>;
     /**
-     * The TTL of the record - defaults to 3600
+     * The TTL of the record. Defaults to `3600`.
      */
     ttl?: pulumi.Input<number>;
     /**
-     * The type of the record
+     * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      */
     type: pulumi.Input<string>;
     /**
-     * The value of the record
+     * The value of the record.
      */
     value: pulumi.Input<string>;
     /**
-     * The zone name to add the record to
+     * The zone name to add the record to.
      */
     zoneName: pulumi.Input<string>;
 }

@@ -43,11 +43,17 @@ class GetZoneResult:
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> _builtins.int:
+        """
+        The account ID.
+        """
         return pulumi.get(self, "account_id")
 
     @_builtins.property
     @pulumi.getter
     def id(self) -> _builtins.int:
+        """
+        The zone ID.
+        """
         return pulumi.get(self, "id")
 
     @_builtins.property
@@ -58,6 +64,9 @@ class GetZoneResult:
     @_builtins.property
     @pulumi.getter
     def reverse(self) -> _builtins.bool:
+        """
+        Whether the zone is a reverse zone (`true`) or forward zone (`false`).
+        """
         return pulumi.get(self, "reverse")
 
 
@@ -76,7 +85,17 @@ class AwaitableGetZoneResult(GetZoneResult):
 def get_zone(name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    example = dnsimple.get_zone(name="example.com")
+    ```
+
+
+    :param _builtins.str name: The name of the zone.
     """
     __args__ = dict()
     __args__['name'] = name
@@ -91,7 +110,17 @@ def get_zone(name: Optional[_builtins.str] = None,
 def get_zone_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
-    Use this data source to access information about an existing resource.
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_dnsimple as dnsimple
+
+    example = dnsimple.get_zone(name="example.com")
+    ```
+
+
+    :param _builtins.str name: The name of the zone.
     """
     __args__ = dict()
     __args__['name'] = name

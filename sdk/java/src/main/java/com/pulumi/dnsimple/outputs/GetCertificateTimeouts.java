@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCertificateTimeouts {
     /**
-     * @return (String) - The timeout for the read operation e.g. `5m`
+     * @return (String) - The timeout for the read operation, e.g., `5m`.
      * 
      */
     private @Nullable String read;
 
     private GetCertificateTimeouts() {}
     /**
-     * @return (String) - The timeout for the read operation e.g. `5m`
+     * @return (String) - The timeout for the read operation, e.g., `5m`.
      * 
      */
     public Optional<String> read() {

@@ -13,22 +13,21 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * // Create a contact
- * const me = new dnsimple.Contact("me", {
- *     label: "Apple Appleseed",
- *     firstName: "Apple",
- *     lastName: "Appleseed",
- *     organizationName: "Contoso",
+ * const example = new dnsimple.Contact("example", {
+ *     label: "Main Contact",
+ *     firstName: "John",
+ *     lastName: "Doe",
+ *     organizationName: "Example Inc",
  *     jobTitle: "Manager",
- *     address1: "Level 1, 2 Main St",
- *     address2: "Marsfield",
+ *     address1: "123 Main Street",
+ *     address2: "Suite 100",
  *     city: "San Francisco",
  *     stateProvince: "California",
- *     postalCode: "90210",
+ *     postalCode: "94105",
  *     country: "US",
- *     phone: "+1401239523",
- *     fax: "+1849491024",
- *     email: "apple@contoso.com",
+ *     phone: "+1.4155551234",
+ *     fax: "+1.4155555678",
+ *     email: "john@example.com",
  * });
  * ```
  *
@@ -39,114 +38,10 @@ import * as utilities from "./utilities";
  * bash
  *
  * ```sh
- * $ pulumi import dnsimple:index/contact:Contact resource_name 5678
+ * $ pulumi import dnsimple:index/contact:Contact example 5678
  * ```
  *
- * The ID can be found within [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
- *
- * bash
- *
- * curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/contacts?label_like=example.com | jq
- *
- * {
- *
- *   "data": [
- *
- *     {
- *     
- *       "id": 1,
- *     
- *       "account_id": 1010,
- *     
- *       "label": "Default",
- *     
- *       "first_name": "First",
- *     
- *       "last_name": "User",
- *     
- *       "job_title": "CEO",
- *     
- *       "organization_name": "Awesome Company",
- *     
- *       "email": "first@example.com",
- *     
- *       "phone": "+18001234567",
- *     
- *       "fax": "+18011234567",
- *     
- *       "address1": "Italian Street, 10",
- *     
- *       "address2": "",
- *     
- *       "city": "Roma",
- *     
- *       "state_province": "RM",
- *     
- *       "postal_code": "00100",
- *     
- *       "country": "IT",
- *     
- *       "created_at": "2013-11-08T17:23:15Z",
- *     
- *       "updated_at": "2015-01-08T21:30:50Z"
- *     
- *     },
- *     
- *     {
- *     
- *       "id": 2,
- *     
- *       "account_id": 1010,
- *     
- *       "label": "",
- *     
- *       "first_name": "Second",
- *     
- *       "last_name": "User",
- *     
- *       "job_title": "",
- *     
- *       "organization_name": "",
- *     
- *       "email": "second@example.com",
- *     
- *       "phone": "+18881234567",
- *     
- *       "fax": "",
- *     
- *       "address1": "French Street",
- *     
- *       "address2": "c/o Someone",
- *     
- *       "city": "Paris",
- *     
- *       "state_province": "XY",
- *     
- *       "postal_code": "00200",
- *     
- *       "country": "FR",
- *     
- *       "created_at": "2014-12-06T15:46:18Z",
- *     
- *       "updated_at": "2014-12-06T15:46:18Z"
- *     
- *     }
- *
- *   ],
- *
- *   "pagination": {
- *
- *     "current_page": 1,
- *     
- *     "per_page": 30,
- *     
- *     "total_entries": 2,
- *     
- *     "total_pages": 1
- *
- *   }
- *
- * }
+ * The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  */
 export class Contact extends pulumi.CustomResource {
     /**
@@ -181,19 +76,19 @@ export class Contact extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly accountId: pulumi.Output<number>;
     /**
-     * Address line 1
+     * The primary address line (street address, building number, etc.).
      */
     declare public readonly address1: pulumi.Output<string>;
     /**
-     * Address line 2
+     * The secondary address line (apartment, suite, floor, etc.).
      */
     declare public readonly address2: pulumi.Output<string>;
     /**
-     * City
+     * The city where the contact is located.
      */
     declare public readonly city: pulumi.Output<string>;
     /**
-     * Country
+     * The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
      */
     declare public readonly country: pulumi.Output<string>;
     /**
@@ -201,13 +96,11 @@ export class Contact extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly createdAt: pulumi.Output<string>;
     /**
-     * Email
-     *
-     * # Attributes Reference
+     * The contact's email address.
      */
     declare public readonly email: pulumi.Output<string>;
     /**
-     * Fax
+     * The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
      */
     declare public readonly fax: pulumi.Output<string>;
     /**
@@ -215,27 +108,27 @@ export class Contact extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly faxNormalized: pulumi.Output<string>;
     /**
-     * First name
+     * The first name of the contact person.
      */
     declare public readonly firstName: pulumi.Output<string>;
     /**
-     * Job title
+     * The job title or position of the contact person within the organization.
      */
     declare public readonly jobTitle: pulumi.Output<string>;
     /**
-     * Label
+     * A descriptive label for the contact to help identify it.
      */
     declare public readonly label: pulumi.Output<string>;
     /**
-     * Last name
+     * The last name of the contact person.
      */
     declare public readonly lastName: pulumi.Output<string>;
     /**
-     * Organization name
+     * The name of the organization or company associated with the contact.
      */
     declare public readonly organizationName: pulumi.Output<string>;
     /**
-     * Phone
+     * The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
      */
     declare public readonly phone: pulumi.Output<string>;
     /**
@@ -243,11 +136,11 @@ export class Contact extends pulumi.CustomResource {
      */
     declare public /*out*/ readonly phoneNormalized: pulumi.Output<string>;
     /**
-     * Postal code
+     * The postal code, ZIP code, or equivalent for the contact's location.
      */
     declare public readonly postalCode: pulumi.Output<string>;
     /**
-     * State province
+     * The state, province, or region where the contact is located.
      */
     declare public readonly stateProvince: pulumi.Output<string>;
     /**
@@ -350,19 +243,19 @@ export interface ContactState {
      */
     accountId?: pulumi.Input<number>;
     /**
-     * Address line 1
+     * The primary address line (street address, building number, etc.).
      */
     address1?: pulumi.Input<string>;
     /**
-     * Address line 2
+     * The secondary address line (apartment, suite, floor, etc.).
      */
     address2?: pulumi.Input<string>;
     /**
-     * City
+     * The city where the contact is located.
      */
     city?: pulumi.Input<string>;
     /**
-     * Country
+     * The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
      */
     country?: pulumi.Input<string>;
     /**
@@ -370,13 +263,11 @@ export interface ContactState {
      */
     createdAt?: pulumi.Input<string>;
     /**
-     * Email
-     *
-     * # Attributes Reference
+     * The contact's email address.
      */
     email?: pulumi.Input<string>;
     /**
-     * Fax
+     * The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
      */
     fax?: pulumi.Input<string>;
     /**
@@ -384,27 +275,27 @@ export interface ContactState {
      */
     faxNormalized?: pulumi.Input<string>;
     /**
-     * First name
+     * The first name of the contact person.
      */
     firstName?: pulumi.Input<string>;
     /**
-     * Job title
+     * The job title or position of the contact person within the organization.
      */
     jobTitle?: pulumi.Input<string>;
     /**
-     * Label
+     * A descriptive label for the contact to help identify it.
      */
     label?: pulumi.Input<string>;
     /**
-     * Last name
+     * The last name of the contact person.
      */
     lastName?: pulumi.Input<string>;
     /**
-     * Organization name
+     * The name of the organization or company associated with the contact.
      */
     organizationName?: pulumi.Input<string>;
     /**
-     * Phone
+     * The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
      */
     phone?: pulumi.Input<string>;
     /**
@@ -412,11 +303,11 @@ export interface ContactState {
      */
     phoneNormalized?: pulumi.Input<string>;
     /**
-     * Postal code
+     * The postal code, ZIP code, or equivalent for the contact's location.
      */
     postalCode?: pulumi.Input<string>;
     /**
-     * State province
+     * The state, province, or region where the contact is located.
      */
     stateProvince?: pulumi.Input<string>;
     /**
@@ -430,61 +321,59 @@ export interface ContactState {
  */
 export interface ContactArgs {
     /**
-     * Address line 1
+     * The primary address line (street address, building number, etc.).
      */
     address1: pulumi.Input<string>;
     /**
-     * Address line 2
+     * The secondary address line (apartment, suite, floor, etc.).
      */
     address2?: pulumi.Input<string>;
     /**
-     * City
+     * The city where the contact is located.
      */
     city: pulumi.Input<string>;
     /**
-     * Country
+     * The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
      */
     country: pulumi.Input<string>;
     /**
-     * Email
-     *
-     * # Attributes Reference
+     * The contact's email address.
      */
     email: pulumi.Input<string>;
     /**
-     * Fax
+     * The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
      */
     fax?: pulumi.Input<string>;
     /**
-     * First name
+     * The first name of the contact person.
      */
     firstName: pulumi.Input<string>;
     /**
-     * Job title
+     * The job title or position of the contact person within the organization.
      */
     jobTitle?: pulumi.Input<string>;
     /**
-     * Label
+     * A descriptive label for the contact to help identify it.
      */
     label?: pulumi.Input<string>;
     /**
-     * Last name
+     * The last name of the contact person.
      */
     lastName: pulumi.Input<string>;
     /**
-     * Organization name
+     * The name of the organization or company associated with the contact.
      */
     organizationName?: pulumi.Input<string>;
     /**
-     * Phone
+     * The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
      */
     phone: pulumi.Input<string>;
     /**
-     * Postal code
+     * The postal code, ZIP code, or equivalent for the contact's location.
      */
     postalCode: pulumi.Input<string>;
     /**
-     * State province
+     * The state, province, or region where the contact is located.
      */
     stateProvince: pulumi.Input<string>;
 }

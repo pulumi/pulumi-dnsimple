@@ -32,6 +32,21 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+     * 
+     */
+    @Import(name="debugTransportFile")
+    private @Nullable Output<String> debugTransportFile;
+
+    /**
+     * @return File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+     * 
+     */
+    public Optional<Output<String>> debugTransportFile() {
+        return Optional.ofNullable(this.debugTransportFile);
+    }
+
+    /**
      * Flag to enable the prefetch of zone records.
      * 
      */
@@ -95,6 +110,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     private ProviderArgs(ProviderArgs $) {
         this.account = $.account;
+        this.debugTransportFile = $.debugTransportFile;
         this.prefetch = $.prefetch;
         this.sandbox = $.sandbox;
         this.token = $.token;
@@ -138,6 +154,27 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder account(String account) {
             return account(Output.of(account));
+        }
+
+        /**
+         * @param debugTransportFile File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debugTransportFile(@Nullable Output<String> debugTransportFile) {
+            $.debugTransportFile = debugTransportFile;
+            return this;
+        }
+
+        /**
+         * @param debugTransportFile File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder debugTransportFile(String debugTransportFile) {
+            return debugTransportFile(Output.of(debugTransportFile));
         }
 
         /**

@@ -16,14 +16,14 @@ public final class RegisteredDomainTimeoutsArgs extends com.pulumi.resources.Res
     public static final RegisteredDomainTimeoutsArgs Empty = new RegisteredDomainTimeoutsArgs();
 
     /**
-     * Create timeout.
+     * (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     @Import(name="create")
     private @Nullable Output<String> create;
 
     /**
-     * @return Create timeout.
+     * @return (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     public Optional<Output<String>> create() {
@@ -46,14 +46,14 @@ public final class RegisteredDomainTimeoutsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Update timeout.
+     * (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     @Import(name="update")
     private @Nullable Output<String> update;
 
     /**
-     * @return Update timeout.
+     * @return (String) - The timeout for the read operation e.g. `5m`
      * 
      */
     public Optional<Output<String>> update() {
@@ -87,7 +87,7 @@ public final class RegisteredDomainTimeoutsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param create Create timeout.
+         * @param create (String) - The timeout for the read operation e.g. `5m`
          * 
          * @return builder
          * 
@@ -98,7 +98,7 @@ public final class RegisteredDomainTimeoutsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param create Create timeout.
+         * @param create (String) - The timeout for the read operation e.g. `5m`
          * 
          * @return builder
          * 
@@ -129,7 +129,7 @@ public final class RegisteredDomainTimeoutsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param update Update timeout.
+         * @param update (String) - The timeout for the read operation e.g. `5m`
          * 
          * @return builder
          * 
@@ -140,7 +140,7 @@ public final class RegisteredDomainTimeoutsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param update Update timeout.
+         * @param update (String) - The timeout for the read operation e.g. `5m`
          * 
          * @return builder
          * 

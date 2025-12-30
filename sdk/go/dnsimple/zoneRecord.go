@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,7 +21,7 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -29,40 +29,34 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Add a record to the root domain
-//			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
-//				ZoneName: pulumi.Any(dnsimpleDomain),
+//			_, err := dnsimple.NewZoneRecord(ctx, "apex", &dnsimple.ZoneRecordArgs{
+//				ZoneName: pulumi.String("example.com"),
 //				Name:     pulumi.String(""),
-//				Value:    pulumi.String("192.168.0.11"),
+//				Value:    pulumi.String("192.0.2.1"),
 //				Type:     pulumi.String("A"),
 //				Ttl:      pulumi.Int(3600),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Add a record to a sub-domain
-//			_, err := dnsimple.NewZoneRecord(ctx, "foobar", &dnsimple.ZoneRecordArgs{
-//				ZoneName: pulumi.Any(dnsimpleDomain),
-//				Name:     pulumi.String("terraform"),
-//				Value:    pulumi.String("192.168.0.11"),
+//			// Add a record to a subdomain
+//			_, err = dnsimple.NewZoneRecord(ctx, "www", &dnsimple.ZoneRecordArgs{
+//				ZoneName: pulumi.String("example.com"),
+//				Name:     pulumi.String("www"),
+//				Value:    pulumi.String("192.0.2.1"),
 //				Type:     pulumi.String("A"),
+//				Ttl:      pulumi.Int(3600),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Add an MX record
+//			_, err = dnsimple.NewZoneRecord(ctx, "mx", &dnsimple.ZoneRecordArgs{
+//				ZoneName: pulumi.String("example.com"),
+//				Name:     pulumi.String(""),
+//				Value:    pulumi.String("mail.example.com"),
+//				Type:     pulumi.String("MX"),
+//				Priority: pulumi.Int(10),
 //				Ttl:      pulumi.Int(3600),
 //			})
 //			if err != nil {
@@ -76,48 +70,40 @@ import (
 //
 // ## Import
 //
-// DNSimple resources can be imported using their parent zone name (domain name) and numeric record ID.
+// DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
 //
-// **Importing record example.com with record ID 1234**
-//
-// bash
-//
-// ```sh
-// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
-// ```
-//
-// **Importing record www.example.com with record ID 1234**
+// **Importing record for example.com with record ID 1234:**
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord resource_name example.com_1234
+// $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
 // ```
 //
-// The record ID can be found in the URL when editing a record on the DNSimple web dashboard.
+// The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
 type ZoneRecord struct {
 	pulumi.CustomResourceState
 
-	// The name of the record
+	// The name of the record. Use `""` for the root domain.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	NameNormalized pulumi.StringOutput `pulumi:"nameNormalized"`
-	// The priority of the record - only useful for some record types
+	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
 	Priority pulumi.IntOutput `pulumi:"priority"`
-	// The FQDN of the record
+	// The fully qualified domain name (FQDN) of the record.
 	QualifiedName pulumi.StringOutput `pulumi:"qualifiedName"`
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions pulumi.StringArrayOutput `pulumi:"regions"`
-	// The TTL of the record - defaults to 3600
+	// The TTL of the record. Defaults to `3600`.
 	Ttl pulumi.IntOutput `pulumi:"ttl"`
-	// The type of the record
+	// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
 	Type pulumi.StringOutput `pulumi:"type"`
-	// The value of the record
+	// The value of the record.
 	Value pulumi.StringOutput `pulumi:"value"`
-	// The normalized value of the record
+	// The normalized value of the record.
 	ValueNormalized pulumi.StringOutput `pulumi:"valueNormalized"`
-	// The zone ID of the record
+	// The zone ID of the record.
 	ZoneId pulumi.StringOutput `pulumi:"zoneId"`
-	// The zone name to add the record to
+	// The zone name to add the record to.
 	ZoneName pulumi.StringOutput `pulumi:"zoneName"`
 }
 
@@ -163,50 +149,50 @@ func GetZoneRecord(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ZoneRecord resources.
 type zoneRecordState struct {
-	// The name of the record
+	// The name of the record. Use `""` for the root domain.
 	Name           *string `pulumi:"name"`
 	NameNormalized *string `pulumi:"nameNormalized"`
-	// The priority of the record - only useful for some record types
+	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
 	Priority *int `pulumi:"priority"`
-	// The FQDN of the record
+	// The fully qualified domain name (FQDN) of the record.
 	QualifiedName *string `pulumi:"qualifiedName"`
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions []string `pulumi:"regions"`
-	// The TTL of the record - defaults to 3600
+	// The TTL of the record. Defaults to `3600`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the record
+	// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
 	Type *string `pulumi:"type"`
-	// The value of the record
+	// The value of the record.
 	Value *string `pulumi:"value"`
-	// The normalized value of the record
+	// The normalized value of the record.
 	ValueNormalized *string `pulumi:"valueNormalized"`
-	// The zone ID of the record
+	// The zone ID of the record.
 	ZoneId *string `pulumi:"zoneId"`
-	// The zone name to add the record to
+	// The zone name to add the record to.
 	ZoneName *string `pulumi:"zoneName"`
 }
 
 type ZoneRecordState struct {
-	// The name of the record
+	// The name of the record. Use `""` for the root domain.
 	Name           pulumi.StringPtrInput
 	NameNormalized pulumi.StringPtrInput
-	// The priority of the record - only useful for some record types
+	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
 	Priority pulumi.IntPtrInput
-	// The FQDN of the record
+	// The fully qualified domain name (FQDN) of the record.
 	QualifiedName pulumi.StringPtrInput
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions pulumi.StringArrayInput
-	// The TTL of the record - defaults to 3600
+	// The TTL of the record. Defaults to `3600`.
 	Ttl pulumi.IntPtrInput
-	// The type of the record
+	// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
 	Type pulumi.StringPtrInput
-	// The value of the record
+	// The value of the record.
 	Value pulumi.StringPtrInput
-	// The normalized value of the record
+	// The normalized value of the record.
 	ValueNormalized pulumi.StringPtrInput
-	// The zone ID of the record
+	// The zone ID of the record.
 	ZoneId pulumi.StringPtrInput
-	// The zone name to add the record to
+	// The zone name to add the record to.
 	ZoneName pulumi.StringPtrInput
 }
 
@@ -215,37 +201,37 @@ func (ZoneRecordState) ElementType() reflect.Type {
 }
 
 type zoneRecordArgs struct {
-	// The name of the record
+	// The name of the record. Use `""` for the root domain.
 	Name string `pulumi:"name"`
-	// The priority of the record - only useful for some record types
+	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
 	Priority *int `pulumi:"priority"`
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions []string `pulumi:"regions"`
-	// The TTL of the record - defaults to 3600
+	// The TTL of the record. Defaults to `3600`.
 	Ttl *int `pulumi:"ttl"`
-	// The type of the record
+	// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
 	Type string `pulumi:"type"`
-	// The value of the record
+	// The value of the record.
 	Value string `pulumi:"value"`
-	// The zone name to add the record to
+	// The zone name to add the record to.
 	ZoneName string `pulumi:"zoneName"`
 }
 
 // The set of arguments for constructing a ZoneRecord resource.
 type ZoneRecordArgs struct {
-	// The name of the record
+	// The name of the record. Use `""` for the root domain.
 	Name pulumi.StringInput
-	// The priority of the record - only useful for some record types
+	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
 	Priority pulumi.IntPtrInput
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions pulumi.StringArrayInput
-	// The TTL of the record - defaults to 3600
+	// The TTL of the record. Defaults to `3600`.
 	Ttl pulumi.IntPtrInput
-	// The type of the record
+	// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
 	Type pulumi.StringInput
-	// The value of the record
+	// The value of the record.
 	Value pulumi.StringInput
-	// The zone name to add the record to
+	// The zone name to add the record to.
 	ZoneName pulumi.StringInput
 }
 
@@ -336,7 +322,7 @@ func (o ZoneRecordOutput) ToZoneRecordOutputWithContext(ctx context.Context) Zon
 	return o
 }
 
-// The name of the record
+// The name of the record. Use `""` for the root domain.
 func (o ZoneRecordOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -345,12 +331,12 @@ func (o ZoneRecordOutput) NameNormalized() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.NameNormalized }).(pulumi.StringOutput)
 }
 
-// The priority of the record - only useful for some record types
+// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
 func (o ZoneRecordOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
 
-// The FQDN of the record
+// The fully qualified domain name (FQDN) of the record.
 func (o ZoneRecordOutput) QualifiedName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.QualifiedName }).(pulumi.StringOutput)
 }
@@ -360,32 +346,32 @@ func (o ZoneRecordOutput) Regions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringArrayOutput { return v.Regions }).(pulumi.StringArrayOutput)
 }
 
-// The TTL of the record - defaults to 3600
+// The TTL of the record. Defaults to `3600`.
 func (o ZoneRecordOutput) Ttl() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.IntOutput { return v.Ttl }).(pulumi.IntOutput)
 }
 
-// The type of the record
+// The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
 func (o ZoneRecordOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }
 
-// The value of the record
+// The value of the record.
 func (o ZoneRecordOutput) Value() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.Value }).(pulumi.StringOutput)
 }
 
-// The normalized value of the record
+// The normalized value of the record.
 func (o ZoneRecordOutput) ValueNormalized() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ValueNormalized }).(pulumi.StringOutput)
 }
 
-// The zone ID of the record
+// The zone ID of the record.
 func (o ZoneRecordOutput) ZoneId() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ZoneId }).(pulumi.StringOutput)
 }
 
-// The zone name to add the record to
+// The zone name to add the record to.
 func (o ZoneRecordOutput) ZoneName() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.ZoneName }).(pulumi.StringOutput)
 }

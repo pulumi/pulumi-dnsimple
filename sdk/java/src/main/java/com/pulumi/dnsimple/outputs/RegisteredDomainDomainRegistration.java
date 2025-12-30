@@ -13,38 +13,38 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RegisteredDomainDomainRegistration {
     /**
-     * @return The ID of this resource.
+     * @return (Number) - The ID of the domain registration.
      * 
      */
     private @Nullable Integer id;
     /**
-     * @return The registration period in years.
+     * @return (Number) - The registration period in years.
      * 
      */
     private @Nullable Integer period;
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     private @Nullable String state;
 
     private RegisteredDomainDomainRegistration() {}
     /**
-     * @return The ID of this resource.
+     * @return (Number) - The ID of the domain registration.
      * 
      */
     public Optional<Integer> id() {
         return Optional.ofNullable(this.id);
     }
     /**
-     * @return The registration period in years.
+     * @return (Number) - The registration period in years.
      * 
      */
     public Optional<Integer> period() {
         return Optional.ofNullable(this.period);
     }
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     public Optional<String> state() {

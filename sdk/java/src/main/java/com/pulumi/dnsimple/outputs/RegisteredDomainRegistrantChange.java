@@ -20,7 +20,7 @@ public final class RegisteredDomainRegistrantChange {
      */
     private @Nullable Integer accountId;
     /**
-     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     private @Nullable Integer contactId;
@@ -35,7 +35,7 @@ public final class RegisteredDomainRegistrantChange {
      */
     private @Nullable Map<String,String> extendedAttributes;
     /**
-     * @return The ID of this resource.
+     * @return (Number) - The ID of the domain registration.
      * 
      */
     private @Nullable Integer id;
@@ -50,7 +50,7 @@ public final class RegisteredDomainRegistrantChange {
      */
     private @Nullable Boolean registryOwnerChange;
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     private @Nullable String state;
@@ -64,7 +64,7 @@ public final class RegisteredDomainRegistrantChange {
         return Optional.ofNullable(this.accountId);
     }
     /**
-     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+     * @return The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      * 
      */
     public Optional<Integer> contactId() {
@@ -85,7 +85,7 @@ public final class RegisteredDomainRegistrantChange {
         return this.extendedAttributes == null ? Map.of() : this.extendedAttributes;
     }
     /**
-     * @return The ID of this resource.
+     * @return (Number) - The ID of the domain registration.
      * 
      */
     public Optional<Integer> id() {
@@ -106,7 +106,7 @@ public final class RegisteredDomainRegistrantChange {
         return Optional.ofNullable(this.registryOwnerChange);
     }
     /**
-     * @return The state of the domain.
+     * @return (String) - The state of the domain registration.
      * 
      */
     public Optional<String> state() {

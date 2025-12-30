@@ -22,23 +22,22 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     // Create a contact
-    ///     var me = new DNSimple.Contact("me", new()
+    ///     var example = new DNSimple.Contact("example", new()
     ///     {
-    ///         Label = "Apple Appleseed",
-    ///         FirstName = "Apple",
-    ///         LastName = "Appleseed",
-    ///         OrganizationName = "Contoso",
+    ///         Label = "Main Contact",
+    ///         FirstName = "John",
+    ///         LastName = "Doe",
+    ///         OrganizationName = "Example Inc",
     ///         JobTitle = "Manager",
-    ///         Address1 = "Level 1, 2 Main St",
-    ///         Address2 = "Marsfield",
+    ///         Address1 = "123 Main Street",
+    ///         Address2 = "Suite 100",
     ///         City = "San Francisco",
     ///         StateProvince = "California",
-    ///         PostalCode = "90210",
+    ///         PostalCode = "94105",
     ///         Country = "US",
-    ///         Phone = "+1401239523",
-    ///         Fax = "+1849491024",
-    ///         Email = "apple@contoso.com",
+    ///         Phone = "+1.4155551234",
+    ///         Fax = "+1.4155555678",
+    ///         Email = "john@example.com",
     ///     });
     /// 
     /// });
@@ -51,114 +50,10 @@ namespace Pulumi.DNSimple
     /// bash
     /// 
     /// ```sh
-    /// $ pulumi import dnsimple:index/contact:Contact resource_name 5678
+    /// $ pulumi import dnsimple:index/contact:Contact example 5678
     /// ```
     /// 
-    /// The ID can be found within [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-    /// 
-    /// bash
-    /// 
-    /// curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/contacts?label_like=example.com | jq
-    /// 
-    /// {
-    /// 
-    ///   "data": [
-    /// 
-    ///     {
-    ///     
-    ///       "id": 1,
-    ///     
-    ///       "account_id": 1010,
-    ///     
-    ///       "label": "Default",
-    ///     
-    ///       "first_name": "First",
-    ///     
-    ///       "last_name": "User",
-    ///     
-    ///       "job_title": "CEO",
-    ///     
-    ///       "organization_name": "Awesome Company",
-    ///     
-    ///       "email": "first@example.com",
-    ///     
-    ///       "phone": "+18001234567",
-    ///     
-    ///       "fax": "+18011234567",
-    ///     
-    ///       "address1": "Italian Street, 10",
-    ///     
-    ///       "address2": "",
-    ///     
-    ///       "city": "Roma",
-    ///     
-    ///       "state_province": "RM",
-    ///     
-    ///       "postal_code": "00100",
-    ///     
-    ///       "country": "IT",
-    ///     
-    ///       "created_at": "2013-11-08T17:23:15Z",
-    ///     
-    ///       "updated_at": "2015-01-08T21:30:50Z"
-    ///     
-    ///     },
-    ///     
-    ///     {
-    ///     
-    ///       "id": 2,
-    ///     
-    ///       "account_id": 1010,
-    ///     
-    ///       "label": "",
-    ///     
-    ///       "first_name": "Second",
-    ///     
-    ///       "last_name": "User",
-    ///     
-    ///       "job_title": "",
-    ///     
-    ///       "organization_name": "",
-    ///     
-    ///       "email": "second@example.com",
-    ///     
-    ///       "phone": "+18881234567",
-    ///     
-    ///       "fax": "",
-    ///     
-    ///       "address1": "French Street",
-    ///     
-    ///       "address2": "c/o Someone",
-    ///     
-    ///       "city": "Paris",
-    ///     
-    ///       "state_province": "XY",
-    ///     
-    ///       "postal_code": "00200",
-    ///     
-    ///       "country": "FR",
-    ///     
-    ///       "created_at": "2014-12-06T15:46:18Z",
-    ///     
-    ///       "updated_at": "2014-12-06T15:46:18Z"
-    ///     
-    ///     }
-    /// 
-    ///   ],
-    /// 
-    ///   "pagination": {
-    /// 
-    ///     "current_page": 1,
-    ///     
-    ///     "per_page": 30,
-    ///     
-    ///     "total_entries": 2,
-    ///     
-    ///     "total_pages": 1
-    /// 
-    ///   }
-    /// 
-    /// }
+    /// The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/contact:Contact")]
     public partial class Contact : global::Pulumi.CustomResource
@@ -170,25 +65,25 @@ namespace Pulumi.DNSimple
         public Output<int> AccountId { get; private set; } = null!;
 
         /// <summary>
-        /// Address line 1
+        /// The primary address line (street address, building number, etc.).
         /// </summary>
         [Output("address1")]
         public Output<string> Address1 { get; private set; } = null!;
 
         /// <summary>
-        /// Address line 2
+        /// The secondary address line (apartment, suite, floor, etc.).
         /// </summary>
         [Output("address2")]
         public Output<string> Address2 { get; private set; } = null!;
 
         /// <summary>
-        /// City
+        /// The city where the contact is located.
         /// </summary>
         [Output("city")]
         public Output<string> City { get; private set; } = null!;
 
         /// <summary>
-        /// Country
+        /// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         /// </summary>
         [Output("country")]
         public Output<string> Country { get; private set; } = null!;
@@ -200,15 +95,13 @@ namespace Pulumi.DNSimple
         public Output<string> CreatedAt { get; private set; } = null!;
 
         /// <summary>
-        /// Email
-        /// 
-        /// # Attributes Reference
+        /// The contact's email address.
         /// </summary>
         [Output("email")]
         public Output<string> Email { get; private set; } = null!;
 
         /// <summary>
-        /// Fax
+        /// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         /// </summary>
         [Output("fax")]
         public Output<string> Fax { get; private set; } = null!;
@@ -220,37 +113,37 @@ namespace Pulumi.DNSimple
         public Output<string> FaxNormalized { get; private set; } = null!;
 
         /// <summary>
-        /// First name
+        /// The first name of the contact person.
         /// </summary>
         [Output("firstName")]
         public Output<string> FirstName { get; private set; } = null!;
 
         /// <summary>
-        /// Job title
+        /// The job title or position of the contact person within the organization.
         /// </summary>
         [Output("jobTitle")]
         public Output<string> JobTitle { get; private set; } = null!;
 
         /// <summary>
-        /// Label
+        /// A descriptive label for the contact to help identify it.
         /// </summary>
         [Output("label")]
         public Output<string> Label { get; private set; } = null!;
 
         /// <summary>
-        /// Last name
+        /// The last name of the contact person.
         /// </summary>
         [Output("lastName")]
         public Output<string> LastName { get; private set; } = null!;
 
         /// <summary>
-        /// Organization name
+        /// The name of the organization or company associated with the contact.
         /// </summary>
         [Output("organizationName")]
         public Output<string> OrganizationName { get; private set; } = null!;
 
         /// <summary>
-        /// Phone
+        /// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         /// </summary>
         [Output("phone")]
         public Output<string> Phone { get; private set; } = null!;
@@ -262,13 +155,13 @@ namespace Pulumi.DNSimple
         public Output<string> PhoneNormalized { get; private set; } = null!;
 
         /// <summary>
-        /// Postal code
+        /// The postal code, ZIP code, or equivalent for the contact's location.
         /// </summary>
         [Output("postalCode")]
         public Output<string> PostalCode { get; private set; } = null!;
 
         /// <summary>
-        /// State province
+        /// The state, province, or region where the contact is located.
         /// </summary>
         [Output("stateProvince")]
         public Output<string> StateProvince { get; private set; } = null!;
@@ -326,87 +219,85 @@ namespace Pulumi.DNSimple
     public sealed class ContactArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Address line 1
+        /// The primary address line (street address, building number, etc.).
         /// </summary>
         [Input("address1", required: true)]
         public Input<string> Address1 { get; set; } = null!;
 
         /// <summary>
-        /// Address line 2
+        /// The secondary address line (apartment, suite, floor, etc.).
         /// </summary>
         [Input("address2")]
         public Input<string>? Address2 { get; set; }
 
         /// <summary>
-        /// City
+        /// The city where the contact is located.
         /// </summary>
         [Input("city", required: true)]
         public Input<string> City { get; set; } = null!;
 
         /// <summary>
-        /// Country
+        /// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         /// </summary>
         [Input("country", required: true)]
         public Input<string> Country { get; set; } = null!;
 
         /// <summary>
-        /// Email
-        /// 
-        /// # Attributes Reference
+        /// The contact's email address.
         /// </summary>
         [Input("email", required: true)]
         public Input<string> Email { get; set; } = null!;
 
         /// <summary>
-        /// Fax
+        /// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         /// </summary>
         [Input("fax")]
         public Input<string>? Fax { get; set; }
 
         /// <summary>
-        /// First name
+        /// The first name of the contact person.
         /// </summary>
         [Input("firstName", required: true)]
         public Input<string> FirstName { get; set; } = null!;
 
         /// <summary>
-        /// Job title
+        /// The job title or position of the contact person within the organization.
         /// </summary>
         [Input("jobTitle")]
         public Input<string>? JobTitle { get; set; }
 
         /// <summary>
-        /// Label
+        /// A descriptive label for the contact to help identify it.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Last name
+        /// The last name of the contact person.
         /// </summary>
         [Input("lastName", required: true)]
         public Input<string> LastName { get; set; } = null!;
 
         /// <summary>
-        /// Organization name
+        /// The name of the organization or company associated with the contact.
         /// </summary>
         [Input("organizationName")]
         public Input<string>? OrganizationName { get; set; }
 
         /// <summary>
-        /// Phone
+        /// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         /// </summary>
         [Input("phone", required: true)]
         public Input<string> Phone { get; set; } = null!;
 
         /// <summary>
-        /// Postal code
+        /// The postal code, ZIP code, or equivalent for the contact's location.
         /// </summary>
         [Input("postalCode", required: true)]
         public Input<string> PostalCode { get; set; } = null!;
 
         /// <summary>
-        /// State province
+        /// The state, province, or region where the contact is located.
         /// </summary>
         [Input("stateProvince", required: true)]
         public Input<string> StateProvince { get; set; } = null!;
@@ -426,25 +317,25 @@ namespace Pulumi.DNSimple
         public Input<int>? AccountId { get; set; }
 
         /// <summary>
-        /// Address line 1
+        /// The primary address line (street address, building number, etc.).
         /// </summary>
         [Input("address1")]
         public Input<string>? Address1 { get; set; }
 
         /// <summary>
-        /// Address line 2
+        /// The secondary address line (apartment, suite, floor, etc.).
         /// </summary>
         [Input("address2")]
         public Input<string>? Address2 { get; set; }
 
         /// <summary>
-        /// City
+        /// The city where the contact is located.
         /// </summary>
         [Input("city")]
         public Input<string>? City { get; set; }
 
         /// <summary>
-        /// Country
+        /// The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         /// </summary>
         [Input("country")]
         public Input<string>? Country { get; set; }
@@ -456,15 +347,13 @@ namespace Pulumi.DNSimple
         public Input<string>? CreatedAt { get; set; }
 
         /// <summary>
-        /// Email
-        /// 
-        /// # Attributes Reference
+        /// The contact's email address.
         /// </summary>
         [Input("email")]
         public Input<string>? Email { get; set; }
 
         /// <summary>
-        /// Fax
+        /// The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         /// </summary>
         [Input("fax")]
         public Input<string>? Fax { get; set; }
@@ -476,37 +365,37 @@ namespace Pulumi.DNSimple
         public Input<string>? FaxNormalized { get; set; }
 
         /// <summary>
-        /// First name
+        /// The first name of the contact person.
         /// </summary>
         [Input("firstName")]
         public Input<string>? FirstName { get; set; }
 
         /// <summary>
-        /// Job title
+        /// The job title or position of the contact person within the organization.
         /// </summary>
         [Input("jobTitle")]
         public Input<string>? JobTitle { get; set; }
 
         /// <summary>
-        /// Label
+        /// A descriptive label for the contact to help identify it.
         /// </summary>
         [Input("label")]
         public Input<string>? Label { get; set; }
 
         /// <summary>
-        /// Last name
+        /// The last name of the contact person.
         /// </summary>
         [Input("lastName")]
         public Input<string>? LastName { get; set; }
 
         /// <summary>
-        /// Organization name
+        /// The name of the organization or company associated with the contact.
         /// </summary>
         [Input("organizationName")]
         public Input<string>? OrganizationName { get; set; }
 
         /// <summary>
-        /// Phone
+        /// The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         /// </summary>
         [Input("phone")]
         public Input<string>? Phone { get; set; }
@@ -518,13 +407,13 @@ namespace Pulumi.DNSimple
         public Input<string>? PhoneNormalized { get; set; }
 
         /// <summary>
-        /// Postal code
+        /// The postal code, ZIP code, or equivalent for the contact's location.
         /// </summary>
         [Input("postalCode")]
         public Input<string>? PostalCode { get; set; }
 
         /// <summary>
-        /// State province
+        /// The state, province, or region where the contact is located.
         /// </summary>
         [Input("stateProvince")]
         public Input<string>? StateProvince { get; set; }

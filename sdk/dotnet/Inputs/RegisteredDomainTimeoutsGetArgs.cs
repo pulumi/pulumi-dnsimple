@@ -13,7 +13,7 @@ namespace Pulumi.DNSimple.Inputs
     public sealed class RegisteredDomainTimeoutsGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Create timeout.
+        /// (String) - The timeout for the read operation e.g. `5m`
         /// </summary>
         [Input("create")]
         public Input<string>? Create { get; set; }
@@ -25,7 +25,7 @@ namespace Pulumi.DNSimple.Inputs
         public Input<string>? Delete { get; set; }
 
         /// <summary>
-        /// Update timeout.
+        /// (String) - The timeout for the read operation e.g. `5m`
         /// </summary>
         [Input("update")]
         public Input<string>? Update { get; set; }

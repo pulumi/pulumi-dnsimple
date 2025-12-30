@@ -19,7 +19,7 @@ namespace Pulumi.DNSimple.Inputs
         public Input<int>? AccountId { get; set; }
 
         /// <summary>
-        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change this may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+        /// The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         /// </summary>
         [Input("contactId")]
         public Input<int>? ContactId { get; set; }
@@ -43,7 +43,7 @@ namespace Pulumi.DNSimple.Inputs
         }
 
         /// <summary>
-        /// The ID of this resource.
+        /// (Number) - The ID of the domain registration.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
@@ -61,7 +61,7 @@ namespace Pulumi.DNSimple.Inputs
         public Input<bool>? RegistryOwnerChange { get; set; }
 
         /// <summary>
-        /// The state of the domain.
+        /// (String) - The state of the domain registration.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

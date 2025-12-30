@@ -41,22 +41,21 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         // Create a contact
- *         var me = new Contact("me", ContactArgs.builder()
- *             .label("Apple Appleseed")
- *             .firstName("Apple")
- *             .lastName("Appleseed")
- *             .organizationName("Contoso")
+ *         var example = new Contact("example", ContactArgs.builder()
+ *             .label("Main Contact")
+ *             .firstName("John")
+ *             .lastName("Doe")
+ *             .organizationName("Example Inc")
  *             .jobTitle("Manager")
- *             .address1("Level 1, 2 Main St")
- *             .address2("Marsfield")
+ *             .address1("123 Main Street")
+ *             .address2("Suite 100")
  *             .city("San Francisco")
  *             .stateProvince("California")
- *             .postalCode("90210")
+ *             .postalCode("94105")
  *             .country("US")
- *             .phone("+1401239523")
- *             .fax("+1849491024")
- *             .email("apple}{@literal @}{@code contoso.com")
+ *             .phone("+1.4155551234")
+ *             .fax("+1.4155555678")
+ *             .email("john}{@literal @}{@code example.com")
  *             .build());
  * 
  *     }}{@code
@@ -71,114 +70,10 @@ import javax.annotation.Nullable;
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/contact:Contact resource_name 5678
+ * $ pulumi import dnsimple:index/contact:Contact example 5678
  * ```
  * 
- * The ID can be found within [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
- * 
- * bash
- * 
- * curl -u &#39;EMAIL:PASSWORD&#39; https://api.dnsimple.com/v2/1234/contacts?label_like=example.com | jq
- * 
- * {
- * 
- *   &#34;data&#34;: [
- * 
- *     {
- *     
- *       &#34;id&#34;: 1,
- *     
- *       &#34;account_id&#34;: 1010,
- *     
- *       &#34;label&#34;: &#34;Default&#34;,
- *     
- *       &#34;first_name&#34;: &#34;First&#34;,
- *     
- *       &#34;last_name&#34;: &#34;User&#34;,
- *     
- *       &#34;job_title&#34;: &#34;CEO&#34;,
- *     
- *       &#34;organization_name&#34;: &#34;Awesome Company&#34;,
- *     
- *       &#34;email&#34;: &#34;first{@literal @}example.com&#34;,
- *     
- *       &#34;phone&#34;: &#34;+18001234567&#34;,
- *     
- *       &#34;fax&#34;: &#34;+18011234567&#34;,
- *     
- *       &#34;address1&#34;: &#34;Italian Street, 10&#34;,
- *     
- *       &#34;address2&#34;: &#34;&#34;,
- *     
- *       &#34;city&#34;: &#34;Roma&#34;,
- *     
- *       &#34;state_province&#34;: &#34;RM&#34;,
- *     
- *       &#34;postal_code&#34;: &#34;00100&#34;,
- *     
- *       &#34;country&#34;: &#34;IT&#34;,
- *     
- *       &#34;created_at&#34;: &#34;2013-11-08T17:23:15Z&#34;,
- *     
- *       &#34;updated_at&#34;: &#34;2015-01-08T21:30:50Z&#34;
- *     
- *     },
- *     
- *     {
- *     
- *       &#34;id&#34;: 2,
- *     
- *       &#34;account_id&#34;: 1010,
- *     
- *       &#34;label&#34;: &#34;&#34;,
- *     
- *       &#34;first_name&#34;: &#34;Second&#34;,
- *     
- *       &#34;last_name&#34;: &#34;User&#34;,
- *     
- *       &#34;job_title&#34;: &#34;&#34;,
- *     
- *       &#34;organization_name&#34;: &#34;&#34;,
- *     
- *       &#34;email&#34;: &#34;second{@literal @}example.com&#34;,
- *     
- *       &#34;phone&#34;: &#34;+18881234567&#34;,
- *     
- *       &#34;fax&#34;: &#34;&#34;,
- *     
- *       &#34;address1&#34;: &#34;French Street&#34;,
- *     
- *       &#34;address2&#34;: &#34;c/o Someone&#34;,
- *     
- *       &#34;city&#34;: &#34;Paris&#34;,
- *     
- *       &#34;state_province&#34;: &#34;XY&#34;,
- *     
- *       &#34;postal_code&#34;: &#34;00200&#34;,
- *     
- *       &#34;country&#34;: &#34;FR&#34;,
- *     
- *       &#34;created_at&#34;: &#34;2014-12-06T15:46:18Z&#34;,
- *     
- *       &#34;updated_at&#34;: &#34;2014-12-06T15:46:18Z&#34;
- *     
- *     }
- * 
- *   ],
- * 
- *   &#34;pagination&#34;: {
- * 
- *     &#34;current_page&#34;: 1,
- *     
- *     &#34;per_page&#34;: 30,
- *     
- *     &#34;total_entries&#34;: 2,
- *     
- *     &#34;total_pages&#34;: 1
- * 
- *   }
- * 
- * }
+ * The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
  */
 @ResourceType(type="dnsimple:index/contact:Contact")
@@ -198,56 +93,56 @@ public class Contact extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
-     * Address line 1
+     * The primary address line (street address, building number, etc.).
      * 
      */
     @Export(name="address1", refs={String.class}, tree="[0]")
     private Output<String> address1;
 
     /**
-     * @return Address line 1
+     * @return The primary address line (street address, building number, etc.).
      * 
      */
     public Output<String> address1() {
         return this.address1;
     }
     /**
-     * Address line 2
+     * The secondary address line (apartment, suite, floor, etc.).
      * 
      */
     @Export(name="address2", refs={String.class}, tree="[0]")
     private Output<String> address2;
 
     /**
-     * @return Address line 2
+     * @return The secondary address line (apartment, suite, floor, etc.).
      * 
      */
     public Output<String> address2() {
         return this.address2;
     }
     /**
-     * City
+     * The city where the contact is located.
      * 
      */
     @Export(name="city", refs={String.class}, tree="[0]")
     private Output<String> city;
 
     /**
-     * @return City
+     * @return The city where the contact is located.
      * 
      */
     public Output<String> city() {
         return this.city;
     }
     /**
-     * Country
+     * The two-letter ISO country code (e.g., &#34;US&#34;, &#34;CA&#34;, &#34;IT&#34;) for the contact&#39;s location.
      * 
      */
     @Export(name="country", refs={String.class}, tree="[0]")
     private Output<String> country;
 
     /**
-     * @return Country
+     * @return The two-letter ISO country code (e.g., &#34;US&#34;, &#34;CA&#34;, &#34;IT&#34;) for the contact&#39;s location.
      * 
      */
     public Output<String> country() {
@@ -268,32 +163,28 @@ public class Contact extends com.pulumi.resources.CustomResource {
         return this.createdAt;
     }
     /**
-     * Email
-     * 
-     * # Attributes Reference
+     * The contact&#39;s email address.
      * 
      */
     @Export(name="email", refs={String.class}, tree="[0]")
     private Output<String> email;
 
     /**
-     * @return Email
-     * 
-     * # Attributes Reference
+     * @return The contact&#39;s email address.
      * 
      */
     public Output<String> email() {
         return this.email;
     }
     /**
-     * Fax
+     * The contact&#39;s fax number. Use international format with country code (e.g., &#34;+1.8491234567&#34; for US numbers).
      * 
      */
     @Export(name="fax", refs={String.class}, tree="[0]")
     private Output<String> fax;
 
     /**
-     * @return Fax
+     * @return The contact&#39;s fax number. Use international format with country code (e.g., &#34;+1.8491234567&#34; for US numbers).
      * 
      */
     public Output<String> fax() {
@@ -314,84 +205,84 @@ public class Contact extends com.pulumi.resources.CustomResource {
         return this.faxNormalized;
     }
     /**
-     * First name
+     * The first name of the contact person.
      * 
      */
     @Export(name="firstName", refs={String.class}, tree="[0]")
     private Output<String> firstName;
 
     /**
-     * @return First name
+     * @return The first name of the contact person.
      * 
      */
     public Output<String> firstName() {
         return this.firstName;
     }
     /**
-     * Job title
+     * The job title or position of the contact person within the organization.
      * 
      */
     @Export(name="jobTitle", refs={String.class}, tree="[0]")
     private Output<String> jobTitle;
 
     /**
-     * @return Job title
+     * @return The job title or position of the contact person within the organization.
      * 
      */
     public Output<String> jobTitle() {
         return this.jobTitle;
     }
     /**
-     * Label
+     * A descriptive label for the contact to help identify it.
      * 
      */
     @Export(name="label", refs={String.class}, tree="[0]")
     private Output<String> label;
 
     /**
-     * @return Label
+     * @return A descriptive label for the contact to help identify it.
      * 
      */
     public Output<String> label() {
         return this.label;
     }
     /**
-     * Last name
+     * The last name of the contact person.
      * 
      */
     @Export(name="lastName", refs={String.class}, tree="[0]")
     private Output<String> lastName;
 
     /**
-     * @return Last name
+     * @return The last name of the contact person.
      * 
      */
     public Output<String> lastName() {
         return this.lastName;
     }
     /**
-     * Organization name
+     * The name of the organization or company associated with the contact.
      * 
      */
     @Export(name="organizationName", refs={String.class}, tree="[0]")
     private Output<String> organizationName;
 
     /**
-     * @return Organization name
+     * @return The name of the organization or company associated with the contact.
      * 
      */
     public Output<String> organizationName() {
         return this.organizationName;
     }
     /**
-     * Phone
+     * The contact&#39;s phone number. Use international format with country code (e.g., &#34;+1.4012345678&#34; for US numbers).
      * 
      */
     @Export(name="phone", refs={String.class}, tree="[0]")
     private Output<String> phone;
 
     /**
-     * @return Phone
+     * @return The contact&#39;s phone number. Use international format with country code (e.g., &#34;+1.4012345678&#34; for US numbers).
      * 
      */
     public Output<String> phone() {
@@ -412,28 +303,28 @@ public class Contact extends com.pulumi.resources.CustomResource {
         return this.phoneNormalized;
     }
     /**
-     * Postal code
+     * The postal code, ZIP code, or equivalent for the contact&#39;s location.
      * 
      */
     @Export(name="postalCode", refs={String.class}, tree="[0]")
     private Output<String> postalCode;
 
     /**
-     * @return Postal code
+     * @return The postal code, ZIP code, or equivalent for the contact&#39;s location.
      * 
      */
     public Output<String> postalCode() {
         return this.postalCode;
     }
     /**
-     * State province
+     * The state, province, or region where the contact is located.
      * 
      */
     @Export(name="stateProvince", refs={String.class}, tree="[0]")
     private Output<String> stateProvince;
 
     /**
-     * @return State province
+     * @return The state, province, or region where the contact is located.
      * 
      */
     public Output<String> stateProvince() {

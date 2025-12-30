@@ -39,9 +39,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         // Create a domain delegation
- *         var foobar = new DomainDelegation("foobar", DomainDelegationArgs.builder()
- *             .domain(dnsimple.domain())
+ *         var example = new DomainDelegation("example", DomainDelegationArgs.builder()
+ *             .domain("example.com")
  *             .nameServers(            
  *                 "ns1.example.org",
  *                 "ns2.example.com")
@@ -56,12 +55,10 @@ import javax.annotation.Nullable;
  * 
  * DNSimple domain delegations can be imported using the domain name.
  * 
- * **Importing domain delegation for example.com**
- * 
  * bash
  * 
  * ```sh
- * $ pulumi import dnsimple:index/domainDelegation:DomainDelegation resource_name example.com
+ * $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
  * ```
  * 
  */
@@ -82,18 +79,14 @@ public class DomainDelegation extends com.pulumi.resources.CustomResource {
         return this.domain;
     }
     /**
-     * The list of name servers to delegate to.
-     * 
-     * # Attributes Reference
+     * List of name servers to delegate to.
      * 
      */
     @Export(name="nameServers", refs={List.class,String.class}, tree="[0,1]")
     private Output<List<String>> nameServers;
 
     /**
-     * @return The list of name servers to delegate to.
-     * 
-     * # Attributes Reference
+     * @return List of name servers to delegate to.
      * 
      */
     public Output<List<String>> nameServers() {

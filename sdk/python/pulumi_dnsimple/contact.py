@@ -35,22 +35,20 @@ class ContactArgs:
                  organization_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Contact resource.
-        :param pulumi.Input[_builtins.str] address1: Address line 1
-        :param pulumi.Input[_builtins.str] city: City
-        :param pulumi.Input[_builtins.str] country: Country
-        :param pulumi.Input[_builtins.str] email: Email
-               
-               # Attributes Reference
-        :param pulumi.Input[_builtins.str] first_name: First name
-        :param pulumi.Input[_builtins.str] last_name: Last name
-        :param pulumi.Input[_builtins.str] phone: Phone
-        :param pulumi.Input[_builtins.str] postal_code: Postal code
-        :param pulumi.Input[_builtins.str] state_province: State province
-        :param pulumi.Input[_builtins.str] address2: Address line 2
-        :param pulumi.Input[_builtins.str] fax: Fax
-        :param pulumi.Input[_builtins.str] job_title: Job title
-        :param pulumi.Input[_builtins.str] label: Label
-        :param pulumi.Input[_builtins.str] organization_name: Organization name
+        :param pulumi.Input[_builtins.str] address1: The primary address line (street address, building number, etc.).
+        :param pulumi.Input[_builtins.str] city: The city where the contact is located.
+        :param pulumi.Input[_builtins.str] country: The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
+        :param pulumi.Input[_builtins.str] email: The contact's email address.
+        :param pulumi.Input[_builtins.str] first_name: The first name of the contact person.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the contact person.
+        :param pulumi.Input[_builtins.str] phone: The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
+        :param pulumi.Input[_builtins.str] postal_code: The postal code, ZIP code, or equivalent for the contact's location.
+        :param pulumi.Input[_builtins.str] state_province: The state, province, or region where the contact is located.
+        :param pulumi.Input[_builtins.str] address2: The secondary address line (apartment, suite, floor, etc.).
+        :param pulumi.Input[_builtins.str] fax: The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
+        :param pulumi.Input[_builtins.str] job_title: The job title or position of the contact person within the organization.
+        :param pulumi.Input[_builtins.str] label: A descriptive label for the contact to help identify it.
+        :param pulumi.Input[_builtins.str] organization_name: The name of the organization or company associated with the contact.
         """
         pulumi.set(__self__, "address1", address1)
         pulumi.set(__self__, "city", city)
@@ -76,7 +74,7 @@ class ContactArgs:
     @pulumi.getter
     def address1(self) -> pulumi.Input[_builtins.str]:
         """
-        Address line 1
+        The primary address line (street address, building number, etc.).
         """
         return pulumi.get(self, "address1")
 
@@ -88,7 +86,7 @@ class ContactArgs:
     @pulumi.getter
     def city(self) -> pulumi.Input[_builtins.str]:
         """
-        City
+        The city where the contact is located.
         """
         return pulumi.get(self, "city")
 
@@ -100,7 +98,7 @@ class ContactArgs:
     @pulumi.getter
     def country(self) -> pulumi.Input[_builtins.str]:
         """
-        Country
+        The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         """
         return pulumi.get(self, "country")
 
@@ -112,9 +110,7 @@ class ContactArgs:
     @pulumi.getter
     def email(self) -> pulumi.Input[_builtins.str]:
         """
-        Email
-
-        # Attributes Reference
+        The contact's email address.
         """
         return pulumi.get(self, "email")
 
@@ -126,7 +122,7 @@ class ContactArgs:
     @pulumi.getter(name="firstName")
     def first_name(self) -> pulumi.Input[_builtins.str]:
         """
-        First name
+        The first name of the contact person.
         """
         return pulumi.get(self, "first_name")
 
@@ -138,7 +134,7 @@ class ContactArgs:
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Input[_builtins.str]:
         """
-        Last name
+        The last name of the contact person.
         """
         return pulumi.get(self, "last_name")
 
@@ -150,7 +146,7 @@ class ContactArgs:
     @pulumi.getter
     def phone(self) -> pulumi.Input[_builtins.str]:
         """
-        Phone
+        The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         """
         return pulumi.get(self, "phone")
 
@@ -162,7 +158,7 @@ class ContactArgs:
     @pulumi.getter(name="postalCode")
     def postal_code(self) -> pulumi.Input[_builtins.str]:
         """
-        Postal code
+        The postal code, ZIP code, or equivalent for the contact's location.
         """
         return pulumi.get(self, "postal_code")
 
@@ -174,7 +170,7 @@ class ContactArgs:
     @pulumi.getter(name="stateProvince")
     def state_province(self) -> pulumi.Input[_builtins.str]:
         """
-        State province
+        The state, province, or region where the contact is located.
         """
         return pulumi.get(self, "state_province")
 
@@ -186,7 +182,7 @@ class ContactArgs:
     @pulumi.getter
     def address2(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Address line 2
+        The secondary address line (apartment, suite, floor, etc.).
         """
         return pulumi.get(self, "address2")
 
@@ -198,7 +194,7 @@ class ContactArgs:
     @pulumi.getter
     def fax(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Fax
+        The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         """
         return pulumi.get(self, "fax")
 
@@ -210,7 +206,7 @@ class ContactArgs:
     @pulumi.getter(name="jobTitle")
     def job_title(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Job title
+        The job title or position of the contact person within the organization.
         """
         return pulumi.get(self, "job_title")
 
@@ -222,7 +218,7 @@ class ContactArgs:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Label
+        A descriptive label for the contact to help identify it.
         """
         return pulumi.get(self, "label")
 
@@ -234,7 +230,7 @@ class ContactArgs:
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Organization name
+        The name of the organization or company associated with the contact.
         """
         return pulumi.get(self, "organization_name")
 
@@ -268,25 +264,23 @@ class _ContactState:
         """
         Input properties used for looking up and filtering Contact resources.
         :param pulumi.Input[_builtins.int] account_id: The account ID for the contact.
-        :param pulumi.Input[_builtins.str] address1: Address line 1
-        :param pulumi.Input[_builtins.str] address2: Address line 2
-        :param pulumi.Input[_builtins.str] city: City
-        :param pulumi.Input[_builtins.str] country: Country
+        :param pulumi.Input[_builtins.str] address1: The primary address line (street address, building number, etc.).
+        :param pulumi.Input[_builtins.str] address2: The secondary address line (apartment, suite, floor, etc.).
+        :param pulumi.Input[_builtins.str] city: The city where the contact is located.
+        :param pulumi.Input[_builtins.str] country: The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         :param pulumi.Input[_builtins.str] created_at: Timestamp representing when this contact was created.
-        :param pulumi.Input[_builtins.str] email: Email
-               
-               # Attributes Reference
-        :param pulumi.Input[_builtins.str] fax: Fax
+        :param pulumi.Input[_builtins.str] email: The contact's email address.
+        :param pulumi.Input[_builtins.str] fax: The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         :param pulumi.Input[_builtins.str] fax_normalized: The fax number, normalized.
-        :param pulumi.Input[_builtins.str] first_name: First name
-        :param pulumi.Input[_builtins.str] job_title: Job title
-        :param pulumi.Input[_builtins.str] label: Label
-        :param pulumi.Input[_builtins.str] last_name: Last name
-        :param pulumi.Input[_builtins.str] organization_name: Organization name
-        :param pulumi.Input[_builtins.str] phone: Phone
+        :param pulumi.Input[_builtins.str] first_name: The first name of the contact person.
+        :param pulumi.Input[_builtins.str] job_title: The job title or position of the contact person within the organization.
+        :param pulumi.Input[_builtins.str] label: A descriptive label for the contact to help identify it.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the contact person.
+        :param pulumi.Input[_builtins.str] organization_name: The name of the organization or company associated with the contact.
+        :param pulumi.Input[_builtins.str] phone: The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         :param pulumi.Input[_builtins.str] phone_normalized: The phone number, normalized.
-        :param pulumi.Input[_builtins.str] postal_code: Postal code
-        :param pulumi.Input[_builtins.str] state_province: State province
+        :param pulumi.Input[_builtins.str] postal_code: The postal code, ZIP code, or equivalent for the contact's location.
+        :param pulumi.Input[_builtins.str] state_province: The state, province, or region where the contact is located.
         :param pulumi.Input[_builtins.str] updated_at: Timestamp representing when this contact was updated.
         """
         if account_id is not None:
@@ -344,7 +338,7 @@ class _ContactState:
     @pulumi.getter
     def address1(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Address line 1
+        The primary address line (street address, building number, etc.).
         """
         return pulumi.get(self, "address1")
 
@@ -356,7 +350,7 @@ class _ContactState:
     @pulumi.getter
     def address2(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Address line 2
+        The secondary address line (apartment, suite, floor, etc.).
         """
         return pulumi.get(self, "address2")
 
@@ -368,7 +362,7 @@ class _ContactState:
     @pulumi.getter
     def city(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        City
+        The city where the contact is located.
         """
         return pulumi.get(self, "city")
 
@@ -380,7 +374,7 @@ class _ContactState:
     @pulumi.getter
     def country(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Country
+        The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         """
         return pulumi.get(self, "country")
 
@@ -404,9 +398,7 @@ class _ContactState:
     @pulumi.getter
     def email(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Email
-
-        # Attributes Reference
+        The contact's email address.
         """
         return pulumi.get(self, "email")
 
@@ -418,7 +410,7 @@ class _ContactState:
     @pulumi.getter
     def fax(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Fax
+        The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         """
         return pulumi.get(self, "fax")
 
@@ -442,7 +434,7 @@ class _ContactState:
     @pulumi.getter(name="firstName")
     def first_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        First name
+        The first name of the contact person.
         """
         return pulumi.get(self, "first_name")
 
@@ -454,7 +446,7 @@ class _ContactState:
     @pulumi.getter(name="jobTitle")
     def job_title(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Job title
+        The job title or position of the contact person within the organization.
         """
         return pulumi.get(self, "job_title")
 
@@ -466,7 +458,7 @@ class _ContactState:
     @pulumi.getter
     def label(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Label
+        A descriptive label for the contact to help identify it.
         """
         return pulumi.get(self, "label")
 
@@ -478,7 +470,7 @@ class _ContactState:
     @pulumi.getter(name="lastName")
     def last_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Last name
+        The last name of the contact person.
         """
         return pulumi.get(self, "last_name")
 
@@ -490,7 +482,7 @@ class _ContactState:
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Organization name
+        The name of the organization or company associated with the contact.
         """
         return pulumi.get(self, "organization_name")
 
@@ -502,7 +494,7 @@ class _ContactState:
     @pulumi.getter
     def phone(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Phone
+        The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         """
         return pulumi.get(self, "phone")
 
@@ -526,7 +518,7 @@ class _ContactState:
     @pulumi.getter(name="postalCode")
     def postal_code(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        Postal code
+        The postal code, ZIP code, or equivalent for the contact's location.
         """
         return pulumi.get(self, "postal_code")
 
@@ -538,7 +530,7 @@ class _ContactState:
     @pulumi.getter(name="stateProvince")
     def state_province(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
-        State province
+        The state, province, or region where the contact is located.
         """
         return pulumi.get(self, "state_province")
 
@@ -589,22 +581,21 @@ class Contact(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        # Create a contact
-        me = dnsimple.Contact("me",
-            label="Apple Appleseed",
-            first_name="Apple",
-            last_name="Appleseed",
-            organization_name="Contoso",
+        example = dnsimple.Contact("example",
+            label="Main Contact",
+            first_name="John",
+            last_name="Doe",
+            organization_name="Example Inc",
             job_title="Manager",
-            address1="Level 1, 2 Main St",
-            address2="Marsfield",
+            address1="123 Main Street",
+            address2="Suite 100",
             city="San Francisco",
             state_province="California",
-            postal_code="90210",
+            postal_code="94105",
             country="US",
-            phone="+1401239523",
-            fax="+1849491024",
-            email="apple@contoso.com")
+            phone="+1.4155551234",
+            fax="+1.4155555678",
+            email="john@example.com")
         ```
 
         ## Import
@@ -614,133 +605,27 @@ class Contact(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/contact:Contact resource_name 5678
+        $ pulumi import dnsimple:index/contact:Contact example 5678
         ```
 
-        The ID can be found within [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-
-        bash
-
-        curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/contacts?label_like=example.com | jq
-
-        {
-
-          "data": [
-
-            {
-            
-              "id": 1,
-            
-              "account_id": 1010,
-            
-              "label": "Default",
-            
-              "first_name": "First",
-            
-              "last_name": "User",
-            
-              "job_title": "CEO",
-            
-              "organization_name": "Awesome Company",
-            
-              "email": "first@example.com",
-            
-              "phone": "+18001234567",
-            
-              "fax": "+18011234567",
-            
-              "address1": "Italian Street, 10",
-            
-              "address2": "",
-            
-              "city": "Roma",
-            
-              "state_province": "RM",
-            
-              "postal_code": "00100",
-            
-              "country": "IT",
-            
-              "created_at": "2013-11-08T17:23:15Z",
-            
-              "updated_at": "2015-01-08T21:30:50Z"
-            
-            },
-            
-            {
-            
-              "id": 2,
-            
-              "account_id": 1010,
-            
-              "label": "",
-            
-              "first_name": "Second",
-            
-              "last_name": "User",
-            
-              "job_title": "",
-            
-              "organization_name": "",
-            
-              "email": "second@example.com",
-            
-              "phone": "+18881234567",
-            
-              "fax": "",
-            
-              "address1": "French Street",
-            
-              "address2": "c/o Someone",
-            
-              "city": "Paris",
-            
-              "state_province": "XY",
-            
-              "postal_code": "00200",
-            
-              "country": "FR",
-            
-              "created_at": "2014-12-06T15:46:18Z",
-            
-              "updated_at": "2014-12-06T15:46:18Z"
-            
-            }
-
-          ],
-
-          "pagination": {
-
-            "current_page": 1,
-            
-            "per_page": 30,
-            
-            "total_entries": 2,
-            
-            "total_pages": 1
-
-          }
-
-        }
+        The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[_builtins.str] address1: Address line 1
-        :param pulumi.Input[_builtins.str] address2: Address line 2
-        :param pulumi.Input[_builtins.str] city: City
-        :param pulumi.Input[_builtins.str] country: Country
-        :param pulumi.Input[_builtins.str] email: Email
-               
-               # Attributes Reference
-        :param pulumi.Input[_builtins.str] fax: Fax
-        :param pulumi.Input[_builtins.str] first_name: First name
-        :param pulumi.Input[_builtins.str] job_title: Job title
-        :param pulumi.Input[_builtins.str] label: Label
-        :param pulumi.Input[_builtins.str] last_name: Last name
-        :param pulumi.Input[_builtins.str] organization_name: Organization name
-        :param pulumi.Input[_builtins.str] phone: Phone
-        :param pulumi.Input[_builtins.str] postal_code: Postal code
-        :param pulumi.Input[_builtins.str] state_province: State province
+        :param pulumi.Input[_builtins.str] address1: The primary address line (street address, building number, etc.).
+        :param pulumi.Input[_builtins.str] address2: The secondary address line (apartment, suite, floor, etc.).
+        :param pulumi.Input[_builtins.str] city: The city where the contact is located.
+        :param pulumi.Input[_builtins.str] country: The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
+        :param pulumi.Input[_builtins.str] email: The contact's email address.
+        :param pulumi.Input[_builtins.str] fax: The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
+        :param pulumi.Input[_builtins.str] first_name: The first name of the contact person.
+        :param pulumi.Input[_builtins.str] job_title: The job title or position of the contact person within the organization.
+        :param pulumi.Input[_builtins.str] label: A descriptive label for the contact to help identify it.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the contact person.
+        :param pulumi.Input[_builtins.str] organization_name: The name of the organization or company associated with the contact.
+        :param pulumi.Input[_builtins.str] phone: The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
+        :param pulumi.Input[_builtins.str] postal_code: The postal code, ZIP code, or equivalent for the contact's location.
+        :param pulumi.Input[_builtins.str] state_province: The state, province, or region where the contact is located.
         """
         ...
     @overload
@@ -757,22 +642,21 @@ class Contact(pulumi.CustomResource):
         import pulumi
         import pulumi_dnsimple as dnsimple
 
-        # Create a contact
-        me = dnsimple.Contact("me",
-            label="Apple Appleseed",
-            first_name="Apple",
-            last_name="Appleseed",
-            organization_name="Contoso",
+        example = dnsimple.Contact("example",
+            label="Main Contact",
+            first_name="John",
+            last_name="Doe",
+            organization_name="Example Inc",
             job_title="Manager",
-            address1="Level 1, 2 Main St",
-            address2="Marsfield",
+            address1="123 Main Street",
+            address2="Suite 100",
             city="San Francisco",
             state_province="California",
-            postal_code="90210",
+            postal_code="94105",
             country="US",
-            phone="+1401239523",
-            fax="+1849491024",
-            email="apple@contoso.com")
+            phone="+1.4155551234",
+            fax="+1.4155555678",
+            email="john@example.com")
         ```
 
         ## Import
@@ -782,114 +666,10 @@ class Contact(pulumi.CustomResource):
         bash
 
         ```sh
-        $ pulumi import dnsimple:index/contact:Contact resource_name 5678
+        $ pulumi import dnsimple:index/contact:Contact example 5678
         ```
 
-        The ID can be found within [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-
-        bash
-
-        curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/contacts?label_like=example.com | jq
-
-        {
-
-          "data": [
-
-            {
-            
-              "id": 1,
-            
-              "account_id": 1010,
-            
-              "label": "Default",
-            
-              "first_name": "First",
-            
-              "last_name": "User",
-            
-              "job_title": "CEO",
-            
-              "organization_name": "Awesome Company",
-            
-              "email": "first@example.com",
-            
-              "phone": "+18001234567",
-            
-              "fax": "+18011234567",
-            
-              "address1": "Italian Street, 10",
-            
-              "address2": "",
-            
-              "city": "Roma",
-            
-              "state_province": "RM",
-            
-              "postal_code": "00100",
-            
-              "country": "IT",
-            
-              "created_at": "2013-11-08T17:23:15Z",
-            
-              "updated_at": "2015-01-08T21:30:50Z"
-            
-            },
-            
-            {
-            
-              "id": 2,
-            
-              "account_id": 1010,
-            
-              "label": "",
-            
-              "first_name": "Second",
-            
-              "last_name": "User",
-            
-              "job_title": "",
-            
-              "organization_name": "",
-            
-              "email": "second@example.com",
-            
-              "phone": "+18881234567",
-            
-              "fax": "",
-            
-              "address1": "French Street",
-            
-              "address2": "c/o Someone",
-            
-              "city": "Paris",
-            
-              "state_province": "XY",
-            
-              "postal_code": "00200",
-            
-              "country": "FR",
-            
-              "created_at": "2014-12-06T15:46:18Z",
-            
-              "updated_at": "2014-12-06T15:46:18Z"
-            
-            }
-
-          ],
-
-          "pagination": {
-
-            "current_page": 1,
-            
-            "per_page": 30,
-            
-            "total_entries": 2,
-            
-            "total_pages": 1
-
-          }
-
-        }
+        The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
         :param ContactArgs args: The arguments to use to populate this resource's properties.
@@ -1003,25 +783,23 @@ class Contact(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.int] account_id: The account ID for the contact.
-        :param pulumi.Input[_builtins.str] address1: Address line 1
-        :param pulumi.Input[_builtins.str] address2: Address line 2
-        :param pulumi.Input[_builtins.str] city: City
-        :param pulumi.Input[_builtins.str] country: Country
+        :param pulumi.Input[_builtins.str] address1: The primary address line (street address, building number, etc.).
+        :param pulumi.Input[_builtins.str] address2: The secondary address line (apartment, suite, floor, etc.).
+        :param pulumi.Input[_builtins.str] city: The city where the contact is located.
+        :param pulumi.Input[_builtins.str] country: The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         :param pulumi.Input[_builtins.str] created_at: Timestamp representing when this contact was created.
-        :param pulumi.Input[_builtins.str] email: Email
-               
-               # Attributes Reference
-        :param pulumi.Input[_builtins.str] fax: Fax
+        :param pulumi.Input[_builtins.str] email: The contact's email address.
+        :param pulumi.Input[_builtins.str] fax: The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         :param pulumi.Input[_builtins.str] fax_normalized: The fax number, normalized.
-        :param pulumi.Input[_builtins.str] first_name: First name
-        :param pulumi.Input[_builtins.str] job_title: Job title
-        :param pulumi.Input[_builtins.str] label: Label
-        :param pulumi.Input[_builtins.str] last_name: Last name
-        :param pulumi.Input[_builtins.str] organization_name: Organization name
-        :param pulumi.Input[_builtins.str] phone: Phone
+        :param pulumi.Input[_builtins.str] first_name: The first name of the contact person.
+        :param pulumi.Input[_builtins.str] job_title: The job title or position of the contact person within the organization.
+        :param pulumi.Input[_builtins.str] label: A descriptive label for the contact to help identify it.
+        :param pulumi.Input[_builtins.str] last_name: The last name of the contact person.
+        :param pulumi.Input[_builtins.str] organization_name: The name of the organization or company associated with the contact.
+        :param pulumi.Input[_builtins.str] phone: The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         :param pulumi.Input[_builtins.str] phone_normalized: The phone number, normalized.
-        :param pulumi.Input[_builtins.str] postal_code: Postal code
-        :param pulumi.Input[_builtins.str] state_province: State province
+        :param pulumi.Input[_builtins.str] postal_code: The postal code, ZIP code, or equivalent for the contact's location.
+        :param pulumi.Input[_builtins.str] state_province: The state, province, or region where the contact is located.
         :param pulumi.Input[_builtins.str] updated_at: Timestamp representing when this contact was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1061,7 +839,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def address1(self) -> pulumi.Output[_builtins.str]:
         """
-        Address line 1
+        The primary address line (street address, building number, etc.).
         """
         return pulumi.get(self, "address1")
 
@@ -1069,7 +847,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def address2(self) -> pulumi.Output[_builtins.str]:
         """
-        Address line 2
+        The secondary address line (apartment, suite, floor, etc.).
         """
         return pulumi.get(self, "address2")
 
@@ -1077,7 +855,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def city(self) -> pulumi.Output[_builtins.str]:
         """
-        City
+        The city where the contact is located.
         """
         return pulumi.get(self, "city")
 
@@ -1085,7 +863,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def country(self) -> pulumi.Output[_builtins.str]:
         """
-        Country
+        The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
         """
         return pulumi.get(self, "country")
 
@@ -1101,9 +879,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def email(self) -> pulumi.Output[_builtins.str]:
         """
-        Email
-
-        # Attributes Reference
+        The contact's email address.
         """
         return pulumi.get(self, "email")
 
@@ -1111,7 +887,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def fax(self) -> pulumi.Output[_builtins.str]:
         """
-        Fax
+        The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
         """
         return pulumi.get(self, "fax")
 
@@ -1127,7 +903,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter(name="firstName")
     def first_name(self) -> pulumi.Output[_builtins.str]:
         """
-        First name
+        The first name of the contact person.
         """
         return pulumi.get(self, "first_name")
 
@@ -1135,7 +911,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter(name="jobTitle")
     def job_title(self) -> pulumi.Output[_builtins.str]:
         """
-        Job title
+        The job title or position of the contact person within the organization.
         """
         return pulumi.get(self, "job_title")
 
@@ -1143,7 +919,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def label(self) -> pulumi.Output[_builtins.str]:
         """
-        Label
+        A descriptive label for the contact to help identify it.
         """
         return pulumi.get(self, "label")
 
@@ -1151,7 +927,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter(name="lastName")
     def last_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Last name
+        The last name of the contact person.
         """
         return pulumi.get(self, "last_name")
 
@@ -1159,7 +935,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter(name="organizationName")
     def organization_name(self) -> pulumi.Output[_builtins.str]:
         """
-        Organization name
+        The name of the organization or company associated with the contact.
         """
         return pulumi.get(self, "organization_name")
 
@@ -1167,7 +943,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter
     def phone(self) -> pulumi.Output[_builtins.str]:
         """
-        Phone
+        The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
         """
         return pulumi.get(self, "phone")
 
@@ -1183,7 +959,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter(name="postalCode")
     def postal_code(self) -> pulumi.Output[_builtins.str]:
         """
-        Postal code
+        The postal code, ZIP code, or equivalent for the contact's location.
         """
         return pulumi.get(self, "postal_code")
 
@@ -1191,7 +967,7 @@ class Contact(pulumi.CustomResource):
     @pulumi.getter(name="stateProvince")
     def state_province(self) -> pulumi.Output[_builtins.str]:
         """
-        State province
+        The state, province, or region where the contact is located.
         """
         return pulumi.get(self, "state_province")
 

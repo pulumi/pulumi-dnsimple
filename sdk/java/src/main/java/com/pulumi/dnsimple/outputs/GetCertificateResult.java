@@ -16,25 +16,29 @@ import javax.annotation.Nullable;
 @CustomType
 public final class GetCertificateResult {
     /**
-     * @return A list of certificates that make up the chain
+     * @return A list of certificates that make up the certificate chain.
      * 
      */
     private List<String> certificateChains;
     private Integer certificateId;
     private String domain;
+    /**
+     * @return The certificate ID.
+     * 
+     */
     private String id;
     /**
-     * @return The corresponding Private Key for the SSL Certificate
+     * @return The corresponding private key for the SSL certificate.
      * 
      */
     private String privateKey;
     /**
-     * @return The Root Certificate of the issuing CA
+     * @return The root certificate of the issuing CA.
      * 
      */
     private String rootCertificate;
     /**
-     * @return The SSL Certificate
+     * @return The SSL certificate.
      * 
      */
     private String serverCertificate;
@@ -42,7 +46,7 @@ public final class GetCertificateResult {
 
     private GetCertificateResult() {}
     /**
-     * @return A list of certificates that make up the chain
+     * @return A list of certificates that make up the certificate chain.
      * 
      */
     public List<String> certificateChains() {
@@ -54,25 +58,29 @@ public final class GetCertificateResult {
     public String domain() {
         return this.domain;
     }
+    /**
+     * @return The certificate ID.
+     * 
+     */
     public String id() {
         return this.id;
     }
     /**
-     * @return The corresponding Private Key for the SSL Certificate
+     * @return The corresponding private key for the SSL certificate.
      * 
      */
     public String privateKey() {
         return this.privateKey;
     }
     /**
-     * @return The Root Certificate of the issuing CA
+     * @return The root certificate of the issuing CA.
      * 
      */
     public String rootCertificate() {
         return this.rootCertificate;
     }
     /**
-     * @return The SSL Certificate
+     * @return The SSL certificate.
      * 
      */
     public String serverCertificate() {

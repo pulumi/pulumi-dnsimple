@@ -8,7 +8,7 @@ import (
 	"reflect"
 
 	"errors"
-	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple/internal"
+	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
@@ -21,16 +21,15 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-dnsimple/sdk/v4/go/dnsimple"
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			// Create a domain
-//			_, err := dnsimple.NewDomain(ctx, "foobar", &dnsimple.DomainArgs{
-//				Name: pulumi.Any(dnsimple.Domain),
+//			_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+//				Name: pulumi.String("example.com"),
 //			})
 //			if err != nil {
 //				return err
@@ -43,67 +42,15 @@ import (
 //
 // ## Import
 //
-// DNSimple domains can be imported using their numeric record ID.
+// DNSimple domains can be imported using the domain name.
 //
 // bash
 //
 // ```sh
-// $ pulumi import dnsimple:index/domain:Domain resource_name 5678
+// $ pulumi import dnsimple:index/domain:Domain example example.com
 // ```
 //
-// The record ID can be found within [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
-//
-// bash
-//
-// curl -u 'EMAIL:PASSWORD' https://api.dnsimple.com/v2/1234/domains?name_like=example.com | jq
-//
-// {
-//
-//	"data": [
-//
-//	  {
-//
-//	    "id": 5678,
-//
-//	    "account_id": 1234,
-//
-//	    "registrant_id": null,
-//
-//	    "name": "example.com",
-//
-//	    "unicode_name": "example.com",
-//
-//	    "state": "hosted",
-//
-//	    "auto_renew": false,
-//
-//	    "private_whois": false,
-//
-//	    "expires_on": null,
-//
-//	    "expires_at": null,
-//
-//	    "created_at": "2021-10-01T00:00:00Z",
-//
-//	    "updated_at": "2021-10-01T00:00:00Z"
-//
-//	  }
-//
-//	],
-//
-//	"pagination": {
-//
-//	  "current_page": 1,
-//
-//	  "per_page": 30,
-//
-//	  "total_entries": 1,
-//
-//	  "total_pages": 1
-//
-//	}
-//
-// }
+// The domain name can be found within the [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 type Domain struct {
 	pulumi.CustomResourceState
 
@@ -111,9 +58,7 @@ type Domain struct {
 	AccountId pulumi.IntOutput `pulumi:"accountId"`
 	// Whether the domain is set to auto-renew.
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
-	// The domain name to be created
-	//
-	// # Attributes Reference
+	// The domain name to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois pulumi.BoolOutput `pulumi:"privateWhois"`
@@ -162,9 +107,7 @@ type domainState struct {
 	AccountId *int `pulumi:"accountId"`
 	// Whether the domain is set to auto-renew.
 	AutoRenew *bool `pulumi:"autoRenew"`
-	// The domain name to be created
-	//
-	// # Attributes Reference
+	// The domain name to be created.
 	Name *string `pulumi:"name"`
 	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois *bool `pulumi:"privateWhois"`
@@ -181,9 +124,7 @@ type DomainState struct {
 	AccountId pulumi.IntPtrInput
 	// Whether the domain is set to auto-renew.
 	AutoRenew pulumi.BoolPtrInput
-	// The domain name to be created
-	//
-	// # Attributes Reference
+	// The domain name to be created.
 	Name pulumi.StringPtrInput
 	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois pulumi.BoolPtrInput
@@ -200,17 +141,13 @@ func (DomainState) ElementType() reflect.Type {
 }
 
 type domainArgs struct {
-	// The domain name to be created
-	//
-	// # Attributes Reference
+	// The domain name to be created.
 	Name string `pulumi:"name"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
-	// The domain name to be created
-	//
-	// # Attributes Reference
+	// The domain name to be created.
 	Name pulumi.StringInput
 }
 
@@ -311,9 +248,7 @@ func (o DomainOutput) AutoRenew() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.AutoRenew }).(pulumi.BoolOutput)
 }
 
-// The domain name to be created
-//
-// # Attributes Reference
+// The domain name to be created.
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

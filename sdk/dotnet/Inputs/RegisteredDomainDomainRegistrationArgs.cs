@@ -13,19 +13,19 @@ namespace Pulumi.DNSimple.Inputs
     public sealed class RegisteredDomainDomainRegistrationArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The ID of this resource.
+        /// (Number) - The ID of the domain registration.
         /// </summary>
         [Input("id")]
         public Input<int>? Id { get; set; }
 
         /// <summary>
-        /// The registration period in years.
+        /// (Number) - The registration period in years.
         /// </summary>
         [Input("period")]
         public Input<int>? Period { get; set; }
 
         /// <summary>
-        /// The state of the domain.
+        /// (String) - The state of the domain registration.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

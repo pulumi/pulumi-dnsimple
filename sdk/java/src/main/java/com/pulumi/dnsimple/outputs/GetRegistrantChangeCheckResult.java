@@ -13,25 +13,57 @@ import java.util.Objects;
 
 @CustomType
 public final class GetRegistrantChangeCheckResult {
+    /**
+     * @return The ID of the contact you are planning to change to.
+     * 
+     */
     private String contactId;
+    /**
+     * @return The name or ID of the domain.
+     * 
+     */
     private String domainId;
+    /**
+     * @return (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     * 
+     */
     private List<GetRegistrantChangeCheckExtendedAttribute> extendedAttributes;
     private String id;
+    /**
+     * @return (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     * 
+     */
     private Boolean registryOwnerChange;
 
     private GetRegistrantChangeCheckResult() {}
+    /**
+     * @return The ID of the contact you are planning to change to.
+     * 
+     */
     public String contactId() {
         return this.contactId;
     }
+    /**
+     * @return The name or ID of the domain.
+     * 
+     */
     public String domainId() {
         return this.domainId;
     }
+    /**
+     * @return (List) A list of extended attributes that are required for the registrant change. (see below for nested schema)
+     * 
+     */
     public List<GetRegistrantChangeCheckExtendedAttribute> extendedAttributes() {
         return this.extendedAttributes;
     }
     public String id() {
         return this.id;
     }
+    /**
+     * @return (Boolean) Whether the registrant change is going to result in an owner change at the registry.
+     * 
+     */
     public Boolean registryOwnerChange() {
         return this.registryOwnerChange;
     }

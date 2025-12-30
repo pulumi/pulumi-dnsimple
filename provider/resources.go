@@ -26,13 +26,12 @@ import (
 
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/pf/tfbridge"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/info"
 	tfbridgetokens "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	"github.com/pulumi/pulumi/pkg/v3/codegen/schema"
 
-	"github.com/pulumi/pulumi-dnsimple/provider/v4/pkg/version"
+	"github.com/pulumi/pulumi-dnsimple/provider/v5/pkg/version"
 )
 
 // all of the token components used below.
@@ -148,20 +147,32 @@ func Provider() tfbridge.ProviderInfo {
 func docEditRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(
 		defaults,
-		skipHelpfulLinksSection,
+		skipSections(),
 		stripVideo,
 	)
 }
 
-// Removes links not helpful for Pulumi users
-var skipHelpfulLinksSection = tfbridge.DocsEdit{
-	Path: "index.md",
-	Edit: func(_ string, content []byte) ([]byte, error) {
-		return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
-			return headerText == "Helpful Links"
-		})
-	},
-	Phase: info.PostCodeTranslation,
+// Removes a set of sections not applicable to Pulumi
+func skipSections() tfbridge.DocsEdit {
+	headersRegexps := []*regexp.Regexp{
+		regexp.MustCompile("Requirements"),
+		regexp.MustCompile("Installation"),
+		regexp.MustCompile("Getting Help"),
+		regexp.MustCompile("Related Articles"),
+	}
+	return tfbridge.DocsEdit{
+		Path: "index.md",
+		Edit: func(_ string, content []byte) ([]byte, error) {
+			return tfgen.SkipSectionByHeaderContent(content, func(headerText string) bool {
+				for _, header := range headersRegexps {
+					if header.Match([]byte(headerText)) {
+						return true
+					}
+				}
+				return false
+			})
+		},
+	}
 }
 
 // Removes a video link

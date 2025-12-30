@@ -12,21 +12,45 @@ import java.util.Objects;
 
 @CustomType
 public final class GetZoneResult {
+    /**
+     * @return The account ID.
+     * 
+     */
     private Integer accountId;
+    /**
+     * @return The zone ID.
+     * 
+     */
     private Integer id;
     private String name;
+    /**
+     * @return Whether the zone is a reverse zone (`true`) or forward zone (`false`).
+     * 
+     */
     private Boolean reverse;
 
     private GetZoneResult() {}
+    /**
+     * @return The account ID.
+     * 
+     */
     public Integer accountId() {
         return this.accountId;
     }
+    /**
+     * @return The zone ID.
+     * 
+     */
     public Integer id() {
         return this.id;
     }
     public String name() {
         return this.name;
     }
+    /**
+     * @return Whether the zone is a reverse zone (`true`) or forward zone (`false`).
+     * 
+     */
     public Boolean reverse() {
         return this.reverse;
     }

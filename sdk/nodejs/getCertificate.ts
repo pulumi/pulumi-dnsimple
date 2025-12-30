@@ -8,7 +8,7 @@ import * as enums from "./types/enums";
 import * as utilities from "./utilities";
 
 /**
- * Provides a DNSimple certificate data source.
+ * Get information about a DNSimple SSL certificate.
  *
  * ## Example Usage
  *
@@ -16,9 +16,9 @@ import * as utilities from "./utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * const foobar = dnsimple.getCertificate({
- *     domain: dnsimpleDomain,
- *     certificateId: dnsimpleCertificateId,
+ * const example = dnsimple.getCertificate({
+ *     domain: "example.com",
+ *     certificateId: 1234,
  * });
  * ```
  */
@@ -36,13 +36,16 @@ export function getCertificate(args: GetCertificateArgs, opts?: pulumi.InvokeOpt
  */
 export interface GetCertificateArgs {
     /**
-     * The ID of the SSL Certificate
+     * The ID of the SSL certificate.
      */
     certificateId: number;
     /**
-     * The domain of the SSL Certificate
+     * The domain name of the SSL certificate.
      */
     domain: string;
+    /**
+     * (see below for nested schema)
+     */
     timeouts?: inputs.GetCertificateTimeouts;
 }
 
@@ -51,28 +54,31 @@ export interface GetCertificateArgs {
  */
 export interface GetCertificateResult {
     /**
-     * A list of certificates that make up the chain
+     * A list of certificates that make up the certificate chain.
      */
     readonly certificateChains: string[];
     readonly certificateId: number;
     readonly domain: string;
+    /**
+     * The certificate ID.
+     */
     readonly id: string;
     /**
-     * The corresponding Private Key for the SSL Certificate
+     * The corresponding private key for the SSL certificate.
      */
     readonly privateKey: string;
     /**
-     * The Root Certificate of the issuing CA
+     * The root certificate of the issuing CA.
      */
     readonly rootCertificate: string;
     /**
-     * The SSL Certificate
+     * The SSL certificate.
      */
     readonly serverCertificate: string;
     readonly timeouts?: outputs.GetCertificateTimeouts;
 }
 /**
- * Provides a DNSimple certificate data source.
+ * Get information about a DNSimple SSL certificate.
  *
  * ## Example Usage
  *
@@ -80,9 +86,9 @@ export interface GetCertificateResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as dnsimple from "@pulumi/dnsimple";
  *
- * const foobar = dnsimple.getCertificate({
- *     domain: dnsimpleDomain,
- *     certificateId: dnsimpleCertificateId,
+ * const example = dnsimple.getCertificate({
+ *     domain: "example.com",
+ *     certificateId: 1234,
  * });
  * ```
  */
@@ -100,12 +106,15 @@ export function getCertificateOutput(args: GetCertificateOutputArgs, opts?: pulu
  */
 export interface GetCertificateOutputArgs {
     /**
-     * The ID of the SSL Certificate
+     * The ID of the SSL certificate.
      */
     certificateId: pulumi.Input<number>;
     /**
-     * The domain of the SSL Certificate
+     * The domain name of the SSL certificate.
      */
     domain: pulumi.Input<string>;
+    /**
+     * (see below for nested schema)
+     */
     timeouts?: pulumi.Input<inputs.GetCertificateTimeoutsArgs>;
 }
