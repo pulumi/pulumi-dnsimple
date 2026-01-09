@@ -23,7 +23,7 @@ class DsRecordArgs:
                  domain: pulumi.Input[_builtins.str],
                  digest: Optional[pulumi.Input[_builtins.str]] = None,
                  digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytag: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  public_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DsRecord resource.
@@ -31,6 +31,7 @@ class DsRecordArgs:
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
         :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
+        :param pulumi.Input[_builtins.str] key_tag: A key tag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
         """
         pulumi.set(__self__, "algorithm", algorithm)
@@ -39,8 +40,8 @@ class DsRecordArgs:
             pulumi.set(__self__, "digest", digest)
         if digest_type is not None:
             pulumi.set(__self__, "digest_type", digest_type)
-        if keytag is not None:
-            pulumi.set(__self__, "keytag", keytag)
+        if key_tag is not None:
+            pulumi.set(__self__, "key_tag", key_tag)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
 
@@ -93,13 +94,16 @@ class DsRecordArgs:
         pulumi.set(self, "digest_type", value)
 
     @_builtins.property
-    @pulumi.getter
-    def keytag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "keytag")
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A key tag that references the corresponding DNSKEY record.
+        """
+        return pulumi.get(self, "key_tag")
 
-    @keytag.setter
-    def keytag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "keytag", value)
+    @key_tag.setter
+    def key_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -122,7 +126,7 @@ class _DsRecordState:
                  digest: Optional[pulumi.Input[_builtins.str]] = None,
                  digest_type: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytag: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  public_key: Optional[pulumi.Input[_builtins.str]] = None,
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
@@ -132,6 +136,7 @@ class _DsRecordState:
         :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
+        :param pulumi.Input[_builtins.str] key_tag: A key tag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] updated_at: The timestamp when the DS record was last updated.
         """
@@ -145,8 +150,8 @@ class _DsRecordState:
             pulumi.set(__self__, "digest_type", digest_type)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
-        if keytag is not None:
-            pulumi.set(__self__, "keytag", keytag)
+        if key_tag is not None:
+            pulumi.set(__self__, "key_tag", key_tag)
         if public_key is not None:
             pulumi.set(__self__, "public_key", public_key)
         if updated_at is not None:
@@ -213,13 +218,16 @@ class _DsRecordState:
         pulumi.set(self, "domain", value)
 
     @_builtins.property
-    @pulumi.getter
-    def keytag(self) -> Optional[pulumi.Input[_builtins.str]]:
-        return pulumi.get(self, "keytag")
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+        """
+        A key tag that references the corresponding DNSKEY record.
+        """
+        return pulumi.get(self, "key_tag")
 
-    @keytag.setter
-    def keytag(self, value: Optional[pulumi.Input[_builtins.str]]):
-        pulumi.set(self, "keytag", value)
+    @key_tag.setter
+    def key_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+        pulumi.set(self, "key_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
@@ -256,7 +264,7 @@ class DsRecord(pulumi.CustomResource):
                  digest: Optional[pulumi.Input[_builtins.str]] = None,
                  digest_type: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytag: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  public_key: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         """
@@ -294,6 +302,7 @@ class DsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
+        :param pulumi.Input[_builtins.str] key_tag: A key tag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
         """
         ...
@@ -350,7 +359,7 @@ class DsRecord(pulumi.CustomResource):
                  digest: Optional[pulumi.Input[_builtins.str]] = None,
                  digest_type: Optional[pulumi.Input[_builtins.str]] = None,
                  domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 keytag: Optional[pulumi.Input[_builtins.str]] = None,
+                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
                  public_key: Optional[pulumi.Input[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -369,7 +378,7 @@ class DsRecord(pulumi.CustomResource):
             if domain is None and not opts.urn:
                 raise TypeError("Missing required property 'domain'")
             __props__.__dict__["domain"] = domain
-            __props__.__dict__["keytag"] = keytag
+            __props__.__dict__["key_tag"] = key_tag
             __props__.__dict__["public_key"] = public_key
             __props__.__dict__["created_at"] = None
             __props__.__dict__["updated_at"] = None
@@ -388,7 +397,7 @@ class DsRecord(pulumi.CustomResource):
             digest: Optional[pulumi.Input[_builtins.str]] = None,
             digest_type: Optional[pulumi.Input[_builtins.str]] = None,
             domain: Optional[pulumi.Input[_builtins.str]] = None,
-            keytag: Optional[pulumi.Input[_builtins.str]] = None,
+            key_tag: Optional[pulumi.Input[_builtins.str]] = None,
             public_key: Optional[pulumi.Input[_builtins.str]] = None,
             updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'DsRecord':
         """
@@ -403,6 +412,7 @@ class DsRecord(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] digest_type: DNSSEC digest type number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
+        :param pulumi.Input[_builtins.str] key_tag: A key tag that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] public_key: A public key that references the corresponding DNSKEY record.
         :param pulumi.Input[_builtins.str] updated_at: The timestamp when the DS record was last updated.
         """
@@ -415,7 +425,7 @@ class DsRecord(pulumi.CustomResource):
         __props__.__dict__["digest"] = digest
         __props__.__dict__["digest_type"] = digest_type
         __props__.__dict__["domain"] = domain
-        __props__.__dict__["keytag"] = keytag
+        __props__.__dict__["key_tag"] = key_tag
         __props__.__dict__["public_key"] = public_key
         __props__.__dict__["updated_at"] = updated_at
         return DsRecord(resource_name, opts=opts, __props__=__props__)
@@ -461,9 +471,12 @@ class DsRecord(pulumi.CustomResource):
         return pulumi.get(self, "domain")
 
     @_builtins.property
-    @pulumi.getter
-    def keytag(self) -> pulumi.Output[Optional[_builtins.str]]:
-        return pulumi.get(self, "keytag")
+    @pulumi.getter(name="keyTag")
+    def key_tag(self) -> pulumi.Output[Optional[_builtins.str]]:
+        """
+        A key tag that references the corresponding DNSKEY record.
+        """
+        return pulumi.get(self, "key_tag")
 
     @_builtins.property
     @pulumi.getter(name="publicKey")

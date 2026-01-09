@@ -76,11 +76,19 @@ public final class DsRecordArgs extends com.pulumi.resources.ResourceArgs {
         return this.domain;
     }
 
-    @Import(name="keytag")
-    private @Nullable Output<String> keytag;
+    /**
+     * A key tag that references the corresponding DNSKEY record.
+     * 
+     */
+    @Import(name="keyTag")
+    private @Nullable Output<String> keyTag;
 
-    public Optional<Output<String>> keytag() {
-        return Optional.ofNullable(this.keytag);
+    /**
+     * @return A key tag that references the corresponding DNSKEY record.
+     * 
+     */
+    public Optional<Output<String>> keyTag() {
+        return Optional.ofNullable(this.keyTag);
     }
 
     /**
@@ -105,7 +113,7 @@ public final class DsRecordArgs extends com.pulumi.resources.ResourceArgs {
         this.digest = $.digest;
         this.digestType = $.digestType;
         this.domain = $.domain;
-        this.keytag = $.keytag;
+        this.keyTag = $.keyTag;
         this.publicKey = $.publicKey;
     }
 
@@ -211,13 +219,25 @@ public final class DsRecordArgs extends com.pulumi.resources.ResourceArgs {
             return domain(Output.of(domain));
         }
 
-        public Builder keytag(@Nullable Output<String> keytag) {
-            $.keytag = keytag;
+        /**
+         * @param keyTag A key tag that references the corresponding DNSKEY record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyTag(@Nullable Output<String> keyTag) {
+            $.keyTag = keyTag;
             return this;
         }
 
-        public Builder keytag(String keytag) {
-            return keytag(Output.of(keytag));
+        /**
+         * @param keyTag A key tag that references the corresponding DNSKEY record.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder keyTag(String keyTag) {
+            return keyTag(Output.of(keyTag));
         }
 
         /**
