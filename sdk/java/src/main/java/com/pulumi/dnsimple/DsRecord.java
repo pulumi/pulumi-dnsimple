@@ -139,11 +139,19 @@ public class DsRecord extends com.pulumi.resources.CustomResource {
     public Output<String> domain() {
         return this.domain;
     }
-    @Export(name="keytag", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> keytag;
+    /**
+     * A key tag that references the corresponding DNSKEY record.
+     * 
+     */
+    @Export(name="keyTag", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> keyTag;
 
-    public Output<Optional<String>> keytag() {
-        return Codegen.optional(this.keytag);
+    /**
+     * @return A key tag that references the corresponding DNSKEY record.
+     * 
+     */
+    public Output<Optional<String>> keyTag() {
+        return Codegen.optional(this.keyTag);
     }
     /**
      * A public key that references the corresponding DNSKEY record.

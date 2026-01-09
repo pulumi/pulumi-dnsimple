@@ -79,8 +79,11 @@ namespace Pulumi.DNSimple
         [Output("domain")]
         public Output<string> Domain { get; private set; } = null!;
 
-        [Output("keytag")]
-        public Output<string?> Keytag { get; private set; } = null!;
+        /// <summary>
+        /// A key tag that references the corresponding DNSKEY record.
+        /// </summary>
+        [Output("keyTag")]
+        public Output<string?> KeyTag { get; private set; } = null!;
 
         /// <summary>
         /// A public key that references the corresponding DNSKEY record.
@@ -164,8 +167,11 @@ namespace Pulumi.DNSimple
         [Input("domain", required: true)]
         public Input<string> Domain { get; set; } = null!;
 
-        [Input("keytag")]
-        public Input<string>? Keytag { get; set; }
+        /// <summary>
+        /// A key tag that references the corresponding DNSKEY record.
+        /// </summary>
+        [Input("keyTag")]
+        public Input<string>? KeyTag { get; set; }
 
         /// <summary>
         /// A public key that references the corresponding DNSKEY record.
@@ -211,8 +217,11 @@ namespace Pulumi.DNSimple
         [Input("domain")]
         public Input<string>? Domain { get; set; }
 
-        [Input("keytag")]
-        public Input<string>? Keytag { get; set; }
+        /// <summary>
+        /// A key tag that references the corresponding DNSKEY record.
+        /// </summary>
+        [Input("keyTag")]
+        public Input<string>? KeyTag { get; set; }
 
         /// <summary>
         /// A public key that references the corresponding DNSKEY record.

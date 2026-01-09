@@ -67,8 +67,9 @@ type DsRecord struct {
 	// DNSSEC digest type number as a string.
 	DigestType pulumi.StringPtrOutput `pulumi:"digestType"`
 	// The domain name or numeric ID to create the delegation signer record for.
-	Domain pulumi.StringOutput    `pulumi:"domain"`
-	Keytag pulumi.StringPtrOutput `pulumi:"keytag"`
+	Domain pulumi.StringOutput `pulumi:"domain"`
+	// A key tag that references the corresponding DNSKEY record.
+	KeyTag pulumi.StringPtrOutput `pulumi:"keyTag"`
 	// A public key that references the corresponding DNSKEY record.
 	PublicKey pulumi.StringPtrOutput `pulumi:"publicKey"`
 	// The timestamp when the DS record was last updated.
@@ -121,7 +122,8 @@ type dsRecordState struct {
 	DigestType *string `pulumi:"digestType"`
 	// The domain name or numeric ID to create the delegation signer record for.
 	Domain *string `pulumi:"domain"`
-	Keytag *string `pulumi:"keytag"`
+	// A key tag that references the corresponding DNSKEY record.
+	KeyTag *string `pulumi:"keyTag"`
 	// A public key that references the corresponding DNSKEY record.
 	PublicKey *string `pulumi:"publicKey"`
 	// The timestamp when the DS record was last updated.
@@ -139,7 +141,8 @@ type DsRecordState struct {
 	DigestType pulumi.StringPtrInput
 	// The domain name or numeric ID to create the delegation signer record for.
 	Domain pulumi.StringPtrInput
-	Keytag pulumi.StringPtrInput
+	// A key tag that references the corresponding DNSKEY record.
+	KeyTag pulumi.StringPtrInput
 	// A public key that references the corresponding DNSKEY record.
 	PublicKey pulumi.StringPtrInput
 	// The timestamp when the DS record was last updated.
@@ -158,8 +161,9 @@ type dsRecordArgs struct {
 	// DNSSEC digest type number as a string.
 	DigestType *string `pulumi:"digestType"`
 	// The domain name or numeric ID to create the delegation signer record for.
-	Domain string  `pulumi:"domain"`
-	Keytag *string `pulumi:"keytag"`
+	Domain string `pulumi:"domain"`
+	// A key tag that references the corresponding DNSKEY record.
+	KeyTag *string `pulumi:"keyTag"`
 	// A public key that references the corresponding DNSKEY record.
 	PublicKey *string `pulumi:"publicKey"`
 }
@@ -174,7 +178,8 @@ type DsRecordArgs struct {
 	DigestType pulumi.StringPtrInput
 	// The domain name or numeric ID to create the delegation signer record for.
 	Domain pulumi.StringInput
-	Keytag pulumi.StringPtrInput
+	// A key tag that references the corresponding DNSKEY record.
+	KeyTag pulumi.StringPtrInput
 	// A public key that references the corresponding DNSKEY record.
 	PublicKey pulumi.StringPtrInput
 }
@@ -291,8 +296,9 @@ func (o DsRecordOutput) Domain() pulumi.StringOutput {
 	return o.ApplyT(func(v *DsRecord) pulumi.StringOutput { return v.Domain }).(pulumi.StringOutput)
 }
 
-func (o DsRecordOutput) Keytag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *DsRecord) pulumi.StringPtrOutput { return v.Keytag }).(pulumi.StringPtrOutput)
+// A key tag that references the corresponding DNSKEY record.
+func (o DsRecordOutput) KeyTag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DsRecord) pulumi.StringPtrOutput { return v.KeyTag }).(pulumi.StringPtrOutput)
 }
 
 // A public key that references the corresponding DNSKEY record.

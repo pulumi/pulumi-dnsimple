@@ -82,7 +82,10 @@ export class DsRecord extends pulumi.CustomResource {
      * The domain name or numeric ID to create the delegation signer record for.
      */
     declare public readonly domain: pulumi.Output<string>;
-    declare public readonly keytag: pulumi.Output<string | undefined>;
+    /**
+     * A key tag that references the corresponding DNSKEY record.
+     */
+    declare public readonly keyTag: pulumi.Output<string | undefined>;
     /**
      * A public key that references the corresponding DNSKEY record.
      */
@@ -110,7 +113,7 @@ export class DsRecord extends pulumi.CustomResource {
             resourceInputs["digest"] = state?.digest;
             resourceInputs["digestType"] = state?.digestType;
             resourceInputs["domain"] = state?.domain;
-            resourceInputs["keytag"] = state?.keytag;
+            resourceInputs["keyTag"] = state?.keyTag;
             resourceInputs["publicKey"] = state?.publicKey;
             resourceInputs["updatedAt"] = state?.updatedAt;
         } else {
@@ -125,7 +128,7 @@ export class DsRecord extends pulumi.CustomResource {
             resourceInputs["digest"] = args?.digest;
             resourceInputs["digestType"] = args?.digestType;
             resourceInputs["domain"] = args?.domain;
-            resourceInputs["keytag"] = args?.keytag;
+            resourceInputs["keyTag"] = args?.keyTag;
             resourceInputs["publicKey"] = args?.publicKey;
             resourceInputs["createdAt"] = undefined /*out*/;
             resourceInputs["updatedAt"] = undefined /*out*/;
@@ -159,7 +162,10 @@ export interface DsRecordState {
      * The domain name or numeric ID to create the delegation signer record for.
      */
     domain?: pulumi.Input<string>;
-    keytag?: pulumi.Input<string>;
+    /**
+     * A key tag that references the corresponding DNSKEY record.
+     */
+    keyTag?: pulumi.Input<string>;
     /**
      * A public key that references the corresponding DNSKEY record.
      */
@@ -190,7 +196,10 @@ export interface DsRecordArgs {
      * The domain name or numeric ID to create the delegation signer record for.
      */
     domain: pulumi.Input<string>;
-    keytag?: pulumi.Input<string>;
+    /**
+     * A key tag that references the corresponding DNSKEY record.
+     */
+    keyTag?: pulumi.Input<string>;
     /**
      * A public key that references the corresponding DNSKEY record.
      */

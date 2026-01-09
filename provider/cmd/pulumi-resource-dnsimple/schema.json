@@ -779,8 +779,9 @@
                     "type": "string",
                     "description": "The domain name or numeric ID to create the delegation signer record for.\n"
                 },
-                "keytag": {
-                    "type": "string"
+                "keyTag": {
+                    "type": "string",
+                    "description": "A key tag that references the corresponding DNSKEY record.\n"
                 },
                 "publicKey": {
                     "type": "string",
@@ -814,8 +815,9 @@
                     "type": "string",
                     "description": "The domain name or numeric ID to create the delegation signer record for.\n"
                 },
-                "keytag": {
-                    "type": "string"
+                "keyTag": {
+                    "type": "string",
+                    "description": "A key tag that references the corresponding DNSKEY record.\n"
                 },
                 "publicKey": {
                     "type": "string",
@@ -849,8 +851,9 @@
                         "type": "string",
                         "description": "The domain name or numeric ID to create the delegation signer record for.\n"
                     },
-                    "keytag": {
-                        "type": "string"
+                    "keyTag": {
+                        "type": "string",
+                        "description": "A key tag that references the corresponding DNSKEY record.\n"
                     },
                     "publicKey": {
                         "type": "string",
