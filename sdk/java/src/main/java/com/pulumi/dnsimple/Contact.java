@@ -67,12 +67,6 @@ import javax.annotation.Nullable;
  * 
  * DNSimple contacts can be imported using their numeric ID.
  * 
- * bash
- * 
- * ```sh
- * $ pulumi import dnsimple:index/contact:Contact example 5678
- * ```
- * 
  * The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
  */

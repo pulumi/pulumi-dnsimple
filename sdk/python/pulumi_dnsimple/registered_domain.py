@@ -491,19 +491,9 @@ class RegisteredDomain(pulumi.CustomResource):
 
         **Importing registered domain example.com:**
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
-        ```
-
         **Importing registered domain example.com with domain registration ID 1234:**
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
-        ```
+        > **Note:** At present there is no way to retrieve the domain registration ID from the DNSimple API or UI. You will need to have noted the ID when you created the domain registration. Prefer using the domain name only when importing.
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -590,19 +580,9 @@ class RegisteredDomain(pulumi.CustomResource):
 
         **Importing registered domain example.com:**
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
-        ```
-
         **Importing registered domain example.com with domain registration ID 1234:**
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
-        ```
+        > **Note:** At present there is no way to retrieve the domain registration ID from the DNSimple API or UI. You will need to have noted the ID when you created the domain registration. Prefer using the domain name only when importing.
 
         :param str resource_name: The name of the resource.
         :param RegisteredDomainArgs args: The arguments to use to populate this resource's properties.

@@ -85,6 +85,10 @@ class AwaitableGetZoneResult(GetZoneResult):
 def get_zone(name: Optional[_builtins.str] = None,
              opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetZoneResult:
     """
+    Get information about a DNSimple zone.
+
+    It is generally preferable to use the `Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+
     ## Example Usage
 
     ```python
@@ -110,6 +114,10 @@ def get_zone(name: Optional[_builtins.str] = None,
 def get_zone_output(name: Optional[pulumi.Input[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
+    Get information about a DNSimple zone.
+
+    It is generally preferable to use the `Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+
     ## Example Usage
 
     ```python

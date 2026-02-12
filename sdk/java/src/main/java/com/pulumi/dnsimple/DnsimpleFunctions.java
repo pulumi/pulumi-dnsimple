@@ -452,6 +452,10 @@ public final class DnsimpleFunctions {
         return Deployment.getInstance().invokeAsync("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", TypeShape.of(GetRegistrantChangeCheckResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a DNSimple zone.
+     * 
+     * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -490,6 +494,10 @@ public final class DnsimpleFunctions {
         return getZone(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a DNSimple zone.
+     * 
+     * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -528,6 +536,10 @@ public final class DnsimpleFunctions {
         return getZonePlain(args, InvokeOptions.Empty);
     }
     /**
+     * Get information about a DNSimple zone.
+     * 
+     * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -566,6 +578,10 @@ public final class DnsimpleFunctions {
         return Deployment.getInstance().invoke("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a DNSimple zone.
+     * 
+     * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+     * 
      * ## Example Usage
      * 
      * <pre>
@@ -604,6 +620,10 @@ public final class DnsimpleFunctions {
         return Deployment.getInstance().invoke("dnsimple:index/getZone:getZone", TypeShape.of(GetZoneResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Get information about a DNSimple zone.
+     * 
+     * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+     * 
      * ## Example Usage
      * 
      * <pre>

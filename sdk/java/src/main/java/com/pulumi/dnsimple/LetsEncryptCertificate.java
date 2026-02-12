@@ -60,13 +60,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DNSimple Let&#39;s Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
- * ```
+ * DNSimple Let&#39;s Encrypt certificates can be imported using the domain name and certificate ID in the format `domainNameCertificateId`.
  * 
  * The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
  * 

@@ -26,24 +26,19 @@ __all__ = [
     'GetCertificateTimeoutsArgsDict',
 ]
 
-MYPY = False
-
-if not MYPY:
-    class RegisteredDomainDomainRegistrationArgsDict(TypedDict):
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Number) - The ID of the domain registration.
-        """
-        period: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Number) - The registration period in years.
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (String) - The state of the domain registration.
-        """
-elif False:
-    RegisteredDomainDomainRegistrationArgsDict: TypeAlias = Mapping[str, Any]
+class RegisteredDomainDomainRegistrationArgsDict(TypedDict):
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Number) - The ID of the domain registration.
+    """
+    period: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Number) - The registration period in years.
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (String) - The state of the domain registration.
+    """
 
 @pulumi.input_type
 class RegisteredDomainDomainRegistrationArgs:
@@ -100,42 +95,39 @@ class RegisteredDomainDomainRegistrationArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class RegisteredDomainRegistrantChangeArgsDict(TypedDict):
-        account_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        DNSimple Account ID to which the registrant change belongs to
-        """
-        contact_id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
-        """
-        domain_id: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        DNSimple domain ID for which the registrant change is being performed
-        """
-        extended_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
-        """
-        A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
-        """
-        id: NotRequired[pulumi.Input[_builtins.int]]
-        """
-        (Number) - The ID of the domain registration.
-        """
-        irt_lock_lifted_by: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Date when the registrant change lock was lifted for the domain
-        """
-        registry_owner_change: NotRequired[pulumi.Input[_builtins.bool]]
-        """
-        True if the registrant change will result in a registry owner change
-        """
-        state: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (String) - The state of the domain registration.
-        """
-elif False:
-    RegisteredDomainRegistrantChangeArgsDict: TypeAlias = Mapping[str, Any]
+class RegisteredDomainRegistrantChangeArgsDict(TypedDict):
+    account_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    DNSimple Account ID to which the registrant change belongs to
+    """
+    contact_id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
+    """
+    domain_id: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    DNSimple domain ID for which the registrant change is being performed
+    """
+    extended_attributes: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]
+    """
+    A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
+    """
+    id: NotRequired[pulumi.Input[_builtins.int]]
+    """
+    (Number) - The ID of the domain registration.
+    """
+    irt_lock_lifted_by: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Date when the registrant change lock was lifted for the domain
+    """
+    registry_owner_change: NotRequired[pulumi.Input[_builtins.bool]]
+    """
+    True if the registrant change will result in a registry owner change
+    """
+    state: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (String) - The state of the domain registration.
+    """
 
 @pulumi.input_type
 class RegisteredDomainRegistrantChangeArgs:
@@ -272,22 +264,19 @@ class RegisteredDomainRegistrantChangeArgs:
         pulumi.set(self, "state", value)
 
 
-if not MYPY:
-    class RegisteredDomainTimeoutsArgsDict(TypedDict):
-        create: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (String) - The timeout for the read operation e.g. `5m`
-        """
-        delete: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        Delete timeout (currently unused).
-        """
-        update: NotRequired[pulumi.Input[_builtins.str]]
-        """
-        (String) - The timeout for the read operation e.g. `5m`
-        """
-elif False:
-    RegisteredDomainTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class RegisteredDomainTimeoutsArgsDict(TypedDict):
+    create: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (String) - The timeout for the read operation e.g. `5m`
+    """
+    delete: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    Delete timeout (currently unused).
+    """
+    update: NotRequired[pulumi.Input[_builtins.str]]
+    """
+    (String) - The timeout for the read operation e.g. `5m`
+    """
 
 @pulumi.input_type
 class RegisteredDomainTimeoutsArgs:
@@ -344,14 +333,11 @@ class RegisteredDomainTimeoutsArgs:
         pulumi.set(self, "update", value)
 
 
-if not MYPY:
-    class GetCertificateTimeoutsArgsDict(TypedDict):
-        read: NotRequired[_builtins.str]
-        """
-        (String) - The timeout for the read operation, e.g., `5m`.
-        """
-elif False:
-    GetCertificateTimeoutsArgsDict: TypeAlias = Mapping[str, Any]
+class GetCertificateTimeoutsArgsDict(TypedDict):
+    read: NotRequired[_builtins.str]
+    """
+    (String) - The timeout for the read operation, e.g., `5m`.
+    """
 
 @pulumi.input_type
 class GetCertificateTimeoutsArgs:

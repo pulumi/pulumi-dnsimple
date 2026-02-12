@@ -12,6 +12,10 @@ namespace Pulumi.DNSimple
     public static class GetZone
     {
         /// <summary>
+        /// Get information about a DNSimple zone.
+        /// 
+        /// It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -34,6 +38,10 @@ namespace Pulumi.DNSimple
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information about a DNSimple zone.
+        /// 
+        /// It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -56,6 +64,10 @@ namespace Pulumi.DNSimple
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneResult>("dnsimple:index/getZone:getZone", args ?? new GetZoneInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Get information about a DNSimple zone.
+        /// 
+        /// It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

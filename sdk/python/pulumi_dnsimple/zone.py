@@ -186,12 +186,6 @@ class Zone(pulumi.CustomResource):
 
         DNSimple zones can be imported using the zone name.
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/zone:Zone example example.com
-        ```
-
         The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
@@ -222,12 +216,6 @@ class Zone(pulumi.CustomResource):
         ## Import
 
         DNSimple zones can be imported using the zone name.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/zone:Zone example example.com
-        ```
 
         The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 

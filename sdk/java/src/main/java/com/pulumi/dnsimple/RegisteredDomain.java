@@ -158,19 +158,9 @@ import javax.annotation.Nullable;
  * 
  * **Importing registered domain example.com:**
  * 
- * bash
- * 
- * ```sh
- * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
- * ```
- * 
  * **Importing registered domain example.com with domain registration ID 1234:**
  * 
- * bash
- * 
- * ```sh
- * $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
- * ```
+ * &gt; **Note:** At present there is no way to retrieve the domain registration ID from the DNSimple API or UI. You will need to have noted the ID when you created the domain registration. Prefer using the domain name only when importing.
  * 
  */
 @ResourceType(type="dnsimple:index/registeredDomain:RegisteredDomain")

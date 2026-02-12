@@ -11,6 +11,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Get information about a DNSimple zone.
+//
+// It is generally preferable to use the `Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+//
 // ## Example Usage
 //
 // ```go

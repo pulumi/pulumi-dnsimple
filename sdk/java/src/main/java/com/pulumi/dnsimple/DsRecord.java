@@ -56,13 +56,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
- * 
- * bash
- * 
- * ```sh
- * $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
- * ```
+ * DNSimple DS records can be imported using the domain name and numeric record ID in the format `domainNameRecordId`.
  * 
  * The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  * 
