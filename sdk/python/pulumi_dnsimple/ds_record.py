@@ -288,12 +288,6 @@ class DsRecord(pulumi.CustomResource):
 
         DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
-        ```
-
         The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
@@ -331,12 +325,6 @@ class DsRecord(pulumi.CustomResource):
         ## Import
 
         DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
-        ```
 
         The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 

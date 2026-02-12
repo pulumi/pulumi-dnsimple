@@ -365,12 +365,6 @@ class ZoneRecord(pulumi.CustomResource):
 
         **Importing record for example.com with record ID 1234:**
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
-        ```
-
         The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
 
         :param str resource_name: The name of the resource.
@@ -427,12 +421,6 @@ class ZoneRecord(pulumi.CustomResource):
         DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
 
         **Importing record for example.com with record ID 1234:**
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
-        ```
 
         The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
 

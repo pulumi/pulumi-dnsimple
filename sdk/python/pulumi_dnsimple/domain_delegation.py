@@ -104,6 +104,14 @@ class DomainDelegation(pulumi.CustomResource):
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
+        Provides a DNSimple domain delegation resource.
+
+        This resource allows you to control the delegation records (name servers) for a domain.
+
+        > **Warning:** This resource currently only supports the management of domains that are registered with DNSimple.
+
+        > **Note:** When this resource is destroyed, only the Terraform state is removed; the domain delegation is left intact and unmanaged by Terraform.
+
         ## Example Usage
 
         ```python
@@ -121,12 +129,6 @@ class DomainDelegation(pulumi.CustomResource):
         ## Import
 
         DNSimple domain delegations can be imported using the domain name.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
-        ```
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -140,6 +142,14 @@ class DomainDelegation(pulumi.CustomResource):
                  args: DomainDelegationArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides a DNSimple domain delegation resource.
+
+        This resource allows you to control the delegation records (name servers) for a domain.
+
+        > **Warning:** This resource currently only supports the management of domains that are registered with DNSimple.
+
+        > **Note:** When this resource is destroyed, only the Terraform state is removed; the domain delegation is left intact and unmanaged by Terraform.
+
         ## Example Usage
 
         ```python
@@ -157,12 +167,6 @@ class DomainDelegation(pulumi.CustomResource):
         ## Import
 
         DNSimple domain delegations can be imported using the domain name.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
-        ```
 
         :param str resource_name: The name of the resource.
         :param DomainDelegationArgs args: The arguments to use to populate this resource's properties.

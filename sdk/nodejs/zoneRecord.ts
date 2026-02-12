@@ -42,15 +42,9 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * DNSimple zone records can be imported using the zone name and numeric record ID in the format `zone_name_record_id`.
+ * DNSimple zone records can be imported using the zone name and numeric record ID in the format `zoneNameRecordId`.
  *
  * **Importing record for example.com with record ID 1234:**
- *
- * bash
- *
- * ```sh
- * $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
- * ```
  *
  * The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
  */

@@ -183,12 +183,6 @@ class Domain(pulumi.CustomResource):
 
         DNSimple domains can be imported using the domain name.
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/domain:Domain example example.com
-        ```
-
         The domain name can be found within the [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 
         :param str resource_name: The name of the resource.
@@ -216,12 +210,6 @@ class Domain(pulumi.CustomResource):
         ## Import
 
         DNSimple domains can be imported using the domain name.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/domain:Domain example example.com
-        ```
 
         The domain name can be found within the [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 

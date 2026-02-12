@@ -336,12 +336,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
         DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
-        ```
-
         The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
 
         :param str resource_name: The name of the resource.
@@ -380,12 +374,6 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         ## Import
 
         DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
-        ```
 
         The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
 

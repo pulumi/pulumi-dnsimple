@@ -170,12 +170,6 @@ class EmailForward(pulumi.CustomResource):
 
         DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
 
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
-        ```
-
         The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
 
         :param str resource_name: The name of the resource.
@@ -208,12 +202,6 @@ class EmailForward(pulumi.CustomResource):
         ## Import
 
         DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
-
-        bash
-
-        ```sh
-        $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
-        ```
 
         The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
 

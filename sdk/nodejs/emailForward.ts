@@ -22,13 +22,7 @@ import * as utilities from "./utilities";
  *
  * ## Import
  *
- * DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
- *
- * bash
- *
- * ```sh
- * $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
- * ```
+ * DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domainNameEmailForwardId`.
  *
  * The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
  */

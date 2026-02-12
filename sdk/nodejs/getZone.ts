@@ -5,6 +5,10 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "./utilities";
 
 /**
+ * Get information about a DNSimple zone.
+ *
+ * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -52,6 +56,10 @@ export interface GetZoneResult {
     readonly reverse: boolean;
 }
 /**
+ * Get information about a DNSimple zone.
+ *
+ * It is generally preferable to use the `dnsimple.Zone` resource, but you may wish to only retrieve and link the zone information when the resource exists in multiple Terraform projects.
+ *
  * ## Example Usage
  *
  * ```typescript
