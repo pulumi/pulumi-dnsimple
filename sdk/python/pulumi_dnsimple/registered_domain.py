@@ -32,6 +32,7 @@ class RegisteredDomainArgs:
                  whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegisteredDomain resource.
+
         :param pulumi.Input[_builtins.int] contact_id: The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         :param pulumi.Input[_builtins.str] name: The domain name to be registered.
         :param pulumi.Input[_builtins.bool] auto_renew_enabled: Whether the domain should be set to auto-renew (default: `false`).
@@ -188,6 +189,7 @@ class _RegisteredDomainState:
                  whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RegisteredDomain resources.
+
         :param pulumi.Input[_builtins.bool] auto_renew_enabled: Whether the domain should be set to auto-renew (default: `false`).
         :param pulumi.Input[_builtins.int] contact_id: The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         :param pulumi.Input[_builtins.bool] dnssec_enabled: Whether the domain should have DNSSEC enabled (default: `false`).
@@ -491,9 +493,18 @@ class RegisteredDomain(pulumi.CustomResource):
 
         **Importing registered domain example.com:**
 
+        ```sh
+        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
+        ```
+
         **Importing registered domain example.com with domain registration ID 1234:**
 
+        ```sh
+        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
+        ```
+
         > **Note:** At present there is no way to retrieve the domain registration ID from the DNSimple API or UI. You will need to have noted the ID when you created the domain registration. Prefer using the domain name only when importing.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -580,9 +591,18 @@ class RegisteredDomain(pulumi.CustomResource):
 
         **Importing registered domain example.com:**
 
+        ```sh
+        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
+        ```
+
         **Importing registered domain example.com with domain registration ID 1234:**
 
+        ```sh
+        $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
+        ```
+
         > **Note:** At present there is no way to retrieve the domain registration ID from the DNSimple API or UI. You will need to have noted the ID when you created the domain registration. Prefer using the domain name only when importing.
+
 
         :param str resource_name: The name of the resource.
         :param RegisteredDomainArgs args: The arguments to use to populate this resource's properties.

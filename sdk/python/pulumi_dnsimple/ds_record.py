@@ -27,6 +27,7 @@ class DsRecordArgs:
                  public_key: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a DsRecord resource.
+
         :param pulumi.Input[_builtins.str] algorithm: DNSSEC algorithm number as a string.
         :param pulumi.Input[_builtins.str] domain: The domain name or numeric ID to create the delegation signer record for.
         :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
@@ -131,6 +132,7 @@ class _DsRecordState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DsRecord resources.
+
         :param pulumi.Input[_builtins.str] algorithm: DNSSEC algorithm number as a string.
         :param pulumi.Input[_builtins.str] created_at: The timestamp when the DS record was created.
         :param pulumi.Input[_builtins.str] digest: The hexadecimal representation of the digest of the corresponding DNSKEY record.
@@ -288,7 +290,12 @@ class DsRecord(pulumi.CustomResource):
 
         DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
 
+        ```sh
+        $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
+        ```
+
         The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -326,7 +333,12 @@ class DsRecord(pulumi.CustomResource):
 
         DNSimple DS records can be imported using the domain name and numeric record ID in the format `domain_name_record_id`.
 
+        ```sh
+        $ pulumi import dnsimple:index/dsRecord:DsRecord example example.com_5678
+        ```
+
         The record ID can be found within the [DNSimple DNSSEC API](https://developer.dnsimple.com/v2/domains/dnssec/#listDomainDelegationSignerRecords). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param DsRecordArgs args: The arguments to use to populate this resource's properties.

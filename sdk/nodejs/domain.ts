@@ -20,6 +20,10 @@ import * as utilities from "./utilities";
  *
  * DNSimple domains can be imported using the domain name.
  *
+ * ```sh
+ * $ pulumi import dnsimple:index/domain:Domain example example.com
+ * ```
+ *
  * The domain name can be found within the [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
  */
 export class Domain extends pulumi.CustomResource {

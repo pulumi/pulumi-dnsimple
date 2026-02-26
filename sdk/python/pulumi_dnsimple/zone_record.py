@@ -28,6 +28,7 @@ class ZoneRecordArgs:
                  ttl: Optional[pulumi.Input[_builtins.int]] = None):
         """
         The set of arguments for constructing a ZoneRecord resource.
+
         :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
         :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         :param pulumi.Input[_builtins.str] value: The value of the record.
@@ -148,6 +149,7 @@ class _ZoneRecordState:
                  zone_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering ZoneRecord resources.
+
         :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
         :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
         :param pulumi.Input[_builtins.str] qualified_name: The fully qualified domain name (FQDN) of the record.
@@ -365,7 +367,12 @@ class ZoneRecord(pulumi.CustomResource):
 
         **Importing record for example.com with record ID 1234:**
 
+        ```sh
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
+        ```
+
         The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -422,7 +429,12 @@ class ZoneRecord(pulumi.CustomResource):
 
         **Importing record for example.com with record ID 1234:**
 
+        ```sh
+        $ pulumi import dnsimple:index/zoneRecord:ZoneRecord example example.com_1234
+        ```
+
         The record ID can be found in the URL when editing a record on the DNSimple web dashboard, or via the [DNSimple Zone Records API](https://developer.dnsimple.com/v2/zones/records/#listZoneRecords).
+
 
         :param str resource_name: The name of the resource.
         :param ZoneRecordArgs args: The arguments to use to populate this resource's properties.

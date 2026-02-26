@@ -44,6 +44,10 @@ namespace Pulumi.DNSimple
     /// ## Import
     /// 
     /// DNSimple domain delegations can be imported using the domain name.
+    /// 
+    /// ```sh
+    /// $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
+    /// ```
     /// </summary>
     [DNSimpleResourceType("dnsimple:index/domainDelegation:DomainDelegation")]
     public partial class DomainDelegation : global::Pulumi.CustomResource

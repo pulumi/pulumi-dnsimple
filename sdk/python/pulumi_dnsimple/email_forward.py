@@ -24,6 +24,7 @@ class EmailForwardArgs:
                  domain: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a EmailForward resource.
+
         :param pulumi.Input[_builtins.str] alias_name: The name part (the part before the @) of the source email address on the domain.
         :param pulumi.Input[_builtins.str] destination_email: The destination email address.
         :param pulumi.Input[_builtins.str] domain: The domain name to add the email forwarding rule to.
@@ -78,6 +79,7 @@ class _EmailForwardState:
                  domain: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailForward resources.
+
         :param pulumi.Input[_builtins.str] alias_email: The source email address on the domain, in full form. This is a computed attribute.
         :param pulumi.Input[_builtins.str] alias_name: The name part (the part before the @) of the source email address on the domain.
         :param pulumi.Input[_builtins.str] destination_email: The destination email address.
@@ -170,7 +172,12 @@ class EmailForward(pulumi.CustomResource):
 
         DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
 
+        ```sh
+        $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
+        ```
+
         The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -203,7 +210,12 @@ class EmailForward(pulumi.CustomResource):
 
         DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domain_name_email_forward_id`.
 
+        ```sh
+        $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
+        ```
+
         The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
+
 
         :param str resource_name: The name of the resource.
         :param EmailForwardArgs args: The arguments to use to populate this resource's properties.
