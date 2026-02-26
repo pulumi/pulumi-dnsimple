@@ -35,6 +35,7 @@ class ContactArgs:
                  organization_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a Contact resource.
+
         :param pulumi.Input[_builtins.str] address1: The primary address line (street address, building number, etc.).
         :param pulumi.Input[_builtins.str] city: The city where the contact is located.
         :param pulumi.Input[_builtins.str] country: The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
@@ -263,6 +264,7 @@ class _ContactState:
                  updated_at: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Contact resources.
+
         :param pulumi.Input[_builtins.int] account_id: The account ID for the contact.
         :param pulumi.Input[_builtins.str] address1: The primary address line (street address, building number, etc.).
         :param pulumi.Input[_builtins.str] address2: The secondary address line (apartment, suite, floor, etc.).
@@ -602,7 +604,12 @@ class Contact(pulumi.CustomResource):
 
         DNSimple contacts can be imported using their numeric ID.
 
+        ```sh
+        $ pulumi import dnsimple:index/contact:Contact example 5678
+        ```
+
         The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -657,7 +664,12 @@ class Contact(pulumi.CustomResource):
 
         DNSimple contacts can be imported using their numeric ID.
 
+        ```sh
+        $ pulumi import dnsimple:index/contact:Contact example 5678
+        ```
+
         The contact ID can be found within the [DNSimple Contacts API](https://developer.dnsimple.com/v2/contacts/#listContacts). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param ContactArgs args: The arguments to use to populate this resource's properties.

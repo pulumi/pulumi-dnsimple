@@ -26,6 +26,7 @@ class LetsEncryptCertificateArgs:
                  signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
         """
         The set of arguments for constructing a LetsEncryptCertificate resource.
+
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the certificate should auto-renew.
         :param pulumi.Input[_builtins.str] domain_id: The domain name or ID to issue the certificate for.
         :param pulumi.Input[_builtins.str] name: The certificate name; use `""` for the root domain. Wildcard names are supported.
@@ -118,6 +119,7 @@ class _LetsEncryptCertificateState:
                  years: Optional[pulumi.Input[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LetsEncryptCertificate resources.
+
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] alternate_names: List of alternate names (SANs) for the certificate.
         :param pulumi.Input[_builtins.str] authority_identifier: The identifying certification authority (CA).
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the certificate should auto-renew.
@@ -336,7 +338,12 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
         DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
 
+        ```sh
+        $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+        ```
+
         The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -375,7 +382,12 @@ class LetsEncryptCertificate(pulumi.CustomResource):
 
         DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domain_name_certificate_id`.
 
+        ```sh
+        $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+        ```
+
         The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
+
 
         :param str resource_name: The name of the resource.
         :param LetsEncryptCertificateArgs args: The arguments to use to populate this resource's properties.

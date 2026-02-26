@@ -46,6 +46,10 @@ import (
 //
 // DNSimple email forwards can be imported using the domain name and numeric email forward ID in the format `domainNameEmailForwardId`.
 //
+// ```sh
+// $ pulumi import dnsimple:index/emailForward:EmailForward example example.com_1234
+// ```
+//
 // The email forward ID can be found via the [DNSimple Email Forwards API](https://developer.dnsimple.com/v2/email-forwards/#listEmailForwards).
 type EmailForward struct {
 	pulumi.CustomResourceState

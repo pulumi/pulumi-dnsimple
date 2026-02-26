@@ -53,6 +53,10 @@ import (
 // ## Import
 //
 // DNSimple domain delegations can be imported using the domain name.
+//
+// ```sh
+// $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
+// ```
 type DomainDelegation struct {
 	pulumi.CustomResourceState
 

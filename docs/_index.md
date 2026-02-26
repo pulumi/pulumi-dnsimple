@@ -221,8 +221,8 @@ public class App {
 
     public static void stack(Context ctx) {
         final var config = ctx.config();
-        final var dnsimpleToken = config.get("dnsimpleToken");
-        final var dnsimpleAccount = config.get("dnsimpleAccount");
+        final var dnsimpleToken = config.require("dnsimpleToken");
+        final var dnsimpleAccount = config.require("dnsimpleAccount");
     }
 }
 ```

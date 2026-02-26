@@ -46,6 +46,10 @@ import (
 //
 // DNSimple zones can be imported using the zone name.
 //
+// ```sh
+// $ pulumi import dnsimple:index/zone:Zone example example.com
+// ```
+//
 // The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
 type Zone struct {
 	pulumi.CustomResourceState

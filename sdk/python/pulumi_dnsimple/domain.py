@@ -22,6 +22,7 @@ class DomainArgs:
                  name: pulumi.Input[_builtins.str]):
         """
         The set of arguments for constructing a Domain resource.
+
         :param pulumi.Input[_builtins.str] name: The domain name to be created.
         """
         pulumi.set(__self__, "name", name)
@@ -51,6 +52,7 @@ class _DomainState:
                  unicode_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
+
         :param pulumi.Input[_builtins.int] account_id: The account ID for the domain.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the domain is set to auto-renew.
         :param pulumi.Input[_builtins.str] name: The domain name to be created.
@@ -183,7 +185,12 @@ class Domain(pulumi.CustomResource):
 
         DNSimple domains can be imported using the domain name.
 
+        ```sh
+        $ pulumi import dnsimple:index/domain:Domain example example.com
+        ```
+
         The domain name can be found within the [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -211,7 +218,12 @@ class Domain(pulumi.CustomResource):
 
         DNSimple domains can be imported using the domain name.
 
+        ```sh
+        $ pulumi import dnsimple:index/domain:Domain example example.com
+        ```
+
         The domain name can be found within the [DNSimple Domains API](https://developer.dnsimple.com/v2/domains/#listDomains). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param DomainArgs args: The arguments to use to populate this resource's properties.

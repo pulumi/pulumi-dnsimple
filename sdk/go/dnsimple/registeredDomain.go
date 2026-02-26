@@ -130,7 +130,15 @@ import (
 //
 // **Importing registered domain example.com:**
 //
+// ```sh
+// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com
+// ```
+//
 // **Importing registered domain example.com with domain registration ID 1234:**
+//
+// ```sh
+// $ pulumi import dnsimple:index/registeredDomain:RegisteredDomain example example.com_1234
+// ```
 //
 // > **Note:** At present there is no way to retrieve the domain registration ID from the DNSimple API or UI. You will need to have noted the ID when you created the domain registration. Prefer using the domain name only when importing.
 type RegisteredDomain struct {

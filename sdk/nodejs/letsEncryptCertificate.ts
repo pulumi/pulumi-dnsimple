@@ -28,6 +28,10 @@ import * as utilities from "./utilities";
  *
  * DNSimple Let's Encrypt certificates can be imported using the domain name and certificate ID in the format `domainNameCertificateId`.
  *
+ * ```sh
+ * $ pulumi import dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate example example.com_1234
+ * ```
+ *
  * The certificate ID can be found via the [DNSimple Certificates API](https://developer.dnsimple.com/v2/certificates/#listCertificates).
  */
 export class LetsEncryptCertificate extends pulumi.CustomResource {

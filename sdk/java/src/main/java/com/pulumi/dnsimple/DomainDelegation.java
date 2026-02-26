@@ -63,6 +63,10 @@ import javax.annotation.Nullable;
  * 
  * DNSimple domain delegations can be imported using the domain name.
  * 
+ * ```sh
+ * $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
+ * ```
+ * 
  */
 @ResourceType(type="dnsimple:index/domainDelegation:DomainDelegation")
 public class DomainDelegation extends com.pulumi.resources.CustomResource {

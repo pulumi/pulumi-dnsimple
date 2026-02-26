@@ -23,6 +23,7 @@ class DomainDelegationArgs:
                  name_servers: pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]):
         """
         The set of arguments for constructing a DomainDelegation resource.
+
         :param pulumi.Input[_builtins.str] domain: The domain name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of name servers to delegate to.
         """
@@ -61,6 +62,7 @@ class _DomainDelegationState:
                  name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainDelegation resources.
+
         :param pulumi.Input[_builtins.str] domain: The domain name.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] name_servers: List of name servers to delegate to.
         """
@@ -130,6 +132,11 @@ class DomainDelegation(pulumi.CustomResource):
 
         DNSimple domain delegations can be imported using the domain name.
 
+        ```sh
+        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
+        ```
+
+
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] domain: The domain name.
@@ -167,6 +174,11 @@ class DomainDelegation(pulumi.CustomResource):
         ## Import
 
         DNSimple domain delegations can be imported using the domain name.
+
+        ```sh
+        $ pulumi import dnsimple:index/domainDelegation:DomainDelegation example example.com
+        ```
+
 
         :param str resource_name: The name of the resource.
         :param DomainDelegationArgs args: The arguments to use to populate this resource's properties.

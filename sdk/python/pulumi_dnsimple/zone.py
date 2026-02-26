@@ -23,6 +23,7 @@ class ZoneArgs:
                  active: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Zone resource.
+
         :param pulumi.Input[_builtins.str] name: The zone name.
         :param pulumi.Input[_builtins.bool] active: Whether the zone is active.
         """
@@ -66,6 +67,7 @@ class _ZoneState:
                  secondary: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
+
         :param pulumi.Input[_builtins.int] account_id: The account ID for the zone.
         :param pulumi.Input[_builtins.bool] active: Whether the zone is active.
         :param pulumi.Input[_builtins.str] last_transferred_at: The last time the zone was transferred only applicable for **secondary** zones.
@@ -186,7 +188,12 @@ class Zone(pulumi.CustomResource):
 
         DNSimple zones can be imported using the zone name.
 
+        ```sh
+        $ pulumi import dnsimple:index/zone:Zone example example.com
+        ```
+
         The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
@@ -217,7 +224,12 @@ class Zone(pulumi.CustomResource):
 
         DNSimple zones can be imported using the zone name.
 
+        ```sh
+        $ pulumi import dnsimple:index/zone:Zone example example.com
+        ```
+
         The zone name can be found within the [DNSimple Zones API](https://developer.dnsimple.com/v2/zones/#getZone). Check out [Authentication](https://developer.dnsimple.com/v2/#authentication) in API Overview for available options.
+
 
         :param str resource_name: The name of the resource.
         :param ZoneArgs args: The arguments to use to populate this resource's properties.
