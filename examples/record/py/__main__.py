@@ -3,7 +3,7 @@ import pulumi_dnsimple as dnsimple
 
 record = dnsimple.ZoneRecord(
     "record",
-    zone_name="stack72.dev",
+    zone_name="dnsimple.test.pulumi.com",
     name="test-py",
     ttl=3600,
     type="A",

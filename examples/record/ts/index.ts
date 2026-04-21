@@ -15,9 +15,9 @@
 import * as dnsimple from "@pulumi/dnsimple";
 
 let record = new dnsimple.ZoneRecord("test", {
-  zoneName: "stack72.dev",
+  zoneName: "dnsimple.test.pulumi.com",
   name: "test-ts",
-  value: "api.devflix.watch.herokudns.com",
+  value: "example.pulumi.com",
   type: dnsimple.RecordTypes.CNAME,
 });
 

@@ -8,7 +8,7 @@ class MyStack : Stack
         var record = new ZoneRecord("test", new ZoneRecordArgs()
         {
             Ttl = 3600,
-            ZoneName = "stack72.dev",
+            ZoneName = "dnsimple.test.pulumi.com",
             Name = "test-csharp",
             Type = "A",
             Value = "192.168.0.1",
