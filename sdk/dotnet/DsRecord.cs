@@ -22,7 +22,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DNSimple.DsRecord("example", new()
+    ///     var example = new DNSimple.Index.DsRecord("example", new()
     ///     {
     ///         Domain = "example.com",
     ///         Algorithm = "8",

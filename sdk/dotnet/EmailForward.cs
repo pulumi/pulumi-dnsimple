@@ -22,7 +22,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DNSimple.EmailForward("example", new()
+    ///     var example = new DNSimple.Index.EmailForward("example", new()
     ///     {
     ///         Domain = "example.com",
     ///         AliasName = "sales",

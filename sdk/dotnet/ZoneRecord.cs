@@ -23,7 +23,7 @@ namespace Pulumi.DNSimple
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
     ///     // Add a record to the root domain
-    ///     var apex = new DNSimple.ZoneRecord("apex", new()
+    ///     var apex = new DNSimple.Index.ZoneRecord("apex", new()
     ///     {
     ///         ZoneName = "example.com",
     ///         Name = "",
@@ -33,7 +33,7 @@ namespace Pulumi.DNSimple
     ///     });
     /// 
     ///     // Add a record to a subdomain
-    ///     var www = new DNSimple.ZoneRecord("www", new()
+    ///     var www = new DNSimple.Index.ZoneRecord("www", new()
     ///     {
     ///         ZoneName = "example.com",
     ///         Name = "www",
@@ -43,7 +43,7 @@ namespace Pulumi.DNSimple
     ///     });
     /// 
     ///     // Add an MX record
-    ///     var mx = new DNSimple.ZoneRecord("mx", new()
+    ///     var mx = new DNSimple.Index.ZoneRecord("mx", new()
     ///     {
     ///         ZoneName = "example.com",
     ///         Name = "",

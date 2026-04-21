@@ -26,7 +26,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetZone.Invoke(new()
+        ///     var example = DNSimple.Index.GetZone.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });
@@ -52,7 +52,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetZone.Invoke(new()
+        ///     var example = DNSimple.Index.GetZone.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });
@@ -78,7 +78,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetZone.Invoke(new()
+        ///     var example = DNSimple.Index.GetZone.Invoke(new()
         ///     {
         ///         Name = "example.com",
         ///     });

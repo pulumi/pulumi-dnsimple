@@ -24,7 +24,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetCertificate.Invoke(new()
+        ///     var example = DNSimple.Index.GetCertificate.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         CertificateId = 1234,
@@ -49,7 +49,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetCertificate.Invoke(new()
+        ///     var example = DNSimple.Index.GetCertificate.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         CertificateId = 1234,
@@ -74,7 +74,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetCertificate.Invoke(new()
+        ///     var example = DNSimple.Index.GetCertificate.Invoke(new()
         ///     {
         ///         Domain = "example.com",
         ///         CertificateId = 1234,

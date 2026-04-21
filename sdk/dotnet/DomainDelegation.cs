@@ -28,7 +28,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DNSimple.DomainDelegation("example", new()
+    ///     var example = new DNSimple.Index.DomainDelegation("example", new()
     ///     {
     ///         Domain = "example.com",
     ///         NameServers = new[]

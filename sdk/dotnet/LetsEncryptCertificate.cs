@@ -22,7 +22,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DNSimple.LetsEncryptCertificate("example", new()
+    ///     var example = new DNSimple.Index.LetsEncryptCertificate("example", new()
     ///     {
     ///         DomainId = "example.com",
     ///         Name = "www",

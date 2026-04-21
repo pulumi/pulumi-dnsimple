@@ -22,7 +22,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var example = new DNSimple.Contact("example", new()
+    ///     var example = new DNSimple.Index.Contact("example", new()
     ///     {
     ///         Label = "Main Contact",
     ///         FirstName = "John",

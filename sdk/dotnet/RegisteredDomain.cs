@@ -24,7 +24,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var aliceMain = new DNSimple.Contact("alice_main", new()
+    ///     var aliceMain = new DNSimple.Index.Contact("alice_main", new()
     ///     {
     ///         Label = "Alice",
     ///         FirstName = "Alice",
@@ -40,7 +40,7 @@ namespace Pulumi.DNSimple
     ///         Email = "apple@contoso.com",
     ///     });
     /// 
-    ///     var exampleCom = new DNSimple.RegisteredDomain("example_com", new()
+    ///     var exampleCom = new DNSimple.Index.RegisteredDomain("example_com", new()
     ///     {
     ///         Name = "example.com",
     ///         ContactId = aliceMain.Id,
@@ -59,7 +59,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleCom = new DNSimple.RegisteredDomain("example_com", new()
+    ///     var exampleCom = new DNSimple.Index.RegisteredDomain("example_com", new()
     ///     {
     ///         Name = "example.com",
     ///         ContactId = aliceMain.Id,
@@ -84,7 +84,7 @@ namespace Pulumi.DNSimple
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var exampleBio = new DNSimple.RegisteredDomain("example_bio", new()
+    ///     var exampleBio = new DNSimple.Index.RegisteredDomain("example_bio", new()
     ///     {
     ///         Name = "example.bio",
     ///         ContactId = aliceMain.Id,
