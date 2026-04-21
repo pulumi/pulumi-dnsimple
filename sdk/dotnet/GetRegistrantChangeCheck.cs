@@ -28,7 +28,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
+        ///     var example = DNSimple.Index.GetRegistrantChangeCheck.Invoke(new()
         ///     {
         ///         DomainId = "example.com",
         ///         ContactId = "1234",
@@ -57,7 +57,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
+        ///     var example = DNSimple.Index.GetRegistrantChangeCheck.Invoke(new()
         ///     {
         ///         DomainId = "example.com",
         ///         ContactId = "1234",
@@ -86,7 +86,7 @@ namespace Pulumi.DNSimple
         /// 
         /// return await Deployment.RunAsync(() =&gt; 
         /// {
-        ///     var example = DNSimple.GetRegistrantChangeCheck.Invoke(new()
+        ///     var example = DNSimple.Index.GetRegistrantChangeCheck.Invoke(new()
         ///     {
         ///         DomainId = "example.com",
         ///         ContactId = "1234",

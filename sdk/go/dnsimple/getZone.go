@@ -29,7 +29,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := dnsimple.LookupZone(ctx, &dnsimple.LookupZoneArgs{
+//			_, err := dnsimple.GetZone(ctx, &dnsimple.LookupZoneArgs{
 //				Name: "example.com",
 //			}, nil)
 //			if err != nil {
