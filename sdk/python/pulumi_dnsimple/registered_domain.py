@@ -452,7 +452,7 @@ class RegisteredDomain(pulumi.CustomResource):
             email="apple@contoso.com")
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main.id)
+            contact_id=alice_main.id.apply(lambda x: int(x)))
         ```
 
         ### Example with more settings
@@ -463,7 +463,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             transfer_lock_enabled=True,
             whois_privacy_enabled=True,
@@ -480,7 +480,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_bio = dnsimple.RegisteredDomain("example_bio",
             name="example.bio",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             extended_attributes={
                 "bio_agree": "I Agree",
@@ -550,7 +550,7 @@ class RegisteredDomain(pulumi.CustomResource):
             email="apple@contoso.com")
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main.id)
+            contact_id=alice_main.id.apply(lambda x: int(x)))
         ```
 
         ### Example with more settings
@@ -561,7 +561,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             transfer_lock_enabled=True,
             whois_privacy_enabled=True,
@@ -578,7 +578,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_bio = dnsimple.RegisteredDomain("example_bio",
             name="example.bio",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             extended_attributes={
                 "bio_agree": "I Agree",

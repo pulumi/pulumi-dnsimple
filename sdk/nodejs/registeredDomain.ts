@@ -34,7 +34,7 @@ import * as utilities from "./utilities";
  * });
  * const exampleCom = new dnsimple.RegisteredDomain("example_com", {
  *     name: "example.com",
- *     contactId: aliceMain.id,
+ *     contactId: aliceMain.id.apply(x =>Number(x)),
  * });
  * ```
  *
@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCom = new dnsimple.RegisteredDomain("example_com", {
  *     name: "example.com",
- *     contactId: aliceMain.id,
+ *     contactId: Number(aliceMain.id),
  *     autoRenewEnabled: true,
  *     transferLockEnabled: true,
  *     whoisPrivacyEnabled: true,
@@ -64,7 +64,7 @@ import * as utilities from "./utilities";
  *
  * const exampleBio = new dnsimple.RegisteredDomain("example_bio", {
  *     name: "example.bio",
- *     contactId: aliceMain.id,
+ *     contactId: Number(aliceMain.id),
  *     autoRenewEnabled: true,
  *     extendedAttributes: {
  *         bio_agree: "I Agree",
