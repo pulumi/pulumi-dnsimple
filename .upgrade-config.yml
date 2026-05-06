@@ -3,5 +3,6 @@
 ---
 upstream-provider-name: terraform-provider-dnsimple
 upstream-provider-org: dnsimple
+allow-major: true
 pulumi-infer-version: true
 remove-plugins: true
