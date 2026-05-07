@@ -78,6 +78,7 @@ export class Domain extends pulumi.CustomResource {
      * The state of the domain.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    declare public /*out*/ readonly trustee: pulumi.Output<boolean>;
     /**
      * The domain name in Unicode format.
      */
@@ -102,6 +103,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["privateWhois"] = state?.privateWhois;
             resourceInputs["registrantId"] = state?.registrantId;
             resourceInputs["state"] = state?.state;
+            resourceInputs["trustee"] = state?.trustee;
             resourceInputs["unicodeName"] = state?.unicodeName;
         } else {
             const args = argsOrState as DomainArgs | undefined;
@@ -114,6 +116,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["privateWhois"] = undefined /*out*/;
             resourceInputs["registrantId"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["trustee"] = undefined /*out*/;
             resourceInputs["unicodeName"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -149,6 +152,7 @@ export interface DomainState {
      * The state of the domain.
      */
     state?: pulumi.Input<string>;
+    trustee?: pulumi.Input<boolean>;
     /**
      * The domain name in Unicode format.
      */

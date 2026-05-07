@@ -107,6 +107,13 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.state);
     }
 
+    @Import(name="trustee")
+    private @Nullable Output<Boolean> trustee;
+
+    public Optional<Output<Boolean>> trustee() {
+        return Optional.ofNullable(this.trustee);
+    }
+
     /**
      * The domain name in Unicode format.
      * 
@@ -131,6 +138,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.privateWhois = $.privateWhois;
         this.registrantId = $.registrantId;
         this.state = $.state;
+        this.trustee = $.trustee;
         this.unicodeName = $.unicodeName;
     }
 
@@ -276,6 +284,15 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        public Builder trustee(@Nullable Output<Boolean> trustee) {
+            $.trustee = trustee;
+            return this;
+        }
+
+        public Builder trustee(Boolean trustee) {
+            return trustee(Output.of(trustee));
         }
 
         /**

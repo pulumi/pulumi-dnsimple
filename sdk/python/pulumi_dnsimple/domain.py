@@ -49,6 +49,7 @@ class _DomainState:
                  private_whois: Optional[pulumi.Input[_builtins.bool]] = None,
                  registrant_id: Optional[pulumi.Input[_builtins.int]] = None,
                  state: Optional[pulumi.Input[_builtins.str]] = None,
+                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
                  unicode_name: Optional[pulumi.Input[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
@@ -73,6 +74,8 @@ class _DomainState:
             pulumi.set(__self__, "registrant_id", registrant_id)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if trustee is not None:
+            pulumi.set(__self__, "trustee", trustee)
         if unicode_name is not None:
             pulumi.set(__self__, "unicode_name", unicode_name)
 
@@ -147,6 +150,15 @@ class _DomainState:
     @state.setter
     def state(self, value: Optional[pulumi.Input[_builtins.str]]):
         pulumi.set(self, "state", value)
+
+    @_builtins.property
+    @pulumi.getter
+    def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "trustee")
+
+    @trustee.setter
+    def trustee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "trustee", value)
 
     @_builtins.property
     @pulumi.getter(name="unicodeName")
@@ -258,6 +270,7 @@ class Domain(pulumi.CustomResource):
             __props__.__dict__["private_whois"] = None
             __props__.__dict__["registrant_id"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["trustee"] = None
             __props__.__dict__["unicode_name"] = None
         super(Domain, __self__).__init__(
             'dnsimple:index/domain:Domain',
@@ -275,6 +288,7 @@ class Domain(pulumi.CustomResource):
             private_whois: Optional[pulumi.Input[_builtins.bool]] = None,
             registrant_id: Optional[pulumi.Input[_builtins.int]] = None,
             state: Optional[pulumi.Input[_builtins.str]] = None,
+            trustee: Optional[pulumi.Input[_builtins.bool]] = None,
             unicode_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
@@ -301,6 +315,7 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["private_whois"] = private_whois
         __props__.__dict__["registrant_id"] = registrant_id
         __props__.__dict__["state"] = state
+        __props__.__dict__["trustee"] = trustee
         __props__.__dict__["unicode_name"] = unicode_name
         return Domain(resource_name, opts=opts, __props__=__props__)
 
@@ -351,6 +366,11 @@ class Domain(pulumi.CustomResource):
         The state of the domain.
         """
         return pulumi.get(self, "state")
+
+    @_builtins.property
+    @pulumi.getter
+    def trustee(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "trustee")
 
     @_builtins.property
     @pulumi.getter(name="unicodeName")

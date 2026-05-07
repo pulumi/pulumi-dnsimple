@@ -79,6 +79,9 @@ namespace Pulumi.DNSimple
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        [Output("trustee")]
+        public Output<bool> Trustee { get; private set; } = null!;
+
         /// <summary>
         /// The domain name in Unicode format.
         /// </summary>
@@ -180,6 +183,9 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        [Input("trustee")]
+        public Input<bool>? Trustee { get; set; }
 
         /// <summary>
         /// The domain name in Unicode format.
