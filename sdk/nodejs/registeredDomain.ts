@@ -164,6 +164,7 @@ export class RegisteredDomain extends pulumi.CustomResource {
      * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     declare public readonly transferLockEnabled: pulumi.Output<boolean>;
+    declare public readonly trustee: pulumi.Output<boolean>;
     /**
      * The domain name in Unicode format.
      */
@@ -199,6 +200,7 @@ export class RegisteredDomain extends pulumi.CustomResource {
             resourceInputs["state"] = state?.state;
             resourceInputs["timeouts"] = state?.timeouts;
             resourceInputs["transferLockEnabled"] = state?.transferLockEnabled;
+            resourceInputs["trustee"] = state?.trustee;
             resourceInputs["unicodeName"] = state?.unicodeName;
             resourceInputs["whoisPrivacyEnabled"] = state?.whoisPrivacyEnabled;
         } else {
@@ -217,6 +219,7 @@ export class RegisteredDomain extends pulumi.CustomResource {
             resourceInputs["premiumPrice"] = args?.premiumPrice;
             resourceInputs["timeouts"] = args?.timeouts;
             resourceInputs["transferLockEnabled"] = args?.transferLockEnabled;
+            resourceInputs["trustee"] = args?.trustee;
             resourceInputs["whoisPrivacyEnabled"] = args?.whoisPrivacyEnabled;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["domainRegistration"] = undefined /*out*/;
@@ -280,6 +283,7 @@ export interface RegisteredDomainState {
      * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     transferLockEnabled?: pulumi.Input<boolean>;
+    trustee?: pulumi.Input<boolean>;
     /**
      * The domain name in Unicode format.
      */
@@ -326,6 +330,7 @@ export interface RegisteredDomainArgs {
      * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     transferLockEnabled?: pulumi.Input<boolean>;
+    trustee?: pulumi.Input<boolean>;
     /**
      * Whether the domain should have WHOIS privacy enabled (default: `false`).
      */

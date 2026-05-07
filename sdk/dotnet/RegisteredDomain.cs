@@ -191,6 +191,9 @@ namespace Pulumi.DNSimple
         [Output("transferLockEnabled")]
         public Output<bool> TransferLockEnabled { get; private set; } = null!;
 
+        [Output("trustee")]
+        public Output<bool> Trustee { get; private set; } = null!;
+
         /// <summary>
         /// The domain name in Unicode format.
         /// </summary>
@@ -303,6 +306,9 @@ namespace Pulumi.DNSimple
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
 
+        [Input("trustee")]
+        public Input<bool>? Trustee { get; set; }
+
         /// <summary>
         /// Whether the domain should have WHOIS privacy enabled (default: `False`).
         /// </summary>
@@ -394,6 +400,9 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
+
+        [Input("trustee")]
+        public Input<bool>? Trustee { get; set; }
 
         /// <summary>
         /// The domain name in Unicode format.

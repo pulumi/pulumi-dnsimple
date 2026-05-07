@@ -168,6 +168,7 @@ type RegisteredDomain struct {
 	Timeouts RegisteredDomainTimeoutsPtrOutput `pulumi:"timeouts"`
 	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled pulumi.BoolOutput `pulumi:"transferLockEnabled"`
+	Trustee             pulumi.BoolOutput `pulumi:"trustee"`
 	// The domain name in Unicode format.
 	UnicodeName pulumi.StringOutput `pulumi:"unicodeName"`
 	// Whether the domain should have WHOIS privacy enabled (default: `false`).
@@ -234,6 +235,7 @@ type registeredDomainState struct {
 	Timeouts *RegisteredDomainTimeouts `pulumi:"timeouts"`
 	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled *bool `pulumi:"transferLockEnabled"`
+	Trustee             *bool `pulumi:"trustee"`
 	// The domain name in Unicode format.
 	UnicodeName *string `pulumi:"unicodeName"`
 	// Whether the domain should have WHOIS privacy enabled (default: `false`).
@@ -265,6 +267,7 @@ type RegisteredDomainState struct {
 	Timeouts RegisteredDomainTimeoutsPtrInput
 	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled pulumi.BoolPtrInput
+	Trustee             pulumi.BoolPtrInput
 	// The domain name in Unicode format.
 	UnicodeName pulumi.StringPtrInput
 	// Whether the domain should have WHOIS privacy enabled (default: `false`).
@@ -292,6 +295,7 @@ type registeredDomainArgs struct {
 	Timeouts *RegisteredDomainTimeouts `pulumi:"timeouts"`
 	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled *bool `pulumi:"transferLockEnabled"`
+	Trustee             *bool `pulumi:"trustee"`
 	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled *bool `pulumi:"whoisPrivacyEnabled"`
 }
@@ -314,6 +318,7 @@ type RegisteredDomainArgs struct {
 	Timeouts RegisteredDomainTimeoutsPtrInput
 	// Whether the domain transfer lock protection is enabled (default: `true`).
 	TransferLockEnabled pulumi.BoolPtrInput
+	Trustee             pulumi.BoolPtrInput
 	// Whether the domain should have WHOIS privacy enabled (default: `false`).
 	WhoisPrivacyEnabled pulumi.BoolPtrInput
 }
@@ -466,6 +471,10 @@ func (o RegisteredDomainOutput) Timeouts() RegisteredDomainTimeoutsPtrOutput {
 // Whether the domain transfer lock protection is enabled (default: `true`).
 func (o RegisteredDomainOutput) TransferLockEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v *RegisteredDomain) pulumi.BoolOutput { return v.TransferLockEnabled }).(pulumi.BoolOutput)
+}
+
+func (o RegisteredDomainOutput) Trustee() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RegisteredDomain) pulumi.BoolOutput { return v.Trustee }).(pulumi.BoolOutput)
 }
 
 // The domain name in Unicode format.

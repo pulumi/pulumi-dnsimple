@@ -140,6 +140,13 @@ public final class RegisteredDomainArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.transferLockEnabled);
     }
 
+    @Import(name="trustee")
+    private @Nullable Output<Boolean> trustee;
+
+    public Optional<Output<Boolean>> trustee() {
+        return Optional.ofNullable(this.trustee);
+    }
+
     /**
      * Whether the domain should have WHOIS privacy enabled (default: `false`).
      * 
@@ -166,6 +173,7 @@ public final class RegisteredDomainArgs extends com.pulumi.resources.ResourceArg
         this.premiumPrice = $.premiumPrice;
         this.timeouts = $.timeouts;
         this.transferLockEnabled = $.transferLockEnabled;
+        this.trustee = $.trustee;
         this.whoisPrivacyEnabled = $.whoisPrivacyEnabled;
     }
 
@@ -353,6 +361,15 @@ public final class RegisteredDomainArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder transferLockEnabled(Boolean transferLockEnabled) {
             return transferLockEnabled(Output.of(transferLockEnabled));
+        }
+
+        public Builder trustee(@Nullable Output<Boolean> trustee) {
+            $.trustee = trustee;
+            return this;
+        }
+
+        public Builder trustee(Boolean trustee) {
+            return trustee(Output.of(trustee));
         }
 
         /**

@@ -339,6 +339,12 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
     public Output<Boolean> transferLockEnabled() {
         return this.transferLockEnabled;
     }
+    @Export(name="trustee", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> trustee;
+
+    public Output<Boolean> trustee() {
+        return this.trustee;
+    }
     /**
      * The domain name in Unicode format.
      * 

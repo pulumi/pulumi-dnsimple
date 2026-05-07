@@ -29,6 +29,7 @@ class RegisteredDomainArgs:
                  premium_price: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']] = None,
                  transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
                  whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegisteredDomain resource.
@@ -57,6 +58,8 @@ class RegisteredDomainArgs:
             pulumi.set(__self__, "timeouts", timeouts)
         if transfer_lock_enabled is not None:
             pulumi.set(__self__, "transfer_lock_enabled", transfer_lock_enabled)
+        if trustee is not None:
+            pulumi.set(__self__, "trustee", trustee)
         if whois_privacy_enabled is not None:
             pulumi.set(__self__, "whois_privacy_enabled", whois_privacy_enabled)
 
@@ -157,6 +160,15 @@ class RegisteredDomainArgs:
         pulumi.set(self, "transfer_lock_enabled", value)
 
     @_builtins.property
+    @pulumi.getter
+    def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "trustee")
+
+    @trustee.setter
+    def trustee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "trustee", value)
+
+    @_builtins.property
     @pulumi.getter(name="whoisPrivacyEnabled")
     def whois_privacy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
         """
@@ -185,6 +197,7 @@ class _RegisteredDomainState:
                  state: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']] = None,
                  transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
                  unicode_name: Optional[pulumi.Input[_builtins.str]] = None,
                  whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
         """
@@ -230,6 +243,8 @@ class _RegisteredDomainState:
             pulumi.set(__self__, "timeouts", timeouts)
         if transfer_lock_enabled is not None:
             pulumi.set(__self__, "transfer_lock_enabled", transfer_lock_enabled)
+        if trustee is not None:
+            pulumi.set(__self__, "trustee", trustee)
         if unicode_name is not None:
             pulumi.set(__self__, "unicode_name", unicode_name)
         if whois_privacy_enabled is not None:
@@ -386,6 +401,15 @@ class _RegisteredDomainState:
         pulumi.set(self, "transfer_lock_enabled", value)
 
     @_builtins.property
+    @pulumi.getter
+    def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        return pulumi.get(self, "trustee")
+
+    @trustee.setter
+    def trustee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+        pulumi.set(self, "trustee", value)
+
+    @_builtins.property
     @pulumi.getter(name="unicodeName")
     def unicode_name(self) -> Optional[pulumi.Input[_builtins.str]]:
         """
@@ -424,6 +448,7 @@ class RegisteredDomain(pulumi.CustomResource):
                  premium_price: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
                  transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
                  whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         """
@@ -627,6 +652,7 @@ class RegisteredDomain(pulumi.CustomResource):
                  premium_price: Optional[pulumi.Input[_builtins.str]] = None,
                  timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
                  transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
                  whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -649,6 +675,7 @@ class RegisteredDomain(pulumi.CustomResource):
             __props__.__dict__["premium_price"] = premium_price
             __props__.__dict__["timeouts"] = timeouts
             __props__.__dict__["transfer_lock_enabled"] = transfer_lock_enabled
+            __props__.__dict__["trustee"] = trustee
             __props__.__dict__["whois_privacy_enabled"] = whois_privacy_enabled
             __props__.__dict__["account_id"] = None
             __props__.__dict__["domain_registration"] = None
@@ -679,6 +706,7 @@ class RegisteredDomain(pulumi.CustomResource):
             state: Optional[pulumi.Input[_builtins.str]] = None,
             timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
             transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+            trustee: Optional[pulumi.Input[_builtins.bool]] = None,
             unicode_name: Optional[pulumi.Input[_builtins.str]] = None,
             whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'RegisteredDomain':
         """
@@ -719,6 +747,7 @@ class RegisteredDomain(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["timeouts"] = timeouts
         __props__.__dict__["transfer_lock_enabled"] = transfer_lock_enabled
+        __props__.__dict__["trustee"] = trustee
         __props__.__dict__["unicode_name"] = unicode_name
         __props__.__dict__["whois_privacy_enabled"] = whois_privacy_enabled
         return RegisteredDomain(resource_name, opts=opts, __props__=__props__)
@@ -820,6 +849,11 @@ class RegisteredDomain(pulumi.CustomResource):
         Whether the domain transfer lock protection is enabled (default: `true`).
         """
         return pulumi.get(self, "transfer_lock_enabled")
+
+    @_builtins.property
+    @pulumi.getter
+    def trustee(self) -> pulumi.Output[_builtins.bool]:
+        return pulumi.get(self, "trustee")
 
     @_builtins.property
     @pulumi.getter(name="unicodeName")
