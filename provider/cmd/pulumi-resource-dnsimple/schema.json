@@ -644,6 +644,9 @@
                     "type": "string",
                     "description": "The state of the domain.\n"
                 },
+                "trustee": {
+                    "type": "boolean"
+                },
                 "unicodeName": {
                     "type": "string",
                     "description": "The domain name in Unicode format.\n"
@@ -656,6 +659,7 @@
                 "privateWhois",
                 "registrantId",
                 "state",
+                "trustee",
                 "unicodeName"
             ],
             "inputProperties": {
@@ -693,6 +697,9 @@
                     "state": {
                         "type": "string",
                         "description": "The state of the domain.\n"
+                    },
+                    "trustee": {
+                        "type": "boolean"
                     },
                     "unicodeName": {
                         "type": "string",
@@ -1146,6 +1153,9 @@
                     "type": "boolean",
                     "description": "Whether the domain transfer lock protection is enabled (default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
                 },
+                "trustee": {
+                    "type": "boolean"
+                },
                 "unicodeName": {
                     "type": "string",
                     "description": "The domain name in Unicode format.\n"
@@ -1166,6 +1176,7 @@
                 "registrantChange",
                 "state",
                 "transferLockEnabled",
+                "trustee",
                 "unicodeName",
                 "whoisPrivacyEnabled"
             ],
@@ -1204,6 +1215,9 @@
                 "transferLockEnabled": {
                     "type": "boolean",
                     "description": "Whether the domain transfer lock protection is enabled (default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
+                },
+                "trustee": {
+                    "type": "boolean"
                 },
                 "whoisPrivacyEnabled": {
                     "type": "boolean",
@@ -1269,6 +1283,9 @@
                     "transferLockEnabled": {
                         "type": "boolean",
                         "description": "Whether the domain transfer lock protection is enabled (default: \u003cspan pulumi-lang-nodejs=\"`true`\" pulumi-lang-dotnet=\"`True`\" pulumi-lang-go=\"`true`\" pulumi-lang-python=\"`true`\" pulumi-lang-yaml=\"`true`\" pulumi-lang-java=\"`true`\"\u003e`true`\u003c/span\u003e).\n"
+                    },
+                    "trustee": {
+                        "type": "boolean"
                     },
                     "unicodeName": {
                         "type": "string",
