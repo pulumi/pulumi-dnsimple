@@ -20,7 +20,7 @@ __all__ = ['ZoneArgs', 'Zone']
 class ZoneArgs:
     def __init__(__self__, *,
                  name: pulumi.Input[_builtins.str],
-                 active: Optional[pulumi.Input[_builtins.bool]] = None):
+                 active: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Zone resource.
 
@@ -45,26 +45,26 @@ class ZoneArgs:
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the zone is active.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
 
 @pulumi.input_type
 class _ZoneState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 last_transferred_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 reverse: Optional[pulumi.Input[_builtins.bool]] = None,
-                 secondary: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 last_transferred_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 reverse: pulumi.Input[Optional[_builtins.bool]] = None,
+                 secondary: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering Zone resources.
 
@@ -90,74 +90,74 @@ class _ZoneState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The account ID for the zone.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def active(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def active(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the zone is active.
         """
         return pulumi.get(self, "active")
 
     @active.setter
-    def active(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def active(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "active", value)
 
     @_builtins.property
     @pulumi.getter(name="lastTransferredAt")
-    def last_transferred_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def last_transferred_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The last time the zone was transferred only applicable for **secondary** zones.
         """
         return pulumi.get(self, "last_transferred_at")
 
     @last_transferred_at.setter
-    def last_transferred_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def last_transferred_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "last_transferred_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The zone name.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter
-    def reverse(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def reverse(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the zone is a reverse zone.
         """
         return pulumi.get(self, "reverse")
 
     @reverse.setter
-    def reverse(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def reverse(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "reverse", value)
 
     @_builtins.property
     @pulumi.getter
-    def secondary(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def secondary(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the zone is a secondary zone.
         """
         return pulumi.get(self, "secondary")
 
     @secondary.setter
-    def secondary(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def secondary(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "secondary", value)
 
 
@@ -167,8 +167,8 @@ class Zone(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DNSimple zone resource.
@@ -246,8 +246,8 @@ class Zone(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 active: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 active: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -275,12 +275,12 @@ class Zone(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.int]] = None,
-            active: Optional[pulumi.Input[_builtins.bool]] = None,
-            last_transferred_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            reverse: Optional[pulumi.Input[_builtins.bool]] = None,
-            secondary: Optional[pulumi.Input[_builtins.bool]] = None) -> 'Zone':
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            active: pulumi.Input[Optional[_builtins.bool]] = None,
+            last_transferred_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            reverse: pulumi.Input[Optional[_builtins.bool]] = None,
+            secondary: pulumi.Input[Optional[_builtins.bool]] = None) -> 'Zone':
         """
         Get an existing Zone resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -58,8 +58,8 @@ class DomainDelegationArgs:
 @pulumi.input_type
 class _DomainDelegationState:
     def __init__(__self__, *,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None):
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None):
         """
         Input properties used for looking up and filtering DomainDelegation resources.
 
@@ -73,26 +73,26 @@ class _DomainDelegationState:
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="nameServers")
-    def name_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def name_servers(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of name servers to delegate to.
         """
         return pulumi.get(self, "name_servers")
 
     @name_servers.setter
-    def name_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def name_servers(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "name_servers", value)
 
 
@@ -102,8 +102,8 @@ class DomainDelegation(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         """
         Provides a DNSimple domain delegation resource.
@@ -195,8 +195,8 @@ class DomainDelegation(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -222,8 +222,8 @@ class DomainDelegation(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            name_servers: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DomainDelegation':
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            name_servers: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None) -> 'DomainDelegation':
         """
         Get an existing DomainDelegation resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

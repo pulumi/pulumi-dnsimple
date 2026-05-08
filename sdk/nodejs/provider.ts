@@ -83,27 +83,27 @@ export interface ProviderArgs {
     /**
      * The account for API operations.
      */
-    account?: pulumi.Input<string>;
+    account?: pulumi.Input<string | undefined>;
     /**
      * File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
      */
-    debugTransportFile?: pulumi.Input<string>;
+    debugTransportFile?: pulumi.Input<string | undefined>;
     /**
      * Flag to enable the prefetch of zone records.
      */
-    prefetch?: pulumi.Input<boolean>;
+    prefetch?: pulumi.Input<boolean | undefined>;
     /**
      * Flag to enable the sandbox API.
      */
-    sandbox?: pulumi.Input<boolean>;
+    sandbox?: pulumi.Input<boolean | undefined>;
     /**
      * The API v2 token for API operations.
      */
-    token?: pulumi.Input<string>;
+    token?: pulumi.Input<string | undefined>;
     /**
      * Custom string to append to the user agent used for sending HTTP requests to the API.
      */
-    userAgent?: pulumi.Input<string>;
+    userAgent?: pulumi.Input<string | undefined>;
 }
 
 export namespace Provider {

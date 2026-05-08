@@ -21,10 +21,10 @@ class DsRecordArgs:
     def __init__(__self__, *,
                  algorithm: pulumi.Input[_builtins.str],
                  domain: pulumi.Input[_builtins.str],
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None):
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a DsRecord resource.
 
@@ -72,64 +72,64 @@ class DsRecordArgs:
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hexadecimal representation of the digest of the corresponding DNSKEY record.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNSSEC digest type number as a string.
         """
         return pulumi.get(self, "digest_type")
 
     @digest_type.setter
-    def digest_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest_type", value)
 
     @_builtins.property
     @pulumi.getter(name="keyTag")
-    def key_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A key tag that references the corresponding DNSKEY record.
         """
         return pulumi.get(self, "key_tag")
 
     @key_tag.setter
-    def key_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A public key that references the corresponding DNSKEY record.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
 
 @pulumi.input_type
 class _DsRecordState:
     def __init__(__self__, *,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None):
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering DsRecord resources.
 
@@ -161,98 +161,98 @@ class _DsRecordState:
 
     @_builtins.property
     @pulumi.getter
-    def algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNSSEC algorithm number as a string.
         """
         return pulumi.get(self, "algorithm")
 
     @algorithm.setter
-    def algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "algorithm", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the DS record was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def digest(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The hexadecimal representation of the digest of the corresponding DNSKEY record.
         """
         return pulumi.get(self, "digest")
 
     @digest.setter
-    def digest(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest", value)
 
     @_builtins.property
     @pulumi.getter(name="digestType")
-    def digest_type(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def digest_type(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         DNSSEC digest type number as a string.
         """
         return pulumi.get(self, "digest_type")
 
     @digest_type.setter
-    def digest_type(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def digest_type(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "digest_type", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name or numeric ID to create the delegation signer record for.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
     @_builtins.property
     @pulumi.getter(name="keyTag")
-    def key_tag(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def key_tag(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A key tag that references the corresponding DNSKEY record.
         """
         return pulumi.get(self, "key_tag")
 
     @key_tag.setter
-    def key_tag(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def key_tag(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "key_tag", value)
 
     @_builtins.property
     @pulumi.getter(name="publicKey")
-    def public_key(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def public_key(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         A public key that references the corresponding DNSKEY record.
         """
         return pulumi.get(self, "public_key")
 
     @public_key.setter
-    def public_key(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def public_key(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "public_key", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The timestamp when the DS record was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
 
@@ -262,12 +262,12 @@ class DsRecord(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DNSimple domain delegation signer record resource.
@@ -355,12 +355,12 @@ class DsRecord(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest: Optional[pulumi.Input[_builtins.str]] = None,
-                 digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
-                 key_tag: Optional[pulumi.Input[_builtins.str]] = None,
-                 public_key: Optional[pulumi.Input[_builtins.str]] = None,
+                 algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest: pulumi.Input[Optional[_builtins.str]] = None,
+                 digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
+                 key_tag: pulumi.Input[Optional[_builtins.str]] = None,
+                 public_key: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -392,14 +392,14 @@ class DsRecord(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            digest: Optional[pulumi.Input[_builtins.str]] = None,
-            digest_type: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None,
-            key_tag: Optional[pulumi.Input[_builtins.str]] = None,
-            public_key: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None) -> 'DsRecord':
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            key_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> 'DsRecord':
         """
         Get an existing DsRecord resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

@@ -23,14 +23,14 @@ class RegisteredDomainArgs:
     def __init__(__self__, *,
                  contact_id: pulumi.Input[_builtins.int],
                  name: pulumi.Input[_builtins.str],
-                 auto_renew_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 dnssec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 premium_price: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']] = None,
-                 transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 auto_renew_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 dnssec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 premium_price: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['RegisteredDomainTimeoutsArgs']] = None,
+                 transfer_lock_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whois_privacy_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a RegisteredDomain resource.
 
@@ -90,120 +90,120 @@ class RegisteredDomainArgs:
 
     @_builtins.property
     @pulumi.getter(name="autoRenewEnabled")
-    def auto_renew_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain should be set to auto-renew (default: `false`).
         """
         return pulumi.get(self, "auto_renew_enabled")
 
     @auto_renew_enabled.setter
-    def auto_renew_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecEnabled")
-    def dnssec_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain should have DNSSEC enabled (default: `false`).
         """
         return pulumi.get(self, "dnssec_enabled")
 
     @dnssec_enabled.setter
-    def dnssec_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="extendedAttributes")
-    def extended_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extended_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
         """
         return pulumi.get(self, "extended_attributes")
 
     @extended_attributes.setter
-    def extended_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extended_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extended_attributes", value)
 
     @_builtins.property
     @pulumi.getter(name="premiumPrice")
-    def premium_price(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def premium_price(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         """
         return pulumi.get(self, "premium_price")
 
     @premium_price.setter
-    def premium_price(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def premium_price(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "premium_price", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RegisteredDomainTimeoutsArgs']]:
         """
         (see below for nested schema).
         """
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RegisteredDomainTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="transferLockEnabled")
-    def transfer_lock_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transfer_lock_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain transfer lock protection is enabled (default: `true`).
         """
         return pulumi.get(self, "transfer_lock_enabled")
 
     @transfer_lock_enabled.setter
-    def transfer_lock_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transfer_lock_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transfer_lock_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trustee(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
         """
         return pulumi.get(self, "trustee")
 
     @trustee.setter
-    def trustee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trustee(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trustee", value)
 
     @_builtins.property
     @pulumi.getter(name="whoisPrivacyEnabled")
-    def whois_privacy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def whois_privacy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain should have WHOIS privacy enabled (default: `false`).
         """
         return pulumi.get(self, "whois_privacy_enabled")
 
     @whois_privacy_enabled.setter
-    def whois_privacy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def whois_privacy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "whois_privacy_enabled", value)
 
 
 @pulumi.input_type
 class _RegisteredDomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dnssec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_registration: Optional[pulumi.Input['RegisteredDomainDomainRegistrationArgs']] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 premium_price: Optional[pulumi.Input[_builtins.str]] = None,
-                 registrant_change: Optional[pulumi.Input['RegisteredDomainRegistrantChangeArgs']] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']] = None,
-                 transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unicode_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dnssec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_registration: pulumi.Input[Optional['RegisteredDomainDomainRegistrationArgs']] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 extended_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 premium_price: pulumi.Input[Optional[_builtins.str]] = None,
+                 registrant_change: pulumi.Input[Optional['RegisteredDomainRegistrantChangeArgs']] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional['RegisteredDomainTimeoutsArgs']] = None,
+                 transfer_lock_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unicode_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 whois_privacy_enabled: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         Input properties used for looking up and filtering RegisteredDomain resources.
 
@@ -257,188 +257,188 @@ class _RegisteredDomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenewEnabled")
-    def auto_renew_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain should be set to auto-renew (default: `false`).
         """
         return pulumi.get(self, "auto_renew_enabled")
 
     @auto_renew_enabled.setter
-    def auto_renew_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="contactId")
-    def contact_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def contact_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
         """
         return pulumi.get(self, "contact_id")
 
     @contact_id.setter
-    def contact_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def contact_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "contact_id", value)
 
     @_builtins.property
     @pulumi.getter(name="dnssecEnabled")
-    def dnssec_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def dnssec_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain should have DNSSEC enabled (default: `false`).
         """
         return pulumi.get(self, "dnssec_enabled")
 
     @dnssec_enabled.setter
-    def dnssec_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def dnssec_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "dnssec_enabled", value)
 
     @_builtins.property
     @pulumi.getter(name="domainRegistration")
-    def domain_registration(self) -> Optional[pulumi.Input['RegisteredDomainDomainRegistrationArgs']]:
+    def domain_registration(self) -> pulumi.Input[Optional['RegisteredDomainDomainRegistrationArgs']]:
         """
         The domain registration details. (see below for nested schema)
         """
         return pulumi.get(self, "domain_registration")
 
     @domain_registration.setter
-    def domain_registration(self, value: Optional[pulumi.Input['RegisteredDomainDomainRegistrationArgs']]):
+    def domain_registration(self, value: pulumi.Input[Optional['RegisteredDomainDomainRegistrationArgs']]):
         pulumi.set(self, "domain_registration", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter(name="extendedAttributes")
-    def extended_attributes(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]:
+    def extended_attributes(self) -> pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]:
         """
         A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extended_attributes` will also be sent when a registrant change is initiated as part of changing the `contact_id`.
         """
         return pulumi.get(self, "extended_attributes")
 
     @extended_attributes.setter
-    def extended_attributes(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]]):
+    def extended_attributes(self, value: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "extended_attributes", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name to be registered.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="premiumPrice")
-    def premium_price(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def premium_price(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         """
         return pulumi.get(self, "premium_price")
 
     @premium_price.setter
-    def premium_price(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def premium_price(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "premium_price", value)
 
     @_builtins.property
     @pulumi.getter(name="registrantChange")
-    def registrant_change(self) -> Optional[pulumi.Input['RegisteredDomainRegistrantChangeArgs']]:
+    def registrant_change(self) -> pulumi.Input[Optional['RegisteredDomainRegistrantChangeArgs']]:
         """
         The registrant change details.
         """
         return pulumi.get(self, "registrant_change")
 
     @registrant_change.setter
-    def registrant_change(self, value: Optional[pulumi.Input['RegisteredDomainRegistrantChangeArgs']]):
+    def registrant_change(self, value: pulumi.Input[Optional['RegisteredDomainRegistrantChangeArgs']]):
         pulumi.set(self, "registrant_change", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         (String) - The state of the domain registration.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def timeouts(self) -> Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']]:
+    def timeouts(self) -> pulumi.Input[Optional['RegisteredDomainTimeoutsArgs']]:
         """
         (see below for nested schema).
         """
         return pulumi.get(self, "timeouts")
 
     @timeouts.setter
-    def timeouts(self, value: Optional[pulumi.Input['RegisteredDomainTimeoutsArgs']]):
+    def timeouts(self, value: pulumi.Input[Optional['RegisteredDomainTimeoutsArgs']]):
         pulumi.set(self, "timeouts", value)
 
     @_builtins.property
     @pulumi.getter(name="transferLockEnabled")
-    def transfer_lock_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def transfer_lock_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain transfer lock protection is enabled (default: `true`).
         """
         return pulumi.get(self, "transfer_lock_enabled")
 
     @transfer_lock_enabled.setter
-    def transfer_lock_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def transfer_lock_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "transfer_lock_enabled", value)
 
     @_builtins.property
     @pulumi.getter
-    def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trustee(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
         """
         return pulumi.get(self, "trustee")
 
     @trustee.setter
-    def trustee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trustee(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trustee", value)
 
     @_builtins.property
     @pulumi.getter(name="unicodeName")
-    def unicode_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unicode_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name in Unicode format.
         """
         return pulumi.get(self, "unicode_name")
 
     @unicode_name.setter
-    def unicode_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unicode_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unicode_name", value)
 
     @_builtins.property
     @pulumi.getter(name="whoisPrivacyEnabled")
-    def whois_privacy_enabled(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def whois_privacy_enabled(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain should have WHOIS privacy enabled (default: `false`).
         """
         return pulumi.get(self, "whois_privacy_enabled")
 
     @whois_privacy_enabled.setter
-    def whois_privacy_enabled(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def whois_privacy_enabled(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "whois_privacy_enabled", value)
 
 
@@ -448,16 +448,16 @@ class RegisteredDomain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dnssec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 premium_price: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
-                 transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dnssec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 premium_price: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
+                 transfer_lock_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whois_privacy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a DNSimple registered domain resource.
@@ -485,7 +485,7 @@ class RegisteredDomain(pulumi.CustomResource):
             email="apple@contoso.com")
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main.id)
+            contact_id=alice_main.id.apply(lambda x: int(x)))
         ```
 
         ### Example with more settings
@@ -496,7 +496,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             transfer_lock_enabled=True,
             whois_privacy_enabled=True,
@@ -514,7 +514,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_bio = dnsimple.RegisteredDomain("example_bio",
             name="example.bio",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             extended_attributes={
                 "bio_agree": "I Agree",
@@ -585,7 +585,7 @@ class RegisteredDomain(pulumi.CustomResource):
             email="apple@contoso.com")
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main.id)
+            contact_id=alice_main.id.apply(lambda x: int(x)))
         ```
 
         ### Example with more settings
@@ -596,7 +596,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_com = dnsimple.RegisteredDomain("example_com",
             name="example.com",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             transfer_lock_enabled=True,
             whois_privacy_enabled=True,
@@ -614,7 +614,7 @@ class RegisteredDomain(pulumi.CustomResource):
 
         example_bio = dnsimple.RegisteredDomain("example_bio",
             name="example.bio",
-            contact_id=alice_main["id"],
+            contact_id=int(alice_main["id"]),
             auto_renew_enabled=True,
             extended_attributes={
                 "bio_agree": "I Agree",
@@ -655,16 +655,16 @@ class RegisteredDomain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 auto_renew_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 contact_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 dnssec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 premium_price: Optional[pulumi.Input[_builtins.str]] = None,
-                 timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
-                 transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
+                 auto_renew_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 contact_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 dnssec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 extended_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 premium_price: pulumi.Input[Optional[_builtins.str]] = None,
+                 timeouts: pulumi.Input[Optional[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
+                 transfer_lock_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+                 trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 whois_privacy_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -704,22 +704,22 @@ class RegisteredDomain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_renew_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            contact_id: Optional[pulumi.Input[_builtins.int]] = None,
-            dnssec_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            domain_registration: Optional[pulumi.Input[Union['RegisteredDomainDomainRegistrationArgs', 'RegisteredDomainDomainRegistrationArgsDict']]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            extended_attributes: Optional[pulumi.Input[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            premium_price: Optional[pulumi.Input[_builtins.str]] = None,
-            registrant_change: Optional[pulumi.Input[Union['RegisteredDomainRegistrantChangeArgs', 'RegisteredDomainRegistrantChangeArgsDict']]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            timeouts: Optional[pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
-            transfer_lock_enabled: Optional[pulumi.Input[_builtins.bool]] = None,
-            trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-            unicode_name: Optional[pulumi.Input[_builtins.str]] = None,
-            whois_privacy_enabled: Optional[pulumi.Input[_builtins.bool]] = None) -> 'RegisteredDomain':
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            contact_id: pulumi.Input[Optional[_builtins.int]] = None,
+            dnssec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain_registration: pulumi.Input[Optional[Union['RegisteredDomainDomainRegistrationArgs', 'RegisteredDomainDomainRegistrationArgsDict']]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            extended_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            premium_price: pulumi.Input[Optional[_builtins.str]] = None,
+            registrant_change: pulumi.Input[Optional[Union['RegisteredDomainRegistrantChangeArgs', 'RegisteredDomainRegistrantChangeArgsDict']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']]] = None,
+            transfer_lock_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+            unicode_name: pulumi.Input[Optional[_builtins.str]] = None,
+            whois_privacy_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> 'RegisteredDomain':
         """
         Get an existing RegisteredDomain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

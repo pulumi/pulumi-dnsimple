@@ -111,11 +111,11 @@ export interface DomainDelegationState {
     /**
      * The domain name.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * List of name servers to delegate to.
      */
-    nameServers?: pulumi.Input<pulumi.Input<string>[]>;
+    nameServers?: pulumi.Input<pulumi.Input<string>[] | undefined>;
 }
 
 /**

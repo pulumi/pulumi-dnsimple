@@ -239,79 +239,79 @@ export interface ContactState {
     /**
      * The account ID for the contact.
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * The primary address line (street address, building number, etc.).
      */
-    address1?: pulumi.Input<string>;
+    address1?: pulumi.Input<string | undefined>;
     /**
      * The secondary address line (apartment, suite, floor, etc.).
      */
-    address2?: pulumi.Input<string>;
+    address2?: pulumi.Input<string | undefined>;
     /**
      * The city where the contact is located.
      */
-    city?: pulumi.Input<string>;
+    city?: pulumi.Input<string | undefined>;
     /**
      * The two-letter ISO country code (e.g., "US", "CA", "IT") for the contact's location.
      */
-    country?: pulumi.Input<string>;
+    country?: pulumi.Input<string | undefined>;
     /**
      * Timestamp representing when this contact was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The contact's email address.
      */
-    email?: pulumi.Input<string>;
+    email?: pulumi.Input<string | undefined>;
     /**
      * The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
      */
-    fax?: pulumi.Input<string>;
+    fax?: pulumi.Input<string | undefined>;
     /**
      * The fax number, normalized.
      */
-    faxNormalized?: pulumi.Input<string>;
+    faxNormalized?: pulumi.Input<string | undefined>;
     /**
      * The first name of the contact person.
      */
-    firstName?: pulumi.Input<string>;
+    firstName?: pulumi.Input<string | undefined>;
     /**
      * The job title or position of the contact person within the organization.
      */
-    jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string | undefined>;
     /**
      * A descriptive label for the contact to help identify it.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The last name of the contact person.
      */
-    lastName?: pulumi.Input<string>;
+    lastName?: pulumi.Input<string | undefined>;
     /**
      * The name of the organization or company associated with the contact.
      */
-    organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string | undefined>;
     /**
      * The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
      */
-    phone?: pulumi.Input<string>;
+    phone?: pulumi.Input<string | undefined>;
     /**
      * The phone number, normalized.
      */
-    phoneNormalized?: pulumi.Input<string>;
+    phoneNormalized?: pulumi.Input<string | undefined>;
     /**
      * The postal code, ZIP code, or equivalent for the contact's location.
      */
-    postalCode?: pulumi.Input<string>;
+    postalCode?: pulumi.Input<string | undefined>;
     /**
      * The state, province, or region where the contact is located.
      */
-    stateProvince?: pulumi.Input<string>;
+    stateProvince?: pulumi.Input<string | undefined>;
     /**
      * Timestamp representing when this contact was updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -325,7 +325,7 @@ export interface ContactArgs {
     /**
      * The secondary address line (apartment, suite, floor, etc.).
      */
-    address2?: pulumi.Input<string>;
+    address2?: pulumi.Input<string | undefined>;
     /**
      * The city where the contact is located.
      */
@@ -341,7 +341,7 @@ export interface ContactArgs {
     /**
      * The contact's fax number. Use international format with country code (e.g., "+1.8491234567" for US numbers).
      */
-    fax?: pulumi.Input<string>;
+    fax?: pulumi.Input<string | undefined>;
     /**
      * The first name of the contact person.
      */
@@ -349,11 +349,11 @@ export interface ContactArgs {
     /**
      * The job title or position of the contact person within the organization.
      */
-    jobTitle?: pulumi.Input<string>;
+    jobTitle?: pulumi.Input<string | undefined>;
     /**
      * A descriptive label for the contact to help identify it.
      */
-    label?: pulumi.Input<string>;
+    label?: pulumi.Input<string | undefined>;
     /**
      * The last name of the contact person.
      */
@@ -361,7 +361,7 @@ export interface ContactArgs {
     /**
      * The name of the organization or company associated with the contact.
      */
-    organizationName?: pulumi.Input<string>;
+    organizationName?: pulumi.Input<string | undefined>;
     /**
      * The contact's phone number. Use international format with country code (e.g., "+1.4012345678" for US numbers).
      */

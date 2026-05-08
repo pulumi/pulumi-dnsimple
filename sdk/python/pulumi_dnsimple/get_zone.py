@@ -111,7 +111,7 @@ def get_zone(name: Optional[_builtins.str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'),
         reverse=pulumi.get(__ret__, 'reverse'))
-def get_zone_output(name: Optional[pulumi.Input[_builtins.str]] = None,
+def get_zone_output(name: pulumi.Input[Optional[_builtins.str]] = None,
                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneResult]:
     """
     Get information about a DNSimple zone.

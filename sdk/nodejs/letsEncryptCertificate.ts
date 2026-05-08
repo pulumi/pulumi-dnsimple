@@ -172,51 +172,51 @@ export interface LetsEncryptCertificateState {
     /**
      * List of alternate names (SANs) for the certificate.
      */
-    alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The identifying certification authority (CA).
      */
-    authorityIdentifier?: pulumi.Input<string>;
+    authorityIdentifier?: pulumi.Input<string | undefined>;
     /**
      * Whether the certificate should auto-renew.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The datetime when the certificate was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The certificate signing request.
      */
-    csr?: pulumi.Input<string>;
+    csr?: pulumi.Input<string | undefined>;
     /**
      * The domain name or ID to issue the certificate for.
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * The datetime when the certificate will expire.
      */
-    expiresAt?: pulumi.Input<string>;
+    expiresAt?: pulumi.Input<string | undefined>;
     /**
      * The certificate name; use `""` for the root domain. Wildcard names are supported.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * The signature algorithm to use for the certificate.
      */
-    signatureAlgorithm?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
     /**
      * The state of the certificate.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * The datetime when the certificate was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
     /**
      * The number of years the certificate will last.
      */
-    years?: pulumi.Input<number>;
+    years?: pulumi.Input<number | undefined>;
 }
 
 /**
@@ -226,7 +226,7 @@ export interface LetsEncryptCertificateArgs {
     /**
      * List of alternate names (SANs) for the certificate.
      */
-    alternateNames?: pulumi.Input<pulumi.Input<string>[]>;
+    alternateNames?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * Whether the certificate should auto-renew.
      */
@@ -242,5 +242,5 @@ export interface LetsEncryptCertificateArgs {
     /**
      * The signature algorithm to use for the certificate.
      */
-    signatureAlgorithm?: pulumi.Input<string>;
+    signatureAlgorithm?: pulumi.Input<string | undefined>;
 }

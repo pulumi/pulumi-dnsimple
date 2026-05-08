@@ -35,8 +35,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -76,8 +76,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -117,8 +117,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -158,8 +158,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -199,8 +199,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetCertificateArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -244,8 +244,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -289,8 +289,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -334,8 +334,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -379,8 +379,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -424,8 +424,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetRegistrantChangeCheckArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -467,8 +467,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetZoneArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -509,8 +509,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetZoneArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -551,8 +551,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetZoneArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -593,8 +593,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetZoneArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;
@@ -635,8 +635,8 @@ public final class DnsimpleFunctions {
      * import com.pulumi.core.Output;
      * import com.pulumi.dnsimple.DnsimpleFunctions;
      * import com.pulumi.dnsimple.inputs.GetZoneArgs;
-     * import java.util.List;
      * import java.util.ArrayList;
+     * import java.util.Arrays;
      * import java.util.Map;
      * import java.io.File;
      * import java.nio.file.Files;

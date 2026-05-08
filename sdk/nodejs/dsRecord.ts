@@ -143,35 +143,35 @@ export interface DsRecordState {
     /**
      * DNSSEC algorithm number as a string.
      */
-    algorithm?: pulumi.Input<string>;
+    algorithm?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the DS record was created.
      */
-    createdAt?: pulumi.Input<string>;
+    createdAt?: pulumi.Input<string | undefined>;
     /**
      * The hexadecimal representation of the digest of the corresponding DNSKEY record.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * DNSSEC digest type number as a string.
      */
-    digestType?: pulumi.Input<string>;
+    digestType?: pulumi.Input<string | undefined>;
     /**
      * The domain name or numeric ID to create the delegation signer record for.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
     /**
      * A key tag that references the corresponding DNSKEY record.
      */
-    keyTag?: pulumi.Input<string>;
+    keyTag?: pulumi.Input<string | undefined>;
     /**
      * A public key that references the corresponding DNSKEY record.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
     /**
      * The timestamp when the DS record was last updated.
      */
-    updatedAt?: pulumi.Input<string>;
+    updatedAt?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -185,11 +185,11 @@ export interface DsRecordArgs {
     /**
      * The hexadecimal representation of the digest of the corresponding DNSKEY record.
      */
-    digest?: pulumi.Input<string>;
+    digest?: pulumi.Input<string | undefined>;
     /**
      * DNSSEC digest type number as a string.
      */
-    digestType?: pulumi.Input<string>;
+    digestType?: pulumi.Input<string | undefined>;
     /**
      * The domain name or numeric ID to create the delegation signer record for.
      */
@@ -197,9 +197,9 @@ export interface DsRecordArgs {
     /**
      * A key tag that references the corresponding DNSKEY record.
      */
-    keyTag?: pulumi.Input<string>;
+    keyTag?: pulumi.Input<string | undefined>;
     /**
      * A public key that references the corresponding DNSKEY record.
      */
-    publicKey?: pulumi.Input<string>;
+    publicKey?: pulumi.Input<string | undefined>;
 }

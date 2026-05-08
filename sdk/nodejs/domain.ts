@@ -134,35 +134,35 @@ export interface DomainState {
     /**
      * The account ID for the domain.
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * Whether the domain is set to auto-renew.
      */
-    autoRenew?: pulumi.Input<boolean>;
+    autoRenew?: pulumi.Input<boolean | undefined>;
     /**
      * The domain name to be created.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the domain has WhoIs privacy enabled.
      */
-    privateWhois?: pulumi.Input<boolean>;
+    privateWhois?: pulumi.Input<boolean | undefined>;
     /**
      * The ID of the registrant (contact) for the domain.
      */
-    registrantId?: pulumi.Input<number>;
+    registrantId?: pulumi.Input<number | undefined>;
     /**
      * The state of the domain.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
     /**
      * Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
      */
-    trustee?: pulumi.Input<boolean>;
+    trustee?: pulumi.Input<boolean | undefined>;
     /**
      * The domain name in Unicode format.
      */
-    unicodeName?: pulumi.Input<string>;
+    unicodeName?: pulumi.Input<string | undefined>;
 }
 
 /**

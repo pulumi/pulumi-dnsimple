@@ -73,10 +73,10 @@ class EmailForwardArgs:
 @pulumi.input_type
 class _EmailForwardState:
     def __init__(__self__, *,
-                 alias_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None):
+                 alias_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering EmailForward resources.
 
@@ -96,50 +96,50 @@ class _EmailForwardState:
 
     @_builtins.property
     @pulumi.getter(name="aliasEmail")
-    def alias_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The source email address on the domain, in full form. This is a computed attribute.
         """
         return pulumi.get(self, "alias_email")
 
     @alias_email.setter
-    def alias_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_email", value)
 
     @_builtins.property
     @pulumi.getter(name="aliasName")
-    def alias_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def alias_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The name part (the part before the @) of the source email address on the domain.
         """
         return pulumi.get(self, "alias_name")
 
     @alias_name.setter
-    def alias_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def alias_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "alias_name", value)
 
     @_builtins.property
     @pulumi.getter(name="destinationEmail")
-    def destination_email(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def destination_email(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The destination email address.
         """
         return pulumi.get(self, "destination_email")
 
     @destination_email.setter
-    def destination_email(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def destination_email(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "destination_email", value)
 
     @_builtins.property
     @pulumi.getter
-    def domain(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name to add the email forwarding rule to.
         """
         return pulumi.get(self, "domain")
 
     @domain.setter
-    def domain(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain", value)
 
 
@@ -149,9 +149,9 @@ class EmailForward(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DNSimple email forward resource.
@@ -232,9 +232,9 @@ class EmailForward(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-                 destination_email: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain: Optional[pulumi.Input[_builtins.str]] = None,
+                 alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+                 destination_email: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -264,10 +264,10 @@ class EmailForward(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alias_email: Optional[pulumi.Input[_builtins.str]] = None,
-            alias_name: Optional[pulumi.Input[_builtins.str]] = None,
-            destination_email: Optional[pulumi.Input[_builtins.str]] = None,
-            domain: Optional[pulumi.Input[_builtins.str]] = None) -> 'EmailForward':
+            alias_email: pulumi.Input[Optional[_builtins.str]] = None,
+            alias_name: pulumi.Input[Optional[_builtins.str]] = None,
+            destination_email: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None) -> 'EmailForward':
         """
         Get an existing EmailForward resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
