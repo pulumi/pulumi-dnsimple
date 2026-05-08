@@ -78,6 +78,9 @@ export class Domain extends pulumi.CustomResource {
      * The state of the domain.
      */
     declare public /*out*/ readonly state: pulumi.Output<string>;
+    /**
+     * Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+     */
     declare public /*out*/ readonly trustee: pulumi.Output<boolean>;
     /**
      * The domain name in Unicode format.
@@ -152,6 +155,9 @@ export interface DomainState {
      * The state of the domain.
      */
     state?: pulumi.Input<string>;
+    /**
+     * Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+     */
     trustee?: pulumi.Input<boolean>;
     /**
      * The domain name in Unicode format.

@@ -148,9 +148,17 @@ public class Domain extends com.pulumi.resources.CustomResource {
     public Output<String> state() {
         return this.state;
     }
+    /**
+     * Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+     * 
+     */
     @Export(name="trustee", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> trustee;
 
+    /**
+     * @return Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+     * 
+     */
     public Output<Boolean> trustee() {
         return this.trustee;
     }

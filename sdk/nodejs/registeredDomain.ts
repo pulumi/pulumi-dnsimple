@@ -51,6 +51,7 @@ import * as utilities from "./utilities";
  *     transferLockEnabled: true,
  *     whoisPrivacyEnabled: true,
  *     dnssecEnabled: false,
+ *     trustee: false,
  * });
  * ```
  *
@@ -164,6 +165,9 @@ export class RegisteredDomain extends pulumi.CustomResource {
      * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     declare public readonly transferLockEnabled: pulumi.Output<boolean>;
+    /**
+     * Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     */
     declare public readonly trustee: pulumi.Output<boolean>;
     /**
      * The domain name in Unicode format.
@@ -283,6 +287,9 @@ export interface RegisteredDomainState {
      * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     transferLockEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     */
     trustee?: pulumi.Input<boolean>;
     /**
      * The domain name in Unicode format.
@@ -330,6 +337,9 @@ export interface RegisteredDomainArgs {
      * Whether the domain transfer lock protection is enabled (default: `true`).
      */
     transferLockEnabled?: pulumi.Input<boolean>;
+    /**
+     * Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     */
     trustee?: pulumi.Input<boolean>;
     /**
      * Whether the domain should have WHOIS privacy enabled (default: `false`).

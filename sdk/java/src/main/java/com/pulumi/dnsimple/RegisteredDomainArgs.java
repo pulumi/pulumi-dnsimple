@@ -140,9 +140,17 @@ public final class RegisteredDomainArgs extends com.pulumi.resources.ResourceArg
         return Optional.ofNullable(this.transferLockEnabled);
     }
 
+    /**
+     * Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     * 
+     */
     @Import(name="trustee")
     private @Nullable Output<Boolean> trustee;
 
+    /**
+     * @return Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     * 
+     */
     public Optional<Output<Boolean>> trustee() {
         return Optional.ofNullable(this.trustee);
     }
@@ -363,11 +371,23 @@ public final class RegisteredDomainArgs extends com.pulumi.resources.ResourceArg
             return transferLockEnabled(Output.of(transferLockEnabled));
         }
 
+        /**
+         * @param trustee Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder trustee(@Nullable Output<Boolean> trustee) {
             $.trustee = trustee;
             return this;
         }
 
+        /**
+         * @param trustee Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+         * 
+         * @return builder
+         * 
+         */
         public Builder trustee(Boolean trustee) {
             return trustee(Output.of(trustee));
         }

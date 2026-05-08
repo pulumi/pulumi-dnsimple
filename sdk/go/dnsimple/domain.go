@@ -63,8 +63,9 @@ type Domain struct {
 	// The ID of the registrant (contact) for the domain.
 	RegistrantId pulumi.IntOutput `pulumi:"registrantId"`
 	// The state of the domain.
-	State   pulumi.StringOutput `pulumi:"state"`
-	Trustee pulumi.BoolOutput   `pulumi:"trustee"`
+	State pulumi.StringOutput `pulumi:"state"`
+	// Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+	Trustee pulumi.BoolOutput `pulumi:"trustee"`
 	// The domain name in Unicode format.
 	UnicodeName pulumi.StringOutput `pulumi:"unicodeName"`
 }
@@ -113,8 +114,9 @@ type domainState struct {
 	// The ID of the registrant (contact) for the domain.
 	RegistrantId *int `pulumi:"registrantId"`
 	// The state of the domain.
-	State   *string `pulumi:"state"`
-	Trustee *bool   `pulumi:"trustee"`
+	State *string `pulumi:"state"`
+	// Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+	Trustee *bool `pulumi:"trustee"`
 	// The domain name in Unicode format.
 	UnicodeName *string `pulumi:"unicodeName"`
 }
@@ -131,7 +133,8 @@ type DomainState struct {
 	// The ID of the registrant (contact) for the domain.
 	RegistrantId pulumi.IntPtrInput
 	// The state of the domain.
-	State   pulumi.StringPtrInput
+	State pulumi.StringPtrInput
+	// Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
 	Trustee pulumi.BoolPtrInput
 	// The domain name in Unicode format.
 	UnicodeName pulumi.StringPtrInput
@@ -269,6 +272,7 @@ func (o DomainOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
+// Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
 func (o DomainOutput) Trustee() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.Trustee }).(pulumi.BoolOutput)
 }

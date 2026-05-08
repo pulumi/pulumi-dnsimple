@@ -67,6 +67,7 @@ namespace Pulumi.DNSimple
     ///         TransferLockEnabled = true,
     ///         WhoisPrivacyEnabled = true,
     ///         DnssecEnabled = false,
+    ///         Trustee = false,
     ///     });
     /// 
     /// });
@@ -191,6 +192,9 @@ namespace Pulumi.DNSimple
         [Output("transferLockEnabled")]
         public Output<bool> TransferLockEnabled { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `False`).
+        /// </summary>
         [Output("trustee")]
         public Output<bool> Trustee { get; private set; } = null!;
 
@@ -306,6 +310,9 @@ namespace Pulumi.DNSimple
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
 
+        /// <summary>
+        /// Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `False`).
+        /// </summary>
         [Input("trustee")]
         public Input<bool>? Trustee { get; set; }
 
@@ -401,6 +408,9 @@ namespace Pulumi.DNSimple
         [Input("transferLockEnabled")]
         public Input<bool>? TransferLockEnabled { get; set; }
 
+        /// <summary>
+        /// Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `False`).
+        /// </summary>
         [Input("trustee")]
         public Input<bool>? Trustee { get; set; }
 

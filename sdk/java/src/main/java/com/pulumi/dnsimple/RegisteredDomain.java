@@ -107,6 +107,7 @@ import javax.annotation.Nullable;
  *             .transferLockEnabled(true)
  *             .whoisPrivacyEnabled(true)
  *             .dnssecEnabled(false)
+ *             .trustee(false)
  *             .build());
  * 
  *     }
@@ -339,9 +340,17 @@ public class RegisteredDomain extends com.pulumi.resources.CustomResource {
     public Output<Boolean> transferLockEnabled() {
         return this.transferLockEnabled;
     }
+    /**
+     * Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     * 
+     */
     @Export(name="trustee", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> trustee;
 
+    /**
+     * @return Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+     * 
+     */
     public Output<Boolean> trustee() {
         return this.trustee;
     }

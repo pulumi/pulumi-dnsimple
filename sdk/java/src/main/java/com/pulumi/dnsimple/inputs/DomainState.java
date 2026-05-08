@@ -107,9 +107,17 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.state);
     }
 
+    /**
+     * Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+     * 
+     */
     @Import(name="trustee")
     private @Nullable Output<Boolean> trustee;
 
+    /**
+     * @return Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+     * 
+     */
     public Optional<Output<Boolean>> trustee() {
         return Optional.ofNullable(this.trustee);
     }
@@ -286,11 +294,23 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
             return state(Output.of(state));
         }
 
+        /**
+         * @param trustee Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trustee(@Nullable Output<Boolean> trustee) {
             $.trustee = trustee;
             return this;
         }
 
+        /**
+         * @param trustee Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+         * 
+         * @return builder
+         * 
+         */
         public Builder trustee(Boolean trustee) {
             return trustee(Output.of(trustee));
         }
