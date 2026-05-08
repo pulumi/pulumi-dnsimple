@@ -42,6 +42,7 @@ class RegisteredDomainArgs:
         :param pulumi.Input[_builtins.str] premium_price: The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         :param pulumi.Input['RegisteredDomainTimeoutsArgs'] timeouts: (see below for nested schema).
         :param pulumi.Input[_builtins.bool] transfer_lock_enabled: Whether the domain transfer lock protection is enabled (default: `true`).
+        :param pulumi.Input[_builtins.bool] trustee: Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
         :param pulumi.Input[_builtins.bool] whois_privacy_enabled: Whether the domain should have WHOIS privacy enabled (default: `false`).
         """
         pulumi.set(__self__, "contact_id", contact_id)
@@ -162,6 +163,9 @@ class RegisteredDomainArgs:
     @_builtins.property
     @pulumi.getter
     def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+        """
         return pulumi.get(self, "trustee")
 
     @trustee.setter
@@ -214,6 +218,7 @@ class _RegisteredDomainState:
         :param pulumi.Input[_builtins.str] state: (String) - The state of the domain registration.
         :param pulumi.Input['RegisteredDomainTimeoutsArgs'] timeouts: (see below for nested schema).
         :param pulumi.Input[_builtins.bool] transfer_lock_enabled: Whether the domain transfer lock protection is enabled (default: `true`).
+        :param pulumi.Input[_builtins.bool] trustee: Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
         :param pulumi.Input[_builtins.str] unicode_name: The domain name in Unicode format.
         :param pulumi.Input[_builtins.bool] whois_privacy_enabled: Whether the domain should have WHOIS privacy enabled (default: `false`).
         """
@@ -403,6 +408,9 @@ class _RegisteredDomainState:
     @_builtins.property
     @pulumi.getter
     def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+        """
         return pulumi.get(self, "trustee")
 
     @trustee.setter
@@ -492,7 +500,8 @@ class RegisteredDomain(pulumi.CustomResource):
             auto_renew_enabled=True,
             transfer_lock_enabled=True,
             whois_privacy_enabled=True,
-            dnssec_enabled=False)
+            dnssec_enabled=False,
+            trustee=False)
         ```
 
         ### Example with extended attributes
@@ -541,6 +550,7 @@ class RegisteredDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] premium_price: The premium price for the domain registration. This is only required if the domain is a premium domain. You can use our [Check domain API](https://developer.dnsimple.com/v2/registrar/#checkDomain) to check if a domain is premium and [Retrieve domain prices API](https://developer.dnsimple.com/v2/registrar/#getDomainPrices) to retrieve the premium price for a domain.
         :param pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']] timeouts: (see below for nested schema).
         :param pulumi.Input[_builtins.bool] transfer_lock_enabled: Whether the domain transfer lock protection is enabled (default: `true`).
+        :param pulumi.Input[_builtins.bool] trustee: Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
         :param pulumi.Input[_builtins.bool] whois_privacy_enabled: Whether the domain should have WHOIS privacy enabled (default: `false`).
         """
         ...
@@ -590,7 +600,8 @@ class RegisteredDomain(pulumi.CustomResource):
             auto_renew_enabled=True,
             transfer_lock_enabled=True,
             whois_privacy_enabled=True,
-            dnssec_enabled=False)
+            dnssec_enabled=False,
+            trustee=False)
         ```
 
         ### Example with extended attributes
@@ -727,6 +738,7 @@ class RegisteredDomain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.str] state: (String) - The state of the domain registration.
         :param pulumi.Input[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict']] timeouts: (see below for nested schema).
         :param pulumi.Input[_builtins.bool] transfer_lock_enabled: Whether the domain transfer lock protection is enabled (default: `true`).
+        :param pulumi.Input[_builtins.bool] trustee: Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
         :param pulumi.Input[_builtins.str] unicode_name: The domain name in Unicode format.
         :param pulumi.Input[_builtins.bool] whois_privacy_enabled: Whether the domain should have WHOIS privacy enabled (default: `false`).
         """
@@ -853,6 +865,9 @@ class RegisteredDomain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def trustee(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) should be enabled for the domain. An extra cost may apply (default: `false`).
+        """
         return pulumi.get(self, "trustee")
 
     @_builtins.property

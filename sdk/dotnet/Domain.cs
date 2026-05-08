@@ -79,6 +79,9 @@ namespace Pulumi.DNSimple
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
 
+        /// <summary>
+        /// Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+        /// </summary>
         [Output("trustee")]
         public Output<bool> Trustee { get; private set; } = null!;
 
@@ -184,6 +187,9 @@ namespace Pulumi.DNSimple
         [Input("state")]
         public Input<string>? State { get; set; }
 
+        /// <summary>
+        /// Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+        /// </summary>
         [Input("trustee")]
         public Input<bool>? Trustee { get; set; }
 

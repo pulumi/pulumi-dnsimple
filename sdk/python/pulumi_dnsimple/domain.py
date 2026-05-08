@@ -60,6 +60,7 @@ class _DomainState:
         :param pulumi.Input[_builtins.bool] private_whois: Whether the domain has WhoIs privacy enabled.
         :param pulumi.Input[_builtins.int] registrant_id: The ID of the registrant (contact) for the domain.
         :param pulumi.Input[_builtins.str] state: The state of the domain.
+        :param pulumi.Input[_builtins.bool] trustee: Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
         :param pulumi.Input[_builtins.str] unicode_name: The domain name in Unicode format.
         """
         if account_id is not None:
@@ -154,6 +155,9 @@ class _DomainState:
     @_builtins.property
     @pulumi.getter
     def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+        """
+        Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+        """
         return pulumi.get(self, "trustee")
 
     @trustee.setter
@@ -303,6 +307,7 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.bool] private_whois: Whether the domain has WhoIs privacy enabled.
         :param pulumi.Input[_builtins.int] registrant_id: The ID of the registrant (contact) for the domain.
         :param pulumi.Input[_builtins.str] state: The state of the domain.
+        :param pulumi.Input[_builtins.bool] trustee: Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
         :param pulumi.Input[_builtins.str] unicode_name: The domain name in Unicode format.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -370,6 +375,9 @@ class Domain(pulumi.CustomResource):
     @_builtins.property
     @pulumi.getter
     def trustee(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
+        """
         return pulumi.get(self, "trustee")
 
     @_builtins.property
