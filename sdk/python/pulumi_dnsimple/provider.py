@@ -19,12 +19,12 @@ __all__ = ['ProviderArgs', 'Provider']
 @pulumi.input_type
 class ProviderArgs:
     def __init__(__self__, *,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug_transport_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefetch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sandbox: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None):
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug_transport_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefetch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sandbox: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a Provider resource.
 
@@ -50,74 +50,74 @@ class ProviderArgs:
 
     @_builtins.property
     @pulumi.getter
-    def account(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def account(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The account for API operations.
         """
         return pulumi.get(self, "account")
 
     @account.setter
-    def account(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def account(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "account", value)
 
     @_builtins.property
     @pulumi.getter(name="debugTransportFile")
-    def debug_transport_file(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def debug_transport_file(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         File path to enable HTTP request/response debugging. When set, all HTTP requests and responses will be logged to this file.
         """
         return pulumi.get(self, "debug_transport_file")
 
     @debug_transport_file.setter
-    def debug_transport_file(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def debug_transport_file(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "debug_transport_file", value)
 
     @_builtins.property
     @pulumi.getter
-    def prefetch(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def prefetch(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable the prefetch of zone records.
         """
         return pulumi.get(self, "prefetch")
 
     @prefetch.setter
-    def prefetch(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def prefetch(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "prefetch", value)
 
     @_builtins.property
     @pulumi.getter
-    def sandbox(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def sandbox(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Flag to enable the sandbox API.
         """
         return pulumi.get(self, "sandbox")
 
     @sandbox.setter
-    def sandbox(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def sandbox(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "sandbox", value)
 
     @_builtins.property
     @pulumi.getter
-    def token(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def token(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The API v2 token for API operations.
         """
         return pulumi.get(self, "token")
 
     @token.setter
-    def token(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def token(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "token", value)
 
     @_builtins.property
     @pulumi.getter(name="userAgent")
-    def user_agent(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def user_agent(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         Custom string to append to the user agent used for sending HTTP requests to the API.
         """
         return pulumi.get(self, "user_agent")
 
     @user_agent.setter
-    def user_agent(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def user_agent(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "user_agent", value)
 
 
@@ -127,12 +127,12 @@ class Provider(pulumi.ProviderResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug_transport_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefetch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sandbox: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None,
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug_transport_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefetch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sandbox: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         The provider type for the dnsimple package. By default, resources use package-wide configuration
@@ -178,12 +178,12 @@ class Provider(pulumi.ProviderResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 account: Optional[pulumi.Input[_builtins.str]] = None,
-                 debug_transport_file: Optional[pulumi.Input[_builtins.str]] = None,
-                 prefetch: Optional[pulumi.Input[_builtins.bool]] = None,
-                 sandbox: Optional[pulumi.Input[_builtins.bool]] = None,
-                 token: Optional[pulumi.Input[_builtins.str]] = None,
-                 user_agent: Optional[pulumi.Input[_builtins.str]] = None,
+                 account: pulumi.Input[Optional[_builtins.str]] = None,
+                 debug_transport_file: pulumi.Input[Optional[_builtins.str]] = None,
+                 prefetch: pulumi.Input[Optional[_builtins.bool]] = None,
+                 sandbox: pulumi.Input[Optional[_builtins.bool]] = None,
+                 token: pulumi.Input[Optional[_builtins.str]] = None,
+                 user_agent: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):

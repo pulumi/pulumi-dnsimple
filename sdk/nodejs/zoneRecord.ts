@@ -184,44 +184,44 @@ export interface ZoneRecordState {
     /**
      * The name of the record. Use `""` for the root domain.
      */
-    name?: pulumi.Input<string>;
-    nameNormalized?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
+    nameNormalized?: pulumi.Input<string | undefined>;
     /**
      * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * The fully qualified domain name (FQDN) of the record.
      */
-    qualifiedName?: pulumi.Input<string>;
+    qualifiedName?: pulumi.Input<string | undefined>;
     /**
      * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The TTL of the record. Defaults to `3600`.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      */
-    type?: pulumi.Input<string>;
+    type?: pulumi.Input<string | undefined>;
     /**
      * The value of the record.
      */
-    value?: pulumi.Input<string>;
+    value?: pulumi.Input<string | undefined>;
     /**
      * The normalized value of the record.
      */
-    valueNormalized?: pulumi.Input<string>;
+    valueNormalized?: pulumi.Input<string | undefined>;
     /**
      * The zone ID of the record.
      */
-    zoneId?: pulumi.Input<string>;
+    zoneId?: pulumi.Input<string | undefined>;
     /**
      * The zone name to add the record to.
      */
-    zoneName?: pulumi.Input<string>;
+    zoneName?: pulumi.Input<string | undefined>;
 }
 
 /**
@@ -235,15 +235,15 @@ export interface ZoneRecordArgs {
     /**
      * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
      */
-    priority?: pulumi.Input<number>;
+    priority?: pulumi.Input<number | undefined>;
     /**
      * A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
      */
-    regions?: pulumi.Input<pulumi.Input<string>[]>;
+    regions?: pulumi.Input<pulumi.Input<string>[] | undefined>;
     /**
      * The TTL of the record. Defaults to `3600`.
      */
-    ttl?: pulumi.Input<number>;
+    ttl?: pulumi.Input<number | undefined>;
     /**
      * The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
      */

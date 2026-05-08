@@ -164,9 +164,9 @@ def get_certificate(certificate_id: Optional[_builtins.int] = None,
         root_certificate=pulumi.get(__ret__, 'root_certificate'),
         server_certificate=pulumi.get(__ret__, 'server_certificate'),
         timeouts=pulumi.get(__ret__, 'timeouts'))
-def get_certificate_output(certificate_id: Optional[pulumi.Input[_builtins.int]] = None,
-                           domain: Optional[pulumi.Input[_builtins.str]] = None,
-                           timeouts: Optional[pulumi.Input[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
+def get_certificate_output(certificate_id: pulumi.Input[Optional[_builtins.int]] = None,
+                           domain: pulumi.Input[Optional[_builtins.str]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Get information about a DNSimple SSL certificate.

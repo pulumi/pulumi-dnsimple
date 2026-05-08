@@ -124,27 +124,27 @@ export interface ZoneState {
     /**
      * The account ID for the zone.
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * Whether the zone is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The last time the zone was transferred only applicable for **secondary** zones.
      */
-    lastTransferredAt?: pulumi.Input<string>;
+    lastTransferredAt?: pulumi.Input<string | undefined>;
     /**
      * The zone name.
      */
-    name?: pulumi.Input<string>;
+    name?: pulumi.Input<string | undefined>;
     /**
      * Whether the zone is a reverse zone.
      */
-    reverse?: pulumi.Input<boolean>;
+    reverse?: pulumi.Input<boolean | undefined>;
     /**
      * Whether the zone is a secondary zone.
      */
-    secondary?: pulumi.Input<boolean>;
+    secondary?: pulumi.Input<boolean | undefined>;
 }
 
 /**
@@ -154,7 +154,7 @@ export interface ZoneArgs {
     /**
      * Whether the zone is active.
      */
-    active?: pulumi.Input<boolean>;
+    active?: pulumi.Input<boolean | undefined>;
     /**
      * The zone name.
      */

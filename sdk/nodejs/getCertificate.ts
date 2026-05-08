@@ -116,5 +116,5 @@ export interface GetCertificateOutputArgs {
     /**
      * (see below for nested schema)
      */
-    timeouts?: pulumi.Input<inputs.GetCertificateTimeoutsArgs>;
+    timeouts?: pulumi.Input<inputs.GetCertificateTimeoutsArgs | undefined>;
 }

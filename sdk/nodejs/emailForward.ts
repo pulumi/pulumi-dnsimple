@@ -120,19 +120,19 @@ export interface EmailForwardState {
     /**
      * The source email address on the domain, in full form. This is a computed attribute.
      */
-    aliasEmail?: pulumi.Input<string>;
+    aliasEmail?: pulumi.Input<string | undefined>;
     /**
      * The name part (the part before the @) of the source email address on the domain.
      */
-    aliasName?: pulumi.Input<string>;
+    aliasName?: pulumi.Input<string | undefined>;
     /**
      * The destination email address.
      */
-    destinationEmail?: pulumi.Input<string>;
+    destinationEmail?: pulumi.Input<string | undefined>;
     /**
      * The domain name to add the email forwarding rule to.
      */
-    domain?: pulumi.Input<string>;
+    domain?: pulumi.Input<string | undefined>;
 }
 
 /**

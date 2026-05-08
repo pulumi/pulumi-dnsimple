@@ -17,70 +17,70 @@ export interface GetCertificateTimeoutsArgs {
     /**
      * (String) - The timeout for the read operation, e.g., `5m`.
      */
-    read?: pulumi.Input<string>;
+    read?: pulumi.Input<string | undefined>;
 }
 
 export interface RegisteredDomainDomainRegistration {
     /**
      * (Number) - The ID of the domain registration.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * (Number) - The registration period in years.
      */
-    period?: pulumi.Input<number>;
+    period?: pulumi.Input<number | undefined>;
     /**
      * (String) - The state of the domain registration.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface RegisteredDomainRegistrantChange {
     /**
      * DNSimple Account ID to which the registrant change belongs to
      */
-    accountId?: pulumi.Input<number>;
+    accountId?: pulumi.Input<number | undefined>;
     /**
      * The ID of the contact to be used for the domain registration. The contact ID can be changed after the domain has been registered. The change will result in a new registrant change, which may result in a [60-day lock](https://support.dnsimple.com/articles/icann-60-day-lock-registrant-change/).
      */
-    contactId?: pulumi.Input<number>;
+    contactId?: pulumi.Input<number | undefined>;
     /**
      * DNSimple domain ID for which the registrant change is being performed
      */
-    domainId?: pulumi.Input<string>;
+    domainId?: pulumi.Input<string | undefined>;
     /**
      * A map of extended attributes to be set for the domain registration. To see if there are any required extended attributes for any TLD use our [Lists the TLD Extended Attributes API](https://developer.dnsimple.com/v2/tlds/#getTldExtendedAttributes). The values provided in the `extendedAttributes` will also be sent when a registrant change is initiated as part of changing the `contactId`.
      */
-    extendedAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    extendedAttributes?: pulumi.Input<{[key: string]: pulumi.Input<string>} | undefined>;
     /**
      * (Number) - The ID of the domain registration.
      */
-    id?: pulumi.Input<number>;
+    id?: pulumi.Input<number | undefined>;
     /**
      * Date when the registrant change lock was lifted for the domain
      */
-    irtLockLiftedBy?: pulumi.Input<string>;
+    irtLockLiftedBy?: pulumi.Input<string | undefined>;
     /**
      * True if the registrant change will result in a registry owner change
      */
-    registryOwnerChange?: pulumi.Input<boolean>;
+    registryOwnerChange?: pulumi.Input<boolean | undefined>;
     /**
      * (String) - The state of the domain registration.
      */
-    state?: pulumi.Input<string>;
+    state?: pulumi.Input<string | undefined>;
 }
 
 export interface RegisteredDomainTimeouts {
     /**
      * (String) - The timeout for the read operation e.g. `5m`
      */
-    create?: pulumi.Input<string>;
+    create?: pulumi.Input<string | undefined>;
     /**
      * Delete timeout (currently unused).
      */
-    delete?: pulumi.Input<string>;
+    delete?: pulumi.Input<string | undefined>;
     /**
      * (String) - The timeout for the read operation e.g. `5m`
      */
-    update?: pulumi.Input<string>;
+    update?: pulumi.Input<string | undefined>;
 }

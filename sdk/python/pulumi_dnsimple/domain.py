@@ -43,14 +43,14 @@ class DomainArgs:
 @pulumi.input_type
 class _DomainState:
     def __init__(__self__, *,
-                 account_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 private_whois: Optional[pulumi.Input[_builtins.bool]] = None,
-                 registrant_id: Optional[pulumi.Input[_builtins.int]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-                 unicode_name: Optional[pulumi.Input[_builtins.str]] = None):
+                 account_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 private_whois: pulumi.Input[Optional[_builtins.bool]] = None,
+                 registrant_id: pulumi.Input[Optional[_builtins.int]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+                 unicode_name: pulumi.Input[Optional[_builtins.str]] = None):
         """
         Input properties used for looking up and filtering Domain resources.
 
@@ -82,98 +82,98 @@ class _DomainState:
 
     @_builtins.property
     @pulumi.getter(name="accountId")
-    def account_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def account_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The account ID for the domain.
         """
         return pulumi.get(self, "account_id")
 
     @account_id.setter
-    def account_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def account_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "account_id", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain is set to auto-renew.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name to be created.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="privateWhois")
-    def private_whois(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def private_whois(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain has WhoIs privacy enabled.
         """
         return pulumi.get(self, "private_whois")
 
     @private_whois.setter
-    def private_whois(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def private_whois(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "private_whois", value)
 
     @_builtins.property
     @pulumi.getter(name="registrantId")
-    def registrant_id(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def registrant_id(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The ID of the registrant (contact) for the domain.
         """
         return pulumi.get(self, "registrant_id")
 
     @registrant_id.setter
-    def registrant_id(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def registrant_id(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "registrant_id", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the domain.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter
-    def trustee(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def trustee(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the domain has a [trustee](https://support.dnsimple.com/articles/what-is-domain-trustee/) enabled.
         """
         return pulumi.get(self, "trustee")
 
     @trustee.setter
-    def trustee(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def trustee(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "trustee", value)
 
     @_builtins.property
     @pulumi.getter(name="unicodeName")
-    def unicode_name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def unicode_name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name in Unicode format.
         """
         return pulumi.get(self, "unicode_name")
 
     @unicode_name.setter
-    def unicode_name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def unicode_name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "unicode_name", value)
 
 
@@ -183,7 +183,7 @@ class Domain(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DNSimple domain resource.
@@ -256,7 +256,7 @@ class Domain(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -286,14 +286,14 @@ class Domain(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            account_id: Optional[pulumi.Input[_builtins.int]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            private_whois: Optional[pulumi.Input[_builtins.bool]] = None,
-            registrant_id: Optional[pulumi.Input[_builtins.int]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            trustee: Optional[pulumi.Input[_builtins.bool]] = None,
-            unicode_name: Optional[pulumi.Input[_builtins.str]] = None) -> 'Domain':
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            private_whois: pulumi.Input[Optional[_builtins.bool]] = None,
+            registrant_id: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+            unicode_name: pulumi.Input[Optional[_builtins.str]] = None) -> 'Domain':
         """
         Get an existing Domain resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

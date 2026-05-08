@@ -22,8 +22,8 @@ class LetsEncryptCertificateArgs:
                  auto_renew: pulumi.Input[_builtins.bool],
                  domain_id: pulumi.Input[_builtins.str],
                  name: pulumi.Input[_builtins.str],
-                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None):
+                 alternate_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None):
         """
         The set of arguments for constructing a LetsEncryptCertificate resource.
 
@@ -79,44 +79,44 @@ class LetsEncryptCertificateArgs:
 
     @_builtins.property
     @pulumi.getter(name="alternateNames")
-    def alternate_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alternate_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of alternate names (SANs) for the certificate.
         """
         return pulumi.get(self, "alternate_names")
 
     @alternate_names.setter
-    def alternate_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alternate_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_names", value)
 
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
-    def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signature algorithm to use for the certificate.
         """
         return pulumi.get(self, "signature_algorithm")
 
     @signature_algorithm.setter
-    def signature_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature_algorithm", value)
 
 
 @pulumi.input_type
 class _LetsEncryptCertificateState:
     def __init__(__self__, *,
-                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 authority_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 created_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 csr: Optional[pulumi.Input[_builtins.str]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-                 state: Optional[pulumi.Input[_builtins.str]] = None,
-                 updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-                 years: Optional[pulumi.Input[_builtins.int]] = None):
+                 alternate_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 authority_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 created_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 csr: pulumi.Input[Optional[_builtins.str]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+                 state: pulumi.Input[Optional[_builtins.str]] = None,
+                 updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+                 years: pulumi.Input[Optional[_builtins.int]] = None):
         """
         Input properties used for looking up and filtering LetsEncryptCertificate resources.
 
@@ -160,146 +160,146 @@ class _LetsEncryptCertificateState:
 
     @_builtins.property
     @pulumi.getter(name="alternateNames")
-    def alternate_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]:
+    def alternate_names(self) -> pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]:
         """
         List of alternate names (SANs) for the certificate.
         """
         return pulumi.get(self, "alternate_names")
 
     @alternate_names.setter
-    def alternate_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]]):
+    def alternate_names(self, value: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]]):
         pulumi.set(self, "alternate_names", value)
 
     @_builtins.property
     @pulumi.getter(name="authorityIdentifier")
-    def authority_identifier(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def authority_identifier(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The identifying certification authority (CA).
         """
         return pulumi.get(self, "authority_identifier")
 
     @authority_identifier.setter
-    def authority_identifier(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def authority_identifier(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "authority_identifier", value)
 
     @_builtins.property
     @pulumi.getter(name="autoRenew")
-    def auto_renew(self) -> Optional[pulumi.Input[_builtins.bool]]:
+    def auto_renew(self) -> pulumi.Input[Optional[_builtins.bool]]:
         """
         Whether the certificate should auto-renew.
         """
         return pulumi.get(self, "auto_renew")
 
     @auto_renew.setter
-    def auto_renew(self, value: Optional[pulumi.Input[_builtins.bool]]):
+    def auto_renew(self, value: pulumi.Input[Optional[_builtins.bool]]):
         pulumi.set(self, "auto_renew", value)
 
     @_builtins.property
     @pulumi.getter(name="createdAt")
-    def created_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def created_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datetime when the certificate was created.
         """
         return pulumi.get(self, "created_at")
 
     @created_at.setter
-    def created_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def created_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "created_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def csr(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def csr(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate signing request.
         """
         return pulumi.get(self, "csr")
 
     @csr.setter
-    def csr(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def csr(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "csr", value)
 
     @_builtins.property
     @pulumi.getter(name="domainId")
-    def domain_id(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def domain_id(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The domain name or ID to issue the certificate for.
         """
         return pulumi.get(self, "domain_id")
 
     @domain_id.setter
-    def domain_id(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def domain_id(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "domain_id", value)
 
     @_builtins.property
     @pulumi.getter(name="expiresAt")
-    def expires_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def expires_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datetime when the certificate will expire.
         """
         return pulumi.get(self, "expires_at")
 
     @expires_at.setter
-    def expires_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def expires_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "expires_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def name(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def name(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The certificate name; use `""` for the root domain. Wildcard names are supported.
         """
         return pulumi.get(self, "name")
 
     @name.setter
-    def name(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
 
     @_builtins.property
     @pulumi.getter(name="signatureAlgorithm")
-    def signature_algorithm(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def signature_algorithm(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The signature algorithm to use for the certificate.
         """
         return pulumi.get(self, "signature_algorithm")
 
     @signature_algorithm.setter
-    def signature_algorithm(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def signature_algorithm(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "signature_algorithm", value)
 
     @_builtins.property
     @pulumi.getter
-    def state(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def state(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The state of the certificate.
         """
         return pulumi.get(self, "state")
 
     @state.setter
-    def state(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def state(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "state", value)
 
     @_builtins.property
     @pulumi.getter(name="updatedAt")
-    def updated_at(self) -> Optional[pulumi.Input[_builtins.str]]:
+    def updated_at(self) -> pulumi.Input[Optional[_builtins.str]]:
         """
         The datetime when the certificate was last updated.
         """
         return pulumi.get(self, "updated_at")
 
     @updated_at.setter
-    def updated_at(self, value: Optional[pulumi.Input[_builtins.str]]):
+    def updated_at(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "updated_at", value)
 
     @_builtins.property
     @pulumi.getter
-    def years(self) -> Optional[pulumi.Input[_builtins.int]]:
+    def years(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
         The number of years the certificate will last.
         """
         return pulumi.get(self, "years")
 
     @years.setter
-    def years(self, value: Optional[pulumi.Input[_builtins.int]]):
+    def years(self, value: pulumi.Input[Optional[_builtins.int]]):
         pulumi.set(self, "years", value)
 
 
@@ -309,11 +309,11 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 alternate_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         """
         Provides a DNSimple Let's Encrypt certificate resource.
@@ -404,11 +404,11 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
-                 alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-                 auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-                 domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-                 name: Optional[pulumi.Input[_builtins.str]] = None,
-                 signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
+                 alternate_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+                 auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+                 domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+                 name: pulumi.Input[Optional[_builtins.str]] = None,
+                 signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -446,18 +446,18 @@ class LetsEncryptCertificate(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
-            alternate_names: Optional[pulumi.Input[Sequence[pulumi.Input[_builtins.str]]]] = None,
-            authority_identifier: Optional[pulumi.Input[_builtins.str]] = None,
-            auto_renew: Optional[pulumi.Input[_builtins.bool]] = None,
-            created_at: Optional[pulumi.Input[_builtins.str]] = None,
-            csr: Optional[pulumi.Input[_builtins.str]] = None,
-            domain_id: Optional[pulumi.Input[_builtins.str]] = None,
-            expires_at: Optional[pulumi.Input[_builtins.str]] = None,
-            name: Optional[pulumi.Input[_builtins.str]] = None,
-            signature_algorithm: Optional[pulumi.Input[_builtins.str]] = None,
-            state: Optional[pulumi.Input[_builtins.str]] = None,
-            updated_at: Optional[pulumi.Input[_builtins.str]] = None,
-            years: Optional[pulumi.Input[_builtins.int]] = None) -> 'LetsEncryptCertificate':
+            alternate_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authority_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            years: pulumi.Input[Optional[_builtins.int]] = None) -> 'LetsEncryptCertificate':
         """
         Get an existing LetsEncryptCertificate resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.

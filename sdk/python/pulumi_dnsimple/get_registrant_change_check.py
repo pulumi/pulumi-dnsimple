@@ -131,8 +131,8 @@ def get_registrant_change_check(contact_id: Optional[_builtins.str] = None,
         extended_attributes=pulumi.get(__ret__, 'extended_attributes'),
         id=pulumi.get(__ret__, 'id'),
         registry_owner_change=pulumi.get(__ret__, 'registry_owner_change'))
-def get_registrant_change_check_output(contact_id: Optional[pulumi.Input[_builtins.str]] = None,
-                                       domain_id: Optional[pulumi.Input[_builtins.str]] = None,
+def get_registrant_change_check_output(contact_id: pulumi.Input[Optional[_builtins.str]] = None,
+                                       domain_id: pulumi.Input[Optional[_builtins.str]] = None,
                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistrantChangeCheckResult]:
     """
     Get information on the requirements of a registrant change.
