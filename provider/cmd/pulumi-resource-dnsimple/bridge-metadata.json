@@ -86,6 +86,91 @@
         }
     },
     "auto-settings": {},
+    "default-resource-schema-fixups": {
+        "resources": {
+            "dnsimple_contact": {
+                "fields": {
+                    "id": {
+                        "name": "contactId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_domain": {
+                "fields": {
+                    "id": {
+                        "name": "domainId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_domain_delegation": {},
+            "dnsimple_ds_record": {
+                "fields": {
+                    "id": {
+                        "name": "dsRecordId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_email_forward": {
+                "fields": {
+                    "id": {
+                        "name": "emailForwardId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_lets_encrypt_certificate": {
+                "fields": {
+                    "id": {
+                        "name": "letsEncryptCertificateId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_registered_domain": {
+                "fields": {
+                    "id": {
+                        "name": "registeredDomainId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_zone": {
+                "fields": {
+                    "id": {
+                        "name": "zoneId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            },
+            "dnsimple_zone_record": {
+                "fields": {
+                    "id": {
+                        "name": "zoneRecordId"
+                    }
+                },
+                "computeID": {
+                    "kind": "missing"
+                }
+            }
+        }
+    },
     "renames": {
         "resources": {
             "dnsimple:index/domain:Domain": "dnsimple_domain",
