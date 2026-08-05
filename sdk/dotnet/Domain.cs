@@ -12,6 +12,13 @@ namespace Pulumi.DNSimple
     /// <summary>
     /// Provides a DNSimple domain resource.
     /// 
+    /// &gt; **Warning** Destroying a `dnsimple.Domain` resource deletes the domain from your DNSimple account, and **its DNS records are not recoverable**. A domain registered through DNSimple stays registered at the registry and remains yours until it expires, but recovering it means adding it back to your account as a zone and then [contacting DNSimple support](https://dnsimple.com/contact) to have the registration relinked. See [Recovering a deleted domain](https://support.dnsimple.com/articles/recovering-deleted-domain/).
+    /// 
+    /// Two things are worth knowing before you manage a domain with this resource:
+    /// 
+    /// - Set `PreventDelete` to `True` to make `terraform destroy` fail for the resource instead of deleting the domain.
+    /// - If you only want Terraform to stop tracking the domain, remove it from state rather than destroying it. See Removing a domain from Terraform.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp
@@ -60,6 +67,29 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `False`). Set it to `True` and `terraform destroy` will fail for this resource. Because changing `Name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `False` and apply first.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = new DNSimple.Domain("example", new()
+        ///     {
+        ///         Name = "example.com",
+        ///         PreventDelete = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        [Output("preventDelete")]
+        public Output<bool> PreventDelete { get; private set; } = null!;
 
         /// <summary>
         /// Whether the domain has WhoIs privacy enabled.
@@ -143,6 +173,29 @@ namespace Pulumi.DNSimple
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
 
+        /// <summary>
+        /// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `False`). Set it to `True` and `terraform destroy` will fail for this resource. Because changing `Name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `False` and apply first.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = new DNSimple.Domain("example", new()
+        ///     {
+        ///         Name = "example.com",
+        ///         PreventDelete = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        [Input("preventDelete")]
+        public Input<bool>? PreventDelete { get; set; }
+
         public DomainArgs()
         {
         }
@@ -168,6 +221,29 @@ namespace Pulumi.DNSimple
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `False`). Set it to `True` and `terraform destroy` will fail for this resource. Because changing `Name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `False` and apply first.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using DNSimple = Pulumi.DNSimple;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = new DNSimple.Domain("example", new()
+        ///     {
+        ///         Name = "example.com",
+        ///         PreventDelete = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        [Input("preventDelete")]
+        public Input<bool>? PreventDelete { get; set; }
 
         /// <summary>
         /// Whether the domain has WhoIs privacy enabled.

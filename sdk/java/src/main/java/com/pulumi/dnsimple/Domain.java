@@ -18,6 +18,13 @@ import javax.annotation.Nullable;
 /**
  * Provides a DNSimple domain resource.
  * 
+ * &gt; **Warning** Destroying a `dnsimple.Domain` resource deletes the domain from your DNSimple account, and **its DNS records are not recoverable**. A domain registered through DNSimple stays registered at the registry and remains yours until it expires, but recovering it means adding it back to your account as a zone and then [contacting DNSimple support](https://dnsimple.com/contact) to have the registration relinked. See [Recovering a deleted domain](https://support.dnsimple.com/articles/recovering-deleted-domain/).
+ * 
+ * Two things are worth knowing before you manage a domain with this resource:
+ * 
+ * - Set `preventDelete` to `true` to make `terraform destroy` fail for the resource instead of deleting the domain.
+ * - If you only want Terraform to stop tracking the domain, remove it from state rather than destroying it. See Removing a domain from Terraform.
+ * 
  * ## Example Usage
  * 
  * <pre>
@@ -105,6 +112,84 @@ public class Domain extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.Domain;
+     * import com.pulumi.dnsimple.DomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Domain("example", DomainArgs.builder()
+     *             .name("example.com")
+     *             .preventDelete(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    @Export(name="preventDelete", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> preventDelete;
+
+    /**
+     * @return Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.Domain;
+     * import com.pulumi.dnsimple.DomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Domain("example", DomainArgs.builder()
+     *             .name("example.com")
+     *             .preventDelete(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public Output<Boolean> preventDelete() {
+        return this.preventDelete;
     }
     /**
      * Whether the domain has WhoIs privacy enabled.

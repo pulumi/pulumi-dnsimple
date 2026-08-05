@@ -14,6 +14,13 @@ import (
 
 // Provides a DNSimple domain resource.
 //
+// > **Warning** Destroying a `Domain` resource deletes the domain from your DNSimple account, and **its DNS records are not recoverable**. A domain registered through DNSimple stays registered at the registry and remains yours until it expires, but recovering it means adding it back to your account as a zone and then [contacting DNSimple support](https://dnsimple.com/contact) to have the registration relinked. See [Recovering a deleted domain](https://support.dnsimple.com/articles/recovering-deleted-domain/).
+//
+// Two things are worth knowing before you manage a domain with this resource:
+//
+// - Set `preventDelete` to `true` to make `terraform destroy` fail for the resource instead of deleting the domain.
+// - If you only want Terraform to stop tracking the domain, remove it from state rather than destroying it. See Removing a domain from Terraform.
+//
 // ## Example Usage
 //
 // ```go
@@ -58,6 +65,30 @@ type Domain struct {
 	AutoRenew pulumi.BoolOutput `pulumi:"autoRenew"`
 	// The domain name to be created.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+	// 			Name:          pulumi.String("example.com"),
+	// 			PreventDelete: pulumi.Bool(true),
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	PreventDelete pulumi.BoolOutput `pulumi:"preventDelete"`
 	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois pulumi.BoolOutput `pulumi:"privateWhois"`
 	// The ID of the registrant (contact) for the domain.
@@ -109,6 +140,30 @@ type domainState struct {
 	AutoRenew *bool `pulumi:"autoRenew"`
 	// The domain name to be created.
 	Name *string `pulumi:"name"`
+	// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+	// 			Name:          pulumi.String("example.com"),
+	// 			PreventDelete: pulumi.Bool(true),
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	PreventDelete *bool `pulumi:"preventDelete"`
 	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois *bool `pulumi:"privateWhois"`
 	// The ID of the registrant (contact) for the domain.
@@ -128,6 +183,30 @@ type DomainState struct {
 	AutoRenew pulumi.BoolPtrInput
 	// The domain name to be created.
 	Name pulumi.StringPtrInput
+	// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+	// 			Name:          pulumi.String("example.com"),
+	// 			PreventDelete: pulumi.Bool(true),
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	PreventDelete pulumi.BoolPtrInput
 	// Whether the domain has WhoIs privacy enabled.
 	PrivateWhois pulumi.BoolPtrInput
 	// The ID of the registrant (contact) for the domain.
@@ -147,12 +226,60 @@ func (DomainState) ElementType() reflect.Type {
 type domainArgs struct {
 	// The domain name to be created.
 	Name string `pulumi:"name"`
+	// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+	// 			Name:          pulumi.String("example.com"),
+	// 			PreventDelete: pulumi.Bool(true),
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	PreventDelete *bool `pulumi:"preventDelete"`
 }
 
 // The set of arguments for constructing a Domain resource.
 type DomainArgs struct {
 	// The domain name to be created.
 	Name pulumi.StringInput
+	// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+	//
+	// ```go
+	// package main
+	//
+	// import (
+	// 	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+	// 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+	// )
+	//
+	// func main() {
+	// 	pulumi.Run(func(ctx *pulumi.Context) error {
+	// 		_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+	// 			Name:          pulumi.String("example.com"),
+	// 			PreventDelete: pulumi.Bool(true),
+	// 		})
+	// 		if err != nil {
+	// 			return err
+	// 		}
+	// 		return nil
+	// 	})
+	// }
+	// ```
+	PreventDelete pulumi.BoolPtrInput
 }
 
 func (DomainArgs) ElementType() reflect.Type {
@@ -255,6 +382,36 @@ func (o DomainOutput) AutoRenew() pulumi.BoolOutput {
 // The domain name to be created.
 func (o DomainOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Domain) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dnsimple.NewDomain(ctx, "example", &dnsimple.DomainArgs{
+//				Name:          pulumi.String("example.com"),
+//				PreventDelete: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+func (o DomainOutput) PreventDelete() pulumi.BoolOutput {
+	return o.ApplyT(func(v *Domain) pulumi.BoolOutput { return v.PreventDelete }).(pulumi.BoolOutput)
 }
 
 // Whether the domain has WhoIs privacy enabled.

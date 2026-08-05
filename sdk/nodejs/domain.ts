@@ -7,6 +7,13 @@ import * as utilities from "./utilities";
 /**
  * Provides a DNSimple domain resource.
  *
+ * > **Warning** Destroying a `dnsimple.Domain` resource deletes the domain from your DNSimple account, and **its DNS records are not recoverable**. A domain registered through DNSimple stays registered at the registry and remains yours until it expires, but recovering it means adding it back to your account as a zone and then [contacting DNSimple support](https://dnsimple.com/contact) to have the registration relinked. See [Recovering a deleted domain](https://support.dnsimple.com/articles/recovering-deleted-domain/).
+ *
+ * Two things are worth knowing before you manage a domain with this resource:
+ *
+ * - Set `preventDelete` to `true` to make `terraform destroy` fail for the resource instead of deleting the domain.
+ * - If you only want Terraform to stop tracking the domain, remove it from state rather than destroying it. See Removing a domain from Terraform.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -67,6 +74,20 @@ export class Domain extends pulumi.CustomResource {
      */
     declare public readonly name: pulumi.Output<string>;
     /**
+     * Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as dnsimple from "@pulumi/dnsimple";
+     *
+     * const example = new dnsimple.Domain("example", {
+     *     name: "example.com",
+     *     preventDelete: true,
+     * });
+     * ```
+     */
+    declare public readonly preventDelete: pulumi.Output<boolean>;
+    /**
      * Whether the domain has WhoIs privacy enabled.
      */
     declare public /*out*/ readonly privateWhois: pulumi.Output<boolean>;
@@ -103,6 +124,7 @@ export class Domain extends pulumi.CustomResource {
             resourceInputs["accountId"] = state?.accountId;
             resourceInputs["autoRenew"] = state?.autoRenew;
             resourceInputs["name"] = state?.name;
+            resourceInputs["preventDelete"] = state?.preventDelete;
             resourceInputs["privateWhois"] = state?.privateWhois;
             resourceInputs["registrantId"] = state?.registrantId;
             resourceInputs["state"] = state?.state;
@@ -114,6 +136,7 @@ export class Domain extends pulumi.CustomResource {
                 throw new Error("Missing required property 'name'");
             }
             resourceInputs["name"] = args?.name;
+            resourceInputs["preventDelete"] = args?.preventDelete;
             resourceInputs["accountId"] = undefined /*out*/;
             resourceInputs["autoRenew"] = undefined /*out*/;
             resourceInputs["privateWhois"] = undefined /*out*/;
@@ -144,6 +167,20 @@ export interface DomainState {
      */
     name?: pulumi.Input<string | undefined>;
     /**
+     * Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as dnsimple from "@pulumi/dnsimple";
+     *
+     * const example = new dnsimple.Domain("example", {
+     *     name: "example.com",
+     *     preventDelete: true,
+     * });
+     * ```
+     */
+    preventDelete?: pulumi.Input<boolean | undefined>;
+    /**
      * Whether the domain has WhoIs privacy enabled.
      */
     privateWhois?: pulumi.Input<boolean | undefined>;
@@ -173,4 +210,18 @@ export interface DomainArgs {
      * The domain name to be created.
      */
     name: pulumi.Input<string>;
+    /**
+     * Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     *
+     * ```typescript
+     * import * as pulumi from "@pulumi/pulumi";
+     * import * as dnsimple from "@pulumi/dnsimple";
+     *
+     * const example = new dnsimple.Domain("example", {
+     *     name: "example.com",
+     *     preventDelete: true,
+     * });
+     * ```
+     */
+    preventDelete?: pulumi.Input<boolean | undefined>;
 }
