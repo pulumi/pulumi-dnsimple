@@ -19,13 +19,26 @@ __all__ = ['DomainArgs', 'Domain']
 @pulumi.input_type
 class DomainArgs:
     def __init__(__self__, *,
-                 name: pulumi.Input[_builtins.str]):
+                 name: pulumi.Input[_builtins.str],
+                 prevent_delete: pulumi.Input[Optional[_builtins.bool]] = None):
         """
         The set of arguments for constructing a Domain resource.
 
         :param pulumi.Input[_builtins.str] name: The domain name to be created.
+        :param pulumi.Input[_builtins.bool] prevent_delete: Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+               
+               ```python
+               import pulumi
+               import pulumi_dnsimple as dnsimple
+               
+               example = dnsimple.Domain("example",
+                   name="example.com",
+                   prevent_delete=True)
+               ```
         """
         pulumi.set(__self__, "name", name)
+        if prevent_delete is not None:
+            pulumi.set(__self__, "prevent_delete", prevent_delete)
 
     @_builtins.property
     @pulumi.getter
@@ -39,6 +52,27 @@ class DomainArgs:
     def name(self, value: pulumi.Input[_builtins.str]):
         pulumi.set(self, "name", value)
 
+    @_builtins.property
+    @pulumi.getter(name="preventDelete")
+    def prevent_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        example = dnsimple.Domain("example",
+            name="example.com",
+            prevent_delete=True)
+        ```
+        """
+        return pulumi.get(self, "prevent_delete")
+
+    @prevent_delete.setter
+    def prevent_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "prevent_delete", value)
+
 
 @pulumi.input_type
 class _DomainState:
@@ -46,6 +80,7 @@ class _DomainState:
                  account_id: pulumi.Input[Optional[_builtins.int]] = None,
                  auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 prevent_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  private_whois: pulumi.Input[Optional[_builtins.bool]] = None,
                  registrant_id: pulumi.Input[Optional[_builtins.int]] = None,
                  state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -57,6 +92,16 @@ class _DomainState:
         :param pulumi.Input[_builtins.int] account_id: The account ID for the domain.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the domain is set to auto-renew.
         :param pulumi.Input[_builtins.str] name: The domain name to be created.
+        :param pulumi.Input[_builtins.bool] prevent_delete: Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+               
+               ```python
+               import pulumi
+               import pulumi_dnsimple as dnsimple
+               
+               example = dnsimple.Domain("example",
+                   name="example.com",
+                   prevent_delete=True)
+               ```
         :param pulumi.Input[_builtins.bool] private_whois: Whether the domain has WhoIs privacy enabled.
         :param pulumi.Input[_builtins.int] registrant_id: The ID of the registrant (contact) for the domain.
         :param pulumi.Input[_builtins.str] state: The state of the domain.
@@ -69,6 +114,8 @@ class _DomainState:
             pulumi.set(__self__, "auto_renew", auto_renew)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if prevent_delete is not None:
+            pulumi.set(__self__, "prevent_delete", prevent_delete)
         if private_whois is not None:
             pulumi.set(__self__, "private_whois", private_whois)
         if registrant_id is not None:
@@ -115,6 +162,27 @@ class _DomainState:
     @name.setter
     def name(self, value: pulumi.Input[Optional[_builtins.str]]):
         pulumi.set(self, "name", value)
+
+    @_builtins.property
+    @pulumi.getter(name="preventDelete")
+    def prevent_delete(self) -> pulumi.Input[Optional[_builtins.bool]]:
+        """
+        Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        example = dnsimple.Domain("example",
+            name="example.com",
+            prevent_delete=True)
+        ```
+        """
+        return pulumi.get(self, "prevent_delete")
+
+    @prevent_delete.setter
+    def prevent_delete(self, value: pulumi.Input[Optional[_builtins.bool]]):
+        pulumi.set(self, "prevent_delete", value)
 
     @_builtins.property
     @pulumi.getter(name="privateWhois")
@@ -184,9 +252,17 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 prevent_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         """
         Provides a DNSimple domain resource.
+
+        > **Warning** Destroying a `Domain` resource deletes the domain from your DNSimple account, and **its DNS records are not recoverable**. A domain registered through DNSimple stays registered at the registry and remains yours until it expires, but recovering it means adding it back to your account as a zone and then [contacting DNSimple support](https://dnsimple.com/contact) to have the registration relinked. See [Recovering a deleted domain](https://support.dnsimple.com/articles/recovering-deleted-domain/).
+
+        Two things are worth knowing before you manage a domain with this resource:
+
+        - Set `prevent_delete` to `true` to make `terraform destroy` fail for the resource instead of deleting the domain.
+        - If you only want Terraform to stop tracking the domain, remove it from state rather than destroying it. See Removing a domain from Terraform.
 
         ## Example Usage
 
@@ -211,6 +287,16 @@ class Domain(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The domain name to be created.
+        :param pulumi.Input[_builtins.bool] prevent_delete: Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+               
+               ```python
+               import pulumi
+               import pulumi_dnsimple as dnsimple
+               
+               example = dnsimple.Domain("example",
+                   name="example.com",
+                   prevent_delete=True)
+               ```
         """
         ...
     @overload
@@ -220,6 +306,13 @@ class Domain(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Provides a DNSimple domain resource.
+
+        > **Warning** Destroying a `Domain` resource deletes the domain from your DNSimple account, and **its DNS records are not recoverable**. A domain registered through DNSimple stays registered at the registry and remains yours until it expires, but recovering it means adding it back to your account as a zone and then [contacting DNSimple support](https://dnsimple.com/contact) to have the registration relinked. See [Recovering a deleted domain](https://support.dnsimple.com/articles/recovering-deleted-domain/).
+
+        Two things are worth knowing before you manage a domain with this resource:
+
+        - Set `prevent_delete` to `true` to make `terraform destroy` fail for the resource instead of deleting the domain.
+        - If you only want Terraform to stop tracking the domain, remove it from state rather than destroying it. See Removing a domain from Terraform.
 
         ## Example Usage
 
@@ -257,6 +350,7 @@ class Domain(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  name: pulumi.Input[Optional[_builtins.str]] = None,
+                 prevent_delete: pulumi.Input[Optional[_builtins.bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -269,6 +363,7 @@ class Domain(pulumi.CustomResource):
             if name is None and not opts.urn:
                 raise TypeError("Missing required property 'name'")
             __props__.__dict__["name"] = name
+            __props__.__dict__["prevent_delete"] = prevent_delete
             __props__.__dict__["account_id"] = None
             __props__.__dict__["auto_renew"] = None
             __props__.__dict__["private_whois"] = None
@@ -289,6 +384,7 @@ class Domain(pulumi.CustomResource):
             account_id: pulumi.Input[Optional[_builtins.int]] = None,
             auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
             name: pulumi.Input[Optional[_builtins.str]] = None,
+            prevent_delete: pulumi.Input[Optional[_builtins.bool]] = None,
             private_whois: pulumi.Input[Optional[_builtins.bool]] = None,
             registrant_id: pulumi.Input[Optional[_builtins.int]] = None,
             state: pulumi.Input[Optional[_builtins.str]] = None,
@@ -304,6 +400,16 @@ class Domain(pulumi.CustomResource):
         :param pulumi.Input[_builtins.int] account_id: The account ID for the domain.
         :param pulumi.Input[_builtins.bool] auto_renew: Whether the domain is set to auto-renew.
         :param pulumi.Input[_builtins.str] name: The domain name to be created.
+        :param pulumi.Input[_builtins.bool] prevent_delete: Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+               
+               ```python
+               import pulumi
+               import pulumi_dnsimple as dnsimple
+               
+               example = dnsimple.Domain("example",
+                   name="example.com",
+                   prevent_delete=True)
+               ```
         :param pulumi.Input[_builtins.bool] private_whois: Whether the domain has WhoIs privacy enabled.
         :param pulumi.Input[_builtins.int] registrant_id: The ID of the registrant (contact) for the domain.
         :param pulumi.Input[_builtins.str] state: The state of the domain.
@@ -317,6 +423,7 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["account_id"] = account_id
         __props__.__dict__["auto_renew"] = auto_renew
         __props__.__dict__["name"] = name
+        __props__.__dict__["prevent_delete"] = prevent_delete
         __props__.__dict__["private_whois"] = private_whois
         __props__.__dict__["registrant_id"] = registrant_id
         __props__.__dict__["state"] = state
@@ -347,6 +454,23 @@ class Domain(pulumi.CustomResource):
         The domain name to be created.
         """
         return pulumi.get(self, "name")
+
+    @_builtins.property
+    @pulumi.getter(name="preventDelete")
+    def prevent_delete(self) -> pulumi.Output[_builtins.bool]:
+        """
+        Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+
+        ```python
+        import pulumi
+        import pulumi_dnsimple as dnsimple
+
+        example = dnsimple.Domain("example",
+            name="example.com",
+            prevent_delete=True)
+        ```
+        """
+        return pulumi.get(self, "prevent_delete")
 
     @_builtins.property
     @pulumi.getter(name="privateWhois")

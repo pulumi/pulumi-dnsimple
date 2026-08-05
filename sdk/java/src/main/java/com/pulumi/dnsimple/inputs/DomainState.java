@@ -63,6 +63,85 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.Domain;
+     * import com.pulumi.dnsimple.DomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Domain("example", DomainArgs.builder()
+     *             .name("example.com")
+     *             .preventDelete(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    @Import(name="preventDelete")
+    private @Nullable Output<Boolean> preventDelete;
+
+    /**
+     * @return Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+     * 
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.dnsimple.Domain;
+     * import com.pulumi.dnsimple.DomainArgs;
+     * import java.util.ArrayList;
+     * import java.util.Arrays;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         var example = new Domain("example", DomainArgs.builder()
+     *             .name("example.com")
+     *             .preventDelete(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * 
+     */
+    public Optional<Output<Boolean>> preventDelete() {
+        return Optional.ofNullable(this.preventDelete);
+    }
+
+    /**
      * Whether the domain has WhoIs privacy enabled.
      * 
      */
@@ -143,6 +222,7 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
         this.accountId = $.accountId;
         this.autoRenew = $.autoRenew;
         this.name = $.name;
+        this.preventDelete = $.preventDelete;
         this.privateWhois = $.privateWhois;
         this.registrantId = $.registrantId;
         this.state = $.state;
@@ -229,6 +309,91 @@ public final class DomainState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param preventDelete Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+         * 
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.dnsimple.Domain;
+         * import com.pulumi.dnsimple.DomainArgs;
+         * import java.util.ArrayList;
+         * import java.util.Arrays;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var example = new Domain("example", DomainArgs.builder()
+         *             .name("example.com")
+         *             .preventDelete(true)
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventDelete(@Nullable Output<Boolean> preventDelete) {
+            $.preventDelete = preventDelete;
+            return this;
+        }
+
+        /**
+         * @param preventDelete Optional flag to guard against [accidental registration deletion of the domain](https://support.dnsimple.com/articles/recovering-deleted-domain/) (default `false`). Set it to `true` and `terraform destroy` will fail for this resource. Because changing `name` requires replacement, and replacement destroys the existing domain, renaming also fails while it is enabled — set it back to `false` and apply first.
+         * 
+         * <pre>
+         * {@code
+         * package generated_program;
+         * 
+         * import com.pulumi.Context;
+         * import com.pulumi.Pulumi;
+         * import com.pulumi.core.Output;
+         * import com.pulumi.dnsimple.Domain;
+         * import com.pulumi.dnsimple.DomainArgs;
+         * import java.util.ArrayList;
+         * import java.util.Arrays;
+         * import java.util.Map;
+         * import java.io.File;
+         * import java.nio.file.Files;
+         * import java.nio.file.Paths;
+         * 
+         * public class App {
+         *     public static void main(String[] args) {
+         *         Pulumi.run(App::stack);
+         *     }
+         * 
+         *     public static void stack(Context ctx) {
+         *         var example = new Domain("example", DomainArgs.builder()
+         *             .name("example.com")
+         *             .preventDelete(true)
+         *             .build());
+         * 
+         *     }
+         * }
+         * }
+         * </pre>
+         * 
+         * @return builder
+         * 
+         */
+        public Builder preventDelete(Boolean preventDelete) {
+            return preventDelete(Output.of(preventDelete));
         }
 
         /**
