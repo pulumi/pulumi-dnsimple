@@ -599,6 +599,8 @@ return await Deployment.RunAsync(() =>
 package main
 
 import (
+	"strconv"
+
 	"github.com/pulumi/pulumi-dnsimple/sdk/v5/go/dnsimple"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -625,7 +627,7 @@ func main() {
 		// Register a domain
 		_, err = dnsimple.NewRegisteredDomain(ctx, "example_com", &dnsimple.RegisteredDomainArgs{
 			Name:                pulumi.String("example.com"),
-			ContactId:           registrant.ID(),
+			ContactId:           registrant.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
 			AutoRenewEnabled:    pulumi.Bool(true),
 			WhoisPrivacyEnabled: pulumi.Bool(true),
 			TransferLockEnabled: pulumi.Bool(true),
