@@ -75,12 +75,8 @@ type GetRegistrantChangeCheckResult struct {
 }
 
 func GetRegistrantChangeCheckOutput(ctx *pulumi.Context, args GetRegistrantChangeCheckOutputArgs, opts ...pulumi.InvokeOption) GetRegistrantChangeCheckResultOutput {
-	return pulumi.ToOutputWithContext(ctx.Context(), args).
-		ApplyT(func(v interface{}) (GetRegistrantChangeCheckResultOutput, error) {
-			args := v.(GetRegistrantChangeCheckArgs)
-			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
-			return ctx.InvokeOutput("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args, GetRegistrantChangeCheckResultOutput{}, options).(GetRegistrantChangeCheckResultOutput), nil
-		}).(GetRegistrantChangeCheckResultOutput)
+	options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+	return ctx.InvokeOutput("dnsimple:index/getRegistrantChangeCheck:getRegistrantChangeCheck", args, GetRegistrantChangeCheckResultOutput{}, options).(GetRegistrantChangeCheckResultOutput)
 }
 
 // A collection of arguments for invoking getRegistrantChangeCheck.
