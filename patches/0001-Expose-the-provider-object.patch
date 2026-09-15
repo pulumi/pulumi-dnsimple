@@ -6,7 +6,7 @@ Subject: [PATCH] Expose the provider object
 
 diff --git a/shim/shim.go b/shim/shim.go
 new file mode 100644
-index 0000000..d37ab92
+index 000000000000..d37ab923cfbf
 --- /dev/null
 +++ b/shim/shim.go
 @@ -0,0 +1,11 @@

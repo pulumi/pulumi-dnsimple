@@ -81,7 +81,7 @@ namespace Pulumi.DNSimple
         public Output<string> NameNormalized { get; private set; } = null!;
 
         /// <summary>
-        /// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        /// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         /// </summary>
         [Output("priority")]
         public Output<int> Priority { get; private set; } = null!;
@@ -187,7 +187,7 @@ namespace Pulumi.DNSimple
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        /// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }
@@ -246,7 +246,7 @@ namespace Pulumi.DNSimple
         public Input<string>? NameNormalized { get; set; }
 
         /// <summary>
-        /// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        /// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         /// </summary>
         [Input("priority")]
         public Input<int>? Priority { get; set; }

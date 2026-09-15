@@ -33,7 +33,7 @@ class ZoneRecordArgs:
         :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
         :param pulumi.Input[_builtins.str] value: The value of the record.
         :param pulumi.Input[_builtins.str] zone_name: The zone name to add the record to.
-        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
         :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
         """
@@ -100,7 +100,7 @@ class ZoneRecordArgs:
     @pulumi.getter
     def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         """
         return pulumi.get(self, "priority")
 
@@ -151,7 +151,7 @@ class _ZoneRecordState:
         Input properties used for looking up and filtering ZoneRecord resources.
 
         :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
-        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         :param pulumi.Input[_builtins.str] qualified_name: The fully qualified domain name (FQDN) of the record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
         :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
@@ -209,7 +209,7 @@ class _ZoneRecordState:
     @pulumi.getter
     def priority(self) -> pulumi.Input[Optional[_builtins.int]]:
         """
-        The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         """
         return pulumi.get(self, "priority")
 
@@ -377,7 +377,7 @@ class ZoneRecord(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
-        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
         :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
         :param pulumi.Input[_builtins.str] type: The type of the record (e.g., `A`, `AAAA`, `CNAME`, `MX`, `TXT`). **The record type must be specified in UPPERCASE.**
@@ -515,7 +515,7 @@ class ZoneRecord(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[_builtins.str] name: The name of the record. Use `""` for the root domain.
-        :param pulumi.Input[_builtins.int] priority: The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        :param pulumi.Input[_builtins.int] priority: The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         :param pulumi.Input[_builtins.str] qualified_name: The fully qualified domain name (FQDN) of the record.
         :param pulumi.Input[Sequence[pulumi.Input[_builtins.str]]] regions: A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
         :param pulumi.Input[_builtins.int] ttl: The TTL of the record. Defaults to `3600`.
@@ -559,7 +559,7 @@ class ZoneRecord(pulumi.CustomResource):
     @pulumi.getter
     def priority(self) -> pulumi.Output[_builtins.int]:
         """
-        The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+        The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
         """
         return pulumi.get(self, "priority")
 

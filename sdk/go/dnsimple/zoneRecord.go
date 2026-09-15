@@ -85,7 +85,7 @@ type ZoneRecord struct {
 	// The name of the record. Use `""` for the root domain.
 	Name           pulumi.StringOutput `pulumi:"name"`
 	NameNormalized pulumi.StringOutput `pulumi:"nameNormalized"`
-	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+	// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// The fully qualified domain name (FQDN) of the record.
 	QualifiedName pulumi.StringOutput `pulumi:"qualifiedName"`
@@ -150,7 +150,7 @@ type zoneRecordState struct {
 	// The name of the record. Use `""` for the root domain.
 	Name           *string `pulumi:"name"`
 	NameNormalized *string `pulumi:"nameNormalized"`
-	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+	// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
 	Priority *int `pulumi:"priority"`
 	// The fully qualified domain name (FQDN) of the record.
 	QualifiedName *string `pulumi:"qualifiedName"`
@@ -174,7 +174,7 @@ type ZoneRecordState struct {
 	// The name of the record. Use `""` for the root domain.
 	Name           pulumi.StringPtrInput
 	NameNormalized pulumi.StringPtrInput
-	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+	// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
 	Priority pulumi.IntPtrInput
 	// The fully qualified domain name (FQDN) of the record.
 	QualifiedName pulumi.StringPtrInput
@@ -201,7 +201,7 @@ func (ZoneRecordState) ElementType() reflect.Type {
 type zoneRecordArgs struct {
 	// The name of the record. Use `""` for the root domain.
 	Name string `pulumi:"name"`
-	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+	// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
 	Priority *int `pulumi:"priority"`
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions []string `pulumi:"regions"`
@@ -219,7 +219,7 @@ type zoneRecordArgs struct {
 type ZoneRecordArgs struct {
 	// The name of the record. Use `""` for the root domain.
 	Name pulumi.StringInput
-	// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+	// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
 	Priority pulumi.IntPtrInput
 	// A list of regions to serve the record from. You can find a list of supported values in our [developer documentation](https://developer.dnsimple.com/v2/zones/records/).
 	Regions pulumi.StringArrayInput
@@ -329,7 +329,7 @@ func (o ZoneRecordOutput) NameNormalized() pulumi.StringOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.StringOutput { return v.NameNormalized }).(pulumi.StringOutput)
 }
 
-// The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+// The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
 func (o ZoneRecordOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *ZoneRecord) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
