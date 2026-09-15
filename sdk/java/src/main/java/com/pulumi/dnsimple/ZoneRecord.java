@@ -112,14 +112,14 @@ public class ZoneRecord extends com.pulumi.resources.CustomResource {
         return this.nameNormalized;
     }
     /**
-     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      * 
      */
     @Export(name="priority", refs={Integer.class}, tree="[0]")
     private Output<Integer> priority;
 
     /**
-     * @return The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * @return The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      * 
      */
     public Output<Integer> priority() {
