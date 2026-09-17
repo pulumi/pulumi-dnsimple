@@ -34,14 +34,14 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      * 
      */
     @Import(name="priority")
     private @Nullable Output<Integer> priority;
 
     /**
-     * @return The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * @return The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      * 
      */
     public Optional<Output<Integer>> priority() {
@@ -175,7 +175,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+         * @param priority The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
          * 
          * @return builder
          * 
@@ -186,7 +186,7 @@ public final class ZoneRecordArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param priority The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+         * @param priority The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
          * 
          * @return builder
          * 
