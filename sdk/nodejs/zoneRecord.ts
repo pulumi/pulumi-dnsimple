@@ -86,7 +86,7 @@ export class ZoneRecord extends pulumi.CustomResource {
     declare public readonly name: pulumi.Output<string>;
     declare public /*out*/ readonly nameNormalized: pulumi.Output<string>;
     /**
-     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      */
     declare public readonly priority: pulumi.Output<number>;
     /**
@@ -187,7 +187,7 @@ export interface ZoneRecordState {
     name?: pulumi.Input<string | undefined>;
     nameNormalized?: pulumi.Input<string | undefined>;
     /**
-     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      */
     priority?: pulumi.Input<number | undefined>;
     /**
@@ -233,7 +233,7 @@ export interface ZoneRecordArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The priority of the record. Only used for certain record types (e.g., `MX`, `SRV`).
+     * The priority of the record. DNSimple stores a priority for `MX` and `SRV` records only, and discards it for every other type. Setting a non-zero priority on any other record type is rejected during validation.
      */
     priority?: pulumi.Input<number | undefined>;
     /**
