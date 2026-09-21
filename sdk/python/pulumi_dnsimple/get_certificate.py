@@ -128,7 +128,7 @@ class AwaitableGetCertificateResult(GetCertificateResult):
 
 def get_certificate(certificate_id: Optional[_builtins.int] = None,
                     domain: Optional[_builtins.str] = None,
-                    timeouts: Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']] = None,
+                    timeouts: Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict', 'outputs.GetCertificateTimeoutsResult']] = None,
                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetCertificateResult:
     """
     Get information about a DNSimple SSL certificate.
@@ -146,7 +146,7 @@ def get_certificate(certificate_id: Optional[_builtins.int] = None,
 
     :param _builtins.int certificate_id: The ID of the SSL certificate.
     :param _builtins.str domain: The domain name of the SSL certificate.
-    :param Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict'] timeouts: (see below for nested schema)
+    :param Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict', 'outputs.GetCertificateTimeoutsResult'] timeouts: (see below for nested schema)
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
@@ -166,7 +166,7 @@ def get_certificate(certificate_id: Optional[_builtins.int] = None,
         timeouts=pulumi.get(__ret__, 'timeouts'))
 def get_certificate_output(certificate_id: pulumi.Input[Optional[_builtins.int]] = None,
                            domain: pulumi.Input[Optional[_builtins.str]] = None,
-                           timeouts: pulumi.Input[Optional[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict']]]] = None,
+                           timeouts: pulumi.Input[Optional[Optional[Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict', 'outputs.GetCertificateTimeoutsResult']]]] = None,
                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateResult]:
     """
     Get information about a DNSimple SSL certificate.
@@ -184,7 +184,7 @@ def get_certificate_output(certificate_id: pulumi.Input[Optional[_builtins.int]]
 
     :param _builtins.int certificate_id: The ID of the SSL certificate.
     :param _builtins.str domain: The domain name of the SSL certificate.
-    :param Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict'] timeouts: (see below for nested schema)
+    :param Union['GetCertificateTimeoutsArgs', 'GetCertificateTimeoutsArgsDict', 'outputs.GetCertificateTimeoutsResult'] timeouts: (see below for nested schema)
     """
     __args__ = dict()
     __args__['certificateId'] = certificate_id
