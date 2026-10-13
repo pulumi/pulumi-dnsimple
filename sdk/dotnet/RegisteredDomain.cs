@@ -43,7 +43,7 @@ namespace Pulumi.DNSimple
     ///     var exampleCom = new DNSimple.RegisteredDomain("example_com", new()
     ///     {
     ///         Name = "example.com",
-    ///         ContactId = aliceMain.Id,
+    ///         ContactId = aliceMain.Id.Apply(x =&gt; int.Parse(x, System.Globalization.CultureInfo.InvariantCulture)),
     ///     });
     /// 
     /// });

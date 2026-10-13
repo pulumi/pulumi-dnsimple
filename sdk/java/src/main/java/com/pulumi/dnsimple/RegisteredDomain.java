@@ -102,7 +102,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleCom = new RegisteredDomain("exampleCom", RegisteredDomainArgs.builder()
  *             .name("example.com")
- *             .contactId(aliceMain.id())
+ *             .contactId(aliceMain.get("id"))
  *             .autoRenewEnabled(true)
  *             .transferLockEnabled(true)
  *             .whoisPrivacyEnabled(true)
@@ -143,7 +143,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var exampleBio = new RegisteredDomain("exampleBio", RegisteredDomainArgs.builder()
  *             .name("example.bio")
- *             .contactId(aliceMain.id())
+ *             .contactId(aliceMain.get("id"))
  *             .autoRenewEnabled(true)
  *             .extendedAttributes(Map.of("bio_agree", "I Agree"))
  *             .build());

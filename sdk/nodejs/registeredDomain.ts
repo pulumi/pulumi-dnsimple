@@ -46,7 +46,7 @@ import * as utilities from "./utilities";
  *
  * const exampleCom = new dnsimple.RegisteredDomain("example_com", {
  *     name: "example.com",
- *     contactId: Number(aliceMain.id),
+ *     contactId: aliceMain.id,
  *     autoRenewEnabled: true,
  *     transferLockEnabled: true,
  *     whoisPrivacyEnabled: true,
@@ -65,7 +65,7 @@ import * as utilities from "./utilities";
  *
  * const exampleBio = new dnsimple.RegisteredDomain("example_bio", {
  *     name: "example.bio",
- *     contactId: Number(aliceMain.id),
+ *     contactId: aliceMain.id,
  *     autoRenewEnabled: true,
  *     extendedAttributes: {
  *         bio_agree: "I Agree",
