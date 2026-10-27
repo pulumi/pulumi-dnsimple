@@ -636,7 +636,7 @@ func main() {
 		// Register a domain
 		_, err = dnsimple.NewRegisteredDomain(ctx, "example_com", &dnsimple.RegisteredDomainArgs{
 			Name:                pulumi.String("example.com"),
-			ContactId:           registrant.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+			ContactId:           registrant.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 			AutoRenewEnabled:    pulumi.Bool(true),
 			WhoisPrivacyEnabled: pulumi.Bool(true),
 			TransferLockEnabled: pulumi.Bool(true),
