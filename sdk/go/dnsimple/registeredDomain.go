@@ -51,7 +51,7 @@ import (
 //			}
 //			_, err = dnsimple.NewRegisteredDomain(ctx, "example_com", &dnsimple.RegisteredDomainArgs{
 //				Name:      pulumi.String("example.com"),
-//				ContactId: aliceMain.ID().ToIDOutput().ApplyT(func(id pulumi.ID) (int, error) { return strconv.Atoi(string(id)) }).(pulumi.IntOutput),
+//				ContactId: aliceMain.ID().ToStringOutput().ApplyT(strconv.Atoi).(pulumi.IntOutput),
 //			})
 //			if err != nil {
 //				return err
