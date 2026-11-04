@@ -827,6 +827,50 @@ class Contact(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return Contact(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            address1: pulumi.Input[Optional[_builtins.str]] = None,
+            address2: pulumi.Input[Optional[_builtins.str]] = None,
+            city: pulumi.Input[Optional[_builtins.str]] = None,
+            country: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            email: pulumi.Input[Optional[_builtins.str]] = None,
+            fax: pulumi.Input[Optional[_builtins.str]] = None,
+            fax_normalized: pulumi.Input[Optional[_builtins.str]] = None,
+            first_name: pulumi.Input[Optional[_builtins.str]] = None,
+            job_title: pulumi.Input[Optional[_builtins.str]] = None,
+            label: pulumi.Input[Optional[_builtins.str]] = None,
+            last_name: pulumi.Input[Optional[_builtins.str]] = None,
+            organization_name: pulumi.Input[Optional[_builtins.str]] = None,
+            phone: pulumi.Input[Optional[_builtins.str]] = None,
+            phone_normalized: pulumi.Input[Optional[_builtins.str]] = None,
+            postal_code: pulumi.Input[Optional[_builtins.str]] = None,
+            state_province: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["address1"] = address1
+        __props__["address2"] = address2
+        __props__["city"] = city
+        __props__["country"] = country
+        __props__["createdAt"] = created_at
+        __props__["email"] = email
+        __props__["fax"] = fax
+        __props__["faxNormalized"] = fax_normalized
+        __props__["firstName"] = first_name
+        __props__["jobTitle"] = job_title
+        __props__["label"] = label
+        __props__["lastName"] = last_name
+        __props__["organizationName"] = organization_name
+        __props__["phone"] = phone
+        __props__["phoneNormalized"] = phone_normalized
+        __props__["postalCode"] = postal_code
+        __props__["stateProvince"] = state_province
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'dnsimple:index/contact:Contact', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.int]:

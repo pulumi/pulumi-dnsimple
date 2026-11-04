@@ -134,6 +134,12 @@ func (ZoneState) ElementType() reflect.Type {
 	return reflect.TypeOf((*zoneState)(nil)).Elem()
 }
 
+// ZoneExists checks whether an existing Zone resource with the given ID exists.
+func ZoneExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ZoneState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("dnsimple:index/zone:Zone", id, state, "", opts...)
+}
+
 type zoneArgs struct {
 	// Whether the zone is active.
 	Active *bool `pulumi:"active"`

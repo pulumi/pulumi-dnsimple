@@ -180,6 +180,12 @@ func (LetsEncryptCertificateState) ElementType() reflect.Type {
 	return reflect.TypeOf((*letsEncryptCertificateState)(nil)).Elem()
 }
 
+// LetsEncryptCertificateExists checks whether an existing LetsEncryptCertificate resource with the given ID exists.
+func LetsEncryptCertificateExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *LetsEncryptCertificateState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate", id, state, "", opts...)
+}
+
 type letsEncryptCertificateArgs struct {
 	// List of alternate names (SANs) for the certificate.
 	AlternateNames []string `pulumi:"alternateNames"`

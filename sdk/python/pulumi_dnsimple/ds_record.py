@@ -430,6 +430,28 @@ class DsRecord(pulumi.CustomResource):
         __props__.__dict__["updated_at"] = updated_at
         return DsRecord(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            digest: pulumi.Input[Optional[_builtins.str]] = None,
+            digest_type: pulumi.Input[Optional[_builtins.str]] = None,
+            domain: pulumi.Input[Optional[_builtins.str]] = None,
+            key_tag: pulumi.Input[Optional[_builtins.str]] = None,
+            public_key: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["algorithm"] = algorithm
+        __props__["createdAt"] = created_at
+        __props__["digest"] = digest
+        __props__["digestType"] = digest_type
+        __props__["domain"] = domain
+        __props__["keyTag"] = key_tag
+        __props__["publicKey"] = public_key
+        __props__["updatedAt"] = updated_at
+        return pulumi.runtime.exists_resource(None, 'dnsimple:index/dsRecord:DsRecord', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter
     def algorithm(self) -> pulumi.Output[_builtins.str]:

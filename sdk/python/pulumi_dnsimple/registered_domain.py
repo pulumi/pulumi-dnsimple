@@ -780,6 +780,44 @@ class RegisteredDomain(pulumi.CustomResource):
         __props__.__dict__["whois_privacy_enabled"] = whois_privacy_enabled
         return RegisteredDomain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            contact_id: pulumi.Input[Optional[_builtins.int]] = None,
+            dnssec_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            domain_registration: pulumi.Input[Optional[Union['RegisteredDomainDomainRegistrationArgs', 'RegisteredDomainDomainRegistrationArgsDict', 'outputs.RegisteredDomainDomainRegistration']]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            extended_attributes: pulumi.Input[Optional[Mapping[str, pulumi.Input[_builtins.str]]]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            premium_price: pulumi.Input[Optional[_builtins.str]] = None,
+            registrant_change: pulumi.Input[Optional[Union['RegisteredDomainRegistrantChangeArgs', 'RegisteredDomainRegistrantChangeArgsDict', 'outputs.RegisteredDomainRegistrantChange']]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            timeouts: pulumi.Input[Optional[Union['RegisteredDomainTimeoutsArgs', 'RegisteredDomainTimeoutsArgsDict', 'outputs.RegisteredDomainTimeouts']]] = None,
+            transfer_lock_enabled: pulumi.Input[Optional[_builtins.bool]] = None,
+            trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+            unicode_name: pulumi.Input[Optional[_builtins.str]] = None,
+            whois_privacy_enabled: pulumi.Input[Optional[_builtins.bool]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["autoRenewEnabled"] = auto_renew_enabled
+        __props__["contactId"] = contact_id
+        __props__["dnssecEnabled"] = dnssec_enabled
+        __props__["domainRegistration"] = domain_registration
+        __props__["expiresAt"] = expires_at
+        __props__["extendedAttributes"] = extended_attributes
+        __props__["name"] = name
+        __props__["premiumPrice"] = premium_price
+        __props__["registrantChange"] = registrant_change
+        __props__["state"] = state
+        __props__["timeouts"] = timeouts
+        __props__["transferLockEnabled"] = transfer_lock_enabled
+        __props__["trustee"] = trustee
+        __props__["unicodeName"] = unicode_name
+        __props__["whoisPrivacyEnabled"] = whois_privacy_enabled
+        return pulumi.runtime.exists_resource(None, 'dnsimple:index/registeredDomain:RegisteredDomain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.int]:

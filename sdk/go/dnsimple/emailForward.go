@@ -128,6 +128,12 @@ func (EmailForwardState) ElementType() reflect.Type {
 	return reflect.TypeOf((*emailForwardState)(nil)).Elem()
 }
 
+// EmailForwardExists checks whether an existing EmailForward resource with the given ID exists.
+func EmailForwardExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *EmailForwardState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("dnsimple:index/emailForward:EmailForward", id, state, "", opts...)
+}
+
 type emailForwardArgs struct {
 	// The name part (the part before the @) of the source email address on the domain.
 	AliasName string `pulumi:"aliasName"`

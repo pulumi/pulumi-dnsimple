@@ -431,6 +431,30 @@ class Domain(pulumi.CustomResource):
         __props__.__dict__["unicode_name"] = unicode_name
         return Domain(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            account_id: pulumi.Input[Optional[_builtins.int]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            prevent_delete: pulumi.Input[Optional[_builtins.bool]] = None,
+            private_whois: pulumi.Input[Optional[_builtins.bool]] = None,
+            registrant_id: pulumi.Input[Optional[_builtins.int]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            trustee: pulumi.Input[Optional[_builtins.bool]] = None,
+            unicode_name: pulumi.Input[Optional[_builtins.str]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["accountId"] = account_id
+        __props__["autoRenew"] = auto_renew
+        __props__["name"] = name
+        __props__["preventDelete"] = prevent_delete
+        __props__["privateWhois"] = private_whois
+        __props__["registrantId"] = registrant_id
+        __props__["state"] = state
+        __props__["trustee"] = trustee
+        __props__["unicodeName"] = unicode_name
+        return pulumi.runtime.exists_resource(None, 'dnsimple:index/domain:Domain', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="accountId")
     def account_id(self) -> pulumi.Output[_builtins.int]:
