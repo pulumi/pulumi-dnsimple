@@ -151,6 +151,12 @@ func (DsRecordState) ElementType() reflect.Type {
 	return reflect.TypeOf((*dsRecordState)(nil)).Elem()
 }
 
+// DsRecordExists checks whether an existing DsRecord resource with the given ID exists.
+func DsRecordExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DsRecordState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("dnsimple:index/dsRecord:DsRecord", id, state, "", opts...)
+}
+
 type dsRecordArgs struct {
 	// DNSSEC algorithm number as a string.
 	Algorithm string `pulumi:"algorithm"`

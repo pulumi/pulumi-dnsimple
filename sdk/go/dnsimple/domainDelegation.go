@@ -119,6 +119,12 @@ func (DomainDelegationState) ElementType() reflect.Type {
 	return reflect.TypeOf((*domainDelegationState)(nil)).Elem()
 }
 
+// DomainDelegationExists checks whether an existing DomainDelegation resource with the given ID exists.
+func DomainDelegationExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *DomainDelegationState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("dnsimple:index/domainDelegation:DomainDelegation", id, state, "", opts...)
+}
+
 type domainDelegationArgs struct {
 	// The domain name.
 	Domain string `pulumi:"domain"`

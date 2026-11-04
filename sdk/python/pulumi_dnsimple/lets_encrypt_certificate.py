@@ -496,6 +496,36 @@ class LetsEncryptCertificate(pulumi.CustomResource):
         __props__.__dict__["years"] = years
         return LetsEncryptCertificate(resource_name, opts=opts, __props__=__props__)
 
+    @staticmethod
+    def exists(id: pulumi.Input[str],
+            opts: Optional[pulumi.ResourceOptions] = None,
+            alternate_names: pulumi.Input[Optional[Sequence[pulumi.Input[_builtins.str]]]] = None,
+            authority_identifier: pulumi.Input[Optional[_builtins.str]] = None,
+            auto_renew: pulumi.Input[Optional[_builtins.bool]] = None,
+            created_at: pulumi.Input[Optional[_builtins.str]] = None,
+            csr: pulumi.Input[Optional[_builtins.str]] = None,
+            domain_id: pulumi.Input[Optional[_builtins.str]] = None,
+            expires_at: pulumi.Input[Optional[_builtins.str]] = None,
+            name: pulumi.Input[Optional[_builtins.str]] = None,
+            signature_algorithm: pulumi.Input[Optional[_builtins.str]] = None,
+            state: pulumi.Input[Optional[_builtins.str]] = None,
+            updated_at: pulumi.Input[Optional[_builtins.str]] = None,
+            years: pulumi.Input[Optional[_builtins.int]] = None) -> pulumi.Output[bool]:
+        __props__: dict = {}
+        __props__["alternateNames"] = alternate_names
+        __props__["authorityIdentifier"] = authority_identifier
+        __props__["autoRenew"] = auto_renew
+        __props__["createdAt"] = created_at
+        __props__["csr"] = csr
+        __props__["domainId"] = domain_id
+        __props__["expiresAt"] = expires_at
+        __props__["name"] = name
+        __props__["signatureAlgorithm"] = signature_algorithm
+        __props__["state"] = state
+        __props__["updatedAt"] = updated_at
+        __props__["years"] = years
+        return pulumi.runtime.exists_resource(None, 'dnsimple:index/letsEncryptCertificate:LetsEncryptCertificate', id, __props__, opts or pulumi.ResourceOptions())
+
     @_builtins.property
     @pulumi.getter(name="alternateNames")
     def alternate_names(self) -> pulumi.Output[Optional[Sequence[_builtins.str]]]:

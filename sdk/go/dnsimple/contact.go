@@ -247,6 +247,12 @@ func (ContactState) ElementType() reflect.Type {
 	return reflect.TypeOf((*contactState)(nil)).Elem()
 }
 
+// ContactExists checks whether an existing Contact resource with the given ID exists.
+func ContactExists(ctx *pulumi.Context,
+	id pulumi.StringInput, state *ContactState, opts ...pulumi.ResourceOption) pulumi.BoolOutput {
+	return ctx.ExistsResource("dnsimple:index/contact:Contact", id, state, "", opts...)
+}
+
 type contactArgs struct {
 	// The primary address line (street address, building number, etc.).
 	Address1 string `pulumi:"address1"`
